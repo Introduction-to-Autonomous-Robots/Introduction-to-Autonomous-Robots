@@ -1,0 +1,516 @@
+%\documentclass[11pt]{scrbook} % use larger type; default would be 10pt
+
+% WITH BLEED
+% US Trade => 6x9, with a 0.125 bleed
+% Adjust images size and gutter so tabs bleed by .125
+% See https://www.createspace.com/Products/Book/InteriorPDF.jsp
+\documentclass[paper=6.14in:9.21in,pagesize=pdftex,11pt,twoside,openright]{scrbook}
+%
+% Paper width
+% W = 6.125in (6+0.125 --- bleed)
+% Paper height
+% H = 9.25in (9+2*.125 --- bleed)
+% Paper gutter
+% BCOR = 0.375in (0.5+0.5-0.625 --- margin with bleed)
+% Margin (0.5in imposed on lulu, recommended on createspace)
+% m = 0.625in (0.5+0.125 --- bleed)
+% Text height
+% h = H - 2m = 8in
+% Text width
+% w = W - 2m - BCOR = 4.5in
+\areaset[0.375in]{4.5in}{8in}
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%\usepackage{mitpress}
+\usepackage{framed}
+
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+
+\usepackage{graphicx} % support the \includegraphics command and options
+%\usepackage{wrapfig}
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+\usepackage{makeidx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{paralist}
+\usepackage[font={small,it}]{caption}
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The ``real'' document content comes below...
+\makeindex
+
+\title{Introduction to Autonomous Robots}
+\author{Nikolaus Correll}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+%\maketitle
+\tableofcontents
+
+\chapter*{Preface}
+This book provides an algorithmic perspective to autonomous robotics to students with a sophomore-level of linear algebra and probability theory. Robotics is an emerging field at the intersection of mechanical and electrical engineering with computer science. With computers becoming more powerful, making robots smart becomes more and more the focus of attention and one of robotics research. While there are a large number of textbooks on the mechanics and dynamics of robots that address sophomore-level undergraduates available, books that provide a broad algorithmic perspective are mostly limited to the graduate level. 
+
+This book uses simple trigonometry to develop the kinematic equations of simple manipulators and mobile robots, then introduces path planning, sensing, and hence uncertainty. The robot localization problem is introduced by formally introducing error propagation, which leads to Markov localization, the Particle filter and finally the Extended Kalman Filter, and Simultaneous Localization and Mapping. 
+
+Instead of focussing on the state-of-the-art solutions to a particular sub-problem, emphasis of the book is on a concise step-by-step development and recurrent examples throughout the book. For example, odometry and line-fitting are used to explain forward kinematics and least-squares solutions, respectively, and later serve as motivating examples for error propagation and the Kalman filter in a localization context.
+
+Also, the book is explicitely robot-agnostic, reflecting the timelessness of fundamental concepts. Instead, a series of possible project-based curricula are available online, ranging from a maze-solving competition that can be realized with most miniature differential-wheel robots that include a camera to manipulation experiments with the Baxter robot, all of which can be entirely conducted in simulation. 
+
+Writing this book would not have been possible without the feedback of multiple cohorts of students first using the online lecture notes and later draft versions of this book. 
+
+\begin{flushright}
+Nikolaus Correll\\
+Boulder, Colorado, \today
+\end{flushright}
+
+\input{chapters/introduction.tex}
+\input{chapters/locomotion.tex}
+\input{chapters/forwardkinematics1}
+\input{chapters/forwardkinematics2}
+\input{chapters/forwardkinematics3}
+\input{chapters/pathplanning}
+\input{chapters/sensors}
+\input{chapters/vision}
+\input{chapters/features}
+\input{chapters/errorpropagation}
+\input{chapters/localization}
+
+
+
+
+
+\chapter{Simultaneous Localization and Mapping}
+Robots are able to keep track of their position using a model of the noise arising in their drive train and their forward kinematics to propagate this error into a spatial probability density function. The variance of this distribution can shrink as soon as the robot sees uniquely identifiable features with known locations. This can be done for discrete locations using Bayes' rule and for continuous distributions using the Extended Kalman Filter. The key insight here was that every observation will reduce the variance of the robot's position estimate. Here, the Kalman filter performs an optimal fusion of two observations by weighting them with their variance, i.e., unreliable information counts less than reliable one. In the robot localization problem, one of the observations is typically the robot's position estimate whereas the other observation comes from a feature with known location on a map. So far, we have assumed that these locations are known. This chapter will introduce
+
+\begin{itemize}
+\item the concept of covariance (or, what all the non-diagonal elements in the covariance matrix are about),
+\item how to estimate the robot's location and that of features in the map at the same time (Simultaneous Localization and Mapping or SLAM)
+\end{itemize}
+
+\section{Introduction}
+The SLAM problem has been considered as the holy grail of mobile robotics for a long time. This lecture will introduce one of the first comprehensive solutions to the problem, which has now be superseded by computationally more efficient versions. We will begin with studying a series of special cases.
+
+\subsection{Special Case I: Single Feature}
+Consider a map that has only a single feature. We assume that the robot is able to obtain the relative range and angle of this feature, each with a certain variance. An example of this and how to calculate the variance of an observation based on sensor uncertainty is described in the line fitting example (Section \ref{sec:linefitting}). This feature could be a wall, but also a graphical tag that the robot can uniquely identify. The position of this measurement $m_i=[\alpha_i,r_i]$  in global coordinates is unknown, but can now easily be calculated if an estimate of the robot's position $\boldsymbol{\hat{x}_k}$ is known.  The variance of $ m_i$'s components is now the variance of the robot's position plus the variance of the observation.
+
+Now consider the robot moving closer to the obstacle and obtaining additional observations. Although its uncertainty in position is growing, it can now rely on the feature $m_i$ to reduce the variance of its old position (as long as its known that the feature is not moving). Also, repeated observations of the same feature from different angles might improve the quality of its observation. The robot has therefore a chance to keep its variance very close to that with which it initially observed the feature and stored it into its map. We can actually do this using the EKF framework from Section \ref{sec:EKF}. There, we assumed that features have a known location (no variance), but that the robot's sensing introduces a variance. This variance was propagated into the covariance matrix of the innovation ($ \boldsymbol{S}$). We can now simply add the variance of the estimate of the feature's position to that of the robot's sensing process.
+
+\subsection{Special Case II: Two Features}
+Consider now a map that has two features. Visiting one after the other, the robot will be able to store both of them in its map, although with a higher variance for the feature observed last. Although the observations of both features are independent from each other, the relationship between their variances depend on the trajectory of the robot. The differences between these two variances are much lower if the robot connect them in a straight line than when it performs a series of turns between them. In fact, even if the variances of both features are huge (because the robot has already driven for quite a while before first encountering them), but the features are close together, the probability density function over their distance would be very small. The latter can also be understood as the covariance of the two random variables (each consisting of range and angle). In probability theory, the covariance is the measure of how much two variables are changing together. Obviously, the covariance between the locations of two features that are visited immediately after each other by a robot is much higher as those far apart. It should therefore be possible to use the covariance between features to correct estimates of features in retrospect. For example, if the robot returns to the first feature it has observed, it will be able to reduce the variance of its position estimate. As it knows that it has not traveled very far since it observed the last feature, it can then correct this feature's position estimate.
+
+\section{The Covariance Matrix}
+When estimating quantities with multiple variables, such as the position of a robot that consists of its x-position, its y-position and its orientation, matrix notation has been a convenient way of writing down equations. For error propagation, we have written the variances of each input variable into the diagonal of a covariance matrix. For example, when using a differential wheel robot, uncertainty in position expressed by $ \sigma_x, \sigma_y$ and $ \sigma_{\theta}$ were grounded in the uncertainty of its left and right wheel. We have entered the variances of the left and right wheel into a 2x2 matrix and obtained a 3x3 matrix that had $ \sigma_x, \sigma_y$ and $ \sigma_{\theta}$ in its diagonal. Here, we set all other entries of the matrix to zero and ignored entries in the resulting matrix that were not in its diagonal. The reason we could actually do this is because uncertainty in the left and right wheel are independent random processes: there is no reason that the left wheel slips, just because the right wheel slips.  Thus the covariance --- the measure on how much two random variables are changing together --- of these is zero. This is not the case for the robot's position: uncertainty in one wheel will affect all output random variables ($ \sigma_x, \sigma_y$ and $ \sigma_{\theta}$) at the same time, which is expressed by their non-zero covariances --- the non-zero entries off the diagonal of the output covariance matrix.
+
+\section{EKF SLAM}
+The key idea in EKF SLAM is to extend the state vector from the robot's position to contain the position of all features. Thus, the state
+\begin{equation}
+\hat{\boldsymbol{x}}_{k'|k-1}=(x,y,\theta)^T
+\end{equation}
+becomes
+\begin{equation}
+\hat{\boldsymbol{x}}_{k}=(x,y,\theta,\alpha_1,r_1,\ldots,\alpha_N,r_N)^T
+\end{equation}
+assuming $ N$ features, which is a $(3+2N) x1$ vector. The action update (or ``prediction update") is identical to that if features are already known; the robot simply updates its position using odometry and updates the variance of its position using error propagation. The covariance matrix is now a $(3+2N)x(3+2N)$ matrix that initially holds the variances on position and those of each feature in its diagonal.
+
+The interesting things happen during the perception update. Here it is important that only one feature is observed at a time. Thus, if the robot observes multiple features at once, one needs to do multiple, consecutive perception updates. Care needs to be taken that the matrix multiplications work out. In practice you will need to set only those values of the observation vector (a $(3+2N)x1$ vector) that correspond to the feature that you observe. Similar considerations apply to the observation function and its Jacobian.
+
+\section{Graph-based SLAM}
+Usually, a robot obtains an initial estimate of where it is using some onboard sensors (odometry, optical flow, etc.) and uses this estimate to localize features (walls, corners, graphical patterns) in the environment. As soon as a robot revisits the same feature twice, it can update the estimate on its location. This is because the variance of an estimate based on two independent measurements will always be smaller than any of the variances of the individual measurements. As consecutive observations are not independent, but rather closely correlated, the refined estimate can then be propagated along the robot's path. This is formalized in EKF-based SLAM. A more intuitive understanding is provided by a spring-mass analogy: each possible pose (mass) is constrained to its neighboring pose by a spring. The higher the uncertainty of the relative transformation between two poses (e.g., obtained using odometry), the weaker the spring. Every time a robot gains confidence on a relative pose, the spring is stiffened instead. Eventually, all poses will be pulled in place. This approach is known as \emph{Graph-based SLAM}\index{Graph-based SLAM}. 
+
+\subsection{SLAM as a Maximum-Likelihood Estimation Problem}
+The classical formulation of SLAM describes the problem as maximizing the posterior probability of all points on the robot's trajectory given the odometry input and the observations. Formally,
+\begin{equation}
+p(x_{1:T},m|z_{1:T},u_{1:T})
+\end{equation}
+where $ x_{1:T}$ are all discrete positions from time 1 to time $ T$, $ z$ are the observations, and $ u$ are the odometry measurements. This formulation makes heavily use of the temporal structure of the problem. In practice, solving the SLAM problem requires
+\begin{enumerate}
+\item A motion update model, i.e., the probability $ p(x_t|x_{t-1},u_t)$ to be at location $ x_t$ given an odometry measurement $ u_t$ and being at location $ x_{t-1}$.
+\item  A sensor model, i.e., the probability $ p(z_t|x_t,m_t)$ to make observation $ z_t$ given the robot is at location $ x_t$ and the map $ m_t$.
+\end{enumerate}
+A possible solution to this problem is provided by the Extended Kalman Filter, which maintains a probability density function for the robot pose as well as the positions of all features on the map. Being able to uniquely identify features in the environment is of outmost importance and is known as the data association problem. Like EKF-based SLAM, graph-based SLAM does not solve this problem and will fail if features are confused.
+
+In graph-based SLAM, a robot's trajectory forms the nodes of a graph whose edges are transformations (translation and rotation) that have a variance associated with it. An alternative view is the spring-mass analogy mentioned above. Instead of having each spring wiggle a node into place, graph-based SLAM aims at finding those locations that maximize the joint likelihood of all observations. As such, graph-based SLAM is a \emph{maximum likelihood estimation}\index{Maximum Likelihood Estimation} problem.
+
+Lets revisit the normal distribution:
+\begin{equation}
+\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}
+\end{equation}
+
+It provides the probability for a measurement to have value $ x$ given that this measurement is normal distributed with mean $ \mu$ and variance $ \sigma^2$.  We can now associate such a distribution with every node-to-node transformation, aka constraint. This can be pairs of distance and angle, e.g. In the literature the measurement of a transformation between node i and a node j is denoted $ z_{ij}$. Its expected value is denoted $ \hat{z}_{ij}$. This value is expected for example based on a map of the environment that consists of previous observations.
+
+Formulating a normal distribution of measurements $ z_{ij}$ with mean $ \hat{z}_{ij}$ and a covariance matrix $ \Sigma_{ij}$ (containing all variances of the components of $ z_{ij}$ in its diagonal) is now straightforward. As graph-based SLAM is most often formulated as  information filter, usually the inverse of the covariance matrix (aka information matrix) is used, which we denote by $ \Omega_{ij}=\Sigma_{ij}^{-1}$.
+
+As we are interested in maximizing the joint probability of all measurements $ \prod{z_{ij}}$ over all edge pairings $ ij$ following the maximum likelihood estimation framework, it is customary to express the PDF using the log-likelihood. By taking the natural logarithm on both sides of the PDF expression, the exponential function vanishes and $ ln \prod{z_{ij}}$ becomes $ \sum{ ln z_{ij}}$ or $ \sum{l_{ij}}$, where $ l_{ij}$ is the log-likelihood distribution for $ z_{ij}$.
+\begin{equation}
+l_{ij} \propto (z_{ij}-\hat{z}_{ij}(x_i,x_j))^T\Omega_{ij}(z_{ij}-\hat{z}_{ij}(x_i,x_j))
+\end{equation}
+
+Again, the log-likelihood for observation $ z_{ij}$ is directly derived from the definition of the normal distribution, but using the information matrix instead of the covariance matrix and is ridden of the exponential function by taking the logarithm on both sides.
+
+The optimization problem can now be formulated as
+\begin{equation}
+x^* = \arg \min_{x}\sum_{<i,j>\in \mathcal{C}}e_{ij}^T\Omega_{ij}e_{ij}
+\end{equation}
+with $ e_ij(x_i,x_j)=z_{ij}-\hat{z}_{ij}(x_i,xj)$ the error between measurement and expected value. Note that the sum actually needs to be minimized as the individual terms are technically the negative log-likelihood.
+
+\subsection{Numerical Techniques for Graph-based SLAM}
+Solving the MLE problem is non-trivial, especially if the number of constraints, i.e., observations that relate one feature to another, provided is large. A classical approach is to linearize the problem at the current configuration and reducing it to a problem of the form $ Ax=b$. The intuition here is to calculate the impact of small changes in the positions of all nodes on all $ e_{ij}$. After performing this motion, linearization and optimization can be  repeated until convergence. 
+
+More recently, more powerful numerical methods have been developed. Instead of solving the MLE, on can employ a stochastic gradient descent algorithm. A gradient descent algorithm is an iterative approach to find the optimum of a function by moving along its gradient. Whereas a gradient descent algorithm would calculate the gradient on a fitness landscape from all available constraints, a stochastic gradient descent picks only a (non-necessarily random) subset. Intuitive examples are fitting a line to a set of $n$ points, but taking only a subset of these points when calculating the next best guess. As gradient descent works iteratively, the hope is that the algorithm takes a large part of the constraints into account. For solving Graph-based SLAM, a stochastic gradient descent algorithm would not take into account all constraints available to the robot, but  iteratively work on one constraint after the other. Here, constraints are observations on the mutual pose of nodes $i$ and $j$. Optimizing these constraints now requires moving both nodes $i$ and $j$ so that the error between where the robot thinks the nodes should be and what it actually sees gets reduced.  As this is a trade-off between multiple, maybe conflicting observations, the result will approximate a Maximum Likelihood estimate.
+
+More specifically, with $ e_ij$ the error between an observation and what the robot expects to see, based on its previous observation and sensor model, one can distribute the error along the entire trajectory between both features that are involved in the constraint. That is, if the constraint involves features $i$ and $j$, not only $i$ and $j$'s pose will be updated but all points inbetween will be moved a tiny bit.
+
+%This approach is cumbersome and quickly gets out of control if a robot is mapping an environment over multiple hours --- leading to millions of nodes in the graph and constraints. To overcome this problem, [Gris07] propose to (1) merge nodes of a graph as it is build up by relying on accurate localization of the robot within the existing map and (2) to chose a different graph representation.
+
+In Graph-based SLAM, edges encode the relative translation and rotation from one node to the other. Thus, altering a relationship between two nodes will automatically propagate to all nodes in the network. This is because the graph is essentially a chain of nodes whose edges consist of odometry measurements. This chain then becomes a graph whenever observations (using any sensor) introduce additional constraints. Whenever such a ``loop-closure'' occurs, the resulting error will be distributed over the entire trajectory that connects the two nodes. This is not always necessary, for example when considering the robot driving a figure-8 pattern. If a loop-closure occurs in one half of the 8, the nodes in the other half of the 8 are probably not involved.
+
+This can be addressed by constructing a  minimum spanning-tree  (MST) of the constraint graph. The MST is constructed by doing a Depth-First Search (DFS) on the constraint graph following odometry constraints. At a loop-closure, i.e., an edge in the graph that imposes a constraint to a previously seen pose, the DFS backtracks to this node and continues from there to construct the spanning tree. Updating all poses affected by this new constraint still requires modifying all nodes along the path between the two features that are involved, but inserting additional constraints is greatly simplified. Whenever a robot observes new relationships between any two nodes, only the nodes on the shortest path between  the two features on the MST need to be updated. %Example graphs illustrating this are shown in Figures 2a and 2b in [Gris07].
+\subsection*{Further reading}
+\begin{itemize}
+\item G. Grisetti, R. Kuemmerle, C. Stachniss and W. Burgard. A Tutorial on Graph-Based SLAM. IEEE Intelligent Transportation Systems Magazine, 2(4):31-43, 2010.
+
+\item E. Olson, J. Leonard and S. Teller. Fast Iterative Alignment of Pose Graphs with Poor Initial Estimates. Proc. of ICRA, pp 2262-2269, Orlando, FL, 2006.
+
+\item G. Grisetti, C. Stachniss, S. Grzonka and W. Burgard. A Tree Parameterization for Efficiently Computing Maximum Likelihood Maps using Gradient Descent. Robotics: Science and Systems (RSS), Atlanta, GA, USA, 2007.
+\end{itemize}
+
+\chapter{RGB-D SLAM} 
+ Range sensors have emerged as one of the most effective sensors to make robots autonomous. Unlike vision, range data makes the construction of a 3D model of the robot's environment straightforward and the Velodyne sensor, that combines 64 scanning lasers into one package, was key in mastering the DARPA Grand Challenge.  3D range data has become even more important in robotics with the advent of cheap (priced at a tenth than the cheapest 2D laser scanner) RGB-D (color image plus depth) cameras. Point cloud data allows fitting of lines using RANSAC, which can serve as features in EKF-based localization, but can also be used for improving odometry, loop-closure detection, and mapping. The goals of this chapter are
+\begin{itemize}
+\item introduce the Iterative Closest Point (ICP) algorithm
+\item show how ICP can be improved by providing initial guesses via RANSAC
+\item show how SIFT features can be used to improve point selection and loop-closure in ICP to achieve RGB-D mapping
+\end{itemize}
+
+\section{The Iterative Closest Point (ICP) algorithm}
+The ICP algorithm was presented in the early 1990ies for registration of 3D range data to CAD models of objects. The key problem can be reduced to find the best transformation that minimizes the distance between two point clouds. This is the case when matching snapshots from a range sensor or matching a range image with a point cloud sampled from a 3D representation of an object.
+
+In robotics, ICP found an application to match scans from 2D laser range scanners. For example, the transformation that minimizes the error between two consecutive snapshots of the environment is proportional to the motion of the robot. This is a hard problem as it is unclear, which points in the two consecutive snapshots are ``pairs", which of the points are outliers (due to noisy sensors), and which points need to be discarded as not all points overlap in both snapshots. Stitching a series of snapshots together theoretically allows to create a 2D map of the environment. This is difficult, however, as the error between every snapshots ---similar to odometry --- accumulates.   The ICP algorithm also works in 3D where it allows to infer the change in 6D pose of a camera and creation of 3D maps. In addition, ICP has proven useful for identifying objects from a database of 3D objects.
+
+Before providing a solution to the mapping problem, we will focus on the ICP algorithm to match 2 consecutive frames. Variants of the ICP algorithm can be broken down into 6 consecutive steps:
+\begin{enumerate}
+\item Selection of points in one or both meshes or point clouds.
+\item Matching/Pairing these points to samples in the other point cloud/mesh.
+\item Weighting the corresponding pairs.
+\item Rejecting certain pairs.
+\item Assigning an error metric based on the point pairs.
+\item Minimizing the error metric.
+\item Point Selection
+\end{enumerate}
+Depending on the number of points generated by the range sensor, it might make sense to use only a few selected points to calculate the optimal transformation between two point clouds, and then test this transformation on all points. Depending on the source of the data, it also turns out that some points are more suitable than others as it is easier to identify matches for them. This is the case for RGB-D data, where SIFT features have been used successfully. This is also the case for planar objects with grooves, where sampling should ensure that angles of normal vectors of sampling points are broadly distributed. Which method to use is therefore strongly dependent on the kind of data being used and should be considered for each specific problem.
+
+\subsection{Matching Points}
+The key step in ICP is to match one point to its corresponding point.  For example, a laser scanner hits a certain point at a wall with its 67th ray. After the scanner has been moved by 10cm , the closest hit on the wall to this point might have been by the 3rth ray of the laser. Here, it is actually very unlikely that the laser hits the exact same point on the wall twice, therefore introducing a non-zero error even for optimal pairing. Prominent methods are to find the closest point in the other point cloud or to find the intersection of the source points normal with the destination surface (for matching point clouds to meshes). More recently, SIFT has allowed to match points based on their visual appearance. Similarly to sorting through SIFT features, finding the closest matching point can be accelerated by representing the point cloud in a k-d tree.
+
+\subsection{Weighting of Pairs}
+As some pairs are better matches than others, weighting them in some smart way might drastically improve the quality of the resulting transformation. One approach is to give more weight to points that have smaller distances from each other. Another approach is to take into account the color of the point (in RGB-D images) or use the distance of their SIFT features (weighting pairs with low distances higher than pairs with high distances). Finally, expected noise can be used to weight pairings. For example, the estimates made by a laser scanner are much more faithful when taken orthogonally to a plane than when taken at a steep angle.
+
+\subsection{Rejecting of Pairs}
+A key problem in ICP are outliers either from sensor noise or simply from incomplete overlap between two consecutive range images. A prime approach in dealing with this problem is to reject pairings of which one of the points lies on a boundary of the point cloud as these points are likely to match with points in non-overlapping regions. As a function of the underlying data, it might also make sense to reject pairings with too high of a distance. This is a threshold-based equivalent to distance-based weighting as described above.
+
+\subsection{Error Metric and Minimization Algorithm}
+After points have been selected and matched, pairs have been weighted and rejected, the match between two point clouds needs to be expressed by a suitable error metric, which needs then to be minimized. A straightforward approach is to consider the sum of squared distances between each pair. This formulation can often be solved analytically. Let
+\begin{eqnarray}
+A=\{a_1,\ldots,a_m\}\\
+B=\{b_1,\dots,b_n\}
+\end{eqnarray}
+be point clouds in $ \mathbb{R}^n$. The goal is now to find a vector $ t \in \mathbb{R}^n$ so that an error function $ \phi(A+t,B)$ is minimized. In 6D (translation and rotation), an equivalent notation can be found for a transformation (see forward kinematics). An error function for the squared distance is then given by
+\begin{equation}
+\phi(A+t,B)=\frac{1}{m}\sum_{a \in A}\|a+t-N_B(a+t)\|^2
+\end{equation}
+Here $ N_B(a+t)$ is a function that provides the nearest neighbor of $ a$ translated by $ b$ in $ B$.  A key problem now is that the actual value of $t$ affects the outcome of the pairing. What might look like a good match initially often turns out not be the final pairing. A simple numerical approach to this problem is to find $ t$ iteratively.
+
+Initially $t=0$ and nearest neighbors/pairings are established. We can now calculate a $ \delta t$ that optimizes the least-square problem based on this matching using any solver available for the optimization problem (for a least-square solution $ \delta t$ can be obtained analytically by solving for the minimum of the polynomial by setting its derivative to zero). We can then shift all points in $ A$ by $ \delta t$ and start over. That is, we calculate new pairings and derive a new $ \delta t$.  We can continue to do this, until the cost function reaches a local minimum.
+
+Instead of formulating the cost function as a ``point-to-point'' distance, a ``point-to-plane'' has become popular. Here, the cost function consist of the sum of squared distances from each source point to the plane that contains the destination point and is oriented perpendicular to the destination normal. This makes particularly sense when matching a point cloud to a mesh/CAD model of an object. In this case there are no analytical solutions to finding the optimal transformation, but any optimization method such a Levenberg-Marquardt can be used.
+
+\section{RGB-D Mapping}
+The ICP algorithm can be used to stitch consecutive range images together to create a 3D map of the environment. Together with RGB information, it is possible to create complete 3D walk throughs of an environment. A problem with ICP is that errors in each transformation propagate making maps created using this method as odd as maps created by simple odometry. Here, the SLAM algorithm can be used to correct previous errors once a loop closure is detected.
+
+The intuition behind SLAM is to consider each transformation between consecutive snapshots as a spring with variable stiffness. Whenever the robot returns to a previously seen location, i.e., a loop-closure has been determined, additional constraints are introduced and the collection of snapshots connected by springs become a mesh. Everytime the robot then re-observes a transformation between any of the snapshots, it can ``stiffen'' the spring connecting the two. As all of the snapshots are connected, this new constraints propagates through the network and literally pull each snapshots in place.
+
+RGB-D Mappin uses a variant of ICP that is enhanced by SIFT features for point selection and matching. Maps are build incrementally. SIFT features, and their spatial relationship, are used for detecting loop closures. Once a loop closure is detected, an additional constraint is added to the pose graph and a SLAM-like optimization algorithm corrects the pose of all previous observations.
+
+As ICP only works when both point clouds are already closely aligned, which might not be the case for a fast moving robot with a relatively noisy sensor (the XBox Kinect has an error of 3cm for a few meters of range vs. millimeters in laser range scanners), RGB-D Mapping uses RANSAC to find an initial transformation. Here, RANSAC works as for line fitting: it keeps guessing possible transformations for 3 pairs of SIFT feature points and then counts the number of inliers when matching the two point clouds, one of which being transformed using the random guess.
+
+\subsection*{Further reading}
+\begin{itemize}
+\item Szymon Rusinkiewicz and Marc Levoy. Efficient Variants of the ICP Algorithm. Third International Conference on
+3D Digital Imaging and Modeling (3DIM), 2001.
+
+\item P. Henry, M. Krainin, E. Herbst, X. Ren, and D. Fox. RGB-D Mapping: Using Depth Cameras for Dense 3D Modeling of Indoor Environments. Proc. of International Symposium on Experimental Robotics (ISER), 2010.
+\end{itemize}
+
+
+\chapter{Grasping}
+A robot's end-effector, usually a hand or gripper, is defined by its 6-DOF pose as well as the parameters of its joints such as the opening of the claw or the position of each finger. So far, we have assumed that a robot only needs to plan for a 6-DOF pose that allows the robot to grasp an object from this position. Calculating which position this is and which parameters the end-effector to set is known as grasp planning. This chapter will focus on
+\begin{enumerate}
+\item What makes a good grasp?
+\item How to find good grasps?
+\item What makes a good grasp?
+\end{enumerate}
+
+Think about a three-fingered hand and the problem to grasp a cup. Grasps that are immediately obvious are (1) coming from above and grasping the hull of the cup and (2) wrapping the fingers around the cup. Lets assume that the shape of the cup is cylindric. Then, both of these grasps entirely rely on friction to hold the object. If the normal forces exerted by the fingers are not strong enough, the cup will slip. (It would be possible to re-grasp the object and support it from underneath with one finger if grasped with borderline friction.) A simple model for friction is Coloumb's Friction Law
+
+It is governed by the equation:
+\begin{equation}
+F_\mathrm{t} \leq \mu F_\mathrm{n}
+\end{equation}
+
+where $F_\mathrm{t}$  is the force of friction exerted by each surface on the other and $F_\mathrm{n}$ is the normal force. The force $F_\mathrm{t}$ acts in tangential direction of the normal force applied by, e.g., a finger's tip, where $\mu$ is an empirical coefficient of friction.
+
+The friction coefficient $\mu$ is low for glass on glass and high for rubber on wood. Coloumb's Fricition law states that the higher the friction coefficient, the more normal force translates into tangential forces that can resist two surfaces from moving against each other. We are therefore interested in designing grippers with high friction coefficients to avoid objects from slipping.
+
+When do objects slip? Lets say we have a fingertip pressing down on a surface in any orientation. There will be a force normal to the surface $F_\mathrm{n}$, which defines the tangential force $F_\mathrm{t}$ in any direction. Sweeping the tangential force around the normal force creates a cone with an opening angle of $2tan^{-1}\mu$. If the net force on the object is not within this cone, the object slips.  This becomes more intuitive when thinking about how different values of $\mu$ affect the shape of this cone. If $\mu$ is high, the cone will be relatively flat, letting the object accept forces from many different directions without slipping. If $\mu$ is low, the cone will be relatively narrow, requiring the force to be normal to the object's surface to prevent slippage.
+
+A force applied to a rigid body will exert both a force as well as a torque to the body's center of gravity. This is called a \emph{wrench}\index{Wrench}. If we consider the possible forces that we can apply to a rigid body without having the end-effector slip to form a space (namely the cone described earlier), we can talk about the \emph{grasping wrench space}\index{Grasping wrench space}, which is the corresponding space of all suitable wrenches.
+
+We can also define wrench spaces that suit a specific task, such as picking up an object or opening a door by turning its knob. We can then say that the grasp is good, when the task wrench space is a subset of the grasping wrench space, and will fail otherwise. We can also look at the ratio of forces actually applied to the object and the minimum needed to perform a desired wrench. If this ratio is high, for example, when the robot has to squeeze an object heavily to prevent it from slipping, this grasp is not as good as one, where the ratio is low and all of the force the robot is exerting is actually going into the desired wrench.
+
+It is usually not possible to find close-form expressions for the grasping wrench space. Instead, one can sample the space of suitable force vectors, e.g., by picking a couple of forces that are on the boundary of the cone's base, and calculate the convex hull over the resulting wrenches.
+
+In summary: we can use Coloumb's law of friction to determine the direction of forces that we can apply to a certain contact point without that the object slips. These forces translate into wrenches to the object's center of gravity. A grasp fits a certain task if the wrenches that would fulfill the task can be effectuated without slip. The less force is waisted to overcome slip, the better is the grasp.
+
+\section{How to find good grasps?}
+We are able to determine whether a contact point leads to a good grasp by comparing the grasping wrench spaces that fulfill the task and those that is created by a set of contact points. The question is now how to find good contact points? This is challenging as end-effectors (such as hands) are already quite complicated. A suitable method is therefore to use random sampling, that is bringing the end-effector to random positions, close its fingers around the object, and see what happens when generating wrenches that fulfill the task's requirements.
+
+To close the end-effector's fingers around the object requires collision checking. To see what happens, requires dynamic simulation. In short, collision checking routines model an object using a mesh of triangles that can be generated using CAD tools. These triangles are the leafs of a tree that has a coarse bounding object at the top. This coarse bounding object is then split into smaller and smaller elements. Collision checking can now quickly test whether an object collides at all and then recursively refine the exact triangles that collide and finally find the exact points of collision. Dynamic simulation applies Newtonian mechanics to an object (i.e., forces lead to acceleration of a body) and moves the object at very small time-steps. Detecting a collision usually involves moving the objects one step back and then iteratively approaching them until their proximity exceeds a certain treshold.
+
+\appendix
+
+\chapter{Statistics}
+\section{Random Variables and Probability Distributions}\label{sec:pdfs}
+Random variables can describe either discrete variables, such as the result from throwing a dice, or continuous variables such as measuring a distance. In order to learn about the likelihood that a random variable has a certain outcome, we can repeat the experiment many times and record the resulting \emph{random variates}\index{Variate (Random variable)}, that is the actual values of the random variable, and the number of times they occurred. For a perfectly cubic dice we will see that the random variable can hold natural numbers from 1 to 6, that have the same likelihood of 1/6.
+
+The function that describes the probability of a random variable to take certain values is called a \emph{probability distribution}\index{Probability Distribution}.
+As the likelihood of all possible random variates in the dice experiment is the same, the dice follows what we call a \emph{uniform distribution}\index{Uniform Distribution}. More accurately, as the outcomes of rolling a dice are discrete numbers, it is actually a discrete uniform distribution. Most random variables are not uniformly distributed, but some variates are more likely than others. For example, when considering a random variable that describes the sum of two simultaneously thrown dice, we can see that the distribution is anything but uniform:
+
+2: 1+1\\
+3: 1+2, 2+1\\
+4: 1+3, 2+2, 3+1\\
+5: 1+4, 2+3, 3+2, 4+1\\
+6: 1+5, 2+4, 3+3, 4+2, 5+1\\
+7: 1+6, 2+5, 3+4, 4+3, 5+2, 6+1\\
+8: 2+6, 3+5, 4+4, 5+3, 6+2\\
+9: 3+6, 4+5, 5+4, 6+3\\
+10: 4+6, 5+5, 6+4\\
+11: 5+6, 6+5\\
+12: 6+6\\
+
+As one can see, there are many more possibilities to sum up to a 7 than there are to a 3, e.g. While it is possible to store probability distributions such as this one as a look-up table to predict the outcome of an experiment (or that of a measurement), it is hard to reason about the random process analytically. We therefore aim to describe the probability distributions of random processes that we need to deal with using one of the ``standard'' probability distribution functions (or more accurately probability density function). These functions have been well studied and come with a broad set of tools for their analysis.  Consequently, more often than not we use a well studied probability density function even if the underlying data doesn't fully support its use for the simple reason that we can work its associated mathematical tools.
+
+\subsection{Normal Distribution with different means and variances}
+One of the most prominent distributions is the Gaussian or Normal Distribution. The \emph{Normal distribution}\index{Normal Distribution}\index{Gaussian Distribution} is characterized by a \emph{mean} and a \emph{variance}. Here, the mean corresponds to the average value of a random variable (or the peak of the distribution) and the variance is a measure of how broadly variates are spread around the mean (or the width of the distribution).
+
+ The Normal distribution is defined by the following function
+ \begin{equation}
+f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\end{equation}
+where $ \mu$ is the mean and $ \sigma^2$ the variance. ($ \sigma$ on its own is known as the standard deviation.) Then, $ f(x)$ is the probability for a random variable $ X$ to have value $ x$.
+
+\begin{figure}
+	\centering
+		\includegraphics[width=\textwidth]{figs/Normal_Distribution_PDF}
+	\caption{Normal distribution for different variances and $\mu=0$.}
+	\label{fig:Normal_Distribution_PDF}
+\end{figure}
+
+The mean is calculated by
+\begin{equation}
+\mu=\int_{-\infty}^{\infty}xf(x)dx
+\end{equation}
+or in other words, each possible value $ x$ is weighted by its likelihood and added up.
+\begin{framed}
+Exercise: do this for the double dice experiment. Calculate the probability of each outcome from the table above, multiply it with its value and add them all up.
+\end{framed}
+
+The variance is calculated as follows
+$ \sigma^2=\int_{-\infty}^{\infty}(x-\mu)^2f(x)dx$
+or in other words, we calculate the deviation of each random variable from the mean, square it, and weigh it by its likelihood. Although it is tantalizing to perform this calculation also for the double dice experiment, the resulting value is questionable, as the double dice experiment does not follow a Normal distribution. We know this, because we actually enumerated all possible outcomes. For other experiments, such as grades in the classes you are taking, we don't know what the real distribution is.
+
+\subsection{Normal distribution in two dimensions}
+The Normal Distribution is not limited to random processes with only one random variable. For example, the X/Y position of a robot in the plane is a random process with two dimensions. In case of a multi-variate distribution with $k$ dimensions, the random variable $ X$ is a k-dimensional vector of random variables, $ \mu$ is a k-dimensional vector of means, and $ \sigma$ gets replaced with $ \Sigma$,  a k-by-k dimensional \emph{covariance matrix}\index{Covariance Matrix} (a matrix that carries the variances of each random variable in its diagonal).
+
+\section{Bayes Rule}\label{sec:bayesrule}
+Bayes' Rule relates a conditional probability to its inverse. In other words, if we know the probability of event $A$ to happen given that event $B$ is happening, we can calculate the probability of $B$ to occur given that $A$ is happening. Bayes' rule can be derived from the simple observation that the probability of $A$ and $B$ to happen together ($P(A \cap B)$) is given by $P(A)P(B|A)$ or the probability of $A$ to happen and the probability of $B$ to happen given that $A$ happens. Similarly, we can write
+\begin{equation}
+P(A \cap B)=P(A)P(B|A)=P(B)P(A|B)
+\end{equation}
+From this, deriving Bayes' rule is straightforward:
+\begin{equation}
+P(A|B)=\frac{P(A)P(B|A)}{P(B)}
+\end{equation}
+In words, if we know the probability that $B$ happens given that $A$ happens, we can calculate that $A$ happens given that $B$ happens. 
+
+\section{Testing Statistical Significance}\label{sec:stattest}
+Robotics is an experimental discipline. This means that algorithms and systems you develop need to be validated by real hardware experiments. Doing an experiment to validate your hypothesis is at the core of the scientific method and doing it right is a discipline on its own. The key is to show that your results is not simply a result of chance. In practice, this is impossible to show. Instead, it is possible to express the likelihood that your results have not been obtained by chance. This is known as the statistical significance level. How to calculate the statistical significance level depends on the problem you are studying. This section will introduce three common problems in robotics:
+
+\begin{enumerate}
+\item testing whether data is indeed distributed according to a specific distribution
+\item testing whether two sets of data are generated from different distributions
+\item testing whether true-false experiments are a sequence of luck or not
+\end{enumerate}
+
+\subsection{Null Hypothesis on Distributions}
+The Null Hypothesis is a term from the statistical significance literature and formally captures your main claim. A statistical test can either reject the Null Hypothesis or fail to reject it. It can never be proven as there will always be a non-zero probability that all your experiments are just a lucky coincidence. The statistical significance level of a Null Hypothesis is known as the p-value.
+
+An import class of Null Hypothesis are on the distribution of data. Consider the following example from Lab 1 (message passing in ROS). Students were asked to experimentally study the time it takes to pass a message from one process to another:
+
+\begin{framed}
+Histogram of the time it takes to send a ROS message from one process to another based on 10 trials.
+\end{framed}
+
+We observe three peaks in this Histogram. What can we say about message passing times? For example
+\begin{itemize}
+\item H0: Message passing times follow a Gaussian distribution.
+\item H0: Message passing times follow a bi-modal distribution.
+\item H0: Message passing times follow a log-normal distribution.
+\end{itemize}
+
+The first Null Hypothesis implies that messages take sometimes a little longer and sometimes a little shorter, but have an average and a variance. The second Null Hypothesis implies that usually messages take some low average time, but occasionally are delayed due to the influence of some other process, for example operating system duties. You can now test each of these hypotheses by calculating the parameters of the distribution to expect and calculate the joint probability that each of your measurements are actually drawn from this distribution. You will find, that all of the above hypotheses are almost equally likely. Together, none of your tests will reject your hypothesis. You therefore will need more data:
+
+\begin{framed}
+Histogram of message passing times in ROS based on a 1000 trials.
+\end{framed}
+
+You can now again calculate parameters for each distribution you suspect. For example, you can calculate the mean and variance of this data and plot the resulting Gaussian distribution. In this example, the Gaussian distribution will have a mean slightly offset to the right of the peak. You can also fit the data to a log-normal distribution. You can now calculate the likelihood for the data actually be drawn from either of the two distributions. You will see that the joint probability (the product of all likelihoods) for all data points is actually much higher than that for any Gaussian distribution or any bimodal distribution that you are able to fit.
+
+Formally, this can be done by following Pearsons $ \chi^2$-Test (read Chi-Squared Test). This test calculates a value that will approximate a $ \chi^2$-distribution from all samples and the likelihood of that sample based on the expected distribution. Plugging the resulting value into the $ \chi^2$-distribution leads to the statistical significance level (or p-value).
+
+The value of the test-statistic is calculated as follows:
+\begin{equation}
+\chi^2 = \sum_{i=1}^{n} \frac{(O_i - E_i)^2}{E_i}
+\end{equation}
+where
+\begin{itemize}
+\item $ \chi^2$ = Pearson's cumulative test statistic, which asymptotically approaches a chi-squared distribution.
+\item $ O_i$ = an observed frequency in the data histogram
+\item $ E_i$ = an expected (theoretical) frequency, asserted by the null hypothesis, i.e., the distribution you think the data should follow
+\item n = the number samples.
+\end{itemize}
+This example also illustrates how statistical tests can be used to determine if you have enough data. If you don't, you will get very poor p-values.  In practice, it is up to you what likelihood you determine to be significant. Standard significance levels are 10\%, 5\% and 1\%. If you are unsatisfied with your p-values you can collect more data and check, whether your p-value improves.
+
+\subsection{Testing whether two distributions are independent}
+Testing whether the data of two experiments are independent is probably the most common statistical test. For example, you might run 10 experiments using algorithm 1 and 10 experiments using algorithm 2. It is up to you to show that the resulting distributions are indeed statistically significantly different. In other words, you need to show that the differences between the algorithm indeed lead to a systematic improvement, and that it was not purely luck that one set of experiments turned out ``better'' than another.
+
+If you have good reasons to believe that your data is normal distributed, there exist a series of simple tests. For example, to test whether two sets of data are distributed with Gaussian  distributions that have the same mean, can be done using distribution is Gaussian can be done using  Student's t-test. A generalization of Student's t-test to 3 or more groups is ANOVA. These tests have to be done with care as most distributions in robotics are not normal distributed. Examples where  Gaussian distributions are commonly assumed are sensor noise on distance measurements such as obtained by infrared or odometry.
+
+If data is not Gaussian distributed, there exist a series of numerical tests to test the likelihood that two distributions are independent. For example, you could test the message passing time with and without running some computationally expensive image processing routines. You can then test whether the additional computation affects message passing time. If it does, both distributions need to be significantly different. Just using Student's t-test does not work as the distributions are not Gaussian!
+
+Instead, testing whether two sets of data have the same mean, needs to be done numerically. A common test is Mann-Wilcoxon's Ranked Sum test. An implementation of this test is part of most mathematical calculation programs such as Matlab or Mathematica. An algorithm to calculate this test statistic and the corresponding p-values is available on the Wikipedia page above. An extension of the Mann-Wilcoxon's Ranked Sum test for 3 or more groups is the Kruskal-Wallis one-way analysis of variance test.
+
+\subsection{Statistical Significance of True-False Tests}
+There exists a class of experiments that do not lead to distributions, but result in simple true-false outcomes. For example, a question one might ask is ``does the robot correctly understand a spoken command''. This class of experiments is captured by the Lady tasting tea example. Here, a lady claims that she can identify the brewing method of a cup of tea: tea prepared by first adding milk and tea prepared by later adding milk. Unfortunately, it is easy to cheat as the likelihood of guessing right is 50\%. Testing the hypothesis that the lady can indeed differentiate the two brewing methods therefore requires to conduct a series of experiments to reduce the likelihood of winning by guesswork. In order to this, one needs to calculate the number of total permutations (or, possible outcomes over the entire series of experiments). For example, one could present the lady 8 cups of tea, 4 brewed one way and four the other. One can now enumerate all possible outcomes of this experiment, ranging from all cups guessed correctly to all cups guessed wrong. There are a total of 70 possible outcomes (see the example provided here). Guessing all cups correctly has now a likelihood of 1/70 or 1.4\%. The likelihood to make a single mistake (16 possible outcomes in this example) is around 23\%.
+
+\subsection{Summary}
+Statistical significance test allow you to express the likelihood that your experiment is just the result of chance. There exist different tests for different underlying distributions. Therefore, your first task is to convincingly argue what the underlying distribution of your data is. Formally testing how your data is distributed can be achieved using the Chi-Square Test. In order to test whether two sets of data are coming from two different distributions can then be achieved using Student's t-test (if the distribution is Gaussian) or using the Mann-Wilcoxon Ranked Sum test if the probability distribution is non-parametric.
+
+
+\chapter{How to write a research paper}
+The final deliverable of a robotics class often is a write-up on a ``research'' project, modeled after research done in industry or academia. Roughly, there are three classes of papers:
+
+\begin{enumerate}
+\item Original research
+\item Tutorial
+\item Survey
+\end{enumerate}
+
+The goal of this chapter is to provide guidelines on how to think about your project as a research project and how to report on your results as original research.
+
+\section{Original}
+Classically, a scientific paper follows the following organization:
+\begin{enumerate}
+\item Abstract
+\item Introduction
+\item Materials \& Methods
+\item Results
+\item Discussion
+\item Conclusion
+\end{enumerate}
+
+The \emph{abstract} summarizes your paper in a few sentences. What is the problem you want to solve, what is the method you are employing, what are you doing to assess your work, and what is the final outcome.
+
+The \emph{introduction} should describe the problem that you are solving and why it is important. A good guideline to write a good introduction are the Heilmeier questions:
+
+\begin{enumerate}
+\item What are you trying to do? Articulate your objectives using absolutely no jargon.
+\item How is it done today, and what are the limits of current practice?
+\item What's new in your approach and why do you think it will be successful?
+\item Who cares?
+\item If you're successful, what difference will it make?
+\item What are the midterm and final ``exams'' to check for success?
+\end{enumerate}
+
+Originally conceived for proposal writing by the head of DARPA, there are additional questions including ``What will it cost?'', ``How long will it take?'', and ``What are the risks and pay-off'', which are left out for the purpose of writing a research paper. In the context of scientific research, the question ``What are you trying to do?'' is best answered in the form of a \emph{hypothesis}, see below. 
+
+The \emph{materials \& matters} section describes all the tools that you used to solve your problem, as well as your original contribution, e.g., an algorithm that you came up with. This section is hardly ever labeled as such, but might consist of a series of individual section describing the robotic platform you are using, the software packages, and flowcharts and descriptions on how your system works. Make sure you motivate your design choices using conclusive language or experimental data. Validating these design choices could be your first results. 
+
+The \emph{results} section contains data or proofs on how to solve the problem you addressed or why it cannot be solved. It is important that your data is conclusive! You have to address concerns that your results are just a lucky coincidence. You therefore need to run multiple experiments and/or formally prove the workings of your system either using language or math, see also Section \ref{sec:stattest}.
+
+The \emph{discussion} should address limitations of your approach, the conclusiveness of its results, and general concerns someone who reads your work might have. Put yourself in the role of an external reviewer who seeks to criticize your work. How could you have sabotaged your own experiment? What are the real hurdles that you still need to overcome for your solution to work in practice? Criticizing your own  work does not weaken it, it makes it stronger! Not only does it become clear where its limitations are, it is also more clear where other people can step in. 
+
+The \emph{conclusion} should summarize the contribution of your paper. It is a good place to outline potential future work for you and others to do. This future work should not be random stuff that you could possibly think about, but come out of your discussion. Another way to think about is that the ``future work'' section of your conclusion summarizes your discussion.
+
+It is important not to mix the different sections up. For example, your result section should exclusively focus on describing your observations and reporting on data, i.e., facts. Don't conjecture here why things came out as they are. You do this either in your hypothesis --- the whole reason you conduct experiments in the first place --- or in the discussion. Similarly, don't provide additional results in your discussion section.
+
+Try to make the paper as accessible to as many reader styles and attention spans as possible. While this sounds impossible at first, a good way to address is to think about multiple avenues a reader might take. For example, the reader should get a pretty comprehensive picture on what you do by just reading the abstract, just reading the introduction, or just reading all the figure captions. (Think about other avenues, every one you address makes your paper stronger.) It is often possible to provide this experience by adding short sentences  that quickly recall the main hypothesis of your work. For example, when describing your robotic platform in the materials section, it does not hurt to introduce the section by something like ``In order to show that [the main hypothesis of our work], we selected...''. Similarly, you can try to read through your figure captions if they provide enough information to follow the paper and understand its main results on their own. Its not a problem to be repetitive in a scientific paper, stressing your one-sentence elevator pitch (or hypothesis, see below) throughout the paper is actually a good thing.
+
+\section{Hypothesis: Or, what do we learn from this work?}
+Classically, a hypothesis is a proposed explanation for an observed phenomenon. From this, the hypothesis has emerged as the corner stone of the scientific method and is a very efficient way to organize your thoughts and come up with a one sentence summary of your work. A proper formulation of your hypothesis should directly lead to the method that you have chosen to test your hypothesis. A good way to think about your hypothesis is ``What do you want to learn?'' or ``What do we learn from this work?''.
+It can be somewhat hard to actually frame your work into a single sentence, so what to do if a single hypothesis seems not to apply? One reason might be that you are actually trying to accomplish too many things. Can you really describe them all in depth in a 6-page document? If yes, maybe some are very minor compared to the others.  If this is the case, they are either supportive of your main idea and can be rolled into this bigger piece of work or they are totally disconnected. If they are disconnected, leave them out for the sake of improving the conciseness your main message. Finally, you might feel that you don't have a main message, but consider all the things you done equally worthy, and despite answering the Heilmeier questions you cannot fill up more than three pages. In this case you might consider picking one of your approaches and dig deeper by comparing it with different methods.
+
+Being able to come up with a one-sentence elevator pitch framed as a hypothesis will actually help you to set the scope of the work that you need to do for a research or class project. How good do you need to implement, design or describe a certain component of your project? Well, good enough to follow through with your research objective.
+
+\section{Survey and Tutorial}
+The goal of a \emph{survey} is to provide an overview over a body of work --- potentially from different communities --- and classify it into different categories. Doing this synthesis and establishing common language and formalism is the survey's main contribution.  A survey following such an outline is a possible deliverable for an independent study or a PhD prelim, but it does not lend itself to describe your efforts on a focused research project. Rather, it might result from your involvement in a relatively new area in which you feel important connections between disjoint communities and common language have not been established. 
+
+A different category of survey critically examines concurring methods to solve a particular problem. For example, you might have set out to study manipulation, but got stuck in selecting the right sensor suite from the many available options. What sensor is actually best to accomplish a specific task? A survey which answers this question experimentally will follow the same structure as a research paper (see above).
+
+A \emph{tutorial} is closely related to a survey, but focuses more on explaining specific technical content, e.g, the workings of a specific class of algorithms or tool, commonly used in a community. A tutorial might be an appropriate way to describe your efforts in a research project, which can serve as illustration to explain the workings of a specific method you used.
+
+\section{Writing it up!}
+Writing a research report that contains equations, figures and references requires some tedious book-keeping. Although technically possible, word processing programs quickly reach their limitations and will lead to frustration. In the scientific community \LaTeX~ has emerged as a quasi standard for typesetting research documentation. \LaTeX~ is a mark-up language that strictly divides function and layout. Rather than formatting individual items as bold, italic and the like, you mark them up as emphasized, section head etc, and specify how things look elsewhere. This is usually provided by a template provided by the publisher (or your own). While \LaTeX~ has quite a learning curve compared to other word processing software, it is quickly worth the effort as soon as you need to start worrying about references, figures or even indices. 
+
+\section{Further Reading}
+
+\begin{itemize}
+\item W. Strunk and E. White. The Elements of Style (4th Edition). Longan, 1999.
+\item T. Oetiker, H. Partl, I. Hyna and E. Schlegl. The Not So Short Introduction to \LaTeXe. Available online.
+\end{itemize}
+
+\printindex
+
+\end{document}

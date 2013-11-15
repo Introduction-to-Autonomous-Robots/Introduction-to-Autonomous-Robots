@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg3862"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="fwk2dofarm.svg">
+  <defs
+     id="defs3864">
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Lend"
+       style="overflow:visible;">
+      <path
+         id="path4431"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(1.1) rotate(180) translate(1,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Lstart"
+       style="overflow:visible">
+      <path
+         id="path4428"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(1.1) translate(1,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path3928"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.7737226"
+     inkscape:cx="420.41093"
+     inkscape:cy="788.34375"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1600"
+     inkscape:window-height="837"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3867">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g6614">
+      <rect
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+         transform="matrix(-0.64140035,-0.76720635,-0.76720635,0.64140035,0,0)"
+         y="-164.08618"
+         x="-483.95969"
+         height="62.857143"
+         width="7.1428571"
+         id="rect8592-80"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+         sodipodi:nodetypes="sccss"
+         inkscape:connector-curvature="0"
+         id="path8594-1"
+         d="m 387.95939,297.03125 c 4.55566,0.15753 11.79505,3.55779 11.7421,10.18303 l -25.14835,-0.18303 c -0.51662,-3.69808 2.21765,-7.4188 7.21875,-9.125 1.9992,-0.68206 4.11675,-0.9466 6.1875,-0.875 z"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+         transform="matrix(-1,0,0,1,799.85702,33.363679)"
+         sodipodi:open="true"
+         sodipodi:end="9.8700903"
+         sodipodi:start="3.5904474"
+         d="m 410.96087,268.34283 a 1.8125752,1.9161509 0 1 1 -0.003,0.006"
+         sodipodi:ry="1.9161509"
+         sodipodi:rx="1.8125752"
+         sodipodi:cy="269.17432"
+         sodipodi:cx="412.5939"
+         id="path8597-2"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         sodipodi:type="arc" />
+      <rect
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+         transform="matrix(-0.63121598,0.77560711,0.77560711,0.63121598,0,0)"
+         y="443.11511"
+         x="-69.555077"
+         height="62.857143"
+         width="7.1428571"
+         id="rect8592-80-8"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+         transform="matrix(-1,0,0,1,842.80329,-3.812134)"
+         sodipodi:open="true"
+         sodipodi:end="9.8700903"
+         sodipodi:start="3.5904474"
+         d="m 410.96087,268.34283 a 1.8125752,1.9161509 0 1 1 -0.003,0.006"
+         sodipodi:ry="1.9161509"
+         sodipodi:rx="1.8125752"
+         sodipodi:cy="269.17432"
+         sodipodi:cx="412.5939"
+         id="path8597-2-3"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         sodipodi:type="arc" />
+      <g
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+         transform="matrix(-0.09412491,0.9955604,0.9955604,0.09412491,162.85346,-75.865038)"
+         id="g9621-5">
+        <path
+           transform="translate(-8.1624549,0.06859206)"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0"
+           d="m 286.72218,233.1036 c 1.50345,0.0552 3.50044,0.55192 4.94257,1.24651 5.59731,2.6959 7.94935,9.41888 5.25345,15.01618 -2.6959,5.5973 -9.41888,7.94935 -15.01618,5.25345 -5.58329,-2.68915 -7.94004,-9.45606 -5.27068,-15.04884"
+           id="path9593-0"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="csssc" />
+        <path
+           transform="matrix(0.61594178,0,0,0.63423051,102.11626,89.287944)"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.59995067;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0"
+           d="m 286.67106,233.23371 c 1.60397,0.0147 3.45284,0.37426 4.99369,1.1164 5.59731,2.6959 7.94935,9.41888 5.25345,15.01618 -2.6959,5.5973 -9.41888,7.94935 -15.01618,5.25345 -5.58329,-2.68915 -7.94004,-9.38747 -5.27068,-14.98025"
+           id="path9593-3-9"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="csssc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 268.26354,239.95784 3.70397,1.71481"
+           id="path9615-4"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 279.16968,237.21416 -0.13719,-4.11552"
+           id="path9617-7"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <path
+         inkscape:connector-curvature="0"
+         id="path3085"
+         d="m 387.01839,274.88056 0.28688,27.69149 70.00129,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow2Lstart);marker-end:url(#Arrow2Lend)" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text5041"
+         y="316.35153"
+         x="441.60638"
+         style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="316.35153"
+           x="441.60638"
+           id="tspan5043"
+           sodipodi:role="line">x</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5045"
+         y="280.84283"
+         x="374.82883"
+         style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="280.84283"
+           x="374.82883"
+           id="tspan5047"
+           sodipodi:role="line">y</tspan></text>
+      <path
+         sodipodi:end="6.2768913"
+         sodipodi:start="5.57762"
+         d="m 410.07801,283.1545 a 29.943907,29.943907 0 0 1 7.14866,19.22909 l -29.94331,0.18846 z"
+         sodipodi:ry="29.943907"
+         sodipodi:rx="29.943907"
+         sodipodi:cy="302.57205"
+         sodipodi:cx="387.28336"
+         id="path5051"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 3;stroke-dashoffset:0"
+         sodipodi:type="arc" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text5053"
+         y="299.92212"
+         x="405.1702"
+         style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="299.92212"
+           x="405.1702"
+           id="tspan5055"
+           sodipodi:role="line">α</tspan></text>
+      <path
+         sodipodi:end="5.6100386"
+         sodipodi:start="3.8526787"
+         d="m 405.14756,243.90095 a 33.256287,33.256287 0 0 1 51.19862,0.97134 L 430.3443,265.6059 z"
+         sodipodi:ry="33.256287"
+         sodipodi:rx="33.256287"
+         sodipodi:cy="265.6059"
+         sodipodi:cx="430.3443"
+         id="path5059"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 3;stroke-dashoffset:0"
+         sodipodi:type="arc" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text5061"
+         y="249.83897"
+         x="426.89941"
+         style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="249.83897"
+           x="426.89941"
+           id="tspan5063"
+           sodipodi:role="line">β</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5065"
+         y="279.65039"
+         x="396.95551"
+         style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           dy="0 3"
+           y="279.65039"
+           x="396.95551"
+           id="tspan5067"
+           sodipodi:role="line">l1</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5069"
+         y="257.3912"
+         x="397.75049"
+         style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           dy="0 3"
+           dx="0 0"
+           y="257.3912"
+           x="397.75049"
+           id="tspan5071"
+           sodipodi:role="line">l2</tspan></text>
+    </g>
+  </g>
+</svg>
