@@ -26,7 +26,7 @@ Things are just slightly more complicated if our door detector is also subject t
 	\label{fig:three_door_example}
 \end{figure}
 
-\section{Markov Localization}
+\section{Markov Localization}\label{sec:markovloc}
 Calculating the probability to be at a certain location given the likelihood of certain observations is nothing else as a conditional probability. There is a formal way to describe such situations: Bayes' Rule (Section \ref{sec:bayesrule}):
 \begin{equation}
 P(A|B)=\frac{P(A)P(B|A)}{P(B)}
@@ -69,7 +69,7 @@ In other words, the law of total probability requires us to consider all possibl
 We have now learned two methods to update the belief distribution of where the robot could be in the environment. First, a robot can use external landmarks to update its position. This is known as \emph{perception update} in  and relies on exterioception. Second, a robot can observe its internal sensors. This is known as \emph{action update} and relies on proprioception. The combination of action and perception updates is known as \emph{Markov Localization}\index{Markov Localization}. You can think about the action update to increase the uncertainty of the robot's position and the perception update to shrink it. (You can also think about the action update as a discrete version of the error propagation model.) Also here we are using the robotics kinematic model and the noise model of your odometer to calculate $ P(odo|loc'->loc)$.
 
 \paragraph{Example 1: Topological Map}
-This example describes one of the first successful real robot systems that employed Markov Localization in an office environment. The experiment is described in more detail in a 1994 article of AI Magazine\cite{nourbaksh}. The office environment consisted of two rooms and a corridor that can be modeled by a topological map\index{Topological Map} (Figure \ref{fig:dervish_example}). In a topological map, areas that the robot can be in are modeled as vertices, and navigable connections between them are modeled as edges of a graph. The location of the robot can now be represented as a probability distribution over the vertices of  this graph.
+This example describes one of the first successful real robot systems that employed Markov Localization in an office environment. The experiment is described in more detail in a 1994 article of AI Magazine. The office environment consisted of two rooms and a corridor that can be modeled by a topological map\index{Topological Map} (Figure \ref{fig:dervish_example}). In a topological map, areas that the robot can be in are modeled as vertices, and navigable connections between them are modeled as edges of a graph. The location of the robot can now be represented as a probability distribution over the vertices of  this graph.
 
 \begin{figure}
 	\centering

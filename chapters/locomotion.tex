@@ -1,4 +1,4 @@
-\chapter{Locomotion and Manipulation}
+\chapter{Locomotion and Manipulation}\label{chap:locomotion}
 Autonomous robots are systems that sense, actuate, compute, and communicate. Actuation, the focus of this chapter, is the ability of the robot to move and to manipulate the world. Specifically, we differentiate between locomotion\index{Locomotion} as the ability of the robot to move and manipulation\index{Manipulation} as the ability to move objects in the environment of the robot. Both activities are closely related: during locomotion the robot uses its motors to exert forces on its environment (ground, water or air) to move itself; during manipulation it uses motors to exert forces on objects to move them relative to the environment. This might not even require different motors. Insects are good examples for this: both can use their 6 legs not only for locomotion, but also for picking up and manipulating objects. The goals of this chapter are
 \begin{itemize}
 \item introduce the concepts of locomotion, manipulation and their duality
@@ -41,7 +41,7 @@ Most actuators (and mechanisms) capable of locomotion can also be used for manip
 
 %This lecture focuses on the kinematics of simple mechanisms. Understanding the duality between locomotion and manipulation is important, however, to better introduce (and understand) concepts such as reference frames and forward kinematics.
 
-\section{Static and Dynamic Stability}
+\section{Static and Dynamic Stability}\label{sec:stability}
 A fundamental difference between locomotion mechanisms is whether they are statically or dynamically stable\index{Static stability}\index{Dynamic Stability}. A statically stable mechanism will not fall even when all of its joints freeze (Figure \ref{fig:stability}, left). A dynamically stable robot instead requires constant motion to prevent it from falling. Technically, stability requires the robot to keep it's center of mass to fall within the polygon spanned by its ground-contact points. For example a quadruped robot's feet span a rectangle. Once such a robot lifts one of its feet, this rectangle becomes a triangle. If the projection of the center of mass of the robot along the direction of gravity is outside of this triangle, the robot will fall. A dynamically stable robot can overcome this problem by changing its configuration so rapidly that a fall is prevented. An example of a purely dynamically stable robot is an inverted pendulum on a cart  (Figure \ref{fig:stability}, middle). Such a robot has no statically stable configurations. While dynamic stability is desirable for high-speed, agile motions, robots should be designed so that they can easily switch into a statically stable configuration (Figure \ref{fig:stability}, right). 
 
 \begin{figure}
@@ -54,7 +54,7 @@ A fundamental difference between locomotion mechanisms is whether they are stati
 An example of a robot that has both statically and dynamically stable configurations is a quadruped runner. Unlike walking, a running robot will always have two legs in the air and alternate between them faster than the robot could fall in either direction. Although statically stable walking is possible with only 4 legs, most animals (and robots) require 6 legs for statically stable walking and use dynamically stable gaits (such as galloping) when they have four legs. Six legs allow the animal to move three legs at a time while the three other legs maintain a stable pose.
 
 
-\section{Degrees-of-Freedom}
+\section{Degrees-of-Freedom}\label{sec:dof}
 The concept of \emph{degrees-of-freedom}\index{Degree of freedom}, often abbreviated as DOF, is important for defining the possible positions and orientations a robot can reach. An object in the physical world can have up to six degrees of freedom, namely forward/backward, sideways, and up/down as well as rotations around those axes. How many of those directions a robot can move in is not always intuitive and requires more rigorous mathematical treatment (Chapter \ref{chap:kinematics}). The goal of this chapter is to introduce the degrees of freedom of standard mechanisms that are recurrent in robot design such as wheels or simple arms. For wheeled platforms, the degrees-of-freedom are defined by the types of wheels used and their orientation. Common wheel types are listed in Table \ref{tab:wheels}.
 
 \begin{table}

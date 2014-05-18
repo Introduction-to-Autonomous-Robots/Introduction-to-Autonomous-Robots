@@ -10,7 +10,7 @@ The goals of this chapter are:
 \item provide an intuition on the relationship between inverse kinematics and path-planning.
 \end{itemize}
 
-\section{Coordinate Systems and Frames of Reference}
+\section{Coordinate Systems and Frames of Reference}\label{sec:coordsystems}
 Every robot assumes a position in the real world that can be described by its position (x, y and z) and orientation (pitch, yaw and roll) along the three major axes of a Cartesian Coordinate system. Such a coordinate system is shown in Figure \ref{fig:coordinatesystem}. Note that the directions and orientations of the coordinate axes are arbitrary. This books uses the ``right hand rules'' to determine axes labels and directions throughout.
 
 \begin{figure}
@@ -156,8 +156,8 @@ y_2&=&\sin(\alpha+\beta)l_2+z_1
 or together, the position of the end-effector $(x,y)$ is given by
 
 \begin{eqnarray}\label{eq:cosx}
-x&=&\cos(\alpha+\beta)\l_2+\cos\alpha l_1\\
-y&=&\sin(\alpha+\beta)\l_2+\sin\alpha l_1
+x&=&\cos(\alpha+\beta)l_2+\cos\alpha l_1\\
+y&=&\sin(\alpha+\beta)l_2+\sin\alpha l_1
 \end{eqnarray}
 
 The above equations are the kinematic equations of this robot as they relate its control parameters $ \alpha$ and $ \beta$ to the position of its end-effector given in the local coordinate system spanned by $ x$ and $ z$. Note that both $\alpha$ and $\beta$ shown in the figure are positive: Both links rotate around the z-axis. Using the right-hand rule, the direction of positive angles is defined to be counter-clockwise. 
@@ -167,8 +167,8 @@ The \emph{configuration space} \index{Configuration space}\index{C-Space (Config
 Although we have calculated the position of the arm, we don't know its orientation yet. In order to do this, we also need to calculate a transformation that includes a rotation around the z-axis
 \begin{equation}
 \label{eq:2armtrans}
-\left(\begin{array}{lll}cos_{\alpha\beta} & -sin_{\alpha\beta} &  \cos_{\alpha\beta}\l_2+\cos\alpha l_1\\
-                        sin_{\alpha\beta} & cos_{\alpha\beta} & \sin_{\alpha\beta}\l_2+\sin\alpha l_1\\
+\left(\begin{array}{lll}cos_{\alpha\beta} & -sin_{\alpha\beta} &  \cos_{\alpha\beta}l_2+\cos\alpha l_1\\
+                        sin_{\alpha\beta} & cos_{\alpha\beta} & \sin_{\alpha\beta}l_2+\sin\alpha l_1\\
 												0 & 0 & 1\end{array}\right)
 \end{equation}
 The notation $sin_{\alpha\beta}$ and $cos_{\alpha\beta}$ are short-hand for $sin(\alpha+\beta)$ and $cos(\alpha+\beta)$, respectively.
@@ -209,12 +209,12 @@ sin\phi & cos\phi & y\\
 A solution can now be found by simply equating the individual entries of the transformation (\ref{eq:2armtrans}) with those of the desired pose. Specifically, we can observe:
 \begin{eqnarray}{cc}
 cos\phi &= cos(\alpha+\beta)\\
-x &= \cos_{\alpha\beta}\l_2+\cos\alpha l_1
+x &= \cos_{\alpha\beta}l_2+\cos\alpha l_1
 \end{eqnarray}
 These can be reduced to
 \begin{eqnarray}{cc}
 \phi &= \alpha + \beta\\
-cos\alpha &= \frac{\cos_{\alpha\beta}\l_2-x}{l_1}
+cos\alpha &= \frac{\cos_{\alpha\beta}l_2-x}{l_1}
 \end{eqnarray}
 Providing the orientation of the robot in addition to the desired position therefore allows solving for $\alpha$ and $\beta$ just as a function of $x$ and $\phi$.  
 

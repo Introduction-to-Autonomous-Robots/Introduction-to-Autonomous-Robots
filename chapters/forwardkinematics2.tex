@@ -1,4 +1,4 @@
-\section{Forward Kinematics of Mobile Robots}
+\section{Forward Kinematics of Mobile Robots}\label{sec:fwkmobile}
 Whereas the pose of a robotic manipulator is uniquely defined by its joint angles---which can be made available using encoders in almost real-time---this is not the case for a mobile robot. Here, the encoder values simply refer to wheel orientation and need to be integrated over time, which will be a huge source of uncertainty as we will later see.
 What complicates matters is that for so-called \emph{non-holonomic} systems, it is not sufficient to simply measure the distance that each wheel traveled, but also when each movement was executed. 
 
@@ -61,7 +61,7 @@ We are now left with the problem of how to calculate the speed $ \dot{\xi_R}$ in
 \begin{equation}
 \dot{x}=\dot{\phi}r.
 \end{equation}
-This becomes apparent when considering that the circumference of a wheel with radius $ r$ is $ 2\pi r$. The distance a wheel rolls when turned by the angle $ \phi$ (in radians) is therefore $ x=\phi r$ (Figure \ref{wheelrotation}, left). Taking the derivative of this expression on both sides leads to the above expression.
+This becomes apparent when considering that the circumference of a wheel with radius $ r$ is $ 2\pi r$. The distance a wheel rolls when turned by the angle $ \phi$ (in radians) is therefore $ x=\phi r$ (Figure \ref{fig:wheelrotation}, left). Taking the derivative of this expression on both sides leads to the above expression.
 
 \begin{figure}[htb!]
 	\centering
@@ -103,7 +103,7 @@ sin(\theta) & cos(\theta) & 0 \\
 0 & 0 & 1\end{array}\right)\left(\begin{array}{c}\frac{r\dot{\phi_l}}{2}+\frac{r\dot{\phi_r}}{2}\\0\\\frac{\dot{\phi_r} r}{d}-\frac{\dot{\phi_l} r}{d}\end{array}\right)
 \end{equation}
 
-\section{Inverse Kinematics of Mobile Robots}
+\section{Inverse Kinematics of Mobile Robots}\label{sec:ivkmobile}
 The main problem for the engineer is now to find out how to chose the control parameters to reach a desired position. This problem is known as inverse kinematics. Solving the inverse kinematics in closed form is not always possible, however. It can be done for the differential wheel platform we studied above. Lets first establish how to calculate the necessary speed of the robot's center given a desired speed $ \dot{\xi_I}$ in world coordinates. We can transform the expression $ \dot{\xi_I}=T(\theta)\dot{\xi_R}$ by multiplying both sides with the inverse of $ T(\theta)$:
 
 \begin{equation}
