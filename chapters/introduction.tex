@@ -1,7 +1,7 @@
 \chapter{Introduction}\label{chap:introduction}
-Robotics celebrated its 50th birthday in 2011, dating back to the first commercial robot in 1961 (the Unimate). In a ``Tonight show'' from the time, this robot did amazing things: its opening a bottle of beer, pouring it, putting a golf ball into the hole, and even conducting an orchestra. This robot does all what we expect a good robot to do: its dexterous, its accurate, and even creative. Since this robots appearance on the Tonight show more than 50 years have passed --- so how incredible must be the capabilities of today's robots and what must they be able to do?
+Robotics celebrated its 50th birthday in 2011, dating back to the first commercial robot in 1961 (the Unimate). In a ``Tonight show'' from the time, this robot did amazing things: it is opening a bottle of beer, pouring it, putting a golf ball into the hole, and even conducting an orchestra. This robot does all what we expect a good robot to do: its dexterous, its accurate, and even creative. Since this robot's appearance on the Tonight show more than 50 years have passed --- so how incredible must be the capabilities of today's robots and what must they be able to do?
 
-Interestingly, we just recently learned doing all the things demonstrated by Unimate autonomously. Unimate indeed did what was shown on TV, but all motions have been preprogrammed and the environment has been carefully staged.  Only the advent of cheap and powerful sensors and computation has recently enabled robots to detect an object by themselves, plan motions to it and grasp it. Yet, robotics is still far away from doing these tasks with human-like performance.
+Interestingly, we just recently learned doing (almost) all the things demonstrated by Unimate autonomously. Unimate indeed did what was shown on TV, but all motions have been preprogrammed and the environment has been carefully staged.  Only the advent of cheap and powerful sensors and computation has recently enabled robots to detect an object by themselves, plan motions to it and grasp it. Yet, robotics is still far away from doing these tasks with human-like performance, and even farther away from solving creative problems. 
 
 This book introduces you to the computational fundamentals of autonomous robots. Robots are \emph{autonomous} when they make decisions in response to their environment vs.\ simply following a pre-programmed set of motions. They achieve this using techniques from signal processing, control theory, and artificial intelligence, among others. These techniques are coupled with the mechanics, the sensors, and the actuators of the robot. Designing a robot therefore requires a deep understanding of both algorithms and its interfaces to the physical world.
 
@@ -28,7 +28,7 @@ Whereas the above examples provide different approaches to implement intelligent
 	\label{fig:ants}
 \end{figure}
 
-Which solution to achieve a certain desired behavior is best depends on the resources that are available to the designer. We will now study a more elaborate problem for which many, more or less efficient, solutions exist.
+Which solution to achieve a certain desired behavior is ``best'' depends on the resources that are available to the designer and what they cost in relation to what the solution is worth. We will now study a more elaborate problem for which many, more or less efficient, solutions exist.
 
 \section{A roboticists' problem}
 Imagine the following scenario. You are a robot in a maze-like environment such as a cluttered warehouse, hospital or office building. There is a chest full of gold coins hidden somewhere inside. Unfortunately, you don't have a map of the maze. In case you find the chest, you can only take a couple of coins at the time, and bring them to the exit door where your car is parked.
@@ -87,7 +87,15 @@ So far, robotic hands are far from reaching the dexterity of a human hand. Yet, 
 %\section{The first industrial robot ``Unimate"}
 %Since the introduction of the first industrial robot ``Unimate'' in 1961, the robotics industry classically consists of static manipulators that perform repetitive tasks such as welding or part placement, as well as of remote controlled machines for exploring hazardous areas. Recent advances in sensor technology and artificial intelligence are quickly enabling a new kind of robotic system: robots that can take autonomous decisions. Most prominent example of this class of robots is iRobots ``Roomba'' vacuum cleaner that was introduced in 2002 and that uses a variation of algorithm \#1 above to solve the floor cleaning problem due to the lack of sophisticated sensors and computation. More recently, SLAM has found its ways into cars, university teams winning the DARPA Grand Challenge, Google's cars logging more than 140,000 miles, and Volkswagen presenting the first assisted driving system in 2011. Similarly, KIVA systems  successfully distributes mobile robots for automatic warehouses. These robots are still remote controlled and operate in constrained environments that provide them the ability to localize and reason on a simplified representation of the world - all items in the KIVA world are living on a grid. Novel sensors such as the xBox Kinect that provide 3D depth measurements at unprecedented low cost, increasingly capable and cheap computers, and a better understanding on how to reason about uncertainty will enable a large number of applications raising from autonomous warehouse helpers, home and elderly care, robotic toys and many other gimmicks straight from the Jetsons very soon.
 
+\section*{Take-home lessons}
+\begin{itemize}
+\item How to best solve a problem is a function of the available sensing, actuation, computation and communication abilities of the available platform. Usually, there exist trade-offs that allow you to solve a problem using a minimal set of resources, but compromise performance such as speed, accuracy or reliability.
+\item Robotics problems are different from problems in pure Artificial Intelligence, that do not deal with unreliable sensing or actuation.
+\item The unreliability of sensors, actuators and communication links require a probabilistic notion of the system and reason with uncertainty.
+\end{itemize}
+
 \section*{Exercises}
+\small
 \begin{enumerate}
 \item What kind of sensors do you need to solve the ``Ratslife'' game? Think both about trivial and close to optimal approaches.
 \item What devices in your home could be considered robots? Why and why not?
@@ -97,12 +105,7 @@ So far, robotic hands are far from reaching the dexterity of a human hand. Yet, 
 \item Think about other mechanisms or animals that solve problems using considerably simple mechanisms.
 \end{enumerate}
 
-\section*{Take-home lessons}
-\begin{itemize}
-\item How to best solve a problem is a function of the available sensing, actuation, computation and communication abilities of the available platform. Usually, there exist trade-offs that allow you to solve a problem using a minimal set of resources, but compromise performance such as speed, accuracy or reliability.
-\item Robotics problems are different from problems in pure Artificial Intelligence, that do not deal with unreliable sensing or actuation.
-\item The unreliability of sensors, actuators and communication links require a probabilistic notion of the system and reason with uncertainty.
-\end{itemize}
+
 
 %Robotics celebrated its 50th birthday in 2011, dating back to the first commercial robot in 1961 (the Unimate). In a ``Tonight show'' from the time, this robot did amazing things: its opening a bottle of beer, pouring it, putting a golf ball into the hole, and even conducting an orchestra. This robot does all what we expect a good robot to do: its dexterous, its accurate, and even creative. Since this robots appearance on the Tonight show more than 50 years have passed --- so how incredible must be the capabilities of today's robots and what must they be able to do?
 %

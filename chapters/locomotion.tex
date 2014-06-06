@@ -1,9 +1,9 @@
 \chapter{Locomotion and Manipulation}\label{chap:locomotion}
 Autonomous robots are systems that sense, actuate, compute, and communicate. Actuation, the focus of this chapter, is the ability of the robot to move and to manipulate the world. Specifically, we differentiate between locomotion\index{Locomotion} as the ability of the robot to move and manipulation\index{Manipulation} as the ability to move objects in the environment of the robot. Both activities are closely related: during locomotion the robot uses its motors to exert forces on its environment (ground, water or air) to move itself; during manipulation it uses motors to exert forces on objects to move them relative to the environment. This might not even require different motors. Insects are good examples for this: both can use their 6 legs not only for locomotion, but also for picking up and manipulating objects. The goals of this chapter are
 \begin{itemize}
-\item introduce the concepts of locomotion, manipulation and their duality
-\item explain static vs.\ dynamic stability
-\item introduce the concept of reference frames and ``degrees-of-freedom''
+\item introduce the concepts of locomotion, manipulation and their duality,
+\item explain static vs.\ dynamic stability,
+\item introduce the concept of reference frames and ``degrees-of-freedom'',
 \item and introduce forward kinematics of static arms.
 \end{itemize}
 
@@ -112,12 +112,7 @@ An exact definition of the number of degrees of freedom is tricky and requires d
 
 Choosing the ``right'' kinematics is a trade-off between mechanical complexity, maneuverability, achievable precision, cost, and ease of control. The very popular differential-wheel drive consisting of two independently controlled wheels that share a common axis such as on the iRobot Roomba is cheap, highly maneuverable and easy to control, but makes it hard to drive in a straight line. This requires both motors to turn at the exact same speed and both wheels to have the exact same diameter, which is hard to achieve in practice. This problem is solved well by car-like steering mechanisms, but they have poor maneuverability and are difficult to control (think parallel-parking).
 
-\section*{Exercises}
-\begin{enumerate}
-\item What are the degrees of freedom of a lawnmower? Why are you still able to mow your entire lawn?
-\item Is a car statically or dynamically stable? What about a Segway?
-\item What are the degrees of freedom of an office chair with all caster-wheels?
-\end{enumerate}
+
 
 \section*{Take-home lessons}
 
@@ -126,3 +121,17 @@ Choosing the ``right'' kinematics is a trade-off between mechanical complexity, 
 \item The kinematics of a robot are fully defined by the position and orientation of its wheels, joints and links no matter whether it swims, flys, crawls or drives.
 \item Many robotic systems cannot be fully understand by considering kinematics alone, but require one to model their dynamics as well. This book will be limited to modeling kinematics, which is sufficient for low-speed, mobile robots and arms.
 \end{itemize} 
+
+\section*{Exercises}
+\small
+\begin{enumerate}
+\item What are the degrees of freedom of a lawnmower? Why are you still able to mow your entire lawn?
+\item Is a car statically or dynamically stable? What about a Segway?
+\item What are the degrees of freedom of an office chair with all caster-wheels?
+\item How many wheels does your robot require at least to be statically stable?
+\item What are the degrees of freedom of a robot with two spherical wheels and one standard wheel?
+\item Can you think of two robot designs, each with two standard wheels, that have one and two degrees of freedom?
+\item Is it possible to construct a robot with three degrees of freedom just using standard wheels? 
+\item How many joints does a manipulating arm require at least to achieve three degrees of freedom?
+\item What changes would you need to make to the manipulator in Figure \ref{fig:basickinematics} in order to obtain four degrees of freedom?
+\end{enumerate}
