@@ -1,7 +1,7 @@
 \chapter{Introduction}\label{chap:introduction}
-Robotics celebrated its 50th birthday in 2011, dating back to the first commercial robot in 1961 (the Unimate). In a ``Tonight show'' from the time, this robot did amazing things: it is opening a bottle of beer, pouring it, putting a golf ball into the hole, and even conducting an orchestra. This robot does all what we expect a good robot to do: its dexterous, its accurate, and even creative. Since this robot's appearance on the Tonight show more than 50 years have passed --- so how incredible must be the capabilities of today's robots and what must they be able to do?
+Robotics celebrated its 50th birthday in 2011, dating back to the first commercial robot in 1961 (the Unimate). In a ``Tonight show'' from the time, this robot did amazing things: its opening a bottle of beer, pouring it, putting a golf ball into the hole, and even conducting an orchestra. This robot does all what we expect a good robot to do: its dexterous, its accurate, and even creative. Since this robots appearance on the Tonight show more than 50 years have passed --- so how incredible must be the capabilities of today's robots and what must they be able to do?
 
-Interestingly, we just recently learned doing (almost) all the things demonstrated by Unimate autonomously. Unimate indeed did what was shown on TV, but all motions have been preprogrammed and the environment has been carefully staged.  Only the advent of cheap and powerful sensors and computation has recently enabled robots to detect an object by themselves, plan motions to it and grasp it. Yet, robotics is still far away from doing these tasks with human-like performance, and even farther away from solving creative problems. 
+Interestingly, we just recently learned doing all the things demonstrated by Unimate autonomously. Unimate indeed did what was shown on TV, but all motions have been preprogrammed and the environment has been carefully staged.  Only the advent of cheap and powerful sensors and computation has recently enabled robots to detect an object by themselves, plan motions to it and grasp it. Yet, robotics is still far away from doing these tasks with human-like performance.
 
 This book introduces you to the computational fundamentals of autonomous robots. Robots are \emph{autonomous} when they make decisions in response to their environment vs.\ simply following a pre-programmed set of motions. They achieve this using techniques from signal processing, control theory, and artificial intelligence, among others. These techniques are coupled with the mechanics, the sensors, and the actuators of the robot. Designing a robot therefore requires a deep understanding of both algorithms and its interfaces to the physical world.
 
@@ -19,7 +19,7 @@ Our notion of ``intelligent behavior'' is strongly biased by our understanding o
 
 A robot vacuum cleaner might solves the same problem very differently: it employs infrared sensors that are pointed downwards to detect edges such as stairs and then issues a command to make an avoiding turn. Once electronics are on-board, this is a much more efficient, albeit much more complex, approach.
 
-Whereas the above examples provide different approaches to implement intelligent behaviors, similar trade-offs exist for robotic planning. For example, ants can find the shortest path between their nest and a food source by simply chosing the trail that already has more pheromones, the chemicals ants communicate with, on it. As shorter paths will have ants not only go faster to the food, but also return faster, its pheromone trail builds up much quicker (Figure \ref{fig:ants}). But ants are not stuck to this solution. Every now and then, ants give the longer path another shot, eventually finding new food sources. What looks like intelligent behavior at the swarm level, is essentially achieved by a pheromone sensor that occasionally fails. A modern industrial robot would solve the problem completely different: it would first acquire some representation of the environment in form of a map populated with obstacles, and then plan a path using an algorithm.
+Whereas the above examples provide different approaches to implement intelligent behaviors, similar trade-offs exist for robotic planning. For example, ants can find the shortest path between their nest and a food source by simply choosing the trail that already has more pheromones, the chemicals ants communicate with, on it. As shorter paths will have ants not only go faster to the food, but also return faster, its pheromone trail builds up much quicker (Figure \ref{fig:ants}). But ants are not stuck to this solution. Every now and then, ants give the longer path another shot, eventually finding new food sources. What looks like intelligent behavior at the swarm level, is essentially achieved by a pheromone sensor that occasionally fails. A modern industrial robot would solve the problem completely different: it would first acquire some representation of the environment in form of a map populated with obstacles, and then plan a path using an algorithm.
 
 \begin{figure}
 	\centering
@@ -28,7 +28,7 @@ Whereas the above examples provide different approaches to implement intelligent
 	\label{fig:ants}
 \end{figure}
 
-Which solution to achieve a certain desired behavior is ``best'' depends on the resources that are available to the designer and what they cost in relation to what the solution is worth. We will now study a more elaborate problem for which many, more or less efficient, solutions exist.
+Which solution to achieve a certain desired behavior is best depends on the resources that are available to the designer. We will now study a more elaborate problem for which many, more or less efficient, solutions exist.
 
 \section{A roboticists' problem}
 Imagine the following scenario. You are a robot in a maze-like environment such as a cluttered warehouse, hospital or office building. There is a chest full of gold coins hidden somewhere inside. Unfortunately, you don't have a map of the maze. In case you find the chest, you can only take a couple of coins at the time, and bring them to the exit door where your car is parked.
@@ -37,9 +37,9 @@ Imagine the following scenario. You are a robot in a maze-like environment such 
 Think about a strategy that will allow you to harvest as many coins in the shortest time possible. Think about the cognitive and perception capabilities you would make use of. Now discuss alternative strategies, if you would not have these capabilities, i.e., what if you were blind, had no memory?
 \end{framed}
 
-These are exactly the same problems a robot would have. A robot is a mobile machine that has sensors and computation, which allows it to reason about its environment. Current robots are far from the capabilities that humans have, therefore it makes a lot of sense to think about what strategies YOU would employ to solve a problem, if you were lacking important perception or computational capabilities.
+These are exactly the same problems a robot would have. A robot is a mobile machine that has sensors and computation, which allows it to reason about its environment. Current robots are far from the capabilities that humans have, therefore it makes a lot of sense to think about what strategies \emph{you} would employ to solve a problem, if you were lacking important perception or computational capabilities.
 
-Before we move forward discussing potential strategies for robots with impeded sensory systems, lets quickly consider an optimal strategy. You will need to explore the maze without entering any branch twice. You can use a technique known as \emph{depth-first search} to do this, but will need to be able to not only map, but also localize in the environment, e.g., by recognizing plazes and dead-reckoning on the map. Once you found the gold, you will need to plan the shortest path back to your car, which you can then use to go back and forth until all the gold is harvested.
+Before we move forward discussing potential strategies for robots with impeded sensory systems, lets quickly consider an optimal strategy. You will need to explore the maze without entering any branch twice. You can use a technique known as \emph{depth-first search} to do this, but will need to be able to not only map, but also localize in the environment, e.g., by recognizing places and dead-reckoning on the map. Once you found the gold, you will need to plan the shortest path back to the exit, which you can then use to go back and forth until all the gold is harvested.
 
 \section{Ratslife}\label{sec:ratslife}
 Ratslife is a miniature robot maze competition developed by Olivier Michel from Cyberbotics S.A. The Ratslife environment can easily be created from LEGO bricks, card board or wood and the game can be played with any two mobile robots, preferably ones with the ability to identify markers in the environment. These include simple differential-wheel educational platforms with onboard cameras or even a smart-phone driven robot. Figure \ref{fig:ratslife} shows a simple sample environment that can be constructed from craft materials and can be used to teach the practical aspects of mobile robots and/or for competitions.
@@ -80,24 +80,16 @@ In order to answer these questions, we will rely on trigonometry, linear algebra
 
 
 \section{Challenges of Autonomous Manipulation}
-Think about the last time you worked with your hands. This includes typing on your keyboard, writing on a piece of paper, sewing a button onto a shir, and using a hammer or a screwdriver. You will notice that these activities require a wide range of dexterity, that is the ability to manipulate objects with precision, a wide range of forces, and a wide range of sensorial capabilities. You will also notice that some tasks go beyond your capabilities, such as putting yarn through a hole in fabric, grasping a screw, or driving a nail into a piece of wood, but can be easily solved with the right tool.
+Think about the last time you worked with your hands. This includes typing on your keyboard, writing on a piece of paper, sewing a button onto a shirt, and using a hammer or a screwdriver. You will notice that these activities require a wide range of dexterity, that is the ability to manipulate objects with precision, a wide range of forces, and a wide range of sensorial capabilities. You will also notice that some tasks go beyond your capabilities, such as putting yarn through a hole in fabric, grasping a screw, or driving a nail into a piece of wood, but can be easily solved with the right tool.
 
 So far, robotic hands are far from reaching the dexterity of a human hand. Yet, with the right tool (called ``end-effector'' in robotics speech) \index{End-effector} some tasks can be solved even better, that is faster and more precise, than by humans. As for solving a mobile robotics problem, manipulation problems require you to think about the right mix of reasoning and mechanism design. For example, grasping tiny parts might be impossible with tweezers, but really easy when using a sucking mechanism. Or, picking up a test tube that is hardly visible with the robots' sensors can be picked up almost blindly when using a funnel-like mechanism at your end-effector. Unfortunately, these tricks will most likely limit the versatility of your robot, requiring you to think about the problem and the users's need as a whole.
 
 %\section{The first industrial robot ``Unimate"}
 %Since the introduction of the first industrial robot ``Unimate'' in 1961, the robotics industry classically consists of static manipulators that perform repetitive tasks such as welding or part placement, as well as of remote controlled machines for exploring hazardous areas. Recent advances in sensor technology and artificial intelligence are quickly enabling a new kind of robotic system: robots that can take autonomous decisions. Most prominent example of this class of robots is iRobots ``Roomba'' vacuum cleaner that was introduced in 2002 and that uses a variation of algorithm \#1 above to solve the floor cleaning problem due to the lack of sophisticated sensors and computation. More recently, SLAM has found its ways into cars, university teams winning the DARPA Grand Challenge, Google's cars logging more than 140,000 miles, and Volkswagen presenting the first assisted driving system in 2011. Similarly, KIVA systems  successfully distributes mobile robots for automatic warehouses. These robots are still remote controlled and operate in constrained environments that provide them the ability to localize and reason on a simplified representation of the world - all items in the KIVA world are living on a grid. Novel sensors such as the xBox Kinect that provide 3D depth measurements at unprecedented low cost, increasingly capable and cheap computers, and a better understanding on how to reason about uncertainty will enable a large number of applications raising from autonomous warehouse helpers, home and elderly care, robotic toys and many other gimmicks straight from the Jetsons very soon.
 
-\section*{Take-home lessons}
-\begin{itemize}
-\item How to best solve a problem is a function of the available sensing, actuation, computation and communication abilities of the available platform. Usually, there exist trade-offs that allow you to solve a problem using a minimal set of resources, but compromise performance such as speed, accuracy or reliability.
-\item Robotics problems are different from problems in pure Artificial Intelligence, that do not deal with unreliable sensing or actuation.
-\item The unreliability of sensors, actuators and communication links require a probabilistic notion of the system and reason with uncertainty.
-\end{itemize}
-
 \section*{Exercises}
-\small
 \begin{enumerate}
-\item What kind of sensors do you need to solve the ``Ratslife'' game? Think both about trivial and close to optimal approaches.
+\item What kind of sensors do you need to solve the ``Ratslife'' game? Think both about trivial and close-to-optimal approaches.
 \item What devices in your home could be considered robots? Why and why not?
 \item Which industries have been recently revolutionized by robotics? Which industries were robots introduced first?
 \item What sensors are you using when grasping an object? Enumerate them all. Which ones are absolutely necessary for good performance?
@@ -105,7 +97,12 @@ So far, robotic hands are far from reaching the dexterity of a human hand. Yet, 
 \item Think about other mechanisms or animals that solve problems using considerably simple mechanisms.
 \end{enumerate}
 
-
+\section*{Take-home lessons}
+\begin{itemize}
+\item How to best solve a problem is a function of the available sensing, actuation, computation and communication abilities of the available platform. Usually, there exist trade-offs that allow you to solve a problem using a minimal set of resources, but compromise performance such as speed, accuracy or reliability.
+\item Robotics problems are different from problems in pure Artificial Intelligence, that do not deal with unreliable sensing or actuation.
+\item The unreliability of sensors, actuators and communication links require a probabilistic notion of the system and reason with uncertainty.
+\end{itemize}
 
 %Robotics celebrated its 50th birthday in 2011, dating back to the first commercial robot in 1961 (the Unimate). In a ``Tonight show'' from the time, this robot did amazing things: its opening a bottle of beer, pouring it, putting a golf ball into the hole, and even conducting an orchestra. This robot does all what we expect a good robot to do: its dexterous, its accurate, and even creative. Since this robots appearance on the Tonight show more than 50 years have passed --- so how incredible must be the capabilities of today's robots and what must they be able to do?
 %

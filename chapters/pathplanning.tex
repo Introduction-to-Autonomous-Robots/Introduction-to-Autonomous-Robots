@@ -109,7 +109,7 @@ If there are constraints imposed on the robot's path, for example the robot need
 Once a possible path is found, this space can be reduced to the ellipsoid that bounds the maximal path-length. This ellipsoid can be constructed by mounting a wire of the maximum path length between start and goal and pushing it outward with a pen. All the area that can be reached with the pen constrained by the wire can contain a point that can possibly lead to a shorter path.
 
 \subsection{Connecting Points to the Tree}
-A new point is classically connected to the closest point already in the tree or to the goal. This can be done by calculating the distance to all points already in the tree. This does not necessarily generate the shortest path, however. A recent improvement has been made by RRT*, which connects the point to the tree in a way that minimizes the overall path length. This can be done by considering all points in the tree within a d-ball (on a 2D map, $d=2$, i.e. a circle) of fixed radius from the point to add and finding the point that minimizes the overall path length to the start.
+A new point is classically connected to the closest point already in the tree or to the goal. This can be done by calculating the distance to all points already in the tree. This does not necessarily generate the shortest path, however. A recent improvement has been made by RRT*, which connects the point to the tree in a way that minimizes the overall path length. This can be done by considering all points in the tree within a d-ball (on a 2D map, $d=2$, i.e. a circle) from of fixed radius from the point to add and finding the point that minimizes the overall path length to the start.
 
 Adding a point to the tree is also a good time to take into account the specific kinematics of a robot, for example a car. Here, a local planner can be used to generate a suitable trajectory that takes into account the orientation of the vehicle at each point in the tree.
 
@@ -136,13 +136,3 @@ Although sampling-based path planners can drastically speed up the time to find 
 \item As the resulting paths are random, multiple trials might lead to totally different results.
 \item There is no one-size-fits-all algorithm for a path-planning algorithm and care must be taken to select the right paradigm (single-query vs. multi-query), heuristics, and parameters.
 \end{itemize}
-
-\section*{Exercises}\small
-\begin{enumerate}
-\item Assuming points are sample uniformly at random, calculate the limiting behaviour of the following ratio   (number of points in tree)/(number of points sampled) as the number of points sampled goes to infinity. Assume the total area and the area of free space within are known. 
-
-\item Assuming a kd-tree is used as a nearest-neighbour data structure, and points are sample uniformly at random, calculate the  run-time of a single iteration of RRT.
-
-
-\item What other practical runtime concerns must one consider besides $\mathcal{O}(n)$ runtime when doing sampling based motion planning? Can you suggest ways to deal with these other concerns?
-

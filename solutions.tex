@@ -1,0 +1,66 @@
+Forward Kinematics:
+
+(1)
+
+1. Write out the entries of a rotation matrix $^A_BR$. 
+
+Solution:
+\hat{X}_B\cdot\hat{X}_A  \hat{Y}_B\cdot\hat{X}_A   \hat{Z}_B\cdot\hat{X}_A
+\hat{X}_B\cdot\hat{Y}_A  \hat{Y}_B\cdot\hat{Y}_A   \hat{Z}_B\cdot\hat{Y}_A
+\hat{X}_B\cdot\hat{Z}_A  \hat{Y}_B\cdot\hat{Z}_A   \hat{Z}_B\cdot\hat{Z}_A
+
+
+2. Express \hat{X}_B=[0, 1, 0]^T in frame \{A\}.
+
+Solution:
+\hat{Y}_B\cdot\hat{X}_A
+\hat{Y}_B\cdot\hat{Y}_A
+\hat{Y}_B\cdot\hat{Z}_A
+
+
+3. Now calculate ^B_AR:
+
+Solution:
+\hat{X}_B\cdot\hat{X}_A  \hat{X}_B\cdot\hat{Y}_A   \hat{X}_B\cdot\hat{Z}_A    
+\hat{Y}_B\cdot\hat{X}_A  \hat{Y}_B\cdot\hat{Y}_A   \hat{Y}_B\cdot\hat{Z}_A   
+\hat{Z}_B\cdot\hat{X}_A  \hat{Z}_B\cdot\hat{Y}_A   \hat{Z}_B\cdot\hat{Z}_A
+
+4. Verify that the solution from (2) indeed reduces to [0, 1, 0]^T when expressed in coordinate system B. Tip: Express multiplications as scalar products and remember that the scalar product of orthogonal vectors is 0 and that of parallel vectors is 1. 
+
+Solution:
+
+The solution consists of a 1x3 vector that is obtained by multiplying the 1x3 vector from (2) with each row of ^B_AR.  The first entry is: 
+
+[\hat{X}_B\cdot\hat{X}_A   [\hat{Y}_B\cdot\hat{X}_A+
+\hat{X}_B\cdot\hat{Y}_A  .  \hat{Y}_B\cdot\hat{Y}_A+
+\hat{X}_B\cdot\hat{Z}_A]    \hat{Y}_B\cdot\hat{Z}_A]
+
+The first vector is ^A\hat{X}_B and the second vector is ^A\hat{Y}_B. As they are orthogonal, their scalar product is zero.
+
+The second entry is:
+
+[\hat{Y}_B\cdot\hat{X}_A  [\hat{Y}_B\cdot\hat{X}_A
+ \hat{Y}_B\cdot\hat{Y}_A . \hat{Y}_B\cdot\hat{Y}_A  
+ \hat{Y}_B\cdot\hat{Z}_A]  \hat{Y}_B\cdot\hat{Z}_A]
+ 
+Both vectors are identical and their scalar product is one.
+
+The third entry is:
+
+[\hat{Z}_B\cdot\hat{X}_A   [\hat{Y}_B\cdot\hat{X}_A
+ \hat{Z}_B\cdot\hat{Y}_A .  \hat{Y}_B\cdot\hat{Y}_A
+ \hat{Z}_B\cdot\hat{Z}_A]   \hat{Y}_B\cdot\hat{Z}_A]
+
+The first vector is ^A\hat{Z}_B and the second vector is ^A\hat{Y}_B. As they are orthogonal, the scalar product is zero. 
+
+(2)
+
+Consider two coordinate systems \{B\} and \{C\}, whose orientation is given by the rotation matrix $^C_BR$ and have distance $^CP$. Provide the homogenous transform ^C_BT and its inverse ^B_CT. 
+
+Solution: 
+
+[         
+    ^C_BR    ^CP
+	0   0   0   1]
+		
+		
