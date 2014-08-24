@@ -139,12 +139,12 @@ Boulder, Colorado, \today
 \input{chapters/errorpropagation}
 \input{chapters/localization}
 
-
+\input{chapters/grasping}
 
 
 
 \chapter{Simultaneous Localization and Mapping}\label{chap:slam}
-Robots are able to keep track of their position using a model of the noise arising in their drive train and their forward kinematics to propagate this error into a spatial probability density function. The variance of this distribution can shrink as soon as the robot sees uniquely identifiable features with known locations. This can be done for discrete locations using Bayes' rule and for continuous distributions using the Extended Kalman Filter. The key insight here was that every observation will reduce the variance of the robot's position estimate. Here, the Kalman filter performs an optimal fusion of two observations by weighting them with their variance, i.e., unreliable information counts less than reliable one. In the robot localization problem, one of the observations is typically the robot's position estimate whereas the other observation comes from a feature with known location on a map. So far, we have assumed that these locations are known. This chapter will introduce
+Robots are able to keep track of their position using a model of the noise arising in their drive train and their forward kinematics to propagate this error into a spatial probability density function (Section \ref{sec:errorprop}). The variance of this distribution can shrink as soon as the robot sees uniquely identifiable features with known locations. This can be done for discrete locations using Bayes' rule (Section \ref{sec:markovloc}) and for continuous distributions using the Extended Kalman Filter (Section \ref{sec:ekf}). The key insight here was that every observation will reduce the variance of the robot's position estimate. Here, the Kalman filter performs an optimal fusion of two observations by weighting them with their variance, i.e., unreliable information counts less than reliable one. In the robot localization problem, one of the observations is typically the robot's position estimate whereas the other observation comes from a feature with known location on a map. So far, we have assumed that these locations are known. This chapter will introduce
 
 \begin{itemize}
 \item the concept of covariance (or, what all the non-diagonal elements in the covariance matrix are about),
@@ -174,7 +174,7 @@ becomes
 \begin{equation}
 \hat{\boldsymbol{x}}_{k}=(x,y,\theta,\alpha_1,r_1,\ldots,\alpha_N,r_N)^T
 \end{equation}
-assuming $ N$ features, which is a $(3+2N) x1$ vector. The action update (or ``prediction update") is identical to that if features are already known; the robot simply updates its position using odometry and updates the variance of its position using error propagation. The covariance matrix is now a $(3+2N)x(3+2N)$ matrix that initially holds the variances on position and those of each feature in its diagonal.
+assuming $ N$ features, which is a $(3+2N) x1$ vector. The action update (or ``prediction update") is identical to that if features are already known; the robot simply updates its position using odometry and updates the variance of it s position using error propagation. The covariance matrix is now a $(3+2N)x(3+2N)$ matrix that initially holds the variances on position and those of each feature in its diagonal.
 
 The interesting things happen during the perception update. Here it is important that only one feature is observed at a time. Thus, if the robot observes multiple features at once, one needs to do multiple, consecutive perception updates. Care needs to be taken that the matrix multiplications work out. In practice you will need to set only those values of the observation vector (a $(3+2N)x1$ vector) that correspond to the feature that you observe. Similar considerations apply to the observation function and its Jacobian.
 
@@ -306,39 +306,6 @@ As ICP only works when both point clouds are already closely aligned, which migh
 \end{itemize}
 
 
-\chapter{Grasping}
-A robot's end-effector, usually a hand or gripper, is defined by its 6-DOF pose as well as the parameters of its joints such as the opening of the claw or the position of each finger. So far, we have assumed that a robot only needs to plan for a 6-DOF pose that allows the robot to grasp an object from this position. Calculating which position this is and which parameters the end-effector to set is known as grasp planning. This chapter will focus on
-\begin{enumerate}
-\item What makes a good grasp?
-\item How to find good grasps?
-\item What makes a good grasp?
-\end{enumerate}
-
-Think about a three-fingered hand and the problem to grasp a cup. Grasps that are immediately obvious are (1) coming from above and grasping the hull of the cup and (2) wrapping the fingers around the cup. Lets assume that the shape of the cup is cylindric. Then, both of these grasps entirely rely on friction to hold the object. If the normal forces exerted by the fingers are not strong enough, the cup will slip. (It would be possible to re-grasp the object and support it from underneath with one finger if grasped with borderline friction.) A simple model for friction is Coloumb's Friction Law
-
-It is governed by the equation:
-\begin{equation}
-F_\mathrm{t} \leq \mu F_\mathrm{n}
-\end{equation}
-
-where $F_\mathrm{t}$  is the force of friction exerted by each surface on the other and $F_\mathrm{n}$ is the normal force. The force $F_\mathrm{t}$ acts in tangential direction of the normal force applied by, e.g., a finger's tip, where $\mu$ is an empirical coefficient of friction.
-
-The friction coefficient $\mu$ is low for glass on glass and high for rubber on wood. Coloumb's Fricition law states that the higher the friction coefficient, the more normal force translates into tangential forces that can resist two surfaces from moving against each other. We are therefore interested in designing grippers with high friction coefficients to avoid objects from slipping.
-
-When do objects slip? Lets say we have a fingertip pressing down on a surface in any orientation. There will be a force normal to the surface $F_\mathrm{n}$, which defines the tangential force $F_\mathrm{t}$ in any direction. Sweeping the tangential force around the normal force creates a cone with an opening angle of $2tan^{-1}\mu$. If the net force on the object is not within this cone, the object slips.  This becomes more intuitive when thinking about how different values of $\mu$ affect the shape of this cone. If $\mu$ is high, the cone will be relatively flat, letting the object accept forces from many different directions without slipping. If $\mu$ is low, the cone will be relatively narrow, requiring the force to be normal to the object's surface to prevent slippage.
-
-A force applied to a rigid body will exert both a force as well as a torque to the body's center of gravity. This is called a \emph{wrench}\index{Wrench}. If we consider the possible forces that we can apply to a rigid body without having the end-effector slip to form a space (namely the cone described earlier), we can talk about the \emph{grasping wrench space}\index{Grasping wrench space}, which is the corresponding space of all suitable wrenches.
-
-We can also define wrench spaces that suit a specific task, such as picking up an object or opening a door by turning its knob. We can then say that the grasp is good, when the task wrench space is a subset of the grasping wrench space, and will fail otherwise. We can also look at the ratio of forces actually applied to the object and the minimum needed to perform a desired wrench. If this ratio is high, for example, when the robot has to squeeze an object heavily to prevent it from slipping, this grasp is not as good as one, where the ratio is low and all of the force the robot is exerting is actually going into the desired wrench.
-
-It is usually not possible to find close-form expressions for the grasping wrench space. Instead, one can sample the space of suitable force vectors, e.g., by picking a couple of forces that are on the boundary of the cone's base, and calculate the convex hull over the resulting wrenches.
-
-In summary: we can use Coloumb's law of friction to determine the direction of forces that we can apply to a certain contact point without that the object slips. These forces translate into wrenches to the object's center of gravity. A grasp fits a certain task if the wrenches that would fulfill the task can be effectuated without slip. The less force is waisted to overcome slip, the better is the grasp.
-
-\section{How to find good grasps?}
-We are able to determine whether a contact point leads to a good grasp by comparing the grasping wrench spaces that fulfill the task and those that is created by a set of contact points. The question is now how to find good contact points? This is challenging as end-effectors (such as hands) are already quite complicated. A suitable method is therefore to use random sampling, that is bringing the end-effector to random positions, close its fingers around the object, and see what happens when generating wrenches that fulfill the task's requirements.
-
-To close the end-effector's fingers around the object requires collision checking. To see what happens, requires dynamic simulation. In short, collision checking routines model an object using a mesh of triangles that can be generated using CAD tools. These triangles are the leafs of a tree that has a coarse bounding object at the top. This coarse bounding object is then split into smaller and smaller elements. Collision checking can now quickly test whether an object collides at all and then recursively refine the exact triangles that collide and finally find the exact points of collision. Dynamic simulation applies Newtonian mechanics to an object (i.e., forces lead to acceleration of a body) and moves the object at very small time-steps. Detecting a collision usually involves moving the objects one step back and then iteratively approaching them until their proximity exceeds a certain treshold.
 
 \appendix
 

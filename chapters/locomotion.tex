@@ -111,14 +111,6 @@ An exact definition of the number of degrees of freedom is tricky and requires d
 
 Choosing the ``right'' kinematics is a trade-off between mechanical complexity, maneuverability, achievable precision, cost, and ease of control. The very popular differential-wheel drive consisting of two independently controlled wheels that share a common axis such as on the iRobot Roomba is cheap, highly maneuverable and easy to control, but makes it hard to drive in a straight line. This requires both motors to turn at the exact same speed and both wheels to have the exact same diameter, which is hard to achieve in practice. This problem is solved well by car-like steering mechanisms, but they have poor maneuverability and are difficult to control (think parallel-parking).
 
-\section*{Exercises}
-\begin{enumerate}
-\item What are the degrees of freedom of a lawnmower? Why are you still able to mow your entire lawn?
-\item Is a car statically or dynamically stable? What about a Segway?
-\item What are the degrees of freedom of an office chair with all caster-wheels?
-\item What are the maximum degrees of freedom for objects driving on the plane?
-\item What are the maximum degrees of freedom for objects in a 3D coordinate system?
-\end{enumerate}
 
 \section*{Take-home lessons}
 
@@ -127,3 +119,15 @@ Choosing the ``right'' kinematics is a trade-off between mechanical complexity, 
 \item The kinematics of a robot are fully defined by the position and orientation of its wheels, joints and links no matter whether it swims, flys, crawls or drives.
 \item Many robotic systems cannot be fully understand by considering kinematics alone, but require you to model their dynamics as well. This book will be limited to modeling kinematics, which is sufficient for low-speed, mobile robots and arms.
 \end{itemize} 
+
+
+\section*{Exercises}\small
+\begin{enumerate}
+\item What are the degrees of freedom of a lawnmower? Why are you still able to mow your entire lawn?
+\item Is a car statically or dynamically stable? What about a Segway?
+\item What are the degrees of freedom of an office chair with all caster-wheels?
+\item What are the maximum degrees of freedom for objects driving on the plane?
+\item What are the maximum degrees of freedom for objects in a 3D coordinate system?
+\item Calculate the degrees of freedom of a differential wheels robot with a front caster wheel. What happens when you add a second caster wheel?
+\item Calculate the degrees of freedom of a standard car. How can you still reach every point on the plane?
+\end{enumerate}\normalsize

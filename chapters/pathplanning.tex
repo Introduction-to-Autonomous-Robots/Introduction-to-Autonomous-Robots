@@ -136,3 +136,14 @@ Although sampling-based path planners can drastically speed up the time to find 
 \item As the resulting paths are random, multiple trials might lead to totally different results.
 \item There is no one-size-fits-all algorithm for a path-planning algorithm and care must be taken to select the right paradigm (single-query vs. multi-query), heuristics, and parameters.
 \end{itemize}
+
+\section*{Exercises}\small
+\begin{enumerate}
+\item Assuming points are sample uniformly at random, calculate the limiting behaviour of the following ratio   (number of points in tree)/(number of points sampled) as the number of points sampled goes to infinity. Assume the total area and the area of free space within are known. 
+
+\item Assuming a kd-tree is used as a nearest-neighbour data structure, and points are sample uniformly at random, calculate the  run-time of a single iteration of RRT.
+
+\item What other practical runtime concerns must one consider besides $\mathcal{O}(n)$ runtime when doing sampling based motion planning? Can you suggest ways to deal with these other concerns?
+\end{enumerate}
+
+\normalsize

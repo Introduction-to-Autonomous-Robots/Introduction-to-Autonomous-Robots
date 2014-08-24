@@ -96,6 +96,12 @@ In order to do this, we need to introduce a 4x1 position vector such that
 \end{equation}
 and $^A_BT$ is a 4x4 matrix.  Note that the added `1`s and $ [0 0 0 1]$ do not affect the other entries in the matrix during matrix multiplication. A 4x4 matrix of this form is called a \emph{homogenous transform}.\index{Homogenous Transform}
 
+The inverse of an homogeneous transform can be constructed by inverting rotation and translation part independently, leading to
+\begin{equation}
+\left[\begin{array}{ccc|c} & ^A_BR & & ^AP \\\hline 0 & 0 & 0 & 1\end{array}\right]^{-1}=
+\left[\begin{array}{ccc|c} & ^A_BR^T & & -^A_B{R^T}{^AP} \\\hline 0 & 0 & 0 & 1\end{array}\right]
+\end{equation}
+
 We have now established a convenient notation to convert points from one coordinate system to another. There are many possible ways this can be done, in particular how rotation can be represented (see below), but all can be converted from one into the other. 
 
 \subsection{Transformation arithmetic}
@@ -111,17 +117,17 @@ to convert a point in the reference frame of the end-effector to that of its bas
 where $ ^AP_B$ and $ ^BP_C$ are the translations from $\{A\}$ to $\{B\}$ and from $ \{B\}$ to $\{C\}$, respectively.
 
 \subsection{Other representations for orientation}
-So far, we have represented orientation by a 3x3 matrix who's column vectors are orthogononal  unit vectors describing the orientation of a coordinate system. Orientation is therefore represented with nine different values. We chose this representation mainly it is the most intuitive to explain and is derived from simple geometry.
+So far, we have represented orientation by a 3x3 matrix who's column vectors are orthogononal  unit vectors describing the orientation of a coordinate system. Orientation is therefore represented with nine different values. We chose this representation mainly because it is the most intuitive to explain and is derived from simple geometry.
 
-In fact, three values are sufficient. This becomes clear when considering that orthogonality (dot product of all mutual vectors is zero) and vector length (each vector must have length 1) impose six constraints on the nine values in the rotation matrix. Indeed, an orientation can be represented about a rotation by certain angles around the x, the y, and the z-axis of the reference coordinate system. This is known as the X-Y-Z fixed angels notation.\index{Fixed angel notation} Mathematically, this can be represented by a rotation matrix of the form
+In fact, three values are sufficient. This becomes clear when considering that orthogonality (dot product of all columns is zero) and vector length (each vector must have length 1) impose six constraints on the nine values in the rotation matrix. Indeed, an orientation can be represented about a rotation by certain angles around the $x$, the $y$, and the $z$-axis of the reference coordinate system. This is known as the $X-Y-Z$ fixed angels notation.\index{Fixed angel notation} Mathematically, this can be represented by a rotation matrix of the form
 \begin{equation}
 \tiny
 ^A_BR_{XYZ}(\gamma,\beta,\alpha)=\left[\begin{array}{ccc}cos\alpha & -sin\alpha & 0\\sin\alpha & \cos\alpha & 0\\0 & 0 & 1\end{array}\right]\left[\begin{array}{ccc}cos\beta& 0 & sin\beta\\0 & 1 & 0\\-sin\beta & 0 & cos\beta\end{array}\right]\left[\begin{array}{ccc}1 & 0 & 0 \\ 0 & cos\gamma & -sin\gamma\\0 & sin\gamma & cos\gamma\end{array}\right]
 \end{equation}
 
-While the X-Y-Z fixed angels approach expresses a coordinate frame using rotations with respect to the original coordinate frame, say $\{A\}$, another possible description is to start with a coordinate frame $\{B\}$ that is coincident with frame $\{A\}$, then rotate around the Z-axis with angle $ \alpha$, then the Y-axis with angle $ \beta$ and finally around the X-axis with angle $ \gamma$. This representation is called Z-Y-X Euler angels.\index{Euler angels}
+While the $X-Y-Z$ fixed angels approach expresses a coordinate frame using rotations with respect to the original coordinate frame, say $\{A\}$, another possible description is to start with a coordinate frame $\{B\}$ that is coincident with frame $\{A\}$, then rotate around the Z-axis with angle $ \alpha$, then the Y-axis with angle $ \beta$ and finally around the X-axis with angle $ \gamma$. This representation is called Z-Y-X Euler angels.\index{Euler angels}
 
-It is important to know about these subtle differences as there is no ``right'' or ``wrong'', but different manufacturers use different conventions. Among these, the preferred representation for computational and stability reasons are Quaternions. A quaternion is a 4-tuple that extends the complex numbers with very general applications in mathematics and representing orientation and rotation in particular. The basic idea is that each rotation can be represented as a rotation around a single axis (a vector in space) by a specific angle. Given such an axis $ \hat{K}=[k_x k_y k_z]^T$ and an angle $ \theta$, one can calculate the so-called Euler parameters or unit quaternion:
+It is important to know about the subtle differences between the different available transformations as there is no ``right'' or ``wrong'', but different manufacturers use different conventions. Among these, the preferred representation for computational and stability reasons are \emph{Quaternions}\index{Quaternion}. A quaternion is a 4-tuple that extends the complex numbers with very general applications in mathematics and representing orientation and rotation in particular. The basic idea is that each rotation can be represented as a rotation around a single axis (a vector in space) by a specific angle. Given such an axis $ \hat{K}=[k_x k_y k_z]^T$ and an angle $ \theta$, one can calculate the so-called Euler parameters\index{Euler parameters} or unit quaternion\index{unit quaternion}:
 
 \begin{eqnarray}
 \epsilon_1=k_x sin \frac{\theta}{2}\\

@@ -182,17 +182,6 @@ Using a feedback controller to solve the inverse kinematic problem for a mobile 
 \end{eqnarray}
 which will let the robot drive in a curve until it reaches the desired position. 
 
-\section*{Exercises}
-\begin{enumerate}
-\item 
-\begin{enumerate}
- \item Write out the entries of a rotation matrix $^A_BR$. 
- \item Express \hat{X}_B=[0, 1, 0]^T in frame \{A\}.
- \item Write out the entries of rotation matrix $^B_AR$.
- \item Verify that your solution for $^A\hat{X}_B=[0, 1, 0]^T$ indeed reduces to [0, 1, 0]^T when expressed in coordinate system $\{B\}$. Tip: Express multiplications as scalar products and remember that the scalar product of orthogonal vectors is 0 and that of parallel vectors is 1.
-\end{enumerate} 
-
-\end{enumerate}
 
 
 
@@ -207,3 +196,18 @@ which will let the robot drive in a curve until it reaches the desired position.
 \item A simple numerical solution is provided by taking all partial derivatives of the forward kinematics in order to get an easily invertible expression that relates joint speeds to end-effector speeds.
 The inverse kinematics problem can then be formulated as feedback control problem, which will move the end-effector towards its desired pose using small steps. Problems with this approach are local minima and singularities of the mechanism, that might render this solution infeasible.
 \end{itemize}
+
+\section*{Exercises}\small
+\begin{enumerate}
+\item 
+\begin{enumerate}
+ \item Write out the entries of a rotation matrix $^A_BR$ assuming basis vectors $X_A$, $Y_A$, $Z_A$, and $X_B$, $Y_B$, $Z_B$. 
+ \item Express $\hat{X}_B=[0, 1, 0]^T$ in frame $\{A\}$.
+ \item Write out the entries of rotation matrix $^B_AR$.
+ \item Verify that your solution for $^A\hat{X}_B=^A_BR[0, 1, 0]^T$ indeed reduces to $[0, 1, 0]^T$ when re-expressed in coordinate system $\{B\}$. Tip: Express multiplications as scalar products and remember that the scalar product of orthogonal vectors is 0 and that of parallel vectors is 1.
+\end{enumerate} 
+\item Consider two coordinate systems $\{B\}$ and $\{C\}$, whose orientation is given by the rotation matrix $^C_BR$ and have distance $^BP$. Provide the homogenous transform $^C_BT$ and its inverse $^B_CT$. 
+\item Consider the frame $\{B\}$ that is defined with respect to frame $\{A\}$ as $\{B\}=\{^A_BR, ^AP\}$. Provide a homogeneous transfrom from $\{A\}$ to $\{B\}$.
+\item Consider a tri-cycle with two independent standard wheels in the rear and the stearable front-wheel. Chose a suitable coordinate system and use $\theta$ as the steering wheel angle and wheel-speed $\dot{\omega}$. Provide forward and inverse kinematics. 
+\end{enumerate}
+\normalsize
