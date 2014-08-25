@@ -13,7 +13,7 @@
    height="1052.3622047"
    id="svg3862"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.48.5 r10040"
    sodipodi:docname="fwk2dofarm.svg">
   <defs
      id="defs3864">
@@ -70,8 +70,8 @@
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1600"
-     inkscape:window-height="837"
+     inkscape:window-width="1280"
+     inkscape:window-height="660"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1" />
@@ -83,7 +83,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -92,7 +92,10 @@
      inkscape:groupmode="layer"
      id="layer1">
     <g
-       id="g6614">
+       id="g6614"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\fwk2dofarm.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300">
       <rect
          inkscape:export-ydpi="150"
          inkscape:export-xdpi="150"

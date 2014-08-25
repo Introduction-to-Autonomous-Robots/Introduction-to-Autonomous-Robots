@@ -13,7 +13,7 @@
    height="1052.3622047"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.48.5 r10040"
    sodipodi:docname="winduptoy.svg">
   <defs
      id="defs4">
@@ -139,8 +139,8 @@
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1018"
+     inkscape:window-width="1280"
+     inkscape:window-height="660"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1">
@@ -182,12 +182,12 @@
     <g
        id="g8123"
        transform="translate(-96,-6)"
-       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\winduptoysketch.png"
-       inkscape:export-xdpi="150.02921"
-       inkscape:export-ydpi="150.02921">
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\winduptoysketch.png"
+       inkscape:export-xdpi="300.05841"
+       inkscape:export-ydpi="300.05841">
       <path
          transform="translate(-74.911725,-2.3409914)"
-         d="m 406.9877,149.97472 a 44.936703,35.803226 0 1 1 -89.87341,0 44.936703,35.803226 0 1 1 89.87341,0 z"
+         d="m 406.9877,149.97472 c 0,19.77357 -20.11885,35.80322 -44.93671,35.80322 -24.81785,0 -44.9367,-16.02965 -44.9367,-35.80322 0,-19.77358 20.11885,-35.80323 44.9367,-35.80323 24.81786,0 44.93671,16.02965 44.93671,35.80323 z"
          sodipodi:ry="35.803226"
          sodipodi:rx="44.936703"
          sodipodi:cy="149.97472"
@@ -197,7 +197,7 @@
          sodipodi:type="arc" />
       <path
          transform="translate(-82.949184,-11.839807)"
-         d="m 430.3694,148.51335 a 59.915604,59.915604 0 1 1 -119.83121,0 59.915604,59.915604 0 1 1 119.83121,0 z"
+         d="m 430.3694,148.51335 c 0,33.09048 -26.82513,59.91561 -59.9156,59.91561 -33.09048,0 -59.91561,-26.82513 -59.91561,-59.91561 0,-33.09047 26.82513,-59.915602 59.91561,-59.915602 33.09047,0 59.9156,26.825132 59.9156,59.915602 z"
          sodipodi:ry="59.915604"
          sodipodi:rx="59.915604"
          sodipodi:cy="148.51335"
@@ -228,7 +228,7 @@
          style="fill:none;stroke:#000000" />
       <path
          transform="translate(-74.911725,-2.3409914)"
-         d="m 366.06974,92.251144 a 3.6533906,3.6533906 0 1 1 -7.30678,0 3.6533906,3.6533906 0 1 1 7.30678,0 z"
+         d="m 366.06974,92.251144 c 0,2.017712 -1.63568,3.653391 -3.65339,3.653391 -2.01771,0 -3.65339,-1.635679 -3.65339,-3.653391 0,-2.017712 1.63568,-3.65339 3.65339,-3.65339 2.01771,0 3.65339,1.635678 3.65339,3.65339 z"
          sodipodi:ry="3.6533906"
          sodipodi:rx="3.6533906"
          sodipodi:cy="92.251144"
@@ -266,7 +266,7 @@
            sodipodi:open="true"
            sodipodi:end="3.1208851"
            sodipodi:start="0.027774451"
-           d="M 600.6015,174.53297 A 41.283314,94.988152 0 0 1 518.05964,173.8619"
+           d="m 600.6015,174.53297 c -0.63318,52.44027 -19.62252,93.77049 -42.41387,92.31361 -22.01388,-1.40718 -39.67199,-42.32459 -40.12799,-92.98468"
            sodipodi:ry="94.988152"
            sodipodi:rx="41.283314"
            sodipodi:cy="171.89507"
@@ -320,7 +320,7 @@
          sodipodi:cy="171.89507"
          sodipodi:rx="41.283314"
          sodipodi:ry="94.988152"
-         d="M 600.6015,174.53297 A 41.283314,94.988152 0 0 1 518.05964,173.8619"
+         d="m 600.6015,174.53297 c -0.63318,52.44027 -19.62252,93.77049 -42.41387,92.31361 -22.01388,-1.40718 -39.67199,-42.32459 -40.12799,-92.98468"
          sodipodi:start="0.027774451"
          sodipodi:end="3.1208851"
          sodipodi:open="true"
@@ -411,7 +411,7 @@
          transform="matrix(1.4109097,0.28636241,-0.46681312,0.54051175,-126.43604,-69.861534)"
          sodipodi:end="3.6008022"
          sodipodi:start="1.2184621"
-         d="M 540.77835,190.54286 A 9.5,18.147745 0 0 1 528.98417,165.46613"
+         d="m 540.77835,190.54286 c -4.9244,3.45874 -10.38418,-1.3633 -12.19476,-10.77033 -0.89922,-4.67193 -0.75439,-9.84436 0.40058,-14.3064"
          sodipodi:ry="18.147745"
          sodipodi:rx="9.5"
          sodipodi:cy="173.50993"
