@@ -110,7 +110,8 @@ Doing this for all $x$ and all $y$ literally corresponds to sliding the filter $
 \end{figure}
 
 An example of filter $g(x,y)$ in action is shown in Figure \ref{fig:filters}. The filter acts as a \emph{low-pass filter} \index{Low-pass filter}, suppressing high frequency components. Indeed, noise in the image is suppressed, leading also to a smoother edge image, which is shown underneath.
-\subsubsection{Edge detection}
+
+\subsubsection{Edge detection}\label{sec:sobel}
 Edge detection can be achieved using another convolution-based filter, the \emph{Sobel} kernel\index{Sobel filter}
 \begin{equation}
 s_x(x,y)=
