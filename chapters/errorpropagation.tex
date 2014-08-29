@@ -105,3 +105,25 @@ Here $ k_r$ and $ k_l$ are constants that need to be found experimentally and $ 
 \item More often than not, the Gaussian distribution is chosen as it allows treating error with powerful analytical tools.
 \item In order to calculate the uncertainty of a variable that is derived from a series of measurements, we need to calculate a weighted sum in which each measurement's variance is weighted by its impact on the output variable. This impact is expressed by the partial derivative of the function relating input to output.
 \end{itemize}
+
+\section*{Exercises}\small
+\begin{enumerate}
+\item Given two observations $\hat{q}_1$ and $\hat{q}_2$ with variances $\sigma_1$ and $\sigma_2$ of a normal distributed process with actual value $\hat{q}$, an optimal estimate can be calculated by minimizing the expression
+\begin{equation}
+\nonumber
+S=\frac{1}{\sigma_1^2}(\hat{q}-\hat{q}_1)^2+\frac{1}{\sigma_2^2}(\hat{q}-\hat{q}_2)^2
+\end{equation}
+Calculate $\hat{q}$ so that $S$ is minimized.
+\item An ultrasound sensor measures distance $x=c\Delta t/2$. Here, $c$ is the speed of sound and $\Delta t$ is the difference in time between emitting and receiving a signal.
+\begin{enumerate}
+\item Let the variance of your time measurement $\Delta t$ be $\sigma_t^2$. What can you say about $x$, when $c$ is assumed to be constant? Hint: how does a change in $\Delta t$ affect $x$?
+\item Now assume that also $c$ is changing depending on location, weather, etc. and can be estimated with variance $\sigma_c^2$. What is the variance of $x$ now?
+\end{enumerate}
+\item Consider a unicycle that turns with angular velocity $\dot{\phi}$ and has radius $r$. Its speed is thus a function of $\dot{\phi}$ and $r$ and is given by
+\begin{equation}
+\nonumber
+v=f(\dot{\phi},r)=r\dot{\phi}
+\end{equation} 
+Assume that your measurement of $\dot{\phi}$ is noisy and has a standard deviation $\sigma_{\phi}$.  Use the error propagation law to calculate the resulting variance of your speed estimate $\sigma_v^2$. 
+\end{enumerate}
+\normalsize

@@ -88,8 +88,16 @@ SIFT proceeds in multiple steps. Descriptions of the algorithm often include its
 \item Calculating the difference between pairs of filtered images. This is equivalent to a DoG filter.
 \end{itemize}
 
-\item Detecting local minima and maxima in the DoG images across different scales.
-\item Reject extrema that are along edges by looking at the second derivative around each extrema. Edges have a much larger principal curvature across them than along them.
+\item Detecting local minima and maxima in the DoG images across different scales (Figure \ref{fig:siftrejection}, left) and reject those with low contrast (Figure \ref{fig:siftrejection}, right). 
+
+\begin{figure}
+	\centering
+		\includegraphics[width=\textwidth]{figs/siftrejection.png}
+	\caption{After scale space extrema are detected (left), the SIFT algorithm discards low contrast keypoints (center) and then filters out those located on edges (right). \copyright Lukas Mach CC-BY 3.0}
+	\label{fig:siftrejection}
+\end{figure}
+
+\item Reject extrema that are along edges by looking at the second derivative around each extrema (Figure \ref{fig:siftrejection}, right). Edges have a much larger principal curvature across them than along them.
 \item Assign a ``magnitude'' and ``orientation'' to each remaining extrema (keypoint). The magnitude is the squared difference between neighboring pixels and the orientation is the angle between magnitude along the y-axis vs. magnitude along the x-axis. These calculations are made for all pixels in a fixed neighborhood around the initial keypoint, e.g., in a 16x16 pixel neighborhood.
 \item Collect orientations of neighboring pixels in a histogram, e.g., 36 bins each covering 10 degrees. Maintain the orientation corresponding to the strongest peak and associate it with the keypoint.
 \item Repeat step 4, but for four 4x4 pixel areas around the keypoint in the image scale that has the most extreme minima/maxima. Here, only 8 bins are used for the orientation histogram. As there are 16 histograms in a 16x16 pixel area, the feature descriptor has 128 dimensions.

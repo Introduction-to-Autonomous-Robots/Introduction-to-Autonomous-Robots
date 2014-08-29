@@ -285,7 +285,7 @@ As the state vector is a 3x1 vector and the innovation a 2x1 matrix, the Kalman 
 \boldsymbol{K}_{k}&=&\boldsymbol{P}_{k|k-1}{\boldsymbol{H}_{k}^\top}\boldsymbol{S}_{k}^{-1}
 \end{eqnarray}
 
-\section{Take home lessons}
+\section*{Take home lessons}
 \begin{itemize}
 \item If the robot has no additional sensors and its odometry is noisy, error propagation will lead to ever increasing uncertainty of a robots position regardless of using Markov localization or the Kalman filter.
 \item Once the robot is able to sense features with known locations, Bayes' rule can be used to update the posterior probability of a possible position. The key insight is that the conditional probability to be at a certain position given a certain observation can be inferred from the likelihood to actually make this observation given a certain position.
@@ -296,3 +296,13 @@ It is dervied by minimizing the least-square error between prediction and real v
 \item In order to take advantage of the approach, you will need differentiable functions that relate measurements to state variables as well as an estimate of the covariance matrix of your sensors.
 \item An approximation that combines benefits of Markov Localization (multiple hypothesis) and the Kalman filter (continuous representation of position estimates) is the Particle filter.
 \end{itemize}
+
+\section*{Exercises}\small
+\begin{enumerate}
+\item Assume that the ceiling is equipped with infra-red markers that the robot can identify with some certainty. Your task is to develop a probabilistic localization scheme, and you would like to calculate the probability $p(marker\|reading)$ to be close to a certain marker given a certain sensing reading and information about how the robot has moved.
+\begin{enumerate}
+\item Derive an expression for $p(marker\|reading)$ assuming that you have an estimate of the probability to correctly identify a marker $p(correct)$ and the probability $p(marker)$ of being underneath a specific marker. 
+\item Now assume that the likelihood that you are reading a marker correctly is 90\%, that you get a wrong reading is 10\%, and that you do not see a marker when passing right underneath it is 50\%. Consider a narrow corridor that is equipped with 4 markers. You know with certainty that you started from the entry closests to marker 1 and move right in a straight line. The first reading you get is `` Marker 3''. Calculate the probability to be indeed underneath marker 3.
+\item Could the robot also possibly be underneath marker 4?
+\end{enumerate}
+\end{enumerate}\normalsize

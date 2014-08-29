@@ -198,6 +198,7 @@ The inverse kinematics problem can then be formulated as feedback control proble
 \end{itemize}
 
 \section*{Exercises}\small
+\subsection*{Coordinate systems}
 \begin{enumerate}
 \item 
 \begin{enumerate}
@@ -208,6 +209,27 @@ The inverse kinematics problem can then be formulated as feedback control proble
 \end{enumerate} 
 \item Consider two coordinate systems $\{B\}$ and $\{C\}$, whose orientation is given by the rotation matrix $^C_BR$ and have distance $^BP$. Provide the homogenous transform $^C_BT$ and its inverse $^B_CT$. 
 \item Consider the frame $\{B\}$ that is defined with respect to frame $\{A\}$ as $\{B\}=\{^A_BR, ^AP\}$. Provide a homogeneous transfrom from $\{A\}$ to $\{B\}$.
+\end{enumerate}
+
+\subsection*{Forward and inverse kinematics}
+\begin{enumerate}
+\item Consider a differential wheel robot with a broken motor, i.e., one of the wheels cannot be actuated anymore. Derive the forward kinematics of this platform. Assume the right motor is broken.
+\item The forward kinematics of a differential-wheel platform are given by 
+\begin{equation}
+\nonumber
+\left(\begin{array}{c}
+\dot{x}_r\\
+\dot{y}_r\\
+\dot{\theta}
+\end{array}\right)
+=
+\left(\begin{array}{c}
+\frac{r\dot{\phi}_l}{2}+\frac{r\dot{\phi_r}}{2}\\
+0\\
+\frac{r\dot{\phi}_r}{d}-\frac{r\dot{\phi_l}}{d}
+\end{array}\right)
+\end{equation}
+Derive an expression for $\dot{\phi}_l$ and $\dot{\phi}_r$ as a function of the desired speeds $\dot{x}_r$ and $\dot{y}_r$. 
 \item Consider a tri-cycle with two independent standard wheels in the rear and the stearable front-wheel. Chose a suitable coordinate system and use $\theta$ as the steering wheel angle and wheel-speed $\dot{\omega}$. Provide forward and inverse kinematics. 
 \end{enumerate}
 \normalsize

@@ -155,3 +155,42 @@ Important morphological operators are \emph{erosion} and \emph{dilation} \index{
 	\caption{Examples of morphological operators erosion and dilation and combinations thereof.
 	\label{fig:morphology}}
 \end{figure}
+
+
+\section*{Exercises}\small
+\begin{enumerate}
+\item Below are shown multiple ``Kernels'' that can be used for convolution-based image filtering. 
+\begin{equation}
+\nonumber
+\begin{array}{|c|c|c}
+\hline
+1 & 1 & 1\\
+\hline
+1 & 2 & 1\\
+\hline
+1 & 1 & 1
+\end{array}
+\quad
+\begin{array}{|c|c|c}
+\hline
+0 & -1 & 0\\
+\hline
+0 & -1 & 0\\
+\hline
+0 & -1 & 0
+\end{array}
+\quad
+\begin{array}{|c|c|c}
+\hline
+1 & 1 & 1\\
+\hline
+1 & -4 & 1\\
+\hline
+1 & 1 & 1
+\end{array}
+\end{equation}
+\begin{enumerate}
+\item Identify the Kernel, which can blur an image.
+\item What kind of features can be detected by the other two kernels?
+\end{enumerate}
+\end{enumerate} \normalsize
