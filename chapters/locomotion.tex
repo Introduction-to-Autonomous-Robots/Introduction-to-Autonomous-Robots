@@ -3,7 +3,7 @@ Autonomous robots are systems that sense, actuate, compute, and communicate. Act
 \begin{itemize}
 \item introduce the concepts of locomotion, manipulation and their duality
 \item explain static vs.\ dynamic stability
-\item introduce the concept of reference frames and ``degrees-of-freedom''
+\item introduce ``degrees-of-freedom''
 \item and introduce forward kinematics of static arms.
 \end{itemize}
 
@@ -91,7 +91,7 @@ Spherical wheel \includegraphics[width=2.5cm]{figs/wheeltype_spherical.png}& Bal
 \caption{Different types of wheels and their degrees of freedom.\label{tab:wheels}}
 \end{table}
 
-Only robots that use exclusively wheels with three degrees-of-freedom (3-DOF wheels) will be able to freely move on a plane. All other robots will have \emph{kinematic constraints}\index{Kinematic constraints} that prevent them from reaching every possible point at every possible orientation. A good analogue are figures on a chess-board. For example, a knight can reach every cell on a chess-board but might require multiple moves to do so. This is similar to a car, which can parallel park using back-and-forth motions. Instead, a bishop can only reach either black or white fields on the board. This is equivalent to a robot, which has non-steerable standard wheels and can only reach a sub-set of the environment without skidding.
+Only robots that use exclusively wheels with three degrees-of-freedom (3-DOF wheels) will be able to freely move on a plane. This is because the pose of a robot on a plane is fully given by its position (two values) and its orientation (one value). More precisely, assuming that the plane is spanned by an X-Y coordinate system, and the Z-axis sticking up, the robot's position is given by its X and Y position and its rotation around the Z-axis. Robots that don't have wheels with three degrees of freedom will have \emph{kinematic constraints}\index{Kinematic constraints} that prevent them from reaching every possible point at every possible orientation. A good analogue are figures on a chess-board. For example, a knight can reach every cell on a chess-board but might require multiple moves to do so. This is similar to a car, which can parallel park using back-and-forth motions. Instead, a bishop can only reach either black or white fields on the board. This is equivalent to a robot, which has non-steerable standard wheels and can only reach a sub-set of the environment without skidding.
 
 Similar reasoning applies to aerial and underwater robots. Here, the position of the robot is affected by the position and orientation of thrusters, either in the form of jets or propellers, mounted on the robot. Things become complicated quickly, however, as the dynamics of the system are subject to fluid- and aerodynamic effects, which also change as a function of size of the robot. This book will not go into the details of flying and swimming robots, but the general principles of localization and planning will be applicable to them as well.
 
