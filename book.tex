@@ -247,8 +247,11 @@ This can be addressed by constructing a  minimum spanning-tree  (MST) of the con
 \item show how SIFT features can be used to improve point selection and loop-closure in ICP to achieve RGB-D mapping
 \end{itemize}
 
+\section{Converting range data into point cloud data}
+Point cloud data can be thought of a 3D matrix that maps a certain volume in 3D space. Each cell in this matrix, also known as \emph{Voxel}\index{Voxel}, corresponds to whether there is an obstacle in this volume or not. Different intensity values could correspond to the uncertainty with which this space is to be known to be an obstacle. An efficient method to turn range information into such an uncertainty 3D map is described in \cite{curless96} and became known as \emph{Truncated Surface Distance Function} (TSDF)\index{Truncated Surface Distance Function (TSDF)}\index{TSDF}, commonly referred to as ``Point cloud''\index{Point cloud}.
+
 \section{The Iterative Closest Point (ICP) algorithm}
-The ICP algorithm was presented in the early 1990ies for registration of 3D range data to CAD models of objects. The key problem can be reduced to find the best transformation that minimizes the distance between two point clouds. This is the case when matching snapshots from a range sensor or matching a range image with a point cloud sampled from a 3D representation of an object.
+The \emph{Iterative Closest Point} (ICP)\index{Iterative Closest Point}\index{ICP} algorithm was presented in the early 1990ies for registration of 3D range data to CAD models of objects. A more in-depth overview of what is described here is given in \cite{rusinkiewicz01}. The key problem can be reduced to find the best transformation that minimizes the distance between two point clouds. This is the case when matching snapshots from a range sensor or matching a range image with a point cloud sampled from a 3D representation of an object.
 
 In robotics, ICP found an application to match scans from 2D laser range scanners. For example, the transformation that minimizes the error between two consecutive snapshots of the environment is proportional to the motion of the robot. This is a hard problem as it is unclear, which points in the two consecutive snapshots are ``pairs", which of the points are outliers (due to noisy sensors), and which points need to be discarded as not all points overlap in both snapshots. Stitching a series of snapshots together theoretically allows to create a 2D map of the environment. This is difficult, however, as the error between every snapshots ---similar to odometry --- accumulates.   The ICP algorithm also works in 3D where it allows to infer the change in 6D pose of a camera and creation of 3D maps. In addition, ICP has proven useful for identifying objects from a database of 3D objects.
 
@@ -290,21 +293,21 @@ Initially $t=0$ and nearest neighbors/pairings are established. We can now calcu
 Instead of formulating the cost function as a ``point-to-point'' distance, a ``point-to-plane'' has become popular. Here, the cost function consist of the sum of squared distances from each source point to the plane that contains the destination point and is oriented perpendicular to the destination normal. This makes particularly sense when matching a point cloud to a mesh/CAD model of an object. In this case there are no analytical solutions to finding the optimal transformation, but any optimization method such a Levenberg-Marquardt can be used.
 
 \section{RGB-D Mapping}
-The ICP algorithm can be used to stitch consecutive range images together to create a 3D map of the environment. Together with RGB information, it is possible to create complete 3D walk throughs of an environment. A problem with ICP is that errors in each transformation propagate making maps created using this method as odd as maps created by simple odometry. Here, the SLAM algorithm can be used to correct previous errors once a loop closure is detected.
+The ICP algorithm can be used to stitch consecutive range images together to create a 3D map of the environment \cite{henry2010rgb}. Together with RGB information, it is possible to create complete 3D walk throughs of an environment. An example of such a walk through using the method described in \cite{whelan2013robust} is shown in Figure \ref{fig:kintinous}.
+A problem with ICP is that errors in each transformation propagate making maps created using this method as odd as maps created by simple odometry. Here, the SLAM algorithm can be used to correct previous errors once a loop closure is detected.
+
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figs/kintinous}
+\caption{Fused point cloud data from a walk trough of an office environment using ``Kintinious''. Picture courtesy of John Leonard.\label{fig:kintinous}}
+\end{figure}
 
 The intuition behind SLAM is to consider each transformation between consecutive snapshots as a spring with variable stiffness. Whenever the robot returns to a previously seen location, i.e., a loop-closure has been determined, additional constraints are introduced and the collection of snapshots connected by springs become a mesh. Everytime the robot then re-observes a transformation between any of the snapshots, it can ``stiffen'' the spring connecting the two. As all of the snapshots are connected, this new constraints propagates through the network and literally pull each snapshots in place.
 
-RGB-D Mappin uses a variant of ICP that is enhanced by SIFT features for point selection and matching. Maps are build incrementally. SIFT features, and their spatial relationship, are used for detecting loop closures. Once a loop closure is detected, an additional constraint is added to the pose graph and a SLAM-like optimization algorithm corrects the pose of all previous observations.
+RGB-D Mapping uses a variant of ICP that is enhanced by SIFT features for point selection and matching. Maps are build incrementally. SIFT features, and their spatial relationship, are used for detecting loop closures. Once a loop closure is detected, an additional constraint is added to the pose graph and a SLAM-like optimization algorithm corrects the pose of all previous observations.
 
 As ICP only works when both point clouds are already closely aligned, which might not be the case for a fast moving robot with a relatively noisy sensor (the XBox Kinect has an error of 3cm for a few meters of range vs. millimeters in laser range scanners), RGB-D Mapping uses RANSAC to find an initial transformation. Here, RANSAC works as for line fitting: it keeps guessing possible transformations for 3 pairs of SIFT feature points and then counts the number of inliers when matching the two point clouds, one of which being transformed using the random guess.
-
-\subsection*{Further reading}
-\begin{itemize}
-\item Szymon Rusinkiewicz and Marc Levoy. Efficient Variants of the ICP Algorithm. Third International Conference on
-3D Digital Imaging and Modeling (3DIM), 2001.
-
-\item P. Henry, M. Krainin, E. Herbst, X. Ren, and D. Fox. RGB-D Mapping: Using Depth Cameras for Dense 3D Modeling of Indoor Environments. Proc. of International Symposium on Experimental Robotics (ISER), 2010.
-\end{itemize}
 
 
 
