@@ -189,9 +189,9 @@ The notation $sin_{\alpha\beta}$ and $cos_{\alpha\beta}$ are short-hand for $sin
 
 
 \section{Inverse Kinematics of a Simple Manipulator Arm}
-We will now look at the kinematics of a 2-link arm that we introduced earlier. Similar to a the process of calculating the required wheel-speed for achieving a desired speed of the local coordinate system, we need to solve the equations determining the robot's forward kinematics by solving for $ \alpha$ and $ \beta$. This is tricky, however, as we have to deal with complicated trigonometric expressions.
+We will now look at the kinematics of a 2-link arm that we introduced earlier. We need to solve the equations determining the robot's forward kinematics by solving for $ \alpha$ and $ \beta$. This is tricky, however, as we have to deal with complicated trigonometric expressions.
 
-To get an intuition, assume there to be only one link, $l_1$.  Solving (\ref{eq:cosx}) for $\alpha$ yields actually two solutions $\left[\cos^{-1}\frac{x_1}{l_1},-\cos^{-1}\frac{x_1}{l_1}\right]$, as cosine is symmetric. Indeed, for any possible position on the $x-axis$ ranging from $-l_1$ to $l_1$, there exist two solutions. One with the arm above the table, one with the arm within the table. (At the extremes of the workspace, both solutions are the same.)
+To get an intuition, assume there to be only one link, $l_1$.  Solving (\ref{eq:cosx}) for $\alpha$ yields actually two solutions $\left[\cos^{-1}\frac{x_1}{l_1},-\cos^{-1}\frac{x_1}{l_1}\right]$, as cosine is symmetric for positive and negative values. Indeed, for any possible position on the $x-axis$ ranging from $-l_1$ to $l_1$, there exist two solutions. One with the arm above the table, one with the arm within the table. (At the extremes of the workspace, both solutions are the same.)
 
 %\begin{verbatim}
 %sol = Solve[Sin[a + b] + Sin[a] == y
@@ -210,7 +210,7 @@ and
 \beta \rightarrow -\cos^{-1}\left(1/2(-2+x^2+y^2)\right)
 \end{equation}
 
-One trick is to not only specificy the desired position, but also the orientation of the end-effector. In this case, a desired pose can be specified by
+What will drastically simplify this problem, is to not only specificy the desired position, but also the orientation of the end-effector. In this case, a desired pose can be specified by
 \begin{equation}
 \left(
 \begin{array}{ccc}
