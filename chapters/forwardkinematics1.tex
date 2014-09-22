@@ -155,7 +155,7 @@ Imagine you have a robot arm made out of two links and two joints that is mounte
 
 We can now calculate the position of the joint between the first and the second link using simple trigonometry:
 
-\begin{eqnarray}
+\begin{eqnarray}\label{eq:cosxl1}
 x_1 &=&\cos \alpha l_1\\
 y_1 &=&\sin \alpha l_1
 \end{eqnarray}
@@ -178,12 +178,13 @@ The above equations are the kinematic equations of this robot as they relate its
 
 The \emph{configuration space} \index{Configuration space}\index{C-Space (Configuration space)}, i.e., the set of angles each actuator can be set to, of this robot is given by $ \frac{-\pi}{2}<\alpha<\frac{\pi}{2}$ as it is not supposed to run into the table, and $ -\pi < \beta < \pi$. The configuration space is given with respect to the robot's joints and allows us to calculate the \emph{workspace}\index{Workspace} of the robot, i.e., the physical space it can move to, using the forward kinematic equations. This terminology will be identical for mobile robots. An example of configuration and work-space for both a manipulator and a mobile robot is shown in Figure \ref{fig:holonomy}.
 
-Although we have calculated the position of the arm, we don't know its orientation yet. In order to do this, we also need to calculate a transformation that includes a rotation around the z-axis
+The orientation of the arm's end-effector is given by $\alpha+\beta$. We can now write down  a transformation that includes a rotation around the z-axis
 \begin{equation}
 \label{eq:2armtrans}
-\left(\begin{array}{lll}cos_{\alpha\beta} & -sin_{\alpha\beta} &  \cos_{\alpha\beta}l_2+\cos\alpha l_1\\
-                        sin_{\alpha\beta} & cos_{\alpha\beta} & \sin_{\alpha\beta}l_2+\sin\alpha l_1\\
-												0 & 0 & 1\end{array}\right)
+\left(\begin{array}{llll}cos_{\alpha\beta} & -sin_{\alpha\beta} &  0 & \cos_{\alpha\beta}l_2+\cos\alpha l_1\\
+                        sin_{\alpha\beta} & cos_{\alpha\beta} & 0 & \sin_{\alpha\beta}l_2+\sin\alpha l_1\\
+												0 & 0 & 1 & 0\\
+												0 & 0 & 0 & 1\end{array}\right)
 \end{equation}
 The notation $sin_{\alpha\beta}$ and $cos_{\alpha\beta}$ are short-hand for $sin(\alpha+\beta)$ and $cos(\alpha+\beta)$, respectively.
 
@@ -191,7 +192,7 @@ The notation $sin_{\alpha\beta}$ and $cos_{\alpha\beta}$ are short-hand for $sin
 \section{Inverse Kinematics of a Simple Manipulator Arm}
 We will now look at the kinematics of a 2-link arm that we introduced earlier. We need to solve the equations determining the robot's forward kinematics by solving for $ \alpha$ and $ \beta$. This is tricky, however, as we have to deal with complicated trigonometric expressions.
 
-To get an intuition, assume there to be only one link, $l_1$.  Solving (\ref{eq:cosx}) for $\alpha$ yields actually two solutions $\left[\cos^{-1}\frac{x_1}{l_1},-\cos^{-1}\frac{x_1}{l_1}\right]$, as cosine is symmetric for positive and negative values. Indeed, for any possible position on the $x-axis$ ranging from $-l_1$ to $l_1$, there exist two solutions. One with the arm above the table, one with the arm within the table. (At the extremes of the workspace, both solutions are the same.)
+To get an intuition, assume there to be only one link, $l_1$.  Solving (\ref{eq:cosxl1}) for $\alpha$ yields actually two solutions $\left[\cos^{-1}\frac{x_1}{l_1},-\cos^{-1}\frac{x_1}{l_1}\right]$, as cosine is symmetric for positive and negative values. Indeed, for any possible position on the $x-axis$ ranging from $-l_1$ to $l_1$, there exist two solutions. One with the arm above the table, one with the arm within the table. (At the extremes of the workspace, both solutions are the same.)
 
 %\begin{verbatim}
 %sol = Solve[Sin[a + b] + Sin[a] == y
@@ -213,20 +214,21 @@ and
 What will drastically simplify this problem, is to not only specificy the desired position, but also the orientation of the end-effector. In this case, a desired pose can be specified by
 \begin{equation}
 \left(
-\begin{array}{ccc}
-cos\phi & -sin\phi & x\\
-sin\phi & cos\phi & y\\
-0 & 0 & 1
+\begin{array}{cccc}
+cos\phi & -sin\phi & 0 & x\\
+sin\phi & cos\phi & 0 & y\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
 \end{array}
 \right)
 \end{equation}
 A solution can now be found by simply equating the individual entries of the transformation (\ref{eq:2armtrans}) with those of the desired pose. Specifically, we can observe:
-\begin{eqnarray}{cc}
+\begin{eqnarray}
 cos\phi &= cos(\alpha+\beta)\\
 x &= \cos_{\alpha\beta}l_2+\cos\alpha l_1
 \end{eqnarray}
 These can be reduced to
-\begin{eqnarray}{cc}
+\begin{eqnarray}
 \phi &= \alpha + \beta\\
 cos\alpha &= \frac{\cos_{\alpha\beta}l_2-x}{l_1}
 \end{eqnarray}
