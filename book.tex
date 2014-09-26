@@ -49,7 +49,7 @@
 \usepackage{url}
 \usepackage{hyperref}
 \usepackage{harvard}
-
+\usepackage{marginnote}
 
 %%% HEADERS & FOOTERS
 %\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
@@ -68,6 +68,9 @@
 \usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
 \renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
 \renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+\newcommand{\screencast}[2]{
+  \marginnote{\href{#1}{\includegraphics[width=1.5cm]{figs/youtube/#2}}}}
 
 %%% END Article customizations
 
