@@ -1,21 +1,31 @@
 \section{Forward Kinematics using the Denavit-Hartenberg scheme}
- Forward kinematics allow us to express the pose of a mechanism given its actuator parameters such as the angle of a joint or the number of rotations of its wheel as well as their derivatives including speed and accleration, without taking into account the forces that cause the motion. So far, we have considered the forward kinematics of wheeled mechanisms and simple arms. Whereas we could derive kinematic equations of simple mechanisms using basic trigonometry, this approach is equivalent to think about the forward kinematics as a chain of homogenous transformations that express mobile coordinate systems in a static one usually mounted at the base of a manipulator or a fixed position in the room. Deriving these transformations can be confusing and can be facilitated by following a ``recipe'' such as conceived by Denavit and Hartenberg. The so-called Denavit-Hartenberg (DH) \index{Denavit-Hartenberg parameters}scheme has evolved as quasi-standard and can easily be automatized, i.e., applied to a 3D model of a robotic arm, e.g. 
+Forward kinematics allow us to express the pose of a mechanism given its actuator parameters such as the angle of a joint or the number of rotations of its wheel as well as their derivatives including speed and accleration, without taking into account the forces that cause the motion. So far, we have considered the forward kinematics of wheeled mechanisms and simple arms. Whereas we could derive kinematic equations of simple mechanisms using basic trigonometry, we can also think about the forward kinematics as a chain of homogenous transformations that express mobile coordinate systems in a static one usually mounted at the base of a manipulator or a fixed position in the room. Deriving these transformations can be confusing and can be facilitated by following a ``recipe'' such as conceived by Denavit and Hartenberg. The so-called Denavit-Hartenberg (DH) \index{Denavit-Hartenberg parameters}scheme has evolved as quasi-standard and can easily be automatized, i.e., applied to a 3D model of a robotic arm, e.g. 
 
 A manipulating arm consists of links that are connected by joints. Joints can be either rotational or prismatic, i.e., change their length and thus providing additional degrees of freedom. Knowing the length of all rigid links, the position of the manipulators end-effector is fully described by its joint angles and joint offset (for prismatic joints).
 
 %In industrial manipulators, the number of joints is usually equal to the degrees of freedom of the manipulator. As most manipulators are holonomic, the forward kinematics allow you---unlike on non-holonomic wheeled platforms---to directly relate absolute positions of joints with absolute positions in Cartesian space. It is also possible to derive equations that relate the speed of the joints to speed in Cartesian space. Like for wheeled platforms, this can be achieved via a Jacobian matrix.  At certain positions, the mapping provided by the Jacobian is not invertible, i.e., some velocities in Cartesian space are unachievable. These points are called singularities.
 
-In oder to use the DH-convention, we first need to define a coordinate system at each joint. We chose the z-axis to be the axis of rotation for a hinge joint and the axis of translation for a prismatic joint. We can now find the common normal between the z-axes of two subsequent joints, i.e., a line that is orthogonal to each z-axis and intersects both. With the direction of the x-axis at the base arbitrary, subsequent x-axis are chosen such that they lie on the common normal shared between two joints. Whereas the direction of the z-axis is given by the positive direction of rotation, the x-axis points away from the previous joint. This allows defining the y-axis using the right-hand rule. Note that these rules, in particular the requirement that $x$-axes lie along the commom normal, might result in coordinate systems with their origins outside the joint. %Rather, the origin of joint $n$ is at the intersection of   
+\screencast{http://youtu.be/rA9tm0gTln8}{denavithartenberg}
+In oder to use the DH-convention, we first need to define a coordinate system at each joint. We chose the z-axis to be the axis of rotation for a hinge joint and the axis of translation for a prismatic joint. We can now find the common normal between the z-axes of two subsequent joints, i.e., a line that is orthogonal to each z-axis and intersects both. With the direction of the x-axis at the base arbitrary, subsequent x-axis are chosen such that they lie on the common normal shared between two joints. Whereas the direction of the z-axis is given by the positive direction of rotation (right hand rule), the x-axis points away from the previous joint. This allows defining the y-axis using the right-hand rule. Note that these rules, in particular the requirement that $x$-axes lie along the commom normal, might result in coordinate systems with their origins outside the joint. %Rather, the origin of joint $n$ is at the intersection of   
 
 The transformation between two joints is then fully described by the following four parameters:
 \begin{enumerate}
 \item the length $ r$ of the common normal between the $z$-axes of two joints $i$ and $i-1$ (link length)
-\item The angle $ \alpha$ between the axis of the two joints with respect to the common normal (link twist), i.e., the angle between the old and the new $z$-axis, measured about the common normal.
+\item The angle $ \alpha$ between the z-axes of the two joints with respect to the common normal (link twist), i.e., the angle between the old and the new $z$-axis, measured about the common normal.
 \item The distance $d$ between the joint axes (link offset), i.e., the offset along the previous $z$-axis to the common normal.
 \item The rotation $ \theta$ around the common axis along which the link offset is measured (joint angle), i.e., the angle from the old $x$-axis to the new $x$-axis, about the previous $z$-axis.
 \end{enumerate}
 
-Two of the D-H parameters describe the link between the joints, and the other two describe the link's connection to a neighboring link. Depending on the link/joint type, these numbers are fixed or can be controlled. For example, in a revolute joint $ \theta$ is the varying joint angle, while all other quantities are fixed.  Similarly, for a prismatic joint $ d$ is the joint variable.
+Two of the D-H parameters describe the link between the joints, and the other two describe the link's connection to a neighboring link. Depending on the link/joint type, these numbers are fixed or can be controlled. For example, in a revolute joint $ \theta$ is the varying joint angle, while all other quantities are fixed.  Similarly, for a prismatic joint $ d$ is the joint variable. An example of two revolute joints is shown in Figure \ref{fig:denavit}.
+
+\begin{figure}
+	\centering
+		\includegraphics[width=\textwidth]{figs/denavit-hartenberg}
+	\caption{Example of selected Denavit-Hartenberg parameters for three revolute joints. The z-axes of joint $i$ and $i+1$ are parallel.
+	\label{fig:denavit}}
+\end{figure}
+
+
 
 The coordinate transform from one link ($ i-1$) to another ($i$) can now be constructed  using the following matrix:
 \begin{eqnarray}{ll}
@@ -137,7 +147,9 @@ v=\left(\begin{array}{c}
 \end{equation}
 
 This notation is also called a \emph{velocity screw}.\index{Screw (velocity)}\index{Velocity Screw} %By convention, the speed of rotation is given by the magnitude (or length) of this vector. 
-We can now write translational and rotational velocities in a 6x1 vector as $ (v \quad \omega)^T$. Given a relationship between end-effector velocities and joint velocities $J$, we can write
+We can now write translational and rotational velocities in a 6x1 vector as $ (v \quad \omega)^T$. Let the joint angles/positions be $j=(j_1, \ldots, j_n)$.
+
+Given a relationship between end-effector velocities $\dot{j}$ and joint velocities $J$, we can write
 \begin{equation}
  (v \quad \omega)^T=J(\dot{j}_1,\ldots,\dot{j}_n)^T
 \end{equation}
@@ -147,6 +159,8 @@ with $ n$ the number of joints. $J$ is also known as the Jacobian matrix \index{
 \begin{equation}
 \left(\begin{array}{c}v\\\omega\end{array}\right)=\left(\begin{array}{ccc}\frac{\partial{x}}{\partial{j_1}} & \ldots & \frac{\partial{x}}{\partial{j_n}}\\\vdots & \quad & \vdots\\\frac{\partial{\omega_z}}{\partial{j_1}} & \ldots & \frac{\partial{\omega_z}}{\partial{j_n}}\end{array}\right)(j_1,\ldots,j_n)^T
 \end{equation}
+
+This notation is important as it tells us how small changes in the joint space will affect the end-effector's position in cartesian space. Better yet, the forward kinematics of a mechanism can always be calculated, as well as their analytical derivatives, allowing us to calculate numerical values for the entries of matrix $J$ for every possible joint angle/position.
 
 It would now be desirable to just invert $J$ in order to calculate the necessary joint speeds for every desired end-effector speeds. Unfortunately, $ J$ is only invertible if there are exactly 6 independent joints, so that $ J$ is quadratic and has full rank. If this is not the case, we can use the pseudo-inverse instead:
 \begin{equation}
