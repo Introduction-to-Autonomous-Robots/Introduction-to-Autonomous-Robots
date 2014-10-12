@@ -139,11 +139,13 @@ Although sampling-based path planners can drastically speed up the time to find 
 
 \section*{Exercises}\small
 \begin{enumerate}
-\item Assuming points are sample uniformly at random, calculate the limiting behaviour of the following ratio   (number of points in tree)/(number of points sampled) as the number of points sampled goes to infinity. Assume the total area and the area of free space within are known. 
+\item How does the computational complexity of Dijkstra's algorithm change when moving from 2D to 3D search spaces?
+\item A* uses a ``heuristic'' to bias the search in the expected direction of the goal. Why can it only use a heuristic, not the actual length?
+\item Assuming points are sampled uniformly at random in a randomized planning algorithm. Calculate the limiting behaviour of the following ratio   (number of points in tree)/(number of points sampled) as the number of points sampled goes to infinity. Assume the total area $A_{total}$ and the area of free space $A_{free}$ within are known. 
 
-\item Assuming a kd-tree is used as a nearest-neighbour data structure, and points are sample uniformly at random, calculate the  run-time of a single iteration of RRT.
+\item Assuming a kd-tree is used as a nearest-neighbour data structure, and points are sample uniformly at random, calculate the  run-time of inserting a point into a tree of size $N$. Use ``big-Oh'' notation, e.g. $\mathcal{O}(N)$.
 
-\item What other practical runtime concerns must one consider besides $\mathcal{O}(n)$ runtime when doing sampling based motion planning? Can you suggest ways to deal with these other concerns?
+\item What other practical runtime concerns must one consider besides computational complexity alone when doing sampling based motion planning? Can you suggest ways to deal with these other concerns?
 \end{enumerate}
 
 \normalsize
