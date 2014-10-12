@@ -26,7 +26,7 @@ Although the above taxonomy serves as an initial rough classification, the defin
 \begin{figure}
 	\centering
 		\includegraphics[width=0.8\textwidth]{figs/todd85.png}
-	\caption{Power consumption vs.\ speed for various means of locomotion. From: Todd, D.J. Walking Machines: An Introduction to Legged robots. London, Kogan Page Ltd., 1985}
+	\caption{Power consumption vs.\ speed for various means of locomotion. From \protect\citeasnoun{todd1985walking}.}
 	\label{fig:todd}
 \end{figure}
 
@@ -88,7 +88,7 @@ Spherical wheel \includegraphics[width=2.5cm]{figs/wheeltype_spherical.png}& Bal
 \end{compactitem}\\
 \hline
 \end{tabular}
-\caption{Different types of wheels and their degrees of freedom.\label{tab:wheels}}
+\caption{Different types of wheels and their degrees of freedom. Adopted from \protect\citeasnoun{siegwart2011introduction},\label{tab:wheels}}
 \end{table}
 
 Only robots that use exclusively wheels with three degrees-of-freedom (3-DOF wheels) will be able to freely move on a plane. This is because the pose of a robot on a plane is fully given by its position (two values) and its orientation (one value). More precisely, assuming that the plane is spanned by an X-Y coordinate system, and the Z-axis sticking up, the robot's position is given by its X and Y position and its rotation around the Z-axis. Robots that don't have wheels with three degrees of freedom will have \emph{kinematic constraints}\index{Kinematic constraints} that prevent them from reaching every possible point at every possible orientation. A good analogue are figures on a chess-board. For example, a knight can reach every cell on a chess-board but might require multiple moves to do so. This is similar to a car, which can parallel park using back-and-forth motions. Instead, a bishop can only reach either black or white fields on the board. This is equivalent to a robot, which has non-steerable standard wheels and can only reach a sub-set of the environment without skidding.
@@ -123,7 +123,7 @@ Choosing the ``right'' kinematics is a trade-off between mechanical complexity, 
 
 \section*{Exercises}\small
 \begin{enumerate}
-\item What are the degrees of freedom of a lawnmower? Why are you still able to mow your entire lawn?
+\item What are the degrees of freedom of a lawnmower with four standard wheels? Why are you still able to mow your entire lawn?
 \item Is a car statically or dynamically stable? What about a Segway?
 \item What are the degrees of freedom of an office chair with all caster-wheels?
 \item What are the maximum degrees of freedom for objects driving on the plane?
