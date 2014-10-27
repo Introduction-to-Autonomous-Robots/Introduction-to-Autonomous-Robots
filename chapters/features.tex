@@ -1,5 +1,5 @@
 \chapter{Feature extraction}\label{chap:feature_extraction}
-Key primitives in a vision system are low-level filters, such as convolution with Gaussian or edge filters. These filters turn images into maps that indicate the presence of certain frequencies and colors, or help in suppressing unwanted information. A next step before arriving at semantic information such as ``this is a cup'' and ``this is a horse'' is identifying higher-level features that consist of some combination of frequency and color information. 
+Key primitives in a vision system are low-level filters, such as convolution with Gaussian or edge filters. These filters turn images into maps that indicate the presence of certain frequencies and colors, or help in suppressing unwanted information. A next step before arriving at semantic information such as ``this is a cup'' or ``this is a horse'', is identifying higher-level features that consist of some combination of frequency and color information. 
 
 The goal of this chapter is to introduce a series of standard feature detectors such as the 
 \begin{itemize}
@@ -47,7 +47,7 @@ Here, we square each individual error to account for the fact that a negative er
 \frac{\partial{S}}{\partial{\alpha}}=0 \qquad \frac{\partial{S}}{\partial{r}}=0
 \end{equation}
 
-Here, the symbol $ \partial$ indicates that we are taking a partial derivative. Solving for $r$ and $\alpha$ is involved, but possible:
+Here, the symbol $ \partial$ indicates that we are taking a partial derivative. Solving for $r$ and $\alpha$ is involved, but possible \cite{siegwart2011introduction}:
 
 \begin{equation}
 \alpha=\frac{1}{2}atan2\left(\frac{\sum{\rho_i^2 sin 2\theta_i}-\frac{2}{i}\sum{\sum{\rho_i,\rho_j cos \theta_i sin \theta_j}}}{\sum{\rho_i^2 cos 2 \theta_i - \frac{1}{i}\sum{\sum{\rho_i \rho_j cos(\theta_i+\theta_j)}}}}\right)
@@ -58,24 +58,43 @@ and
 r=\frac{\sum \rho_i cos (\theta_i-\alpha)}{i}
 \end{equation}
 
-We can therefore calculate the distance and orientation of a wall captured by our proximity sensors relative to the robot's positions or the height and orientation of a line in an image --- for example the wall of the Ratslife arena --- based on a collection of points that we believe might belong to a line.
+We can therefore calculate the distance and orientation of a wall captured by our proximity sensors relative to the robot's positions or the height and orientation of a line in an image based on a collection of points that we believe might belong to a line.
 
 This approach is known as the \emph{least-square method}\index{Least-Square Method (Line fitting)} and can be used to fit data to any parametric model. The general approach is to describe the fit between the data and the model in terms of an error. The best fit will minimize this function, which will therefore have a zero derivative at this point. If the result cannot be obtained analytically as in this example, numerical methods have to be used to find the best fit that minimizes the quadratic error.
 
 \subsection{Split-and-merge algorithm}
-A key problem with this approach is that it is often unclear how many lines there are and where a line starts and where it ends. Looking through the camera, for example, we will see vertical lines corresponding to wall corners and horizontal ones that correspond to wall-floor intersections and the horizon; using a proximity sensor, the robot might detect a corner. We therefore need an algorithm that can separate point clouds into multiple lines. One possible approach is to find the outlier with the strongest deviation from a fitted line and split the line at this point. This can be done iteratively until each line has no outliers above a certain threshold. 
+A key problem with this approach is that it is often unclear how many lines there are and where a line starts and where it ends. Looking through the camera, for example, we will see vertical lines corresponding to wall corners and horizontal ones that correspond to wall-floor intersections and the horizon; using a distance sensor, the robot might detect a corner. We therefore need an algorithm that can separate point clouds into multiple lines. One possible approach is to find the outlier with the strongest deviation from a fitted line and split the line at this point. This is illustrated in Figure \ref{fig:splitandmerge}. This can be done iteratively until each line has no outliers above a certain threshold. 
 
-\subsection{RANSAC: Random Sample Consensus}
-If the number of ``outliers'' are large, a least square fit will generate poor results as it will generate the ``best'' fit that accomodates both ``inliers'' and"outliers''. Also, split-and-merge algorithms will fail as they are extremely susceptive to noise: depending on the actual parameters every outlier will split a potential line into two. A solution to this problem is to randomly sample possible lines and keep those that satisfy a certain desired quality given by the number of points being somewhat close to the best fit. In practice, these are two parameters of the algorithm, namely the number of points required to consider a fit a valid line, and the maximum $ d_i$ from a line to consider a point an inlier and not an outlier. The algorithm proceeds as follows: select two random points from the set and connect them with a line. Grow this line by $ d_i$ in both directions and count the number of inliers. Repeat this until one or more lines that have sufficient number of inliers are found, or a maximum number of iterations are reached.
+\begin{figure}
+\includegraphics[width=\textwidth]{figs/splitandmerge}
+\caption{Split-and-merge algorithm. Initial least-square fit of a line (left). Splitting the data-set at the point with the highest error (after picking a direction) allows fitting two lines with overall lesser error.\label{fig:splitandmerge}} 
+\end{figure}
+
+\subsection{RANSAC: Random Sample and Consensus}
+If the number of ``outliers'' are large, a least square fit will generate poor results as it will generate the ``best'' fit that accomodates both ``inliers'' and ``outliers''. Also, split-and-merge algorithms will fail as they are extremely susceptive to noise: depending on the actual parameters every outlier will split a potential line into two. A solution to this problem is to randomly sample possible lines and keep those that satisfy a certain desired quality given by the number of points being somewhat close to the best fit. This is illustrated in Figure \ref{fig:ransac}, with darker lines corresponding to better fits. RANSAC\index{RANSAC}\index{Random Sample and Consensus} usually requires two parameters, namely the number of points required to consider a line to be a valid fit, and the maximum $d_i$ from a line to consider a point an inlier and not an outlier. The algorithm proceeds as follows: select two random points from the set and connect them with a line. Grow this line by $d_i$ in both directions and count the number of inliers. Repeat this until one or more lines that have sufficient number of inliers are found, or a maximum number of iterations are reached.
+
+\begin{figure}
+\center
+\includegraphics[width=0.6\textwidth]{figs/ransac}
+\caption{Random Sample and Consensus (RANSAC). Random lines are evaluated by counting the number of points close by (''inliers''), darker lines are better fits.\label{fig:ransac}} 
+\end{figure}
 
 The RANSAC algorithm is fairly easy to understand in the line fitting application, but can be used to fit arbitrary parametric models to any-dimensional data. Here, its main strength is to cope with noisy data.
 
+Given that RANSAC is random, finding a really good fit will take quite some time. Therefore, RANSAC is usually used only as a first step to get an initial estimate, which can then be improved by some kind of local optimization, such as least-squares, e.g.
+
 \subsection{The Hough Transform}
-The Hough transform \index{Hough transform} can best be understood as a voting scheme to guess the parametrization of a feature such as a line. For example, a line might be represented by $y=mx+c$, where $m$ and $c$ are the gradient and offset. A point in this parameter space (or ``Hough-space'') then corresponds to a specific line in $x-y$-space (or ``image-space''). The Hough-transform now proceeds as follows: for every pixel in the image that could be part of a line, e.g., white pixels in a thresholded image after Sobel filtering, construct all possible lines that intersect this point. (Drawing an image of this would like a star). Each of these lines has a specifc $m$ and $c$ associated with it, for which we can add a white dot in Hough-space. Continuing to do this for every pixel of a line in an image will yield many $m-c$ pair, but only one that is common among all those pixels of the line in the image: the actual $m-c$ parameters of this line. Thinking about the number of times a point was highlighted in Hough-space as brightness, will turn a line in image space into a bright spot in Hough-space (and the other way round). In practice, a polar representation is chosen for lines. The Hough transform also generalizes to other parametrizations such as circles.  
+The Hough transform \index{Hough transform} can best be understood as a voting scheme to guess the parametrization of a feature such as a line, circle or other curve \cite{duda1972use}. For example, a line might be represented by $y=mx+c$, where $m$ and $c$ are the gradient and offset. A point in this parameter space (or ``Hough-space'') then corresponds to a specific line in $x-y$-space (or ``image-space''). The Hough-transform now proceeds as follows: for every pixel in the image that could be part of a line, e.g., white pixels in a thresholded image after Sobel filtering, construct all possible lines that intersect this point. (Drawing an image of this would look like a star). Each of these lines has a specifc $m$ and $c$ associated with it, for which we can add a white dot in Hough-space. Continuing to do this for every pixel of a line in an image will yield many $m-c$ pair, but only one that is common among all those pixels of the line in the image: the actual $m-c$ parameters of this line. Thinking about the number of times a point was highlighted in Hough-space as brightness, will turn a line in image space into a bright spot in Hough-space (and the other way round). In practice, a polar representation is chosen for lines. This is shown in Figure \ref{fig:hough}. The Hough transform also generalizes to other parametrization such as circles.  
+
+\begin{figure}
+\center
+\includegraphics[width=\textwidth]{figs/houghtransform}
+\caption{Lines in an image (left) transposed into Hough-space $\rho$ (distance from origin) and $\theta$ (angle of normal with respect to origin). Bright spots in the Hough image (right) correspond to parameters that have received the most ``votes'' and clearly show the two lines at around 90$^o$ and 180$^o$.\label{fig:hough}} 
+\end{figure}
 
 
 \section{Scale-Invariant Feature Transforms}
-Scale-invariant feature transforms are a class of algorithms/signal-processing techniques that allow to extract features that are easily detectable across different scales (or distances to an object), independent of their rotation, and to some extent robust to affine transformations, i.e., views of the same object from different perspectives, and illumination changes. The most prominent in this class is the SIFT algorithm, which however has lost popularity due to closed-source and licensing cost, and has been replaced in the past with SURF (Speed-Up Robust Feature) and many others,  which are freely available and have slightly differen performance. As the math behind SURF is more involved, we focus on the intuition behind SIFT and encourage the reader to download and play with the various open-source implementations of other feature detectors that are available open source.
+Scale-invariant feature transforms are a class of algorithms/signal-processing techniques that allow to extract features that are easily detectable across different scales (or distances to an object), independent of their rotation, and to some extent robust to affine transformations, i.e., views of the same object from different perspectives, and illumination changes. The most prominent in this class is the SIFT algorithm \cite{lowe1999object},\index{SIFT} which however has lost popularity due to closed-source and licensing cost, and has been replaced in the past with SURF (Speed-Up Robust Feature)\index{SURF} and many others,  which are freely available and have slightly different performance and varying use cases. As the math behind SURF is more involved, we focus on the intuition behind SIFT and encourage the reader to download and play with the various open-source implementations of other feature detectors that are available open source.
 
 \subsection{Overview}
 SIFT proceeds in multiple steps. Descriptions of the algorithm often include its application to object recognition, but these algorithms are independent of feature generation (see below).
@@ -108,7 +127,7 @@ SIFT proceeds in multiple steps. Descriptions of the algorithm often include its
 The resulting 128 dimensional feature vectors are now scale-invariant (due to step 2), rotation-invariant (due to step 5), and robust to illumination changes (due to step 7).
 
 \subsection{Object Recognition using scale-invariant features}
-Scale-invariant features of training images can be stored in a database and can be used to identify these objects in the future. This is done by finding all features in an image and comparing them with those in the database. This comparison is done by using the Euclidian distance as metric and search a k-d tree (with d=128). In order to make this approach robust, each object needs to be identified by at least 3 independent features. For this, each descriptor stores the location, scale and orientation of it relative to some common point on the object. This allows each detected feature to ``vote'' for the position of the object that it is most closely associated with in the database.  This is done using a Hough-transform. For example, position (2 dimensions) and orientation (1 dimension) can be discretized into bins (30 degree width for orientation); bright spots in Hough-space then correspond to an object pose that has been identified by multiple features.
+Scale-invariant features of training images can be stored in a database and can be used to identify these objects in the future. This is done by finding all features in an image and comparing them with those in the database. This comparison is done by using the Euclidian distance as metric and searching a k-d tree (with d=128). In order to make this approach robust, each object needs to be identified by at least 3 independent features. For this, each descriptor stores the location, scale and orientation of it relative to some common point on the object. This allows each detected feature to ``vote'' for the position of the object that it is most closely associated with in the database.  This is done using a Hough-transform. For example, position (2 dimensions) and orientation (1 dimension) can be discretized into bins (30 degree width for orientation); bright spots in Hough-space then correspond to an object pose that has been identified by multiple features.
 
 \section*{Take-home lessons}
 \begin{enumerate}
@@ -123,5 +142,9 @@ Scale-invariant features of training images can be stored in a database and can 
 \item Think about what information would make good features in different operating scenarios: a supermarket, a warehouse, a cave. 
 \item What other features could you detect using a Hough transform? Can you find parameterizations for a circle, a square or a triangle?
 \item Do an online search for SIFT. What other similar feature detectors can you find? Which provide source code that you can use online?
+\item A line can be represented by the function $y=mx+c$. Then, the Hough-space is given by a 2D coordinate system spanned by $m$ and $c$.\begin{enumerate}
+\item Think about a line representation in polar coordinates. What components has the Hough-space in this case?
+\item Derive a parameterization for a circle and describe the resulting Hough space.
+\end{enumerate}
 \end{enumerate}
 \normalsize
