@@ -49,13 +49,13 @@ Here, we square each individual error to account for the fact that a negative er
 
 Here, the symbol $ \partial$ indicates that we are taking a partial derivative. Solving for $r$ and $\alpha$ is involved, but possible \cite{siegwart2011introduction}:
 
-\begin{equation}
+\begin{equation}\label{eq:linealpha}
 \alpha=\frac{1}{2}atan2\left(\frac{\sum{\rho_i^2 sin 2\theta_i}-\frac{2}{i}\sum{\sum{\rho_i,\rho_j cos \theta_i sin \theta_j}}}{\sum{\rho_i^2 cos 2 \theta_i - \frac{1}{i}\sum{\sum{\rho_i \rho_j cos(\theta_i+\theta_j)}}}}\right)
 \end{equation}
 
 and
-\begin{equation}
-r=\frac{\sum \rho_i cos (\theta_i-\alpha)}{i}
+\begin{equation}\label{eq:liner}
+r=\frac{\sum \rho_i cos (\theta_i-\alpha)}{\sum i}
 \end{equation}
 
 We can therefore calculate the distance and orientation of a wall captured by our proximity sensors relative to the robot's positions or the height and orientation of a line in an image based on a collection of points that we believe might belong to a line.

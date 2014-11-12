@@ -38,7 +38,7 @@ In case $\mathbf{y}=f(\mathbf{x})$ is a multivariable function that maps $n$ inp
 where $\Sigma^X$ and $\Sigma^Y$ are the covariance matrices holding the variances of the input and output variables, respectively, and $J$ is a $m$x$n$ \emph{Jacobian} matrix, which holds the partial derivatives $\frac{\partial f_i}{\partial x_j}$. As $J$ has $n$ columns, each row contains partial derivatives with respect to $x_1$ to $x_n$.
 
 \subsection{Example: Line Fitting}\label{sec:linefitting}
-Lets consider an example of estimating angle $ \alpha$ and distance $ r$ of a line from a set of points given by $ (\rho_i,\theta_i)$. We can now express the relationship of changes of a variable such as $ \rho_i$ to changes in $ \alpha$ by
+Lets consider an example of estimating angle $ \alpha$ and distance $ r$ of a line from a set of points given by $ (\rho_i,\theta_i)$ using Equations \ref{eq:linealpha}--\ref{eq:liner}. We can now express the relationship of changes of a variable such as $ \rho_i$ to changes in $ \alpha$ by
 \begin{equation}
 \frac{\partial \alpha}{\partial \rho_i}
 \end{equation}
