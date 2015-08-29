@@ -1,11 +1,12 @@
 \chapter{Forward and Inverse Kinematics}\label{chap:kinematics}
-In order to plan a robot's movements, we have to understand the relationship between the actuators that we can control and the robot's resulting position in the environment. For static arms, this is rather straightforward: if we know the position/angle of each joint, we can calculate the position of its end-effectors using trigonometry. This process is known as \emph{forward kinematics}. \index{Forward Kinematics} If we want to calculate the position each joint needs to be at, we need to invert this relationship. This is known as inverse kinematics. \index{Inverse Kinematics}
+In order to plan a robot's movements, we have to understand the relationship between the actuators that we can control and the robot's resulting position in the environment. For static arms, this is rather straightforward: if we know the position/angle of each joint, we can calculate the position of its end-effectors using trigonometry. This process is known as \emph{forward kinematics}. \index{Forward Kinematics} If we want to calculate the position each joint needs to be at, we need to invert this relationship. This is known as inverse kinematics. \index{Inverse Kinematics} For mobile robots, this process is usually more involved, as speeds need to be integrated, which we refer to as \emph{odometry}\index{Odometry}.
 
 The goals of this chapter are:
 
 \begin{itemize}
 \item introduce coordinate systems and their transformations,
-\item to introduce the forward kinematics of mobile robots and simple arms,
+\item to introduce the forward kinematics of simple arms and mobile robots
+\item understand the concept of holonomy,
 \item show how solutions for the inverse kinematics for both static and mobile robots can be derived,
 \item provide an intuition on the relationship between inverse kinematics and path-planning.
 \end{itemize}
@@ -43,7 +44,7 @@ More formally, $^AP$ is a linear combination of the three basis vectors that spa
 \end{equation}
 
 \screencast{http://youtu.be/QdHO_9M8-UI}{frameofreference}
-As we know, not only the position of the robot is important, but also its orientation. In order to describe the orientation of a point, we will attach a coordinate system to it. Let $ \hat{X}_B, \hat{Y}_B$ and $ \hat{Z}_B$ be unit vectors that correspond to the principal axes of a coordinate system $\{B\}$. When expressed in coordinate system $\{A\}$, they are denoted $^A\hat{X}_B, ^A\hat{Y}_B$ and $ ^A\hat{Z}_B$. In order to express a vector that is given in one coordinate system in another, we need to project each of its components to the unit vectors that span the target coordinate system. For example
+As we know, not only the position of the robot is important, but also its orientation. In order to describe the orientation of a point, we will attach a coordinate system to it. Let $ \hat{X}_B, \hat{Y}_B$ and $ \hat{Z}_B$ be unit vectors that correspond to the principal axes of a coordinate system $\{B\}$. When expressed in coordinate system $\{A\}$, they are denoted $^A\hat{X}_B, ^A\hat{Y}_B$ and $ ^A\hat{Z}_B$. In order to express a vector that is given in one coordinate system in another, we need to project each of its components to the unit vectors that span the target coordinate system. For example considering only the axis $^A\hat{X}_B$
 
 \begin{equation}\label{eq:projection}
 ^A\hat{X}_B=(\hat{X}_B\cdot\hat{X}_A, \hat{X}_B\cdot\hat{Y}_A,\hat{X}_B\cdot\hat{Z}_A)^T
@@ -52,8 +53,9 @@ consists of the projections of $\hat{X}_B$ onto $\hat{X}_A$, $\hat{Y}_A$ and $\h
 
 \begin{figure}
 	\centering
-		\includegraphics[width=\textwidth]{figs/projection.png}
-	\caption{The projection of the unit vector $\hat{X}_B$ onto the unit vectors that span coordinate system $\{A\}$. As all vectors are unit vectors, $A\cdot B=\|A\|\|B\|\cos \alpha=\cos \alpha$. For clarity, only $\hat{X}_B$ of coordinate system $\{B\}$ is shown. }
+		\includegraphics[width=0.8\textwidth]{figs/projection.png}
+	\caption{Top: A coordinate system $\{B\}$ with position given by $^AP$ and orientation given by $\hat{X}_B$, $\hat{Y}_B$, and $\hat{Z}_B$. Bottom: 
+	The projection of the unit vector $\hat{X}_B$ onto the unit vectors that span coordinate system $\{A\}$ after moving $\{B\}$ into the origin of $\{A\}$. As all vectors are unit vectors, $A\cdot B=\|A\|\|B\|\cos \alpha=\cos \alpha$. }
 	\label{fig:projection}
 \end{figure}
 

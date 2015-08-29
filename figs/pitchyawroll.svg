@@ -184,7 +184,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.86829407"
-     inkscape:cx="357.33743"
+     inkscape:cx="336.03129"
      inkscape:cy="847.40019"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -212,7 +212,9 @@
      id="layer1">
     <g
        id="g8133"
-       transform="translate(119.77509,-3.4550507)">
+       transform="translate(119.77509,-3.4550507)"
+       inkscape:export-xdpi="300.09723"
+       inkscape:export-ydpi="300.09723">
       <path
          sodipodi:nodetypes="csssssssccsssscsssccccssssssssscccsssssssscscscsssscsssscscsssssssscssccccscsscccccscsccssssscscccsssccsscssccsscssccssssssssssssscsssccssscsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssscccsssssssssscssscssssssssssssssscssscsssssscssscssssssscssssssssssssssssscsssssssssscsssssssscsssssssssssssssssssssssssssssssssssscssssssssssssssssssssssscsscsssssssssssssssscsssssscsccsscccssscccscsscccsssscsscssccsccssccscsscsscsssssssccscssscssccscssssscsssssscssscscscsccscssssssssscccssssscsssccscsssccscccsscccssssssccscsccssccsssssscssscccsssscscsscccscsssscscsscsscccsssssscsssscssscsscccsscsscssscsssssccc"
          inkscape:connector-curvature="0"
