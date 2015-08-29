@@ -8,20 +8,11 @@ Autonomous robots are systems that sense, actuate, compute, and communicate. Act
 \end{itemize}
 
 \section{Locomotion and Manipulation Examples}
-Locomotion includes very different concepts of motion including rolling, walking, running, jumping, sliding (undulatory locomotion), crawling, climbing, swimming, and flying. Although walking, running, jumping, crawling and climbing seem to be very similar concepts at first sight, they are drastically different in terms of energy consumption, kinematics, stability, and capabilities required by the robot that implements them. The way in which the individual parts of a robot can move with respect to each other and the environment is called the \emph{kinematics}\index{Kinematics} of the robot. Kinematics are only concerned with the position and speed (first derivative of position) of those parts, but not its \emph{dynamics}, which include acceleration (second derivative of position) and jerk (third derivative of position).
-%Examples include:
-%
-%\begin{itemize}
-%\item Walking: Honda's ASIMO (2-legged) and Sony's AIBO.
-%\item Running: Boston Dynamics' Athlete robot (2-legged) Big Dog (4-legged).
-%\item Jumping: EPFL's Micro-gliders
-%\item Sliding:  EPFL's Salamandra robot
-%\item Crawling: Harvard's mesh worm
-%\item Climbing: Stanford's StickyBot
-%\item Swimming: FESTO's AquaJelly, MIT's AMOUR robot, and various robotic fish.
-%\end{itemize}
+Locomotion includes very different concepts of motion including rolling, walking, running, jumping, sliding (undulatory locomotion), crawling, climbing, swimming, and flying. They are drastically different in terms of energy consumption, kinematics, stability, and capabilities required by the robot that implements them. Yet, the above definitions are loose and ambiguous: for example, ``swimming'' can be done using many different forms of propulsion systems. Similarly, a sliding motion on the ground might result into swimming with only few modifications.
 
-Although the above taxonomy serves as an initial rough classification, the definitions are loose and ambiguous: for example, ``swimming'' can be done using many different forms of propulsion systems. Similarly, a sliding motion on the ground might result into swimming with only few modifications. Commercially, the most dominant form of locomotion is rolling. This is due to the fact that rolling provides by far the most efficient energy-speed ratio (Figure \ref{fig:todd}), making the invention of the wheel one of the greatest technological breakthroughs in history. Consequently, humans have modified their environment to have smooth surfaces of large extent such as the road network, but also warehouse and residential floors. In contrast, evolution has not evolved a single animal with wheel-like actuators.
+The way in which the individual parts of a robot can move with respect to each other and the environment is called the \emph{kinematics}\index{Kinematics} of the robot. Kinematics are only concerned with the position and speed (first derivative of position) of those parts, but not its \emph{dynamics}, which include acceleration (second derivative of position) and jerk (third derivative of position).
+
+Commercially, the most dominant form of locomotion is rolling. This is due to the fact that rolling provides by far the most efficient energy-speed ratio (Figure \ref{fig:todd}), making the invention of the wheel one of the greatest technological breakthroughs in history. Consequently, humans have modified their environment to have smooth surfaces of large extent such as the road network, but also warehouse and residential floors. In contrast, evolution has not evolved a single animal with wheel-like actuators.
 
 \begin{figure}
 	\centering
@@ -36,7 +27,7 @@ Although the above taxonomy serves as an initial rough classification, the defin
 
 Due to the dominance of rolling robots, the electric motor is among the most popular actuators. Except for the stepper motor, which uses large electromagnets to rotate an internal spindle by a few degrees every time, the physics of the electrical motor requires it to revolve at very high speeds (multiple thousand rotations per minute). Therefore, motors are almost always used in conjunction with gears to reduce the speed and increase the torque, that is the force that the motor can exert to rotate an axis. In order to be able to measure the number of revolutions and the axis' position, motors are also often combined with rotary encoders. Motors that combine an electric motor with a gear-box, encoder, and controller to move toward desired position are known as servo motors, and are popular among hobbyists. Another popular class of actuator, in particular for legged robots, are linear actuators, that might exist in electric, pneumatic or hydraulic form. Finally, there exist a wide array of specialty actuators such as Shape-Memory Alloys, Electroactive Polymers or Piezo-elements, which often allow for extreme miniaturization, but do not provide attractive energy-to-force ratios and are difficult to control.
 
-Most actuators (and mechanisms) capable of locomotion can also be used for manipulation with only minor modifications. Most industrial manipulators consist of a chain of rotary actuators that are connected by links. Most industrial robots have six or more independently rotating axes. We will see why further down below. Modern industrial manipulators have the ability to not only control the position of each of its joints, but precisely control the torque and force at each individual joint, making the arm arbitrary compliant, which is the inverse of stiffness in a mechanical sense. For dexterous manipulation a robot does not only need an arm, but also a gripper or hand. Grasping is a hard problem and deserves its own chapter. 
+Most actuators (and mechanisms) capable of locomotion can also be used for manipulation with only minor modifications. Most industrial manipulators consist of a chain of rotary actuators that are connected by links. Most industrial robots have six or more independently rotating axes. We will see why further down below. Modern industrial manipulators have the ability to not only control the position of each of its joints, but precisely control the torque and force at each individual joint, making the arm arbitrary compliant, which is the inverse of stiffness in a mechanical sense. For dexterous manipulation a robot does not only need an arm, but also a gripper or hand. Grasping is a hard problem on its own and deserves its own chapter. 
 
 %This lecture focuses on the kinematics of simple mechanisms. Understanding the duality between locomotion and manipulation is important, however, to better introduce (and understand) concepts such as reference frames and forward kinematics.
 
@@ -54,7 +45,16 @@ An example of a robot that has both statically and dynamically stable configurat
 
 
 \section{Degrees-of-Freedom}\label{sec:dof}
-The concept of \emph{degrees-of-freedom}\index{Degree of freedom}, often abbreviated as DOF, is important for defining the possible positions and orientations a robot can reach. An object in the physical world can have up to six degrees of freedom, namely forward/backward, sideways, and up/down as well as rotations around those axes. How many of those directions a robot can move in is not always intuitive and requires more rigorous mathematical treatment (Chapter \ref{chap:kinematics}). The goal of this chapter is to introduce the degrees of freedom of standard mechanisms that are recurrent in robot design such as wheels or simple arms. For wheeled platforms, the degrees-of-freedom are defined by the types of wheels used and their orientation. Common wheel types are listed in Table \ref{tab:wheels}.
+The concept of \emph{degrees-of-freedom}\index{Degree of freedom}, often abbreviated as DOF, is important for defining the possible positions and orientations a robot can reach. An object in the physical world can have up to six degrees of freedom, namely forward/backward, sideways, and up/down as well as rotations around those axes. These rotations are known as pitch, yaw and roll and are illustrated in Figure \ref{fig:pitchyawandroll}. 
+
+\begin{figure}
+	\centering
+		\includegraphics[width=\textwidth]{figs/pitchyawroll.png}
+	\caption{Pitch, yaw and roll around the principal axis of an airplane.}
+	\label{fig:pitchyawandroll}
+\end{figure}
+
+How many of those directions a robot can move in depends on the configuration of its actuators and the constraints the robot has with the environment. These relationships are not always intuitive and require more rigorous mathematical treatment (Chapter \ref{chap:kinematics}). The goal of this section is to introduce the degrees of freedom of standard mechanisms that are recurrent in robot design such as wheels or simple arms. For wheeled platforms, the degrees-of-freedom are defined by the types of wheels used and their orientation. Common wheel types are listed in Table \ref{tab:wheels}.
 
 \begin{table}
 \begin{tabular}{p{2.8cm}p{3cm}p{4cm}}
@@ -91,21 +91,22 @@ Spherical wheel \includegraphics[width=2.5cm]{figs/wheeltype_spherical.png}& Bal
 \caption{Different types of wheels and their degrees of freedom. Adopted from \protect\citeasnoun{siegwart2011introduction},\label{tab:wheels}}
 \end{table}
 
-Only robots that use exclusively wheels with three degrees-of-freedom (3-DOF wheels) will be able to freely move on a plane. This is because the pose of a robot on a plane is fully given by its position (two values) and its orientation (one value). More precisely, assuming that the plane is spanned by an X-Y coordinate system, and the Z-axis sticking up, the robot's position is given by its X and Y position and its rotation around the Z-axis. Robots that don't have wheels with three degrees of freedom will have \emph{kinematic constraints}\index{Kinematic constraints} that prevent them from reaching every possible point at every possible orientation. A good analogue are figures on a chess-board. For example, a knight can reach every cell on a chess-board but might require multiple moves to do so. This is similar to a car, which can parallel park using back-and-forth motions. Instead, a bishop can only reach either black or white fields on the board. This is equivalent to a robot, which has non-steerable standard wheels and can only reach a sub-set of the environment without skidding.
+Only robots that use exclusively wheels with three degrees-of-freedom (3-DOF wheels) will be able to freely move on a plane. This is because the pose of a robot on a plane is fully given by its position (two values) and its orientation (one value). Robots that don't have wheels with three degrees of freedom will have \emph{kinematic constraints}\index{Kinematic constraints} that prevent them from reaching every possible point at every possible orientation. For example, a bicycle wheel can only roll into one direction and turn on the spot. Moving the bicycle wheel orthogonal to its direction of rolling is not possible, unless it is forcefully dragged (``skidding''), which requires more involved treatment not covered in this book. On the other hand, not having three degrees of freedom does not mean that not all poses in the plane can be reached. 
+A good analogue are figures on a chess-board. For example, a knight can reach every cell on a chess-board but might require multiple moves to do so. This is similar to a car, which can parallel park using back-and-forth motions. Instead, a bishop can only reach either black or white fields on the board. 
 
 Similar reasoning applies to aerial and underwater robots. Here, the position of the robot is affected by the position and orientation of thrusters, either in the form of jets or propellers, mounted on the robot. Things become complicated quickly, however, as the dynamics of the system are subject to fluid- and aerodynamic effects, which also change as a function of size of the robot. This book will not go into the details of flying and swimming robots, but the general principles of localization and planning will be applicable to them as well.
 
 \begin{framed}Think about possible wheel, propeller and thruster configurations. Don't limit yourself to robots, but consider also street and aerial vehicles and be creative --- if you can think about a setup that makes sense, i.e., allows for reasonable mobility --- somebody will already have built it and analyzed it. What are the advantages and disadvantages of each?
 \end{framed}
 
-For manipulating arms, degrees of freedom usually refer to the positions and orientations, i.e., rotations around the primary axes, the end-effector can reach. As a rule of thumb, each joint usually adds a degree of freedom unless they are redundant, that is, moving in the same direction. Figure \ref{fig:basickinematics} shows a series of manipulators operating in the $x-y$-plane. By this, the degrees of freedom of the end-effector are limited to moving along the $x$ and $y$-axis as well as rotating around the $z-$axis. Therefore adding additional joints does not increase the degrees of freedom unless they allow the robot to also rotate around the $x$ and $y$ axis. 
+For manipulating arms, degrees of freedom usually refer to the positions and orientations, i.e., rotations around the primary axes, the end-effector can reach. As a rule of thumb, each joint usually adds a degree of freedom unless they are redundant, that is, moving in the same direction. Figure \ref{fig:basickinematics} shows a series of manipulators operating in a plane. By this, the degrees of freedom of the end-effector are limited to moving up and down, sideways, and rotating around its pivot point. As a plane only has those three degrees of freedom, adding additional joints cannot increase the degrees of freedom unless they allow the robot to also move in and out of the plane. 
 
 An exact definition of the number of degrees of freedom is tricky and requires deriving analytical expressions for the end-effector position and orientation, which will be subject to Chapter \ref{chap:kinematics}.
 
 \begin{figure}
 	\centering
 		\includegraphics[width=\textwidth]{figs/basickinematics.png}
-	\caption{From left to right: Manipulators with one, two, three and three DOF. The degrees of freedom of moving in a plane are $x$ and $y$ position, as well as rotation around the $z$ axis.}
+	\caption{From left to right: Manipulators with one, two, three and three DOF. The degrees of freedom of moving in a plane are the position of the end-effector with respect to its height and displacement with respect to the base, as well as its orientation.}
 	\label{fig:basickinematics}
 \end{figure}
 
@@ -127,7 +128,8 @@ Choosing the ``right'' kinematics is a trade-off between mechanical complexity, 
 \item Is a car statically or dynamically stable? What about a Segway?
 \item What are the degrees of freedom of an office chair with all caster-wheels?
 \item What are the maximum degrees of freedom for objects driving on the plane?
-\item What are the maximum degrees of freedom for objects in a 3D coordinate system?
+\item What are the maximum degrees of freedom for objects that can freely move in the world?
 \item Calculate the degrees of freedom of a differential wheels robot with a front caster wheel. What happens when you add a second caster wheel?
 \item Calculate the degrees of freedom of a standard car. How can you still reach every point on the plane?
+\item A steering wheel allows you to change the yaw of your car. Can you also change its pitch and its roll?
 \end{enumerate}\normalsize
