@@ -113,13 +113,16 @@ Equation \ref{eq:diffwheels} only provides us with the relationship between the 
 \begin{equation}\label{eq:odometry}
 x_I(k+1)=x_I(k)+\Delta x (k)
 \end{equation}
-using $\Delta x(k) \approx \dot{x_I}(t)$ and similar expressions for $y_I$ and $\theta$. Note that (\ref{eq:odometry}) is just an approximation.  
+using $\Delta x(k) \approx \dot{x_I}(t)$ and similar expressions for $y_I$ and $\theta$. Note that (\ref{eq:odometry}) is just an approximation. The larger $\Delta t$ becomes, the more inaccurate this approximation becomes as the robot's speed might change during the interval.   
 
+\begin{framed}
+Don't let the notion of an integral worry you! As robots' computers are fundamentally discrete, integrals usually turn into sums, which are nothing than for-loops.
+\end{framed}
 
 \section{Inverse Kinematics of Mobile Robots}\label{sec:ivkmobile}
 The main problem for the engineer is now to find out how to chose the control parameters to reach a desired position. This problem is known as inverse kinematics. Solving the inverse kinematics in closed form is not always possible, however. It can be done for the differential wheel platform we studied above. Lets first establish how to calculate the necessary speed of the robot's center given a desired speed $ \dot{\xi_I}$ in world coordinates. We can transform the expression $ \dot{\xi_I}=T(\theta)\dot{\xi_R}$ by multiplying both sides with the inverse of $ T(\theta)$:
 
-\begin{equation}
+\begin{equation}\label{eq:mbik}
 T^{-1}(\theta)\dot{\xi_I}=T^{-1}(\theta)T(\theta)\dot{\xi_R}
 \end{equation}
 which leads to $ \dot{\xi_R}=T^{-1}(\theta)\dot{\xi_I}$. Here
@@ -134,7 +137,16 @@ which can be determined by actually performing the matrix inversion or by derivi
 \left(\begin{array}{c} \dot{x_R}\\\dot{y_R}\\\dot{\theta}\end{array}\right)=\left(\begin{array}{c}\frac{r\dot{\phi_l}}{2}+\frac{r\dot{\phi_r}}{2}\\0\\\frac{\dot{\phi_r} r}{d}-\frac{\dot{\phi_l} r}{d}\end{array}\right)
 \end{equation}
 
-for $ \phi_l$, $ \phi_r$. (do this!) You will now see that your kinematic constraints actually render some desired velocities, namely those that would lead to non-negative $ \dot{y_R}$ unfeasible.
+for $ \phi_l$, $ \phi_r$
+\begin{eqnarray}
+\dot{\phi}_l &= (2\dot{x}_R/r - \dot{\theta}d)/2\\
+\nonumber
+\dot{\phi}_r &= (2\dot{x}_R/r + \dot{\theta}d)/2
+\end{eqnarray}
+
+allowing us to calculate the robot's wheelspeed as a function of a desired $\dot{x}_R$ and $\dot{\theta}$, which can be calculated using (\ref{eq:mbik}).
+
+Note that this approach does not allow us to deal with $\dot{y}_R \neq 0$, which might result from a desired speed in the inertial frame. Non-zero values for translation in y-direction are simply ignored by the inverse kinematic solution, and driving toward a specific point either requires feedback control (Section \ref{sec:invjac}) or path planning (Chapter \ref{chap:pathplanning}). 
 
 
 \section{Car-like steering}
