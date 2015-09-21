@@ -180,8 +180,8 @@ Unlike multiplying two rotation matrices, which requires 27 multiplications and 
 
 Why any rotation can be expressed by a single vector can be seen when considering the properties of orthonomal rotation matrices. They have three Eigenvalues $\lambda=1$ and a complex pair $\lambda_{1,2}=\cos \theta \pm i \sin \theta$. Eigenvalues and Eigenvectors are defined as $Rv=\lambda v$. For the case of $\lambda=1$, the corresponding Eigenvector $v$ is unchanged by rotation. This is only possible if $v$ is the actual axis of rotation. The angle of rotation is now given by $\theta$, which can be inferred from the complex pair.  
 
-\section{Forward kinematics of a Manipulator Arm}
-
+\section{Forward kinematics of selected Mechanisms}
+\subsection{Forward kinematics of a simple arm}
 \begin{figure}[!htb]%{L}{0.3\textwidth}
   \begin{center}
     \includegraphics[width=0.27\textwidth]{figs/fwk2dofarm}
@@ -227,69 +227,275 @@ The orientation of the arm's end-effector is given by $\alpha+\beta$. We can now
 The notation $sin_{\alpha\beta}$ and $cos_{\alpha\beta}$ are short-hand for $sin(\alpha+\beta)$ and $cos(\alpha+\beta)$, respectively.
 
 
-\section{Inverse Kinematics of a Simple Manipulator Arm}
-We will now look at the kinematics of a 2-link arm that we introduced earlier. We need to solve the equations determining the robot's forward kinematics by solving for $ \alpha$ and $ \beta$. This is tricky, however, as we have to deal with complicated trigonometric expressions.
+\subsection{Forward Kinematics of Differential Wheels}\label{sec:fwkmobile}
+Whereas the pose of a robotic manipulator is uniquely defined by its joint angles---which can be made available using encoders in almost real-time---this is not the case for a mobile robot. Here, the encoder values simply refer to wheel orientation and need to be integrated over time, which will be a huge source of uncertainty as we will later see.
+What complicates matters is that for so-called \emph{non-holonomic} systems, it is not sufficient to simply measure the distance that each wheel traveled, but also when each movement was executed. 
 
-To get an intuition, assume there to be only one link, $l_1$.  Solving (\ref{eq:cosxl1}) for $\alpha$ yields actually two solutions $\left[\cos^{-1}\frac{x_1}{l_1},-\cos^{-1}\frac{x_1}{l_1}\right]$, as cosine is symmetric for positive and negative values. Indeed, for any possible position on the $x-axis$ ranging from $-l_1$ to $l_1$, there exist two solutions. One with the arm above the table, one with the arm within the table. (At the extremes of the workspace, both solutions are the same.)
+\begin{figure}[htb!]
+	\centering
+		\includegraphics[width=0.95\textwidth]{figs/holonomy.png}
+	\caption{Configuration space (left) and workspace (right) for a non-holonomic mobile robot (top) and a holonomic manipulator (bottom). Closed trajectories in configuration space result in closed trajectories in the workspace if the robot's kinematics is holonomic.}
+	\label{fig:holonomy}
+\end{figure}
 
-%\begin{verbatim}
-%sol = Solve[Sin[a + b] + Sin[a] == y
-%              && Cos[a + b] + Cos[a] == x,
-%             {a, b}];
-%min = sol /. {x -> 1, y -> 1}
-%\end{verbatim}
+A system is non-holonomic\index{Non-holonomic}\index{Holonomic} when closed trajectories in its configuration space (reminder: the configuration space of a two-link robotic arm is spanned by the possible values of each angle) may not have it return to its original state.  A simple arm is holonomic, as each joint position corresponds to a unique position in space. Going through whatever trajectory that comes back to the starting point in configuration space, will put the robot at the exact same position. A train on  a track is holonomic: moving its wheels backwards by the same amount they have been moving forward brings the train to the exact same position in space. A car and a differential-wheel robot are non-holonomic vehicles: performing a straight line and then a right-turn leads to the same amount of wheel rotation than doing a right turn first and then going in a straight line; getting the robot to its initial position requires not only to rewind both wheels by the same amount, but also getting their relative speeds right. The configuration and corresponding workspace trajectories for a non-holonomic and a holonomic robot are shown in Figure \ref{fig:holonomy}. Here, a robot first moves on a straight line (both wheels turn an equal amount). Then the left wheel remains fixed and only the right wheel turns forward. Then the right wheel remain fixed and the left wheel turns backward. Finally, the right wheel turns backward, arriving at the initial encoder values (zero). Yet, the robot does not return to its origin. Performing a similar trajectory in the configuration space of a two-link manipulator instead, let the robot return to its initial position. 
 
-Solving for both degrees of freedom actually yields eight solutions, of which only two are feasible:
+It should be clear by now that for a mobile robot, not only traveled distance per wheel matters, but also the speed of each wheel as a function of time. Instead, this information was not required to uniquely determine the pose of a manipulating arm. Lets introduce the following conventions. We will establish a world coordinate system $\{I\}$, which is known as the inertial frame by convention (Figure \ref{fig:mobilerobot}). We establish a coordinate system $\{R\}$ on the robot and express the robot's speed $^R\dot{\xi}$ as a vector $ ^R\dot{\xi}=[^R\dot{x}, ^R\dot{y}, ^R\dot{\theta}]^T$. Here $^R\dot{x}$ and $^R\dot{y}$ correspond to the speed along the x and y directions in $\{R\}$, whereas $^R\dot{\theta}$ corresponds to the rotation around the imaginary z-axis, that you can imagine to be sticking out of the ground. We denote speeds with dots over the variable name, as speed is simply the derivative of distance.  Think about the robot's position in $\{R\}$ real quick. It is always zero, as the coordinate system is fixed on the robot. Therefore, velocities are the only interesting quantities in this coordinate system and we need to understand how velocities in $\{R\}$ map to positions in $ \{I\}$, which we denote by $^I\xi=[^Ix, ^Iy, ^I\theta]^T$. These coordinate systems are shown in Figure \ref{fig:mobilerobot}. 
 
+\begin{figure}[htb!]
+	\centering
+		\includegraphics[width=0.85\textwidth]{figs/mobilerobot.png}
+	\caption{Mobile robot with local coordinate system \{R\} and world frame \{I\}. The arrows indicate the positive direction of position and orientation vectors.}
+	\label{fig:mobilerobot}
+\end{figure}
+
+
+
+Notice that the positioning of the coordinate frames and their orientation are arbitrary. Here, we chose to place the coordinate system in the center of the robot's axle and align $^Rx$ with its default driving direction.
+
+In order to calculate the robot's position in the inertial frame, we need to first find out, how speed in the robot coordinate frame maps to speed in the inertial frame. This can be done again by employing trigonometry. There is only one complication: a movement into the robot's x-axis might lead to movement along both the x-axis and the y-axis of the world coordinate frame. By looking at the figure above, we can derive the following components to $\dot{x}_I$. First, 
 \begin{equation}
-\alpha \rightarrow \cos^{-1}\left(\frac{x^2 y + y^3 - \sqrt{4 x^4 - x^6 + 4 x^2 y^2 - 2 x^4 y^2 - x^2 y^4}}{2 (x^2 + y^2)}\right)
+\dot{x}_{I,x}=cos(\theta) \dot{x}_R.
+\end{equation}
+
+There is also a component of motion coming from $ \dot{y}_R$ (ignoring the kinematic constraints for now, see below).  For negative $ \theta$, as in Figure \ref{fig:mobilerobot}, a move along $y_R$ would let the robot move into positive $ X_I$ direction. The projection from $ \dot{y}_R$ is therefore given by 
+\begin{equation}
+\dot{x_{I,y}}=-sin(\theta)\dot{y_R}.
+\end{equation} 
+We can now write
+\begin{equation}
+\dot{x_I}=cos(\theta) \dot{x_R} - sin(\theta) \dot{y_R}.
+\end{equation}
+Similar reasoning leads to
+\begin{equation}
+\dot{y_I}=sin(\theta) \dot{x_R} + cos(\theta) \dot{y_R}
 \end{equation}
 and
 \begin{equation}
-\beta \rightarrow -\cos^{-1}\left(1/2(-2+x^2+y^2)\right)
+\dot{\theta_I}=\dot{\theta_R}
+\end{equation}
+which is the case because both robot's and world coordinate system share the same z-axis in this example. We can now conveniently write
+\begin{equation}
+\dot{\xi_I}=^I_RT(\theta)\dot{\xi_R}
+\end{equation}
+with
+\begin{equation}
+^I_RT(\theta)=\left(\begin{array}{ccc}
+cos(\theta) & -sin(\theta) & 0 \\
+sin(\theta) & cos(\theta) & 0 \\
+0 & 0 & 1\end{array}\right)
 \end{equation}
 
-What will drastically simplify this problem, is to not only specificy the desired position, but also the orientation of the end-effector. In this case, a desired pose can be specified by
+We are now left with the problem of how to calculate the speed $ \dot{\xi_R}$ in robot coordinates. For this, we make use of the \emph{kinematic constraints}\index{Kinematic constraints} of the robotic wheels. For a standard wheel, the kinematic constraints are that every rotation of the wheel leads to strictly forward or backward motion and does not allow side-way motion or sliding. We can therefore calculate the forward speed of a wheel $ \dot{x}$ using its rotational speed $ \dot{\phi}$ (assuming the encoder value/angle is expressed as $ \phi$) and radius $ r$ by 
 \begin{equation}
+\dot{x}=\dot{\phi}r.
+\end{equation}
+This becomes apparent when considering that the circumference of a wheel with radius $ r$ is $ 2\pi r$. The distance a wheel rolls when turned by the angle $ \phi$ (in radians) is therefore $ x=\phi r$. Taking the derivative of this expression on both sides leads to the above expression.
+
+\begin{figure}[htb!]
+	\centering
+		\includegraphics[width=0.9\textwidth]{figs/wheelrotation.png}
+	\caption{Left: Differential wheel robot pivoting around its left wheel. Right: A wheel with radius $r$ moves by $\phi r$ when rotated by $\phi$ degrees.}
+	\label{fig:wheelrotation}
+\end{figure}
+
+How each of the two wheels in our example contributes to the speed of the robot's center---where its coordinate system is anchored---requires the following trick: we calculate the contribution of each individual wheel while assuming all other wheels remaining un-actuated. In this example, the distance traveled by the center point is exactly half of that traveled by each individual wheel, assuming the non-actuated wheel rotating around its ground contact point (Figure \ref{fig:wheelrotation}). We can therefore write
+\begin{equation}
+\dot{x_R}=\frac{r\dot{\phi_l}}{2}+\frac{r\dot{\phi_r}}{2}
+\end{equation}
+given the speeds $ \dot{\phi_l}$ and $ \dot{\phi_r}$ of the left and the right wheel, respectively.
+
+\begin{framed}
+Think about how the robot's speed along its y-axis is affected by the wheel-speed given the coordinate system in the drawing above. Think about the kinematic constraints that the standard wheels impose.
+\end{framed}
+
+Hard to believe at first, but the speed of the robot along its y-axis is always zero. This is because the constraints of the standard wheel tell us that the robot can never slide. We are now left with calculating the rotation of the robot around its z-axis. That there is such a thing can be immediately seen when imaging the robot's wheels spinning in opposite directions. We will again consider each wheel independently. Assuming the left wheel to be non-actuated, spinning the right wheel forwards will lead to counter-clockwise rotation. Given an axle diameter (distance between the robot's wheels) $ d$, we can now write
+\begin{equation}
+\omega_r d = \phi_r r
+\end{equation}
+with $ \omega_r$ the angle of rotation around the left wheel (Figure \ref{fig:wheelrotation}, right). Taking the derivative on both sides yields speeds and we can write
+\begin{equation}
+\dot{\omega_r} = \frac{\dot{\phi_r} r}{d}
+\end{equation}
+Adding the rotation speeds up (with the one around the right wheel being negative based on the right-hand grip rule), leads to
+
+\begin{equation}
+\dot{\theta}=\frac{\dot{\phi_r} r}{d}-\frac{\dot{\phi_l} r}{d}
+\end{equation}
+
+Putting it all together, we can write
+
+\begin{equation}\label{eq:diffwheels}
+\left(\begin{array}{c} \dot{x_I}\\\dot{y_I}\\\dot{\theta}\end{array}\right)=\left(\begin{array}{ccc}
+cos(\theta) & -sin(\theta) & 0 \\
+sin(\theta) & cos(\theta) & 0 \\
+0 & 0 & 1\end{array}\right)\left(\begin{array}{c}\frac{r\dot{\phi_l}}{2}+\frac{r\dot{\phi_r}}{2}\\0\\\frac{\dot{\phi_r} r}{d}-\frac{\dot{\phi_l} r}{d}\end{array}\right)
+\end{equation}
+
+\subsubsection{From Forward Kinematics to Odometry}
+Equation \ref{eq:diffwheels} only provides us with the relationship between the robot's wheel-speed and its speed in the inertial frame. Calculating its actual pose in the inertial frame is known as \emph{odometry}\index{Odometry}. Technically, it requires integrating (\ref{eq:diffwheels}) from 0 to the current time $T$. As this is not possible, but for very special cases, one can approximate the robot's pose by summing up speeds over discrete time intervals, or more precisely
+\begin{equation}
+\left(\begin{array}{c} {x_I}(t)\\{y_I}(t)\\{\theta}(t)\end{array}\right)=
+\int_0^T \left(\begin{array}{c} \dot{x_I}(t)\\\dot{y_I}(t)\\\dot{\theta}(t)\end{array}\right) dt \approx 
+\sum_{k=0}^{k=T}\left(\begin{array}{c} \Delta{x_I}(k)\\\Delta{y_I}(k)\\\Delta{\theta}(k)\end{array}\right)\Delta t
+\end{equation} which can be calculated incrementally as
+\begin{equation}\label{eq:odometry}
+x_I(k+1)=x_I(k)+\Delta x (k)
+\end{equation}
+using $\Delta x(k) \approx \dot{x_I}(t)$ and similar expressions for $y_I$ and $\theta$. Note that (\ref{eq:odometry}) is just an approximation. The larger $\Delta t$ becomes, the more inaccurate this approximation becomes as the robot's speed might change during the interval.   
+
+\begin{framed}
+Don't let the notion of an integral worry you! As robots' computers are fundamentally discrete, integrals usually turn into sums, which are nothing than for-loops.
+\end{framed}
+
+
+
+\subsection{Forward kinematics of Car-like steering}
+Differential wheel drives are very popular in mobile robotics as they are very easy to build, maintain, and control. Although not holonomic, a differential drive can approximate the function of a fully holonomic robot by first driving on the spot to achieve the desired heading and then driving straight. Drawbacks of the differential drive are its reliance on a caster wheel, which performs poorly at high speeds , and difficulties in driving straight lines as this requires both motors to drive at the exact same speed.
+
+
+These drawbacks are mitigated by car-like mechanisms, which are driven by a single motor and can steer their front wheels. This mechanism is known as ``Ackermann steering'' \index{Ackermann steering} and illustrated to the right. Ackermann steering should not be confused with ``turntable'' steering \index{Turntable steering} where the front wheels are fixed on an axis with central pivot point. Instead, each wheel has its own pivot point and the system is constrained in such a way that all wheels of the car drive on circles with a common center point, avoiding skid.
+
+As the Ackermann mechanism lets all wheels drive on circles with a common center point, its kinematics can be approximated by those of a tricycle with rear-wheel drive.
+
+Let the car have the shape of a box with length $ L$ between rear and front axis. Let the center point of the common circle described by all wheels be distance $ R$ from the car's longitudinal center line.  Then, the steering angle $ \phi$ is given by
+
+\begin{equation}
+\tan \phi = \frac{L}{R}
+\end{equation}
+
+
+\subsubsection{Coordinate frames for a simplified car-like steering}
+Let the robot coordinate system $ (x_r,y_r,\theta_r)$ be centered on the car's rear axis. Then, $ \dot{x}_r$ is the car's speed given by the speed of the car's engine. We can now derive expressions for the car's position in world coordinates $ (x_w,y_w,\theta_w)$.  (Remember: as the car is non-holonomic we can derive the kinematics only for speeds, the derivative of position, without integrating.)
+
+\begin{eqnarray}
+\dot{x}_w&=&\cos{\theta_w}\dot{x}_r\\
+\dot{y}_w&=&\sin{\theta_w}\dot{x}_r\\
+\dot{\theta}_w&=&\frac{\tan{\phi}}{L}\dot{x}_r
+\end{eqnarray}
+
+The last expression directly follows from the rule that the tangent of an angle is equivalent to the ratio of its opposite to adjacent edges. At this point it is worth recalling that $ \dot{y}_r=0$, no matter what, as a simple model does not allow the robot to skid. Therefore, the steering angle $ \phi$ only affects the rotation of the car.
+
+At this point, you have expressions for predicting the movement of the car's bounding box through space as a function of speed and steering angle. The angles of the left and the right wheel, $ \phi_l$ and $ \phi_r$ can be calculated using the fact that all wheels of the car rotate around circles with a common center point. With the distance between the two front wheels $ l$, we can therefore write
+
+Angles of individual wheels for perfect Ackermann steering
+\begin{eqnarray}
+\frac{L}{R-l/2}&=\tan{(\pi/2-\phi_r)}\\
+\frac{L}{R+l/2}&=\tan{(\pi/2-\phi_l)}
+\end{eqnarray}
+with $ R=L\tan{\phi}$, again following the rule tangent = opposite / adjacent. This is important to calculate the resulting wheel angles and to test whether they are within the constraints of the actual vehicle.
+
+\section{Forward Kinematics using the Denavit-Hartenberg scheme}
+Forward kinematics allow us to express the pose of a mechanism given its actuator parameters such as the angle of a joint or the number of rotations of its wheel as well as their derivatives including speed and accleration, without taking into account the forces that cause the motion. So far, we have considered the forward kinematics of wheeled mechanisms and simple arms. Whereas we could derive kinematic equations of simple mechanisms using basic trigonometry, we can also think about the forward kinematics as a chain of homogenous transformations that express mobile coordinate systems in a static one usually mounted at the base of a manipulator or a fixed position in the room. Deriving these transformations can be confusing and can be facilitated by following a ``recipe'' such as conceived by Denavit and Hartenberg. The so-called Denavit-Hartenberg (DH) \index{Denavit-Hartenberg parameters}scheme has evolved as quasi-standard and can easily be automatized, i.e., applied to a 3D model of a robotic arm, e.g. 
+
+A manipulating arm consists of links that are connected by joints. Joints can be either rotational or prismatic, i.e., change their length and thus providing additional degrees of freedom. Knowing the length of all rigid links, the position of the manipulators end-effector is fully described by its joint angles and joint offset (for prismatic joints).
+
+%In industrial manipulators, the number of joints is usually equal to the degrees of freedom of the manipulator. As most manipulators are holonomic, the forward kinematics allow you---unlike on non-holonomic wheeled platforms---to directly relate absolute positions of joints with absolute positions in Cartesian space. It is also possible to derive equations that relate the speed of the joints to speed in Cartesian space. Like for wheeled platforms, this can be achieved via a Jacobian matrix.  At certain positions, the mapping provided by the Jacobian is not invertible, i.e., some velocities in Cartesian space are unachievable. These points are called singularities.
+
+\screencast{http://youtu.be/rA9tm0gTln8}{denavithartenberg}
+In oder to use the DH-convention, we first need to define a coordinate system at each joint. We chose the z-axis to be the axis of rotation for a hinge joint and the axis of translation for a prismatic joint. We can now find the common normal between the z-axes of two subsequent joints, i.e., a line that is orthogonal to each z-axis and intersects both. With the direction of the x-axis at the base arbitrary, subsequent x-axis are chosen such that they lie on the common normal shared between two joints. Whereas the direction of the z-axis is given by the positive direction of rotation (right hand rule), the x-axis points away from the previous joint. This allows defining the y-axis using the right-hand rule. Note that these rules, in particular the requirement that $x$-axes lie along the commom normal, might result in coordinate systems with their origins outside the joint. %Rather, the origin of joint $n$ is at the intersection of   
+
+The transformation between two joints is then fully described by the following four parameters:
+\begin{enumerate}
+\item the length $ r$ of the common normal between the $z$-axes of two joints $i$ and $i-1$ (link length)
+\item The angle $ \alpha$ between the z-axes of the two joints with respect to the common normal (link twist), i.e., the angle between the old and the new $z$-axis, measured about the common normal.
+\item The distance $d$ between the joint axes (link offset), i.e., the offset along the previous $z$-axis to the common normal.
+\item The rotation $ \theta$ around the common axis along which the link offset is measured (joint angle), i.e., the angle from the old $x$-axis to the new $x$-axis, about the previous $z$-axis.
+\end{enumerate}
+
+Two of the D-H parameters describe the link between the joints, and the other two describe the link's connection to a neighboring link. Depending on the link/joint type, these numbers are fixed or can be controlled. For example, in a revolute joint $ \theta$ is the varying joint angle, while all other quantities are fixed.  Similarly, for a prismatic joint $ d$ is the joint variable. An example of two revolute joints is shown in Figure \ref{fig:denavit}.
+
+\begin{figure}
+	\centering
+		\includegraphics[width=\textwidth]{figs/denavit-hartenberg}
+	\caption{Example of selected Denavit-Hartenberg parameters for three revolute joints. The z-axes of joint $i$ and $i+1$ are parallel.
+	\label{fig:denavit}}
+\end{figure}
+
+
+
+The coordinate transform from one link ($ i-1$) to another ($i$) can now be constructed  using the following matrix:
+\begin{eqnarray}{ll}
+\nonumber
+_{n-1}^nT=&
 \left(
-\begin{array}{cccc}
-cos\phi & -sin\phi & 0 & x\\
-sin\phi & cos\phi & 0 & y\\
+\begin{array}{ccc|c}
+\cos \theta_n & -\sin \theta_n \cos\alpha_n & \sin\theta_n \sin\alpha_n & r_n \cos\theta_n\\
+\sin \theta_n & \cos\theta_n \cos\alpha_n & -\cos\theta_n\sin\alpha_n & r_n \sin\theta_n\\
+0 & \sin\alpha_n & \cos\alpha_n & d_n\\
+\hline
+0 & 0 & 0 & 1
+\end{array}
+\right)\\
+&=
+\left(
+\begin{array}{c|c}
+R & t\\
+\hline
+0 \quad 0 \quad 0 & 1
+\end{array}
+\right)
+\end{eqnarray}
+with the rotation matrix $R$ and the translation vector $t$. This matrix can be constructed by a series of rotations and translations, one for each DH parameter:
+\begin{equation}
+_{n-1}^nT=T_z'(d_n)\dot R_z'(\theta_n) \dot T_x(r_n) \dot R_x(\alpha_n)
+\end{equation}
+with
+\begin{equation}
+T_z'(d_n)=
+\left(
+\begin{array}{ccc|c}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & d_n\\
+\hline
+0 & 0 & 0 & 1
+\end{array}
+\right)
+\enskip
+R_z'(\theta_n)=\left(
+\begin{array}{ccc|c}
+\cos\theta_n & -\sin\theta_n & 0 & 0\\
+\sin\theta_n & \cos\theta_n & 0 & 0\\
 0 & 0 & 1 & 0\\
+\hline
 0 & 0 & 0 & 1
 \end{array}
 \right)
 \end{equation}
-A solution can now be found by simply equating the individual entries of the transformation (\ref{eq:2armtrans}) with those of the desired pose. Specifically, we can observe:
-\begin{eqnarray}
-cos\phi &= cos(\alpha+\beta)\\
-\nonumber
-x &= \cos_{\alpha\beta}l_2+\cos\alpha l_1\\
-\nonumber
-y &= \sin_{\alpha\beta}l_2+\sin\alpha l_1
-\end{eqnarray}
-These can be reduced to
-\begin{eqnarray}
-\phi &= \alpha + \beta\\
-\nonumber
-\cos\alpha &= \frac{\cos_{\alpha\beta}l_2-x}{l_1}=\frac{\cos\phi l_2-x}{l_1}\\
-\nonumber
-\sin\alpha &= \frac{\sin_{\alpha\beta}l_2-y}{l_1}=\frac{\sin\phi l_2-y}{l_1}\\
-\end{eqnarray}
-Providing the orientation of the robot in addition to the desired position therefore allows solving for $\alpha$ and $\beta$ just as a function of $x$, $y$ and $\phi$.  
-
-As such solutions quickly become unhandy with more dimensions, however, you can calculate a numerical solution using an approach that we will later see is very similar to path planning in mobile robotics. One way to do this is to plot the distance of the end-effector from the desired solution in configuration space. To do this, you need to solve the forward kinematics for every point in configuration space and use the Euclidian distance to the desired target as height. In our example this would be
+and
 \begin{equation}
-\small
-f_{x,y}(\alpha,\beta)=\sqrt{\left(\sin(\alpha + \beta) + \sin(\alpha) - y\right)^2 + \left(\cos(\alpha+\beta)+\cos(a) - x\right)^2}
+T_x(r_n)=
+\left(
+\begin{array}{ccc|c}
+1 & 0 & 0 & r_n\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+\hline
+0 & 0 & 0 & 1
+\end{array}
+\right)
+\enskip
+R_x(\alpha_n)=\left(
+\begin{array}{ccc|c}
+1 & 0 & 0 & 0\\
+0 & \cos\alpha_n & -\sin\alpha_n & 0\\
+0 & \sin\alpha_n & \cos\alpha_n & 0\\
+\hline
+0 & 0 & 0 & 1
+\end{array}
+\right)
+\end{equation} 
+These are a translation of $d_n$ along the previous z-axis ($T_z'(d_n)$), a rotation of $\theta_n$ about the previous z-axis ($R_z'(\theta_n)$), a translation of $r_n$ along the new $x$-axis ($T_x(r_n)$)and a rotation of $\alpha_n$ around the new $x$-axis ($R_x(\alpha_n)$).
+
+Like for any homogeneous transfrom, the inverse $_{n-1}^nT^{-1}n$ is given by
+\begin{equation}
+^{n-1}_nT=\left(
+\begin{array}{c|c}
+R^{-1} & -R^{-1}T\\
+\hline
+0 \quad 0 \quad 0 \quad 1
+\end{array}
+\right)
 \end{equation}
-This is plotted for $\alpha=[-\pi/2,\pi/2]$ and $\beta=[-\pi,\pi]$ and $x=1$, $y=1$ in Figure \ref{fig:inversekinematics}. This function has a minima, in this case zero, for values of $\alpha$ and $\beta$ that bring the manipulator to $(1,1)$. These values are $(\alpha \rightarrow 0, b \rightarrow -\frac{\pi}{2})$ and $(\alpha \rightarrow -\frac{\pi}{2}, b \rightarrow \frac{\pi}{2})$.
-
-\begin{figure}
-	\centering
-		\includegraphics[width=0.8\textwidth]{figs/inversekinematics}
-	\caption{Distance to $(x=1,y=1)$ over the configuration space of a two-arm manipulator. Minima corresponds to exact inverse kinematic solutions.}
-	\label{fig:inversekinematics}
-\end{figure}
-
-You can now think about inverse kinematics as a path finding problem from anywhere in the configuration space to the nearest minima. A formal approach to doing this will be discussed in Section \ref{sec:advinvkinematics}. How to find shortest paths in space, that is finding the shortest route for a robot to get from A to B will be a subject of chapter \ref{chap:pathplanning}.
+with the inverse of $R$ simply being its transpose.
