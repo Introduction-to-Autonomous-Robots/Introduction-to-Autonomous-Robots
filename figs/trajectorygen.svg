@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg3012"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="trajectorygen.svg">
+  <defs
+     id="defs3014">
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker5410"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path5157"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Lstart"
+       style="overflow:visible">
+      <path
+         id="path4220"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(1.1) translate(1,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Lend"
+       style="overflow:visible;">
+      <path
+         id="path4223"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(1.1) rotate(180) translate(1,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path3815"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="506.52679"
+     inkscape:cy="937.62359"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1440"
+     inkscape:window-height="805"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3017">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       inkscape:export-ydpi="150.06332"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       id="g5036"
+       transform="matrix(0.40059713,-0.28645346,0.28645346,0.40059713,185.78398,54.96478)">
+      <circle
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="path5038"
+         cx="247.48738"
+         cy="398.79349"
+         r="47.477169" />
+      <rect
+         style="fill:#ffffff"
+         id="rect5040"
+         width="9.6428576"
+         height="22.142857"
+         x="211.78572"
+         y="391.50504" />
+      <rect
+         style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
+         id="rect5042"
+         width="10"
+         height="21.785715"
+         x="215.71428"
+         y="389.00504" />
+      <rect
+         style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
+         id="rect5044"
+         width="10"
+         height="21.785715"
+         x="269.64285"
+         y="388.82645" />
+      <ellipse
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+         id="path5046"
+         transform="translate(2,-2)"
+         cx="245.89285"
+         cy="363.96933"
+         rx="3.3928571"
+         ry="3.75" />
+    </g>
+    <g
+       transform="matrix(-0.31302181,0.38019862,-0.38019862,-0.31302181,369.08288,318.65908)"
+       id="g3780"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-ydpi="150.06332">
+      <circle
+         r="47.477169"
+         cy="398.79349"
+         cx="247.48738"
+         id="path2985"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <rect
+         y="391.50504"
+         x="211.78572"
+         height="22.142857"
+         width="9.6428576"
+         id="rect3755"
+         style="fill:#ffffff" />
+      <rect
+         y="389.00504"
+         x="215.71428"
+         height="21.785715"
+         width="10"
+         id="rect3757"
+         style="fill:#ffffff;stroke:#000000;stroke-opacity:1" />
+      <rect
+         y="388.82645"
+         x="269.64285"
+         height="21.785715"
+         width="10"
+         id="rect3757-1"
+         style="fill:#ffffff;stroke:#000000;stroke-opacity:1" />
+      <ellipse
+         ry="3.75"
+         rx="3.3928571"
+         cy="363.96933"
+         cx="245.89285"
+         transform="translate(2,-2)"
+         id="path3777"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 62.857143,398.07647 0,-311.428573"
+       id="path3037"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-ydpi="150.06332" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 42.857143,375.21933 528.571427,0"
+       id="path3039"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-ydpi="150.06332" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="545.0874"
+       y="394.49814"
+       id="text4435"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-ydpi="150.06332"><tspan
+         sodipodi:role="line"
+         id="tspan4437"
+         x="545.0874"
+         y="394.49814"
+         style="font-size:16px">x</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="42.718445"
+       y="109.13888"
+       id="text4439"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-ydpi="150.06332"><tspan
+         sodipodi:role="line"
+         id="tspan4441"
+         x="42.718445"
+         y="109.13888"
+         style="font-size:16px">y</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow2Lstart);marker-end:url(#Arrow2Lend)"
+       d="m 167.26336,256.40845 -27.01936,31.06143 32.47716,27.88966"
+       id="path3057"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-ydpi="150.06332" />
+    <circle
+       r="3.4174757"
+       cy="-69.503197"
+       cx="312.33911"
+       style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path4443"
+       transform="matrix(0.23208031,0.97269663,-0.97269663,0.23208031,0,0)"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-ydpi="150.06332" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="117.29893"
+       y="338.6535"
+       id="text5569"
+       sodipodi:linespacing="125%"
+       transform="matrix(0.99488173,-0.10104625,0.10104625,0.99488173,0,0)"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-ydpi="150.06332"><tspan
+         sodipodi:role="line"
+         id="tspan5571"
+         x="117.29893"
+         y="338.6535"
+         style="font-size:16px">x<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan5583">r</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="131.53256"
+       y="261.65967"
+       id="text5575"
+       sodipodi:linespacing="125%"
+       transform="matrix(0.99901895,-0.04428481,0.04428481,0.99901895,0,0)"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-ydpi="150.06332"><tspan
+         sodipodi:role="line"
+         id="tspan5577"
+         x="131.53256"
+         y="261.65967"
+         style="font-size:16px">y<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan5585">r</tspan></tspan></text>
+    <path
+       inkscape:export-ydpi="150.06332"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       id="path5034"
+       d="m 364.67832,167.22822 34.12502,-23.02915 -24.17208,-35.33144"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow2Lstart);marker-end:url(#Arrow2Lend)" />
+    <circle
+       inkscape:export-ydpi="150.06332"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       id="path5048"
+       style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       cx="-133.20183"
+       cy="402.74911"
+       r="3.4174757"
+       transform="matrix(0.02701672,-0.99963498,0.99963498,0.02701672,0,0)" />
+    <text
+       inkscape:export-ydpi="150.06332"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       transform="matrix(0.78447477,-0.62016073,0.62016073,0.78447477,0,0)"
+       sodipodi:linespacing="125%"
+       id="text5050"
+       y="323.92807"
+       x="235.5909"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:16px"
+         y="323.92807"
+         x="235.5909"
+         id="tspan5052"
+         sodipodi:role="line">x<tspan
+   id="tspan5054"
+   style="font-size:64.99999762%;baseline-shift:sub">r</tspan></tspan></text>
+    <text
+       inkscape:export-ydpi="150.06332"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       transform="matrix(0.78988797,-0.61325117,0.61325117,0.78988797,0,0)"
+       sodipodi:linespacing="125%"
+       id="text5056"
+       y="343.3703"
+       x="186.43755"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:16px"
+         y="343.3703"
+         x="186.43755"
+         id="tspan5058"
+         sodipodi:role="line">y<tspan
+   id="tspan5060"
+   style="font-size:64.99999762%;baseline-shift:sub">r</tspan></tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 139.85393,287.32787 400.41512,144.97654"
+       id="path5108"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#1a1a1a;stroke-width:0.95699567;stroke-miterlimit:4;stroke-dasharray:0.95699567, 0.95699567;stroke-dashoffset:0;stroke-opacity:1"
+       id="path5124"
+       sodipodi:type="arc"
+       sodipodi:cx="139.85393"
+       sodipodi:cy="286.91162"
+       sodipodi:rx="34.152523"
+       sodipodi:ry="31.238899"
+       sodipodi:start="5.7439969"
+       sodipodi:end="0.76282288"
+       d="m 169.16108,270.87233 a 34.152523,31.238899 0 0 1 -4.61869,37.62427 l -24.68846,-21.58498 z" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="175.64989"
+       y="296.48495"
+       id="text5130"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5132"
+         x="175.64989"
+         y="296.48495"
+         style="font-size:22.5px">α</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="256.3989"
+       y="239.04498"
+       id="text5140"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5142"
+         x="256.3989"
+         y="239.04498"
+         style="font-size:22.5px">ρ</tspan></text>
+    <path
+       inkscape:export-ydpi="150.06332"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path5144"
+       d="m 474.55674,292.64725 32.47716,27.88966"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Lend)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker5410)"
+       d="M 474.3535,292.56022 450.18142,257.22879"
+       id="path5146"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-ydpi="150.06332" />
+    <path
+       style="fill:none;stroke:#1a1a1a;stroke-width:0.95699567;stroke-miterlimit:4;stroke-dasharray:0.95699567, 0.95699567;stroke-dashoffset:0;stroke-opacity:1"
+       id="path5148"
+       sodipodi:type="arc"
+       sodipodi:cx="481.30255"
+       sodipodi:cy="286.78482"
+       sodipodi:rx="30.476585"
+       sodipodi:ry="29.277506"
+       sodipodi:start="3.8637896"
+       sodipodi:end="1.0412958"
+       d="m 458.43428,267.43137 a 30.476585,29.277506 0 0 1 32.01915,-8.57312 30.476585,29.277506 0 0 1 21.13384,24.64654 30.476585,29.277506 0 0 1 -14.89092,28.54826"
+       sodipodi:open="true" />
+    <text
+       inkscape:export-ydpi="150.06332"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       transform="matrix(0.99962091,0.02753262,-0.02753262,0.99962091,0,0)"
+       sodipodi:linespacing="125%"
+       id="text5417"
+       y="318.16098"
+       x="505.72803"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:16px"
+         y="318.16098"
+         x="505.72803"
+         id="tspan5419"
+         sodipodi:role="line">x<tspan
+   id="tspan5421"
+   style="font-size:64.99999762%;baseline-shift:sub">r</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="457.71021"
+       y="239.62933"
+       id="text5423"
+       sodipodi:linespacing="125%"
+       transform="matrix(0.99968304,0.02517587,-0.02517587,0.99968304,0,0)"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-ydpi="150.06332"><tspan
+         sodipodi:role="line"
+         id="tspan5425"
+         x="457.71021"
+         y="239.62933"
+         style="font-size:16px">x<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan5427">r</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="482"
+       y="287.36218"
+       id="text5578"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5580"
+         x="482"
+         y="287.36218"
+         style="font-size:15px">η</tspan></text>
+  </g>
+</svg>
