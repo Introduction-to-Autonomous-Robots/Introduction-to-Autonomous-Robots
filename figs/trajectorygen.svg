@@ -14,7 +14,10 @@
    id="svg3012"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="trajectorygen.svg">
+   sodipodi:docname="trajectorygen.svg"
+   inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+   inkscape:export-xdpi="150.06332"
+   inkscape:export-ydpi="150.06332">
   <defs
      id="defs3014">
     <marker
@@ -78,9 +81,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="506.52679"
-     inkscape:cy="937.62359"
+     inkscape:zoom="0.83335121"
+     inkscape:cx="455.99022"
+     inkscape:cy="703.18491"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -108,7 +111,7 @@
     <g
        inkscape:export-ydpi="150.06332"
        inkscape:export-xdpi="150.06332"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        id="g5036"
        transform="matrix(0.40059713,-0.28645346,0.28645346,0.40059713,185.78398,54.96478)">
       <circle
@@ -150,7 +153,7 @@
     <g
        transform="matrix(-0.31302181,0.38019862,-0.38019862,-0.31302181,369.08288,318.65908)"
        id="g3780"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332">
       <circle
@@ -194,7 +197,7 @@
        d="m 62.857143,398.07647 0,-311.428573"
        id="path3037"
        inkscape:connector-curvature="0"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332" />
     <path
@@ -202,7 +205,7 @@
        d="m 42.857143,375.21933 528.571427,0"
        id="path3039"
        inkscape:connector-curvature="0"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332" />
     <text
@@ -212,7 +215,7 @@
        y="394.49814"
        id="text4435"
        sodipodi:linespacing="125%"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332"><tspan
          sodipodi:role="line"
@@ -227,7 +230,7 @@
        y="109.13888"
        id="text4439"
        sodipodi:linespacing="125%"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332"><tspan
          sodipodi:role="line"
@@ -241,7 +244,7 @@
        id="path3057"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccc"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332" />
     <circle
@@ -251,7 +254,7 @@
        style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4443"
        transform="matrix(0.23208031,0.97269663,-0.97269663,0.23208031,0,0)"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332" />
     <text
@@ -262,7 +265,7 @@
        id="text5569"
        sodipodi:linespacing="125%"
        transform="matrix(0.99488173,-0.10104625,0.10104625,0.99488173,0,0)"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332"><tspan
          sodipodi:role="line"
@@ -280,7 +283,7 @@
        id="text5575"
        sodipodi:linespacing="125%"
        transform="matrix(0.99901895,-0.04428481,0.04428481,0.99901895,0,0)"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332"><tspan
          sodipodi:role="line"
@@ -293,7 +296,7 @@
     <path
        inkscape:export-ydpi="150.06332"
        inkscape:export-xdpi="150.06332"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        sodipodi:nodetypes="ccc"
        inkscape:connector-curvature="0"
        id="path5034"
@@ -302,7 +305,7 @@
     <circle
        inkscape:export-ydpi="150.06332"
        inkscape:export-xdpi="150.06332"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        id="path5048"
        style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        cx="-133.20183"
@@ -312,7 +315,7 @@
     <text
        inkscape:export-ydpi="150.06332"
        inkscape:export-xdpi="150.06332"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        transform="matrix(0.78447477,-0.62016073,0.62016073,0.78447477,0,0)"
        sodipodi:linespacing="125%"
        id="text5050"
@@ -330,7 +333,7 @@
     <text
        inkscape:export-ydpi="150.06332"
        inkscape:export-xdpi="150.06332"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        transform="matrix(0.78988797,-0.61325117,0.61325117,0.78988797,0,0)"
        sodipodi:linespacing="125%"
        id="text5056"
@@ -349,7 +352,10 @@
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="M 139.85393,287.32787 400.41512,144.97654"
        id="path5108"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-ydpi="150.06332" />
     <path
        style="fill:none;stroke:#1a1a1a;stroke-width:0.95699567;stroke-miterlimit:4;stroke-dasharray:0.95699567, 0.95699567;stroke-dashoffset:0;stroke-opacity:1"
        id="path5124"
@@ -360,14 +366,20 @@
        sodipodi:ry="31.238899"
        sodipodi:start="5.7439969"
        sodipodi:end="0.76282288"
-       d="m 169.16108,270.87233 a 34.152523,31.238899 0 0 1 -4.61869,37.62427 l -24.68846,-21.58498 z" />
+       d="m 169.16108,270.87233 a 34.152523,31.238899 0 0 1 -4.61869,37.62427 l -24.68846,-21.58498 z"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-ydpi="150.06332" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="175.64989"
        y="296.48495"
        id="text5130"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-ydpi="150.06332"><tspan
          sodipodi:role="line"
          id="tspan5132"
          x="175.64989"
@@ -379,7 +391,10 @@
        x="256.3989"
        y="239.04498"
        id="text5140"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-ydpi="150.06332"><tspan
          sodipodi:role="line"
          id="tspan5142"
          x="256.3989"
@@ -388,7 +403,7 @@
     <path
        inkscape:export-ydpi="150.06332"
        inkscape:export-xdpi="150.06332"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        sodipodi:nodetypes="cc"
        inkscape:connector-curvature="0"
        id="path5144"
@@ -400,7 +415,7 @@
        id="path5146"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332" />
     <path
@@ -414,11 +429,14 @@
        sodipodi:start="3.8637896"
        sodipodi:end="1.0412958"
        d="m 458.43428,267.43137 a 30.476585,29.277506 0 0 1 32.01915,-8.57312 30.476585,29.277506 0 0 1 21.13384,24.64654 30.476585,29.277506 0 0 1 -14.89092,28.54826"
-       sodipodi:open="true" />
+       sodipodi:open="true"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-ydpi="150.06332" />
     <text
        inkscape:export-ydpi="150.06332"
        inkscape:export-xdpi="150.06332"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        transform="matrix(0.99962091,0.02753262,-0.02753262,0.99962091,0,0)"
        sodipodi:linespacing="125%"
        id="text5417"
@@ -441,7 +459,7 @@
        id="text5423"
        sodipodi:linespacing="125%"
        transform="matrix(0.99968304,0.02517587,-0.02517587,0.99968304,0,0)"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332"><tspan
          sodipodi:role="line"
@@ -457,7 +475,10 @@
        x="482"
        y="287.36218"
        id="text5578"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+       inkscape:export-xdpi="150.06332"
+       inkscape:export-ydpi="150.06332"><tspan
          sodipodi:role="line"
          id="tspan5580"
          x="482"
