@@ -74,7 +74,9 @@ This is plotted for $\alpha=[-\pi/2,\pi/2]$ and $\beta=[-\pi,\pi]$ and $x=1$, $y
 You can now think about inverse kinematics as a path finding problem from anywhere in the configuration space to the nearest minima. A formal approach to doing this will be discussed in Section \ref{sec:advinvkinematics}. How to find shortest paths in space, that is finding the shortest route for a robot to get from A to B will be a subject of chapter \ref{chap:pathplanning}.
 
 \subsection{Inverse Kinematics of Mobile Robots}\label{sec:ivkmobile}
-The main problem for the engineer is now to find out how to chose the control parameters to reach a desired position. This problem is known as inverse kinematics. Solving the inverse kinematics in closed form is not always possible, however. It can be done for the differential wheel platform we studied above. Lets first establish how to calculate the necessary speed of the robot's center given a desired speed $ \dot{\xi_I}$ in world coordinates. We can transform the expression $ \dot{\xi_I}=T(\theta)\dot{\xi_R}$ by multiplying both sides with the inverse of $ T(\theta)$:
+As there is no unique relationship between the amount of rotation of a robot's individual wheels and its position in space, but for simple holonomic platforms such as a robot on a track, we will treat the inverse kinematics problem at first only for the velocities of the local robot coordinate frame. 
+
+Lets first establish how to calculate the necessary speed of the robot's center given a desired speed $ \dot{\xi_I}$ in world coordinates. We can transform the expression $ \dot{\xi_I}=T(\theta)\dot{\xi_R}$ by multiplying both sides with the inverse of $ T(\theta)$:
 
 \begin{equation}\label{eq:mbik}
 T^{-1}(\theta)\dot{\xi_I}=T^{-1}(\theta)T(\theta)\dot{\xi_R}
@@ -104,14 +106,37 @@ Note that this approach does not allow us to deal with $\dot{y}_R \neq 0$, which
 
 
 \section{Inverse Kinematics using Feedback-Control}\label{sec:advinvkinematics}
-This is possible for simple kinematics, but gets quickly out of hand for complex kinematics; it is not possible for non-holonomic mobile robots, which require us to find a sequence of actuation commands. This section provides a solution for both these problems.
+Solving the inverse kinematic problem for non-holonomic mobile robots require us to find a sequence of actuation commands. One way of doing this is to employ \emph{feedback control}\index{Feedback Control}. In a nutshell, feedback control uses the error between actual and desired position to calculate a trajectory piece that drives the robot a little closer to its desired pose. The process is then repeated until the error is marginally small. This approach can not only be used for mobile robots, but also for manipulator arms with kinematics that are too complicated to solve analytically. 
 
+\subsection{Feedback control for mobile robots}
+Assume the robot's position given by $x_r, y_r$ and $\theta_r$ and the desired pose as $x_g, y_g$ and $\theta_g$ with the subscript $g$ indicating ``goal''.
+We can now calculate the error in the desired pose by
+\begin{eqnarray}
+\rho=\sqrt{(x_r-x_g)^2+(y_r-y_g)^2}\\
+\nonumber
+\alpha=\theta_r-\tan^{-1}{\frac{y_r-y_g}{x_r-x_g}}\\
+\nonumber
+\eta=\theta_g-\theta_r
+\end{eqnarray}
+which is illustrated in Figure \ref{fig:trajectorygen}.
+These errors can turned directly into robot's speeds, for example using a simple proportional controller with gains $p_1$, $p_2$ and $p_3$: 
+\begin{eqnarray}
+\dot{x} &=& p_1 \rho\\
+\dot{\theta} &=& p_2 \alpha + p_3 \eta
+\end{eqnarray}
+which will let the robot drive in a curve until it reaches the desired pose. 
 
+\begin{figure}
+	\centering
+		\includegraphics[width=\textwidth]{figs/trajectorygen}
+	\caption{Difference in desired and actual pose as a function of distance $\rho$, bearing $\alpha$ and heading $\eta$. 
+	\label{fig:trajectorygen}}
+\end{figure}
 
 
 \subsection{Inverse Jacobian Technique
 }\label{sec:invjac}
-The above example (Figure \ref{fig:fwk2dofarm}) involved only two free parameters, but was already pretty complex to solve analytically if the end-effector pose was not specified. One can imagine that things become very hard with more degrees of freedom or more complex geometries. (Mechanisms in which some axes intersect are simpler to solve than others, for example.) Fortunately, there are simple numerical techniques that work reasonably well. One of them known is as \emph{Inverse Jacobian}\index{Inverse Jacobian} technique:
+The two-link arm (Figure \ref{fig:fwk2dofarm}) involved only two free parameters, but was already pretty complex to solve analytically if the end-effector pose was not specified. One can imagine that things become very hard with more degrees of freedom or more complex geometries. (Mechanisms in which some axes intersect are simpler to solve than others, for example.) Fortunately, there are simple numerical techniques that work reasonably well. One of them known is as \emph{Inverse Jacobian}\index{Inverse Jacobian} technique:
 
 As we can easily calculate the resulting pose for every possible joint angle combination using the forward kinematic equations, we can calculate the error between desired and actual pose. This error actually provides us with a direction that the end-effector needs to move. As we only need to move tiny bits at a time and can then re-calculate the error, this is an attractive method to generate a trajectory that moves the arm to where we want it go and thereby solving the inverse kinematics problem.
 
@@ -177,28 +202,4 @@ where $\lambda$ is some constant. One can show that the resulting controller tha
 \end{equation}
 
 This is known as the \emph{Damped Least-Squares} method.\index{Damped Least-Squares Method} Problems with this approach are local minima and singularities of the mechanism, that might render this solution infeasible.
-\subsection{Feedback control for mobile robots}
-Feedback can also be used to solve the inverse kinematics problem for a mobile robot. Specifically, it allows to calculate the required velocities to move in space. Assume the robot's position given by $x_r, y_r$ and $\theta_r$ and the desired pose as $x_g, y_g$ and $\theta_g$ with the subscript $g$ indicating ``goal''.
-We can now calculate the error in the desired pose by
-\begin{eqnarray}
-\rho=\sqrt{(x_r-x_g)^2+(y_r-y_g)^2}\\
-\nonumber
-\alpha=\theta_r-\tan^{-1}{\frac{y_r-y_g}{x_r-x_g}}\\
-\nonumber
-\eta=\theta_g-\theta_r
-\end{eqnarray}
-which is illustrated in Figure \ref{fig:trajectorygen}.
-These errors can turned directly into robot's speeds, for example using a simple proportional controller with gains $p_1$, $p_2$ and $p_3$: 
-\begin{eqnarray}
-\dot{x} &= p_1 \rho\\
-\dot{\theta} &= p_2 \alpha + p_3 \eta
-\end{eqnarray}
-which will let the robot drive in a curve until it reaches the desired pose. 
-
-\begin{figure}
-	\centering
-		\includegraphics[width=\textwidth]{figs/trajectorygen}
-	\caption{Difference in desired and actual pose as a function of distance $\rho$, bearing $\alpha$ and heading $\eta$. 
-	\label{fig:trajectorygen}}
-\end{figure}
 

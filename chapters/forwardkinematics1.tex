@@ -338,7 +338,7 @@ sin(\theta) & cos(\theta) & 0 \\
 \subsubsection{From Forward Kinematics to Odometry}
 Equation \ref{eq:diffwheels} only provides us with the relationship between the robot's wheel-speed and its speed in the inertial frame. Calculating its actual pose in the inertial frame is known as \emph{odometry}\index{Odometry}. Technically, it requires integrating (\ref{eq:diffwheels}) from 0 to the current time $T$. As this is not possible, but for very special cases, one can approximate the robot's pose by summing up speeds over discrete time intervals, or more precisely
 \begin{equation}
-\left(\begin{array}{c} {x_I}(t)\\{y_I}(t)\\{\theta}(t)\end{array}\right)=
+\left(\begin{array}{c} {x_I}(T)\\{y_I}(T)\\{\theta}(T)\end{array}\right)=
 \int_0^T \left(\begin{array}{c} \dot{x_I}(t)\\\dot{y_I}(t)\\\dot{\theta}(t)\end{array}\right) dt \approx 
 \sum_{k=0}^{k=T}\left(\begin{array}{c} \Delta{x_I}(k)\\\Delta{y_I}(k)\\\Delta{\theta}(k)\end{array}\right)\Delta t
 \end{equation} which can be calculated incrementally as
@@ -362,37 +362,33 @@ These drawbacks are mitigated by car-like mechanisms, which are driven by a sing
 \begin{figure}[htb!]
 	\centering
 		\includegraphics[width=0.9\textwidth]{figs/ackermann.png}
-	\caption{Kinematics of car-like steering and the equivalent bicycle model.}
+	\caption{Left: Kinematics of car-like steering and the equivalent bicycle model. Right: Mechanism of an Ackermann vehicle.}
 	\label{fig:ackermann}
 \end{figure}
 
 Let the car have the shape of a box with length $L$ between rear and front axis. Let the center point of the common circle described by all wheels be distance $ R$ from the car's longitudinal center line.  Then, the steering angle $ \phi$ is given by
 
-\begin{equation}
+\begin{equation}\label{eq:ackermann}
 \tan \phi = \frac{L}{R}
 \end{equation}
 
-Let the robot coordinate system $ (x_r,y_r,\theta_r)$ be centered on the car's rear axis. Then, $ \dot{x}_r$ is the car's speed given by the speed of the car's engine. We can now derive expressions for the car's position in world coordinates $ (x_w,y_w,\theta_w)$.  (Remember: as the car is non-holonomic we can derive the kinematics only for speeds, the derivative of position, without integrating.)
-
-\begin{eqnarray}
-\dot{x}_w&=&\cos{\theta_w}\dot{x}_r\\
-\dot{y}_w&=&\sin{\theta_w}\dot{x}_r\\
-\dot{\theta}_w&=&\frac{\tan{\phi}}{L}\dot{x}_r
-\end{eqnarray}
-
-The last expression directly follows from the rule that the tangent of an angle is equivalent to the ratio of its opposite to adjacent edges. At this point it is worth recalling that $ \dot{y}_r=0$, no matter what, as a simple model does not allow the robot to skid. Therefore, the steering angle $ \phi$ only affects the rotation of the car.
-
-At this point, you have expressions for predicting the movement of the car's bounding box through space as a function of speed and steering angle. The angles of the left and the right wheel, $ \phi_l$ and $ \phi_r$ can be calculated using the fact that all wheels of the car rotate around circles with a common center point. With the distance between the two front wheels $ l$, we can therefore write
-
-Angles of individual wheels for perfect Ackermann steering
+The angles of the left and the right wheel, $ \phi_l$ and $ \phi_r$ can be calculated using the fact that all wheels of the car rotate around circles with a common center point. With the distance between the two front wheels $l$, we can write
 \begin{eqnarray}
 \frac{L}{R-l/2}&=\tan{(\pi/2-\phi_r)}\\
 \frac{L}{R+l/2}&=\tan{(\pi/2-\phi_l)}
 \end{eqnarray}
-with $ R=L\tan{\phi}$, again following the rule tangent = opposite / adjacent. This is important to calculate the resulting wheel angles and to test whether they are within the constraints of the actual vehicle.
+This is important, as it allows us to calculate the resulting wheel angles resulting from a specific angle $\phi$ and test whether they are within the constraints of the actual vehicle.
+
+Assuming the wheelspeed to be $\dot{\omega}$ and the wheel radius $r$, we can calculate the speeds in the robot's coordinate frame to
+\begin{eqnarray}
+\dot{x}_r=\dot{\omega}r\\
+\dot{y}_r=0\\
+\dot{\theta}_r=\frac{\dot{\omega}r\tan\phi}{L}
+\end{eqnarray}
+using (\ref{eq:ackermann}) to calculate the circle radius $R$. 
 
 \section{Forward Kinematics using the Denavit-Hartenberg scheme}
-Forward kinematics allow us to express the pose of a mechanism given its actuator parameters such as the angle of a joint or the number of rotations of its wheel as well as their derivatives including speed and accleration, without taking into account the forces that cause the motion. So far, we have considered the forward kinematics of wheeled mechanisms and simple arms. Whereas we could derive kinematic equations of simple mechanisms using basic trigonometry, we can also think about the forward kinematics as a chain of homogenous transformations that express mobile coordinate systems in a static one usually mounted at the base of a manipulator or a fixed position in the room. Deriving these transformations can be confusing and can be facilitated by following a ``recipe'' such as conceived by Denavit and Hartenberg. The so-called Denavit-Hartenberg (DH) \index{Denavit-Hartenberg parameters}scheme has evolved as quasi-standard and can easily be automatized, i.e., applied to a 3D model of a robotic arm, e.g. 
+So far, we have considered the forward kinematics of wheeled mechanisms and simple arms and derived relationships between actuator parameters and velocities using basic trigonometry. In the specific case of multi-link arms, we can also think about the forward kinematics as a chain of homogenous transformations with respect to a coordinate system mounted at the base of a manipulator or a fixed position in the room. Deriving these transformations can be confusing and can be facilitated by following a ``recipe'' such as conceived by Denavit and Hartenberg. The so-called Denavit-Hartenberg (DH) \index{Denavit-Hartenberg parameters}scheme has evolved as quasi-standard and can easily be automatized, i.e., applied to a 3D model of a robotic arm, e.g. 
 
 A manipulating arm consists of links that are connected by joints. Joints can be either rotational or prismatic, i.e., change their length and thus providing additional degrees of freedom. Knowing the length of all rigid links, the position of the manipulators end-effector is fully described by its joint angles and joint offset (for prismatic joints).
 
@@ -403,7 +399,7 @@ In oder to use the DH-convention, we first need to define a coordinate system at
 
 The transformation between two joints is then fully described by the following four parameters:
 \begin{enumerate}
-\item the length $ r$ of the common normal between the $z$-axes of two joints $i$ and $i-1$ (link length)
+\item The length $ r$ of the common normal between the $z$-axes of two joints $i$ and $i-1$ (link length).
 \item The angle $ \alpha$ between the z-axes of the two joints with respect to the common normal (link twist), i.e., the angle between the old and the new $z$-axis, measured about the common normal.
 \item The distance $d$ between the joint axes (link offset), i.e., the offset along the previous $z$-axis to the common normal.
 \item The rotation $ \theta$ around the common axis along which the link offset is measured (joint angle), i.e., the angle from the old $x$-axis to the new $x$-axis, about the previous $z$-axis.
