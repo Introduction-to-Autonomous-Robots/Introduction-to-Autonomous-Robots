@@ -82,7 +82,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.83335121"
-     inkscape:cx="455.99022"
+     inkscape:cx="63.598639"
      inkscape:cy="703.18491"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -100,7 +100,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -108,48 +108,6 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <g
-       inkscape:export-ydpi="150.06332"
-       inkscape:export-xdpi="150.06332"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
-       id="g5036"
-       transform="matrix(0.40059713,-0.28645346,0.28645346,0.40059713,185.78398,54.96478)">
-      <circle
-         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         id="path5038"
-         cx="247.48738"
-         cy="398.79349"
-         r="47.477169" />
-      <rect
-         style="fill:#ffffff"
-         id="rect5040"
-         width="9.6428576"
-         height="22.142857"
-         x="211.78572"
-         y="391.50504" />
-      <rect
-         style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
-         id="rect5042"
-         width="10"
-         height="21.785715"
-         x="215.71428"
-         y="389.00504" />
-      <rect
-         style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
-         id="rect5044"
-         width="10"
-         height="21.785715"
-         x="269.64285"
-         y="388.82645" />
-      <ellipse
-         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1"
-         id="path5046"
-         transform="translate(2,-2)"
-         cx="245.89285"
-         cy="363.96933"
-         rx="3.3928571"
-         ry="3.75" />
-    </g>
     <g
        transform="matrix(-0.31302181,0.38019862,-0.38019862,-0.31302181,369.08288,318.65908)"
        id="g3780"
@@ -293,61 +251,106 @@
          style="font-size:16px">y<tspan
    style="font-size:64.99999762%;baseline-shift:sub"
    id="tspan5585">r</tspan></tspan></text>
-    <path
-       inkscape:export-ydpi="150.06332"
-       inkscape:export-xdpi="150.06332"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
-       sodipodi:nodetypes="ccc"
-       inkscape:connector-curvature="0"
-       id="path5034"
-       d="m 364.67832,167.22822 34.12502,-23.02915 -24.17208,-35.33144"
-       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow2Lstart);marker-end:url(#Arrow2Lend)" />
-    <circle
-       inkscape:export-ydpi="150.06332"
-       inkscape:export-xdpi="150.06332"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
-       id="path5048"
-       style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       cx="-133.20183"
-       cy="402.74911"
-       r="3.4174757"
-       transform="matrix(0.02701672,-0.99963498,0.99963498,0.02701672,0,0)" />
-    <text
-       inkscape:export-ydpi="150.06332"
-       inkscape:export-xdpi="150.06332"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
-       transform="matrix(0.78447477,-0.62016073,0.62016073,0.78447477,0,0)"
-       sodipodi:linespacing="125%"
-       id="text5050"
-       y="323.92807"
-       x="235.5909"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       xml:space="preserve"><tspan
-         style="font-size:16px"
-         y="323.92807"
+    <g
+       id="g13196">
+      <g
+         transform="matrix(0.40059713,-0.28645346,0.28645346,0.40059713,185.78398,54.96478)"
+         id="g5036"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-ydpi="150.06332">
+        <circle
+           r="47.477169"
+           cy="398.79349"
+           cx="247.48738"
+           id="path5038"
+           style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        <rect
+           y="391.50504"
+           x="211.78572"
+           height="22.142857"
+           width="9.6428576"
+           id="rect5040"
+           style="fill:#ffffff" />
+        <rect
+           y="389.00504"
+           x="215.71428"
+           height="21.785715"
+           width="10"
+           id="rect5042"
+           style="fill:#ffffff;stroke:#000000;stroke-opacity:1" />
+        <rect
+           y="388.82645"
+           x="269.64285"
+           height="21.785715"
+           width="10"
+           id="rect5044"
+           style="fill:#ffffff;stroke:#000000;stroke-opacity:1" />
+        <ellipse
+           ry="3.75"
+           rx="3.3928571"
+           cy="363.96933"
+           cx="245.89285"
+           transform="translate(2,-2)"
+           id="path5046"
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      </g>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow2Lstart);marker-end:url(#Arrow2Lend)"
+         d="m 364.67832,167.22822 34.12502,-23.02915 -24.17208,-35.33144"
+         id="path5034"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccc"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-ydpi="150.06332" />
+      <circle
+         transform="matrix(0.02701672,-0.99963498,0.99963498,0.02701672,0,0)"
+         r="3.4174757"
+         cy="402.74911"
+         cx="-133.20183"
+         style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path5048"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-ydpi="150.06332" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
          x="235.5909"
-         id="tspan5052"
-         sodipodi:role="line">x<tspan
-   id="tspan5054"
-   style="font-size:64.99999762%;baseline-shift:sub">r</tspan></tspan></text>
-    <text
-       inkscape:export-ydpi="150.06332"
-       inkscape:export-xdpi="150.06332"
-       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
-       transform="matrix(0.78988797,-0.61325117,0.61325117,0.78988797,0,0)"
-       sodipodi:linespacing="125%"
-       id="text5056"
-       y="343.3703"
-       x="186.43755"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       xml:space="preserve"><tspan
-         style="font-size:16px"
-         y="343.3703"
+         y="323.92807"
+         id="text5050"
+         sodipodi:linespacing="125%"
+         transform="matrix(0.78447477,-0.62016073,0.62016073,0.78447477,0,0)"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-ydpi="150.06332"><tspan
+           sodipodi:role="line"
+           id="tspan5052"
+           x="235.5909"
+           y="323.92807"
+           style="font-size:16px">x<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan5054">r</tspan></tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
          x="186.43755"
-         id="tspan5058"
-         sodipodi:role="line">y<tspan
-   id="tspan5060"
-   style="font-size:64.99999762%;baseline-shift:sub">r</tspan></tspan></text>
+         y="343.3703"
+         id="text5056"
+         sodipodi:linespacing="125%"
+         transform="matrix(0.78988797,-0.61325117,0.61325117,0.78988797,0,0)"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-ydpi="150.06332"><tspan
+           sodipodi:role="line"
+           id="tspan5058"
+           x="186.43755"
+           y="343.3703"
+           style="font-size:16px">y<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan5060">r</tspan></tspan></text>
+    </g>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="M 139.85393,287.32787 400.41512,144.97654"
