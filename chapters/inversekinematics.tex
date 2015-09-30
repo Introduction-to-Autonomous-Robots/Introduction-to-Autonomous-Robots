@@ -108,7 +108,7 @@ Note that this approach does not allow us to deal with $\dot{y}_R \neq 0$, which
 \section{Inverse Kinematics using Feedback-Control}\label{sec:advinvkinematics}
 Solving the inverse kinematic problem for non-holonomic mobile robots require us to find a sequence of actuation commands. One way of doing this is to employ \emph{feedback control}\index{Feedback Control}. In a nutshell, feedback control uses the error between actual and desired position to calculate a trajectory piece that drives the robot a little closer to its desired pose. The process is then repeated until the error is marginally small. This approach can not only be used for mobile robots, but also for manipulator arms with kinematics that are too complicated to solve analytically. 
 
-\subsection{Feedback control for mobile robots}
+\subsection{Feedback control for mobile robots}\label{sec:fbmobile}
 Assume the robot's position given by $x_r, y_r$ and $\theta_r$ and the desired pose as $x_g, y_g$ and $\theta_g$ with the subscript $g$ indicating ``goal''.
 We can now calculate the error in the desired pose by
 \begin{eqnarray}
