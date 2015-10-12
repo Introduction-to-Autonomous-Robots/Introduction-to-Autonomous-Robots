@@ -1,5 +1,5 @@
 \chapter{Feature extraction}\label{chap:feature_extraction}
-Key primitives in a vision system are low-level filters, such as convolution with Gaussian or edge filters. These filters turn images into maps that indicate the presence of certain frequencies and colors, or help in suppressing unwanted information. A next step before arriving at semantic information such as ``this is a cup'' or ``this is a horse'', is identifying higher-level features that consist of some combination of frequency and color information. 
+A robot can obtain information about its environment by both active (e.g., ultra-sound, light, and laser) or passive sensing (e.g., acceleration, magnetic field, or cameras). There are only few cases where this information is directly useful to a robot.Before being able to arrive at semantic information such as ``I'm in the kitchen'', ``this is a cup'' or ``this is a horse'', is identifying higher-level \emph{features}.\index{Features} 
 
 The goal of this chapter is to introduce a series of standard feature detectors such as the 
 \begin{itemize}
@@ -38,7 +38,7 @@ Using simple trigonometry we can now write
 Different line candidates --- parametrized by $ r$ and $ \alpha$ --- will have different values for $ d_i$. We can now write an expression for the total error $ S_{r,\alpha}$ as
 
 \begin{equation}
-S_{r,\alpha}=\sum_i{d_i^2}=\sum_i(\rho_i \cos(\theta_i-\alpha)-r)^2
+S_{r,\alpha}=\sum_{i=1}^{N}{d_i^2}=\sum_i(\rho_i \cos(\theta_i-\alpha)-r)^2
 \end{equation}
 
 Here, we square each individual error to account for the fact that a negative error, i.e.\ a point left of the line, is as bad as a positive error, i.e.\ a point right of the optimal line. In order to optimize $ S_{r,\alpha}$, we need to take the partial derivatives with respect to $ r$ and $ \alpha$, set them zero, and solve the resulting system of equations for $ r$ and $ \alpha$.
@@ -50,12 +50,12 @@ Here, we square each individual error to account for the fact that a negative er
 Here, the symbol $ \partial$ indicates that we are taking a partial derivative. Solving for $r$ and $\alpha$ is involved, but possible \cite{siegwart2011introduction}:
 
 \begin{equation}\label{eq:linealpha}
-\alpha=\frac{1}{2}atan2\left(\frac{\sum{\rho_i^2 sin 2\theta_i}-2\sum{\sum{\rho_i,\rho_j cos \theta_i sin \theta_j}}}{\sum{\rho_i^2 cos 2 \theta_i - \sum{\sum{\rho_i \rho_j cos(\theta_i+\theta_j)}}}}\right)
+\alpha=\frac{1}{2}atan\left(\frac{\frac{1}{N}\sum{\rho_i^2 sin 2\theta_i}-\frac{2}{N^2}\sum{\sum{\rho_i\rho_j cos \theta_i sin \theta_j}}}{\frac{1}{N}\sum{\rho_i^2 cos 2 \theta_i - \frac{1}{N^2}\sum{\sum{\rho_i \rho_j cos(\theta_i+\theta_j)}}}}\right)
 \end{equation}
 
 and
 \begin{equation}\label{eq:liner}
-r={\sum \rho_i cos (\theta_i-\alpha)}
+r=\frac{{\sum \rho_i cos (\theta_i-\alpha)}}{N}
 \end{equation}
 
 We can therefore calculate the distance and orientation of a wall captured by our proximity sensors relative to the robot's positions or the height and orientation of a line in an image based on a collection of points that we believe might belong to a line.
