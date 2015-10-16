@@ -323,8 +323,8 @@ Trigonometry relates angles and lengths of triangles. Figure \ref{fig:triangle} 
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=0.6\textwidth]{figs/triangle}
-\caption{A right-angle triangle.\label{fig:triangle}}
+\includegraphics[width=0.8\textwidth]{figs/triangle}
+\caption{Left: A right-angled triangle with common notation. Right: Trigonometric relationships on the unit circle and angles corresponding to the four quadrants. \label{fig:triangle}}
 \end{figure}
 
 The sum of all angles in any triangle is 180 degrees or $2\pi$, or 
@@ -333,7 +333,7 @@ The sum of all angles in any triangle is 180 degrees or $2\pi$, or
 \end{equation}
 If the triangle is right-angled, the relationship between edges $a$, $b$, and $c$, where $c$ is the edge opposite of the right angle is
 \begin{equation}
-c^2=a^2+b^2
+a^2+b^2=c^2
 \end{equation} 
 The relationship between angles and edge lengths are captured by the trigonometric functions:
 \begin{eqnarray}
@@ -349,10 +349,15 @@ Relations between a single angle and the edge lengths are captured by the \emph{
 a^2=b^2+c^2-2bc\cos{\alpha}
 \end{equation}
 
+\section{Inverse trigonometry}
+In order to calculate an angle given two edges, one uses inverse functions $\sin^{-1}$, $\cos^{-1}$, and $\tan^{-1}$. (Not to be confused with $\frac{1}{\sin}$ etc.) As functions can, by definition, only map one value to exactly one other value, $\sin^{-1}$ and $\tan^{-1}$ are only defined in the interval $[-90^o;+90^o]$ and $\cos^{-1}$ is defined in the interval $[0^o;180^o]$. This makes it impossible to calculate angles in the 2nd and 3rd, or the 3rd and 4th quadrant, respectively (Figure \ref{fig:triangle}). 
+In order to overcome this problem, most programming languages implement a function \texttt{atan2(opposite,adjacent)}, which evaluates the sign of the numerator and denumerator, provided as two separate parameters. 
+
+\section{Trigonometric identities}
 Sine and cosine are periodic, leading to the following identities:
 \begin{eqnarray}
-\sin\theta=-\sin{-\theta}=-\cos(\theta+\frac{\pi}{2}=\cos(\theta-\frac{\pi}{2})\\
-\cos\theta=-\cos{-\theta}=\sin(\theta+\frac{\pi}{2}=-\sin(\theta-\frac{\pi}{2})
+\sin\theta=-\sin(-\theta)=-\cos(\theta+\frac{\pi}{2})=\cos(\theta-\frac{\pi}{2})\\
+\cos\theta=-\cos(-\theta)=\sin(\theta+\frac{\pi}{2})=-\sin(\theta-\frac{\pi}{2})
 \end{eqnarray}
 
 The sine or cosine for sums or differences between angles can be calculated using the following identities:
@@ -369,6 +374,37 @@ The sum of the squares of sine and cosine for the same angle is one:
 \cos(\theta)\cos(\theta)+\sin(\theta)\sin(\theta)=1
 \end{equation}
 
+\chapter{Linear Algebra}
+Linear algebra concerns vector spaces and linear mappings between them. It is central to robotics as it allows describing positions and speeds of the robot within the world as well as moving parts connected to it. 
+
+\section{Dot product}
+The dot product (or scalar product)\index{Dot product}\index{Scalar product} is the sum of the products of the individual entries of two vectors. Let $\hat{a}=(a_1,\ldots,a_i)^T$ and $\hat{b}=(b_1,\ldots,b_i)$ be two vectors. Then, there dot product $\hat{a}\cdot\hat{b}$ is given by
+\begin{equation}
+\hat{a}\cdot\hat{b}=\sum_{i}=a_ib_i
+\end{equation}
+The dot product therefore takes two sequences of numbers and returns a single scalar. 
+
+In robotics, the dot product is mostly relevant due to its geometric interpretation:
+\begin{equation}
+\hat{a}\cdot\hat{b}=\|\hat{a}\|\|\hat{b}\|\cos\theta
+\end{equation}
+with $\theta$ the angle between vectors $\hat{a}$ and $\hat{b}$. 
+
+If $\hat{a}$ and $\hat{b}$ are orthogonal, it follows $\hat{a}\cdot\hat{b}=0$. If $\hat{a}$ and $\hat{b}$ are parallel, it follows $\hat{a}\cdot\hat{b}=\|\hat{a}\|\|\hat{b}\|$.  
+
+\section{Cross product}
+The cross product $\hat{a} \times \hat{b}$ of two vectors is defined as a vector $\hat{c}$ that is perpendicular to both $\hat{a}$ and $\hat{b}$. Is direction is given by the right-hand rule and its magnitude is equal to the area of the parallelogram that the vectors span.  
+
+Let Let $\hat{a}=(a_1,a_2,a_3)^T$ and $\hat{b}=(b_1,a_2,a_3)$ be two vectors in $\mathrm{R}^3$. Then, there cross product $\hat{a}\times\hat{b}$ is given by
+\begin{equation}
+\hat{a}\times\hat{b}=\left(
+\begin{array}{l}
+a_2b_3-a3b2\\
+a_3b_1-a_1b_3\\
+a_1b_2-a_2b_1
+\end{array}
+\right)
+\end{equation}
 
 \input{chapters/statistics}
 
