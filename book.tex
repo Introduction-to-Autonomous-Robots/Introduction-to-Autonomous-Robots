@@ -406,6 +406,64 @@ a_1b_2-a_2b_1
 \right)
 \end{equation}
 
+
+\section{Matrix product}
+Given an $n \times m$ matrix $\mathbf{A}$ and a $m\times p$ matrix $\mathbf{B}$, the matrix product $\mathbf{AB}$ is defined by
+\begin{equation}
+(\mathbf{AB})_{ij}=\sum_{k=1}^mA_{ik}B_{kj}
+\end{equation}
+where the index $ij$ indicates the i-th row and j-th column entry of the resulting $n\times p $ matrix. Each entry therefore consists of the scalar product of the i-th row of $\mathbf{A}$ with the j-th column of $\mathbf{B}$. 
+
+Note that for this two work, the right hand matrix (here $\mathbf{B}$) has to have as many columns as the left hand matrix (here $\mathbf{A}$) has rows. Therefore, the operation is not commutative, i.e., $\mathbf{AB}\neq\mathbf{BA}$.
+
+For example, multiplying a 3x3 matrix with a 3x1 matrix (a vector), works as follows:
+Let
+\begin{equation}\nonumber
+\mathbf{A} = \begin{pmatrix}
+a & b & c \\
+p & q & r \\
+u & v & w
+\end{pmatrix} \qquad \mathbf{B} = \begin{pmatrix}
+x \\
+y \\
+z
+\end{pmatrix}.
+\end{equation}
+
+Then their matrix product is:
+\begin{equation}\nonumber
+\mathbf{AB} = \begin{pmatrix}
+a & b & c \\
+p & q & r \\
+u & v & w
+\end{pmatrix} \begin{pmatrix}
+x \\
+y \\
+z
+\end{pmatrix} =\begin{pmatrix}
+ax + by + cz \\
+px + qy + rz \\
+ux + vy + wz
+\end{pmatrix}
+\end{equation}
+
+\section{Matrix inversion}
+Given a matrix $\mathbf{A}$, finding the inverse $\mathbf{B}=\mathbf{A}^{-1}$ involves solving the system of equations that satisfies
+\begin{equation}
+\mathbf{AB}=\mathbf{BA}=\mathbf{I}
+\end{equation}
+With $\mathbf{I}$ the identity matrix\index{Identify matrix}. (The identity matrix is zero everywhere expect at its diagonal entries, which are one.)
+
+In the particular case of orthonormal matrices\index{Orthonormal matrix}, which columns are all orthogonal to each other and of length one, the inverse is equivalent to the transpose, i.e.
+\begin{equation}
+\mathbf{A}^{-1}=\mathbf{A}^T
+\end{equation}
+
+In case a matrix is not quadratic, we can calculate the pseudo-inverse\index{Pseudo-inverse}, which is defined by
+\begin{equation}
+\mathbf{A}^+=\mathbf{A}^T(\mathbf{AA}^T)^{-1}.
+\end{equation}
+
 \input{chapters/statistics}
 
 \chapter{How to write a research paper}
