@@ -318,134 +318,59 @@ As ICP only works when both point clouds are already closely aligned, which migh
 
 
 \appendix
+\chapter{Trigonometry}
+Trigonometry relates angles and lengths of triangles. Figure \ref{fig:triangle} shows a right-angled triangle and conventions to label its corners, sides, and angles. In the following, we assume all triangles to have at least one right angle (90 degrees or $\frac{\pi}{2})$ as all planar triangles can be dissected into two right-angled triangles. 
 
-\chapter{Statistics}\label{chap:statistics}
-\section{Random Variables and Probability Distributions}\label{sec:pdfs}
-Random variables can describe either discrete variables, such as the result from throwing a dice, or continuous variables such as measuring a distance. In order to learn about the likelihood that a random variable has a certain outcome, we can repeat the experiment many times and record the resulting \emph{random variates}\index{Variate (Random variable)}, that is the actual values of the random variable, and the number of times they occurred. For a perfectly cubic dice we will see that the random variable can hold natural numbers from 1 to 6, that have the same likelihood of 1/6.
-
-The function that describes the probability of a random variable to take certain values is called a \emph{probability distribution}\index{Probability Distribution}.
-As the likelihood of all possible random variates in the dice experiment is the same, the dice follows what we call a \emph{uniform distribution}\index{Uniform Distribution}. More accurately, as the outcomes of rolling a dice are discrete numbers, it is actually a discrete uniform distribution. Most random variables are not uniformly distributed, but some variates are more likely than others. For example, when considering a random variable that describes the sum of two simultaneously thrown dice, we can see that the distribution is anything but uniform:
-
-2: 1+1\\
-3: 1+2, 2+1\\
-4: 1+3, 2+2, 3+1\\
-5: 1+4, 2+3, 3+2, 4+1\\
-6: 1+5, 2+4, 3+3, 4+2, 5+1\\
-7: 1+6, 2+5, 3+4, 4+3, 5+2, 6+1\\
-8: 2+6, 3+5, 4+4, 5+3, 6+2\\
-9: 3+6, 4+5, 5+4, 6+3\\
-10: 4+6, 5+5, 6+4\\
-11: 5+6, 6+5\\
-12: 6+6\\
-
-As one can see, there are many more possibilities to sum up to a 7 than there are to a 3, e.g. While it is possible to store probability distributions such as this one as a look-up table to predict the outcome of an experiment (or that of a measurement), it is hard to reason about the random process analytically. We therefore aim to describe the probability distributions of random processes that we need to deal with using one of the ``standard'' probability distribution functions (or more accurately probability density function). These functions have been well studied and come with a broad set of tools for their analysis.  Consequently, more often than not we use a well studied probability density function even if the underlying data doesn't fully support its use for the simple reason that we can work its associated mathematical tools.
-
-\subsection{Normal Distribution with different means and variances}
-One of the most prominent distributions is the Gaussian or Normal Distribution. The \emph{Normal distribution}\index{Normal Distribution}\index{Gaussian Distribution} is characterized by a \emph{mean} and a \emph{variance}. Here, the mean corresponds to the average value of a random variable (or the peak of the distribution) and the variance is a measure of how broadly variates are spread around the mean (or the width of the distribution).
-
- The Normal distribution is defined by the following function
- \begin{equation}
-f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
-\end{equation}
-where $ \mu$ is the mean and $ \sigma^2$ the variance. ($ \sigma$ on its own is known as the standard deviation.) Then, $ f(x)$ is the probability for a random variable $ X$ to have value $ x$.
-
-\begin{figure}
-	\centering
-		\includegraphics[width=\textwidth]{figs/Normal_Distribution_PDF}
-	\caption{Normal distribution for different variances and $\mu=0$.}
-	\label{fig:Normal_Distribution_PDF}
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.6\textwidth]{figs/triangle}
+\caption{A right-angle triangle.\label{fig:triangle}}
 \end{figure}
 
-The mean is calculated by
+The sum of all angles in any triangle is 180 degrees or $2\pi$, or 
 \begin{equation}
-\mu=\int_{-\infty}^{\infty}xf(x)dx
+\alpha + \beta + \gamma = 180^o
 \end{equation}
-or in other words, each possible value $ x$ is weighted by its likelihood and added up.
-\begin{framed}
-Exercise: do this for the double dice experiment. Calculate the probability of each outcome from the table above, multiply it with its value and add them all up.
-\end{framed}
-
-The variance is calculated as follows
-$ \sigma^2=\int_{-\infty}^{\infty}(x-\mu)^2f(x)dx$
-or in other words, we calculate the deviation of each random variable from the mean, square it, and weigh it by its likelihood. Although it is tantalizing to perform this calculation also for the double dice experiment, the resulting value is questionable, as the double dice experiment does not follow a Normal distribution. We know this, because we actually enumerated all possible outcomes. For other experiments, such as grades in the classes you are taking, we don't know what the real distribution is.
-
-\subsection{Normal distribution in two dimensions}
-The Normal Distribution is not limited to random processes with only one random variable. For example, the X/Y position of a robot in the plane is a random process with two dimensions. In case of a multi-variate distribution with $k$ dimensions, the random variable $ X$ is a k-dimensional vector of random variables, $ \mu$ is a k-dimensional vector of means, and $ \sigma$ gets replaced with $ \Sigma$,  a k-by-k dimensional \emph{covariance matrix}\index{Covariance Matrix} (a matrix that carries the variances of each random variable in its diagonal).
-
-\section{Bayes Rule}\label{sec:bayesrule}
-Bayes' Rule relates a conditional probability to its inverse. In other words, if we know the probability of event $A$ to happen given that event $B$ is happening, we can calculate the probability of $B$ to occur given that $A$ is happening. Bayes' rule can be derived from the simple observation that the probability of $A$ and $B$ to happen together ($P(A \cap B)$) is given by $P(A)P(B|A)$ or the probability of $A$ to happen and the probability of $B$ to happen given that $A$ happens. Similarly, we can write
+If the triangle is right-angled, the relationship between edges $a$, $b$, and $c$, where $c$ is the edge opposite of the right angle is
 \begin{equation}
-P(A \cap B)=P(A)P(B|A)=P(B)P(A|B)
-\end{equation}
-From this, deriving Bayes' rule is straightforward:
+c^2=a^2+b^2
+\end{equation} 
+The relationship between angles and edge lengths are captured by the trigonometric functions:
+\begin{eqnarray}
+\sin{\alpha}&=\frac{opposite}{hypothenuse}=\frac{a}{c}\\
+\cos{\alpha}&=\frac{adjacent}{hypothenuse}=\frac{b}{c}\\
+\tan{\alpha}&=\frac{opposite}{adjacent}=\frac{\sin{\alpha}}{\cos{\alpha}}=\frac{a}{b}
+\end{eqnarray} 
+
+Here, the \emph{hypothenuse}\index{Hypothenuse} is the side of the triangle that is opposite to the right angle. The \emph{adjacent} and \emph{opposite} are relative to a specific angle. For example, in Figure \ref{fig:triangle}, the adjacent of angle $\alpha$ is side $b$ and the opposite of $\alpha$ is edge $a$. 
+
+Relations between a single angle and the edge lengths are captured by the \emph{law of cosines}\index{Law of Cosines}:
 \begin{equation}
-P(A|B)=\frac{P(A)P(B|A)}{P(B)}
+a^2=b^2+c^2-2bc\cos{\alpha}
 \end{equation}
-In words, if we know the probability that $B$ happens given that $A$ happens, we can calculate that $A$ happens given that $B$ happens. 
 
-\section{Testing Statistical Significance}\label{sec:stattest}
-Robotics is an experimental discipline. This means that algorithms and systems you develop need to be validated by real hardware experiments. Doing an experiment to validate your hypothesis is at the core of the scientific method and doing it right is a discipline on its own. The key is to show that your results is not simply a result of chance. In practice, this is impossible to show. Instead, it is possible to express the likelihood that your results have not been obtained by chance. This is known as the statistical significance level. How to calculate the statistical significance level depends on the problem you are studying. This section will introduce three common problems in robotics:
+Sine and cosine are periodic, leading to the following identities:
+\begin{eqnarray}
+\sin\theta=-\sin{-\theta}=-\cos(\theta+\frac{\pi}{2}=\cos(\theta-\frac{\pi}{2})\\
+\cos\theta=-\cos{-\theta}=\sin(\theta+\frac{\pi}{2}=-\sin(\theta-\frac{\pi}{2})
+\end{eqnarray}
 
-\begin{enumerate}
-\item testing whether data is indeed distributed according to a specific distribution
-\item testing whether two sets of data are generated from different distributions
-\item testing whether true-false experiments are a sequence of luck or not
-\end{enumerate}
+The sine or cosine for sums or differences between angles can be calculated using the following identities:
 
-\subsection{Null Hypothesis on Distributions}
-The Null Hypothesis is a term from the statistical significance literature and formally captures your main claim. A statistical test can either reject the Null Hypothesis or fail to reject it. It can never be proven as there will always be a non-zero probability that all your experiments are just a lucky coincidence. The statistical significance level of a Null Hypothesis is known as the p-value.
+\begin{eqnarray}
+\cos(\theta_1+\theta_2)=c_{12}=c_1c_2-s_1s2\\
+\sin(\theta_1+\theta_2)=s_{12}=c_1s_2+s_1c_2\\
+\cos(\theta_1-\theta_2)=c_1c_2+s_1s_2\\
+\sin(\theta_1-\theta_2)=s_1c_2-c_1s_2
+\end{eqnarray}
 
-An import class of Null Hypothesis are on the distribution of data. Consider the following example from Lab 1 (message passing in ROS). Students were asked to experimentally study the time it takes to pass a message from one process to another:
-
-\begin{framed}
-Histogram of the time it takes to send a ROS message from one process to another based on 10 trials.
-\end{framed}
-
-We observe three peaks in this Histogram. What can we say about message passing times? For example
-\begin{itemize}
-\item H0: Message passing times follow a Gaussian distribution.
-\item H0: Message passing times follow a bi-modal distribution.
-\item H0: Message passing times follow a log-normal distribution.
-\end{itemize}
-
-The first Null Hypothesis implies that messages take sometimes a little longer and sometimes a little shorter, but have an average and a variance. The second Null Hypothesis implies that usually messages take some low average time, but occasionally are delayed due to the influence of some other process, for example operating system duties. You can now test each of these hypotheses by calculating the parameters of the distribution to expect and calculate the joint probability that each of your measurements are actually drawn from this distribution. You will find, that all of the above hypotheses are almost equally likely. Together, none of your tests will reject your hypothesis. You therefore will need more data:
-
-\begin{framed}
-Histogram of message passing times in ROS based on a 1000 trials.
-\end{framed}
-
-You can now again calculate parameters for each distribution you suspect. For example, you can calculate the mean and variance of this data and plot the resulting Gaussian distribution. In this example, the Gaussian distribution will have a mean slightly offset to the right of the peak. You can also fit the data to a log-normal distribution. You can now calculate the likelihood for the data actually be drawn from either of the two distributions. You will see that the joint probability (the product of all likelihoods) for all data points is actually much higher than that for any Gaussian distribution or any bimodal distribution that you are able to fit.
-
-Formally, this can be done by following Pearsons $ \chi^2$-Test (read Chi-Squared Test). This test calculates a value that will approximate a $ \chi^2$-distribution from all samples and the likelihood of that sample based on the expected distribution. Plugging the resulting value into the $ \chi^2$-distribution leads to the statistical significance level (or p-value).
-
-The value of the test-statistic is calculated as follows:
+The sum of the squares of sine and cosine for the same angle is one:
 \begin{equation}
-\chi^2 = \sum_{i=1}^{n} \frac{(O_i - E_i)^2}{E_i}
+\cos(\theta)\cos(\theta)+\sin(\theta)\sin(\theta)=1
 \end{equation}
-where
-\begin{itemize}
-\item $ \chi^2$ = Pearson's cumulative test statistic, which asymptotically approaches a chi-squared distribution.
-\item $ O_i$ = an observed frequency in the data histogram
-\item $ E_i$ = an expected (theoretical) frequency, asserted by the null hypothesis, i.e., the distribution you think the data should follow
-\item n = the number samples.
-\end{itemize}
-This example also illustrates how statistical tests can be used to determine if you have enough data. If you don't, you will get very poor p-values.  In practice, it is up to you what likelihood you determine to be significant. Standard significance levels are 10\%, 5\% and 1\%. If you are unsatisfied with your p-values you can collect more data and check, whether your p-value improves.
 
-\subsection{Testing whether two distributions are independent}
-Testing whether the data of two experiments are independent is probably the most common statistical test. For example, you might run 10 experiments using algorithm 1 and 10 experiments using algorithm 2. It is up to you to show that the resulting distributions are indeed statistically significantly different. In other words, you need to show that the differences between the algorithm indeed lead to a systematic improvement, and that it was not purely luck that one set of experiments turned out ``better'' than another.
 
-If you have good reasons to believe that your data is normal distributed, there exist a series of simple tests. For example, to test whether two sets of data are distributed with Gaussian  distributions that have the same mean, can be done using distribution is Gaussian can be done using  Student's t-test. A generalization of Student's t-test to 3 or more groups is ANOVA. These tests have to be done with care as most distributions in robotics are not normal distributed. Examples where  Gaussian distributions are commonly assumed are sensor noise on distance measurements such as obtained by infrared or odometry.
-
-If data is not Gaussian distributed, there exist a series of numerical tests to test the likelihood that two distributions are independent. For example, you could test the message passing time with and without running some computationally expensive image processing routines. You can then test whether the additional computation affects message passing time. If it does, both distributions need to be significantly different. Just using Student's t-test does not work as the distributions are not Gaussian!
-
-Instead, testing whether two sets of data have the same mean, needs to be done numerically. A common test is Mann-Wilcoxon's Ranked Sum test. An implementation of this test is part of most mathematical calculation programs such as Matlab or Mathematica. An algorithm to calculate this test statistic and the corresponding p-values is available on the Wikipedia page above. An extension of the Mann-Wilcoxon's Ranked Sum test for 3 or more groups is the Kruskal-Wallis one-way analysis of variance test.
-
-\subsection{Statistical Significance of True-False Tests}
-There exists a class of experiments that do not lead to distributions, but result in simple true-false outcomes. For example, a question one might ask is ``does the robot correctly understand a spoken command''. This class of experiments is captured by the Lady tasting tea example. Here, a lady claims that she can identify the brewing method of a cup of tea: tea prepared by first adding milk and tea prepared by later adding milk. Unfortunately, it is easy to cheat as the likelihood of guessing right is 50\%. Testing the hypothesis that the lady can indeed differentiate the two brewing methods therefore requires to conduct a series of experiments to reduce the likelihood of winning by guesswork. In order to this, one needs to calculate the number of total permutations (or, possible outcomes over the entire series of experiments). For example, one could present the lady 8 cups of tea, 4 brewed one way and four the other. One can now enumerate all possible outcomes of this experiment, ranging from all cups guessed correctly to all cups guessed wrong. There are a total of 70 possible outcomes (see the example provided here). Guessing all cups correctly has now a likelihood of 1/70 or 1.4\%. The likelihood to make a single mistake (16 possible outcomes in this example) is around 23\%.
-
-\subsection{Summary}
-Statistical significance test allow you to express the likelihood that your experiment is just the result of chance. There exist different tests for different underlying distributions. Therefore, your first task is to convincingly argue what the underlying distribution of your data is. Formally testing how your data is distributed can be achieved using the Chi-Square Test. In order to test whether two sets of data are coming from two different distributions can then be achieved using Student's t-test (if the distribution is Gaussian) or using the Mann-Wilcoxon Ranked Sum test if the probability distribution is non-parametric.
-
+\input{chapters/statistics}
 
 \chapter{How to write a research paper}
 The final deliverable of a robotics class often is a write-up on a ``research'' project, modeled after research done in industry or academia. Roughly, there are three classes of papers:
