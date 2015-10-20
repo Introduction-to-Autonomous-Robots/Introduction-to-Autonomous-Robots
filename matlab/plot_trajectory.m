@@ -1,6 +1,6 @@
 % Generate wheel movements
-dsl=ones(100,1)*0.11;
-dsr=ones(100,1).*0.10;
+dsl=ones(70,1)*0.12;
+dsr=ones(70,1).*0.10;
 
 % Initialize position
 x=0;
@@ -42,7 +42,12 @@ for I=1:length(dsl),
 
  end;
  subplot(1,2,2);
-  G=Gauss2D(repmat(linspace(0,12),100,1),repmat(linspace(-2,7),100,1)',x,y,Cp(1,1),Cp(2,2)); 
+  [X,Y]=meshgrid(linspace(0,12),linspace(-2,7));
+  XR = cos(theta)*(X-x)+sin(theta)*(Y-y)+x;
+  YR = -sin(theta)*(X-x)+cos(theta)*(Y-y)+y;
+
+  
+  G=Gauss2D(XR,YR,x,y,Cp(1,1),Cp(2,2)); 
   mesh(linspace(0,12),linspace(-2,7),G);
   drawnow;
 end;
