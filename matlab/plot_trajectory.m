@@ -1,6 +1,6 @@
 % Generate wheel movements
-dsl=ones(70,1)*0.12;
-dsr=ones(70,1).*0.10;
+dsl=ones(100,1)*0.10;
+dsr=ones(100,1).*0.11;
 
 % Initialize position
 x=0;
