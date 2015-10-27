@@ -21,6 +21,7 @@ $\begin{array}{ll}
 
 As one can see, there are many more possibilities to sum up to a 7 than there are to a 3, e.g. While it is possible to store probability distributions such as this one as a look-up table to predict the outcome of an experiment (or that of a measurement), we can also calculate the sum of two random processes analytically. 
 
+\subsection{Sum of two random processes}\label{sec:convolution}
 Let $X$ and $Y$ the random variables associated with the dice, and $Z=X+Y$. With $P(X=x)$, $P(Y=y)$, and $P(Z=z)$ being the probabilities associated with the random variables taking specific values $x,y$ or $z$. Given $z=x+y$,the event $Z=z$ is the union of the independent events $X=k$ and $Y=z-k$. We can therefore write
 \begin{equation}
 P(Z=z)=\sum_{k=-\infty}^{\infty}P(X=k)P(Y=z-k)
