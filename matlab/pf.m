@@ -11,7 +11,7 @@ sx = 0.1;
 sy = 0.1;
 
 % Particle filter
-Nparticles = 20;
+Nparticles = 50;
 % Initialize around known position with Gaussian distribution
 X=normrnd(x,sx,Nparticles,1);
 Y=normrnd(y,sy,Nparticles,1);
@@ -98,8 +98,10 @@ while(waitforbuttonpress),
       Header=Header+1;
   end;
   else % reinitialize filter
-     X=normrnd(meanX,sx,Nparticles,1);
-     Y=normrnd(meanY,sy,Nparticles,1); 
+     %X=normrnd(meanX,sx,Nparticles,1);
+     %Y=normrnd(meanY,sy,Nparticles,1); 
+     X=rand(Nparticles,1)*width;
+     Y=rand(Nparticles,1)*height;
   end;
  end;
  end;
