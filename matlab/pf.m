@@ -7,17 +7,17 @@ x=width/2;
 y=height/2;
 
 % Error model
-sx = 0.1;
-sy = 0.1;
+sx = 0.5;
+sy = 0.5;
 
 % Particle filter
-Nparticles = 50;
+Nparticles = 200;
 % Initialize around known position with Gaussian distribution
 X=normrnd(x,sx,Nparticles,1);
 Y=normrnd(y,sy,Nparticles,1);
 % Initialize uniformly in the environment
-%X=rand(Nparticles,1)*width;
-%Y=rand(Nparticles,1)*height;
+X=rand(Nparticles,1)*width;
+Y=rand(Nparticles,1)*height;
  
 
 % Initialize P(feat|loc)
@@ -71,7 +71,7 @@ while(waitforbuttonpress),
  
  % 2. Perception update
  
- if(Pfeat(y,x)>0),
+if(Pfeat(y,x)>0),
  nX=[];
  nY=[];
  meanX=mean(X); % Keep this value in case no particle turns out to be valid

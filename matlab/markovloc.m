@@ -16,7 +16,7 @@ Ploc(y,x)=1;
 
 % Motion model
 mmodel=[0.1 0.1 0.1;
-        0.4 1 0.4
+        0.1 0.5 0.1
         0.1 0.1 0.1];
 mmodel=mmodel/sum(sum(mmodel));
 

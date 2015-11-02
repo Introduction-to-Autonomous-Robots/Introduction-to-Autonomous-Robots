@@ -19,19 +19,8 @@ $\begin{array}{ll}
 12: 6+6 & \rightarrow \frac{1}{6}\frac{1}{6}\\
 \end{array}$
 
-As one can see, there are many more possibilities to sum up to a 7 than there are to a 3, e.g. While it is possible to store probability distributions such as this one as a look-up table to predict the outcome of an experiment (or that of a measurement), we can also calculate the sum of two random processes analytically. 
+As one can see, there are many more possibilities to sum up to a 7 than there are to a 3, e.g. While it is possible to store probability distributions such as this one as a look-up table to predict the outcome of an experiment (or that of a measurement), we can also calculate the sum of two random processes analytically (Section \ref{sec:convolution}). 
 
-\subsection{Sum of two random processes}\label{sec:convolution}
-Let $X$ and $Y$ the random variables associated with the dice, and $Z=X+Y$. With $P(X=x)$, $P(Y=y)$, and $P(Z=z)$ being the probabilities associated with the random variables taking specific values $x,y$ or $z$. Given $z=x+y$,the event $Z=z$ is the union of the independent events $X=k$ and $Y=z-k$. We can therefore write
-\begin{equation}
-P(Z=z)=\sum_{k=-\infty}^{\infty}P(X=k)P(Y=z-k)
-\end{equation}
-which is the exact definition of a \emph{convolution}\index{Convolution}, also written as 
-\begin{equation}
-P(Z)=P(X)\star P(Y)
-\end{equation}
-
-Numerically calculating the convolution always works, and can be done analytically for some probability distributions. 
 
 \subsection{The Normal Distribution}
 One of the most prominent distribution is the Gaussian or Normal Distribution. The \emph{Normal distribution}\index{Normal Distribution}\index{Gaussian Distribution} is characterized by a \emph{mean} and a \emph{variance}. Here, the mean corresponds to the average value of a random variable (or the peak of the distribution) and the variance is a measure of how broadly variates are spread around the mean (or the width of the distribution).
@@ -54,9 +43,6 @@ The mean is calculated by
 \mu=\int_{-\infty}^{\infty}xf(x)dx
 \end{equation}
 or in other words, each possible value $ x$ is weighted by its likelihood and added up.
-\begin{framed}
-Exercise: do this for the double dice experiment. Calculate the probability of each outcome from the table above, multiply it with its value and add them all up.
-\end{framed}
 
 The variance is calculated by
 \begin{equation}
@@ -64,7 +50,6 @@ The variance is calculated by
 \end{equation}
 or in other words, we calculate the deviation of each random variable from the mean, square it, and weigh it by its likelihood. Although it is tantalizing to perform this calculation also for the double dice experiment, the resulting value is questionable, as the double dice experiment does not follow a Normal distribution. We know this, because we actually enumerated all possible outcomes. For other experiments, such as grades in the classes you are taking, we don't know what the real distribution is.
 
-Conveniently, the convolution of two Gaussian distributions is again a Gaussian distribution with a variance that corresponds to the sum of the variances of the indivdiual Gaussians. 
 
 \subsection{Normal distribution in two dimensions}
 The Normal Distribution is not limited to random processes with only one random variable. For example, the X/Y position of a robot in the plane is a random process with two dimensions. In case of a multi-variate distribution with $k$ dimensions, the random variable $ X$ is a k-dimensional vector of random variables, $ \mu$ is a k-dimensional vector of means, and $ \sigma$ gets replaced with $ \Sigma$,  a k-by-k dimensional \emph{covariance matrix}\index{Covariance Matrix} (a matrix that carries the variances of each random variable in its diagonal).
@@ -82,6 +67,33 @@ From this, deriving Bayes' rule is straightforward:
 P(A|B)=\frac{P(A)P(B|A)}{P(B)}
 \end{equation}
 In words, if we know the probability that $B$ happens given that $A$ happens, we can calculate that $A$ happens given that $B$ happens. 
+
+\section{Sum of two random processes}\label{sec:convolution}
+Let $X$ and $Y$ the random variables associated with the numbers shown on two dice (see above), and $Z=X+Y$. With $P(X=x)$, $P(Y=y)$, and $P(Z=z)$ being the probabilities associated with the random variables taking specific values $x,y$ or $z$. Given $z=x+y$,the event $Z=z$ is the union of the independent events $X=k$ and $Y=z-k$. We can therefore write
+\begin{equation}
+P(Z=z)=\sum_{k=-\infty}^{\infty}P(X=k)P(Y=z-k)
+\end{equation}
+which is the exact definition of a \emph{convolution}\index{Convolution}, also written as 
+\begin{equation}
+P(Z)=P(X)\star P(Y)
+\end{equation}
+
+Numerically calculating the convolution always works, and can be done analytically for some probability distributions. 
+
+Conveniently, the convolution of two Gaussian distributions is again a Gaussian distribution with a variance that corresponds to the sum of the variances of the indivdiual Gaussians. 
+
+\section{Linear Combinations of Independent Gaussian Random Variables}\label{sec:lcombrandom}
+Let $X_1$, $X_2$, $\ldots$, $X_n$ be $n$ independent random variables with means $\mu_1$, $\mu_2$, $\ldots$, $\mu_n$ and variances $\sigma_1^2$, $\sigma_2^2$, $\ldots$, and $\sigma^2_n$. Let $Y$ be a random variable that is a linear combination of $X_i$ with weights $a_i$ so that $Y=\sum_{i=1}^na_iX_i$. 
+
+As the sum of two Gaussian random variables is again a Gaussian, $Y$ is Gaussian distributed with a mean \begin{equation}
+\mu_Y=\sum_{i=1}^na_i\mu_i
+\end{equation}
+and a variance
+\begin{equation}
+\sigma_Y^2=\sum_{i=1}^na_i^2\sigma_i^2
+\end{equation}  
+
+
 
 \section{Testing Statistical Significance}\label{sec:stattest}
 Robotics is an experimental discipline. This means that algorithms and systems you develop need to be validated by real hardware experiments. Doing an experiment to validate your hypothesis is at the core of the scientific method and doing it right is a discipline on its own. The key is to show that your results is not simply a result of chance. In practice, this is impossible to show. Instead, it is possible to express the likelihood that your results have not been obtained by chance. This is known as the statistical significance level. How to calculate the statistical significance level depends on the problem you are studying. This section will introduce three common problems in robotics:
