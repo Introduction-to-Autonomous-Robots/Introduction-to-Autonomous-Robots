@@ -56,7 +56,7 @@ Ratslife is a miniature robot maze competition developed by Olivier Michel from 
 
 In RatsLife, two miniature robots  compete on searching for four ``feeders'' that are hidden in  a maze. Once a robot reaches a feeder, it receives ``energy'' to go on for another 60s, and the feeder becomes temporarily unavailable. After a short while, the feeder becomes available again. The feeders can be either controlled by a referee who also takes care of time-keeping or constructed as part of a simple curriculum on electronics or mechatronics. 
 
-It should be clear by now, how YOU would solve this tasks using your abilities, and you should also have thought about fall-back strategies in case some of your sensors are unavailable. Here are some possible algorithms for a robot, ordered after the capabilities that it provides:
+It should be clear by now, how YOU would solve these tasks using your abilities, and you should also have thought about fall-back strategies in case some of your sensors are unavailable. Here are some possible algorithms for a robot, ordered after the capabilities that it provides:
 \begin{itemize}
 \item Imagine you have a robot that can only drive (actuation) and bounce of a wall. The resulting random walk will eventually let the robot reach a feeder. As the allowed time to do so is limited, it is likely that the robot's energy will soon deplete.
 \item Now imagine a robot that has a sensor that let it estimate the distance from a wall. This could be a whisker, an infrared distance sensor, an ultra-sound distance sensor, or a laser range finder. The robot could now use this sensor to keep following a wall to its right. Using this strategy for solving the maze, it will eventually explore the entire maze except for islands inside of it.
