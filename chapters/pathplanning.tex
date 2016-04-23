@@ -66,7 +66,7 @@ Instead of exploring in all directions, knowledge of an approximate direction of
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.9\textwidth]{figs/astargrid}
-\caption{Finding a shortest path from `S' to 'G' assuming the robot can only travel laterally (not diagonally) with cost one per grid cell using the A* algorithm. Much like Dijkstra, A* evaluates only the cell with the lowest cost, but takes an estimate of the remaining distance into account.\label{fig:dijkstragrid}}
+\caption{Finding a shortest path from `S' to 'G' assuming the robot can only travel laterally (not diagonally) with cost one per grid cell using the A* algorithm. Much like Dijkstra, A* evaluates only the cell with the lowest cost, but takes an estimate of the remaining distance into account.\label{fig:astargrid}}
 \end{figure}
 
 An extension of A* that addresses the problem of expensive re-planning when obstacles appear in the path of the robot, is known as D* \cite{stentz1994optimal}. Unlike A*, D* starts from the goal vertex and has the ability to change the costs of parts of the path that include an obstacle. This allows D* to re-plan around an obstacle while maintaining most of the already calculated path.\index{D*}
