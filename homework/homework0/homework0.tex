@@ -1,0 +1,120 @@
+%% Based on a TeXnicCenter-Template by Tino Weinkauf.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% HEADER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[letter,twoside,11pt]{article}
+% Alternative Options:
+%	Paper Size: a4paper / a5paper / b5paper / letterpaper / legalpaper / executivepaper
+% Duplex: oneside / twoside
+% Base Font Size: 10pt / 11pt / 12pt
+
+
+%% Language %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[USenglish]{babel} %francais, polish, spanish, ...
+\usepackage[T1]{fontenc}
+\usepackage[ansinew]{inputenc}
+
+\usepackage{lmodern} %Type1-font for non-english texts and characters
+
+
+%% Packages for Graphics & Figures %%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx} %%For loading graphic files
+%\usepackage{subfig} %%Subfigures inside a figure
+%\usepackage{pst-all} %%PSTricks - not useable with pdfLaTeX
+
+%% Please note:
+%% Images can be included using \includegraphics{Dateiname}
+%% resp. using the dialog in the Insert menu.
+%% 
+%% The mode "LaTeX => PDF" allows the following formats:
+%%   .jpg  .png  .pdf  .mps
+%% 
+%% The modes "LaTeX => DVI", "LaTeX => PS" und "LaTeX => PS => PDF"
+%% allow the following formats:
+%%   .eps  .ps  .bmp  .pict  .pntg
+
+
+%% Math Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+
+
+%% Line Spacing %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{setspace}
+%\singlespacing        %% 1-spacing (default)
+%\onehalfspacing       %% 1,5-spacing
+%\doublespacing        %% 2-spacing
+
+
+%% Other Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{a4wide} %%Smaller margins = more text per page.
+%\usepackage{fancyhdr} %%Fancy headings
+%\usepackage{longtable} %%For tables, that exceed one page
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Remarks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% TODO:
+% 1. Edit the used packages and their options (see above).
+% 2. If you want, add a BibTeX-File to the project
+%    (e.g., 'literature.bib').
+% 3. Happy TeXing!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Options / Modifications
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\input{options} %You need a file 'options.tex' for this
+%% ==> TeXnicCenter supplies some possible option files
+%% ==> with its templates (File | New from Template...).
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Homework 0}
+\author{Introduction to Robotics}
+\date{} %%If commented, the current date is used.
+\maketitle
+
+Your goal is to design a novel robot and describe it in a short essay, not to exceed six sentences, using the template below. Try to answer the following questions with \emph{one sentence} each. (Do not repeat the questions in your essay.)
+
+\begin{enumerate}
+\item Assume you could build any robot you want, what would it do?
+\item How is this currently done and what are the limits of current practice?
+\item What's new in your approach and why do you think it will be successful?
+\item Who cares? Who will it make a difference for? 
+\item What are the risks and payoffs?
+\item How would you check that it works? 
+\end{enumerate}
+
+Your goal is to create a write-up that answers all of the above questions in a consistent manner. That is, try to answer every question while remaining faithful to what the robot would do. Don't hesitate to go back to change previous answers, for example if you realize that what your robot does has nobody who cares, or there aren't any payoffs or you could not check whether it works. 
+
+Use the following grading rubric to assess your peers:
+
+\begin{itemize}
+\item 80 points: answers 6 out of 6 questions satisfactory
+\item 65 points: answers 5 out of 6 questions satisfactory
+\item 50 points: answers 4 out of 6 questions satisfactory
+\item 35 points: answers 3 out of 6 questions satisfactory
+\item 20 points: answers 2 out of 6 questions satisfactory
+\item 5 points: answers 1 out of 6 questions satisfactory
+\item 0 points: answers 0 out of 6 questions satisfactory
+\end{itemize}
+
+Deduct points based on quality of the answer as well as length. Note that you are not assessing whether you like the idea, but whether the answers are logical and consistent. For example, it is fine if the robot is doing something goofy, but it is a problem if the essay does not articulate how its purpose is accomplished today, what the shortcomings of current methods are, what is new etc. 
+
+Example: \emph{I would like to build a robot that folds my laundry. Laundry needs to be folded manually, which people do by themselves or pay others, for example drycleaning businesses, to do for them. My robot will be able to retrieve laundry directly from the dryer and place it into the cupboard. Such a robot will allow homemakers to save time, but might also increase efficiency in professional cleaning businesses. A key risk is that such a robot might be too expensive and too bulky for the little value it provides, but might serve as a platform to solve other household tasks. I will initially assess the robot during a shirt folding task and measure both the time it takes as well as the quality of the job using a focus group.}
+
+\end{document}
+
