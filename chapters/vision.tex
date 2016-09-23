@@ -57,7 +57,7 @@ These examples illustrate both the advantages and drawbacks of a signal processi
 Basic image operations can be thought of as a filter that operates in the frequency or in the space (color) domain. Although most filters directly operate in the color domain, knowing how they affect the frequency domain is helpful in understanding the filter's function. For example, a filter that is supposed to highlight edges, such as shown in Figure \ref{fig:iss_edges} should suppress low frequencies, i.e., areas in which the color values do not change much, and amplify high-frequency information, i.e., areas in which the color values change quickly. The goal of this section is to provide a basic understanding of how basic image processing operation works. The methods presented here, while still valid, have been superseded by more sophisticated implementations that are widely available as software packages or within desktop graphic software.
 
 \subsection{Convolution-based filters}
- A filter can be implemented using the \emph{convolution} \index{Convolution} operator that convolves function $f()$ with function $g()$. 
+ A filter can be implemented using the \emph{convolution}\index{Convolution} operator that convolves function $f()$ with function $g()$. 
 \begin{equation}
 f(x)\star g(x)=\int_{-\infty}^{\infty}f(\tau)g(x-\tau)d\tau
 \end{equation}
@@ -109,7 +109,7 @@ Doing this for all $x$ and all $y$ literally corresponds to sliding the filter $
 	\label{fig:filters}}
 \end{figure}
 
-An example of filter $g(x,y)$ in action is shown in Figure \ref{fig:filters}. The filter acts as a \emph{low-pass filter} \index{Low-pass filter}, suppressing high frequency components. Indeed, noise in the image is suppressed, leading also to a smoother edge image, which is shown underneath.
+An example of filter $g(x,y)$ in action is shown in Figure \ref{fig:filters}. The filter acts as a \emph{low-pass filter}\index{Low-pass filter}, suppressing high frequency components. Indeed, noise in the image is suppressed, leading also to a smoother edge image, which is shown underneath.
 
 \subsubsection{Edge detection}\label{sec:sobel}
 Edge detection can be achieved using another convolution-based filter, the \emph{Sobel} kernel\index{Sobel filter}
@@ -135,7 +135,7 @@ s_y(x,y)=
 Here, $s_x(x,y)$ can be used to detect vertical edges, whereas $s_y(x,y)$ highlights horizontal edges. Edge detectors, such as the \emph{Canny} edge detector\index{Canny edge detector}  therefore run at least two of such filters over an image to detect both horizontal and vertical edges.
 
 \subsubsection{Difference of Gaussians}
-An alternative method for detecting edges is the \emph{Difference of Gaussians} (DoG) method \index{Difference of Gaussians (DoG)}. The idea is to subtract two images that have each been filtered using a Gaussian kernel with different width. Both filters supress high-frequency information and there difference therefore leads to a \emph{band-pass} filtered signal\index{Band-pass filter}, from which both low and high frequencies have been removed. As such, a DoG filter acts as a capable edge detection algorithm. Here, one kernel is usually four to five times wider than the other, therefore acting as a much stronger filter.
+An alternative method for detecting edges is the \emph{Difference of Gaussians} (DoG) method\index{Difference of Gaussians (DoG)}. The idea is to subtract two images that have each been filtered using a Gaussian kernel with different width. Both filters supress high-frequency information and there difference therefore leads to a \emph{band-pass} filtered signal\index{Band-pass filter}, from which both low and high frequencies have been removed. As such, a DoG filter acts as a capable edge detection algorithm. Here, one kernel is usually four to five times wider than the other, therefore acting as a much stronger filter.
 
 Differences of Gaussians can also be used to approximate the \emph{Laplacian of Gaussian},\index{Laplacian of Gaussian} i.e., the sum of the second derivatives of a Gaussian kernel. Here, one kernel is roughly 1.6 times wider than the other. The band-pass characteristic of DoG and LoGs are important as they highlight high-frequency information such as edges, yet suppress high-frequency noise in the image.
 
@@ -148,7 +148,7 @@ Albeit thresholding is deceptively simple, finding correct threshold values is a
 \subsection{Morphological Operations}
 Another class of filters are morphological operators which consists of a kernel describing the structure of the operation (this can be as simple as an identity matrix) and a rule on how to change a pixel value based on the values in the neighborhood defined by the kernel.
 
-Important morphological operators are \emph{erosion} and \emph{dilation} \index{Erosion}\index{Dilation}. The erosion operator assigns a pixel value with the minimum value that it can find in the neighborhood defined by the kernel. The dilation operator assigns a pixel value with the maximum value it can find in the neighborhood defined by the kernel. This is useful, e.g., to fill holes in a line or remove noise. A dilation followed by an erosion is known as a ``Closing'' and an erosion followed by a dilation as an ``Opening''. Subtracting erosed and dilated images from each other can also serve as an edge detector. Examples of such operators are shown in Figure \ref{fig:morphology}.
+Important morphological operators are \emph{erosion} and \emph{dilation}\index{Erosion}\index{Dilation}. The erosion operator assigns a pixel value with the minimum value that it can find in the neighborhood defined by the kernel. The dilation operator assigns a pixel value with the maximum value it can find in the neighborhood defined by the kernel. This is useful, e.g., to fill holes in a line or remove noise. A dilation followed by an erosion is known as a ``Closing'' and an erosion followed by a dilation as an ``Opening''. Subtracting erosed and dilated images from each other can also serve as an edge detector. Examples of such operators are shown in Figure \ref{fig:morphology}.
 
 \begin{figure}
 	\centering
