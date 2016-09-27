@@ -84,25 +84,23 @@
 \title{Homework 3}
 \author{Introduction to Robotics\\
 ncorrell@colorado.edu}
-%\date{} %%If commented, the current date is used.
+\date{} %%If commented, the current date is used.
 \maketitle
 
 
 \begin{enumerate}
 \item An ultrasound sensor measures distance $x=c\Delta t/2$. Here, $c$ is the speed of sound and $\Delta t$ is the difference in time between emitting and receiving a signal.
-Let the variance of your time measurement $\Delta t$ be $\sigma_t^2$. What can you say about $x$, when $c$ is assumed to be constant? Hint: how does a change in $\Delta t$ affect $x$? \emph{2pt}
-\item Consider a unicycle that turns with angular velocity $\dot{\phi}$ and has radius $r$. Its speed is thus a function of $\dot{\phi}$ and $r$ and is given by
+Let the variance of your time measurement $\Delta t$ be $\sigma_t^2$. What can you say about $x$, when $c$ is assumed to be constant? Hint: how does a change in $\Delta t$ affect $x$? \item Consider a unicycle that turns with angular velocity $\dot{\phi}$ and has radius $r$. Its speed is thus a function of $\dot{\phi}$ and $r$ and is given by
 \begin{equation}
 \nonumber
 v=f(\dot{\phi},r)=r\dot{\phi}
 \end{equation} 
-Assume that your measurement of $\dot{\phi}$ is noisy and has a standard deviation $\sigma_{\phi}$.  Use the error propagation law to calculate the resulting variance of your speed estimate $\sigma_v^2$. \emph{2pt}
+Assume that your measurement of $\dot{\phi}$ is noisy and has a standard deviation $\sigma_{\phi}$.  Use the error propagation law to calculate the resulting variance of your speed estimate $\sigma_v^2$.
 \item Assume that the ceiling is equipped with infra-red markers that the robot can identify with some certainty. Your task is to develop a probabilistic localization scheme, and you would like to calculate the probability $p(marker|reading)$ to be close to a certain marker given a certain sensing reading and information about how the robot has moved.
 \begin{enumerate}
-\item Derive an expression for $p(marker|reading)$ assuming that you have an estimate of the probability to correctly identify a marker $p(reading|marker)$ and the probability $p(marker)$ of being underneath a specific marker. \emph{2pt}
-\item Now assume that the likelihood that you are reading a marker correctly is 90\%, that you get a wrong reading is 10\%, and that you do not see a marker when passing right underneath it is 50\%. Consider a narrow corridor that is equipped with 4 markers. You know with certainty that you started from the entry closests to marker 1 and move right in a straight line. The first reading you get is `` Marker 3''. Calculate the probability to be indeed underneath marker 3. \emph{2pt}
-\item Could the robot also possibly be underneath marker 4? \emph{2pt}
-\end{enumerate}
+\item Derive an expression for $p(marker|reading)$ assuming that you have an estimate of the probability to correctly identify a marker $p(reading|marker)$ and the probability $p(marker)$ of being underneath a specific marker.
+\item Now assume that the likelihood that you are reading a marker correctly is 90\%, that you get a wrong reading is 10\%, and that you do not see a marker when passing right underneath it is 20\%. Consider a narrow corridor that is equipped with 4 markers. You know with certainty that you started from the entry closests to marker 1 and move right in a straight line. The first reading you get is `` Marker 3''. Calculate the probability to be indeed underneath marker 3. 
+\item Could the robot also possibly be underneath marker 4? \end{enumerate}
 \end{enumerate}
 
 %% Title Page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

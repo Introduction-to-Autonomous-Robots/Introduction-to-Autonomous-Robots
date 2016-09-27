@@ -11,13 +11,13 @@ sx = 0.5;
 sy = 0.5;
 
 % Particle filter
-Nparticles = 200;
+Nparticles = 50;
 % Initialize around known position with Gaussian distribution
 X=normrnd(x,sx,Nparticles,1);
 Y=normrnd(y,sy,Nparticles,1);
 % Initialize uniformly in the environment
-X=rand(Nparticles,1)*width;
-Y=rand(Nparticles,1)*height;
+%X=rand(Nparticles,1)*width;
+%Y=rand(Nparticles,1)*height;
  
 
 % Initialize P(feat|loc)
