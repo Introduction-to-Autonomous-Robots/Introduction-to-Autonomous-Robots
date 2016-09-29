@@ -111,7 +111,7 @@ For example, the success rate to detect a closed door is only 60\%, whereas a fo
 
 Consider now the following initial belief state distribution: $p(1-2)=0.8$ and $p(2-3)=0.2$. Here, $1-2$ etc.\ refers to the position on the topological map in Figure \ref{fig:dervish_example}. You know that the robot faces east with certainty. The robot now drives for a while until it reports ``open hallway on its left and open door on its right''. This actually corresponds to location 2, but the robot can in fact be anywhere. For example there is a 10\% chance that the open door is in fact an open hallway, i.e.\ the robot is really at position 4. How can we calculate the new probability distribution of the robot's location? Here are the possible trajectories that could happen:
 
-The robot could move from $2-3$ to $3$, $3-4$ and finally $4$. We have chosen this sequence as the probability to detect an open door on its right is zero for $3$ and $3-4$, which leaves position $4$ as the only option if the robot has started at 2-3. In order for this hypothesis to be true, the following events need to have happened, their probabilities are given in parentheses:
+The robot could move from $2-3$ to $3$, $3-4$ and finally $4$. We have chosen this sequence as the probability to detect an open door on its right is zero for $3$ and $3-4$, which leaves position $4$ as the only option if the robot has started at $2-3$. In order for this hypothesis to be true, the following events need to have happened, their probabilities are given in parentheses:
 \begin{enumerate}
 \item The robot must have started at $2-3$ (20\%)
 \item Not have seen the open door at the left of $3$ (5\%) and not have seen the wall at the right (70\%)
@@ -126,7 +126,7 @@ The robot could also move from $1-2$ to $2$, $2-3$, $3$, $3-4$ or $4$. We can ev
 \item The chance that it correctly detects the open hallway and door at position $2$ is $0.9*0.9$, so the chance to be at position $2$ is
 $0.8*0.9*0.9=64\%$.
 \item The chance to have seen an open door instead of a wall at $2-3$, $3$, and $3-4$ is zero, so the robot cannot have ended up at these positions.
-\item In order to reach position 4, the robot must not have seen the hallway on its left and the open door to its right when passing position 2. The probability for this is $0.001*0.05$. The robot must then have detected nothing at 2-3 ($0.7*0.7$), nothing at 3 ($0.05*0.7$), nothing at 3-4 ($0.7*0.7$), and finally mistaken the hallway on its right for an open door at position 4 ($0.9*0.1$). Multiplied together, this outcome is very unlikely.
+\item In order to reach position $4$, the robot must not have seen the hallway on its left and the open door to its right when passing position $2$. The probability for this is $0.001*0.05$. The robot must then have detected nothing at $2-3$ ($0.7*0.7$), nothing at $3$ ($0.05*0.7$), nothing at $3-4$ ($0.7*0.7$), and finally mistaken the hallway on its right for an open door at position $4$ ($0.9*0.1$). Multiplied together, this outcome is very unlikely.
 \end{itemize}
 
 Given this information, we can now calculate the posterior probability to be at a certain location on the topological map by adding up the probabilities for every possible path to get there. 
