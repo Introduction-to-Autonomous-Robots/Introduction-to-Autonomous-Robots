@@ -303,7 +303,7 @@ As the state vector is a 3x1 vector and the innovation a 2x1 matrix, the Kalman 
 \item Once the robot is able to sense features with known locations, Bayes' rule can be used to update the posterior probability of a possible position. The key insight is that the conditional probability to be at a certain position given a certain observation can be inferred from the likelihood to actually make this observation given a certain position.
 \item A complete solution that performs this process for discrete locations is known as Markov Localization. 
 \item The Extended Kalman Filter is the optimal way to fuse observations of different random variables that are Gaussian distributed.
-It is dervied by minimizing the least-square error between prediction and real value.
+It is derived by minimizing the least-square error between prediction and real value.
 \item Possible random variables could be the estimate of your robot position from odometry and observations of static beacons with known location (but uncertain sensing) in the environment.
 \item In order to take advantage of the approach, you will need differentiable functions that relate measurements to state variables as well as an estimate of the covariance matrix of your sensors.
 \item An approximation that combines benefits of Markov Localization (multiple hypothesis) and the Kalman filter (continuous representation of position estimates) is the Particle filter.
