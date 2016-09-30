@@ -230,7 +230,7 @@ This is nothing else as the error propagation law applied to the odometry of the
 
 The perception update (or prediction) step looks as follows:
 
-\begin{eqnarray}{ccc}
+\begin{eqnarray}
 \hat{\boldsymbol{x}}_{k|k'} &=& \hat{\boldsymbol{x}}_{k'|k-1} + \boldsymbol{K}_{k'}\tilde{\boldsymbol{y}}_{k'}\\
 \boldsymbol{P}_{k|k'} &=& (I - \boldsymbol{K}_{k'} {\boldsymbol{H}_{k'}}) \boldsymbol{P}_{k'|k-1}
 \end{eqnarray}
