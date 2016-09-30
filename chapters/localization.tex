@@ -214,7 +214,7 @@ In our example $ H_k$ was just the identity matrix; in a robot position estimati
 The perception update step shown above, also known as prediction step is only half of what the Kalman filter does. The first step is the update step, which corresponds to the action update we already know. In fact, the variance update in the Kalman filter is exactly the same as we learned during error propagation. Before going into any more details on the Kalman filter, it is time for a brief disclaimer: the Kalman filter only works for linear systems. Forward kinematics of even the simplest robots are mostly non-linear, and so are observation models that relate sensor observations and the robot position. Non-linear systems can be dealt with the Extended Kalman Filter.
 
 \section{Extended Kalman Filter}\label{sec:EKF}
-In the extended Kalman filter, the state transition and observation models need not be linear functions of the state but may instead be differentiable functions. The action update step looks as follows:
+In the extended Kalman filter, the state transition and observation models do not need to be linear functions of the state but may instead be differentiable functions. The action update step looks as follows:
 \begin{equation}
 \hat{\boldsymbol{x}}_{k'|k-1} = f(\hat{\boldsymbol{x}}_{k-1|k-1}, \boldsymbol{u}_{k-1})
 \end{equation}
