@@ -287,12 +287,12 @@ A key problem in ICP are outliers either from sensor noise or simply from incomp
 \subsection{Error Metric and Minimization Algorithm}
 After points have been selected and matched, pairs have been weighted and rejected, the match between two point clouds needs to be expressed by a suitable error metric, which needs then to be minimized. A straightforward approach is to consider the sum of squared distances between each pair. This formulation can often be solved analytically. Let
 \begin{eqnarray}
-A=\{a_1,\ldots,a_m\}\\
+A=\{a_1,\ldots,a_n\}\\
 B=\{b_1,\dots,b_n\}
 \end{eqnarray}
 be point clouds in $ \mathbb{R}^n$. The goal is now to find a vector $ t \in \mathbb{R}^n$ so that an error function $ \phi(A+t,B)$ is minimized. In 6D (translation and rotation), an equivalent notation can be found for a transformation (see forward kinematics). An error function for the squared distance is then given by
 \begin{equation}
-\phi(A+t,B)=\frac{1}{m}\sum_{a \in A}\|a+t-N_B(a+t)\|^2
+\phi(A+t,B)=\frac{1}{n}\sum_{a \in A}\|a+t-N_B(a+t)\|^2
 \end{equation}
 Here $ N_B(a+t)$ is a function that provides the nearest neighbor of $ a$ translated by $ b$ in $ B$.  A key problem now is that the actual value of $t$ affects the outcome of the pairing. What might look like a good match initially often turns out not be the final pairing. A simple numerical approach to this problem is to find $ t$ iteratively.
 
