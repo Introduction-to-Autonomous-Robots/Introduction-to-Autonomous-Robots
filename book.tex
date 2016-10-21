@@ -365,10 +365,10 @@ Sine and cosine are periodic, leading to the following identities:
 The sine or cosine for sums or differences between angles can be calculated using the following identities:
 
 \begin{eqnarray}
-\cos(\theta_1+\theta_2)=c_{12}=c_1c_2-s_1s2\\
-\sin(\theta_1+\theta_2)=s_{12}=c_1s_2+s_1c_2\\
-\cos(\theta_1-\theta_2)=c_1c_2+s_1s_2\\
-\sin(\theta_1-\theta_2)=s_1c_2-c_1s_2
+\cos(\theta_1+\theta_2)=\cos(\theta_1)\cos(\theta_2)-\sin(\theta_1)\sin(\theta_2)\\
+\sin(\theta_1+\theta_2)=\sin(\theta_1)\cos(\theta_2)+\cos(\theta_1)\sin(\theta_2)\\
+\cos(\theta_1-\theta_2)=\cos(\theta_1)\cos(\theta_2)+\sin(\theta_1)\sin(\theta_2)\\
+\sin(\theta_1-\theta_2)=\sin(\theta_1)\cos(\theta_2)-\cos(\theta_1)\sin(\theta_2)
 \end{eqnarray}
 
 The sum of the squares of sine and cosine for the same angle is one:
@@ -380,9 +380,9 @@ The sum of the squares of sine and cosine for the same angle is one:
 Linear algebra concerns vector spaces and linear mappings between them. It is central to robotics as it allows describing positions and speeds of the robot within the world as well as moving parts connected to it. 
 
 \section{Dot product}
-The dot product (or scalar product)\index{Dot product}\index{Scalar product} is the sum of the products of the individual entries of two vectors. Let $\hat{a}=(a_1,\ldots,a_i)^T$ and $\hat{b}=(b_1,\ldots,b_i)$ be two vectors. Then, there dot product $\hat{a}\cdot\hat{b}$ is given by
+The dot product (or scalar product)\index{Dot product}\index{Scalar product} is the sum of the products of the individual entries of two vectors. Let $hat{a}=(a_1,\ldots,a_n)$ and $\hat{b}=(b_1,\ldots,b_n)$ be two vectors. Then, there dot product $\hat{a}\cdot\hat{b}$ is given by
 \begin{equation}
-\hat{a}\cdot\hat{b}=\sum_{i}=a_ib_i
+\hat{a}\cdot\hat{b}=\sum_{i}^n=a_ib_i
 \end{equation}
 The dot product therefore takes two sequences of numbers and returns a single scalar. 
 
@@ -395,13 +395,13 @@ with $\theta$ the angle between vectors $\hat{a}$ and $\hat{b}$.
 If $\hat{a}$ and $\hat{b}$ are orthogonal, it follows $\hat{a}\cdot\hat{b}=0$. If $\hat{a}$ and $\hat{b}$ are parallel, it follows $\hat{a}\cdot\hat{b}=\|\hat{a}\|\|\hat{b}\|$.  
 
 \section{Cross product}
-The cross product $\hat{a} \times \hat{b}$ of two vectors is defined as a vector $\hat{c}$ that is perpendicular to both $\hat{a}$ and $\hat{b}$. Is direction is given by the right-hand rule and its magnitude is equal to the area of the parallelogram that the vectors span.  
+The cross product $\hat{a} \times \hat{b}$ of two vectors is defined as a vector $\hat{c}$ that is perpendicular to both $\hat{a}$ and $\hat{b}$. Its direction is given by the right-hand rule and its magnitude is equal to the area of the parallelogram that the vectors span.  
 
 Let Let $\hat{a}=(a_1,a_2,a_3)^T$ and $\hat{b}=(b_1,a_2,a_3)$ be two vectors in $\mathrm{R}^3$. Then, there cross product $\hat{a}\times\hat{b}$ is given by
 \begin{equation}
 \hat{a}\times\hat{b}=\left(
 \begin{array}{l}
-a_2b_3-a3b2\\
+a_2b_3-a_3b_2\\
 a_3b_1-a_1b_3\\
 a_1b_2-a_2b_1
 \end{array}
