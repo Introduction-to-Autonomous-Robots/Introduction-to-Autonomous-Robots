@@ -11,10 +11,10 @@ This book can be cited as follows:
 
 Nikolaus Correll. Introduction to Autonomous Robots, 2nd edition, Magellan Scientific, 2016.
 
-@book{correll2016introduction,
-  title={Introduction to Autonomous Robots},
-  author={Correll, Nikolaus},
-  year={2014},
-  edition={2nd},
-  publisher={Magellan Scientific}
-}
+@book{correll2016introduction,<br>
+  title={Introduction to Autonomous Robots},<br>
+  author={Correll, Nikolaus},<br>
+  year={2014},<br>
+  edition={2nd},<br>
+  publisher={Magellan Scientific}<br>
+}<br>
