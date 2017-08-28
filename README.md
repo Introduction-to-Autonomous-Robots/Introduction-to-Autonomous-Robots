@@ -1,5 +1,7 @@
 自主机器人导论
 =================================
+__[简体中文翻译版本]__
+
 
 An open textbook focusing on computational principles of autonomous robots. The book is released under Creative Commons 2.0, available as a [PDF](https://github.com/correll/Introduction-to-Autonomous-Robots/releases/latest) ("releases" tab) and via Amazon on-demand printing:
 
