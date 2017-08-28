@@ -1,5 +1,5 @@
 # Add any directories, files, or patterns you don't want to be tracked by version control
-*to.pdf
+*.pdf
 *.aux
 *.log
 *.gz
@@ -7,3 +7,5 @@
 *.bbl
 *.blg
 *.rar
+*.out
+*.toc
