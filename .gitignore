@@ -1,0 +1,9 @@
+# Add any directories, files, or patterns you don't want to be tracked by version control
+*to.pdf
+*.aux
+*.log
+*.gz
+*.idx
+*.bbl
+*.blg
+*.rar
