@@ -1,28 +1,52 @@
 % \chapter{Simultaneous Localization and Mapping}\label{chap:slam}
 \chapter{同步定位与建图（SLAM）}\label{chap:slam}
-Robots are able to keep track of their position using a model of the noise arising in their drive train and their forward kinematics to propagate this error into a spatial probability density function (Section \ref{sec:errorprop}). The variance of this distribution can shrink as soon as the robot sees uniquely identifiable features with known locations. This can be done for discrete locations using Bayes' rule (Section \ref{sec:markovloc}) and for continuous distributions using the Extended Kalman Filter (Section \ref{sec:ekf}). The key insight here was that every observation will reduce the variance of the robot's position estimate. Here, the Kalman filter performs an optimal fusion of two observations by weighting them with their variance, i.e., unreliable information counts less than reliable one. In the robot localization problem, one of the observations is typically the robot's position estimate whereas the other observation comes from a feature with known location on a map. So far, we have assumed that these locations are known. This chapter will introduce
+% Robots are able to keep track of their position using a model of the noise arising in their drive train and their forward kinematics to propagate this error into a spatial probability density function (Section \ref{sec:errorprop}). The variance of this distribution can shrink as soon as the robot sees uniquely identifiable features with known locations. This can be done for discrete locations using Bayes' rule (Section \ref{sec:markovloc}) and for continuous distributions using the Extended Kalman Filter (Section \ref{sec:ekf}). The key insight here was that every observation will reduce the variance of the robot's position estimate. Here, the Kalman filter performs an optimal fusion of two observations by weighting them with their variance, i.e., unreliable information counts less than reliable one. In the robot localization problem, one of the observations is typically the robot's position estimate whereas the other observation comes from a feature with known location on a map. So far, we have assumed that these locations are known. This chapter will introduce
+
+机器人能够使用他们的传动系列中出现的噪声模型及其正向运动来跟踪其位置，以将该误差传播到空间概率密度函数（第\ref {sec:errorprop}节））。一旦机器人看到具有已知位置的唯一可识别特征，该分布的方差就会缩小。这可以使用贝叶斯规则（部分\ref {sec:markovloc}）和使用扩展卡尔曼滤波器（部分\ref {sec:ekf}）的连续分布来完成。这里的主要观点是，每次观察都会减少机器人位置估计的方差。这里，卡尔曼滤波器通过对它们的方差进行加权来执行两个观测值的最佳融合，即不可靠的信息计数小于可靠信息。在机器人定位问题中，其中一个观察值通常是机器人的位置估计，而另一个观测来自地图上已知位置的特征。到目前为止，我们假设这些位置是已知的。本章将介绍
+
+% \begin{itemize}
+% \item the concept of covariance (or, what all the non-diagonal elements in the covariance matrix are about),
+% \item how to estimate the robot's location and that of features in the map at the same time (Simultaneous Localization and Mapping or SLAM)
+% \end{itemize}
 
 \begin{itemize}
-\item the concept of covariance (or, what all the non-diagonal elements in the covariance matrix are about),
-\item how to estimate the robot's location and that of features in the map at the same time (Simultaneous Localization and Mapping or SLAM)
+\item 协方差概念（或协方差矩阵中的所有非对角元素都是关于）
+\item 如何同时估计地图中的机器人的位置和功能（同时定位和映射或SLAM）
 \end{itemize}
 
-\section{Introduction}
-The SLAM problem has been considered as the holy grail of mobile robotics for a long time. This lecture will introduce one of the first comprehensive solutions to the problem, which has now be superseded by computationally more efficient versions. We will begin with studying a series of special cases.
 
-\subsection{Special Case I: Single Feature}
-Consider a map that has only a single feature. We assume that the robot is able to obtain the relative range and angle of this feature, each with a certain variance. An example of this and how to calculate the variance of an observation based on sensor uncertainty is described in the line fitting example (Section \ref{sec:linefitting}). This feature could be a wall, but also a graphical tag that the robot can uniquely identify. The position of this measurement $m_i=[\alpha_i,r_i]$  in global coordinates is unknown, but can now easily be calculated if an estimate of the robot's position $\boldsymbol{\hat{x}_k}$ is known.  The variance of $ m_i$'s components is now the variance of the robot's position plus the variance of the observation.
+% \section{Introduction}
+% The SLAM problem has been considered as the holy grail of mobile robotics for a long time. This lecture will introduce one of the first comprehensive solutions to the problem, which has now be superseded by computationally more efficient versions. We will begin with studying a series of special cases.
 
-Now consider the robot moving closer to the obstacle and obtaining additional observations. Although its uncertainty in position is growing, it can now rely on the feature $m_i$ to reduce the variance of its old position (as long as its known that the feature is not moving). Also, repeated observations of the same feature from different angles might improve the quality of its observation. The robot has therefore a chance to keep its variance very close to that with which it initially observed the feature and stored it into its map. We can actually do this using the EKF framework from Section \ref{sec:EKF}. There, we assumed that features have a known location (no variance), but that the robot's sensing introduces a variance. This variance was propagated into the covariance matrix of the innovation ($ \boldsymbol{S}$). We can now simply add the variance of the estimate of the feature's position to that of the robot's sensing process.
+\section{引言}
+SLAM问题长期以来被认为是移动机器人的圣杯。本讲座将介绍问题的第一个综合解决方案之一，现在已经被计算上更有效的版本所取代了。我们将着手研究一系列特殊情况。
 
-\subsection{Special Case II: Two Features}
-Consider now a map that has two features. Visiting one after the other, the robot will be able to store both of them in its map, although with a higher variance for the feature observed last. Although the observations of both features are independent from each other, the relationship between their variances depend on the trajectory of the robot. The differences between these two variances are much lower if the robot connect them in a straight line than when it performs a series of turns between them. In fact, even if the variances of both features are huge (because the robot has already driven for quite a while before first encountering them), but the features are close together, the probability density function over their distance would be very small. The latter can also be understood as the covariance of the two random variables (each consisting of range and angle). In probability theory, the covariance is the measure of how much two variables are changing together. Obviously, the covariance between the locations of two features that are visited immediately after each other by a robot is much higher as those far apart. It should therefore be possible to use the covariance between features to correct estimates of features in retrospect. For example, if the robot returns to the first feature it has observed, it will be able to reduce the variance of its position estimate. As it knows that it has not traveled very far since it observed the last feature, it can then correct this feature's position estimate.
+% \subsection{Special Case I: Single Feature}
+% Consider a map that has only a single feature. We assume that the robot is able to obtain the relative range and angle of this feature, each with a certain variance. An example of this and how to calculate the variance of an observation based on sensor uncertainty is described in the line fitting example (Section \ref{sec:linefitting}). This feature could be a wall, but also a graphical tag that the robot can uniquely identify. The position of this measurement $m_i=[\alpha_i,r_i]$  in global coordinates is unknown, but can now easily be calculated if an estimate of the robot's position $\boldsymbol{\hat{x}_k}$ is known.  The variance of $ m_i$'s components is now the variance of the robot's position plus the variance of the observation.
 
-\section{The Covariance Matrix}
-When estimating quantities with multiple variables, such as the position of a robot that consists of its x-position, its y-position and its orientation, matrix notation has been a convenient way of writing down equations. For error propagation, we have written the variances of each input variable into the diagonal of a covariance matrix. For example, when using a differential wheel robot, uncertainty in position expressed by $ \sigma_x, \sigma_y$ and $ \sigma_{\theta}$ were grounded in the uncertainty of its left and right wheel. We have entered the variances of the left and right wheel into a 2x2 matrix and obtained a 3x3 matrix that had $ \sigma_x, \sigma_y$ and $ \sigma_{\theta}$ in its diagonal. Here, we set all other entries of the matrix to zero and ignored entries in the resulting matrix that were not in its diagonal. The reason we could actually do this is because uncertainty in the left and right wheel are independent random processes: there is no reason that the left wheel slips, just because the right wheel slips.  Thus the covariance --- the measure on how much two random variables are changing together --- of these is zero. This is not the case for the robot's position: uncertainty in one wheel will affect all output random variables ($ \sigma_x, \sigma_y$ and $ \sigma_{\theta}$) at the same time, which is expressed by their non-zero covariances --- the non-zero entries off the diagonal of the output covariance matrix.
+\subsection{特殊情况一：单一特征}
+考虑一个只有一个功能的地图。 我们假设机器人能够获得该特征的相对范围和角度，每个具有一定的方差。 在线拟合示例（部分\ ref {sec：linefitting}）中描述了这一点的例子以及如何计算基于传感器不确定度的观测值的方差。 该功能可以是墙壁，也可以是机器人可以唯一识别的图形标签。 这个测量的位置$ m_i = [\ alpha_i，r_i] $在全球坐标是未知的，但是如果机器人的位置$ \ boldsymbol {\ hat {x} _k} $的估计是已知的，现在可以很容易地计算。 $ m_i $的组件的方差现在是机器人位置的差异加上观察的方差。
+
+% Now consider the robot moving closer to the obstacle and obtaining additional observations. Although its uncertainty in position is growing, it can now rely on the feature $m_i$ to reduce the variance of its old position (as long as its known that the feature is not moving). Also, repeated observations of the same feature from different angles might improve the quality of its observation. The robot has therefore a chance to keep its variance very close to that with which it initially observed the feature and stored it into its map. We can actually do this using the EKF framework from Section \ref{sec:EKF}. There, we assumed that features have a known location (no variance), but that the robot's sensing introduces a variance. This variance was propagated into the covariance matrix of the innovation ($ \boldsymbol{S}$). We can now simply add the variance of the estimate of the feature's position to that of the robot's sensing process.
+
+现在考虑机器人靠近障碍物并获得额外的观察。 虽然它的不确定性在不断增加，但现在可以依靠特征$ m_i $来减少其旧位置的差异（只要它知道该特征不移动）。 此外，从不同角度重复观察相同的特征可能会提高其观察质量。 因此，机器人有机会保持其差异非常接近初始观察该特征的方差并将其存储到其图中。 我们实际上可以使用部分\ ref {sec：EKF}中的EKF框架来做到这一点。 在那里，我们假设特征具有已知位置（无差异），但机器人的感测引入方差。 这种差异被传播到创新的协方差矩阵（$ \ boldsymbol {S} $）。 我们现在可以简单地将特征位置的估计的方差添加到机器人的感测过程。
+
+% \subsection{Special Case II: Two Features}
+% Consider now a map that has two features. Visiting one after the other, the robot will be able to store both of them in its map, although with a higher variance for the feature observed last. Although the observations of both features are independent from each other, the relationship between their variances depend on the trajectory of the robot. The differences between these two variances are much lower if the robot connect them in a straight line than when it performs a series of turns between them. In fact, even if the variances of both features are huge (because the robot has already driven for quite a while before first encountering them), but the features are close together, the probability density function over their distance would be very small. The latter can also be understood as the covariance of the two random variables (each consisting of range and angle). In probability theory, the covariance is the measure of how much two variables are changing together. Obviously, the covariance between the locations of two features that are visited immediately after each other by a robot is much higher as those far apart. It should therefore be possible to use the covariance between features to correct estimates of features in retrospect. For example, if the robot returns to the first feature it has observed, it will be able to reduce the variance of its position estimate. As it knows that it has not traveled very far since it observed the last feature, it can then correct this feature's position estimate.
+
+\subsection{特殊情况二：两个特点}
+现在考虑一个有两个功能的地图。一个接一个地访问，机器人将能够将它们存储在其地图中，尽管对于最后观察到的特征具有较高的差异。虽然这两个特征的观察是相互独立的，但它们的差异之间的关系取决于机器人的轨迹。如果机器人在直线上连接它们时，这两个方差之间的差异要比在它们之间进行一系列转弯时差别要小得多。事实上，即使两个特征的差异都很大（因为机器人在首次遇到前已经开了很长时间了），但是这些特征紧密结合在一起，其距离上的概率密度函数就会很小。后者也可以理解为两个随机变量的协方差（每个变量由范围和角度组成）。在概率论中，协方差是两个变量在一起变化的量度。显然，由机器人彼此紧密访问的两个特征的位置之间的协方差远远高于那些相距较远的位置之间的协方差。因此，应该可以使用特征之间的协方差来校正回顾的特征估计。例如，如果机器人返回到其观察到的第一个特征，则能够减少其位置估计的方差。由于它知道自从观察到最后一个特征以来，它没有走过很远，所以它可以纠正这个特征的位置估计。
+
+% \section{The Covariance Matrix}
+% When estimating quantities with multiple variables, such as the position of a robot that consists of its x-position, its y-position and its orientation, matrix notation has been a convenient way of writing down equations. For error propagation, we have written the variances of each input variable into the diagonal of a covariance matrix. For example, when using a differential wheel robot, uncertainty in position expressed by $ \sigma_x, \sigma_y$ and $ \sigma_{\theta}$ were grounded in the uncertainty of its left and right wheel. We have entered the variances of the left and right wheel into a 2x2 matrix and obtained a 3x3 matrix that had $ \sigma_x, \sigma_y$ and $ \sigma_{\theta}$ in its diagonal. Here, we set all other entries of the matrix to zero and ignored entries in the resulting matrix that were not in its diagonal. The reason we could actually do this is because uncertainty in the left and right wheel are independent random processes: there is no reason that the left wheel slips, just because the right wheel slips.  Thus the covariance --- the measure on how much two random variables are changing together --- of these is zero. This is not the case for the robot's position: uncertainty in one wheel will affect all output random variables ($ \sigma_x, \sigma_y$ and $ \sigma_{\theta}$) at the same time, which is expressed by their non-zero covariances --- the non-zero entries off the diagonal of the output covariance matrix.
+
+
+\section{协方差矩阵}
+当使用多个变量估计数量时，例如由其x位置，其y位置及其方向组成的机器人的位置，矩阵符号已经成为写下方程式的便捷方式。对于误差传播，我们将每个输入变量的方差写入协方差矩阵的对角线。例如，当使用差速轮机器人时，由$\sigma_x，\sigma_y $和$\sigma _ {\theta}$表示的位置的不确定性基于其左右轮的不确定性。我们已经将左右轮的方差进入了一个2x2矩阵，并获得了一个3x3矩阵，它的对角线中有$\sigma_x，\sigma_y$和$\sigma_{\theta}$。这里，我们将矩阵的所有其他条目设置为零，并忽略不在其对角线的结果矩阵中的条目。我们实际上可以这样做的原因是左右轮的不确定性是独立的随机过程：左轮滑倒没有任何理由，因为右轮滑落。因此，协方差---对两个随机变量共同变化的度量-这些是零。机器人的位置不是这样：一个轮子的不确定性将同时影响所有的输出随机变量（$\sigma_x，\sigma_y $和$\sigma_{\theta}$）零协方差---离开输出协方差矩阵的对角线的非零项。
 
 \section{EKF SLAM}\label{sec:ekfslam}\label{sec:ekf}
-The key idea in EKF SLAM is to extend the state vector from the robot's position to contain the position of all features. Thus, the state
+% The key idea in EKF SLAM is to extend the state vector from the robot's position to contain the position of all features. Thus, the state
+EKF SLAM的关键思想是将状态向量从机器人的位置扩展到包含所有功能的位置。 因此，国家
 \begin{equation}
 \hat{\boldsymbol{x}}_{k'|k-1}=(x,y,\theta)^T
 \end{equation}
@@ -30,42 +54,79 @@ becomes
 \begin{equation}
 \hat{\boldsymbol{x}}_{k}=(x,y,\theta,\alpha_1,r_1,\ldots,\alpha_N,r_N)^T
 \end{equation}
-assuming $ N$ features, which is a $(3+2N) x1$ vector. The action update (or ``prediction update") is identical to that if features are already known; the robot simply updates its position using odometry and updates the variance of it s position using error propagation. The covariance matrix is now a $(3+2N)x(3+2N)$ matrix that initially holds the variances on position and those of each feature in its diagonal.
 
-The interesting things happen during the perception update. Here it is important that only one feature is observed at a time. Thus, if the robot observes multiple features at once, one needs to do multiple, consecutive perception updates. Care needs to be taken that the matrix multiplications work out. In practice you will need to set only those values of the observation vector (a $(3+2N)x1$ vector) that correspond to the feature that you observe. Similar considerations apply to the observation function and its Jacobian.
+% assuming $ N$ features, which is a $(3+2N) x1$ vector. The action update (or ``prediction update") is identical to that if features are already known; the robot simply updates its position using odometry and updates the variance of it s position using error propagation. The covariance matrix is now a $(3+2N)x(3+2N)$ matrix that initially holds the variances on position and those of each feature in its diagonal.
 
-\section{Graph-based SLAM}
-Usually, a robot obtains an initial estimate of where it is using some onboard sensors (odometry, optical flow, etc.) and uses this estimate to localize features (walls, corners, graphical patterns) in the environment. As soon as a robot revisits the same feature twice, it can update the estimate on its location. This is because the variance of an estimate based on two independent measurements will always be smaller than any of the variances of the individual measurements. As consecutive observations are not independent, but rather closely correlated, the refined estimate can then be propagated along the robot's path. This is formalized in EKF-based SLAM. A more intuitive understanding is provided by a spring-mass analogy: each possible pose (mass) is constrained to its neighboring pose by a spring. The higher the uncertainty of the relative transformation between two poses (e.g., obtained using odometry), the weaker the spring. Every time a robot gains confidence on a relative pose, the spring is stiffened instead. Eventually, all poses will be pulled in place. This approach is known as \emph{Graph-based SLAM}\index{Graph-based SLAM}. 
+假设$ N $特征，这是一个$（3 + 2N）x1 $矢量。 动作更新（或“预测更新”）与功能已知是相同的;机器人使用测距仪简单更新其位置，并使用错误传播更新其位置的方差。协方差矩阵现在为$（3 + 2N）x（3 + 2N）$矩阵，其最初保持位置上的方差和其对角线中每个特征的方差。
 
-\subsection{SLAM as a Maximum-Likelihood Estimation Problem}
-The classical formulation of SLAM describes the problem as maximizing the posterior probability of all points on the robot's trajectory given the odometry input and the observations. Formally,
+% The interesting things happen during the perception update. Here it is important that only one feature is observed at a time. Thus, if the robot observes multiple features at once, one needs to do multiple, consecutive perception updates. Care needs to be taken that the matrix multiplications work out. In practice you will need to set only those values of the observation vector (a $(3+2N)x1$ vector) that correspond to the feature that you observe. Similar considerations apply to the observation function and its Jacobian.
+
+感知更新期间有趣的事情发生。 这里重要的是一次只能观察到一个特征。 因此，如果机器人一次性观察多个特征，则需要进行多个连续的感知更新。 需要注意矩阵乘法运算。 在实践中，您将只需要设置与您观察到的特征对应的观测向量（$（3 + 2N）x1 $矢量）的值。 类似的考虑适用于观察功能及其雅可比。
+
+% \section{Graph-based SLAM}
+\section{基于图形的SLAM}
+
+% Usually, a robot obtains an initial estimate of where it is using some onboard sensors (odometry, optical flow, etc.) and uses this estimate to localize features (walls, corners, graphical patterns) in the environment. As soon as a robot revisits the same feature twice, it can update the estimate on its location. This is because the variance of an estimate based on two independent measurements will always be smaller than any of the variances of the individual measurements. As consecutive observations are not independent, but rather closely correlated, the refined estimate can then be propagated along the robot's path. This is formalized in EKF-based SLAM. A more intuitive understanding is provided by a spring-mass analogy: each possible pose (mass) is constrained to its neighboring pose by a spring. The higher the uncertainty of the relative transformation between two poses (e.g., obtained using odometry), the weaker the spring. Every time a robot gains confidence on a relative pose, the spring is stiffened instead. Eventually, all poses will be pulled in place. This approach is known as \emph{Graph-based SLAM}\index{Graph-based SLAM}. 
+
+通常，机器人获得使用某些机载传感器（odometry，optical flow等）的位置的初始估计，并使用该估计来定位环境中的特征（墙壁，角落，图形模式）。一旦机器人重新访问相同的功能两次，它可以更新其位置的估计。这是因为基于两个独立测量的估计的方差将总是小于单独测量的任何方差。由于连续的观察结果不是独立的，而是紧密相关，精确的估计可以沿着机器人的路径传播。这在基于EKF的SLAM中正式化。通过弹簧质量类比来提供更直观的理解：每个可能的姿势（质量）被弹簧约束到其相邻姿态。两个姿势之间的相对转换的不确定性越高（例如，使用测距法获得），弹簧越弱。每当一个机器人相对姿态获得信心时，弹簧就会变硬。最终，所有姿势都将被拉到位。这种方法被称为\emph {基于图形的SLAM} \index{基于图形的SLAM}。
+
+% \subsection{SLAM as a Maximum-Likelihood Estimation Problem}
+\subsection{SLAM作为最大似然估计问题}
+
+% The classical formulation of SLAM describes the problem as maximizing the posterior probability of all points on the robot's trajectory given the odometry input and the observations. Formally,
+
+SLAM的经典公式描述了在给定测距输入和观测值的情况下最大化机器人轨迹上所有点的后验概率的问题。从形式上看，
 \begin{equation}
 p(x_{1:T},m|z_{1:T},u_{1:T})
 \end{equation}
-where $ x_{1:T}$ are all discrete positions from time 1 to time $ T$, $ z$ are the observations, and $ u$ are the odometry measurements. This formulation makes heavily use of the temporal structure of the problem. In practice, solving the SLAM problem requires
+% where $ x_{1:T}$ are all discrete positions from time 1 to time $ T$, $ z$ are the observations, and $ u$ are the odometry measurements. This formulation makes heavily use of the temporal structure of the problem. In practice, solving the SLAM problem requires
+其中$ x_{1:T} $是从时间1到时间$ T $，$ z $都是离散位置，$ z $是观测值，而$ u $是测量距离。 这个表述大量使用问题的时间结构。 在实践中，需要解决SLAM问题。
+
+% \begin{enumerate}
+% \item A motion update model, i.e., the probability $ p(x_t|x_{t-1},u_t)$ to be at location $ x_t$ given an odometry measurement $ u_t$ and being at location $ x_{t-1}$.
+% \item  A sensor model, i.e., the probability $ p(z_t|x_t,m_t)$ to make observation $ z_t$ given the robot is at location $ x_t$ and the map $ m_t$.
+% \end{enumerate}
+
 \begin{enumerate}
-\item A motion update model, i.e., the probability $ p(x_t|x_{t-1},u_t)$ to be at location $ x_t$ given an odometry measurement $ u_t$ and being at location $ x_{t-1}$.
-\item  A sensor model, i.e., the probability $ p(z_t|x_t,m_t)$ to make observation $ z_t$ given the robot is at location $ x_t$ and the map $ m_t$.
+\item 运动更新模型，即位置$ x_t $的概率$ p（x_t | x_ {t-1}，u_t）$，给出了一个测量量测量$ u_t $，位于$ x_{t-1}$。
+\item 一个传感器模型，即概率$ p（z_t | x_t，m_t）$使得观察$ z_t $给出机器人在位置$ x_t $和地图$ m_t $。
 \end{enumerate}
-A possible solution to this problem is provided by the Extended Kalman Filter, which maintains a probability density function for the robot pose as well as the positions of all features on the map. Being able to uniquely identify features in the environment is of outmost importance and is known as the data association problem. Like EKF-based SLAM, graph-based SLAM does not solve this problem and will fail if features are confused.
 
-In graph-based SLAM, a robot's trajectory forms the nodes of a graph whose edges are transformations (translation and rotation) that have a variance associated with it. An alternative view is the spring-mass analogy mentioned above. Instead of having each spring wiggle a node into place, graph-based SLAM aims at finding those locations that maximize the joint likelihood of all observations. As such, graph-based SLAM is a \emph{maximum likelihood estimation}\index{Maximum Likelihood Estimation} problem.
+% A possible solution to this problem is provided by the Extended Kalman Filter, which maintains a probability density function for the robot pose as well as the positions of all features on the map. Being able to uniquely identify features in the environment is of outmost importance and is known as the data association problem. Like EKF-based SLAM, graph-based SLAM does not solve this problem and will fail if features are confused.
 
-Lets revisit the normal distribution:
+扩展卡尔曼滤波器提供了解决这个问题的一个可能的解决方案，它保持机器人姿态的概率密度函数以及地图上所有特征的位置。 能够唯一地识别环境中的特征是非常重要的，被称为数据关联问题。 像基于EKF的SLAM一样，基于图形的SLAM不能解决这个问题，如果功能混淆，将失败。
+
+% In graph-based SLAM, a robot's trajectory forms the nodes of a graph whose edges are transformations (translation and rotation) that have a variance associated with it. An alternative view is the spring-mass analogy mentioned above. Instead of having each spring wiggle a node into place, graph-based SLAM aims at finding those locations that maximize the joint likelihood of all observations. As such, graph-based SLAM is a \emph{maximum likelihood estimation}\index{Maximum Likelihood Estimation} problem.
+
+在基于图形的SLAM中，机器人的轨迹形成了边缘是具有与其相关联的变化（转换和旋转）的图形的节点。 另一种观点是上面提到的弹簧质量类比。 而不是使每个弹簧摆动一个节点到位，基于图形的SLAM旨在找到最大化所有观察的联合可能性的那些位置。 因此，基于图形的SLAM是\emph {maximum likelihood estimation} \index {Maximum Likelihood Estimation}问题。
+
+% Lets revisit the normal distribution:
+
+让我们回顾正常分布：
+
 \begin{equation}
 \frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}
 \end{equation}
 
-It provides the probability for a measurement to have value $ x$ given that this measurement is normal distributed with mean $ \mu$ and variance $ \sigma^2$.  We can now associate such a distribution with every node-to-node transformation, aka constraint. This can be pairs of distance and angle, e.g. In the literature the measurement of a transformation between node i and a node j is denoted $ z_{ij}$. Its expected value is denoted $ \hat{z}_{ij}$. This value is expected for example based on a map of the environment that consists of previous observations.
+% It provides the probability for a measurement to have value $ x$ given that this measurement is normal distributed with mean $ \mu$ and variance $ \sigma^2$.  We can now associate such a distribution with every node-to-node transformation, aka constraint. This can be pairs of distance and angle, e.g. In the literature the measurement of a transformation between node i and a node j is denoted $ z_{ij}$. Its expected value is denoted $ \hat{z}_{ij}$. This value is expected for example based on a map of the environment that consists of previous observations.
 
-Formulating a normal distribution of measurements $ z_{ij}$ with mean $ \hat{z}_{ij}$ and a covariance matrix $ \Sigma_{ij}$ (containing all variances of the components of $ z_{ij}$ in its diagonal) is now straightforward. As graph-based SLAM is most often formulated as  information filter, usually the inverse of the covariance matrix (aka information matrix) is used, which we denote by $ \Omega_{ij}=\Sigma_{ij}^{-1}$.
+考虑到这个测量是正态分布的，平均值为$ \ mu $和方差$ \ sigma ^ 2 $，它提供了测量的概率为$ x $。 我们现在可以将这样的分布与每个节点到节点的转换，即约束相关联。 这可以是一对距离和角度，例如。 在文献中，节点i和节点j之间的变换的测量被表示为$ z_{ij} $。 其预期值表示为$ \hat {z}_{ij} $。 例如，预期该值基于由先前观察结果组成的环境地图。
 
-As we are interested in maximizing the joint probability of all measurements $ \prod{z_{ij}}$ over all edge pairings $ ij$ following the maximum likelihood estimation framework, it is customary to express the PDF using the log-likelihood. By taking the natural logarithm on both sides of the PDF expression, the exponential function vanishes and $ ln \prod{z_{ij}}$ becomes $ \sum{ ln z_{ij}}$ or $ \sum{l_{ij}}$, where $ l_{ij}$ is the log-likelihood distribution for $ z_{ij}$.
+% Formulating a normal distribution of measurements $ z_{ij}$ with mean $ \hat{z}_{ij}$ and a covariance matrix $ \Sigma_{ij}$ (containing all variances of the components of $ z_{ij}$ in its diagonal) is now straightforward. As graph-based SLAM is most often formulated as  information filter, usually the inverse of the covariance matrix (aka information matrix) is used, which we denote by $ \Omega_{ij}=\Sigma_{ij}^{-1}$.
+
+制定测度的正态分布$ z_{ij} $，其平均值为$ \hat {z}_{ij} $和协方差矩阵$ \Sigma_{ij} $（包含$ z_ {ij} $的组件的所有变量 在对角线）现在是直接的。 由于基于图的SLAM最常被公认为信息过滤器，通常使用协方差矩阵（也称为信息矩阵）的逆，我们用$ \Omega {ij} = \Sigma_ {ij} ^ { - 1} $。
+
+% As we are interested in maximizing the joint probability of all measurements $ \prod{z_{ij}}$ over all edge pairings $ ij$ following the maximum likelihood estimation framework, it is customary to express the PDF using the log-likelihood. By taking the natural logarithm on both sides of the PDF expression, the exponential function vanishes and $ ln \prod{z_{ij}}$ becomes $ \sum{ ln z_{ij}}$ or $ \sum{l_{ij}}$, where $ l_{ij}$ is the log-likelihood distribution for $ z_{ij}$.
+
+由于我们有兴趣在最大似然估计框架之后，最大限度地提高所有测量值$ i$的所有边缘配对$ ij $的联合概率，所以习惯上使用对数似然表达PDF。 通过采用PDF表达式两边的自然对数，指数函数消失，$ln\prod {z_{ij}} $变为$ \sum {ln z_{ij}} $或$ \sum {l_{ij} } $，其中$ l_{ij} $是$ z_{ij} $的对数似然分布。
+
 \begin{equation}
 l_{ij} \propto (z_{ij}-\hat{z}_{ij}(x_i,x_j))^T\Omega_{ij}(z_{ij}-\hat{z}_{ij}(x_i,x_j))
 \end{equation}
 
-Again, the log-likelihood for observation $ z_{ij}$ is directly derived from the definition of the normal distribution, but using the information matrix instead of the covariance matrix and is ridden of the exponential function by taking the logarithm on both sides.
+% Again, the log-likelihood for observation $ z_{ij}$ is directly derived from the definition of the normal distribution, but using the information matrix instead of the covariance matrix and is ridden of the exponential function by taking the logarithm on both sides.
+
+再次，观察的对数似然度$ z_ {ij} $直接来源于正态分布的定义，而是使用信息矩阵而不是协方差矩阵，并通过采用两边的对数来划分指数函数。
 
 The optimization problem can now be formulated as
 \begin{equation}
@@ -73,19 +134,37 @@ x^* = \arg \min_{x}\sum_{<i,j>\in \mathcal{C}}e_{ij}^T\Omega_{ij}e_{ij}
 \end{equation}
 with $ e_{ij}(x_i,x_j)=z_{ij}-\hat{z}_{ij}(x_i,xj)$ the error between measurement and expected value. Note that the sum actually needs to be minimized as the individual terms are technically the negative log-likelihood.
 
-\subsection{Numerical Techniques for Graph-based SLAM}
-Solving the MLE problem is non-trivial, especially if the number of constraints provided, i.e., observations that relate one feature to another, is large. A classical approach is to linearize the problem at the current configuration and reducing it to a problem of the form $ Ax=b$. The intuition here is to calculate the impact of small changes in the positions of all nodes on all $ e_{ij}$. After performing this motion, linearization and optimization can be  repeated until convergence. 
+% \subsection{Numerical Techniques for Graph-based SLAM}
+\subsection{基于图形SLAM的数值技术}
+% Solving the MLE problem is non-trivial, especially if the number of constraints provided, i.e., observations that relate one feature to another, is large. A classical approach is to linearize the problem at the current configuration and reducing it to a problem of the form $ Ax=b$. The intuition here is to calculate the impact of small changes in the positions of all nodes on all $ e_{ij}$. After performing this motion, linearization and optimization can be  repeated until convergence. 
 
-Recently, more powerful numerical methods have been developed. Instead of solving the MLE, one can employ a stochastic gradient descent algorithm. A gradient descent algorithm is an iterative approach to find the optimum of a function by moving along its gradient. Whereas a gradient descent algorithm would calculate the gradient on a fitness landscape from all available constraints, a stochastic gradient descent picks only a (non-necessarily random) subset. Intuitive examples are fitting a line to a set of $n$ points, but taking only a subset of these points when calculating the next best guess. As gradient descent works iteratively, the hope is that the algorithm takes a large part of the constraints into account. For solving Graph-based SLAM, a stochastic gradient descent algorithm would not take into account all constraints available to the robot, but  iteratively work on one constraint after the other. Here, constraints are observations on the mutual pose of nodes $i$ and $j$. Optimizing these constraints now requires moving both nodes $i$ and $j$ so that the error between where the robot thinks the nodes should be and what it actually sees gets reduced.  As this is a trade-off between multiple, maybe conflicting observations, the result will approximate a Maximum Likelihood estimate.
+解决MLE问题是不平凡的，特别是如果提供的约束数量，即将一个特征与另一个特征相关联的观测值很大。 一种经典的方法是在当前配置下线性化问题，并将其减少为$ Ax = b $形式的问题。 这里的直觉是计算所有节点对所有$ e_ {ij} $的位置的小变化的影响。 执行此运动后，线性化和优化可以重复直到收敛。
 
-More specifically, with $ e_{ij}$ the error between an observation and what the robot expects to see, based on its previous observation and sensor model, one can distribute the error along the entire trajectory between both features that are involved in the constraint. That is, if the constraint involves features $i$ and $j$, not only $i$ and $j$'s pose will be updated but all points inbetween will be moved a tiny bit.
+% Recently, more powerful numerical methods have been developed. Instead of solving the MLE, one can employ a stochastic gradient descent algorithm. A gradient descent algorithm is an iterative approach to find the optimum of a function by moving along its gradient. Whereas a gradient descent algorithm would calculate the gradient on a fitness landscape from all available constraints, a stochastic gradient descent picks only a (non-necessarily random) subset. Intuitive examples are fitting a line to a set of $n$ points, but taking only a subset of these points when calculating the next best guess. As gradient descent works iteratively, the hope is that the algorithm takes a large part of the constraints into account. For solving Graph-based SLAM, a stochastic gradient descent algorithm would not take into account all constraints available to the robot, but  iteratively work on one constraint after the other. Here, constraints are observations on the mutual pose of nodes $i$ and $j$. Optimizing these constraints now requires moving both nodes $i$ and $j$ so that the error between where the robot thinks the nodes should be and what it actually sees gets reduced.  As this is a trade-off between multiple, maybe conflicting observations, the result will approximate a Maximum Likelihood estimate.
 
+最近，开发了更强大的数值方法。而不是求解MLE，可以采用随机梯度下降算法。梯度下降算法是通过沿其梯度移动来找到函数的最优值的迭代方法。而梯度下降算法将从所有可用约束计算健身景观上的梯度，随机梯度下降仅选择（不一定随机）子集。直观的例子适合于一组$ n $积分，但是在计算下一个最佳猜测时只需要这些点的一部分。随着梯度下降反复运行，希望算法考虑到大部分约束。为了解决基于图形的SLAM，随机梯度下降算法将不考虑机器人可用的所有约束，但是在一个约束之后迭代地进行操作。在这里，约束是对节点$ i $和$ j $的相互姿势的观察。优化这些约束现在需要移动两个节点$ i $和$ j $，以便机器人认为节点之间的错误和实际看到的错误会减少。由于这是在多个可能冲突的观察结果之间的权衡，所以结果将近似最大似然估计。
+
+% More specifically, with $ e_{ij}$ the error between an observation and what the robot expects to see, based on its previous observation and sensor model, one can distribute the error along the entire trajectory between both features that are involved in the constraint. That is, if the constraint involves features $i$ and $j$, not only $i$ and $j$'s pose will be updated but all points inbetween will be moved a tiny bit.
+
+更具体地说，根据其先前的观察和传感器模型，使用$ e_ {ij} $观察值与机器人期望看到的误差，可以在约束中涉及的两个特征之间沿着整个轨迹分布误差。 也就是说，如果约束涉及到特征$ i $和$ j $，不仅$ i $和$ j $的姿态将被更新，而且中间的所有点都将被移动一点点。
+
+%% Start - Was Commented
 %This approach is cumbersome and quickly gets out of control if a robot is mapping an environment over multiple hours --- leading to millions of nodes in the graph and constraints. To overcome this problem, [Gris07] propose to (1) merge nodes of a graph as it is build up by relying on accurate localization of the robot within the existing map and (2) to chose a different graph representation.
+%% End - Was Commented
 
-In Graph-based SLAM, edges encode the relative translation and rotation from one node to the other. Thus, altering a relationship between two nodes will automatically propagate to all nodes in the network. This is because the graph is essentially a chain of nodes whose edges consist of odometry measurements. This chain then becomes a graph whenever observations (using any sensor) introduce additional constraints. Whenever such a ``loop-closure'' occurs, the resulting error will be distributed over the entire trajectory that connects the two nodes. This is not always necessary, for example when considering the robot driving a figure-8 pattern. If a loop-closure occurs in one half of the 8, the nodes in the other half of the 8 are probably not involved.
 
-This can be addressed by constructing a  minimum spanning-tree  (MST) of the constraint graph. The MST is constructed by doing a Depth-First Search (DFS) on the constraint graph following odometry constraints. At a loop-closure, i.e., an edge in the graph that imposes a constraint to a previously seen pose, the DFS backtracks to this node and continues from there to construct the spanning tree. Updating all poses affected by this new constraint still requires modifying all nodes along the path between the two features that are involved, but inserting additional constraints is greatly simplified. Whenever a robot observes new relationships between any two nodes, only the nodes on the shortest path between  the two features on the MST need to be updated. %Example graphs illustrating this are shown in Figures 2a and 2b in [Gris07].
-\subsection*{Further reading}
+% In Graph-based SLAM, edges encode the relative translation and rotation from one node to the other. Thus, altering a relationship between two nodes will automatically propagate to all nodes in the network. This is because the graph is essentially a chain of nodes whose edges consist of odometry measurements. This chain then becomes a graph whenever observations (using any sensor) introduce additional constraints. Whenever such a ``loop-closure'' occurs, the resulting error will be distributed over the entire trajectory that connects the two nodes. This is not always necessary, for example when considering the robot driving a figure-8 pattern. If a loop-closure occurs in one half of the 8, the nodes in the other half of the 8 are probably not involved.
+
+
+在基于图形的SLAM中，边缘编码从一个节点到另一个节点的相对平移和旋转。 因此，改变两个节点之间的关系将自动传播到网络中的所有节点。 这是因为图形本质上是一个节点链，其边缘由测距测量组成。 每当观察（使用任何传感器）引入额外的约束时，该链就变成图。 每当发生这种“循环关闭”时，产生的错误将分布在连接两个节点的整个轨迹上。 这并不总是必需的，例如在考虑机器人驾驶图8模式时。 如果在8的一半发生循环闭包，那么8的另一半中的节点可能不涉及。
+
+
+% This can be addressed by constructing a  minimum spanning-tree  (MST) of the constraint graph. The MST is constructed by doing a Depth-First Search (DFS) on the constraint graph following odometry constraints. At a loop-closure, i.e., an edge in the graph that imposes a constraint to a previously seen pose, the DFS backtracks to this node and continues from there to construct the spanning tree. Updating all poses affected by this new constraint still requires modifying all nodes along the path between the two features that are involved, but inserting additional constraints is greatly simplified. Whenever a robot observes new relationships between any two nodes, only the nodes on the shortest path between  the two features on the MST need to be updated. %Example graphs illustrating this are shown in Figures 2a and 2b in [Gris07].
+
+这可以通过构建约束图的最小生成树（MST）来解决。 MST是通过在约束图上执行深度优先搜索（DFS）来构建的。 在循环闭合（即，图形中对边界施加约束到先前看到的姿势）的边缘，DFS回溯到该节点并从那里继续构建生成树。 更新受此新约束影响的所有姿势仍然需要修改所涉及的两个特征之间沿着路径的所有节点，但是插入其他约束将大大简化。 每当机器人观察到任何两个节点之间的新关系时，只需要更新MST上两个特征之间最短路径上的节点。
+
+% \subsection*{Further reading}
+\subsection*{进一步阅读}
 \begin{itemize}
 \item G. Grisetti, R. Kuemmerle, C. Stachniss and W. Burgard. A Tutorial on Graph-Based SLAM. IEEE Intelligent Transportation Systems Magazine, 2(4):31-43, 2010.
 
