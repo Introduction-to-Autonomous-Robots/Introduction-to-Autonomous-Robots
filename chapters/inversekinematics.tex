@@ -145,9 +145,9 @@ for $ \phi_l$, $ \phi_r$
 
 % Note that this approach does not allow us to deal with $\dot{y}_R \neq 0$, which might result from a desired speed in the inertial frame. Non-zero values for translation in y-direction are simply ignored by the inverse kinematic solution, and driving toward a specific point either requires feedback control (Section \ref{sec:invjac}) or path planning (Chapter \ref{chap:pathplanning}). 
 
-允许我们根据所需的$ \dot {x} _R $和$ \dot {\θ} $的函数计算机器人的轮速，可以使用（\ref{eq:mbik}）计算机器人的轮速。
+允许我们根据所需的$ \dot {x}_R $和$ \dot {\theta} $的函数计算机器人的轮速，可以使用（\ref{eq:mbik}）计算机器人的轮速。
 
-请注意，这种方法不允许我们处理可能由惯性框架中所需速度导致的$ \dot {y} _R \neq 0 $。 反向运动解决方案简单地忽略了y方向的平移非零值，并且向特定点开车需要反馈控制（参见第\ref {sec:invjac}）或路径规划（Chapter \ref {chap:pathplanning}）。
+请注意，这种方法不允许我们处理可能由惯性框架中所需速度导致的$ \dot{y}_R\neq 0 $。 反向运动解决方案简单地忽略了y方向的平移非零值，并且向特定点开车需要反馈控制（参见第\ref {sec:invjac}）或路径规划（Chapter \ref {chap:pathplanning}）。
 
 % \section{Inverse Kinematics using Feedback-Control}\label{sec:advinvkinematics}
 % Solving the inverse kinematic problem for non-holonomic mobile robots require us to find a sequence of actuation commands. One way of doing this is to employ \emph{feedback control}\index{Feedback Control}. In a nutshell, feedback control uses the error between actual and desired position to calculate a trajectory piece that drives the robot a little closer to its desired pose. The process is then repeated until the error is marginally small. This approach can not only be used for mobile robots, but also for manipulator arms with kinematics that are too complicated to solve analytically. 
@@ -158,7 +158,7 @@ for $ \phi_l$, $ \phi_r$
 
 \section{反向运动学使用反馈控制} 
 \label{sec:advinvkinematics}
-为了解决非完整移动机器人的逆运动学问题，我们需要找到一系列的启动命令。 一种方式是使用\emph {feedback control} \index {Feedback Control}。 简而言之，反馈控制使用实际位置和期望位置之间的误差来计算将机器人稍微靠近其所需姿势的轨迹。 然后重复该过程直到误差稍微小。 这种方法不仅可以用于移动机器人，还可以用于运动学分析过于复杂的操纵臂。
+为了解决非完整移动机器人的逆运动学问题，我们需要找到一系列的启动命令。 一种方式是使用\emph{feedback control} \index {Feedback Control}。 简而言之，反馈控制使用实际位置和期望位置之间的误差来计算将机器人稍微靠近其所需姿势的轨迹。 然后重复该过程直到误差稍微小。 这种方法不仅可以用于移动机器人，还可以用于运动学分析过于复杂的操纵臂。
 
 \subsection {移动机器人的反馈控制} \label {sec：fbmobile}
 假设机器人的位置由$ x_r，y_r $和$ \theta_r $给出，所需的姿态为$ x_g，y_g $和$ \theta_g $，下标$ g $表示“goal”。
