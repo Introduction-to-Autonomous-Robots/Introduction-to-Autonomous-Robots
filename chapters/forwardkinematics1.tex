@@ -31,7 +31,7 @@
 
 % Every robot assumes a position in the real world that can be described by its position (x, y and z) and orientation (pitch, yaw and roll) along the three major axes of a Cartesian Coordinate system (See also Section \ref{sec:dof}, ``Degrees of freedom''). Such a coordinate system is shown in Figure \ref{fig:coordinatesystem}. Note that the directions and orientations of the coordinate axes are arbitrary. This books uses the ``right hand rules'', which are illustrated in Figure \ref{fig:coordinatesystem} to determine axes labels and directions throughout. Pitch, yaw, and roll, are also known as bank, attitude, and heading in other communities. \index{Pitch}\index{Yaw}\index{Roll}\index{Bank}\index{Attitude}\index{Heading} This makes sense, considering the colloquial use of the word ``heading'', which corresponds to a rotation around the z-axis of a vehicle driving on the x-y-plane. 
 
-假定每个机器人在现实世界中可以通过其位置（x，y和z）和沿笛卡尔坐标系的三个主轴的方向（俯仰，偏航和滚动）来描述其位姿（位置+姿态）（另见第\ref{sec:dof节}，“自由度”）。坐标系如图\ref{fig：coordinatesystem}所示。 请注意，坐标轴的方向是任意的。这本书使用“右手法则”，它们如图\ref {fig：coordinatesystem}所示，以确定轴标签和方向。俯仰，偏航和滚动，在其他领域也被称为bank，attitude和heading。\index{Pitch}\index{Yaw}\index{Roll} \index{Bank} \index{Attitude} \index{Heading}因为生活中我们用“heading”来表达行驶的车辆围绕$xy$平面上的$z$轴的旋转，所以这是可以理解的。
+假定每个机器人在现实世界中可以通过其位置$(x, y, z)$和沿笛卡尔坐标系的三个主轴的方向（俯仰，偏航和滚动）来描述其位姿（位置+姿态）（另见第\ref{sec:dof节}，“自由度”）。坐标系如图\ref{fig：coordinatesystem}所示。 请注意，坐标轴的方向是任意的。这本书使用“右手法则”，它们如图\ref {fig：coordinatesystem}所示，以确定轴标签和方向。俯仰，偏航和滚动，在其他领域也被称为bank，attitude和heading。\index{Pitch}\index{Yaw}\index{Roll} \index{Bank} \index{Attitude} \index{Heading}因为生活中我们用“heading”来表达行驶的车辆围绕$x-y$平面上的$z$轴的旋转，所以这是可以理解的。
 
 \begin{figure}
 	\centering
@@ -47,7 +47,7 @@
 
 % An example of two nested coordinate systems is shown in Figure \ref{fig:nestedcoords}. In this example, a robot located at the origin of $x',y'$ and $z'$ might plan its motions in its own reference frame, which can then be expressed in the coordinate system $x$, $y$ and $z$ by performing a translation and a rotation as we will later see. 
 
-图\ref{fig:nestedcoords}是两个嵌套坐标系的例子。 在这个例子中，位于$ x'$，$y'$和$ z'$原点的机器人可以在自己的参考系中规划其运动，然后可以通过执行位移和旋转在坐标系$ x $，$ y $和 $ z $中表示，我们稍后会讲到。
+图\ref{fig:nestedcoords}是两个嵌套坐标系的例子。 在这个例子中，位于$x'$，$y'$和$z'$原点的机器人可以在自己的参考系中规划其运动，然后可以通过在坐标系$x$，$y$和$z$中位移和旋转表示，我们稍后会讲到。
 
 % Depending on it's degrees-of-freedom, that is the number of independent translations and rotations a robot can achieve in Cartesian space, it is also customary to ignore components of position and orientation that remain constant. For example a simple floor-cleaning robot's pose might be completely defined by it's $x$ and $y$ coordinates in a room as well as its orientation, i.e.\its rotation around the $z$-axis. 
 
@@ -78,7 +78,7 @@
 
 % As we know, not only the position of the robot is important, but also its orientation. In order to describe the orientation of a point, we will attach a coordinate system to it. Let $ \hat{X}_B, \hat{Y}_B$ and $ \hat{Z}_B$ be unit vectors that correspond to the principal axes of a coordinate system $\{B\}$. When expressed in coordinate system $\{A\}$, they are denoted $^A\hat{X}_B, ^A\hat{Y}_B$ and $ ^A\hat{Z}_B$. In order to express a vector that is given in one coordinate system in another, we need to project each of its components to the unit vectors that span the target coordinate system. For example considering only the axis $^A\hat{X}_B$
 
-我们知道，机器人的位置很重要，机器人的方向也很重要。为了描述一个点的方向，我们再加一个坐标系。令$\hat{X}_B$，$\hat{Y}_B$和$\hat{Z}_B$是对应于坐标系$\{B\}$的主轴的单位向量。当在坐标系$\{A\}$中表示时，它们被表示为$^A\hat{X}_B，^A\hat{Y}_B$和$^A\hat{Z}_B$。为了表达在另一个坐标系中给出的向量，我们需要将其每个分量投影到跨越目标坐标系的单位向量。例如只考虑$^A\hat{X}_B$轴。
+我们知道，机器人的位置很重要，机器人的方向也很重要。为了描述一个点的方向，我们需要再加一个坐标系。令$\hat{X}_B$，$\hat{Y}_B$和$\hat{Z}_B$是对应于坐标系$\{B\}$的主轴的单位向量。当在坐标系$\{A\}$中表示时，它们被表示为$^A\hat{X}_B，^A\hat{Y}_B$和$^A\hat{Z}_B$。为了表达在另一个坐标系中给出的向量，我们需要将其每个分量投影到分布在目标坐标系的单位向量。例如只考虑$^A\hat{X}_B$轴。
 
 \begin{equation}\label{eq:projection}
 ^A\hat{X}_B=(\hat{X}_B\cdot\hat{X}_A, \hat{X}_B\cdot\hat{Y}_A,\hat{X}_B\cdot\hat{Z}_A)^T
@@ -98,7 +98,7 @@
 
 % We can now do this for all three vectors that span coordinate system $\{B\}$ and stack these three vectors together into a 3x3 matrix to obtain the rotation matrix
 
-我们现在可以对跨越坐标系$\{B\}$的所有三个向量执行此操作，并将这三个向量一起堆叠成$3\times3$矩阵以获得旋转矩阵
+我们现在可以对坐标系$\{B\}$的所有三个向量执行此操作，并将这三个向量堆叠成$3\times3$矩阵以获得旋转矩阵
 
 %
 \begin{equation}
@@ -107,11 +107,11 @@
 %
 % which describes $\{B\}$ relative to $\{A\}$. It is important to note that all columns in $ ^A_BR$ are unit vectors, so that the rotation matrix is orthonormal. This is important as this allows us to easily obtain the inverse of $ ^A_BR$ as $ ^A_BR^T$ or $ ^B_AR=^A_BR^T$. 
 
-其中描述$\{B\}$相对于$\{A\}$。重要的是要注意，$^A_BR$中的所有列都是单位向量，因此旋转矩阵是正交的。这很重要，因为这样我们可以很容易地获得$^A_BR$的逆$A_BR^T$或$^B_AR=^A_BR^T$。
+来描述相对于$\{A\}$的$\{B\}$。重要的是要注意，$^A_BR$中的所有列都是单位向量，因此旋转矩阵是正交的。这很重要，因为这样我们可以很容易地获得$^A_BR$的逆$A_BR^T$或$^B_AR=^A_BR^T$。
 
 % Why the unit vectors of a coordinate system $\{B\}$ expressed in coordinate system $\{A\}$ actually make up a rotation matrix, can be easily seen when re-arranging equation \ref{eq:basis} in matrix form
 
-为什么在坐标系$\{A\}$中表示的坐标系$\{B\}$的单位向量实际上构成一个旋转矩阵，当重新以矩阵形式排列等式\ref{eq:basis}时，就可以很容易地发现
+在坐标系$\{A\}$中表示的坐标系$\{B\}$的单位向量实际上构成一个旋转矩阵的原因是，当重新以矩阵形式排列等式\ref{eq:basis}时，就可以很容易地发现
 
 \begin{equation}
 ^AP=\left(\begin{array}{ccc}1 & 0 & 0\\0 & 1 & 0\\0 & 0 & 1\end{array}\right)\left(\begin{array}{c}p_x\\p_y\\p_z\end{array}\right),
@@ -119,12 +119,12 @@
 
 % where the rotation matrix is nothing but the identity as both points already are in the same coordinate system. 
 
-其中旋转矩阵不过是标识，因为两个点已经在同一坐标系中。
+其中旋转矩阵不过是标识，因为这两个点已经在同一坐标系中。
 
 % We have now established how to express the orientation of a coordinate system using a rotation matrix. Usually, coordinate systems don't lie on top of each other, but are also displaced from each other. Together, position and orientation is known as a \emph{frame},\index{Frame} which is a set of four vectors, one for the position and three for the orientation, and we can write
 %
 
-我们现在已经解释了如何使用旋转矩阵来表达坐标系的方向。 通常，坐标系不能互相排列，而应相互偏离。 位置和方向一起被称为\emph{frame}，\index {Frame}，它是四个向量的集合，一个用于表示位置，三个表示用于方向，我们可以写成
+我们现在已经解释了如何使用旋转矩阵来表达坐标系的方向。通常，坐标系不能互相排列，而应相互偏离。 位置和方向一起被称为\emph{frame}，\index {Frame}，它是四个向量的集合，一个用于表示位置，三个表示用于方向，我们可以写成
 
 \begin{equation}
 \{B\}=\{^A_BR, ^AP\}
@@ -140,7 +140,7 @@
 
 % Having introduced the concept of frames, we need the ability to map coordinates in one frame to coordinates in another frame. For example, lets consider frame $\{B\}$ having the same orientation as frame $\{A\}$ and sitting at location $^AP$ in space. As the orientation of both frames is the same, we can express a point $ ^BQ$ in frame $\{A\}$ as
 
-引入了坐标系的概念后，我们需要能够将一坐标系中的坐标映射到另一坐标系中的坐标。 例如，让我们考坐标系$ \{B \} $与坐标系$ \{A \} $方向一致，并且位于$ ^ AP $。 由于两坐标系的方向是一样的，我们可以点$ ^ BQ $表示为坐标系$ \{A \} $中一个点
+引入了坐标系的概念后，我们需要将一坐标系中的坐标映射到另一坐标系。 例如，让我们假定坐标系$\{B\}$与坐标系$\{A\}$方向一致，并且$\{B\}$原点位于坐标系$\{A\}$的$^AP$点。由于两坐标系的方向是一样的，我们可以将点$^BQ$表示为坐标系$ \{A\} $中一个点
 
 %
 \begin{equation}
@@ -149,7 +149,7 @@
 %
 % Actually, adding two vectors that are in different reference frames, i.e., $ ^BQ+^AP$, is only possible if both of them have the same orientation. We can, however, convert from one reference frame to the other using the rotation matrix:
 
-实际上，只有两个参考坐标系中的两个向量方向相同，者两个向量才可以做加法，即$ ^ BQ + ^ AP $。然而，我们可以通过旋转矩阵将一个参考坐标系转换到另一个参考坐标系：
+实际上，只有两个参考坐标系中的两个向量方向相同，这两个向量才可以做加法，即$ ^BQ + ^AP $。然而，我们可以通过旋转矩阵将一个参考坐标系转换到另一个参考坐标系：
 
 \begin{equation}
 ^AP=^A_BR^BP
@@ -164,7 +164,7 @@
 \end{equation}
 % Using this notation, we can see that leading subscripts cancel the leading superscripts of the following vector/rotation matrix. Whereas we have now a solution to transfer a point from one frame of reference to another by combining a rotation and a translation, it would be more appealing to write something like that:
 
-使用这个符号，我们可以看到，引导下标取消了以下向量/旋转矩阵的前导上标。现在我们已经可以通过位移和旋转来将一个点从一个坐标系转换到另一坐标系上。如果能写成如下形式会更好些：
+使用这个符号，我们可以看到，前导下标抵消后面向量/旋转矩阵的前导上标。现在我们已经可以通过位移和旋转来将一个点从一个坐标系转换到另一坐标系上。如果能写成如下形式会更好些：
 
 \begin{equation}
 ^AQ=^A_BT^BQ
@@ -178,7 +178,7 @@
 \end{equation}
 % and $^A_BT$ is a 4x4 matrix.  Note that the added `1`s and $ [0 0 0 1]$ do not affect the other entries in the matrix during matrix multiplication. A 4x4 matrix of this form is called a \emph{homogenous transform}.\index{Homogenous Transform}
 
-而$ ^A_BT$是一个$4\times 4$矩阵。 请注意，在矩阵乘法期间，添加的“1”和$ [0 0 0 1] $不会影响矩阵中的其他项。 这种形式的$4\times 4$矩阵称为\emph{齐次变换}。\index{齐次变换}
+$^A_BT$是一个$4\times 4$矩阵。 请注意，在矩阵乘法期间，添加的$1$和$[0\quad 0\quad 0\quad 1]$不会影响矩阵中的其他项。 这种形式的$4\times 4$矩阵称为\emph{齐次变换}。\index{齐次变换}
 
 % The inverse of an homogeneous transform can be constructed by inverting rotation and translation part independently, leading to
 
@@ -191,20 +191,20 @@
 
 % We have now established a convenient notation to convert points from one coordinate system to another. There are many possible ways this can be done, in particular how rotation can be represented (see below), but all can be converted from one into the other. 
 
-我们现在已经建立了一个便捷的符号，将点从一个坐标系转换到另一个坐标系。存在许多其它的方法，特别是表示旋转（见下文），但是它们之间可以相互转换。
+我们现在已经构造了一个便捷的符号，将点从一个坐标系转换到另一个坐标系。也存在许多其它的方法，尤其是表示旋转（见下文），但是它们之间可以相互转换。
 
 % \subsection{Transformation arithmetic}
 \subsection{变换算术}
 % Transformations can be combined: consider for example an arm with two links, reference frame $\{A\}$ at the base, $ \{B\} $ at its first joint, and $\{C\}$ at its end-effector. Given the transforms $ ^B_CT$ and $ ^A_BT$, we can write
 
-可以组合变换：例如具有两个链的手臂，基座参坐标系$ \{A \} $，其第一个关节处的坐标系$ \{B\} $和其末端执行器的坐标系$ \{C\} $。 给定转换$ ^ B_CT $和$ ^ A_BT $，我们可以用
+可以组合变换：例如具有两个链的手臂，基座坐标系$\{A\}$，第一个关节处的坐标系$\{B\}$和末端执行器的坐标系$\{C\}$。 给定转换$^B_CT$和$^A_BT$，我们可以用
 
 \begin{equation}
 ^AP=^A_BT^B_CT^CP=^A_CT^CP
 \end{equation}
 % to convert a point in the reference frame of the end-effector to that of its base. As this works for rotation and translation operators independently, we can construct $ ^A_CT$ as
 
-来把末端执行器参考系中的一个点转换为其基座参考系的一点。因为这分别适用于旋转和位移，我们可以将$ ^A_CT $构造为
+来把末端执行器坐标系中的一个点转换为其基座坐标系的一点。因为这分别适用于旋转和位移，我们可以将$^A_CT$构造为
 
 \begin{equation}
 ^A_CT=\left[\begin{array}{ccc|c} & ^A_BR^B_CR & & ^A_BR^BP_C +^AP_B \\\hline 0 & 0 & 0 & 1\end{array}\right]
@@ -212,18 +212,18 @@
 %
 % where $ ^AP_B$ and $ ^BP_C$ are the translations from $\{A\}$ to $\{B\}$ and from $ \{B\}$ to $\{C\}$, respectively.
 
-其中$ ^AP_B $和$ ^BP_C $分别是从$ \{A\} $到$ \{B\} $和从$ \{B\} $到$ \{C\} $的位移。
+其中$^AP_B$和$^BP_C$分别是从$\{A\}$到$\{B\}$和从$\{B\}$到$\{C\}$的位移。
 
 % \subsection{Other representations for orientation}
 \subsection{其他的方向表示}
 
 % So far, we have represented orientation by a 3x3 matrix who's column vectors are orthogononal unit vectors describing the orientation of a coordinate system. Orientation is therefore represented with nine different values. We chose this representation mainly because it is the most intuitive to explain and is derived from simple geometry.
 
-到目前为止，我们已经通过3x3矩阵来表示方位，列向量是描述坐标系方位的正交单位向量。 因此，方向由九个不同的值表示。 我们选择了这个表示，主要是因为它是最直观的解释，而是从简单的几何派生出来的。
+到目前为止，我们已经通过$3\times 3$矩阵来表示方向，其列向量是描述坐标系方向的正交单位向量。因此，方向由九个不同的值表示。 我们选择这个表示，主要是因为它是最直观的解释，并且是从简单的几何推导出来的。
 
 % In fact, three values are sufficient to describe orientation. This becomes clear when considering that orthogonality (dot product of all columns is zero) and vector length (each vector must have length 1) impose six constraints on the nine values in the rotation matrix. Indeed, an orientation can be represented about a rotation by certain angles around the $x$, the $y$, and the $z$-axis of the reference coordinate system. This is known as the $X-Y-Z$ fixed angle notation.\index{Fixed angle notation} Mathematically, this can be represented by a rotation matrix of the form
 
-事实上，三个值足以描述方向。 当考虑到正交性（所有列的点积为零）和向量长度（每个向量必须具有长度1）时，在旋转矩阵中的九个值上施加六个约束，这变得清楚。 实际上，可以将参考坐标系的$ x $，$ y $和$ z $ -axis周围的某个角度的旋转表示为方向。 这被称为$ X-Y-Z $固定角度符号。\index {固定角度符号}数学上，这可以由表单的旋转矩阵
+事实上，三个值足以描述方向。如果考虑正交性（所有列的点积为零）和向量长度（每个向量必须具有长度1），这些给旋转矩阵中的九个值上施加六个约束，这就明显了。实际上，可以将围绕参考坐标系的$x$，$y$和$z$三轴转动角度的旋转表示为方向。 这被称为$X-Y-Z$固定角度表示法。\index{固定角度表示法}数学上，这可以表示成如下形式的旋转矩阵
 
 \begin{equation}
 \tiny
@@ -232,26 +232,26 @@
 
 % While the $X-Y-Z$ fixed angles approach expresses a coordinate frame using rotations with respect to the original coordinate frame, say $\{A\}$, another possible description is to start with a coordinate frame $\{B\}$ that is coincident with frame $\{A\}$, then rotate around the Z-axis with angle $ \alpha$, then the Y-axis with angle $ \beta$ and finally around the X-axis with angle $ \gamma$. This representation is called Z-Y-X Euler angles.\index{Euler angles}
 
-而$ XYZ $固定角度方法表示使用相对于原始坐标系的旋转的坐标系，例如$ \{A \} $，另一种可能的描述是从坐标框$ \{B \} $开始， 坐标系$ \{A \} $一致，然后绕Z轴旋转，角度为$ \alpha $，然后以角度$ \beta $的Y轴旋转，最后绕X轴旋转角度$ \gamma $。 这个表示被称为Z-Y-X欧拉角。\index {欧拉角}
+$XYZ$固定角度表示法使用相对于原始坐标系的旋转来表示坐标系，例如$\{A\}$，另一种可能的描述是从坐标系$\{B\}$开始，坐标系$\{A\}$一致，然后绕$Z$轴旋转$\alpha$，然后绕$Y$轴旋转$\beta$，最后绕$X$轴旋转$\gamma$。这个表示被称为$Z-Y-X$欧拉角。\index{欧拉角}
 
 % As the coordinate axis do not necessarily need to be different, there are twelve possible valid combinations of sub-sequent rotations:
 
-由于坐标轴不一定需要不同，所以有以下12个可能的有效组合次序旋转：
+由于坐标轴不用完全不同，所以有以下十二个可能的有效组合次序旋转：
 
 \begin{center}
-XYX, XZX, YXY, YZY, ZXZ, ZYZ, XYZ, XZY, YZX, YXZ, ZXY and ZYX
+XYX, XZX, YXY, YZY, ZXZ, ZYZ, XYZ, XZY, YZX, YXZ, ZXY 和 ZYX
 \end{center}
 % There are only twelve, as sub-sequent rotations around the same axis are not valid. Such rotations would not add any information, but are equivalent to a rotation by the sum of both angles. 
 
-只有十二个，因为在同一轴周围的后续轮转无效。 这样的旋转不会增加任何信息，而是相当于两个角度之和的旋转。
+只有十二个，因为围绕同一轴的后续轮转无效。这样的旋转相当于两个角度相加的旋转，不会增加任何信息。
 
 % It is important to know about the subtle differences between the different available transformations as there is no ``right'' or ``wrong'', but different manufacturers and fields use different conventions. There is only one caveat: each of the rotation matrices can look like subsequent rotations around the same axis for certain values of angles. For example, this happens for the XYZ rotation matrix if the angle of rotation around the Y-axis is $90^o$. These cases are known as a \emph{singularity}\index{Singularity} .
 
-知道不同的可用转换之间的微妙差异是重要的，因为没有“正确”或“错误”，但不同的制造商和领域使用不同的约定。 只有一个警告：每个旋转矩阵可以看起来像对于某些角度值围绕同一轴线的后续旋转。 例如，如果Y轴周围的旋转角为$ 90 ^ o $，则会发生XYZ旋转矩阵。 这些情况称为\emph {singularity} \index {Singularity}。
+因为没有“正确”或“错误”，但是不同的制造商和领域使用不同的约定，理解不同的可用转换之间的微妙差异很重要的。 只有一个预先声明：每个旋转矩阵可能看起来像绕同一轴的多旋转一定角度。例如，$XYZ$旋转矩阵中围绕$Y$轴$90^o$。 这些情况称为\emph{奇异点（Singularity）}\index{奇异点（Singularity）}。
 
 % Among these, the preferred representation for computational and stability reasons are \emph{Quaternions}\index{Quaternion}. A quaternion is a 4-tuple that extends the complex numbers with very general applications in mathematics and representing orientation and rotation in particular. The basic idea is that each rotation can be represented as a rotation around a single axis (a vector in space) by a specific angle. Given such an axis $ \hat{K}=[k_x k_y k_z]^T$ and an angle $ \theta$, one can calculate the so-called Euler parameters\index{Euler parameters} or unit quaternion\index{unit quaternion}:
 
-其中，计算和稳定性原因的优选表示为\emph {Quaternions} \index {Quaternion}。 四元数是一个四元组，它将复数扩展为数学中非常普遍的应用，特别是表示取向和旋转。 基本思想是，每个旋转可以被表示为围绕单个轴的旋转（空间中的向量）特定的角度。 给定这样一个轴$ \hat {K} = [k_x k_y k_z]^ T $和一个角度$ \theta $，可以计算所谓的欧拉参数\index{欧拉参数}或单位四元数\index{单位四元数}：
+其中，考虑计算和稳定性，最优选择是\emph{四元数（Quaternions）}\index{四元数（Quaternion）}。 四元数是一个四元组，它将复数扩展为数学中非常普遍的应用，特别是表示方向和旋转。基本思想是，每个旋转可以被表示为围绕单个轴的旋转（空间中的向量）一定角度。给定这样一个轴$\hat{K}=[k_x\quad k_y\quad k_z]^T$和一个角度$\theta$，可以计算所谓的欧拉参数\index{欧拉参数（Euler parameters）}或单位四元数\index{单位四元数（Unit quaternion）}：
 
 \begin{eqnarray}
 \epsilon_1=k_x sin \frac{\theta}{2}\\
@@ -260,17 +260,18 @@ XYX, XZX, YXY, YZY, ZXZ, ZYZ, XYZ, XZY, YZX, YXZ, ZXY and ZYX
 \epsilon_4=cos\frac{\theta}{2}
 \end{eqnarray}
 
-These four quantities are constrained by the relationship
+% These four quantities are constrained by the relationship
+这四个数受到如下关系的约束
 \begin{equation}
 \epsilon_1^2+\epsilon_2^2+\epsilon_3^2+\epsilon_4^2=1
 \end{equation}
 % which might be visualized by a point on a unit hyper-sphere. %Transformations are represented by \emph{dual quaternions}\index{Dual quaternion}, one for the translation and one for the rotation. Dual quaternions can again easily be converted into homogenous transformation matrices.
 
-这可能由单位超球体上的点可视化。
+这可以由单位超球体上的点可视化。
 
 % Analogous to rotation matrices, two quaternions $\epsilon_i$ and $\epsilon_i'$ can be multiplied using the following equation
 
-类似于旋转矩阵，可以使用以下等式乘以两个四元数$ \epsilon_i $和$ \epsilon_i'$
+类似于旋转矩阵，两个四元数$\epsilon_i$和$\epsilon_i'$相乘可以使用以下方程
 
 \begin{equation}
 \left(
@@ -286,32 +287,33 @@ These four quantities are constrained by the relationship
 
 % Unlike multiplying two rotation matrices, which requires 27 multiplications and 18 additions, multiplying two quaternions only requires 16 multiplications and 12 additions, making the operation computationally more efficient. In addition, the quaternion representation does not suffer from singularities for specific joint angles, making the approach computationally more robust. 
 
-与需要27次乘法和18次加法的两个旋转矩阵相乘，乘以两个四元数只需要16次乘法和12次加法，使得运算在计算上更有效率。 此外，四元数表示法并不具有针对特定关节角度的奇异点，使得该方法在计算上更加鲁棒。
+与需要27次乘法和18次加法的两个旋转矩阵相乘相比，两个四元数相乘只需要16次乘法和12次加法，这使得后者在计算上更有效率。 此外，四元数并不具有针对特定关节角度的奇异点，使得该方法在计算上更加鲁棒。
 
 % Why any rotation can be expressed by a single vector can be seen when considering the properties of orthonomal rotation matrices. They have three Eigenvalues $\lambda=1$ and a complex pair $\lambda_{1,2}=\cos \theta \pm i \sin \theta$. Eigenvalues and Eigenvectors are defined as $Rv=\lambda v$. For the case of $\lambda=1$, the corresponding Eigenvector $v$ is unchanged by rotation. This is only possible if $v$ is the actual axis of rotation. The angle of rotation is now given by $\theta$, which can be inferred from the complex pair.  
 
-为什么在考虑旋转旋转矩阵的性质时，可以看到单个向量可以表达出旋转。 他们有三个特征值$ \lambda = 1 $和复数对$ \lambda_ {1,2} = \cos \theta \pm i \sin \theta $。 特征值和特征向量定义为$ Rv = \lambda v $。 对于$ \lambda = 1 $的情况，相应的特征向量$ v $不变。 只有$ v $是实际的旋转轴才有可能。 旋转角度现在由$ \theta $给出，可以从复数对推断出。
+单个向量可以表达出旋转的原因可以在考虑正交旋转矩阵的性质时发现。他们有三个特征值$\lambda=1$和一个复数对$\lambda_{1,2}=\cos\theta \pm i \sin \theta$。特征值和特征向量定义为$Rv=\lambda v$。对于$\lambda=1$的情况，相应的特征向量$v$不变。只有$v$是实际的旋转轴特征向量才可能改变。旋转角度现在由$\theta$给出，可以从复数对推断出。
 
 % \section{Forward kinematics of selected Mechanisms}
 \section{所选机制的正运动学}
 
 % Now that we have introduced the notion of local coordinate frames, we are interested in how to calculate the pose and speed of these coordinate frames as a function of the robot's actuators. We will first consider simple mechanisms where we can determine the relationship between actuators and the pose of various frames on the robot both in the position and speed domain. We will then consider the special class of non-holonomous mechanisms using a series of wheeled robots, for which the forward kinematics can only be calculated in the speed domain. 
 
-现在我们已经介绍了局部坐标系的概念，我们对于如何根据机器人的驱动器来计算这些坐标系的姿态和速度感兴趣。 我们将首先考虑简单的机制，我们可以在位置和速度域中确定驱动器与机器人各坐标系的姿态之间的关系。 然后，我们将考虑使用一系列轮式机器人的特殊类别的非全局机制，其中正运动学只能在速度域中计算。
+现在我们已经介绍了局部坐标系的概念，我们对如何根据机器人的驱动器来计算这些坐标系的位姿和速度感兴趣。我们首先考虑简单的机制，我们可以在位置域和速度域中确定机器人上不同坐标系的驱动器和位姿之间的关系。然后，我们考虑特殊类别的非完整的机制，它使用一系列的轮式机器人，其中正运动学只能在速度域中计算。
 
-\subsection{Forward kinematics of a simple arm}
+% \subsection{Forward kinematics of a simple arm}
+\subsection{一个简单的手臂的正运动学}
 \begin{figure}[!htb]%{L}{0.3\textwidth}
   \begin{center}
     \includegraphics[width=0.27\textwidth]{figs/fwk2dofarm}
   \end{center}
   % \caption{A simple 2-DOF arm.}
-  \caption{简单的2自由度手臂}
+  \caption{简单的二自由度手臂}
   \label{fig:fwk2dofarm}
 \end{figure}
 
 % Consider a robot arm made out of two links and two joints that is mounted to a table. Let the length of the first link be $l_1$ and the length of the second link be $ l_2$. You could specify the position of the link closer to the table by the angle $ \alpha$ and the angle of the second link relative to the first link using the angle $ \beta$. Suitable conventions and coordinate systems are shown in Figure \ref{fig:fwk2dofarm}
 
-考虑一个由两个连杆制成的机器人手臂和两个安装在桌子上的接头。 让第一个链接的长度为$ l_1 $，第二个链接的长度为$ l_2 $。 您可以使用角度$ \alpha $指定靠近桌面的链接的位置，并使用角度$ \beta $指定第二个链接相对于第一个链接的角度。 合适的惯例和坐标系如下图所示：\ref {fig：fwk2dofarm}
+考虑一个由两个链接制成的机器人手臂和两个安装在桌子上的关节。让第一个链接的长度为$l_1$，第二个链接的长度为$l_2$。 你可以通过$\alpha$指定与桌子相连的链接的角度，并通过$\beta$指定第二个链接相对于第一个链接的角度。示例和坐标系如图\ref{fig：fwk2dofarm}所示。
 
 % We can now calculate the position of the joint between the first and the second link using simple trigonometry:
 
@@ -331,7 +333,7 @@ y_2&=&\sin(\alpha+\beta)l_2+y_1
 \end{eqnarray}
 %
 % or together, the position of the end-effector $(x,y)$ is given by
-或者一起，终端驱动器$（x，y）$的位置由下式给出
+或者一起，终端驱动器$(x, y)$的位置由下式给出
 
 \begin{eqnarray}\label{eq:cosx}
 x&=&\cos(\alpha+\beta)l_2+\cos\alpha l_1\\
@@ -340,11 +342,11 @@ y&=&\sin(\alpha+\beta)l_2+\sin\alpha l_1
 
 % The above equations are the kinematic equations of this robot as they relate its control parameters $ \alpha$ and $\beta$ to the position of its end-effector given in the local coordinate system spanned by $ x$ and $ y$ with the origin at the robot's base. Note that both $\alpha$ and $\beta$ shown in the figure are positive: Both links rotate around the z-axis. Using the right-hand rule, the direction of positive angles is defined to be counter-clockwise. 
 
-上述等式是这个机器人的运动学方程，因为它们将控制参数$ \alpha $和$ \beta $与其在$ x $和$ y $之间的局部坐标系中给出的末端驱动器的位置相关联 起源于机器人的基地。 请注意，图中显示的$ \alpha $和$ \beta $均为正数：两个链接都绕z轴旋转。 使用右手规则，将正角度的方向定义为逆时针方向。
+上述等式是这个机器人的运动学方程，它们将控制参数$\alpha$和$\beta$与其在$x$和$y$之间的局部坐标系中给出的末端驱动器的位置相关联，以机器人的基座为原点。 请注意，图中显示的$ \alpha $和$ \beta $均为正数：两个链接都绕$z$轴旋转。使用右手法则，将正角度的方向定义为逆时针方向。
 
 % The \emph{configuration space} \index{Configuration space}\index{C-Space (Configuration space)}, i.e., the set of angles each actuator can be set to, of this robot is given by $ \frac{-\pi}{2}<\alpha<\frac{\pi}{2}$ as it is not supposed to run into the table, and $ -\pi < \beta < \pi$. The configuration space is given with respect to the robot's joints and allows us to calculate the \emph{workspace}\index{Workspace} of the robot, i.e., the physical space it can move to, using the forward kinematic equations. This terminology will be identical for mobile robots. An example of configuration and work-space for both a manipulator and a mobile robot is shown in Figure \ref{fig:holonomy}.
 
-\emph {configuration space} \index {配置空间} \index {C-Space（配置空间）}，即每个驱动器可以设置为的角度的集合，由$ \frac { - \pi} {2} <\alpha <\frac {\pi} {2} $，因为它不应该进入表，而$ - \pi <\beta <\pi $。 给出了关于机器人关节的配置空间，并允许我们使用正运动学方程来计算机器人的\emph {workspace} \index {Workspace}，即它可以移动的物理空间。 移动机器人的术语将是相同的。 机械手和移动机器人的配置和工作空间的一个例子如图\ref {fig：holonomy}所示。
+\emph {配置空间（Configuration Space）} \index{配置空间（Configuration Space）} \index{配置空间（C-Space）}，即每个驱动器可以设置为的角度的集合，由$\frac{-\pi}{2} <\alpha <\frac{\pi}{2}$，因为它不应该进入表，而$-\pi <\beta <\pi$。 给出了关于机器人关节的配置空间，并允许我们使用正运动学方程来计算机器人的\emph{workspace} \index {Workspace}，即它可以移动的物理空间。 移动机器人的术语将是相同的。 机械手和移动机器人的配置和工作空间的一个例子如图\ref {fig：holonomy}所示。
 
 % The orientation of the arm's end-effector is given by $\alpha+\beta$. We can now write down  a transformation that includes a rotation around the z-axis
 
@@ -606,7 +608,7 @@ x_I(k+1)=x_I(k)+\Delta x (k)
 \screencast{http://youtu.be/rA9tm0gTln8}{denavithartenberg}
 % In oder to use the DH-convention, we first need to define a coordinate system at each joint. We chose the z-axis to be the axis of rotation for a hinge joint and the axis of translation for a prismatic joint. We can now find the common normal between the z-axes of two subsequent joints, i.e., a line that is orthogonal to each z-axis and intersects both. With the direction of the x-axis at the base arbitrary, subsequent x-axis are chosen such that they lie on the common normal shared between two joints. Whereas the direction of the z-axis is given by the positive direction of rotation (right hand rule), the x-axis points away from the previous joint. This allows defining the y-axis using the right-hand rule. Note that these rules, in particular the requirement that $x$-axes lie along the commom normal, might result in coordinate systems with their origins outside the joint. %Rather, the origin of joint $n$ is at the intersection of 
 
-为了使用DH约定，我们首先需要在每个关节定义一个坐标系。 我们选择z轴为铰链接头的旋转轴线和棱柱形接头的平移轴。 我们现在可以找到两个后续关节的z轴之间的共同法线，即与每个z轴正交并且与两个相交的线。 随着x轴方向在任意的底部，随后的x轴被选择为使它们位于两个关节之间共同的公共正常上。 而z轴的方向由正旋转方向（右手规则）给出，x轴指向远离前一关节。 这允许使用右手规则来定义y轴。 请注意，这些规则，特别是$ x $ -axes沿着commom正常的要求可能会导致坐标系统的起源在关节之外。 
+为了使用DH约定，我们首先需要在每个关节定义一个坐标系。 我们选择z轴为铰链接头的旋转轴线和棱柱形接头的平移轴。 我们现在可以找到两个后续关节的z轴之间的共同法线，即与每个z轴正交并且与两个相交的线。 随着x轴方向在任意的底部，随后的x轴被选择为使它们位于两个关节之间共同的公共正常上。 而z轴的方向由正旋转方向（右手法则）给出，x轴指向远离前一关节。 这允许使用右手法则来定义y轴。 请注意，这些规则，特别是$ x $ -axes沿着commom正常的要求可能会导致坐标系统的起源在关节之外。 
 
 % The transformation between two joints is then fully described by the following four parameters:
 
