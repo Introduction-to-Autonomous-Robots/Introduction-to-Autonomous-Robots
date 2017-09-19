@@ -211,7 +211,7 @@ Open hallway detected & 0\% &	 0\%&	0.1\% & 90\% &50\%\\
 
 例如，检测闭门的成功率只有60％，而在15％的试验中，门厅看起来像一扇敞开的门。该数据对应于给定一定位置时检测特定特征的条件概率。
 
-现在考虑以下初始信念状态分布：$p（1-2）=0.8$和$p（2-3）=0.2$。这里，$1-2$etc\指的是图\ref{fig:dervish_example}中的拓扑图上的位置。你知道机器人确实会面向东方。机器人现在开车一段时间，直到它报告“左侧敞开的走廊，右边的敞开的门”。这实际上对应于位置2，但机器人实际上可以在任何地方。例如，打开的门实际上是一个开放的走廊，即机器人真的位于4处有10％的机会。我们如何计算机器人位置的新概率分布？以下是可能发生的可能轨迹：
+现在考虑以下初始信念状态分布：$p（1-2）=0.8$和$p（2-3）=0.2$。这里，$1-2$ 指的是图\ref{fig:dervish_example}中的拓扑图上的位置。你知道机器人确实会面向东方。机器人现在开车一段时间，直到它报告“左侧敞开的走廊，右边的敞开的门”。这实际上对应于位置2，但机器人实际上可以在任何地方。例如，打开的门实际上是一个开放的走廊，即机器人真的位于4处有10％的机会。我们如何计算机器人位置的新概率分布？以下是可能发生的可能轨迹：
 
 机器人可以从$2-3$移动到$3$，$3-4$，最后$4$。我们已经选择了这个序列，因为在右边的检测开门的概率为0美元，$3$和$3-4$，如果机器人以$2-3$开始，那么剩下$4$作为唯一选择。为了这个假设是真实的，以下事件需要发生，他们的概率在括号中给出：
 
@@ -221,10 +221,10 @@ Open hallway detected & 0\% &	 0\%&	0.1\% & 90\% &50\%\\
 % \item Not have seen the wall to its left (70\%) and not have seen the wall to its right (70\%) at node $3-4$
 % \item Correctly identify the open hallway to its left (90\%) and mistake the open hallway to its right for an open door (10\%)
 
-\item 机器人必须以$2-3$（20\％）开始
-\item 没有看到$3$（5\％）左侧的敞开的门，没有看到右边的墙（70\％）
-\item 没有看到它的左边的墙（70％），没有看到墙壁右边（70\％）在节点$3-4$
-\item 正确识别左侧开放式走廊（90％），并将右侧开放式走廊错开门（10％）
+\item 机器人必须以$2-3$（20\%）开始
+\item 没有看到$3$（5\%）左侧的敞开的门，没有看到右边的墙（70\%）
+\item 没有看到它的左边的墙（70\%），没有看到墙壁右边（70％）在节点$3-4$
+\item 正确识别左侧开放式走廊（90\%），并将右侧开放式走廊错开门（10\%）
 \end{enumerate}
 
 % Together, the likelihood that the robot got from position $2-3$ to position $4$ is therefore given by $0.2*0.05*0.7*0.7*0.7*0.9*0.1=0.03\%$, that is very unlikely.
@@ -232,7 +232,7 @@ Open hallway detected & 0\% &	 0\%&	0.1\% & 90\% &50\%\\
 
 % The robot could also move from $1-2$ to $2$, $2-3$, $3$, $3-4$ or $4$. We can evaluate these hypotheses in a similar way:
 
-因此，机器人从$2-3$到$4$的可能性由$0.2*0.05*0.7*0.7*0.7*0.9*0.1=0.03\％$给出，这是不太可能的。
+因此，机器人从$2-3$到$4$的可能性由$0.2*0.05*0.7*0.7*0.7*0.9*0.1=0.03\%$给出，这是不太可能的。
 
 
 机器人也可以从$1-2$移动到$2$，$2-3$，$3$，$3-4$或$4$。我们可以用类似的方式评估这些假设：
@@ -481,7 +481,7 @@ q=\hat{q_1}+\frac{\sigma_1^2}{\sigma_1^2+\sigma_2^2}(\hat{q_2}-\hat{q_1})\label{
 
 % where $ \Delta s$ is the wheel movement of the left and right wheel and $ k$ are constants. See also the odometry lab for detailed derivations of these calculations and how to estimate $ k_r$ and $ k_l$.  The state vector $ \boldsymbol{\hat{x}_{k'|k-1}}$ is a 3x1 vector, the covariance matrix $ \boldsymbol{P_{k'|k-1}}$ is a 3x3 matrix, and $ \nabla_{\Delta_{r,l}}$ that is used during error propagation is a 3x2 matrix. See the error propagation lecture for details on how to calculate $ \nabla_{\Delta_{r,l}}$.
 
-其中$\Deltas$是左右轮的车轮运动，$k$是常数。有关这些计算的详细推导以及如何估计$k_r$和$k_l$，还可以参考odometry实验室。状态向量$\boldsymbol{\hat{x}_{k'|k-1}}$是3×1向量，协方差矩阵$\boldsymbol{P_{k'|k-1}}$是3×3矩阵，并且在错误传播期间使用的$\nabla_{\Delta_{r，l}}$是3x2矩阵。有关如何计算$\nabla_{\Delta_{r，l}}$的详细信息，请参阅错误传播讲义。
+其中$\Delta s$是左右轮的车轮运动，$k$是常数。有关这些计算的详细推导以及如何估计$k_r$和$k_l$，还可以参考odometry实验室。状态向量$\boldsymbol{\hat{x}_{k'|k-1}}$是3×1向量，协方差矩阵$\boldsymbol{P_{k'|k-1}}$是3×3矩阵，并且在错误传播期间使用的$\nabla_{\Delta_{r,l}}$是3x2矩阵。有关如何计算$\nabla_{\Delta_{r,l}}$的详细信息，请参阅错误传播讲义。
 
 % \paragraph{2. Observation}
 % Let us now assume that we can detect line features $ \boldsymbol{z}_{k,i}=(\alpha_i,r_i)^T$, where $ \alpha$ and $ r$ are the angle and distance of the line from the coordinate system of the robot. These line features are subject to variances $ \sigma_{\alpha,i}$ and $ \sigma_{r,i}$, which make up the diagonal of $ \boldsymbol{R}_{k}$. See the line detection lecture for a derivation of how angle and distance as well as their variance can be calculated from a laser scanner. The observation is a 2x1 matrix.
@@ -581,7 +581,7 @@ q=\hat{q_1}+\frac{\sigma_1^2}{\sigma_1^2+\sigma_2^2}(\hat{q_2}-\hat{q_1})\label{
 % \item Could the robot also possibly be underneath marker 4?
 
 \item 导出$p（marker|reading）$的表达式，假设您有一个概率来估计正确识别标记$p（读取|标记）$和概率$p（marker）$在特定的标记。
-\item 现在假设您正确读取标记的可能性为90％，读取错误为10％，并且在正下方没有标记时为50\％。考虑一个装有4个标记的狭窄走廊。你确定地知道你从最接近标记1的入口开始，直线向右移动。你得到的第一读是“标记3”。计算确定在标记3之下的概率。
+\item 现在假设您正确读取标记的可能性为90\%，读取错误为10\%，并且在正下方没有标记时为50\%。考虑一个装有4个标记的狭窄走廊。你确定地知道你从最接近标记1的入口开始，直线向右移动。你得到的第一读是“标记3”。计算确定在标记3之下的概率。
 \item 机器人也可能在标记4下面？
 \end{enumerate}
 \end{enumerate}\normalsize

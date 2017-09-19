@@ -184,7 +184,7 @@ return Tree
 % \item Finding the next point to add.
 
 \item 找到要添加到树（或丢弃）（StateToExpandFrom）的下一个点。
-\item通过考虑机器人运动学（CreatePathToTree），找出在哪里和如何将该点连接到树上。
+\item 通过考虑机器人运动学（CreatePathToTree），找出在哪里和如何将该点连接到树上。
 \item 测试此路径是否合适，即无碰撞。
 \item 找到要添加的下一个点。
 \end{enumerate}
@@ -241,7 +241,8 @@ return Tree
 \centering
 \includegraphics[width=0.9\textwidth]{figs/planninglayers}
 % \caption{Path-planning across different length scales, requiring a variety of map representations and planning paradigms. Arrows indicate information passed between layers.\label{fig:planninglayers}}
-\caption{不同长度尺度的路径规划，需要各种地图表示和规划范例。箭头表示层之间传递的信息。\label{fig:planninglayers}}
+\caption{不同长度尺度的路径规划，需要各种地图表示和规划范例。箭头表示层之间传递的信息。
+\label{fig:planninglayers}}
 \end{figure}
 
 % Note that this representation does not include a reasoning level that encodes traffic rules and common sense. While some of these might be encoded using cost-functions, such as maximizing distance from obstacles or insuring smooth riding, other more complex behaviors such as adapting driving in the presence of cyclists or properties of the ground need to be implemented in an additional vertical layer that has access to all planning layers. 

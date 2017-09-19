@@ -220,7 +220,7 @@ s_y(x,y)=
 % Differences of Gaussians can also be used to approximate the \emph{Laplacian of Gaussian}\index{Laplacian of Gaussian}, i.e., the sum of the second derivatives of a Gaussian kernel. Here, one kernel is roughly 1.6 times wider than the other. The band-pass characteristic of DoG and LoGs are important as they highlight high-frequency information such as edges, yet suppress high-frequency noise in the image.
 
 \subsubsection{高斯差异}
-检测边缘的另一种方法是\emph{高斯差异}（DoG）方法\index{高斯差分（DoG）}}。这个想法是减去使用不同宽度的高斯内核过滤的两个图像。两个滤波器都抑制高频信息，因此它们的差异导致了一个\emph{band-pass}滤波的信号\index{带通滤波器}，低频和高频均已从中消除。因此，DoG过滤器用作能力边缘检测算法。在这里，一个内核通常比另一个内核宽四到五倍，因此作为一个更强大的过滤器。
+检测边缘的另一种方法是\emph{差分高斯法（DoG）}\index{差分高斯法（DoG）}。这个想法是减去使用不同宽度的高斯内核过滤的两个图像。两个滤波器都抑制高频信息，因此它们的差异导致了一个\emph{带通（band-pass）}滤波的信号\index{带通滤波器（Band-pass filter）}，低频和高频均已从中消除。因此，DoG过滤器用作能力边缘检测算法。在这里，一个内核通常比另一个内核宽四到五倍，因此作为一个更强大的过滤器。
 
 高斯差分也可以用来近似高斯的拉普拉斯算子，即高斯内核的二阶导数的和。在这里，一个内核比其他内核大约是1.6倍。DoG和LoG的带通特性是重要的，因为它们突出了诸如边缘的高频信息，同时抑制了图像中的高频噪声。
 

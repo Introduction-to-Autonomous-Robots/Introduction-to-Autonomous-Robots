@@ -31,7 +31,7 @@
 
 % Every robot assumes a position in the real world that can be described by its position (x, y and z) and orientation (pitch, yaw and roll) along the three major axes of a Cartesian Coordinate system (See also Section \ref{sec:dof}, ``Degrees of freedom''). Such a coordinate system is shown in Figure \ref{fig:coordinatesystem}. Note that the directions and orientations of the coordinate axes are arbitrary. This books uses the ``right hand rules'', which are illustrated in Figure \ref{fig:coordinatesystem} to determine axes labels and directions throughout. Pitch, yaw, and roll, are also known as bank, attitude, and heading in other communities. \index{Pitch}\index{Yaw}\index{Roll}\index{Bank}\index{Attitude}\index{Heading} This makes sense, considering the colloquial use of the word ``heading'', which corresponds to a rotation around the z-axis of a vehicle driving on the x-y-plane. 
 
-假定每个机器人在现实世界中可以通过其位置$(x, y, z)$和沿笛卡尔坐标系的三个主轴的方向（俯仰，偏航和滚动）来描述其位姿（位置+姿态）（另见第\ref{sec:dof节}，“自由度”）。坐标系如图\ref{fig：coordinatesystem}所示。 请注意，坐标轴的方向是任意的。这本书使用“右手法则”，它们如图\ref {fig：coordinatesystem}所示，以确定轴标签和方向。俯仰，偏航和滚动，在其他领域也被称为bank，attitude和heading。\index{Pitch}\index{Yaw}\index{Roll} \index{Bank} \index{Attitude} \index{Heading}因为生活中我们用“heading”来表达行驶的车辆围绕$x-y$平面上的$z$轴的旋转，所以这是可以理解的。
+假定每个机器人在现实世界中可以通过其位置$(x, y, z)$和沿笛卡尔坐标系的三个主轴的方向（俯仰，偏航和滚动）来描述其位姿（位置+位姿）（另见第\ref{sec:dof}节，“自由度”）。坐标系如图\ref{fig:coordinatesystem}所示。 请注意，坐标轴的方向是任意的。这本书使用“右手法则”，它们如图\ref {fig:coordinatesystem}所示，以确定轴标签和方向。俯仰，偏航和滚动，在其他领域也被称为bank，attitude和heading\todo{to be decided}。\index{Pitch}\index{Yaw}\index{Roll} \index{Bank} \index{Attitude} \index{Heading}因为生活中我们用“heading”来表达行驶的车辆围绕$x-y$平面上的$z$轴的旋转，所以这是可以理解的。
 
 \begin{figure}
 	\centering
@@ -43,15 +43,15 @@
 
 % Defining all three position axes and orientations might be cumbersome. What level of detail we care about, where the origin of this coordinate system is, and even what kind of coordinate system we chose, depends on the specific application. For example, a simple mobile robot would typically require a representation with respect to a room, a building, or the earth's coordinate system (given by the longitude and latitude of each point on the earth), whereas a static manipulator usually has the origin of its coordinate system at it's base. More complicated systems, such as mobile manipulators or multi-legged robots, make life much easier by defining multiple coordinate systems, e.g.\one for each leg and one that describes the position of the robot in the world frame. These local coordinate systems are known as \emph{Frames of Reference}\index{Frame of Reference}. 
 
-定义所有三个位置轴和方向可能很麻烦。我们关心的是什么级别的细节，这个坐标系的原点，甚至是我们选择的什么样的坐标系，取决于具体的应用。 例如，简单的移动机器人通常需要相对于房间、建筑物或地球坐标系的表示（由地球上的每个点的纬度和纬度给出），而静态操作臂通常具有它的基准坐标系。 更复杂的系统，例如移动操作臂或多足机器人，定义多个坐标系更方便，例如每条腿一个坐标系加上机器人在世界中的位置的坐标系。这些局部坐标系称为\emph{参考系}\index {参考系}。
+定义所有三个位置轴和方向可能很麻烦。我们关心什么级别的细节，这个坐标系的原点在哪，甚至是我们选择的什么样的坐标系，取决于具体的应用。 例如，简单的移动机器人通常需要相对于房间、建筑物或地球坐标系（由地球上的每个点的经度和纬度给出）的表示，而静态操作臂通常设定以其基座为原点的坐标系。对更复杂的系统，如移动操作臂或多足机器人，定义多个坐标系更方便，例如每条腿一个坐标系加上机器人在世界中的位置的坐标系。这些局部坐标系称为\emph{参考系}\index{参考系}。
 
 % An example of two nested coordinate systems is shown in Figure \ref{fig:nestedcoords}. In this example, a robot located at the origin of $x',y'$ and $z'$ might plan its motions in its own reference frame, which can then be expressed in the coordinate system $x$, $y$ and $z$ by performing a translation and a rotation as we will later see. 
 
-图\ref{fig:nestedcoords}是两个嵌套坐标系的例子。 在这个例子中，位于$x'$，$y'$和$z'$原点的机器人可以在自己的参考系中规划其运动，然后可以通过在坐标系$x$，$y$和$z$中位移和旋转表示，我们稍后会讲到。
+图\ref{fig:nestedcoords}是两个嵌套坐标系的例子。 在这个例子中，位于以$x'$，$y'$和$z'$为原点的机器人可以在它自己的参考系中规划运动，然后可以通过在以$x$，$y$和$z$为原点的坐标系中进行位移和旋转后表示，我们稍后会讲到。
 
 % Depending on it's degrees-of-freedom, that is the number of independent translations and rotations a robot can achieve in Cartesian space, it is also customary to ignore components of position and orientation that remain constant. For example a simple floor-cleaning robot's pose might be completely defined by it's $x$ and $y$ coordinates in a room as well as its orientation, i.e.\its rotation around the $z$-axis. 
 
-根据机器人的自由度（也就是机器人可以在笛卡尔空间中独立位移和旋转的数量），通常我们会忽略保持不变的位置和方向的组件。例如，一个简单的地板清洁机器人的姿态可以完全定义为它在一个房间内的$ x $和$ y $坐标以及它的方向，即它围绕$ z $轴旋转。
+根据机器人的自由度（也就是机器人可以在笛卡尔空间中独立位移和旋转的数量），通常我们会忽略位置和方向保持不变的组件。例如，一个简单的地板清洁机器人的位姿可以完全定义为它在一个房间内的$ x $和$ y $坐标以及它的方向，即它围绕$ z $轴的旋转。
 
 \begin{figure}
 	\centering
@@ -66,7 +66,7 @@
 
 % Given some kind of fixed coordinate system, we can describe the \emph{position} of a robot's end-effector by a $3x1$ position vector. As there can be many coordinate systems defined on a robot and the environment, we identify the coordinate system a point relates to by a preceeding super-script, e.g., $ ^AP$ to indicate that point $P$ is in coordinate system $\{A\}$. Each point consists of three elements $ ^AP=[p_x p_y p_z]^T$.
 
-给定某种固定坐标系，我们可以用$ 3\times 1 $的位置向量来描述机器人末端驱动器的\emph {位置}。 由于可以在机器人和环境中定义许多坐标系，所以我们通过一个先前的超级脚本来确定一个点所涉及到的坐标系，例如$ ^AP $来表示点$ P $是坐标系$\{A\}$中一点。 每个点由三个元素组成：$ ^AP = [p_x p_y p_z]^T $。
+给定某种固定坐标系，我们可以用一个$3\times 1$的位置向量来描述机器人末端驱动器的\emph{位置}。由于可以在机器人和环境中定义许多坐标系，所以我们通过一个前导上标\todo{Professional word}来确定一个点所在的坐标系，例如$^AP$来表示点$P$是坐标系$\{A\}$中一点。每个点由三个元素组成：$^AP=[p_x\quad p_y\quad p_z]^T$。
 
 % More formally, $^AP$ is a linear combination of the three basis vectors that span $A$:
 更正式地，$ ^ AP $是定义在坐标系$A$中的三个基本向量的线性组合：
@@ -107,11 +107,11 @@
 %
 % which describes $\{B\}$ relative to $\{A\}$. It is important to note that all columns in $ ^A_BR$ are unit vectors, so that the rotation matrix is orthonormal. This is important as this allows us to easily obtain the inverse of $ ^A_BR$ as $ ^A_BR^T$ or $ ^B_AR=^A_BR^T$. 
 
-来描述相对于$\{A\}$的$\{B\}$。重要的是要注意，$^A_BR$中的所有列都是单位向量，因此旋转矩阵是正交的。这很重要，因为这样我们可以很容易地获得$^A_BR$的逆$A_BR^T$或$^B_AR=^A_BR^T$。
+来描述相对于坐标系$\{A\}$的坐标系$\{B\}$。重要的是要注意，$^A_BR$中的所有列都是单位向量，因此旋转矩阵是正交的。这很重要，因为这样我们可以很容易地获得$^A_BR$的逆$^A_BR^T$或$^B_AR=^A_BR^T$。
 
 % Why the unit vectors of a coordinate system $\{B\}$ expressed in coordinate system $\{A\}$ actually make up a rotation matrix, can be easily seen when re-arranging equation \ref{eq:basis} in matrix form
 
-在坐标系$\{A\}$中表示的坐标系$\{B\}$的单位向量实际上构成一个旋转矩阵的原因是，当重新以矩阵形式排列等式\ref{eq:basis}时，就可以很容易地发现
+在坐标系$\{A\}$中表示的坐标系$\{B\}$的单位向量实际上构成一个旋转矩阵，原因是当重新以矩阵形式排列等式\ref{eq:basis}时，就可以很容易地发现
 
 \begin{equation}
 ^AP=\left(\begin{array}{ccc}1 & 0 & 0\\0 & 1 & 0\\0 & 0 & 1\end{array}\right)\left(\begin{array}{c}p_x\\p_y\\p_z\end{array}\right),
@@ -124,7 +124,7 @@
 % We have now established how to express the orientation of a coordinate system using a rotation matrix. Usually, coordinate systems don't lie on top of each other, but are also displaced from each other. Together, position and orientation is known as a \emph{frame},\index{Frame} which is a set of four vectors, one for the position and three for the orientation, and we can write
 %
 
-我们现在已经解释了如何使用旋转矩阵来表达坐标系的方向。通常，坐标系不能互相排列，而应相互偏离。 位置和方向一起被称为\emph{frame}，\index {Frame}，它是四个向量的集合，一个用于表示位置，三个表示用于方向，我们可以写成
+我们现在已经解释了如何使用旋转矩阵来表达坐标系的方向。通常，坐标系不能互相平行\todo{on top of each other?}，而应相互偏离。 位置和方向一起被称为\emph{帧（Frame）}，\index {帧（Frame）}\todo{frame?}，它是四个向量的集合，一个用于表示位置，三个表示用于方向，我们可以写成
 
 \begin{equation}
 \{B\}=\{^A_BR, ^AP\}
@@ -132,7 +132,7 @@
 %
 % to describe the coordinate frame $\{B\}$ with respect to $\{A\}$ using a vector $^AP$ and a rotation matrix $^A_BR$. Robots usually have many such frames defined along their bodies.
 
-使用向量$^AP$和旋转矩阵$^A_BR$来描述$\{A\}$的坐标系$\{B\}$。 机器人通常沿着它们的身体定义许多这样的坐标系。
+使用向量$^AP$和旋转矩阵$^A_BR$来描述相对于坐标系$\{A\}$的坐标系$\{B\}$。 机器人通常沿着它们的身体定义许多这样的坐标系。
 
 % \subsection{Mapping from one frame to another}
 \subsection{从一个坐标系映射到另一个坐标系}
@@ -140,7 +140,7 @@
 
 % Having introduced the concept of frames, we need the ability to map coordinates in one frame to coordinates in another frame. For example, lets consider frame $\{B\}$ having the same orientation as frame $\{A\}$ and sitting at location $^AP$ in space. As the orientation of both frames is the same, we can express a point $ ^BQ$ in frame $\{A\}$ as
 
-引入了坐标系的概念后，我们需要将一坐标系中的坐标映射到另一坐标系。 例如，让我们假定坐标系$\{B\}$与坐标系$\{A\}$方向一致，并且$\{B\}$原点位于坐标系$\{A\}$的$^AP$点。由于两坐标系的方向是一样的，我们可以将点$^BQ$表示为坐标系$ \{A\} $中一个点
+引入了坐标系的概念后，我们需要将一个坐标系中的坐标映射到另一个坐标系。 例如，让我们假定坐标系$\{B\}$与坐标系$\{A\}$方向一致，并且$\{B\}$原点位于坐标系$\{A\}$的$^AP$点。由于两坐标系的方向是一样的，我们可以将点$^BQ$表示为坐标系$ \{A\} $中一个点
 
 %
 \begin{equation}
@@ -149,7 +149,7 @@
 %
 % Actually, adding two vectors that are in different reference frames, i.e., $ ^BQ+^AP$, is only possible if both of them have the same orientation. We can, however, convert from one reference frame to the other using the rotation matrix:
 
-实际上，只有两个参考坐标系中的两个向量方向相同，这两个向量才可以做加法，即$ ^BQ + ^AP $。然而，我们可以通过旋转矩阵将一个参考坐标系转换到另一个参考坐标系：
+实际上，只有两个参考坐标系中的两个向量方向相同，这两个向量才可以做加法，即$ ^BQ + ^AP $。然而，我们可以通过旋转矩阵将一个参考坐标系变换到另一个参考坐标系：
 
 \begin{equation}
 ^AP=^A_BR^BP
@@ -164,7 +164,7 @@
 \end{equation}
 % Using this notation, we can see that leading subscripts cancel the leading superscripts of the following vector/rotation matrix. Whereas we have now a solution to transfer a point from one frame of reference to another by combining a rotation and a translation, it would be more appealing to write something like that:
 
-使用这个符号，我们可以看到，前导下标抵消后面向量/旋转矩阵的前导上标。现在我们已经可以通过位移和旋转来将一个点从一个坐标系转换到另一坐标系上。如果能写成如下形式会更好些：
+使用这个符号，我们可以看到，前导下标抵消后面向量/旋转矩阵的前导上标。现在我们已经可以通过位移和旋转来将一个点从一个坐标系变换到另一坐标系上。如果能写成如下形式会更好些：
 
 \begin{equation}
 ^AQ=^A_BT^BQ
@@ -191,20 +191,20 @@ $^A_BT$是一个$4\times 4$矩阵。 请注意，在矩阵乘法期间，添加�
 
 % We have now established a convenient notation to convert points from one coordinate system to another. There are many possible ways this can be done, in particular how rotation can be represented (see below), but all can be converted from one into the other. 
 
-我们现在已经构造了一个便捷的符号，将点从一个坐标系转换到另一个坐标系。也存在许多其它的方法，尤其是表示旋转（见下文），但是它们之间可以相互转换。
+我们现在已经构造了一个便捷的符号，将点从一个坐标系变换到另一个坐标系。也存在许多其它的方法，尤其是表示旋转（见下文），但是它们之间可以相互变换。
 
 % \subsection{Transformation arithmetic}
 \subsection{变换算术}
 % Transformations can be combined: consider for example an arm with two links, reference frame $\{A\}$ at the base, $ \{B\} $ at its first joint, and $\{C\}$ at its end-effector. Given the transforms $ ^B_CT$ and $ ^A_BT$, we can write
 
-可以组合变换：例如具有两个链的手臂，基座坐标系$\{A\}$，第一个关节处的坐标系$\{B\}$和末端执行器的坐标系$\{C\}$。 给定转换$^B_CT$和$^A_BT$，我们可以用
+可以组合变换：例如具有两个链的手臂，基座坐标系$\{A\}$，第一个关节处的坐标系$\{B\}$和末端执行器的坐标系$\{C\}$。 给定变换$^B_CT$和$^A_BT$，我们可以用
 
 \begin{equation}
 ^AP=^A_BT^B_CT^CP=^A_CT^CP
 \end{equation}
 % to convert a point in the reference frame of the end-effector to that of its base. As this works for rotation and translation operators independently, we can construct $ ^A_CT$ as
 
-来把末端执行器坐标系中的一个点转换为其基座坐标系的一点。因为这分别适用于旋转和位移，我们可以将$^A_CT$构造为
+来把末端执行器坐标系中的一个点变换为其基座坐标系的一点。因为这分别适用于旋转和位移，我们可以将$^A_CT$构造为
 
 \begin{equation}
 ^A_CT=\left[\begin{array}{ccc|c} & ^A_BR^B_CR & & ^A_BR^BP_C +^AP_B \\\hline 0 & 0 & 0 & 1\end{array}\right]
@@ -247,11 +247,11 @@ XYX, XZX, YXY, YZY, ZXZ, ZYZ, XYZ, XZY, YZX, YXZ, ZXY 和 ZYX
 
 % It is important to know about the subtle differences between the different available transformations as there is no ``right'' or ``wrong'', but different manufacturers and fields use different conventions. There is only one caveat: each of the rotation matrices can look like subsequent rotations around the same axis for certain values of angles. For example, this happens for the XYZ rotation matrix if the angle of rotation around the Y-axis is $90^o$. These cases are known as a \emph{singularity}\index{Singularity} .
 
-因为没有“正确”或“错误”，但是不同的制造商和领域使用不同的约定，理解不同的可用转换之间的微妙差异很重要的。 只有一个预先声明：每个旋转矩阵可能看起来像绕同一轴的多旋转一定角度。例如，$XYZ$旋转矩阵中围绕$Y$轴$90^o$。 这些情况称为\emph{奇异点（Singularity）}\index{奇异点（Singularity）}。
+因为没有“正确”或“错误”，但是不同的制造商和领域使用不同的约定，理解不同的可用变换之间的微妙差异很重要的。 只有一个预先声明：每个旋转矩阵可能看起来像绕同一轴的多旋转一定角度。例如，$XYZ$旋转矩阵中围绕$Y$轴$90^o$。 这些情况称为\emph{奇异点（Singularity）}\index{奇异点（Singularity）}。
 
 % Among these, the preferred representation for computational and stability reasons are \emph{Quaternions}\index{Quaternion}. A quaternion is a 4-tuple that extends the complex numbers with very general applications in mathematics and representing orientation and rotation in particular. The basic idea is that each rotation can be represented as a rotation around a single axis (a vector in space) by a specific angle. Given such an axis $ \hat{K}=[k_x k_y k_z]^T$ and an angle $ \theta$, one can calculate the so-called Euler parameters\index{Euler parameters} or unit quaternion\index{unit quaternion}:
 
-其中，考虑计算和稳定性，最优选择是\emph{四元数（Quaternions）}\index{四元数（Quaternion）}。 四元数是一个四元组，它将复数扩展为数学中非常普遍的应用，特别是表示方向和旋转。基本思想是，每个旋转可以被表示为围绕单个轴的旋转（空间中的向量）一定角度。给定这样一个轴$\hat{K}=[k_x\quad k_y\quad k_z]^T$和一个角度$\theta$，可以计算所谓的欧拉参数\index{欧拉参数（Euler parameters）}或单位四元数\index{单位四元数（Unit quaternion）}：
+其中，考虑计算和稳定性，最优选择是\emph{四元数（Quaternions）}\index{四元数（Quaternion）}。 四元数是一个四元组，它将复数扩展为数学中非常普遍的应用，特别是表示方向和旋转。基本思想是，每个旋转可以被表示为围绕单个轴的旋转（空间中的向量）一定角度。给定这样一个轴$\hat{K}=[k_x\quad k_y\quad k_z]^T$和一个角度$\theta$，可以计算所谓的欧拉参数\index{欧拉参数（Euler Parameters）}或单位四元数\index{单位四元数（Unit Quaternion）}：
 
 \begin{eqnarray}
 \epsilon_1=k_x sin \frac{\theta}{2}\\
@@ -313,7 +313,7 @@ XYX, XZX, YXY, YZY, ZXZ, ZYZ, XYZ, XZY, YZX, YXZ, ZXY 和 ZYX
 
 % Consider a robot arm made out of two links and two joints that is mounted to a table. Let the length of the first link be $l_1$ and the length of the second link be $ l_2$. You could specify the position of the link closer to the table by the angle $ \alpha$ and the angle of the second link relative to the first link using the angle $ \beta$. Suitable conventions and coordinate systems are shown in Figure \ref{fig:fwk2dofarm}
 
-考虑一个由两个链接制成的机器人手臂和两个安装在桌子上的关节。让第一个链接的长度为$l_1$，第二个链接的长度为$l_2$。 你可以通过$\alpha$指定与桌子相连的链接的角度，并通过$\beta$指定第二个链接相对于第一个链接的角度。示例和坐标系如图\ref{fig：fwk2dofarm}所示。
+考虑一个由两个链接制成的机器人手臂和两个安装在桌子上的关节。让第一个链接的长度为$l_1$，第二个链接的长度为$l_2$。 你可以通过$\alpha$指定与桌子相连的链接的角度，并通过$\beta$指定第二个链接相对于第一个链接的角度。示例和坐标系如图\ref{fig:fwk2dofarm}所示。
 
 % We can now calculate the position of the joint between the first and the second link using simple trigonometry:
 
@@ -342,56 +342,59 @@ y&=&\sin(\alpha+\beta)l_2+\sin\alpha l_1
 
 % The above equations are the kinematic equations of this robot as they relate its control parameters $ \alpha$ and $\beta$ to the position of its end-effector given in the local coordinate system spanned by $ x$ and $ y$ with the origin at the robot's base. Note that both $\alpha$ and $\beta$ shown in the figure are positive: Both links rotate around the z-axis. Using the right-hand rule, the direction of positive angles is defined to be counter-clockwise. 
 
-上述等式是这个机器人的运动学方程，它们将控制参数$\alpha$和$\beta$与其在$x$和$y$之间的局部坐标系中给出的末端驱动器的位置相关联，以机器人的基座为原点。 请注意，图中显示的$ \alpha $和$ \beta $均为正数：两个链接都绕$z$轴旋转。使用右手法则，将正角度的方向定义为逆时针方向。
+上述等式是这个机器人的运动学方程，它们将控制参数$\alpha$和$\beta$与其在$x$和$y$之间的局部坐标系中给出的末端驱动器的位置相关联，以机器人的基座为原点。请注意，图中显示的$\alpha$和$\beta$均为正数：两个链接都绕$z$轴旋转。使用右手法则，将正角度的方向定义为逆时针方向。
 
 % The \emph{configuration space} \index{Configuration space}\index{C-Space (Configuration space)}, i.e., the set of angles each actuator can be set to, of this robot is given by $ \frac{-\pi}{2}<\alpha<\frac{\pi}{2}$ as it is not supposed to run into the table, and $ -\pi < \beta < \pi$. The configuration space is given with respect to the robot's joints and allows us to calculate the \emph{workspace}\index{Workspace} of the robot, i.e., the physical space it can move to, using the forward kinematic equations. This terminology will be identical for mobile robots. An example of configuration and work-space for both a manipulator and a mobile robot is shown in Figure \ref{fig:holonomy}.
 
-\emph {配置空间（Configuration Space）} \index{配置空间（Configuration Space）} \index{配置空间（C-Space）}，即每个驱动器可以设置为的角度的集合，由$\frac{-\pi}{2} <\alpha <\frac{\pi}{2}$，因为它不应该进入表，而$-\pi <\beta <\pi$。 给出了关于机器人关节的配置空间，并允许我们使用正运动学方程来计算机器人的\emph{workspace} \index {Workspace}，即它可以移动的物理空间。 移动机器人的术语将是相同的。 机械手和移动机器人的配置和工作空间的一个例子如图\ref {fig：holonomy}所示。
+\emph{配置空间（Configuration Space）}\index{配置空间（Configuration Space）}\index{配置空间（C-Space）}，即该机器人每个驱动器可以设置角度的集合，$\frac{-\pi}{2} <\alpha <\frac{\pi}{2}$（因为它不应该进入桌子），而$-\pi <\beta <\pi$。 根据机器人关节给出配置空间，并允许我们使用正运动学方程来计算机器人的\emph{工作区（Workspace）} \index{工作区（Workspace）}，即它可以移动的物理空间。 移动机器人的术语是相同的。 机械手和移动机器人的配置空间和工作区的一个例子如图\ref{fig:holonomy}所示。
 
 % The orientation of the arm's end-effector is given by $\alpha+\beta$. We can now write down  a transformation that includes a rotation around the z-axis
 
-手臂末端驱动器的方向由$ \alpha + \beta $给出。 现在我们可以写下一个围绕z轴旋转的转换
+操作臂末端驱动器的方向由$\alpha+\beta$给出。 现在我们可以写下一个围绕$z$轴旋转的变换
 
 \begin{equation}
 \label{eq:2armtrans}
-\left(\begin{array}{llll}cos_{\alpha\beta} & -sin_{\alpha\beta} &  0 & \cos_{\alpha\beta}l_2+\cos\alpha l_1\\
-                        sin_{\alpha\beta} & cos_{\alpha\beta} & 0 & \sin_{\alpha\beta}l_2+\sin\alpha l_1\\
+\left(\begin{array}{llll}cos_{\alpha\beta} & -sin_{\alpha\beta} &  0 & cos_{\alpha\beta}l_2+\cos\alpha l_1\\
+                        sin_{\alpha\beta} & cos_{\alpha\beta} & 0 & sin_{\alpha\beta}l_2+\sin\alpha l_1\\
 												0 & 0 & 1 & 0\\
 												0 & 0 & 0 & 1\end{array}\right)
 \end{equation}
-The notation $sin_{\alpha\beta}$ and $cos_{\alpha\beta}$ are short-hand for $sin(\alpha+\beta)$ and $cos(\alpha+\beta)$, respectively.
+
+% The notation $sin_{\alpha\beta}$ and $cos_{\alpha\beta}$ are short-hand for $sin(\alpha+\beta)$ and $cos(\alpha+\beta)$, respectively.
+
+$sin_{\alpha \beta}$和$cos_{\alpha \beta}$分别是$sin（\alpha+\beta）$和$cos（\alpha+\beta）$的简写。
 
 % This transformation now allows us to translate from the robot's base to the robot's end-effector as a function of the actuator positions $\alpha$ and $\beta$. This transformation will be helpful if we want to calculate suitable joint angles in order to reach a certain pose or if we want to convert measurements taken relative to the end-effector back into the base's coordinate system. 
 
-这个转换现在允许我们根据驱动器位置$ \alpha $和$ \beta $的函数将机器人的基础转换为机器人的末端驱动器。 如果我们想要计算合适的关节角度以达到某个姿势，或者我们想将相对于末端驱动器的测量值转换回到基座的坐标系中，这种转换将会有所帮助。
+这个变换现在使我们可以根据驱动器位置$\alpha$和$\beta$的函数，从机器人的基座变换到机器人的末端驱动器。如果我们想要计算达到某个位姿的关节角度，或者我们想把相对于末端驱动器的测量值变换到基座的坐标系中，这种变换将会有所帮助。
 
 % \subsection{Forward Kinematics of a Differential Wheels Robot}
-\subsection{差速轮机器人的前进运动学}
+\subsection{差速轮机器人的正运动学}
 \label{sec:fwkmobile}
 
 % Whereas the pose of a robotic manipulator is uniquely defined by its joint angles---which can be made available using encoders in almost real-time---this is not the case for a mobile robot. Here, the encoder values simply refer to wheel orientation and need to be integrated over time, which will be a huge source of uncertainty as we will later see.
 
-而机器人操作臂的姿态由关节角度唯一地定义，这可以使用编码器几乎实时地使用 - 这不是移动机器人的情况。 在这里，编码器值仅仅是指车轮定位，并且需要随着时间的推移而被集成，这将是我们稍后将看到的巨大的不确定性来源。
+虽然机器人操作臂的位姿由关节角度（可以由编码器几乎实时地获得）唯一地确定，但这并不适用于移动机器人。 在这里，编码器值仅仅是指车轮方位，并且随着时间的推移而累计，这将是我们稍后将看到的巨大的不确定性来源。
 
 % What complicates matters is that for so-called \emph{non-holonomic} systems, it is not sufficient to simply measure the distance that each wheel traveled, but also when each movement was executed. 
 
-重要的是，对于所谓的“非完整的”系统来说，简单地测量每个车轮行进的距离，而且每次执行时都是不够的。
+重要的是，对于所谓的\emph{非完整的（non-holonomic）}系统来说，只是简单地测量每个车轮行进的距离，以及当每次执行动作，都是不够的\todo{not fully understand}。
 
 \begin{figure}[htb!]
 	\centering
 		\includegraphics[width=0.95\textwidth]{figs/holonomy.png}
 	% \caption{Configuration space (left) and workspace (right) for a non-holonomic mobile robot (top) and a holonomic manipulator (bottom). Closed trajectories in configuration space result in closed trajectories in the workspace if the robot's kinematics is holonomic.}
-	\caption{非完整的移动机器人（上）和整体操作臂（底部）配置空间（左）和工作区（右）。 如果机器人的运动学是完整的，配置空间中的闭合轨迹会导致工作空间中的闭合轨迹。}
+	\caption{非完整（non-holonomic）的移动机器人（上）和完整（holonomic）操作臂（下）的配置空间（左）和工作区（右）。如果机器人的运动学是完整的，配置空间中的闭合轨迹会得到工作区中的闭合轨迹。}
 	\label{fig:holonomy}
 \end{figure}
 
 % A system is non-holonomic\index{Non-holonomic}\index{Holonomic} when closed trajectories in its configuration space (reminder: the configuration space of a two-link robotic arm is spanned by the possible values of each angle) may not have it return to its original state.  A simple arm is holonomic, as each joint position corresponds to a unique position in space. Going through whatever trajectory that comes back to the starting point in configuration space, will put the robot at the exact same position. A train on  a track is holonomic: moving its wheels backwards by the same amount they have been moving forward brings the train to the exact same position in space. A car and a differential-wheel robot are non-holonomic vehicles: performing a straight line and then a right-turn leads to the same amount of wheel rotation than doing a right turn first and then going in a straight line; getting the robot to its initial position requires not only to rewind both wheels by the same amount, but also getting their relative speeds right. The configuration and corresponding workspace trajectories for a non-holonomic and a holonomic robot are shown in Figure \ref{fig:holonomy}. Here, a robot first moves on a straight line (both wheels turn an equal amount). Then the left wheel remains fixed and only the right wheel turns forward. Then the right wheel remain fixed and the left wheel turns backward. Finally, the right wheel turns backward, arriving at the initial encoder values (zero). Yet, the robot does not return to its origin. Performing a similar trajectory in the configuration space of a two-link manipulator instead, let the robot return to its initial position. 
 
-系统是非完整的\index {非完整} \index{完整}当其配置空间中的闭合轨迹（提醒：双链机器人臂的配置空间跨越每个角度的可能值）可能不让它回到原来的状态。一个简单的手臂是完整的，因为每个关节位置对应于一个独特的空间位置。通过任何返回到配置空间起点的轨迹，将机器人置于完全相同的位置。轨道上的火车是完整的：将车轮向后移动与前进的相同的数量使火车在太空中完全相同的位置。汽车和差速轮机器人是非完整的车辆：执行直线，然后右转导致与先行右转然后直线相同的车轮旋转量;使机器人达到初始位置不仅需要以相同的量倒转两个车轮，而且要使其相对速度正确。非完整和全面的机器人的配置和相应的工作空间轨迹如图\ref {fig：holonomy}所示。这里，机器人首先在直线上移动（两轮相等）。然后左轮保持固定，只有右轮向前转。然后右轮保持固定，左侧车轮向后转。最后，右轮转向，达到初始编码器值（零）。然而，机器人并没有回到起点。在双链机械手的配置空间中执行类似的轨迹，让机器人恢复到初始位置。
+如果系统配置空间中的闭合轨迹可能不会让它回到原始状态，则称系统是非完整的\index{非完整（Non-holonomic）}\index{完整（Holonomic）}（提醒：双链机器手臂的配置空间跨越每个角度的可能值）。一个简单的手臂是完整的，因为每个关节位置对应于一个独特的空间位置。通过任何返回到配置空间起点的轨迹，将机器人置于完全相同的位置。轨道上的火车是完整的：将车轮向后移动与前进的相同的数量使火车在太空中完全相同的位置。汽车和差速轮机器人是非完整的车辆：执行直线，然后右转导致与先行右转然后直线相同的车轮旋转量;使机器人达到初始位置不仅需要以相同的量倒转两个车轮，而且要使其相对速度正确。非完整和全面的机器人的配置和相应的工作空间轨迹如图\ref{fig：holonomy}所示。这里，机器人首先在直线上移动（两轮相等）。然后左轮保持固定，只有右轮向前转。然后右轮保持固定，左侧车轮向后转。最后，右轮转向，达到初始编码器值（零）。然而，机器人并没有回到起点。在双链机械手的配置空间中执行类似的轨迹，让机器人恢复到初始位置。
 
 % It should be clear by now that for a mobile robot, not only traveled distance per wheel matters, but also the speed of each wheel as a function of time. Instead, this information was not required to uniquely determine the pose of a manipulating arm. Lets introduce the following conventions. We will establish a world coordinate system $\{I\}$, which is known as the inertial frame by convention (Figure \ref{fig:mobilerobot}). We establish a coordinate system $\{R\}$ on the robot and express the robot's speed $^R\dot{\xi}$ as a vector $ ^R\dot{\xi}=[^R\dot{x}, ^R\dot{y}, ^R\dot{\theta}]^T$. Here $^R\dot{x}$ and $^R\dot{y}$ correspond to the speed along the x and y directions in $\{R\}$, whereas $^R\dot{\theta}$ corresponds to the rotation around the imaginary z-axis, that you can imagine to be sticking out of the ground. We denote speeds with dots over the variable name, as speed is simply the derivative of distance.  Think about the robot's position in $\{R\}$ real quick. It is always zero, as the coordinate system is fixed on the robot. Therefore, velocities are the only interesting quantities in this coordinate system and we need to understand how velocities in $\{R\}$ map to positions in $ \{I\}$, which we denote by $^I\xi=[^Ix, ^Iy, ^I\theta]^T$. These coordinate systems are shown in Figure \ref{fig:mobilerobot}. 
 
-现在应该清楚的是，对于移动机器人，不仅每轮行驶距离重要，而且每个车轮的速度也随着时间的推移而变化。相反，不需要这些信息来唯一地确定操纵臂的姿态。让我们介绍以下约定。我们将建立一个世界坐标系$ \{I \} $，这被称为惯例的惯坐标系（图\ref {fig：mobilerobot}）。我们在机器人上建立一个坐标系$ \{R \} $，并将机器人的速度$ ^ R \dot{\xi} $作为向量$ ^R\dot{\xi} = [^R\dot{x},^R\dot{y},^R\dot{\theta}]^T $。这里$ ^R \dot {x} $和$ ^R \dot{y} $对应于$ \{R \} $中的x和y方向的速度，而$ ^R\dot{\theta} $对应于围绕虚拟z轴的旋转，您可以想象出将其伸出地面。我们用变量名称表示点的速度，因为速度只是距离的导数。想想机器人的位置在$ \{R \} $真正快速。当坐标系固定在机器人上时，它始终为零。因此，速度是这个坐标系中唯一有趣的数量，我们需要了解$ \{R \} $中的速度映射到$ \{I \} $中的位置，我们用$ ^ I\xi = [^Ix,^Iy,^I\theta]^T $。这些坐标系显示在图\ref{fig:mobilerobot}中。
+现在应该清楚的是，对于移动机器人，不仅每轮行驶距离重要，而且每个车轮的速度也随着时间的推移而变化。相反，不需要这些信息来唯一地确定操纵臂的位姿。让我们介绍以下约定。我们将建立一个世界坐标系$ \{I \} $，这被称为惯例的惯坐标系（图\ref {fig：mobilerobot}）。我们在机器人上建立一个坐标系$ \{R \} $，并将机器人的速度$ ^ R \dot{\xi} $作为向量$ ^R\dot{\xi} = [^R\dot{x},^R\dot{y},^R\dot{\theta}]^T $。这里$ ^R \dot {x} $和$ ^R \dot{y} $对应于$ \{R \} $中的x和y方向的速度，而$ ^R\dot{\theta} $对应于围绕虚拟z轴的旋转，您可以想象出将其伸出地面。我们用变量名称表示点的速度，因为速度只是距离的导数。想想机器人的位置在$ \{R \} $真正快速。当坐标系固定在机器人上时，它始终为零。因此，速度是这个坐标系中唯一有趣的数量，我们需要了解$ \{R \} $中的速度映射到$ \{I \} $中的位置，我们用$ ^ I\xi = [^Ix,^Iy,^I\theta]^T $。这些坐标系显示在图\ref{fig:mobilerobot}中。
 
 \begin{figure}[htb!]
 	\centering
@@ -518,7 +521,7 @@ sin(\theta) & cos(\theta) & 0 \\
 \subsubsection{从正运动学到气压测量}
 % Equation \ref{eq:diffwheels} only provides us with the relationship between the robot's wheel-speed and its speed in the inertial frame. Calculating its actual pose in the inertial frame is known as \emph{odometry}\index{Odometry}. Technically, it requires integrating (\ref{eq:diffwheels}) from 0 to the current time $T$. As this is not possible, but for very special cases, one can approximate the robot's pose by summing up speeds over discrete time intervals, or more precisely
 
-方程式\ref {eq：diffwheels}仅为我们提供了机器人的轮速与惯坐标系中的速度之间的关系。 计算其在惯坐标系中的实际姿态称为\emph {odometry} \index {Odometry}。 从技术上讲，它需要从0到当前时间$ T $的集成（\ref {eq：diffwheels}）。 由于这是不可能的，但是对于非常特殊的情况，可以通过在离散的时间间隔上求和速度来近似机器人的姿态，或者更准确地说
+方程式\ref {eq：diffwheels}仅为我们提供了机器人的轮速与惯坐标系中的速度之间的关系。 计算其在惯坐标系中的实际位姿称为\emph {odometry} \index {Odometry}。 从技术上讲，它需要从0到当前时间$ T $的集成（\ref {eq：diffwheels}）。 由于这是不可能的，但是对于非常特殊的情况，可以通过在离散的时间间隔上求和速度来近似机器人的位姿，或者更准确地说
 
 \begin{equation}
 \left(\begin{array}{c} {x_I}(T)\\{y_I}(T)\\{\theta}(T)\end{array}\right)=
@@ -595,7 +598,7 @@ x_I(k+1)=x_I(k)+\Delta x (k)
 
 % So far, we have considered the forward kinematics of wheeled mechanisms and simple arms and derived relationships between actuator parameters and velocities using basic trigonometry. In the specific case of multi-link arms, we can also think about the forward kinematics as a chain of homogenous transformations with respect to a coordinate system mounted at the base of a manipulator or a fixed position in the room. Deriving these transformations can be confusing and can be facilitated by following a ``recipe'' such as conceived by Denavit and Hartenberg. The so-called Denavit-Hartenberg (DH) \index{Denavit-Hartenberg parameters}scheme has evolved as quasi-standard and can easily be automatized, i.e., applied to a 3D model of a robotic arm, e.g. 
 
-到目前为止，我们已经考虑了使用基本三角法的轮式机构和简单臂的正运动学和致动器参数和速度之间的导出关系。 在多连杆臂的具体情况下，我们还可以将正运动学视为相对于安装在机械手的基座或房间中固定位置的坐标系的均匀变换链。 导出这些转换可能会令人困惑，并且可以通过遵循由“Denavit”和“Hartenberg”构思的“配方”来促成这些转换。 所谓的Denavit-Hartenberg（DH）\index {Denavit-Hartenberg参数}方案已经演变为准标准，并且可以容易地自动化，即应用于机器人臂的3D模型，例如，
+到目前为止，我们已经考虑了使用基本三角法的轮式机构和简单臂的正运动学和致动器参数和速度之间的导出关系。 在多连杆臂的具体情况下，我们还可以将正运动学视为相对于安装在机械手的基座或房间中固定位置的坐标系的均匀变换链。 导出这些变换可能会令人困惑，并且可以通过遵循由“Denavit”和“Hartenberg”构思的“配方”来促成这些变换。 所谓的Denavit-Hartenberg（DH）\index {Denavit-Hartenberg参数}方案已经演变为准标准，并且可以容易地自动化，即应用于机器人臂的3D模型，例如，
 
 % A manipulating arm consists of links that are connected by joints. Joints can be either rotational or prismatic, i.e., change their length and thus providing additional degrees of freedom. Knowing the length of all rigid links, the position of the manipulators end-effector is fully described by its joint angles and joint offset (for prismatic joints).
 
@@ -612,7 +615,7 @@ x_I(k+1)=x_I(k)+\Delta x (k)
 
 % The transformation between two joints is then fully described by the following four parameters:
 
-然后通过以下四个参数充分描述两个关节之间的转换：
+然后通过以下四个参数充分描述两个关节之间的变换：
 
 % \begin{enumerate}
 % \item The length $ r$ of the common normal between the $z$-axes of two joints $i$ and $i-1$ (link length).

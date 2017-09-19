@@ -93,7 +93,7 @@
 
 % More generally, if we have $ I$ input variables $ X_i$ and $ J$ output variables $Y_j$, the covariance matrix of the output variables $ \sigma_Y$ can be expressed as $\sigma_Y^2=\frac{\partial f}{\partial X}^2 \sigma_X^2$ where $\sigma_X$ is the covariance matrix of input variables and $J$ is a Jacobian matrix of a function $ f$ that calculates $Y$ from $X$ and has the form
 
-类似地，我们可以计算$\frac{\partial\alpha}{\partial\theta_i}$，$\frac{\partial r}{\partial\rho_i}$和$\frac{\partialr}{\partial\theta_i}$。我们实际上可以做到这一点，因为我们已经将$\alpha$和$r$的解析表达式作为$\theta_i$和$\rho_i$在第\ref{chap:feature_extraction}中的函数。
+类似地，我们可以计算$\frac{\partial\alpha}{\partial\theta_i}$，$\frac{\partial r}{\partial\rho_i}$和$\frac{\partial r}{\partial\theta_i}$。我们实际上可以做到这一点，因为我们已经将$\alpha$和$r$的解析表达式作为$\theta_i$和$\rho_i$在第\ref{chap:feature_extraction}中的函数。
 
 我们现在有兴趣得出方程来计算$\alpha$和$r$的方差，作为距离测量的方差的函数。让我们假定每个距离测量$\rho_i$有方差$\sigma^2_{\rho_i}$和每个角度测量$\theta_i$有方差$\sigma^2_{\theta_i}$。我们现在要计算$\sigma^2_{\alpha}$作为$\sigma^2_{\rho_i}$和$\sigma^2_{\theta_i}$的加权和，$\alpha$。
 
@@ -243,7 +243,7 @@ S=\frac{1}{\sigma_1^2}(\hat{q}-\hat{q}_1)^2+\frac{1}{\sigma_2^2}(\hat{q}-\hat{q}
 % \item Let the variance of your time measurement $\Delta t$ be $\sigma_t^2$. What can you say about the variance of $x$, when $c$ is assumed to be constant? Hint: how does a change in $\Delta t$ affect $x$?
 % \item Now assume that also $c$ is changing depending on location, weather, etc. and can be estimated with variance $\sigma_c^2$. What is the variance of $x$ now?
 
-\item 让你的时间测量的方差$\Delta t$为$\sigma_t^2$。当$c$被假定为常数时，您可以对$x$的方差说些什么？提示：$\Deltat$中的更改如何影响$x$？
+\item 让你的时间测量的方差$\Delta t$为$\sigma_t^2$。当$c$被假定为常数时，您可以对$x$的方差说些什么？提示：$\Delta t$中的更改如何影响$x$？
 \item 现在假设$c$根据位置，天气等而改变，并且可以用方差$\sigma_c^2$估计。现在$x$的差异是多少？
 \end{enumerate}
 % \item Consider a unicycle that turns with angular velocity $\dot{\phi}$ and has radius $r$. Its speed is thus a function of $\dot{\phi}$ and $r$ and is given by
