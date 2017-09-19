@@ -1,25 +1,49 @@
-\chapter{Linear Algebra}
-Linear algebra concerns vector spaces and linear mappings between them. It is central to robotics as it allows describing positions and speeds of the robot within the world as well as moving parts connected to it. 
+% \chapter{Linear Algebra}
+% Linear algebra concerns vector spaces and linear mappings between them. It is central to robotics as it allows describing positions and speeds of the robot within the world as well as moving parts connected to it. 
 
-\section{Dot product}
-The dot product (or scalar product)\index{Dot product}\index{Scalar product} is the sum of the products of the individual entries of two vectors. Let $hat{a}=(a_1,\ldots,a_n)$ and $\hat{b}=(b_1,\ldots,b_n)$ be two vectors. Then, there dot product $\hat{a}\cdot\hat{b}$ is given by
+\chapter{线性代数}
+线性代数涉及它们之间的向量空间和线性映射。它是机器人的核心，因为它可以描述世界范围内的机器人的位置和速度以及与之相连的运动部件。
+
+% \section{Dot product}
+% The dot product (or scalar product)\index{Dot product}\index{Scalar product} is the sum of the products of the individual entries of two vectors. Let $hat{a}=(a_1,\ldots,a_n)$ and $\hat{b}=(b_1,\ldots,b_n)$ be two vectors. Then, there dot product $\hat{a}\cdot\hat{b}$ is given by
+
+\section{点积}
+点积（或标量积）\index{Dotproduct}\index{Scalar product}是两个向量的各个条目的乘积之和。让$hat{a}=（a_1,\ldots,a_n）$和$\hat{b}=（b_1,\ldots,b_n）$是两个向量。然后，给出了点产品$\hat{a}\cdot\hat{b}$
+
 \begin{equation}
 \hat{a}\cdot\hat{b}=\sum_{i}^n=a_ib_i
 \end{equation}
-The dot product therefore takes two sequences of numbers and returns a single scalar. 
 
-In robotics, the dot product is mostly relevant due to its geometric interpretation:
+% The dot product therefore takes two sequences of numbers and returns a single scalar. 
+
+% In robotics, the dot product is mostly relevant due to its geometric interpretation:
+
+因此，点积产生两个数字序列，并返回单个标量。
+
+在机器人技术方面，由于其几何解释，点阵产品主要是相关的：
+
 \begin{equation}
 \hat{a}\cdot\hat{b}=\|\hat{a}\|\|\hat{b}\|\cos\theta
 \end{equation}
-with $\theta$ the angle between vectors $\hat{a}$ and $\hat{b}$. 
 
-If $\hat{a}$ and $\hat{b}$ are orthogonal, it follows $\hat{a}\cdot\hat{b}=0$. If $\hat{a}$ and $\hat{b}$ are parallel, it follows $\hat{a}\cdot\hat{b}=\|\hat{a}\|\|\hat{b}\|$.  
+% with $\theta$ the angle between vectors $\hat{a}$ and $\hat{b}$. 
 
-\section{Cross product}
-The cross product $\hat{a} \times \hat{b}$ of two vectors is defined as a vector $\hat{c}$ that is perpendicular to both $\hat{a}$ and $\hat{b}$. Its direction is given by the right-hand rule and its magnitude is equal to the area of the parallelogram that the vectors span.  
+% If $\hat{a}$ and $\hat{b}$ are orthogonal, it follows $\hat{a}\cdot\hat{b}=0$. If $\hat{a}$ and $\hat{b}$ are parallel, it follows $\hat{a}\cdot\hat{b}=\|\hat{a}\|\|\hat{b}\|$.  
 
-Let Let $\hat{a}=(a_1,a_2,a_3)^T$ and $\hat{b}=(b_1,a_2,a_3)$ be two vectors in $\mathrm{R}^3$. Then, there cross product $\hat{a}\times\hat{b}$ is given by
+$\theta$是向量$\hat{a}$和$\hat{b}$之间的角度。
+
+如果$\hat{a}$和$\hat{b}$正交，则遵循$\hat{a}\cdot\hat{b}=0$。如果$\hat{a}$和$\hat{b}$并行，则遵循$\hat{a}\cdot\hat{b}=\|\hat{a}\|\|\hat{b}\|$。
+
+% \section{Cross product}
+% The cross product $\hat{a} \times \hat{b}$ of two vectors is defined as a vector $\hat{c}$ that is perpendicular to both $\hat{a}$ and $\hat{b}$. Its direction is given by the right-hand rule and its magnitude is equal to the area of the parallelogram that the vectors span.  
+
+% Let Let $\hat{a}=(a_1,a_2,a_3)^T$ and $\hat{b}=(b_1,a_2,a_3)$ be two vectors in $\mathrm{R}^3$. Then, there cross product $\hat{a}\times\hat{b}$ is given by
+
+\section{叉积}
+两个向量的交叉乘积$\hat{a}\times\hat{b}$定义为一个向量$\hat{c}$，它与$\hat{a}$和$\hat{b}$。其方向由右手规则给出，其大小等于向量跨越的平行四边形的面积。
+
+让$\hat{a}=（a_1,a_2,a_3）^T$和$\hat{b}=（b_1,a_2,a_3）$是$\mathrm{R}^3$中的两个向量。然后，交叉产品$\hat{a}\times\hat{b}$由给出
+
 \begin{equation}
 \hat{a}\times\hat{b}=\left(
 \begin{array}{l}
@@ -31,17 +55,31 @@ a_1b_2-a_2b_1
 \end{equation}
 
 
-\section{Matrix product}
-Given an $n \times m$ matrix $\mathbf{A}$ and a $m\times p$ matrix $\mathbf{B}$, the matrix product $\mathbf{AB}$ is defined by
+% \section{Matrix product}
+% Given an $n \times m$ matrix $\mathbf{A}$ and a $m\times p$ matrix $\mathbf{B}$, the matrix product $\mathbf{AB}$ is defined by
+
+\section{矩阵乘法}
+给定一个$n\times m$矩阵$\mathbf{A}$和$m\times p$matrix$\mathbf{B}$，矩阵乘积$\mathbf{AB}$由
+
 \begin{equation}
 (\mathbf{AB})_{ij}=\sum_{k=1}^mA_{ik}B_{kj}
 \end{equation}
-where the index $ij$ indicates the i-th row and j-th column entry of the resulting $n\times p $ matrix. Each entry therefore consists of the scalar product of the i-th row of $\mathbf{A}$ with the j-th column of $\mathbf{B}$. 
 
-Note that for this two work, the right hand matrix (here $\mathbf{B}$) has to have as many columns as the left hand matrix (here $\mathbf{A}$) has rows. Therefore, the operation is not commutative, i.e., $\mathbf{AB}\neq\mathbf{BA}$.
+% where the index $ij$ indicates the i-th row and j-th column entry of the resulting $n\times p $ matrix. Each entry therefore consists of the scalar product of the i-th row of $\mathbf{A}$ with the j-th column of $\mathbf{B}$. 
 
-For example, multiplying a 3x3 matrix with a 3x1 matrix (a vector), works as follows:
-Let
+% Note that for this two work, the right hand matrix (here $\mathbf{B}$) has to have as many columns as the left hand matrix (here $\mathbf{A}$) has rows. Therefore, the operation is not commutative, i.e., $\mathbf{AB}\neq\mathbf{BA}$.
+
+% For example, multiplying a 3x3 matrix with a 3x1 matrix (a vector), works as follows:
+% Let
+
+其中索引$ij$表示生成的$n\times p$矩阵的第i行和第j列条目。因此，每个条目由$\mathbf{A}$的第i行的标量乘积与$\mathbf{B}$的第j列组成。
+
+请注意，对于这两个工作，右手矩阵（这里$\mathbf{B}$）必须具有与左手矩阵（这里$\mathbf{A}$）具有行数一样多的列。因此，操作不可交换，即$\mathbf{AB}\neq\mathbf{BA}$。
+
+例如，将3×3矩阵与3×1矩阵（向量）相乘，工作如下：
+
+令
+
 \begin{equation}\nonumber
 \mathbf{A} = \begin{pmatrix}
 a & b & c \\
@@ -54,7 +92,9 @@ z
 \end{pmatrix}.
 \end{equation}
 
-Then their matrix product is:
+% Then their matrix product is:
+那么他们的矩阵乘法是：
+
 \begin{equation}\nonumber
 \mathbf{AB} = \begin{pmatrix}
 a & b & c \\
@@ -71,19 +111,32 @@ ux + vy + wz
 \end{pmatrix}
 \end{equation}
 
-\section{Matrix inversion}
-Given a matrix $\mathbf{A}$, finding the inverse $\mathbf{B}=\mathbf{A}^{-1}$ involves solving the system of equations that satisfies
+% \section{Matrix inversion}
+% Given a matrix $\mathbf{A}$, finding the inverse $\mathbf{B}=\mathbf{A}^{-1}$ involves solving the system of equations that satisfies
+
+\section{矩阵的逆}
+给定矩阵$\mathbf{A}$，找到逆$\mathbf{B}=\mathbf{A}^{-1}$涉及求解满足的方程组
+
 \begin{equation}
 \mathbf{AB}=\mathbf{BA}=\mathbf{I}
 \end{equation}
-With $\mathbf{I}$ the identity matrix\index{Identify matrix}. (The identity matrix is zero everywhere expect at its diagonal entries, which are one.)
 
-In the particular case of orthonormal matrices\index{Orthonormal matrix}, which columns are all orthogonal to each other and of length one, the inverse is equivalent to the transpose, i.e.
+% With $\mathbf{I}$ the identity matrix\index{Identify matrix}. (The identity matrix is zero everywhere expect at its diagonal entries, which are one.)
+
+% In the particular case of orthonormal matrices\index{Orthonormal matrix}, which columns are all orthogonal to each other and of length one, the inverse is equivalent to the transpose, i.e.
+
+使用$\mathbf{I}$单位矩阵\index{单位矩阵（Identify matrix)}。（在其对角线条目中，身份矩阵为零，期望为零）。
+
+在正交矩阵\index{正交矩阵}的特定情况下，哪些列都是彼此正交的，长度为$1$的，这相当于转置，即
+
 \begin{equation}
 \mathbf{A}^{-1}=\mathbf{A}^T
 \end{equation}
 
-In case a matrix is not quadratic, we can calculate the pseudo-inverse\index{Pseudo-inverse}, which is defined by
+% In case a matrix is not quadratic, we can calculate the pseudo-inverse\index{Pseudo-inverse}, which is defined by
+
+在矩阵不是二次的情况下，我们可以计算伪逆\index{伪逆}，其由
+
 \begin{equation}
 \mathbf{A}^+=\mathbf{A}^T(\mathbf{AA}^T)^{-1}.
 \end{equation}
