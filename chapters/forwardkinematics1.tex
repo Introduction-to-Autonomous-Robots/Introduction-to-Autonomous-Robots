@@ -298,7 +298,7 @@ XYX, XZX, YXY, YZY, ZXZ, ZYZ, XYZ, XZY, YZX, YXZ, ZXY 和 ZYX
 
 % Now that we have introduced the notion of local coordinate frames, we are interested in how to calculate the pose and speed of these coordinate frames as a function of the robot's actuators. We will first consider simple mechanisms where we can determine the relationship between actuators and the pose of various frames on the robot both in the position and speed domain. We will then consider the special class of non-holonomous mechanisms using a series of wheeled robots, for which the forward kinematics can only be calculated in the speed domain. 
 
-现在我们已经介绍了局部坐标系的概念，我们对如何根据机器人的驱动器来计算这些坐标系的位姿和速度感兴趣。我们首先考虑简单的机制，我们可以在位置域和速度域中确定机器人上不同坐标系的驱动器和位姿之间的关系。然后，我们考虑特殊类别的非完整的机制，它使用一系列的轮式机器人，其中正运动学只能在速度域中计算。
+我们已经介绍了局部坐标系的概念，那么如何根据机器人的驱动器\todo{as a function of the robot's actuators}来计算这些坐标系的位姿和速度。首先我们考虑简单的机制，在这种机制中我们可以在位置域和速度域上确定机器人上不同坐标系的驱动器和位姿之间的关系。然后，我们使用一系列的轮式机器人来讨论非完整的机制的特殊类别，其正运动学只能在速度域中计算。
 
 % \subsection{Forward kinematics of a simple arm}
 \subsection{一个简单的手臂的正运动学}
@@ -313,7 +313,7 @@ XYX, XZX, YXY, YZY, ZXZ, ZYZ, XYZ, XZY, YZX, YXZ, ZXY 和 ZYX
 
 % Consider a robot arm made out of two links and two joints that is mounted to a table. Let the length of the first link be $l_1$ and the length of the second link be $ l_2$. You could specify the position of the link closer to the table by the angle $ \alpha$ and the angle of the second link relative to the first link using the angle $ \beta$. Suitable conventions and coordinate systems are shown in Figure \ref{fig:fwk2dofarm}
 
-考虑一个由两个链接制成的机器人手臂和两个安装在桌子上的关节。让第一个链接的长度为$l_1$，第二个链接的长度为$l_2$。 你可以通过$\alpha$指定与桌子相连的链接的角度，并通过$\beta$指定第二个链接相对于第一个链接的角度。示例和坐标系如图\ref{fig:fwk2dofarm}所示。
+考虑一个安装在桌子上，由两个链接、两个关节组成的机器人手臂。令第一个链接的长度为$l_1$，第二个链接的长度为$l_2$。 你可以通过$\alpha$指定与桌子相连的链接的角度，并通过$\beta$指定第二个链接相对于第一个链接的角度。示例和坐标系如图\ref{fig:fwk2dofarm}所示。
 
 % We can now calculate the position of the joint between the first and the second link using simple trigonometry:
 
@@ -342,7 +342,7 @@ y&=&\sin(\alpha+\beta)l_2+\sin\alpha l_1
 
 % The above equations are the kinematic equations of this robot as they relate its control parameters $ \alpha$ and $\beta$ to the position of its end-effector given in the local coordinate system spanned by $ x$ and $ y$ with the origin at the robot's base. Note that both $\alpha$ and $\beta$ shown in the figure are positive: Both links rotate around the z-axis. Using the right-hand rule, the direction of positive angles is defined to be counter-clockwise. 
 
-上述等式是这个机器人的运动学方程，它们将控制参数$\alpha$和$\beta$与其在$x$和$y$之间的局部坐标系中给出的末端驱动器的位置相关联，以机器人的基座为原点。请注意，图中显示的$\alpha$和$\beta$均为正数：两个链接都绕$z$轴旋转。使用右手法则，将正角度的方向定义为逆时针方向。
+上述等式是这个机器人的运动学方程，它们将控制参数$\alpha$和$\beta$与末端驱动器的位置相关联，其位置由以机器人的基座为原点的局部坐标系中给出\todo{spanned by $ x$ and $ y$}。请注意，图中显示的$\alpha$和$\beta$均为正数：两个链接都绕$z$轴旋转。使用右手法则，将正角度的方向定义为逆时针方向。
 
 % The \emph{configuration space} \index{Configuration space}\index{C-Space (Configuration space)}, i.e., the set of angles each actuator can be set to, of this robot is given by $ \frac{-\pi}{2}<\alpha<\frac{\pi}{2}$ as it is not supposed to run into the table, and $ -\pi < \beta < \pi$. The configuration space is given with respect to the robot's joints and allows us to calculate the \emph{workspace}\index{Workspace} of the robot, i.e., the physical space it can move to, using the forward kinematic equations. This terminology will be identical for mobile robots. An example of configuration and work-space for both a manipulator and a mobile robot is shown in Figure \ref{fig:holonomy}.
 
@@ -364,9 +364,9 @@ y&=&\sin(\alpha+\beta)l_2+\sin\alpha l_1
 
 $sin_{\alpha \beta}$和$cos_{\alpha \beta}$分别是$sin（\alpha+\beta）$和$cos（\alpha+\beta）$的简写。
 
-% This transformation now allows us to translate from the robot's base to the robot's end-effector as a function of the actuator positions $\alpha$ and $\beta$. This transformation will be helpful if we want to calculate suitable joint angles in order to reach a certain pose or if we want to convert measurements taken relative to the end-effector back into the base's coordinate system. 
+% This transformation now allows us to translate from the robot's base to the robot's end-effector as a function of the actuator positions, $\alpha$ and $\beta$. This transformation will be helpful if we want to calculate suitable joint angles in order to reach a certain pose or if we want to convert measurements taken relative to the end-effector back into the base's coordinate system. 
 
-这个变换现在使我们可以根据驱动器位置$\alpha$和$\beta$的函数，从机器人的基座变换到机器人的末端驱动器。如果我们想要计算达到某个位姿的关节角度，或者我们想把相对于末端驱动器的测量值变换到基座的坐标系中，这种变换将会有所帮助。
+这个变换现在使我们可以根据驱动器位置与$\alpha$和$\beta$的函数，从机器人的基座变换到机器人的末端驱动器。如果我们想要计算达到某个位姿的关节角度，或者我们想把相对于末端驱动器的测量值变换到基座的坐标系中，这种变换将会有所帮助。
 
 % \subsection{Forward Kinematics of a Differential Wheels Robot}
 \subsection{差速轮机器人的正运动学}
@@ -374,7 +374,7 @@ $sin_{\alpha \beta}$和$cos_{\alpha \beta}$分别是$sin（\alpha+\beta）$和$c
 
 % Whereas the pose of a robotic manipulator is uniquely defined by its joint angles---which can be made available using encoders in almost real-time---this is not the case for a mobile robot. Here, the encoder values simply refer to wheel orientation and need to be integrated over time, which will be a huge source of uncertainty as we will later see.
 
-虽然机器人操作臂的位姿由关节角度（可以由编码器几乎实时地获得）唯一地确定，但这并不适用于移动机器人。 在这里，编码器值仅仅是指车轮方位，并且随着时间的推移而累计，这将是我们稍后将看到的巨大的不确定性来源。
+虽然机器人操作臂的位姿由关节角度（可以由编码器几乎实时地获得）唯一地确定，但这并不适用于移动机器人。 在这里，编码器值仅仅是指车轮方位，并且随着时间的推移而累计，这将导致我们稍后将看到的巨大的不确定性。
 
 % What complicates matters is that for so-called \emph{non-holonomic} systems, it is not sufficient to simply measure the distance that each wheel traveled, but also when each movement was executed. 
 
@@ -388,29 +388,29 @@ $sin_{\alpha \beta}$和$cos_{\alpha \beta}$分别是$sin（\alpha+\beta）$和$c
 	\label{fig:holonomy}
 \end{figure}
 
-% A system is non-holonomic\index{Non-holonomic}\index{Holonomic} when closed trajectories in its configuration space (reminder: the configuration space of a two-link robotic arm is spanned by the possible values of each angle) may not have it return to its original state.  A simple arm is holonomic, as each joint position corresponds to a unique position in space. Going through whatever trajectory that comes back to the starting point in configuration space, will put the robot at the exact same position. A train on  a track is holonomic: moving its wheels backwards by the same amount they have been moving forward brings the train to the exact same position in space. A car and a differential-wheel robot are non-holonomic vehicles: performing a straight line and then a right-turn leads to the same amount of wheel rotation than doing a right turn first and then going in a straight line; getting the robot to its initial position requires not only to rewind both wheels by the same amount, but also getting their relative speeds right. The configuration and corresponding workspace trajectories for a non-holonomic and a holonomic robot are shown in Figure \ref{fig:holonomy}. Here, a robot first moves on a straight line (both wheels turn an equal amount). Then the left wheel remains fixed and only the right wheel turns forward. Then the right wheel remain fixed and the left wheel turns backward. Finally, the right wheel turns backward, arriving at the initial encoder values (zero). Yet, the robot does not return to its origin. Performing a similar trajectory in the configuration space of a two-link manipulator instead, let the robot return to its initial position. 
+% A system is non-holonomic\index{Non-holonomic}\index{Holonomic} when closed trajectories in its configuration space (reminder: the configuration space of a two-link robotic arm is spanned by the possible values of each angle) may not have it return to its original state.  A simple arm is holonomic, as each joint position corresponds to a unique position in space. Going through whatever trajectory that comes back to the starting point in configuration space, will put the robot at the exact same position. A train on  a track is holonomic: moving its wheels backwards by the same amount they have been moving forward brings the train to the exact same position in space. A car and a differential-wheel robot are non-holonomic vehicles: performing a straight line and then a right-turn leads to the same amount of wheel rotation as doing a right turn first and then going in a straight line; getting the robot to its initial position requires not only to rewind both wheels by the same amount, but also getting their relative speeds right. The configuration and corresponding workspace trajectories for a non-holonomic and a holonomic robot are shown in Figure \ref{fig:holonomy}. Here, a robot first moves on a straight line (both wheels turn an equal amount). Then the left wheel remains fixed and only the right wheel turns forward. Then the right wheel remain fixed and the left wheel turns backward. Finally, the right wheel turns backward, arriving at the initial encoder values (zero). Yet, the robot does not return to its origin. Performing a similar trajectory in the configuration space of a two-link manipulator instead, let the robot return to its initial position. 
 
-如果系统配置空间中的闭合轨迹可能不会让它回到原始状态，则称系统是非完整的\index{非完整（Non-holonomic）}\index{完整（Holonomic）}（提醒：双链机器手臂的配置空间跨越每个角度的可能值）。一个简单的手臂是完整的，因为每个关节位置对应于一个独特的空间位置。通过任何返回到配置空间起点的轨迹，将机器人置于完全相同的位置。轨道上的火车是完整的：将车轮向后移动与前进的相同的数量使火车在太空中完全相同的位置。汽车和差速轮机器人是非完整的车辆：执行直线，然后右转导致与先行右转然后直线相同的车轮旋转量;使机器人达到初始位置不仅需要以相同的量倒转两个车轮，而且要使其相对速度正确。非完整和全面的机器人的配置和相应的工作空间轨迹如图\ref{fig：holonomy}所示。这里，机器人首先在直线上移动（两轮相等）。然后左轮保持固定，只有右轮向前转。然后右轮保持固定，左侧车轮向后转。最后，右轮转向，达到初始编码器值（零）。然而，机器人并没有回到起点。在双链机械手的配置空间中执行类似的轨迹，让机器人恢复到初始位置。
+如果系统配置空间中的闭合轨迹可能使它回不到原始状态，则称系统是非完整的\index{非完整（Non-holonomic）}\index{完整（Holonomic）}（提醒：双链机器手臂的配置空间跨越每个角度的可能值）。一个简单的手臂是完整的，因为每个关节位置对应于一个独特的空间位置。机器人沿着任何可以返回到配置空间起点的轨迹，能回到完全相同的位置。轨道上的火车是完整的：将车轮向后移动与向前移动时相同的距离可以使火车回到完全相同的位置。汽车和差速轮机器人是非完整的车辆：先直行再右转和先右转再直行车轮旋转相同的量；要使机器人回到初始位置不仅需要以相同的量倒转两个车轮，而且要使其相对速度正确。非完整和完整机器人的配置空间和相应的工作区轨迹如图\ref{fig:holonomy}所示。这里，机器人首先在直线上移动（两轮旋转相同的量）。然后左轮保持不动，只有右轮向前转。然后右轮保持不动，左轮向后转。最后，右轮向后转，回到初始的编码值（零）。然而，机器人并没有回到起点。然而，在双链操作臂的配置空间中执行类似的操作，可以回到初始位置。
 
 % It should be clear by now that for a mobile robot, not only traveled distance per wheel matters, but also the speed of each wheel as a function of time. Instead, this information was not required to uniquely determine the pose of a manipulating arm. Lets introduce the following conventions. We will establish a world coordinate system $\{I\}$, which is known as the inertial frame by convention (Figure \ref{fig:mobilerobot}). We establish a coordinate system $\{R\}$ on the robot and express the robot's speed $^R\dot{\xi}$ as a vector $ ^R\dot{\xi}=[^R\dot{x}, ^R\dot{y}, ^R\dot{\theta}]^T$. Here $^R\dot{x}$ and $^R\dot{y}$ correspond to the speed along the x and y directions in $\{R\}$, whereas $^R\dot{\theta}$ corresponds to the rotation around the imaginary z-axis, that you can imagine to be sticking out of the ground. We denote speeds with dots over the variable name, as speed is simply the derivative of distance.  Think about the robot's position in $\{R\}$ real quick. It is always zero, as the coordinate system is fixed on the robot. Therefore, velocities are the only interesting quantities in this coordinate system and we need to understand how velocities in $\{R\}$ map to positions in $ \{I\}$, which we denote by $^I\xi=[^Ix, ^Iy, ^I\theta]^T$. These coordinate systems are shown in Figure \ref{fig:mobilerobot}. 
 
-现在应该清楚的是，对于移动机器人，不仅每轮行驶距离重要，而且每个车轮的速度也随着时间的推移而变化。相反，不需要这些信息来唯一地确定操纵臂的位姿。让我们介绍以下约定。我们将建立一个世界坐标系$ \{I \} $，这被称为惯例的惯坐标系（图\ref {fig：mobilerobot}）。我们在机器人上建立一个坐标系$ \{R \} $，并将机器人的速度$ ^ R \dot{\xi} $作为向量$ ^R\dot{\xi} = [^R\dot{x},^R\dot{y},^R\dot{\theta}]^T $。这里$ ^R \dot {x} $和$ ^R \dot{y} $对应于$ \{R \} $中的x和y方向的速度，而$ ^R\dot{\theta} $对应于围绕虚拟z轴的旋转，您可以想象出将其伸出地面。我们用变量名称表示点的速度，因为速度只是距离的导数。想想机器人的位置在$ \{R \} $真正快速。当坐标系固定在机器人上时，它始终为零。因此，速度是这个坐标系中唯一有趣的数量，我们需要了解$ \{R \} $中的速度映射到$ \{I \} $中的位置，我们用$ ^ I\xi = [^Ix,^Iy,^I\theta]^T $。这些坐标系显示在图\ref{fig:mobilerobot}中。
+现在应该清楚的是，对于移动机器人，不仅每个轮子行驶的距离重要，而且每个车轮随着时间变化的速度也很重要。相反，我们并不需要这些信息来唯一地确定操作臂的位姿。让我们介绍以下约定。我们建立一个世界坐标系$\{I\}$，按照惯例这被称惯性坐标系（图\ref{fig:mobilerobot}）。我们在机器人上建立一个坐标系$\{R\}$，并将机器人的速度$^R\dot{\xi}$表示为向量$^R\dot{\xi}=[^R\dot{x},^R\dot{y},^R\dot{\theta}]^T$。这里$^R\dot{x}$和$^R\dot{y}$对应于$\{R\}$中的$x$和$y$方向的速度，而$^R\dot{\theta}$对应于围绕想象中伸出地面$z$轴的旋转。因为速度只是距离的导数，我们用这些上方带点的变量表示速度。快速思考机器人在$\{R\}$中的位置。因为坐标系固定在机器人上，所以它始终为零。因此，速度是这个坐标系中唯一有趣的数量，我们需要理解$\{R\}$中的速度如何映射到$\{I\}$中的位置，我们表示为$^I\xi=[^Ix,^Iy,^I\theta]^T$。这些坐标系如图\ref{fig:mobilerobot}所示。
 
 \begin{figure}[htb!]
 	\centering
 		\includegraphics[width=0.85\textwidth]{figs/mobilerobot.png}
 	% \caption{Mobile robot with local coordinate system \{R\} and world frame \{I\}. The arrows indicate the positive direction of position and orientation vectors.}
-	\caption{具有局部坐标系\{R \}和世坐标系\{I \}的移动机器人。 箭头表示位置和方向向量的正方向。}
+	\caption{带有局部坐标系\{R\}和世界坐标系\{I\}的移动机器人。 箭头表示位置和方向向量的正方向。}
 	\label{fig:mobilerobot}
 \end{figure}
 
 % Notice that the positioning of the coordinate frames and their orientation are arbitrary. Here, we chose to place the coordinate system in the center of the robot's axle and align $^Rx$ with its default driving direction.
 
-请注意，坐标系的定位及其方向是任意的。 在这里，我们选择将坐标系放置在机器人轴的中心，并将$ ^ Rx $与其默认驾驶方向对齐。
+请注意，坐标系的位置及其方向是任意的。 在这里，我们选择将坐标系放置在机器人轴的中心，并将$^Rx$与其默认移动方向对齐。
 
 % In order to calculate the robot's position in the inertial frame, we need to first find out, how speed in the robot coordinate frame maps to speed in the inertial frame. This can be done again by employing trigonometry. There is only one complication: a movement into the robot's x-axis might lead to movement along both the x-axis and the y-axis of the world coordinate frame. By looking at the figure above, we can derive the following components to $\dot{x}_I$. First, 
 
-为了计算机器人在惯坐标系中的位置，我们需要首先找出机器人坐标系中的速度如何映射到惯坐标系中的速度。 这可以通过使用三角法再次完成。 只有一个并发症：进入机器人的x轴的运动可能导致沿着世界坐标系的x轴和y轴的移动。 通过查看上图，我们可以将以下组件导出到$ \dot {x} _I $。 第一，
+为了计算机器人在惯性坐标系中的位置，首先，我们需要找出机器人坐标系中的速度如何映射到惯性坐标系中的速度。 这可以再次使用三角法完成。 只有一个问题：进入机器人坐标系的$x$轴的移动可能导致同时沿着世界坐标系的$x$轴和$y$轴移动。通过查看上图，我们可以将以下组件导出到$\dot{x}_I$。 首先，
 
 \begin{equation}
 \dot{x}_{I,x}=cos(\theta) \dot{x}_R.
@@ -418,31 +418,43 @@ $sin_{\alpha \beta}$和$cos_{\alpha \beta}$分别是$sin（\alpha+\beta）$和$c
 
 % There is also a component of motion coming from $ \dot{y}_R$ (ignoring the kinematic constraints for now, see below).  For negative $ \theta$, as in Figure \ref{fig:mobilerobot}, a move along $y_R$ would let the robot move into positive $ X_I$ direction. The projection from $ \dot{y}_R$ is therefore given by 
 
-还有来自$ \dot {y} _R $的运动组件（忽略了现在的运动学约束，见下文）。 对于负$ \theta $，如图\ref {fig：mobilerobot}所示，沿$ y_R $的移动将使机器人进入正的$ X_I $方向。 因此，$ \dot {y} _R $的投影由给出
+还有来自$\dot{y}_R$的运动组件（忽略了现在的运动学约束，见下文）。如图\ref{fig:mobilerobot}所示，对于负$\theta$，沿$y_R$的移动将使机器人进入正的$X_I$方向。因此，$\dot{y}_R$的投影由以下给出
 
 \begin{equation}
 \dot{x_{I,y}}=-sin(\theta)\dot{y_R}.
 \end{equation} 
-We can now write
+
+% We can now write
+现在我们可以写成
+
 \begin{equation}
 \dot{x_I}=cos(\theta) \dot{x_R} - sin(\theta) \dot{y_R}.
 \end{equation}
-Similar reasoning leads to
+
+% Similar reasoning leads to
+类似可得
+
 \begin{equation}
 \dot{y_I}=sin(\theta) \dot{x_R} + cos(\theta) \dot{y_R}
 \end{equation}
-and
+
+% and
+和
+
 \begin{equation}
 \dot{\theta_I}=\dot{\theta_R}
 \end{equation}
 % which is the case because both robot's and world coordinate system share the same z-axis in this example. We can now conveniently write
 
-这是因为在这个例子中，机器人和世界坐标系共享相同的z轴。 我们现在可以方便地写
+因为在这个例子中，机器人和世界坐标系共享相同的$z$轴。现在我们可以方便地写下
 
 \begin{equation}
 \dot{\xi_I}=^I_RT(\theta)\dot{\xi_R}
 \end{equation}
-with
+
+% with
+其中
+
 \begin{equation}
 ^I_RT(\theta)=\left(\begin{array}{ccc}
 cos(\theta) & -sin(\theta) & 0 \\
@@ -452,63 +464,64 @@ sin(\theta) & cos(\theta) & 0 \\
 
 % We are now left with the problem of how to calculate the speed $ \dot{\xi_R}$ in robot coordinates. For this, we make use of the \emph{kinematic constraints}\index{Kinematic constraints} of the robotic wheels. For a standard wheel, the kinematic constraints are that every rotation of the wheel leads to strictly forward or backward motion and does not allow side-way motion or sliding. We can therefore calculate the forward speed of a wheel $ \dot{x}$ using its rotational speed $ \dot{\phi}$ (assuming the encoder value/angle is expressed as $ \phi$) and radius $ r$ by 
 
-现在我们在机器人坐标中如何计算速度$ \dot {\xi_R} $的问题。 为此，我们利用机器人轮子的\emph {kinematic constraints} \index {运动约束}。 对于标准车轮，运动学约束是车轮的每次旋转都会严格向前或向后运动，并且不允许侧向运动或滑动。 因此，我们可以使用其旋转速度$ \dot {\phi} $（假设编码器值/角度表示为$ \phi $）和半径$ r $由...计算车轮前进速度$ \dot {x} $
+现在我们还剩如何在机器人坐标系中计算速度$\dot{\xi_R}$的问题。为此，我们利用机器人轮子的\emph{运动学约束（Kinematic Constraints）}\index{运动学约束（Kinematic Constraints）}。对于标准车轮，运动学约束是车轮的每次旋转都会严格向前或向后运动，并且不允许侧向运动或滑动。因此，我们可以利用其旋转速度$\dot{\phi}$（假设编码器值/角度表示为$\phi$）和半径$r$来计算车轮前进的速度$\dot{x}$
 
 \begin{equation}
 \dot{x}=\dot{\phi}r.
 \end{equation}
+
 % This becomes apparent when considering that the circumference of a wheel with radius $r$ is $2\pi r$. The distance a wheel rolls when turned by the angle $ \phi$ (in radians) is therefore $ x=\phi r$, see also Figure \ref{fig:wheelrotation}, right. Taking the derivative of this expression on both sides leads to the above expression.
 
-当考虑到半径为$ r $的轮的周长为$ 2 \pi r $时，这变得明显。 转动角度$ \phi $（以弧度表示）滚动的距离因此为$ x = \phi r $，另见图\ref {fig：wheelrotation}，右图。 将这个表达式的派生词双方导致上述表达。
+我们知道半径为$r$的轮的周长为$2\pi r$，这变得显而易见。因此转动角度$\phi$（以弧度表示），其滚动的距离为$x=\phi r$，另见图\ref{fig:wheelrotation}，右。这个表达式的两边同时求导得到上述表达式。
 
 \begin{figure}[htb!]
 	\centering
 		\includegraphics[width=0.9\textwidth]{figs/wheelrotation.png}
 	% \caption{Left: Differential wheel robot pivoting around its left wheel. Right: A wheel with radius $r$ moves by $\phi r$ when rotated by $\phi$ degrees.}
-	\caption{Left：差速轮机器人围绕其左轮转动。 右：旋转$ \phi $度时，半径为$ r $的车轮由$ \phi r $移动。}
+	\caption{左：差速轮机器人围绕其左轮转动。右：旋转$\phi$度时，半径为$r$的车轮移动$\phi r$的距离。}
 	\label{fig:wheelrotation}
 \end{figure}
 
 % How each of the two wheels in our example contributes to the speed of the robot's center---where its coordinate system is anchored---requires the following trick: we calculate the contribution of each individual wheel while assuming all other wheels remaining un-actuated. In this example, the distance traveled by the center point is exactly half of that traveled by each individual wheel, assuming the non-actuated wheel rotating around its ground contact point (Figure \ref{fig:wheelrotation}). We can therefore write
 
-在我们的例子中，两个车轮中的每一个如何有助于机器人中心的速度 - 其坐标系统被锚定 - 需要以下诀窍：我们计算每个车轮的贡献，同时假设所有其他车轮保持不变，动。 在这个例子中，由中心点行进的距离恰好是每个单独车轮行驶的距离的一半，假设非致动轮围绕其接地点旋转（图\ref {fig：wheelrotation}）。 所以我们可以写
+两个车轮中的每一个如何贡献对小车的中心的速度 --- 锚定其坐标系统 --- 需要以下诀窍：我们计算每个车轮的贡献，假设其他车轮保持不动。 在这个例子中，假设非致动轮围绕其接地点旋转，中心点行进的距离恰好是每个车轮单独行驶距离的一半（图\ref{fig:wheelrotation}）。所以，给定左右车轮的速度$\dot{\phi_l}$和$\dot{\phi_r}$，我们可以写作
 
 \begin{equation}
-\dot{x_R}=\frac{r\dot{\phi_l}}{2}+\frac{r\dot{\phi_r}}{2}
+\dot{x_R}=\frac{r\dot{\phi_l}}{2}+\frac{r\dot{\phi_r}}{2}.
 \end{equation}
 % given the speeds $ \dot{\phi_l}$ and $ \dot{\phi_r}$ of the left and the right wheel, respectively.
 
-给定左右车轮的$ \dot {\phi_l} $和$ \dot {\phi_r} $的速度。
 
 \begin{framed}
 % Think about how the robot's speed along its y-axis is affected by the wheel-speed given the coordinate system in the drawing above. Think about the kinematic constraints that the standard wheels impose.
-想想如上图所示的坐标系，机器人沿其y轴的速度如何受到车轮速度的影响。 考虑标准车轮施加的运动学约束。
+想想如上图所示的坐标系，机器人沿其$y$轴的速度如何受到车轮速度的影响。考虑标准车轮的运动学约束。
 \end{framed}
 
 % Hard to believe at first, but the speed of the robot along its y-axis is always zero. This is because the constraints of the standard wheel tell us that the robot can never slide.  We are now left with calculating the rotation of the robot around its z-axis. That there is such a thing can be immediately seen when imaging the robot's wheels spinning in opposite directions. We will again consider each wheel independently. Assuming the left wheel to be non-actuated, spinning the right wheel forwards will lead to counter-clockwise rotation. Given an axle diameter (distance between the robot's wheels) $ d$, we can now write
 
-首先很难相信，但机器人沿其y轴的速度总是为零。 这是因为标准轮的限制告诉我们，机器人永远不会滑动。 我们现在离开计算机器人围绕其z轴的旋转。 当成像机器人的轮子在相反方向旋转时，可以立即看到这样的事情。 我们将再次考虑每个轮子。 假设左轮未被致动，则向右旋转右轮将导致逆时针旋转。 给定轴直径（机器人轮子之间的距离）$ d $，我们现在可以写
+虽然很难相信，但机器人沿其$y$轴的速度总是零。 这是因为标准轮的约束告诉我们，机器人永远不会滑动。 现在我们要计算小车围绕其$z$轴的旋转角度。机器人的两个轮子以相反方向旋转时，可以立即发现这样的事。 我们将再次单独考虑每个轮子。假设左轮不动，则向前旋转右轮将使小车逆时针旋转。给定轴直径（机器人轮子之间的距离）$ d $，现在我们可以写为
 
 \begin{equation}
 \omega_r d = \phi_r r
 \end{equation}
 % with $ \omega_r$ the angle of rotation around the left wheel (Figure \ref{fig:wheelrotation}, right). Taking the derivative on both sides yields speeds and we can write
 
-以$ \omega_r $为左轮的旋转角度（图\ref {fig：wheelrotation}，右）。 取两边的衍生产生速度，我们可以写
+令$\omega_r$为左轮的旋转角度（图\ref {fig：wheelrotation}，右）。 两边取导数可得速度，我们可以写为
 
 \begin{equation}
 \dot{\omega_r} = \frac{\dot{\phi_r} r}{d}
 \end{equation}
+
 % Adding the rotation speeds up (with the one around the right wheel being negative based on the right-hand grip rule), leads to
 
-导致旋转速度加快（右侧车轮围绕右侧的车轮为负）
+加快旋转速度（根据右手法则，围绕右轮的旋转为负），可得
 
 \begin{equation}
 \dot{\theta}=\frac{\dot{\phi_r} r}{d}-\frac{\dot{\phi_l} r}{d}
 \end{equation}
 
 % Putting it all together, we can write
-把它们放在一起，我们可以写
+以上所有可得
 
 \begin{equation}\label{eq:diffwheels}
 \left(\begin{array}{c} \dot{x_I}\\\dot{y_I}\\\dot{\theta}\end{array}\right)=\left(\begin{array}{ccc}
@@ -518,52 +531,57 @@ sin(\theta) & cos(\theta) & 0 \\
 \end{equation}
 
 % \subsubsection{From Forward Kinematics to Odometry}
-\subsubsection{从正运动学到气压测量}
+\subsubsection{从正运动学到里程计}
 % Equation \ref{eq:diffwheels} only provides us with the relationship between the robot's wheel-speed and its speed in the inertial frame. Calculating its actual pose in the inertial frame is known as \emph{odometry}\index{Odometry}. Technically, it requires integrating (\ref{eq:diffwheels}) from 0 to the current time $T$. As this is not possible, but for very special cases, one can approximate the robot's pose by summing up speeds over discrete time intervals, or more precisely
 
-方程式\ref {eq：diffwheels}仅为我们提供了机器人的轮速与惯坐标系中的速度之间的关系。 计算其在惯坐标系中的实际位姿称为\emph {odometry} \index {Odometry}。 从技术上讲，它需要从0到当前时间$ T $的集成（\ref {eq：diffwheels}）。 由于这是不可能的，但是对于非常特殊的情况，可以通过在离散的时间间隔上求和速度来近似机器人的位姿，或者更准确地说
+方程\ref{eq:diffwheels}仅为我们提供了小车的轮速与它在惯性坐标系中的速度之间的关系。计算小车在惯性坐标系中的实际位姿称为\emph{里程计（Odometry）}\index{里程计（Odometry）}。从技术上讲，它需要从时间$0$到当前时间$T$的积分（\ref{eq:diffwheels}）。虽然这是不可能的，但是对于非常特殊的情况，可以通过在离散的时间间隔上求和来近似机器人的位姿，或更准确地
 
 \begin{equation}
 \left(\begin{array}{c} {x_I}(T)\\{y_I}(T)\\{\theta}(T)\end{array}\right)=
 \int_0^T \left(\begin{array}{c} \dot{x_I}(t)\\\dot{y_I}(t)\\\dot{\theta}(t)\end{array}\right) dt \approx 
 \sum_{k=0}^{k=T}\left(\begin{array}{c} \Delta{x_I}(k)\\\Delta{y_I}(k)\\\Delta{\theta}(k)\end{array}\right)\Delta t
-\end{equation} which can be calculated incrementally as
+\end{equation} 
+
+% which can be calculated incrementally as
+这可以按如下逐渐计算
+
 \begin{equation}\label{eq:odometry}
 x_I(k+1)=x_I(k)+\Delta x (k)
 \end{equation}
+
 % using $\Delta x(k) \approx \dot{x_I}(t)$ and similar expressions for $y_I$ and $\theta$. Note that (\ref{eq:odometry}) is just an approximation. The larger $\Delta t$ becomes, the more inaccurate this approximation becomes as the robot's speed might change during the interval.   
 
-使用$ \Delta x（k）\approx\dot {x_I}（t）$和$ y_I $和$ \theta $的类似表达式。 注意（\ref{eq:odometry}）只是一个近似值。 较大的$ \Delta t $变为，随着机器人的速度在间隔期间可能改变，该近似变得越不准确。
+使用$\Delta x(k)\approx\dot{x_I}(t)$和$y_I$和$\theta$的类似表达式。注意（式\ref{eq:odometry}）只是一个近似值。随着小车的速度在间隔期间可能改变，$\Delta t$越大，该近似变得越不准确。
 
 \begin{framed}
 % Don't let the notion of an integral worry you! As robots' computers are fundamentally discrete, integrals usually turn into sums, which are nothing than for-loops.
 
-不要让一个整体的概念担心你！ 由于机器人的计算机基本上是离散的，所以积分通常变成和，这不是for循环。
+不要担心计算积分！由于机器人的计算机从根本上是离散的，所以积分通常变成和，仅仅是一些for循环。
 \end{framed}
 
 
 
 % \subsection{Forward kinematics of Car-like steering}
-\subsection{汽车转向的正运动学}
+\subsection{类似汽车转向的正运动学}
 % Differential wheel drives are very popular in mobile robotics as they are very easy to build, maintain, and control. Although not holonomic, a differential drive can approximate the function of a fully holonomic robot by first driving on the spot to achieve the desired heading and then driving straight. Drawbacks of the differential drive are its reliance on a caster wheel, which performs poorly at high speeds, and difficulties in driving straight lines as this requires both motors to drive at the exact same speed.
 
-差速轮驱动器在移动机器人中非常受欢迎，因为它们非常易于构建，维护和控制。 虽然不完整，但是差速驱动器可以通过首先在现场驾驶以实现所需的航向，然后直线行驶，来逼近完全整体的机器人的功能。 差速驱动器的缺点在于其依赖于脚轮速度较差的脚轮，以及驱动直线的困难，因为这要求电机以完全相同的速度驱动。
+差速轮机器人在移动机器人中非常受欢迎，因为它们非常易于制造、维护和控制。 虽然不完整，但是差速轮机器人可以通过首先从原点旋转至需要的角度，然后直线行驶，来逼近完全整体的机器人的功能。 差速轮机器人的缺点在于它依赖脚轮（高速时表现差），以及直线行驶困难（因为这要求电机以完全相同的速度驱动）。
 
 % These drawbacks are mitigated by car-like mechanisms, which are driven by a single motor and can steer their front wheels. This mechanism is known as ``Ackermann steering'' \index{Ackermann steering}. Ackermann steering should not be confused with ``turntable'' steering \index{Turntable steering} where the front wheels are fixed on an axis with central pivot point. Instead, each wheel has its own pivot point and the system is constrained in such a way that all wheels of the car drive on circles with a common center point, avoiding skid. As the Ackermann mechanism lets all wheels drive on circles with a common center point, its kinematics can be approximated by those of a tricycle with rear-wheel drive, or even simpler by a bicycle. This is shown in Figure \ref{fig:ackermann}.
 
-这些缺点通过由单个电动机驱动并且可以引导其前轮的类似汽车的机构来减轻。 这种机制被称为“Ackermann转向”\index{Ackermann转向}。 Ackermann转向不应与“转盘”转向\index{转盘转向}混淆，前轮固定在具有中心枢轴点的轴上。 相反，每个车轮都有自己的枢轴点，并且系统受到限制，使得汽车的所有轮子都具有共同的中心点的圆圈，避免了滑动。 由于Ackermann机构使所有车轮都能在具有共同中心点的圆圈上行驶，所以其运动学可以由具有后轮驱动的三轮车的运动学近似，或者甚至由自行车更简单。 这显示在图\ref {fig：ackermann}中。
+这些缺点通过类似汽车的机制来缓解，这种机制由单个电动机驱动并且可以转动前轮。这种机制被称为“Ackermann转向”\index{Ackermann转向（Ackermann Steering）}。 Ackermann转向不应与“转盘”转向\index{转盘转向（Turntable steering）}相混淆，后者前轮固定在具有中心枢轴点的轴上。相反，每个车轮都有自己的枢轴点，并且系统受到约束，使得汽车的所有轮子都沿着具有共同的中心点的圆转动，从而避免了滑动。 由于Ackermann机制使所有车轮都能在具有共同中心点的圆上行驶，所以其运动学可以由具有后轮驱动的三轮车的运动学近似，或者甚至由自行车近似。 如图\ref{fig:ackermann}所示。
 
 \begin{figure}[htb!]
 	\centering
 		\includegraphics[width=0.9\textwidth]{figs/ackermann.png}
 	% \caption{Left: Kinematics of car-like steering and the equivalent bicycle model. Right: Mechanism of an Ackermann vehicle.}
-	\caption {Left：车载转向的运动学和等效的自行车模型。 权利：Ackermann车辆的机制。}
+	\caption {左：类似车转向的运动学和等价的自行车模型。 右：Ackermann车的机制。}
 	\label{fig:ackermann}
 \end{figure}
 
 % Let the car have the shape of a box with length $L$ between rear and front axis. Let the center point of the common circle described by all wheels be distance $ R$ from the car's longitudinal center line.  Then, the steering angle $ \phi$ is given by
 
-让汽车的后部和前轴之间的长度为$ L $的盒子的形状。 让所有车轮描述的共同圆的中心点距离汽车纵向中心线的距离$ R $。 然后，转向角$ \phi $由...给出
+令汽车如盒子形状，其前后轴之间的距离为$L$。令车轮共同圆点与汽车纵向中心线的距离为$R$。然后，转向角$\phi$由如下给出
 
 \begin{equation}\label{eq:ackermann}
 \tan \phi = \frac{L}{R}
@@ -571,7 +589,7 @@ x_I(k+1)=x_I(k)+\Delta x (k)
 
 % The angles of the left and the right wheel, $ \phi_l$ and $ \phi_r$ can be calculated using the fact that all wheels of the car rotate around circles with a common center point. With the distance between the two front wheels $l$, we can write
 
-左右轮的角度$ \phi_l $和$ \phi_r $可以使用汽车的所有轮子围绕具有公共中心点的圆周旋转的事实来计算。 两个前轮之间的距离$ l $，我们可以写
+左右轮的角度$\phi_l$和$\phi_r$可以利用汽车的所有轮子围绕具有公共中心点的圆周旋转的事实来计算。两个前轮之间的距离为$l$，我们可以写为
 
 \begin{eqnarray}
 \frac{L}{R-l/2}&=\tan{(\pi/2-\phi_r)}\\
@@ -579,30 +597,31 @@ x_I(k+1)=x_I(k)+\Delta x (k)
 \end{eqnarray}
 % This is important, as it allows us to calculate the resulting wheel angles resulting from a specific angle $\phi$ and test whether they are within the constraints of the actual vehicle.
 
-这很重要，因为它允许我们计算由特定角度$ \phi $产生的所得到的车轮角度，并测试它们是否在实际车辆的限制之内。
+这很重要，因为它允许我们由特定角度$\phi$计算所得到的车轮角度，并测试它们是否在实际车辆的约束之内。
 
 % Assuming the wheelspeed to be $\dot{\omega}$ and the wheel radius $r$, we can calculate the speeds in the robot's coordinate frame to
 
-假设车轮速度为$ \dot {\omega} $和车轮半径$ r $，我们可以计算机器人坐标系中的速度
+假设车轮速度为$\dot{\omega}$、车轮半径为$r$，我们可以计算机器人坐标系中的速度
 
 \begin{eqnarray}
 \dot{x}_r=\dot{\omega}r\\
 \dot{y}_r=0\\
 \dot{\theta}_r=\frac{\dot{\omega}r\tan\phi}{L}
 \end{eqnarray}
+
 % using (\ref{eq:ackermann}) to calculate the circle radius $R$. 
-使用（\ref {eq：ackermann}）计算圆半径$ R $。
+使用（\ref{eq:ackermann}）计算圆半径$R$。
 
 % \section{Forward Kinematics using the Denavit-Hartenberg scheme}
-\section{使用Denavit-Hartenberg方案的前进运动学}
+\section{使用Denavit-Hartenberg方案的正运动学}
 
 % So far, we have considered the forward kinematics of wheeled mechanisms and simple arms and derived relationships between actuator parameters and velocities using basic trigonometry. In the specific case of multi-link arms, we can also think about the forward kinematics as a chain of homogenous transformations with respect to a coordinate system mounted at the base of a manipulator or a fixed position in the room. Deriving these transformations can be confusing and can be facilitated by following a ``recipe'' such as conceived by Denavit and Hartenberg. The so-called Denavit-Hartenberg (DH) \index{Denavit-Hartenberg parameters}scheme has evolved as quasi-standard and can easily be automatized, i.e., applied to a 3D model of a robotic arm, e.g. 
 
-到目前为止，我们已经考虑了使用基本三角法的轮式机构和简单臂的正运动学和致动器参数和速度之间的导出关系。 在多连杆臂的具体情况下，我们还可以将正运动学视为相对于安装在机械手的基座或房间中固定位置的坐标系的均匀变换链。 导出这些变换可能会令人困惑，并且可以通过遵循由“Denavit”和“Hartenberg”构思的“配方”来促成这些变换。 所谓的Denavit-Hartenberg（DH）\index {Denavit-Hartenberg参数}方案已经演变为准标准，并且可以容易地自动化，即应用于机器人臂的3D模型，例如，
+到目前为止，利用基本的三角法我们已经讲了轮式机制和简单操作臂的正运动学和驱动参数和速度之间的导数关系。 在多连杆臂的特别情况中，我们还可以将正运动学视为相对于以操作臂的基座或房间中固定位置为原点的坐标系的齐次变换链。 推导这些变换可能会令人困惑，但这可以通过遵循由Denavit和Hartenberg提出的“配方”来得到这些变换。 所谓的Denavit-Hartenberg（DH）\index {Denavit-Hartenberg参数}方案已经演变为准标准，并且可以轻松地自动化，即应用到机器人操作臂的3D模型上，例如，
 
 % A manipulating arm consists of links that are connected by joints. Joints can be either rotational or prismatic, i.e., change their length and thus providing additional degrees of freedom. Knowing the length of all rigid links, the position of the manipulators end-effector is fully described by its joint angles and joint offset (for prismatic joints).
 
-操纵臂由通过接头连接的连杆构成。 接头可以是旋转的或棱柱形的，即改变其长度，从而提供额外的自由度。 知道所有刚性连杆的长度，操作臂末端驱动的位置通过其关节角度和关节偏移量完全描述（用于棱柱形接头）。
+操作臂由通过关节连接的链接组成。关节可以是旋转的或棱形的，即改变长度，从而提供额外的自由度。已知所有刚性链接的长度，操作臂末端驱动的位置通过其关节角度和关节偏移量（棱形关节）完全表示。
 
 %% Was Commented
 %In industrial manipulators, the number of joints is usually equal to the degrees of freedom of the manipulator. As most manipulators are holonomic, the forward kinematics allow you---unlike on non-holonomic wheeled platforms---to directly relate absolute positions of joints with absolute positions in Cartesian space. It is also possible to derive equations that relate the speed of the joints to speed in Cartesian space. Like for wheeled platforms, this can be achieved via a Jacobian matrix.  At certain positions, the mapping provided by the Jacobian is not invertible, i.e., some velocities in Cartesian space are unachievable. These points are called singularities.
@@ -611,7 +630,7 @@ x_I(k+1)=x_I(k)+\Delta x (k)
 \screencast{http://youtu.be/rA9tm0gTln8}{denavithartenberg}
 % In oder to use the DH-convention, we first need to define a coordinate system at each joint. We chose the z-axis to be the axis of rotation for a hinge joint and the axis of translation for a prismatic joint. We can now find the common normal between the z-axes of two subsequent joints, i.e., a line that is orthogonal to each z-axis and intersects both. With the direction of the x-axis at the base arbitrary, subsequent x-axis are chosen such that they lie on the common normal shared between two joints. Whereas the direction of the z-axis is given by the positive direction of rotation (right hand rule), the x-axis points away from the previous joint. This allows defining the y-axis using the right-hand rule. Note that these rules, in particular the requirement that $x$-axes lie along the commom normal, might result in coordinate systems with their origins outside the joint. %Rather, the origin of joint $n$ is at the intersection of 
 
-为了使用DH约定，我们首先需要在每个关节定义一个坐标系。 我们选择z轴为铰链接头的旋转轴线和棱柱形接头的平移轴。 我们现在可以找到两个后续关节的z轴之间的共同法线，即与每个z轴正交并且与两个相交的线。 随着x轴方向在任意的底部，随后的x轴被选择为使它们位于两个关节之间共同的公共正常上。 而z轴的方向由正旋转方向（右手法则）给出，x轴指向远离前一关节。 这允许使用右手法则来定义y轴。 请注意，这些规则，特别是$ x $ -axes沿着commom正常的要求可能会导致坐标系统的起源在关节之外。 
+为了使用DH约定，我们首先需要在每个关节定义一个坐标系。我们选择$z$轴为铰链关节的旋转轴线和棱形关节的平移轴。现在我们可以找到两个后续关节的$z$轴之间的共同法线，即与每个$z$轴正交且相交的直线。随着$x$轴方向在任意的底部，随后的$x$轴被选择为使它们位于两个关节之间共同的公共正常上。而$z$轴的方向由正旋转方向（右手法则）给出，$x$轴指向远离前一关节。这允许使用右手法则来定义$y$轴。请注意，这些规则，特别是$x$轴沿着共同发现的要求可能会导致坐标系统的起源在关节之外。 
 
 % The transformation between two joints is then fully described by the following four parameters:
 
@@ -625,21 +644,21 @@ x_I(k+1)=x_I(k)+\Delta x (k)
 % \end{enumerate}
 
 \begin{enumerate}
-\item 两个关节的$ z $ -axes $ i $和$ i-1 $（链接长度）之间的常用法线的长度$ r $。
-\item 相对于公共正常（链接扭曲）的两个关节的z轴之间的角度$ \alpha $，即关于普通法线测量的旧和新$ z $ -axis之间的角度。
-\item 关节轴（链接偏移）之间的距离$ d $，即前一个$ z $ -axis的偏移量与常规法线的距离。
-\item 旋转$ \theta $围绕测量链接偏移的公共轴（关节角度），即从旧$ x $ -axis到新$ x $ -axis的角度，关于前一个$ z$轴。
+\item 两个关节的$z$-axes$i$和$i-1$（链接长度）之间的常用法线的长度$r$。
+\item 相对于公共正常（链接扭曲）的两个关节的z轴之间的角度$\alpha$，即关于普通法线测量的旧和新$z$-axis之间的角度。
+\item 关节轴（链接偏移）之间的距离$d$，即前一个$z$-axis的偏移量与常规法线的距离。
+\item 旋转$\theta$围绕测量链接偏移的公共轴（关节角度），即从旧$x$-axis到新$x$-axis的角度，关于前一个$z$轴。
 \end{enumerate}
 
 % Two of the D-H parameters describe the link between the joints, and the other two describe the link's connection to a neighboring link. Depending on the link/joint type, these numbers are fixed or can be controlled. For example, in a revolute joint $ \theta$ is the varying joint angle, while all other quantities are fixed.  Similarly, for a prismatic joint $ d$ is the joint variable. An example of two revolute joints is shown in Figure \ref{fig:denavit}.
 
-两个D-H参数描述了关节之间的链接，另外两个描述了链路与相邻链路的连接。 根据链接/关节类型，这些数字是固定的或可以控制的。 例如，在旋转关节中，$ \theta$是变化的关节角度，而所有其他数量是固定的。 同样，对于一个棱柱关节，$ d $是关节变量。 两个旋转关节的例子如图\ref {fig：denavit}所示。
+两个D-H参数描述了关节之间的链接，另外两个描述了链路与相邻链路的连接。根据链接/关节类型，这些数字是固定的或可以控制的。例如，在旋转关节中，$\theta$是变化的关节角度，而所有其他数量是固定的。同样，对于一个棱柱关节，$d$是关节变量。两个旋转关节的例子如图\ref{fig:denavit}所示。
 
 \begin{figure}
 	\centering
 		\includegraphics[width=\textwidth]{figs/denavit-hartenberg}
 	% \caption{Example of selected Denavit-Hartenberg parameters for three revolute joints. The z-axes of joint $i$ and $i+1$ are parallel.}
-	\caption {三个旋转关节的选定的Denavit-Hartenberg参数的例子。 关节$ i $和$ i + 1$的z轴是并行的。}
+	\caption {三个旋转关节的选定的Denavit-Hartenberg参数的例子。关节$i$和$i+1$的z轴是并行的。}
 	\label{fig:denavit}
 \end{figure}
 
@@ -647,7 +666,7 @@ x_I(k+1)=x_I(k)+\Delta x (k)
 
 % The coordinate transform from one link ($ i-1$) to another ($i$) can now be constructed  using the following matrix:
 
-现在可以使用以下矩阵来构建从一个链接（$ i-1 $）到另一个链接（$ i $）的坐标变换：
+现在可以使用以下矩阵来构建从一个链接（$i-1$）到另一个链接（$i$）的坐标变换：
 
 \begin{eqnarray}{ll}
 \nonumber
@@ -672,12 +691,15 @@ R & t\\
 \end{eqnarray}
 % with the rotation matrix $R$ and the translation vector $t$. This matrix can be constructed by a series of rotations and translations, one for each DH parameter:
 
-旋转矩阵$ R $和翻译向量$ t $。 该矩阵可以通过一系列旋转和平移来构造，每个DH参数一个：
+旋转矩阵$R$和翻译向量$t$。该矩阵可以通过一系列旋转和平移来构造，每个DH参数一个：
 
 \begin{equation}
 _{n-1}^nT=T_z'(d_n)\dot R_z'(\theta_n) \dot T_x(r_n) \dot R_x(\alpha_n)
 \end{equation}
-with
+
+% with
+其中
+
 \begin{equation}
 T_z'(d_n)=
 \left(
@@ -700,7 +722,10 @@ R_z'(\theta_n)=\left(
 \end{array}
 \right)
 \end{equation}
-and
+
+% and
+和
+
 \begin{equation}
 T_x(r_n)=
 \left(
@@ -725,11 +750,11 @@ R_x(\alpha_n)=\left(
 \end{equation} 
 % These are a translation of $d_n$ along the previous z-axis ($T_z'(d_n)$), a rotation of $\theta_n$ about the previous z-axis ($R_z'(\theta_n)$), a translation of $r_n$ along the new $x$-axis ($T_x(r_n)$)and a rotation of $\alpha_n$ around the new $x$-axis ($R_x(\alpha_n)$).
 
-这些是前一个z轴（$ T_z'（d_n）$）的$ d_n $，前一个z轴（$ R_z'（\theta_n）$）的$ \theta_n $的旋转，翻译 在新的$ x $ -axis（$ T_x（r_n）$）之间的$ r_n $和新的$ x $ -axis（$ R_x（\alpha_n）$）周围的$ \alpha_n $的旋转。
+这些是前一个$z$轴（$T_z'(d_n)$）的$d_n$，前一个$z$轴（$R_z'(\theta_n)$）的$\theta_n$的旋转，翻译在新的$x$轴（$T_x(r_n)$）之间的$r_n$和新的$x$轴（$R_x(\alpha_n)$）周围的$\alpha_n$的旋转。
 
 % Like for any homogeneous transfrom, the inverse $_{n-1}^nT^{-1}n$ is given by
 
-像任何均匀变换一样，逆$ _ {n-1} ^ nT ^ { - 1} n $由给出
+像任何齐次变换一样，$_{n-1}^nT^{-1}n$的逆由下式给出
 
 \begin{equation}
 ^{n-1}_nT=\left(
@@ -740,5 +765,6 @@ R^{-1} & -R^{-1}T\\
 \end{array}
 \right)
 \end{equation}
+
 % with the inverse of $R$ simply being its transpose.
-与$ R $的倒数只是其转置。
+其中$R$的逆是其转置。
