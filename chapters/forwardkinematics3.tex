@@ -12,13 +12,13 @@
 % \end{itemize}
 
 \begin{itemize}
-\item 正向运动学等效于找到从世界坐标系到坐标系在机器人上的坐标变换。这种变换是由机器人坐标系的单位向量组成的（3×1）平移向量和（3×3）旋转矩阵的组合。平移和旋转都可以组合成4x4均匀变换矩阵。
-\item 前进和反向移动机器人的运动学相对于机器人的速度执行，而不是其位置。
-\item 为了计算每个车轮对机器人速度的影响，您需要独立考虑每个车轮的贡献。
-\item 分析计算逆运动学变得很快不可行。然后，您可以使用路径规划技术来计划机器人的配置空间。
-\item 机器人的逆运动学涉及解决关节角度的正向运动学的方程。对于复杂的机制来说，这个过程通常是不麻烦的。
-\item 通过采用正向运动学的所有偏导数来提供简单的数值解，以获得将关节速度与终端执行器速度相关联的容易的可逆表达式。
-逆运动学问题可以被形成为反馈控制问题，其将使用小步骤将末端执行器移动到其期望的姿态。这种方法的问题是局部最小值和机制的奇异性，这可能使得该解决方案不可行。
+\item 正运动学等价于寻找从世界坐标系到机器人坐标系的坐标变换。这种变换是由机器人坐标系的单位向量组成的$3\times 1$平移向量和$3\times 3$旋转矩阵的组合。平移和旋转可以组合成$4\times 4$的齐次变换矩阵。
+\item 移动机器人的正、逆运动学是相对于机器人的速度操作，而不是其位置。
+\item 为了计算每个车轮对机器人速度的影响，你需要考虑每个车轮独立的贡献。
+\item 解析的计算逆运动学很快变得不可行。你可以使用路径规划技术在机器人的配置空间中做规划。
+\item 机器人的逆运动学涉及求解正运动学的方程来得到关节角度。对于复杂的机制来说，这个过程即使不是不可能，那通常也会很麻烦。
+\item 有一种简单的数值解，通过对正运动学方程的取偏导数，获得将关节速度与末端执行器速度相关联的容易的可逆表达式。
+\item 可以将逆运动学问题形式化为反馈控制问题，一点点将末端执行器移动到其期望的姿态。这种方法的问题是局部最小值和机制的奇异点，这可能使得该解决方案不可行。
 \end{itemize}
 
 % \section*{Exercises}\small
@@ -31,24 +31,24 @@
 	\begin{enumerate}
 	 % \item Write out the entries of a rotation matrix $^A_BR$ assuming basis vectors $X_A$, $Y_A$, $Z_A$, and $X_B$, $Y_B$, $Z_B$. 
 	 % \item Write out the entries of rotation matrix $^B_AR$.
-	 \item 写出旋转矩阵的条目$ ^ A_BR $假设基本向量$ X_A $，$ Y_A $，$ Z_A $和$ X_B $，$ Y_B $，$ Z_B $。
-	 \item 写出旋转矩阵$ ^ B_AR $的条目。
+	 \item 假设基向量$X_A$，$Y_A$，$Z_A$和$X_B$，$Y_B$，$Z_B$，写出旋转矩阵$^A_BR$的项。
+	 \item 写出旋转矩阵$^B_AR$的项。
 	 \end{enumerate} 
 % \item Assume two coordinate systems that are co-located in the same origin, but rotated around the z-axis by the angle $\alpha$. Derive the rotation matrix from one coordinate system into the other and verify that each entry of this matrix is indeed the scalar product of each basis vector of one coordinate system with every other basis vector in the second coordinate system.  
 % \item Consider two coordinate systems $\{B\}$ and $\{C\}$, whose orientation is given by the rotation matrix $^C_BR$ and have distance $^BP$. Provide the homogenous transform $^C_BT$ and its inverse $^B_CT$. 
 % \item Consider the frame $\{B\}$ that is defined with respect to frame $\{A\}$ as $\{B\}=\{^A_BR, ^AP\}$. Provide a homogeneous transfrom from $\{A\}$ to $\{B\}$.
 
-\item 假设两个坐标系位于相同的原点，但绕z轴旋转角度$ \alpha $。 将旋转矩阵从一个坐标系导出到另一个坐标系，并验证该矩阵的每个条目确实是一个坐标系的每个基向量与第二个坐标系中的每个其他基矢量的标量乘积。
-\item 考虑两个坐标系$ \{B \} $和$ \{C \} $，其方向由旋转矩阵$ ^C_BR $给出，距离为$ ^ BP $。 提供同质变换$ ^C_BT $及其逆$ ^B_CT $。
-\item 考虑相对于$ \{B \} = \{^ A_BR，^ AP \} $框架$ \{A \} $定义的框架$ \{B \} $。 提供从$ \{A \} $到$ \{B \} $的均匀转账。
+\item 假设两个坐标系位于相同的原点，但绕$z$轴旋转角度$\alpha$。将旋转矩阵从一个坐标系推导到另一个坐标系，并验证该矩阵的每一项确实是第一个坐标系的每个基向量与第二个坐标系中的每个其他基向量的标量积。
+\item 考虑两个坐标系$\{B\}$和$\{C\}$，其方向由旋转矩阵$^C_BR$给出，距离为$^BP$。写出齐次变换$^C_BT$及其逆$^B_CT$。
+\item 考虑相对于坐标系$\{A\}$定义的坐标系$\{B\}$，$\{B\}=\{^A_BR，^AP\}$。写出从$\{A\}$到$\{B\}$的齐次变换。
 \end{enumerate}
 
-\subsection*{Forward and inverse kinematics}
+\subsection*{正、逆运动学}
 \begin{enumerate}
 % \item Consider a differential wheel robot with a broken motor, i.e., one of the wheels cannot be actuated anymore. Derive the forward kinematics of this platform. Assume the right motor is broken.
-% \item Consider a tri-cycle with two independent standard wheels in the rear and the stearable, driven front-wheel. Chose a suitable coordinate system and use $\phi$ as the steering wheel angle and wheel-speed $\dot{\omega}$. Provide forward and inverse kinematics. 
+% \item Consider a tri-cycle with two independent standard wheels in the rear and the stearable, driven front-wheel. Choose a suitable coordinate system and use $\phi$ as the steering wheel angle and wheel-speed $\dot{\omega}$. Provide forward and inverse kinematics. 
 
-\item 考虑具有电动机损坏的差速器轮机器人，即，其中一个车轮不能再被致动。 推导出这个平台的正向运动学。 假设正确的电机坏了。
-\item 考虑一个三循环，后面有两个独立的标准轮和可硬化驱动的前轮。 选择合适的坐标系，并使用$ \phi $作为方向盘角度和车轮速度$ \dot {\omega} $。 提供正向和反向运动学。
+\item 考虑具有一个损坏电动机的差速器轮机器人（即，其中一个车轮不能被驱动）。推导出这个平台的正运动学。假设右侧的电机坏了。
+\item 考虑一个三轮车，有两个独立的标准后轮和一个可转向的、驱动的前轮。选择合适的坐标系，令方向盘角度为$\phi$、车轮速度为$\dot{\omega}$。写出正、逆运动学。
 \end{enumerate}
 \normalsize

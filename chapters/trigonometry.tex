@@ -1,14 +1,15 @@
 % \chapter{Trigonometry}
-% Trigonometry relates angles and lengths of triangles. Figure \ref{fig:triangle} shows a right-angled triangle and conventions to label its corners, sides, and angles. In the following, we assume all triangles to have at least one right angle (90 degrees or $\frac{\pi}{2})$ as all planar triangles can be dissected into two right-angled triangles. 
+% Trigonometry relates angles and lengths of triangles. Figure \ref{fig:triangle} shows a right-angled triangle and conventions to label its corners, sides, and angles. In the following, we assume all triangles to have at least one right angle (90 degrees or $\frac{\pi}{2})$ as all planar triangles can be dissected into two right-angled triangles.
 
-\chapter{三角学}
-三角法涉及三角形的角度和长度。图\ref{fig:triangle}显示了一个直角三角形和约定来标记其角，边和角度。在下文中，我们假设所有三角形都具有至少一个直角（90度或$\frac{\pi}{2}）$，因为所有平面三角形都可以解剖成两个直角三角形。
+\chapter{三角法}
+
+三角法涉及三角形的角度和长度。图\ref{fig:triangle}显示了一个直角三角形和约定\todo{conventions}来标记其角、边和角度。在下文中，我们假设所有三角形都有一个直角（90度或$\frac{\pi}{2}）$，因为所有平面三角形都可以切成两个直角三角形。
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=0.8\textwidth]{figs/triangle}
 % \caption{Left: A right-angled triangle with common notation. Right: Trigonometric relationships on the unit circle and angles corresponding to the four quadrants. \label{fig:triangle}}
-\caption{左：具有常用符号的直角三角形。 右：单位圆上的三角关系和对应于四个象限的角度。}
+\caption{左：具有常用符号的直角三角形。右：单位圆上的三角关系和对应于四个象限的角度。}
 \label{fig:triangle}
 \end{figure}
 
@@ -22,7 +23,7 @@
 
 % If the triangle is right-angled, the relationship between edges $a$, $b$, and $c$, where $c$ is the edge opposite of the right angle is
 
-如果三角形是直角的，则边缘之间的关系$a$，$b$和$c$，其中$c$是与直角相反的边缘
+如果三角形是直角的，则边$a$，$b$和$c$之间的关系为（其中$c$是与直角相对的边）
 
 \begin{equation}
 a^2+b^2=c^2
@@ -30,7 +31,7 @@ a^2+b^2=c^2
 
 % The relationship between angles and edge lengths are captured by the trigonometric functions:
 
-角度和边缘长度之间的关系由三角函数捕获：
+角度和边长之间的关系由三角函数定义：
 
 \begin{eqnarray}
 \sin{\alpha}&=\frac{opposite}{hypothenuse}=\frac{a}{c}\\
@@ -42,9 +43,9 @@ a^2+b^2=c^2
 
 % Relations between a single angle and the edge lengths are captured by the \emph{law of cosines}\index{Law of Cosines}:
 
-这里，\emph{hypothenuse}\index{Hypothenuse}是三角形与正确角度相反的一面。\emph{adjacent}和\emph{opposite}相对于特定角度。例如，在图\ref{fig:triangle}中，角度$\alpha$的相邻边是$b$，而$\alpha$的相反是边缘$a$。
+这里，\emph{斜边（Hypothenuse）}\index{斜边（Hypothenuse）}是三角形中直角相对的一边。\emph{邻边（adjacent）}和\emph{对边（opposite）}是相对于选定的角度而言的。例如，在图\ref{fig:triangle}中，角度$\alpha$的相邻边是$b$，而$\alpha$的对边是$a$。
 
-单个角度和边缘长度之间的关系由\emph（余弦定律）\index{余弦定律}捕获：
+单个角度和边长之间的关系由\emph{余弦定律（Law of Cosines）}\index{余弦定律（Law of Cosines）}定义：
 
 \begin{equation}
 a^2=b^2+c^2-2bc\cos{\alpha}
@@ -54,15 +55,17 @@ a^2=b^2+c^2-2bc\cos{\alpha}
 % In order to calculate an angle given two edges, one uses inverse functions $\sin^{-1}$, $\cos^{-1}$, and $\tan^{-1}$. (Not to be confused with $\frac{1}{\sin}$ etc.) As functions can, by definition, only map one value to exactly one other value, $\sin^{-1}$ and $\tan^{-1}$ are only defined in the interval $[-90^o;+90^o]$ and $\cos^{-1}$ is defined in the interval $[0^o;180^o]$. This makes it impossible to calculate angles in the 2nd and 3rd, or the 3rd and 4th quadrant, respectively (Figure \ref{fig:triangle}). 
 % In order to overcome this problem, most programming languages implement a function \texttt{atan2(opposite,adjacent)}, which evaluates the sign of the numerator and denumerator, provided as two separate parameters. 
 
-\section{逆三角}
-为了计算给定两个边的角度，一个使用逆函数$\sin^{-1}$，$\cos^{-1}$和$\tan^{-1}$。（不要与$\frac{1}{\sin}$等混淆）因为根据定义，函数只能将一个值映射到一个其他值，$\sin^{-1}$和$\tan^{-1}$仅在间隔$[-90^o;+90^o]$和$\cos^{-1}$中定义在间隔$[0^o;180^o]$。这使得不可能分别计算第2和第3或第3和第4象限的角度（图\ref{fig:triangle}）。
-为了克服这个问题，大多数编程语言都实现了一个函数\texttt{atan2（相对的，相邻的）}，它计算了分子和数组的符号，它们被提供为两个单独的参数。
+\section{逆三角法}
+
+给定两个边，为了计算的角度，可以使用逆三角函数$\sin^{-1}$，$\cos^{-1}$和$\tan^{-1}$。（不要与$\frac{1}{\sin}$等混淆。）因为根据定义，函数只能将一个值映射到一个其他值，$\sin^{-1}$和$\tan^{-1}$仅定义在区间$[-90^o;+90^o]$上，$\cos^{-1}$定义在区间$[0^o;180^o]$上。这使得不可能分别计算第二和第三或第三和第四象限的角度（图\ref{fig:triangle}）。
+为了克服这个问题，大多数编程语言都实现了一个函数\texttt{atan2（对边，邻边）}，它估计了以两个单独的参数为分子和分母的正负号。
 
 % \section{Trigonometric identities}
 % Sine and cosine are periodic, leading to the following identities:
 
-\section{Trigonometric identity}
-正弦和余弦是周期性的，导致以下身份：
+\section{三角等式}
+
+正弦和余弦是周期性的，有如下等式：
 
 \begin{eqnarray}
 \sin\theta=-\sin(-\theta)=-\cos(\theta+\frac{\pi}{2})=\cos(\theta-\frac{\pi}{2})\\
@@ -71,7 +74,7 @@ a^2=b^2+c^2-2bc\cos{\alpha}
 
 % The sine or cosine for sums or differences between angles can be calculated using the following identities:
 
-可以使用以下身份计算角度之和或正差或正弦：
+可以使用以下等式计算角度之和或角度之差的正弦或余弦：
 
 \begin{eqnarray}
 \cos(\theta_1+\theta_2)=\cos(\theta_1)\cos(\theta_2)-\sin(\theta_1)\sin(\theta_2)\\
@@ -82,7 +85,7 @@ a^2=b^2+c^2-2bc\cos{\alpha}
 
 % The sum of the squares of sine and cosine for the same angle is one:
 
-相同角度的正弦和余弦的平方和之和为1：
+同一角度的正弦和余弦的平方和为1：
 
 \begin{equation}
 \cos(\theta)\cos(\theta)+\sin(\theta)\sin(\theta)=1
