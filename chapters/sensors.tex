@@ -90,7 +90,7 @@
 % \section{Sensors using light}
 % The small form factor and low price of light-sensitive semi-conductors have led to a proliferation of light-based sensing relying on a multitude of physical effects. These include reflection, phase shift, and time of flight.
 
-\section{利用光的传感器}
+\section{基于光的传感器}
 光敏半导体的小尺寸和低价格使得基于大量物理效应的光传感器的流行。 这些物理效应包括反射、相移和飞行时间。
 
 % \subsection{Reflection}
@@ -154,64 +154,63 @@
 % \subsection{Ultra-sound distance sensors}
 % Ultra-sound distance sensor: An ultra-sound distance sensor operates by emitting an ultra-sound pulse and measures its reflection. Unlike a light-based sensor that measures the amplitude of the reflected signal, a sound-based sensor measures the time it took the sound to travel. This is possible, because sound travels at much lower speed (300m/s) than light (300,000km/s). The fact that the sensor actually has to wait for the signal to return leads to a trade-off between range and bandwidth. (Look these definitions up above before you read on.) In other words, allowing a longer range requires waiting longer, which in turn limits how often the sensor can provide a measurement. Although US distance sensors have become less and less common in robotics, they have an advantage over light-based sensors: instead of sending out a ray, the ultra-sound pulse results in a cone with an opening angle of 20 to 40 degrees. By this, US sensors are able to detect small obstacles without the requirement of directly hitting them with a ray. This property makes them the sensor of choice in automated parking helpers in cars.
 
-\section{利用声音的传感器}
+\section{基于声音的传感器}
+
 \subsection{超声距离传感器}
-超声距离传感器：超声距离传感器通过发出超声波脉冲来测量其反射。与测量反射信号的幅度的基于光的传感器不同，基于声音的传感器测量声音行进的时间。这是可能的，因为声音以比光（300,000km/s）低得多的速度（300m/s）行进。传感器实际上必须等待信号返回的事实导致范围和带宽之间的折衷。（在阅读之前，先看看这些定义）换句话说，允许更长的距离需要等待更长时间，这又限制了传感器提供测量的频率。虽然美国距离传感器在机器人技术中越来越少见，但它们比基于光的传感器具有优势：而不是发出光线，超声波脉冲产生的开口角为20至40度的锥体。由此，美国传感器能够检测小障碍物，而不需要用射线直接击中它们。这个属性使他们成为汽车自动停车助手的首选传感器。
+超声距离传感器：超声距离传感器发出超声波脉冲并测量其反射。与测量反射信号幅度的基于光的传感器不同，基于声音的传感器测量声音行进的时间。这是可能的，因为声音以比光（300,000km/s）低得多的速度（300m/s）行进。传感器必须等待信号返回，这导致范围和带宽之间的折衷。（在继续阅读之前，浏览一遍前文的定义）换句话说，测量更长的距离需要等待更长时间，这反而限制了传感器测量的频率。虽然超声距离传感器在机器人技术中越来越少见，但它们比基于光的传感器具有优势：超声波脉冲产生开口角为20至40度的锥体，而不是发出光线。由此，不需要用射线直接击中小障碍物，超声传感器就能够检测它们，而这个属性使他们成为汽车自动停车助手的首选传感器。
 
 
 % \subsection{Texture recognition}
 % Audible sound consists of high frequency vibrations in the range between 20 Hz and roughly 15 kHz. Microphones are therefore ideally suited to measure vibrations in this range. This allows them to double as the Pascinian corpuscle in human skin cells, which is known to have a resonance frequency of 250 Hz and is mostly responsible for texture recognition. Indeed, rubbing a texture against a microphone can indeed be used for differentiating between tens and hundreds of different textures \cite{hughes14}, with a number of commercial sensors available. These sensors usually calculate the frequency spectrum of the recorded signal, which can then be classified using machine learning techniques. Being able to recognize a texture by touch is important in applications like grasping and navigation through cluttered terrain.  
 
 \subsection{纹理识别}
-声音由20Hz至15kHz范围内的高频振动组成。因此，麦克风非常适合测量此范围内的振动。这使得它们可以像人类皮肤细胞中的帕斯克氏球体一样增加，已知其具有250Hz的共振频率，并且主要负责纹理识别。事实上，摩擦麦克风的纹理确实可以用于区分数十和数百种不同纹理\cite{hughes14}，有许多商业传感器可用。这些传感器通常计算记录信号的频谱，然后可以使用机器学习技术进行分类。能够通过触摸识别纹理在诸如抓住和穿过杂乱地形的导航中的应用中是重要的。
+声音由20Hz至15kHz范围内的高频振动组成。因此，麦克风非常适合测量此范围内的振动。这使得它们可以像人类皮肤细胞中的帕斯克氏球体（Pascinian corpuscle）一样增加，帕斯克氏球体具有250Hz的共振频率，并且主要负责纹理识别。事实上，利用许多商业传感器，摩擦麦克风的纹理确实可以用于区分数十和数百种不同纹理\cite{hughes14}。这些传感器通常计算记录信号的频谱，然后可以使用机器学习技术进行分类。能够通过触摸识别纹理在一些应用中是很重要的，比如抓取和杂乱地形中的导航。
 
 
 % \section{Inertia-based sensors}
 % A moving mass does not loose its kinetic energy, but for friction. Likewise, a resting mass will resist acceleration. Both effects are due to ``inertia'' \index{Inertia} and can be exploited to measure acceleration and speed. 
 
+\section{基于惯量的传感器}
+移动的物体不会减少其动能，除非有摩擦。同样，静止的物体将抵抗加速。这两种效应都是由于“惯性（Inertia）”\index{惯性（Inertia）}，而且可以用来测量加速度和速度。
+
 % \subsection{Accelerometer}
 % An accelerometer \index{Accelerometer}can be thought of as a mass on a dampened spring. Considering a vertical spring with a mass hanging down from it, we can measure the acting force $F=kx$ (Hooke's law) \index{Hooke's law}by measuring the displacement $x$ that the mass has stretched the spring. Using the relationship $F=am$, we can now calculate the acceleration $a$ on the mass $m$. On earth, this acceleration is roughly $9.81\frac{kg m}{s^2}$. In practice, these spring/mass systems are realized using microelectromechanical systems (MEMS), such as a cantilevered beam whose displacement can be measured, e.g., using a capacitive sensor. Accelerometers measure up to three axes of translational accelerations. Infering a position from this requires integration twice, thereby amplifying any noise, making position estimates using accelerometers alone infeasible. As gravity provides a constant acceleration vector, accelerometers are very good at estimating the pose of an object with respect to gravity.
 
-\section{基于惯量的传感器}
-移动的质量不会松动其动能，而是摩擦。同样，静止的质量将抵抗加速。这两种效应都是由于'惯性''\index{惯性}而且可以用来测量加速度和速度。
-
 \subsection{加速度计}
-加速度计\index{加速度计}可以被认为是一个潮湿的弹簧上的质量。考虑到垂直弹簧与其下垂的质量，我们可以通过测量质量已经拉伸的位移$x$来测量作用力$F=kx$（胡克定律）\index{胡克定律}。使用关系$F=am$，我们现在可以计算质量$m$的加速度$a$。在地球上，这个加速度大概是$9.81\frac{kgm}{s^2}$。实际上，这些弹簧/质量系统使用微机电系统（MEMS）实现，例如可以例如使用电容传感器来测量其位移的悬臂梁。加速度计测量多达三个平移加速度的轴。从这个位置推算需要两次集成，从而放大任何噪音，使用单独加速度计的位置估计是不可行的。当重力提供恒定的加速度矢量时，加速度计非常好地估计物体相对于重力的姿态。
+加速度计（Accelerometer）\index{加速度计（Accelerometer）}可以被认为是一个悬挂在弹簧上的物体。考虑一个垂直的弹簧与挂在它下面的物体，我们可以通过测量物体已经拉伸的位移$x$来测量作用力$F=kx$（胡克定律（Hooke's law））\index{胡克定律（Hooke's law）}。使用关系式$F=am$，我们现在可以计算质量为$m$物体的加速度$a$。在地球上，这个加速度大概是$9.81\frac{kgm}{s^2}$。实践中，我们使用微机电系统（MEMS）实现这些弹簧/质量系统，例如可以使用比如电容传感器来测量其位移的悬臂梁（Cantilevered beam）。加速度计可以测量最多三个方向的平移加速度。利用加速度需要两次积分来得到位置，因而任何噪音的放大，导致单独利用加速度计的位置估计是不可行的。因为重力提供恒定的加速度向量，加速度计可以非常好地估计相对于重力物体的姿态。
 
 
 % \subsection{Gyroscopes}
 % A gyroscope is an electro-mechanical device that can measure rotational orientation. It is complementary to the accelerometer that measures translational acceleration. Classically, a gyroscope consists of a rotating disc that could freely rotate in a system of pivots and gimbals. When moving the system, the inertial momentum keeps the original orientation of the disc, allowing to measure the orientation of the system relative to where the system was started. A variation of the gyroscope is the rate gyro, which measures rotational speed. 
 
+\subsection{陀螺仪}
+陀螺仪（Gyroscopes）是可以测量旋转方向的机电装置。它是测量平移加速度的加速度计的补充。典型的陀螺仪由可在包含枢轴（Pivots）和万向节（Gimbals）的系统中自由旋转的旋转盘组成。当系统移动时，惯性动量（Inertia momentum）保持盘的原始方向，这样可以测量系统相对于系统启动位置的方向。陀螺仪的一个变种是测量转速的速率陀螺仪（Rate gyro）。
+
 % What a rate gyro \index{Rate gyro}\index{Gyroscopes} measures can most intuitively be illustrated by considering the implementation of an \emph{optical} rate gyro. In an optical gyro, a laser beam is split into two beams and send around a circular path in two opposite directions. If this setup is rotated against the direction of one of these laser beams, one laser will have to travel slightly longer than the other, leading to a measurable phase-shift at the receptor. This phase shift is proportional to the \emph{rotational speed} of the setup. As light with the same frequency and phase will add, and lights with the same frequency but opposite phases will cancel each other, light at the detector will be darker for high rotational velocities. As small-scale optical rate gyros are not practical for multiple reasons, MEMS rate gyros rely on a mass suspended by springs. The mass is actively vibrating, making it subject to Coriolis forces, when the sensor is rotated. Coriolis forces can be best understand by moving orthogonally to the direction of rotation on a vinyl disk player. In order to move in a straight line, you will not only need to move forwards, but also sideways. The necessary acceleration to change the speed of this sideway motion is counteracting the Coriolis force, which is both proportional to the lateral speed (the vibration of the mass in a MEMS sensor) and the rotational velocity, which the device wishes to measure. Note that the MEMS gyro would only be able to measure acceleration if it were not vibrating.
+
+通过考虑实现一个\emph{光学}速率陀螺仪，可以最直观地说明速率陀螺仪\index{速率陀螺仪（Rate gyro）}\index{陀螺仪（Gyroscopes）}能测量的值。在光学陀螺仪中，将激光束分成两束，并以两个相反的方向绕圆形路径传送。如果这个装置按照激光束之一的方向旋转，那么一个光束将比另一个传送稍微长的距离，这在接收器出产生可测量的相移。该相移与装置的\emph{转速}成比例。由于具有相同频率和相位的光将增加，并且具有相同频率但相反相位的光会彼此抵消，因此在高转速下，检测器的光将变暗。由于各种原因小尺度光学速率陀螺仪是不实际的，因此MEMS速率陀螺仪依靠由弹簧悬挂的物体。当传感器旋转时，物体会主动振动，使其受到科里奥利力（Coriolis forces）的影响。通过向乙烯基盘播放器（Vinyl disk player）的旋转方向垂直移动，可以最好地了解科里奥利力。为了能直线移动，你不仅需要向前移动，而且还需要侧向移动。改变这种侧向运动速度的必要加速度与科里奥利力相抵消，科里奥利力与横向速度（MEMS传感器中的物体的振动）和设备要测量的旋转速度成正比。注意，如果MEMS陀螺仪不振动，则只能测量加速度。
 
 % Gyroscopes can measure the rotational speed around three axes, which can be integrated to obtain absolute orientation. As an accelerometer measures along three axes of translation, the combination of both sensors can provide information on motion in all six degrees of freedom. Together with a magnetometer (compass), which provides absolute orientation, this combination is also known as \emph{Inertial Measurement Unit} (IMU), \index{Inertial Measurement Unit}\index{IMU}.
 
-
-\subsection{陀螺仪}
-陀螺仪是可以测量旋转方向的机电装置。它是测量平移加速度的加速度计的补充。经典地，陀螺仪由可在枢轴和万向节系统中自由旋转的旋转盘组成。当移动系统时，惯性动量保持盘的原始方向，允许测量系统相对于系统启动位置的方向。陀螺仪的一个变化是测量转速的速率陀螺仪。
-
-通过考虑执行一个\emph{optical}速率陀螺仪，可以最直观地说明陀螺仪\index{率陀螺仪}\index{陀螺仪}测量值。在光学陀螺仪中，将激光束分成两束，并以两个相反的方向绕圆形路径传送。如果这个设置是按照这些激光束之一的方向旋转的，那么一个激光器将不得不比另一个激光器稍微延长，导致受体处的可测量的相移。该相移与设置的\emph{转速}成比例。由于具有相同频率和相位的光将增加，并且具有相同频率但相反相位的光将彼此抵消，因此在高旋转速度下，检测器的光将变暗。由于小尺度光学速率陀螺仪由于多种原因是不实际的，因此MEMS速率陀螺仪依靠由弹簧悬挂的质量。当传感器旋转时，质量块正在积极振动，使其受到科里奥利力的影响。通过与乙烯基盘播放器上的旋转方向垂直移动，可以最好地了解科里奥利力。为了直线移动，您不仅需要向前移动，而且还需要向前移动。改变这种侧向运动速度的必要加速度抵消科里奥利力，其与横向速度（MEMS传感器中的质量的振动）和设备希望测量的旋转速度成正比。请注意，如果MEMS陀螺仪不振动，则只能测量加速度。
-
-陀螺仪可以测量围绕三个轴的旋转速度，可以集成以获得绝对定向。作为加速度计沿着三个平移轴测量，两个传感器的组合可以提供所有六个自由度的运动信息。与提供绝对方位的磁力计（罗盘）一起，这种组合也称为\emph{惯性测量单位}（IMU），\index{惯性测量单位}\index{IMU}。
+陀螺仪可以测量围绕三个轴的旋转速度，通过积分可以获得绝对的方向。由于加速度计沿着三个轴测量平移，这两个传感器的组合可以提供所有六个自由度的运动信息。与提供绝对方向的磁力计（罗盘）一起，这种组合也称为\emph{惯性测量单元（Inertial Measurement Unit，IMU）}\index{惯性测量单元（Inertial Measurement Unit，IMU）}\index{IMU}。
 
 
 % \section{Beacon-based sensors}
-% Localizing an object by triangulation goes back to ancient civilizations orienting themselves using the stars. As stars are only visible during unclouded nights, seafarers have eventually invented systems of artificial beacons emitting light, sound, and eventually radio waves. The most sophisticated of such systems is the Global Positioning System (GPS). GPS consists of a number of satellites in orbit, which are equipped with knowledge about their precise location and have synchronized clocks. These satellites broadcast a radio signal that travels at the speed of light and is coded with its time of emission. GPS receivers can therefore calculate the distance to each satellite by comparing time of emission and time of arrival. As not only the position (x,y,z), but also the time difference between the GPS receiver's clock and the synchronized clocks of the satellites is unknown, four satellites are needed to obtain a ``fix''. Due to the way information from the satellites is coded, getting an initial fix can take in the order of minutes, but eventually is available multiple times a second. GPS measurements are neither precise nor accurate enough (see below) for small mobile robots, and require to be combined with other sensors, such as IMUs and compasses. (The bearing shown on some GPS receivers is calculated from subsequent positions and is therefore meaningless if the robot is not moving.) 
+% Localizing an object by triangulation goes back to ancient civilizations orienting themselves using the stars. As stars are only visible during unclouded nights, seafarers have eventually invented systems of artificial beacons emitting light, sound, and eventually radio waves. The most sophisticated of such systems is the Global Positioning System (GPS). GPS consists of a number of satellites in orbit, which are equipped with knowledge about their precise locations and have synchronized clocks. These satellites broadcast a radio signal that travels at the speed of light and is coded with its time of emission. GPS receivers can therefore calculate the distance to each satellite by comparing time of emission and time of arrival. As not only the position (x,y,z), but also the time difference between the GPS receiver's clock and the synchronized clocks of the satellites is unknown, four satellites are needed to obtain a ``fix''. Due to the way information from the satellites is coded, getting an initial fix can take in the order of minutes, but eventually is available multiple times a second. GPS measurements are neither precise nor accurate enough (see below) for small mobile robots, and require to be combined with other sensors, such as IMUs and compasses. (The bearing shown on some GPS receivers is calculated from subsequent positions and is therefore meaningless if the robot is not moving.) 
+
+\section{基于信标的传感器}
+通过三角测量来定位物体可以追溯到古代文明中使用星星定向。由于星星只在没有云的夜晚可见，海员们最终发明出发光、发射声音和最终发射无线电波的人造信标系统。这些系统中最复杂的是全球定位系统（Global Positioning System，GPS）。GPS由轨道上的许多卫星组成，它们知道各自的精确位置并具有同步时钟。这些卫星广播以光速行进的无线电信号，并以其发射时间进行编码。因此，GPS接收器可以通过比较发射时间和到达时间来计算与每个卫星间的距离。因为不仅位置$(x, y, z)$未知，而且GPS接收器的时钟和卫星的同步时钟之间的时差也是未知，所以需要四颗卫星来“修正”。由于来自卫星的信息被编码，获得初始修正需要分钟级的时间，但最终可以到达每秒多次修正。GPS测量对于小型移动机器人来说既不准确也不精确（见下文），并且需要与其他传感器（如IMU和罗盘）组合。（某些GPS接收器上显示的转动方向是从后续位置计算出来的，如果机器人不动，则无效）。
 
 % There exist also a variety of indoor-GPS solutions, which consists of either active or passive beacons that are mounted in the environment at known locations. Passive beacons, for example infrared reflecting stickers arranged in a certain pattern or 2D barcodes, can be detected using cameras and their pose can be calculated from their known dimensions. Active beacons instead usually emit radio, ultrasound or a combination thereof, which can then be used to estimate the robot's range to this beacon. 
 
-
-\section{基于信标的传感器}
-通过三角测量来定位对象可以追溯到古代文明中，使用星星。由于星星只在昏昏沉沉的夜晚可见，海员们最终发明出发光，声音和最终无线电波的人造信标系统。这些系统中最复杂的是全球定位系统（GPS）。GPS由轨道上的许多卫星组成，它们具有关于其精确位置的知识并具有同步时钟。这些卫星广播以光速行进的无线电信号，并以其发射时间进行编码。因此，GPS接收机可以通过比较发射时间和到达时间来计算每个卫星的距离。不仅位置（x，y，z），而且GPS接收机的时钟和卫星的同步时钟之间的时差也是未知的，需要四颗卫星来获得“固定”。由于来自卫星的信息被编码，获得初始修复可以采取几分钟的顺序，但最终可以多次可用。GPS测量对于小型移动机器人来说既不准确也不准确（见下文），并且需要与其他传感器（如IMU和罗盘）组合。（某些GPS接收器上显示的轴承是从后续位置计算出来的，如果机器人不动，则无效）。
-
-还存在各种各样的室内GPS解决方案，其中包括安装在已知位置的环境中的主动或被动信标。可以使用照相机检测被动信标，例如以某种图案或2D条形码布置的红外反射贴纸，并且可以从其已知尺寸计算其姿态。主动信标通常发射无线电，超声波或其组合，然后可以用它来估计机器人到该信标的范围。
+还存在各种各样的室内GPS解决方案，其中包括安装在已知位置的环境中的主动或被动信标。可以使用照相机检测被动信标，例如以某种图案或二维码布置的红外反射贴纸，并且可以从它们的已知尺寸计算其姿态。主动信标通常发射无线电、超声波或其组合，然后可以估计机器人到该信标的距离。
 
 
 % \section{Terminology}
-% It is now time to introduce  a more precise definition of terms such as ``speed'' and ``resolution", as well as additional taxonomy that is used in a robotic context. 
+% It is now time to introduce a more precise definition of terms such as ``speed'' and ``resolution", as well as additional taxonomy that is used in a robotic context. 
 
 \section{术语}
-现在是时候引入更为精确的术语定义，如“速度”和“分辨率”，以及在机器人环境中使用的附加分类法。
+现在是时候引入更为精确的术语定义，如“速度”和“分辨率”，以及在机器人环境中使用的附加分类。
 
 %% Was Commented
 %Roboticists differentiate between proprioceptive and exteroceptive sensors. Proprioceptive sensors measure quantities that are internal to the robot such as wheel-speed, current consumption, joint position or battery status. Exteroceptive sensors measure quantities from the environment, such as distance to a wall, the strength of ambient light or the pattern of a picture at the wall.
@@ -220,17 +219,16 @@
 
 % Roboticists differentiate between \emph{active} and \emph{passive} sensors. Active sensors \index{Active sensor} emit energy of some sort and measure the reaction of the environment. Passive sensors \index{Passive sensor} instead measure energy from the environment. For example, most distance sensors are active sensors (as they sense the reflection of a signal they emit), whereas an accelerometer, compass, or a push-button are passive sensors.
 
+机器人学者把传感器分为\emph{主动式（Active）}和\emph{被动式（Passive）}。主动传感器\index{主动传感器（Active sensor）}发射某种能量，并测量环境的反应。而被动传感器\index{被动传感器（Passive sensor）}测量来自环境的能量。例如，大多数距离传感器是主动传感器（因为它们感知到它们发射的信号的反射），而加速度计、罗盘或按钮是被动传感器。
+
 % The difference between the upper and the lower limit of the quantity a sensor can measure its known as its \emph{range}~\index{Range (sensor)}. This should not be confused with the \index{Dynamic Range (sensor)} \emph{dynamic range}, which is the ratio between the highest and lowest value a sensor can measure. It is usually expressed on a logarithmic scale (to the basis 10), also known as ``decibel''\index{Decibel}. The minimal distance between two values a sensor can measure is known as its \index{Resolution (sensor)} \emph{resolution}. The resolution of a sensor is given by the device physics (e.g., a light detector can only count multiples of a quant), but usually limited by the analog-digital conversion process. The resolution of a sensor should not be confused with its accuracy or its precision (which are two different concepts). For example, whereas an infrared distance sensor might yield 4096 different values to encode distances from 0 to 10cm, which suggests a resolution of around 24 micrometers, its precision is far above that (in the order of millimeters) due to noise in the acquisition process.
 
-
-机器人主义者区分\emph{active}和\emph{passive}传感器。主动传感器\index{Activesensor}发射某种能量，并测量环境的反应。被动传感器\index{被动传感器}代替测量环境中的能量。例如，大多数距离传感器是有源传感器（因为它们感测到它们发射的信号的反射），而加速度计，罗盘或按钮是无源传感器。
-
-传感器可以测量其数量的上限和下限之间的差值，称为其\emph{range}〜\index{Range（sensor）}。这不应该与传感器可以测量的最高和最低值之间的比例\index{动态范围（传感器）}\emph{动态范围}相混淆。它通常以对数刻度（基于10）表示，也称为“decibel”\index{Decibel}。传感器可以测量的两个值之间的最小距离称为其\index{Resolution（sensor）}\emph{resolution}。传感器的分辨率由器件物理学（例如，光检测器只能计数量子的倍数）给出，但通常受模拟数字转换过程的限制。传感器的分辨率不应与其精度或精度（这是两个不同的概念）混淆。例如，红外距离传感器可能产生4096个不同的值来编码从0到10cm的距离，这表示大约24微米的分辨率，其精度远高于由于采集过程中的噪声引起的（毫米数量级）。
+传感器测量值上限和下限之间的差值，称为传感器的\emph{测量范围（Range）}〜\index{传感器测量范围（Range（sensor））}。不要和传感器可以测量的最高和最低值之间的比例\index{动态范围（传感器）（Dynamic Range (sensor)）}\emph{动态范围}相混淆。它通常以对数刻度（基于10）表示，也称为“分贝（decibel）”\index{分贝（Decibel）}。传感器可以测量的两个值之间的最小距离称为其\index{分辨率（传感器）（Resolution（sensor））}\emph{分辨率（Resolution）}。传感器的分辨率由设备物理学（例如，光检测器只能计数光子的倍数）给出，但通常受模拟数字转换过程的限制。传感器的分辨率不应与其准确度（Accuracy）或精度（Precision）（这是两个不同的概念）混淆。例如，红外距离传感器可能产生4096个不同的值来编码从0到10cm的距离，这表示大约24微米的分辨率，由于采集过程中的噪声，其精度（毫米数量级）则远高于分辨率。
 
 
 % Technically, a sensors accuracy \index{Accuracy (sensor)} is given by the difference between a sensors (average) output $m$ and the true value $v$:
 
-传感器精度\index{精度（传感器）}由传感器（平均值）输出$ m $和真值$ v $之间的差值给出：
+从技术上，传感器准确度（Accuracy）\index{准确度（传感器）（Accuracy （sensor））}由传感器（平均的）输出$m$和真值$v$之间的差值给出：
 
 \begin{equation}
 accuracy=1-\frac{|m-v|}{v}
@@ -238,31 +236,27 @@ accuracy=1-\frac{|m-v|}{v}
 
 % This measure provides you with a quantity that approaches one for very accurate values and zero if the measurements group far away from the actual mean. In practice, however, this measure is only rarely used and accuracy is provided with absolute values or a percentage at which a value might exceed the true measurement. 
 
+如果该值趋于1说明测量值很准确，反之，说明测量值与真实均值相去甚远。然而，实际中这种度量很少使用，准确度表示成绝对值，或可能超过真实测量的百分比。
+
 % A sensor's precision \index{Precision (sensor)} instead is given by the ratio of range and statistical variance of the signal. Precision is therefore a measure of repeatability of a signal, whereas accuracy describes a systematic error that is introduced by the sensor physics. This is illustrated in Figure \ref{fig:precision}.
 
-
-如果测量组远离实际平均值，此度量值为您提供接近于非常准确值的数量，并且为零。然而，实际上，这种措施很少使用，准确性是提供绝对值或一个值可能超过真实测量的百分比。
-
-传感器的精度\index{Precision（传感器）}由信号的范围和统计方差的比值给出。因此，精度是信号重复性的度量，而精度描述了由传感器物理学引入的系统误差。这在图\ref{fig:precision}中说明。
-
+传感器的精度\index{精度（传感器）（Precision（sensor））}由信号的范围和统计方差的比值给出。因此，精度是信号重复性的度量，而准确度则描述了由传感器物理学引入的系统误差。这在图\ref{fig:precision}中说明。
 
 \begin{figure}
 	\centering
 		\includegraphics[width=0.9\textwidth]{figs/precisionvsaccuracy.png}
 	% \caption{From left to right, the cross corresponds to the true value of the signal: neither precise nor accurate, precise but not accurate, accurate but not precise, accurate and precise. 
-	\caption{从左到右，十字对应于信号的真实值：既不精确也不准确，精确但不准确，准确但不准确，准确和准确。
+	\caption{从左到右，十字表示信号的真实值：既不精确也不准确，精确但不准确，准确但不精确，准确且精确。
 	\label{fig:precision}}
 \end{figure}
 
 % A GPS sensor is usually precise within a few meters, but only accurate to tens of meters. This becomes most obvious when satellite configurations change, resulting in the precise region jumping by a couple of meters. In practice, this can be avoided by fusing this data with other sensors, e.g. from an IMU.
 
+GPS传感器通常在几米内精确，但准确度为数十米。当卫星配置改变时，这变得很明显，导致精确的区域跳跃几米。实际上，可以通过将这些数据与其他传感器（比如IMU）的数据融合来避免这种情况。
+
 % The speed at which a sensor can provide measurements is known as its \index{Bandwidth (sensor)} \emph{bandwidth}. For example, if a sensor has a bandwidth of 10 Hz, it will provide a signal ten times a second. This is important to know, as querying the sensor more often is a waste of computational time and potentially misleading.
 
-
-GPS传感器通常在几米内精确，但精确到数十米。当卫星配置改变时，这变得最明显，导致精确的区域跳跃几米。实际上，这可以通过将这些数据与其他传感器融合来避免这种情况。来自IMU。
-
-传感器可以提供测量的速度称为其\index{带宽（传感器）}\emph{bandwidth}。例如，如果一个传感器的带宽为10赫兹，它将提供一秒钟的信号十次。这很重要，因为更频繁地查询传感器是浪费计算时间和潜在的误导。
-
+传感器可以提供的测量速度称为其\emph{带宽（Bandwidth）}\index{带宽（传感器）（Bandwidth（sensor））}。例如，如果一个传感器的带宽为10Hz，它将提供一秒钟十次的信号。这很重要，因为过于频繁地查询传感器浪费计算时间，还会导致可能的误导。
 
 % \section*{Take-home lessons}
 \section*{课后补充}
@@ -271,9 +265,9 @@ GPS传感器通常在几米内精确，但精确到数十米。当卫星配置�
 % \item Each sensors has advantages and drawbacks that are quantified in its range, precision, accuracy, and bandwidth. Therefore, robust solutions to a problem can only be achieved by combining multiple sensors with differing operation principles.
 % \item Solid-state sensors (i.e. without mechanical parts) can be miniaturized and cheaply manufactured in quantity. This has enabled a series of affordable IMUs and 3D depth sensors that will provide the data basis for localization and object recognition on mass-market robotic systems.
 
-\item 机器人的大多数传感器都解决了机器人本地化或本地化和识别附近物体的问题。
-\item 每个传感器的优点和缺点是在其范围，精度，精度和带宽上量化。 因此，只有通过组合具有不同操作原理的多个传感器才能实现对问题的可靠解决方案。
-\item 固态传感器（即没有机械部件）可以小型化并且数量便宜地制造。这使得一系列负担得起的IMU和3D深度传感器将为大众市场机器人系统的本地化和物体识别提供数据基础。
+\item 大多数机器人的传感器解决机器人定位问题或定位和识别附近物体的问题。
+\item 每个传感器的优点和缺点是在其测量范围、准确度、精度和带宽上的量化。因此，只有通过组合多个不同运行原理的传感器才能得到对问题的可靠解决方案。
+\item 固态传感器（即没有机械部件）可以小型化并且大量便宜地制造。这使得一系列经济实惠的IMU和3D深度传感器将为大众市场机器人系统的定位和物体识别提供数据基础。
 \end{itemize} 
 
 % \section*{Exercises}\small
@@ -283,18 +277,18 @@ GPS传感器通常在几米内精确，但精确到数十米。当卫星配置�
 % \item Why does the bandwidth of a Ultra-sound based distance sensor decreases significantly when increasing its dynamic range, but that of a laser range scanner does not for typical operation?
 % \item You are designing an autonomous electric car to transport goods on campus. As you are worried about cost, you are thinking about whether to use a laser scanner or an ultra-sound sensor for detecting obstacles. As you drive rather slow, you are required to sense up to 15 meters. The laser scanner you are considering can sense up to this range and has a bandwidth of 10Hz. Assume 300m/s for the speed of sound in the following.
 
-\item 给定一个角度分辨率为0.01弧度，最大范围为5.6米的激光扫描仪，机器人需要从1厘米宽的物体获得的最小范围$ d $，以确定感觉，即，用 至少有一个射线？ 您可以用弧长来近似两条射线之间的距离。
-\item 为什么在增加其动态范围时，基于超声音的距离传感器的带宽会显着降低，而激光范围扫描仪的带宽不能用于典型的操作？
-\item 您正在设计一辆自主电动汽车来运送校园里的货物。 当您担心成本时，您正在考虑是否使用激光扫描仪或超声波传感器来检测障碍物。 当你驾驶相当缓慢时，你需要感觉高达15米。 您正在考虑的激光扫描仪可以感应到此范围，并具有10Hz的带宽。 假设以下声速为300m / s。
+\item 给定一个角度分辨率为0.01弧度、最大范围为5.6米的激光扫描仪，要准确感知1厘米宽的物体（至少有一条射线击中它），机器人需要的最小测量范围$d$是多少？你可以用弧长来近似两条射线之间的距离。
+\item 为什么在增加其动态范围时，超声距离传感器的带宽会显着降低，而激光范围扫描仪的带宽不能用于典型的操作？
+\item 你正在设计一辆自主电动汽车来运送校园里的货物。因为你担心成本，所以考虑使用激光扫描仪或超声波传感器来检测障碍物。当你驾驶相当缓慢时，你需要最多测量15米。你考虑的激光扫描仪可以感应到此范围，并有10Hz的带宽。以下假设声速为300m/s。
 
 \begin{enumerate}
 % \item Calculate the time it takes until you hear back from the US sensor when detecting an obstacle 15m away. Assume that the robot is not moving at this point.
 % \item Calculate the time it takes until you hear back from the laser scanner. Hint: you don’t need the speed of light for this, the answer is in the specs above.      
 % \item Assume now that you are moving toward the obstacle. Which sensor will give you a measurement that is closer to your real distance at the time of reading and why? 
 
-\item 计算在检测到距离15m的障碍物之前从美国传感器听到的时间。 假设机器人在这一点上没有移动。
-\item 计算从激光扫描仪收到的时间。 提示：你不需要光速，答案是在上面的规格。
-现在假设你正在向障碍物移动。 哪个传感器可以让您在阅读时更接近您的实际距离，为什么？
+\item 在检测到距离15m的障碍物时，计算声波从发出到超声传感器检测到所用的时间。假设机器人在某处没有移动。
+\item 计算用激光扫描仪时的时间。提示：你不需要光速，答案在上面的规格中。
+\item 假设汽车正在向障碍物移动。哪个传感器可以让你在读取时获得更接近实际距离的测量值，为什么？
 
 \end{enumerate}
 \end{enumerate}\normalsize
