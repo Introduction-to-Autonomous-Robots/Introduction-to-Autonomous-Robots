@@ -1,0 +1,66 @@
+% \chapter{Grasping}
+\chapter{抓取}
+
+% A robot's end-effector, usually a hand or gripper, is defined by its 6-DOF pose as well as the parameters of its joints such as the opening of the claw or the position of each finger. So far, we have assumed that a robot only needs to plan for a 6-DOF pose that allows the robot to grasp an object from this position. Calculating which position this is and which parameters the end-effector to set is known as grasp planning. This chapter will focus on
+
+机器人的末端执行器，通常是手或夹子，由其6自由度姿态以及其关节的参数（例如爪的打开或每个手指的位置）定义。到目前为止，我们假设一个机器人只需要规划一个6自由度姿态，使机器人能从这个位置抓住一个物体。计算位置以及要设置的末端执行器的参数被称为抓取规划。本章将重点介绍
+
+\begin{enumerate}
+% \item What makes a good grasp?
+% \item How to find good grasps?
+% \item What makes a good grasp?
+
+\item 什么是成功的抓取？
+\item 如何找到成功的抓取？
+\item 什么决定成功的抓取？
+\end{enumerate}
+
+% Think about a three-fingered hand and the problem to grasp a cup. Grasps that are immediately obvious are (1) coming from above and grasping the hull of the cup and (2) wrapping the fingers around the cup. Lets assume that the shape of the cup is cylindric. Then, both of these grasps entirely rely on friction to hold the object. If the normal forces exerted by the fingers are not strong enough, the cup will slip. (It would be possible to re-grasp the object and support it from underneath with one finger if grasped with borderline friction.) A simple model for friction is Coloumb's Friction Law
+
+% It is governed by the equation:
+
+思考用三指的手抓住一个杯子的问题。显而易见的抓取方法有（1）从上方落下，抓住杯子的外壳；（2）将手指绕在杯子周围。假设杯子是圆柱形的。那么，这两种抓取完全依靠摩擦来握住物体。如果手指施加的法向力不够强，那么杯子会滑动。（如果达到边界摩擦力，可以重新抓住物体并用一根手指从下面支撑它。）摩擦力的一个简单的模型是库仑的摩擦定律（Coloumb's Friction Law）
+
+它受以下方程的约束：
+
+\begin{equation}
+F_\mathrm{t} \leq \mu F_\mathrm{n}
+\end{equation}
+
+% where $F_\mathrm{t}$  is the force of friction exerted by each surface on the other and $F_\mathrm{n}$ is the normal force. The force $F_\mathrm{t}$ acts in tangential direction of the normal force applied by, e.g., a finger's tip, where $\mu$ is an empirical coefficient of friction.
+
+其中$F_\mathrm{t}$是一个表面在另一个表面上施加的摩擦力，$F_\mathrm{n}$是法向力。力$F_\mathrm{t}$作用在施加的法向力的切线方向上，例如手指的尖端，其中$\mu$是经验摩擦系数。
+
+% The friction coefficient $\mu$ is low for glass on glass and high for rubber on wood. Coloumb's Fricition law states that the higher the friction coefficient, the more normal force translates into tangential forces that can resist two surfaces from moving against each other. We are therefore interested in designing grippers with high friction coefficients to avoid objects from slipping.
+
+玻璃与玻璃之间的摩擦系数$\mu$低，木材与橡胶之间的摩擦系数高。库仑的摩擦定律指出，摩擦系数越高，法向力越大，越能够抵抗使两个表面相互移动的切向力。因此，我们希望设计具有高摩擦系数的夹具，以避免物体滑动。
+
+% When do objects slip? Lets say we have a fingertip pressing down on a surface in any orientation. There will be a force normal to the surface $F_\mathrm{n}$, which defines the tangential force $F_\mathrm{t}$ in any direction. Sweeping the tangential force around the normal force creates a cone with an opening angle of $2tan^{-1}\mu$. If the net force on the object is not within this cone, the object slips. This becomes more intuitive when thinking about how different values of $\mu$ affect the shape of this cone. If $\mu$ is high, the cone will be relatively flat, letting the object accept forces from many different directions without slipping. If $\mu$ is low, the cone will be relatively narrow, requiring the force to be normal to the object's surface to prevent slippage.
+
+物件何时滑动？让我们假设，我们指尖从任一方向按压在一个表面上。有一个与表面垂直的力$F_\mathrm{n}$，它定义了任何方向上的切向力$F_\mathrm{t}$。围绕法向力旋转切向力产生一个开口角为$2tan^{-1}\mu$的圆锥。如果物体上的净力（Net force）不在此锥体内，物体会滑落。如果考虑$\mu$的不同值如何影响该锥体的形状，这变得更加直观。如果$\mu$高，锥体会相对平坦，让物体可以从许多不同的方向接受力而不会滑动。如果$\mu$低，锥体会相对狭窄，需要与物体表面垂直的力以防止滑动。
+
+% A force applied to a rigid body will exert both a force as well as a torque to the body's center of gravity. This is called a \emph{wrench}\index{Wrench}. If we consider the possible forces that we can apply to a rigid body without having the end-effector slip to form a space (namely the cone described earlier), we can talk about the \emph{grasping wrench space}\index{Grasping wrench space}, which is the corresponding space of all suitable wrenches.
+
+加到刚体的力将对其重心施加力和扭矩。这称为\emph{扭（Wrench）}\index{扭（Wrench）}。如果我们考虑可以施加到刚体而不会使末端执行器滑动形成一个空间（即前面描述的锥体）上的力，那么我们可以讨论\emph{抓取的扭转空间（Grasping wrench space）}\index{抓取的扭转空间（Grasping wrench space）}，这是所有合适扳手的对应空间。
+
+% We can also define wrench spaces that suit a specific task, such as picking up an object or opening a door by turning its knob. We can then say that the grasp is good, when the task wrench space is a subset of the grasping wrench space, and will fail otherwise. We can also look at the ratio of forces actually applied to the object and the minimum needed to perform a desired wrench. If this ratio is high, for example, when the robot has to squeeze an object heavily to prevent it from slipping, this grasp is not as good as one, where the ratio is low and all of the force the robot is exerting is actually going into the desired wrench.
+
+我们还可以定义适合特定任务的扭转空间，例如拾取物体或通过旋转门把手打开门。如果任务扭转空间是把手扭转空间的一部分，那么我们可以说抓取是成功的，否则就会失败。我们还可以查看实际施加到物体上的力与达到所需扭转力的最小值的比值。如果这个比例很高（例如，当机器人必须用力地挤压物体以防止它滑落），这种抓取不如比例低、机器人施加的所有力都用到所需的扭转上的抓取好。
+
+% It is usually not possible to find close-form expressions for the grasping wrench space. Instead, one can sample the space of suitable force vectors, e.g., by picking a couple of forces that are on the boundary of the cone's base, and calculate the convex hull over the resulting wrenches.
+
+抓取的扭转空间通常不可能找到近似表达式。相反，我们可以通过在合适的力向量的空间上采样（例如，选择位于锥体底部边界上的力），并计算所得到扭转上的凸包。
+
+% In summary: we can use Coloumb's law of friction to determine the direction of forces that we can apply to a certain contact point without that the object slips. These forces translate into wrenches to the object's center of gravity. A grasp fits a certain task if the wrenches that would fulfill the task can be effectuated without slip. The less force is wasted to overcome slip, the better is the grasp.
+
+总之：我们可以使用库仑的摩擦定律来确定我们可以施加到某个接触点的力的方向，而不会使物体滑动。这些力转化为扭转物体重心上。如果一种抓取能够完成某个任务且没有滑动，那么这种抓取适合这个任务。克服滑动力浪费越少，抓取就越成功。
+
+% \section{How to find good grasps?}
+% We are able to determine whether a contact point leads to a good grasp by comparing the grasping wrench spaces that fulfill the task and those that is created by a set of contact points. The question is now how to find good contact points? This is challenging as end-effectors (such as hands) are already quite complicated. A suitable method is therefore to use random sampling, that is bringing the end-effector to random positions, close its fingers around the object, and see what happens when generating wrenches that fulfill the task's requirements.
+
+\section{如何找到成功的抓取？}
+通过比较完成任务的抓取的扭转空间和一组接触点创建的扭转空间，我们可以确定一个接触点上能否有成功的抓取。现在的问题是如何找到好的接触点？这是具有挑战性的，因为末端执行器（如手）已经相当复杂。因此，合适的方法是使用随机抽样法，即将末端执行器移到随机位置，将手指围绕物体闭合，并观察在产生满足任务要求的扭转时会发生什么。
+
+% To close the end-effector's fingers around the object requires collision checking. To see what happens, requires dynamic simulation. In short, collision checking routines model an object using a mesh of triangles that can be generated using CAD tools. These triangles are the leafs of a tree that has a coarse bounding object at the top. This coarse bounding object is then split into smaller and smaller elements. Collision checking can now quickly test whether an object collides at all and then recursively refine the exact triangles that collide and finally find the exact points of collision. Dynamic simulation applies Newtonian mechanics to an object (i.e., forces lead to acceleration of a body) and moves the object at very small time-steps. Detecting a collision usually involves moving the objects one step back and then iteratively approaching them until their proximity exceeds a certain treshold.
+
+要闭合环绕物体的末端执行器的手指，需要进行碰撞检测。要看看会发生什么，需要动态模拟。简而言之，碰撞检测例程使用可以用CAD工具生成的三角网格来模拟对象。这些三角就像是在树叶表面有粗糙边界的楞。然后，这个粗大的边界物体被分割成越来越小的三角。碰撞检测现在可以快速测试物体是否碰撞，然后递归细化碰撞的确切三角形，并最终找到确切的碰撞点。动态模拟将牛顿力学应用于物体上（即，力使物体加速），并以非常小的时间步长移动物体。通常碰撞检测将物体后移一步，然后迭代地接近物体，直到其接近度超过一定阈值。
