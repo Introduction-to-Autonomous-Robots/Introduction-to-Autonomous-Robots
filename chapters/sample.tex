@@ -1,0 +1,122 @@
+% \chapter{Sample curricula}
+
+% This book is designed to cover two full semesters at undergraduate level, CSCI 3302 and CSCI 4302 at CU Boulder, or a single semester ``crash course'' at graduate level. There are multiple avenues that an instructor could take, each with their unique theme and a varying set of prerequisites on the students. 
+
+\chapter{样本课程}
+
+本书旨在涵盖两个本科学期（科罗拉多大学博尔德分校（University of Colorado Boulder, CU Boulder）的CSCI3302和CSCI4302），或研究生一学期“速成课程”。教师可以采用多种渠道，每种都有其独特的主题和对学生的各种先决条件。
+ 
+% \section{An introduction to autonomous \emph{mobile} robots}
+% This describes a possible one semester curriculum, which takes the students from the kinematics of a differential-wheel platform to SLAM. This curriculum is involved and requires a firm background in trigonometry, probability theory and linear algebra. This might be too ambitious for third-year Computer Science students, but fares well with Aerospace and Electrical Engineering students, who often have a stronger, and more applied, mathematical background. This curriculum is therefore also well suited as ``advanced class'', e.g. in the fourth year of a CS curriculum.
+
+\section{自主\emph{移动}机器人简介}
+这描述了一个合适的学期课程，学生先学差速轮平台的运动学，然后SLAM。这个课程涉及三角学、概率理论和线性代数的硬背景。对于大三的计算机科学学生来说，这可能太过于雄心勃勃，但是对于航空航天和电气工程学生而言，他们的数学背景往往更强大，更具应用性。因此，该课程也非常适合作为“高级课程”，例如放在在CS课程的第四年。
+
+% \subsection{Overview}
+% The curriculum is motivated by a maze-solving competition that is described in Section \ref{sec:ratslife}. Solving the game can be accomplished using a variety of algorithms ranging from wall following (which requires simple proportional control) to Depth-first Search on the maze to full SLAM. Here, the rules are designed such that creating a map of the environment leads to a competitive advantage on the long run.
+
+\subsection{概述}
+本课程以一个在第\ref{sec:ratlife}节中描述的迷宫解决竞赛为动机。可以使用各种各样的算法来完成游戏，这些算法包括以下墙壁跟随（需要简单的比例控制），到迷宫上的深度优先搜索，到完全的SLAM。在这里，从长远来看规则的设计使得创建环境地图可以带来竞争优势。
+
+% \subsection{Materials}
+% The competition can be easily re-created using card board or LEGO bricks and any miniature, differential wheel platform that is equipped with a camera to recognize simple markers in the environment (which serve as landmarks for SLAM). The setup can also easily be simulated in a physics-based simulation environment, which allows scaling this curriculum to a large number of participants. The setup used at CU Boulder using the e-Puck robot and the Webots simulator is shown in Figure \ref{fig:ratslifereal}.
+
+\subsection{材料}
+比赛可以使用卡板或乐高积木和任何微型差速轮平台轻松创建，该平台配有相机以识别环境中的简单标记（作为SLAM的地标）。该设置也可以很容易地在基于物理的模拟环境中模拟，从而可以扩大此课程参与人数。CU Boulder使用的e-Puck机器人和Webots模拟器如图\ref{fig:ratslifereal}所示。
+
+\begin{figure}[!htb]
+\includegraphics[width=0.48\textwidth]{figs/ratslife_real}
+\includegraphics[width=0.48\textwidth]{figs/ratslife_webots}
+\caption{由乐高积木和e-Puck机器人（左）创建的“大屠杀”迷宫竞赛。在\emph{Webots}中模拟的相同环境。}
+\label{fig:ratslifereal}
+\end{figure}
+
+% \subsection{Content}\label{sec:curr1content}
+% After introducing the field and the curriculum using Chapter \ref{chap:introduction} ``\nameref{chap:introduction}'', another week can be spend on basic concepts from Chapter \ref{chap:locomotion} ``\nameref{chap:locomotion}'', which includes concepts like ``\nameref{sec:stability}'' and ``\nameref{sec:dof}''. The lab portions of the class can at this time be used to introduce the software and hardware used in the competition. For example, students can experiment with the programming environment of the real robot or setup a simple world in the simulator themselves.
+
+\subsection{内容}
+\label{sec:curr1content}
+利用第\ref{chap:introduction}章“\nameref{chap:introduction}”介绍完该领域和课程后，可以用一周讲解第\ref{chap:locomotion}章“\nameref{chap:locomotion}”中的概念，如“\nameref{sec:stability}”和“\nameref{sec:dof}”等。此时课程的实验部分可以用来介绍比赛中使用的软件和硬件。例如，学生可以对真实机器人的编程环境进行实验，或者在模拟器中设置一个简单的世界。
+
+% The lecture can then take up pace with Chapter \ref{chap:kinematics}. Here, the topics ``\nameref{sec:coordsystems}'', ``\nameref{sec:fwkmobile}'', and ``\nameref{sec:ivkmobile}'' are on the critical path, whereas other sections in Chapter \ref{chap:kinematics} are optional. It is worth mentioning that the forward kinematics of non-holonomic platforms, and in particular the motivation for considering their treatment in velocity rather than position space, are not straightforward and therefore at least some treatment of arm kinematics is recommended. These concepts can easily be turned into practical experience during the lab session. 
+
+然后，可以介绍第\ref{chap:kinematics}章。在这里，主题“\nameref{sec:coordsystems}”，“\nameref{sec:fwkmobile}”和“\nameref{sec:ivkmobile}”是必要的，而第\ref{chap:kinematics}章其它节是可选的。值得一提的是，非完整平台的正运动学并不直接，特别是考虑到在其速度空间而不是位置空间处理正运动学，因此需要至少有一些手臂运动学的处理。这些概念可以在实验部分轻松转化为实践经验。
+
+% The ability to implement point-to-point motions in configuration space thanks to knowledge of inverse kinematics, directly lends itself to ``\nameref{sec:maps}'' and ``\nameref{chap:pathplanning}'' treated in Chapter \ref{chap:pathplanning}. For the purpose of maze solving, simple algorithms like Dijkstra's and A* are sufficient, and sampling-based approaches can be skipped. Implementing a path-planning algorithm both in simulation and on the real robot will provide first-hand experience of uncertainty. 
+
+逆运动学实现了配置空间中实现点对点运动，这涉及到第\ref{chap:pathplanning}章中的“\nameref{sec:maps}”和“\nameref{chap:pathplanning}”。为了求解迷宫，像Dijkstra和A*这样简单的算法就足够了，而且可以跳过基于抽样的方法。在模拟和真实机器人中实现路径规划算法将提供不确定性的第一手体验。
+
+% The lecture can then proceed to ``\nameref{chap:sensors}'' (Chapter \ref{chap:sensors}), which should be used to motivate uncertainty using concepts like accuracy and precision. These concepts can be formalized using materials in Chapter \ref{chap:statistics} ``\nameref{chap:statistics}'', and quantified during lab. Here, having students record the histogram of sensor noise distributions is a valuable exercise. 
+
+然后，讲座可以进入第\ref{chap:sensors}章“\nameref{chap:sensors}”，通过传感器的准确度和精度等概念来引出不确定性。这些概念可以使用第\ref{chap:statistics}章“\nameref{chap:statistics}”中的材料进行形式化，并在实验中量化。在这里，让学生记录传感器噪声分布的直方图是一项有价值的练习。
+
+% Chapters \ref{chap:vision} and \ref{chap:feature_extraction}, which are on ``\nameref{chap:vision}'' and ``\nameref{chap:feature_extraction}'', do not need to extend further than needed to understand and implement simple algorithms for detecting the unique features in the maze environment. In practice, these can usually be detected using basic convolution-based filters from Chapter \ref{chap:vision}, and simple post-processing, introducing the notion of a ``feature'', but without reviewing more complex image feature detectors. The lab portion of the lab should be aimed at identifying markers in the environment, and can be scaffolded as much as necessary. 
+
+介绍“\nameref{chap:vision}”和“\nameref{chap:feature_extraction}”的章节\ref{chap:vision}和\ref{chap:feature_extraction}只需要理解和实现检测迷宫环境中独特特征的简单算法，而不需要进一步扩展。在实践中，检测这些特征通常可以使用第\ref{chap:vision}章中基于卷积的滤波器和简单的后期处理，引入“特征”的概念，但不需要介绍更复杂的图像特征检测器。实验部分应该旨在识别环境中的标记，并且可以根据需要进行脚手架化\todo{scaffolded}。
+
+% Indepth experimentation with sensors, including vision, serves as a foundation for a more formal treatment of uncertainty in Chapter \ref{chap:uncertainty} ``\nameref{chap:uncertainty}''. Depending on whether the ``\nameref{sec:linefitting}'' example has been treated in Chapter \ref{chap:feature_extraction}, it can be used here to demonstrate error propagation from sensor uncertainty, and should be simplified otherwise. In lab, students can actually measure the distribution of robot position over hundreds of individual trials (this is an exercise that can be done collectively if enough hardware is available), and verify their math using these observations. Alternatively, code to perform these experiments can be provided, giving the students more time to catching up. 
+
+对传感器（包括视觉）的深入实验，可作为更为正式的第\ref{chap:uncertainty}章“\nameref{chap:uncertainty}”中不确定性处理的基础。根据是否介绍过第\ref{chap:feature_extraction}章中的“\nameref{sec:linefitting}”示例，可以在这里用于演示传感器不确定性的误差传播，否则应该简化。在实验中，学生可以实际测量数百个单独测试中机器人位置的分布情况（如果有足够的硬件，这个练可以集体完成），并使用这些观察验证它们的数学。或者，可以提供这些实验的代码，使学生有更多的时间赶上进度。
+
+% The localization problem introduced in Chapter \ref{chap:localization} is best introduced using Markov localization, from which more advanced concepts such as the particle filter and the Kalman filter can be derived. Performing these experiments in the lab is involved, and are best done in simulation, which allows neat ways to visualize the probability distributions changing. 
+
+Chapter\ref{chap:localization}中介绍的本地化问题最好使用马尔可夫定位，从中可以推导出更高级的概念，如粒子滤波器和卡尔曼滤波器。涉及实验中的这些实验，最好在模拟中进行，这样可以使整齐的方式可视化概率分布的变化。
+
+% The lecture can be concluded with ``\nameref{sec:ekfslam}'' in Chapter \ref{chap:slam}. Actually implementing EKF SLAM is beyond the scope of an undergraduate robotics class and is achieved only by very few students who go beyond the call of duty. Instead, students should be able to experience the workings of the algorithm in simulation, e.g., using one of the many available Matlab implementations, or scaffolded in the experimental platform by the instructor. 
+
+讲座可以用第\ref{chap:slam}章的“\nameref{sec:ekfslam}”结尾。实际执行扩展卡尔曼滤波器的SLAM超出了本科机器人课程的范围，只有极少数超越要求的学生才能实现。相反，学生应该能够在模拟中体验算法的运行效果，例如，使用许多可用的Matlab实现，或由教师在实验平台中构架。
+
+% The lab portion of the class can be concluded by a competition in which student teams compete against each other. In practice, winning teams differentiate themselves by the most rigorous implementation, often using one of the less complex algorithms, e.g., wall following or simple exploration. Here, it is up to the instructor incentivizing a desired approach. 
+
+课程的实验部分可以以学生组队相互竞争的比赛结束。在实践中，获胜团队通过最严格的实现胜出，通常使用一个相对不复杂的算法，例如墙壁跟踪或简单的搜索。在这里，由教师引导激励一个期望的方法。
+
+% Depending on the pace of the class in lecture as well as the time that the instructor wishes to reserve for implementation of the final project, lectures can be offset by debates, as described in Section \ref{sec:debates}. 
+
+根据课程讲座的进度以及教师希望为实施期末项目预留的时间，讲座可以通过第\ref{sec:debates}章描述的辩论来弥补。
+
+% \section{An introduction to autonomous manipulation}
+% Although robotic manipulation is a much less mature field than autonomous mobile robots, teaching its basics, such as those treated in this book, is slightly easier, mainly due to the fact that concepts like uncertainty and non-holonomy are mostly absent. Robotic manipulation is also well suited for a practice-based curriculum due to the wide array of cheap, multi-DOF robotic arms. These, of course, quickly reach their limitations to demonstrate advanced topics such as dynamics or force control, which are beyond the scope of this book.
+
+\section {自主操作介绍}
+虽然机器人操作是一个比自主移动机器人更不成熟的领域，但教授其基础知识（如本书中所讨论的那些）稍微简单一些，主要是由于实际上不介绍不确定性和非整体性的概念。由于各种便宜的多自由度机器人手臂，机器人操作也非常适合基于实践的课程。这些当然可以很快地达到极限，不能展示诸如动力学或力量控制等高级的主题，这些在本书的讨论范围之外。
+
+% \subsection{Overview} 
+% A manipulation-driven curriculum can be motivated by a ``grand challenge'' task such as robotic agriculture, robotic construction or assisted living, all of which have a manipulation problem at their core. Although a class project is likely to be limited to a toy-example, taking advantage of modern motion-planning frameworks and visualization tools, e.g. ROS/Moveit!, makes it easy to put the class into an industry-relevant framework and expose the students to state of the art platforms in simulation.
+
+\subsection{概述}
+以操作为导向的课程可以通过“大挑战”的任务为动机，如机器人农业、机器人建设或辅助生活等，这些的核心都包含操作问题。虽然课程项目可能仅限于玩具实例，但利用现代运动规划框架和可视化工具，例如，ROS/Moveit！，可以轻松将课堂放在行业相关的框架中，让学生们了解到模拟中最先进的平台。
+
+% \subsection{Materials} 
+% Possible class project range from ``robot gardening'' or ``robots building robots'', for which setups can easily be created. These include real or plastic cherry tomato or strawberry plants and robotic construction kits such as Modular Robotics ``Cubelets'', which easily snap together and have the advantage to form structures that are robots themselves, adding additional motivation. The robot arm, such as the open-source, 7-DOF CLAM arm, can be mounted on a portable structure that contains a set of fixed (3D) cameras. In order to allow a large number of students to get familiar with the necessary software and hardware, the instructor can provide a virtual machine with a preinstalled Linux environment and simulation tools. In particular, using the ``Robot Operating Systems'' (ROS) allows recording so-called ``bag''-files of sensor values, including entire sequences of joint recordings and RGB-D video. This allows the students to work on a large part of the homeworks and project preparation from a computer lab or from home, maximizing availability of real hardware.
+
+\subsection{材料}
+可能的课程项目如“机器人园艺”或“机器人组装机器人”，它们的设置可以轻松地创建。这些包括真实的或塑料的樱桃番茄或草莓植物和机器人建筑工具包，如模块化机器人“Cubelets”，它们很容易地卡在一起，并有形成也是机器人的结构的优势，这增加了额外的动机。机器人手臂诸如开源7自由度的CLAM臂，可以安装在包含一组固定（三维）相机的便携式结构上。为了让大量学生熟悉必要的软​​件和硬件，教师可以提供预安装的Linux环境和仿真工具的虚拟机。特别地，使用“机器人操作系统”（Robot Operating Systems，ROS）可以记录传感器值的所谓“包”（Bag）文件，包括整个序列的节点记录和RGB-D视频。这使学生能从计算机实验室或家中进行大部分的家庭作业和项目准备工作，从而最大限度地提高实际硬件的可用性。
+
+% \subsection{Content}
+% The first two weeks of this curriculum can be mostly identical to that described in Section \ref{sec:curr1content}. If a message passing system such as ROS is used, a good exercise is to record a histogram of message passing times in order to get familiar with the software.
+
+\subsection{内容}
+本课程的前两周可以与第\ref{sec:curr1content}节中的描述大致相同。如果使用诸如ROS的消息传递系统，一个很好的练习是记录消息传递时间的直方图，以便熟悉该软件。
+
+% In Chapter \ref{chap:kinematics}, the focus is instead on manipulating arms, including the Denavit-Hartenberg scheme and numerical methods for inverse kinematics. In turn, the topics ``\nameref{sec:fwkmobile}'', and ``\nameref{sec:ivkmobile}'' do not necessarily need to be included. Forward and inverse kinematics can be easily turned into lab sessions using Matlab/Mathematica, simulation or a real robot platform. If the class uses a more complex or industrial robot arm, an alternative path is to record joint trajectories in a ROS bag and letting the students explore this data, e.g., sketching 
+
+在第\ref{chap:kinematics}章中，重点是操作手臂，包括Denavit-Hartenberg方案和逆运动学的数值方法。反过来，不一定需要包括主题“\nameref{sec:fwkmobile}”和“\nameref{sec:ivkmobile}”。使用Matlab/Mathematica，模拟或真正的机器人平台可以轻松地将正逆运动学转到实验部分。如果课程使用更复杂或工业的机器人手臂，另一种途径是在ROS包中记录关节轨迹，并让学生探索这些数据，例如画机器人轮廓。
+
+% \section{Class debates}\label{sec:debates}
+% Class debates are a good way to decompress at the end of class and require the students to put the materials they learned in a broader context. Student teams prepare pro and contra arguments for a statement of current technical or societal concern, exercising presentation and research skills. Sample topics include \emph{Robots putting humans out of work is a risk that needs to be mitigated}; \emph{Robots should not have the capability to autonomously discharge weapons / drive around in cities (autonomous cars)}; or \emph{Robots need to be made from components other than links, joints, and gears in order to reach the agility of people}.
+
+\section{课堂辩论} 
+\label{sec:debates}
+课堂辩论是在课堂结束时解压缩的好方法，要求学生将他们学到的知识放在更广泛的背景下。学生团队就一个现有的技术或社会关切的描述准备正反驳论证，从而练习演讲和研究技能。示例主题包括\emph{机器人让人失去工作是一种需要缓解的风险}；\emph{机器人不应该具备自主卸载武器/在城市中驾驶（自主汽车）的能力};或\emph{机器人需要由链接、关节和齿轮以外的组件制成，以达到人们的敏捷性}。
+
+% The students are instructed to make as much use as possible of technical arguments that are grounded in the course materials and in additional literature. For example, students can use the inherent uncertainty of sensors to argue for or against enabling robots to use deadly weapons. Similarly, students relate the importance and impact of current developments in robotics to earlier inventions that led to industrialization, when considering the risk of robots putting humans out of work. 
+
+指导学生尽可能多地利用基于课程材料和其他文献的技术论据。例如，学生可以使用传感器固有的不确定性来支持或反对机器人使用致命武器。同样，当考虑机器人使人类失去工作的风险时，学生将当前机器人技术发展的重要性和影响与导致工业化的早期发明联系起来。
+
+% Although suspicious as first, students usually receive this format very well.  While there is agreement that debates help to prepare them for the engineering profession by improving presentation skills, preparing engineers to think about questions posed by society, and reflecting up-to-date topics, the debates seem to have little effect on changing the students' actual opinions on a topic. For example, in a questionnaire administered after class, only two students responded positively. Students are also undecided about whether the debates helped them to better understand the technical content of the class. Yet students find the debate concept important enough that they prefer it over a more in-depth treatment of the technical content of the class, and disagree that debates should be given less time in class. However, students are undecided whether debates are important enough to merit early inclusion in the curriculum or to be part of every class in engineering. 
+
+虽然一开始有疑问，但是学生通常很好地接受这种格式。虽然辩论有助于使学生为工程专业做好准备，如提高演讲技巧，使工程师考虑社会提出的问题，以及反映最新的话题，但辩论似乎不能改变学生对一个话题的实际想法。例如，在课程结束后进行的问卷调查中，只有两名学生的回复是正面的。学生们也不确定这些辩论是否有助于他们更好地了解课堂的技术内容。然而，学生发现辩论的概念很重要，相比于更深入的课堂的技术内容，他们更喜欢辩论，他们不同意减少辩论的时间。不过，学生不能确定辩论是否重要到在课程初期就加入或作为每一个工程类课程的一部分。
+
+% Concerning the overall format, students find that discussion time was too short when allotting 10 minutes per position and 15 minutes for discussion and rebuttal. Also, students tend to agree that debates are an opportunity to decompress (``relaxing''), which is desirable as this period of class coincides with wrapping up the course project.
+
+关于整体形式，10分钟陈述加15分钟的讨论和反驳，学生发现讨论时间太短。此外，学生倾向于同意辩论是减压的机会（“放松”），这是可取的，因为这个课程段与总结课程项目一致。

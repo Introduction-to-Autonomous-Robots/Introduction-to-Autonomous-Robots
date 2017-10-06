@@ -3,20 +3,20 @@
 \label{chap:pathplanning}
 % Path-planning is an important primitive for autonomous mobile robots that lets robots find the shortest---or otherwise optimal---path between two points. Optimal paths could be paths that minimize the amount of turning, the amount of braking or whatever a specific application requires. Algorithms to find a shortest path are important not only in robotics, but also in network routing, video games and understanding protein folding.
 
-% Path-planning requires a map of the environment and the robot to be aware of its location with respect to the map. We will assume for now that the robot is able to localize itself,  is equipped with a map, and capable of avoiding temporary obstacles on its way. How to create a map, how to localize a robot, and how to deal with uncertain position information will be major foci of the reminder of this  book. The goals of this chapter are to
+路径规划是自主移动机器人的重要原语，让机器人找到两点之间最短或最佳的路径。最佳路径可以是最小化转向、制动或特定应用所需要的路径。寻找最短路径的算法不仅对机器人技术，而且对网络路由、视频游戏和理解蛋白质折叠都很重要。
 
-路径规划是自动移动机器人的重要原语，让机器人找到两点之间最短或最佳的路径。 最佳路径可以是最小化车削量，制动量或特定应用所需要的路径。 找到最短路径的算法不仅在机器人学中，而且在网络路由，视频游戏和理解蛋白质折叠中都是重要的。
+% Path-planning requires a map of the environment and the robot to be aware of its location with respect to the map. We will assume for now that the robot is able to localize itself, is equipped with a map, and capable of avoiding temporary obstacles on its way. How to create a map, how to localize a robot, and how to deal with uncertain position information will be major foci of the reminder of this  book. The goals of this chapter are to
 
-路径规划需要环境和机器人的地图来了解其相对于地图的位置。 我们现在将假设机器人能够本地化，配备地图，并能够避免临时障碍物。 如何创建地图，如何本地化机器人，以及如何处理不确定的位置信息将是本书提醒的主要焦点。 本章的目标是
+路径规划需要环境和机器人的地图来了解其相对于地图的位置。我们现在假设机器人能够定位自己，配有地图，并能够避免临时障碍物。如何创建地图、如何定位机器人，以及如何处理不确定的位置信息将是本书剩下部分的主要焦点。本章的目标是
 
 \begin{itemize}
 % \item introduce suitable map representations,
 % \item explain basic path-planning algorithms  ranging from Dijkstra, to A*, D* and RRT,
 % \item introduce variations of the path-planning problem, such as coverage path planning.
 
-\item 介绍合适的地图表示，
-\item 介绍从Dijkstra到A *，D *和RRT的基本路径规划算法，
-\item 介绍路径规划问题的变化，如覆盖路径规划。
+\item 介绍合适的地图表示
+\item 介绍从Dijkstra到A*，D*和RRT的基本路径规划算法
+\item 介绍路径规划问题的变种，如覆盖路径规划
 \end{itemize}
 
 % \section{Map representations}\label{sec:maps}
@@ -25,7 +25,7 @@
 
 % In order to plan a path, we somehow need to represent the environment in the computer. We differentiate between two complementary approaches: discrete and continuous approximations. In a discrete approximation, a map is sub-divided into chunks of equal (e.g., a grid or hexagonal map) or differing sizes (e.g., rooms in a building). The latter maps are also known as \emph{topological maps}.\index{Topological map} Discrete maps lend themselves well to a graph representation. Here, every chunk of the map corresponds to a vertex (also known as ``node''), which are connected by edges, if a robot can navigate from one vertex to the other. For example a road-map is a topological map, with intersections as vertices and roads as edges, labeled with their length (Figure \ref{fig:pathproblem}). Computationally, a graph might be stored as an adjacency or incidence list/matrix. A continuous approximation requires the definition of inner (obstacles) and outer boundaries, typically in the form of a polygon, whereas paths can be encoded as sequences of points defined by real numbers. Despite the memory advantages of a continuous representation, discrete maps are the dominant representation in robotics.
 
-为了规划路径，我们需要代表计算机中的环境。我们区分两种互补方法：离散和连续近似。在离散近似中，映射被细分成等于（例如，网格或六边形映射）或不同大小（例如，建筑物中的房间）的块。后者的地图也称为\emph{拓扑图}。\index{拓扑图}离散地图很好地适用于图形表示。这里，如果机器人可以从一个顶点导航到另一个顶点，那么地图的每个块对应于通过边缘连接的顶点（也称为“节点”）。例如，路线图是一个拓扑图，其中交叉点作为顶点和道路作为边缘，以其长度标注（图\ref{fig:pathproblem}）。在计算上，图形可能存储为邻接或入口列表/矩阵。连续近似需要内部（障碍物）和外部边界的定义，通常以多边形的形式，而路径可以被编码为由实数定义的点的序列。尽管连续表现的记忆优势，离散地图是机器人技术中的主要代表。
+为了规划路径，我们需要在计算机中表示环境。我们区分两种互补的方法：离散近似和连续近似。在离散近似中，地图被细分成相同（例如，网格或六边形地图）或不同大小（例如，建筑物中的房间）的块。后者的地图也称为\emph{拓扑图（Topological map）}\index{拓扑图（Topological map）}。离散地图很适用于图形表示。这里，如果机器人可以从一个点导航到另一个点，那么地图的每个块对应于通过边缘连接的点（也称为“节点”）。例如，路线图是一个拓扑图，其中交叉点作为顶点和道路作为边缘，以其长度标注（图\ref{fig:pathproblem}）。在计算上，图形可能存储为邻接或入口列表/矩阵。连续近似需要内部（障碍物）和外部边界的定义，通常以多边形的形式，而路径可以被编码为由实数定义的点的序列。尽管连续表现的记忆优势，离散地图是机器人技术中的主要代表。
 
 % For mapping obstacles, the most common map is the \emph{occupancy grid} map\index{Occupancy grid}. In a grid map, the environment is discretized into squares of arbitrary resolution, e.g. 1cm x 1cm, on which obstacles are marked. In a probabilistic occupancy grid, grid cells can also be marked with the probability that they contain an obstacle. This is particularly important when the position of the robot that senses an obstacle is uncertain. Disadvantages of grid maps are their large memory requirements as well as computational time to traverse data structures with large numbers of vertices. A solution to this is storing the grid map as \emph{k-d tree}.\index{k-d tree (data structure)} A k-d tree recursively breaks the environment into $k$ pieces. For $k=4$, an area is broken into four pieces. Each of these pieces is again broken into four pieces and so on, until the desired resolution is reached. These pieces can easily be stored in a graph with each vertex having four children, which are the four pieces the vertex is broken into, or is a leaf of the tree. What makes this data structure attractive is that not all vertices need to be broken down to the smallest possible resolution. Instead only areas, which contain obstacles need to be further broken down. A grid map containing obstacles and the corresponding k-d tree, here a quadtree, are shown in Figure \ref{fig:gridvskdtree}. There is no silver bullet, and each application might require a different solution that could be a combination of different map types.
 
@@ -78,24 +78,23 @@
 \subsection{Dijkstra算法}\index{Dijkstra's Shortest Path Algorithm}
 % One of the earliest and simplest algorithms is Dijkstra's algorithm \cite{dijkstra1959note}. Starting from the initial vertex where the path should start, the algorithm marks all direct neighbors of the initial vertex with the cost to get there. It then proceeds from the vertex with the lowest cost to all of its adjacent vertices and marks them with the cost to get to them via itself if this cost is lower. Once all neighbors of a vertex have been checked, the algorithm proceeds to the vertex with the next lowest cost. Once the algorithm reaches the goal vertex, it terminates and the robot can follow the edges pointing towards the lowest edge cost.
 
-% In Figure \ref{fig:pathproblem}, Dijkstra would first mark nodes II, III and IV with cost 3, 5 and 7 respectively. It would then continue to explore all edges of node II, which so far has the lowest cost. This would lead to the discovery that node III can actually be reached in $3+1<5$ steps, and node III would be relabeled with cost 4. In order to completely evaluate node II, Dijkstra needs to evaluate the remaining edge before moving on and label node VI with $3+12=15$.
-
-% The node with the lowest cost is now node III (4). We can now relabel node VI with 14, which is smaller than 15, and label node V with $4+5=9$, whereas node IV remains at $4+3=7$. Although we have already found two paths to the goal, one of which better than the other, we cannot stop as there still exist nodes with unexplored edges and overall cost lower than 14. Indeed, continuing to explore from node V leads to a shortest path I-II-III-V-VI of cost 13, with no remaining nodes to explore.
-
-% As Dijkstra would not stop until there is no node with lower cost than the current cost to the goal, we can be sure that a shortest path will be found if it exists. We can say that the algorithm is \emph{complete}.\index{Complete (algorithm)}
-
-% As Dijkstra will always explore nodes with the least overall cost first, the environment is explored comparably to a wave front originating from the start vertex, eventually arriving at the goal. This is of course highly inefficient in particular if Dijkstra is exploring nodes away from the goal. This can be visualized by adding a couple of nodes to the left of node I in Figure \ref{fig:pathproblem}. Dijkstra will explore all of these nodes until their cost exceeds the lowest found for the goal. This can also be seen when observing Dijkstra's algorithm on a grid, as shown in Figure \ref{fig:dijkstragrid}. 
-
 最早和最简单的算法之一是Dijkstra的算法\cite{dijkstra1959note}。从路径应该开始的初始顶点开始，该算法以初始顶点的所有直接邻居标记，其成本达到。然后，从最低成本的顶点到其所有相邻的顶点，然后以成本较低的方式，以自己的成本来标记它们。一旦顶点的所有邻居都已经被检查，则算法以下一个最低的成本进行到顶点。一旦算法到达目标顶点，它终止，机器人可以跟随指向最低边缘成本的边缘。
+
+% In Figure \ref{fig:pathproblem}, Dijkstra would first mark nodes II, III and IV with cost 3, 5 and 7 respectively. It would then continue to explore all edges of node II, which so far has the lowest cost. This would lead to the discovery that node III can actually be reached in $3+1<5$ steps, and node III would be relabeled with cost 4. In order to completely evaluate node II, Dijkstra needs to evaluate the remaining edge before moving on and label node VI with $3+12=15$.
 
 在图\ref{fig:pathproblem}中，Dijkstra将首先标记节点II，III和IV，成本为3,5和7。然后，它将继续探索节点II的所有边缘，该节点目前成本最低。这将导致发现节点III实际上可以以$ 3 + 1 <5 $步长达到，节点III将重新标注成本4.为了完全评估节点II，Dijkstra需要在移动之前评估剩余边缘并标记节点VI $ 3 + 12 = 15 $。
 
+% The node with the lowest cost is now node III (4). We can now relabel node VI with 14, which is smaller than 15, and label node V with $4+5=9$, whereas node IV remains at $4+3=7$. Although we have already found two paths to the goal, one of which better than the other, we cannot stop as there still exist nodes with unexplored edges and overall cost lower than 14. Indeed, continuing to explore from node V leads to a shortest path I-II-III-V-VI of cost 13, with no remaining nodes to explore.
+
 成本最低的节点现在是节点III（4）。我们现在可以重新标记节点VI，其中14个小于15，标签节点V的$ 4 + 5 = 9 $，而节点IV保持在$ 4 + 3 = 7 $。虽然我们已经找到了目标的两条路径，其中一条比另一条更好，但是我们不能停止，因为仍然存在未开发边缘的节点，总成本低于14.实际上，从节点V继续探索导致最短路径I-II-III-V-VI成本13，没有剩余的节点要探索。
+
+% As Dijkstra would not stop until there is no node with lower cost than the current cost to the goal, we can be sure that a shortest path will be found if it exists. We can say that the algorithm is \emph{complete}.\index{Complete (algorithm)}
 
 由于Dijkstra不会停止，直到没有节点成本低于目标的当前成本，我们可以确定如果存在最短路径将被找到。我们可以说算法是\emph {complete}。\index{Complete（algorithm）}
 
-由于Dijkstra将始终以最小的总体成本来探索节点，因此环境与起始顶点起源的波前相比较，最终达到目标。这当然是非常低效的，特别是如果Dijkstra正在探索远离目标的节点。这可以通过在图\ref{fig:pathproblem}中的节点I的左侧添加几个节点来可视化。 Dijkstra将探索所有这些节点，直到其成本超过目标的最低值。在网格上观察Dijkstra算法时也可以看到，如图\ref{fig:dijkstragrid}所示。
+% As Dijkstra will always explore nodes with the least overall cost first, the environment is explored comparably to a wave front originating from the start vertex, eventually arriving at the goal. This is of course highly inefficient in particular if Dijkstra is exploring nodes away from the goal. This can be visualized by adding a couple of nodes to the left of node I in Figure \ref{fig:pathproblem}. Dijkstra will explore all of these nodes until their cost exceeds the lowest found for the goal. This can also be seen when observing Dijkstra's algorithm on a grid, as shown in Figure \ref{fig:dijkstragrid}. 
 
+由于Dijkstra将始终以最小的总体成本来探索节点，因此环境与起始顶点起源的波前相比较，最终达到目标。这当然是非常低效的，特别是如果Dijkstra正在探索远离目标的节点。这可以通过在图\ref{fig:pathproblem}中的节点I的左侧添加几个节点来可视化。 Dijkstra将探索所有这些节点，直到其成本超过目标的最低值。在网格上观察Dijkstra算法时也可以看到，如图\ref{fig:dijkstragrid}所示。
 
 \begin{figure}[htb]
 \centering
@@ -120,10 +119,9 @@
 
 % An extension of A* that addresses the problem of expensive re-planning when obstacles appear in the path of the robot, is known as D* \cite{stentz1994optimal}. Unlike A*, D* starts from the goal vertex and has the ability to change the costs of parts of the path that include an obstacle. This allows D* to re-plan around an obstacle while maintaining most of the already calculated path.\index{D*}
 
-% A* and D* become computationally expensive when either the search space is large, e.g., due to a fine-grain resolution required for the task, or the dimensions of the search problem are high, e.g. when planning for an arm with multiple degrees of freedom. Solutions to these problems are provided by sampling-based path planning algorithms that are described further below.
-
-
 A*的扩展解决了当障碍物出现在机器人路径中时昂贵的重新计划的问题，被称为D*\cite{stentz1994optimal}。与A*不同，D*从目标顶点开始，并且具有改变包括障碍物的路径部分成本的能力。这样可以让D*在保持大部分已经计算的路径的同时重新计划障碍物。\index{D*}
+
+% A* and D* become computationally expensive when either the search space is large, e.g., due to a fine-grain resolution required for the task, or the dimensions of the search problem are high, e.g. when planning for an arm with multiple degrees of freedom. Solutions to these problems are provided by sampling-based path planning algorithms that are described further below.
 
 当搜索空间大时，A*和D*在计算上变得昂贵，例如由于任务所需的细粒度分辨率，或者搜索问题的维度高，例如，当规划具有多个自由度的手臂时。这些问题的解决方案是通过以下进一步描述的基于抽样的路径规划算法提供的。
 
@@ -132,12 +130,11 @@ A*的扩展解决了当障碍物出现在机器人路径中时昂贵的重新计
 
 % The previous sections have introduced a series of complete algorithms for the path planning problem, i.e. they will find a solution eventually if it exists. Complete solutions are often unfeasible, however, when the possible state space is large. This is the case for robots with multiple degrees of freedom such as arms. In practice, most algorithms are only \emph{resolution complete}\index{Resolution complete}, i.e., only complete if the resolution is fine-grained enough, as the state-space needs to be somewhat discretized for them to operate (e.g., into a grid) and some solutions might be missed as a function of the resolution of the discretization.
 
-% Instead of evaluating all possible solutions or using a non-complete Jacobian-based inverse kinematic solution, sampling-based planners create possible paths by randomly adding points to a tree until some solution is found or time expires. As the probability to find a path approaches one when time goes to infinity, sampling-based path planners are \emph{probabilistic complete}\index{Probabilistic complete}. Prominent examples of sampling-based planners are \emph{Rapidly-exploring Random Trees} (RRT)\index{Rapidly-exploring Random Tree}\index{RRT}\cite{lavalle1998rapidly} and \emph{Probabilistic Roadmaps}\index{Probabilistic Roadmaps}\index{PRM}(PRM) \cite{kavraki1996probabilistic}. An example execution of RRT for an unknown goal, thereby reducing the path-planning problem to a search problem is shown in Figure \ref{fig:rrt}.
-
 前面几节介绍了一系列用于路径规划问题的完整算法，即如果存在，它们将最终找到一个解决方案。然而，当可能的状态空间很大时，完整的解决方案通常是不可行的。对于具有多重自由度的机器人，例如武器就是这种情况。在实践中，大多数算法只有\emph{resolution complete}\index{Resolution complete}，即只有在分辨率足够细的情况下才能完成，因为状态空间需要稍微离散化才能运行（例如，进入网格），并且一些解决方案可能被错过作为离散化解决方案的功能。
 
-基于采样的规划者不用评估所有可能的解决方案或使用不完整的基于雅可比的逆运动学解决方案，而是通过将点随机添加到树中创建可能的路径，直到发现某个解决方案或时间到期。当时间到无穷大时，找到路径的概率接近一个，基于抽样的路径规划者是\emph{概率完整的}\index{概率完整}。基于抽样的规划者的突出例子是“快速浏览随机树”（RRT）\index{快速浏览随机树}\index{RRT}\cite{lavalle1998rapidly}和\emph{概率路线图}\index{概率路线图}\index{PRM}（PRM）\cite{kavraki1996probabilistic}。对于未知目标的RRT的示例执行，从而将路径规划问题减少到搜索问题，如图\ref{fig:rrt}所示。
+% Instead of evaluating all possible solutions or using a non-complete Jacobian-based inverse kinematic solution, sampling-based planners create possible paths by randomly adding points to a tree until some solution is found or time expires. As the probability to find a path approaches one when time goes to infinity, sampling-based path planners are \emph{probabilistic complete}\index{Probabilistic complete}. Prominent examples of sampling-based planners are \emph{Rapidly-exploring Random Trees} (RRT)\index{Rapidly-exploring Random Tree}\index{RRT}\cite{lavalle1998rapidly} and \emph{Probabilistic Roadmaps}\index{Probabilistic Roadmaps}\index{PRM}(PRM) \cite{kavraki1996probabilistic}. An example execution of RRT for an unknown goal, thereby reducing the path-planning problem to a search problem is shown in Figure \ref{fig:rrt}.
 
+基于采样的规划者不用评估所有可能的解决方案或使用不完整的基于雅可比的逆运动学解决方案，而是通过将点随机添加到树中创建可能的路径，直到发现某个解决方案或时间到期。当时间到无穷大时，找到路径的概率接近一个，基于抽样的路径规划者是\emph{概率完整的}\index{概率完整}。基于抽样的规划者的突出例子是“快速浏览随机树”（RRT）\index{快速浏览随机树}\index{RRT}\cite{lavalle1998rapidly}和\emph{概率路线图}\index{概率路线图}\index{PRM}（PRM）\cite{kavraki1996probabilistic}。对于未知目标的RRT的示例执行，从而将路径规划问题减少到搜索问题，如图\ref{fig:rrt}所示。
 
 \begin{figure}
 \centering
@@ -148,9 +145,9 @@ A*的扩展解决了当障碍物出现在机器人路径中时昂贵的重新计
 
 % This example illustrates well how a sampling-based planner can quickly explore a large portion of space and refines a solution as time goes on. Whereas RRT can be understood as growing a single tree from a robot's starting point until one of its branches hit a goal, probabilistic road-maps create a tree by randomly sampling points in the state-space, testing whether they are collision-free, connecting them with neighboring points using paths that reflect the kinematics of a robot, and then using classical graph shortest path algorithms to find shortest paths on the resulting structure. The advantage of this approach is clearly that such a probabilistic roadmap has to be created only once (assuming the environment is not changing) and can then be used for multiple queries. PRMs are therefore a \emph{multi-query} path-planning algorithm.\index{Multi-query (path-planning)} In contrast, RRT's are known as \emph{single-query}\index{Single-query (path-planning)} path-planning algorithms.
 
-% In practice, the boundary between the different historic algorithms has become very diffuse, and single-query and multi-query variants of both RRT and PRM exist. It is important to note that there is no silver bullet algorithm/heuristic and even their parameter-sets are highly problem-specific. We will therefore limit our discussion on useful heuristics that are common to sampling-based planners.
-
 此示例说明了基于抽样的计划员如何快速探索大部分空间，并随着时间的推移来提炼解决方案。而RRT可以被理解为从机器人的起点生长单个树，直到其一个分支击中目标，概率道路图通过在状态空间中随机采样点来测试它们是否无碰撞，连接它们与相邻点使用反映机器人的运动学的路径，然后使用经典的图最短路径算法来找到最终结构上的最短路径。这种方法的优点是很明显，这样一个概率路线图只能被创建一次（假设环境没有改变），然后可以用于多个查询。PRM因此是一个\emph{multi-query}路径规划算法。\index{多查询（路径规划）}相反，RRT被称为\emph{single-query}\index{Single-query（path计划）}路径规划算法。
+
+% In practice, the boundary between the different historic algorithms has become very diffuse, and single-query and multi-query variants of both RRT and PRM exist. It is important to note that there is no silver bullet algorithm/heuristic and even their parameter-sets are highly problem-specific. We will therefore limit our discussion on useful heuristics that are common to sampling-based planners.
 
 实际上，不同历史算法之间的边界已经变得非常漫长，存在RRT和PRM的单查询和多查询变体。重要的是要注意，没有银色子弹算法/启发式，甚至他们的参数集都是高度针对问题的。因此，我们将限制我们对基于抽样的规划者常见的有用启发式的讨论。
 
@@ -191,23 +188,23 @@ return Tree
 
 % A prominent method is to pick a random point in the state-space and connect it to the closest existing point in the tree or to the goal. This requires searching all nodes in the tree and calculating their distance to the candidate point. Other approaches put preferences on nodes with fewer out-degrees (those which do not yet have very many connections) and chose a new point within its vicinity. Both approaches make it likely to quickly explore the entire state-space.
 
-% If there are constraints imposed on the robot's path, for example the robot needs to hold a cup and therefore is not supposed to rotate its wrist, this dimension can simply be taken out of the state-space.
-
-% Once a possible path is found, this space can be reduced to the ellipsoid that bounds the maximal path-length. This ellipsoid can be constructed by mounting a wire of the maximum path length between start and goal and pushing it outward with a pen. All the area that can be reached with the pen constrained by the wire can contain a point that can possibly lead to a shorter path. This approach is particularly effective when running multiple copies of the same planner in parallel and exchanging the shortest paths once they are found \cite{otte2012}.
-
 一个突出的方法是在状态空间中选择一个随机点，并将其连接到树中最接近的现有点或目标。这需要搜索树中的所有节点并计算它们到候选点的距离。其他方法将偏好设置在具有较少外部度的节点（那些还没有很多连接的节点），并在其附近选择一个新点。这两种方法都有可能快速探索整个状态空间。
 
+% If there are constraints imposed on the robot's path, for example the robot needs to hold a cup and therefore is not supposed to rotate its wrist, this dimension can simply be taken out of the state-space.
+
 如果对机器人的路径施加约束，例如机器人需要握住杯子，因此不应该旋转其手腕，所以该尺寸可以简单地从状态空间中取出。
+
+% Once a possible path is found, this space can be reduced to the ellipsoid that bounds the maximal path-length. This ellipsoid can be constructed by mounting a wire of the maximum path length between start and goal and pushing it outward with a pen. All the area that can be reached with the pen constrained by the wire can contain a point that can possibly lead to a shorter path. This approach is particularly effective when running multiple copies of the same planner in parallel and exchanging the shortest paths once they are found \cite{otte2012}.
 
 一旦发现了一个可能的路径，这个空间可以减少到限制最大路径长度的椭圆体。该椭圆体可以通过在起始和目标之间安装最大路径长度的线并用钢笔将其向外推。用钢丝夹住的笔可以达到的所有区域都可以包含一个可能导致较短路径的点。当并行运行相同计划器的多个副本时，这种方法特别有效，一旦找到\cite{otte2012}就交换最短路径。
 
 % \subsection{Connecting Points to the Tree}
 % A new point is classically connected to the closest point already in the tree or to the goal. This can be done by calculating the distance to all points already in the tree. This does not necessarily generate the shortest path, however. A recent improvement has been made by RRT*, which connects the point to the tree in a way that minimizes the overall path length. This can be done by considering all points in the tree within a d-ball (on a 2D map, $d=2$, i.e. a circle) from of fixed radius from the point to add and finding the point that minimizes the overall path length to the start.
 
-% Adding a point to the tree is also a good time to take into account the specific kinematics of a robot, for example a car. Here, a local planner can be used to generate a suitable trajectory that takes into account the orientation of the vehicle at each point in the tree.
-
 \subsection{连接点到树}
 一个新的点经典地连接到已经在树或目标中的最接近的点。这可以通过计算已经在树中的所有点的距离来完成。然而，这不一定会产生最短路径。RRT*最近有一个改进，RRT*以最小化整个路径长度的方式将该点连接到树上。这可以通过考虑来自固定半径的d球中的所有点（在2D地图上，$d=2$，即一个圆圈）来添加并找到最小化整体路径的点长度开始。
+
+% Adding a point to the tree is also a good time to take into account the specific kinematics of a robot, for example a car. Here, a local planner can be used to generate a suitable trajectory that takes into account the orientation of the vehicle at each point in the tree.
 
 在树上添加点也是考虑机器人（例如汽车）的特定运动学的好时机。在这里，可以使用本地计划器来产生考虑到该方向的适当轨迹
 车辆在树上的每个点。
@@ -215,10 +212,10 @@ return Tree
 % \subsection{Collision Checking}
 % Efficient algorithms for testing collisions deserve a dedicated lecture. While the problem is intuitive in configuration-space planning in 2D (the robot reduces to a point) and can be solved using a simple point-in-polygon test, the problem is more involved for manipulators that are subject to self-collision.
 
-% As collision checking takes up to 90\% of the execution time in the path planning problem, a successful method to increase computational speed is ``lazy collision evaluation''\index{Lazy collision avoidance}. Instead of checking every point for a possible collision, the algorithm first finds a suitable path. Only then, it checks every segment of this path for collisions. In case some segments are in collision, they are deleted and the algorithm goes on, but keeps the segments of the successful path that were collision-free.
-
 \subsection{碰撞检查}
 用于测试碰撞的高效算法应该有专门的讲座。尽管2D中的配置空间规划中的问题是直观的（机器人缩小到某一点），并且可以使用简单的多边形点测试来解决问题，但更多涉及到受自我碰撞的操纵器的问题。
+
+% As collision checking takes up to 90\% of the execution time in the path planning problem, a successful method to increase computational speed is ``lazy collision evaluation''\index{Lazy collision avoidance}. Instead of checking every point for a possible collision, the algorithm first finds a suitable path. Only then, it checks every segment of this path for collisions. In case some segments are in collision, they are deleted and the algorithm goes on, but keeps the segments of the successful path that were collision-free.
 
 由于碰撞检查在路径规划问题中占用执行时间的90％，因此提高计算速度的成功方法是“懒惰碰撞评估”\index{懒惰碰撞避免}。代替检查每个点可能的碰撞，算法首先找到一个合适的路径。只有这样，它检查此路径的每个段以进行冲突。如果某些段处于冲突状态，则它们被删除，并且算法继续进行，但是保持成功路径的段是无碰撞的。
 
@@ -253,20 +250,20 @@ return Tree
 % \section{Other path-planning applications}
 % Once the environment has been discretized into a graph, we can employ other algorithms from graph theory to plan desirable robot trajectories. For example, floor coverage can be achieved by performing a depth-first search (DFS) or a breadth-first-search (BFS) on a graph where each vertex has the size of the coverage tool of the robot. ``Coverage'' is not only interesting for cleaning a floor: the same algorithms can be used to perform an exhaustive search of a configuration space, such as in the example shown in Figure \ref{fig:inversekinematics}, where we plotted the error of a manipulator arm in reaching a desired position over its configuration space. Finding a minimum in this plot using an exhaustive search solves the inverse kinematics problem. Similarly, the same algorithm can be used to systematically follow all links on a website till a desired depth (or actually retrieving the entire world-wide web).
 
-% Doing a DFS or a BFS might generate efficient coverage paths, but they are far from optimal as many vertices might be visited twice. A path that connects all vertices in a graph but passes every vertex only once is known as a \emph{Hamiltonian Path}.\index{Hamiltonian Path} A Hamiltonian path that returns to its starting vertex is known as a Hamiltonian Cycle. This problem is also known as the Traveling Salesman Problem (TSP), in which a route needs to be calculated that visits every city on his tour only once and is known to be NP Complete.\index{Traveling Salesman Problem}
-
 \section{其他路径规划应用程序}
 一旦将环境离散成图，我们可以使用图论中的其他算法来规划所需的机器人轨迹。例如，可以通过在每个顶点具有机器人的覆盖工具的大小的图上执行深度优先搜索（DFS）或宽度优先搜索（BFS）来实现层覆盖。“覆盖”不仅对清理底板感兴趣：可以使用相同的算法来对配置空间进行详尽的搜索，例如在图\ref{fig:inversekinematics}中所示的示例中，我们绘制了操纵臂在其配置空间上达到所需位置的误差。使用详尽的搜索在该图中找到最小值可以解决逆运动学问题。类似地，可以使用相同的算法来系统地跟踪网站上的所有链接，直到所需的深度（或实际检索整个全球网络）。
+
+% Doing a DFS or a BFS might generate efficient coverage paths, but they are far from optimal as many vertices might be visited twice. A path that connects all vertices in a graph but passes every vertex only once is known as a \emph{Hamiltonian Path}.\index{Hamiltonian Path} A Hamiltonian path that returns to its starting vertex is known as a Hamiltonian Cycle. This problem is also known as the Traveling Salesman Problem (TSP), in which a route needs to be calculated that visits every city on his tour only once and is known to be NP Complete.\index{Traveling Salesman Problem}
 
 执行DFS或BFS可能会生成有效的覆盖路径，但是它们远不是最佳的，因为可能会访问两个顶点。连接图中所有顶点但仅将每个顶点仅传递一次的路径称为\emph{Hamiltonian Path}\index{Hamiltonian Path}返回到其起始顶点的哈密尔顿路径被称为哈密尔顿循环。这个问题也被称为旅行推销员问题（TSP），其中需要计算一次路线访问他的旅程中的每个城市一次，并且被称为NP完成。\index{旅行推销员问题}
 
 % \section{Summary and Outlook}
 % Path planning is an ongoing research problem. Finding collision free paths for mechanisms with high degrees of freedom such as multiple arms operating in a common space, multi-robot systems, or systems involving dynamics (and therefore adding the derivatives of the state variables to the planning problem) might take unacceptably long to solve.
-
-% Although sampling-based path planners can drastically speed up the time to find some solution, there are not optimal and struggle with specific situations such as narrow passages. There is no ``silver bullet'' algorithm for solving all path planning problems and heuristics that lead to massive speed-up in one scenario might be detrimental in others. Also, algorithmic parameters are mostly ad-hoc and correctly tuning them to a specific environment might drastically increase performance.
  
 \section{总结和展望}
 路径规划是一个持续的研究课题。寻找具有高度自由度的机制的无碰撞路径，例如在公共空间中操作的多臂，多机器人系统或涉及动力学的系统（并因此将状态变量的导数添加到规划问题）可能需要不可接受的长时间解决。
+
+% Although sampling-based path planners can drastically speed up the time to find some solution, there are not optimal and struggle with specific situations such as narrow passages. There is no ``silver bullet'' algorithm for solving all path planning problems and heuristics that lead to massive speed-up in one scenario might be detrimental in others. Also, algorithmic parameters are mostly ad-hoc and correctly tuning them to a specific environment might drastically increase performance.
 
 虽然基于采样的路径规划者可以大大加快找到解决方案的时间，但是对于具体的情况，如狭窄的段落，并不是最佳的。没有一种用于解决所有路径规划问题的“子弹”算法，导致在一种情况下大规模加速的启发式算法在其他情况下可能是有害的。此外，算法参数大多是特别的，并且正确地将它们调整到特定环境可能会大大提高性能。
 
