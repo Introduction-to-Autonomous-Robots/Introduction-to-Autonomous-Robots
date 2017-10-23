@@ -21,6 +21,9 @@
 \areaset[0.375in]{4.5in}{8in}
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
 
+% \bf has not been defined by default since 1993 so the code you are using seems a little old.
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+
 \usepackage{xeCJK}
 % I supposed that you do have these fonts mentioned below.
 \setCJKmainfont[BoldFont={SimHei},ItalicFont={[SIMKAI.TTF]}]
@@ -38,6 +41,7 @@
 
 %% TODO notes format
 \usepackage[colorinlistoftodos,prependcaption,textsize=scriptsize]{todonotes}
+\renewcommand{\todo}[1]{}
 
 %%% Examples of Article customizations
 % These packages are optional, depending whether you want the features they provide.
@@ -164,7 +168,7 @@ future robot users
 \input{chapters/writing}
 \input{chapters/sample}
 
-%\bibliographystyle{agsm}
+\bibliographystyle{agsm}
 \bibliography{robotics}
 
 \printindex
