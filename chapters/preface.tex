@@ -1,16 +1,27 @@
 \chapter*{前言}
-本书利用本科水平的线性代数和概率论，从算法的视角为学生介绍自主机器人。机器人是一个机械电子工程与计算机科学交叉的新兴领域。随着计算机的发展，越来越多的人开始关注如何使机器人更智能，这也使机器人研究成为更具挑战性的学术前沿。虽然市场上有大量面向本科生、讲述机器人机械学和动力学的教材，但是提供算法视角的教材大多只适用于研究生教学。因而，我撰写本书来教授科罗拉多大学计算机系大三大四的学生机器人课，而不是为了写一本“人云亦云”、略有改进的教材。
+% This book provides an algorithmic perspective to autonomous robotics to students with a sophomore-level of linear algebra and probability theory. Robotics is an emerging field at the intersection of mechanical and electrical engineering with computer science. With computers becoming more powerful, making robots smart is getting more and more into the focus of attention and robotics research most challenging frontier. While there are a large number of textbooks on the mechanics and dynamics of robots that address sophomore-level undergraduates available, books that provide a broad algorithmic perspective are mostly limited to the graduate level. This book has therefore been developed not to create ``yet another textbook, but better than the others'', but to allow me to teach robotics to the 3rd and 4th year undergraduates at the Department of Computer Science at the University of Colorado.
+%
+本书利用本科水平的线性代数和概率论，从算法的角度为学生介绍自主机器人。机器人是一个机械电子工程与计算机科学交叉的新兴领域。随着计算机的发展，越来越多的人开始关注如何使机器人更智能，这也使机器人研究成为更具挑战性的学术前沿。虽然市场上有大量面向本科生、讲述机器人机械学和动力学的教材，但是提供算法视角的教材大多只适用于研究生教学。因而，我是为了教授科罗拉多大学计算机科学系大三大四学生的机器人课而撰写本书，而不是为了写一本“人云亦云”、略有改进的教材。
 
-虽然机器人学依傍在“人工智能”的大树下，但是标准AI技术并不能完全解决非确定性的问题，比如机器人与现实世界的交互。本书首先利用简单的三角函数推导出简易机械手臂和移动机器人的运动方程，然后介绍路径规划、传感和不确定性。正式引入误差传播后，本书将介绍机器人定位问题，随之而来的是马尔可夫定位、粒子滤波，最后是扩展卡尔曼滤波、同步定位和映射。
+% Although falling under the umbrella of ``Artificial Intelligence'', standard AI techniques are not sufficient to tackle problems that involve uncertainty, such as a robot's interaction in the real world. This book uses simple trigonometry to develop the kinematic equations of simple manipulators and mobile robots, then introduces path planning, sensing, and hence uncertainty. The robot localization problem is introduced by formally introducing error propagation, which leads to Markov localization, the Particle filter and finally the Extended Kalman Filter, and Simultaneous Localization and Mapping.
+虽然机器人学依傍在“人工智能”的大树下，但是标准AI技术并不能完全解决非确定性的问题，比如机器人与现实世界的交互。本书首先利用简单的三角函数推导出简易机械手臂和移动机器人的运动方程，然后介绍路径规划、感知和不确定性。在正式引入误差传播后，本书将介绍机器人定位问题。然后是马尔可夫定位、粒子滤波。最后是扩展卡尔曼滤波、同步定位和建图。
 
-本书不为讲述特定子问题的最先进方法，它的重点在于用简洁的、逐步的推导和反复使用的例子来捕捉问题的本质，虽然这样不一定会给出最好方案。例如，测距和线拟合分别被用来解释正向运动学和最小二乘，而后它们又作为激励的例子来解释误差传播和本地化上下文中的卡尔曼滤波器。
+% Instead of focusing on the state-of-the-art solutions to a particular sub-problem, emphasis of the book is on a concise step-by-step development and recurrent examples that capture the essence of a problem, but might not necessarily be the best solution. For example, odometry and line-fitting are used to explain forward kinematics and least-squares solutions, respectively, and later serve as motivating examples for error propagation and the Kalman filter in a localization context.
+本书不是为了讲述特定子问题的最先进方法，它的重点在于用简洁的、逐步的推导，及反复使用的例子来提取问题的本质，当然这样不一定会给出最好的解决方案。例如，用测距和直线拟合来分别解释正向运动学和最小二乘法，而后又用它们作为动机实例来解释误差传播和卡尔曼滤波器在定位问题中的应用。
 
-同时，本书并不是以特定机器人为例，而是讲当前机器人基本概念。然而，在附录中有一系列可能的基于项目的课程，从可以用大多数带有摄像头的微型差速驱动机器人实现的解迷宫竞赛，到利用Baxter机器人的操作实验。所有这些都可以进行模拟实验。
+% Also, the book is explicitely robot-agnostic, reflecting the timeliness of fundamental concepts. Instead, a series of possible project-based curricula are described in an Appendix and available online, ranging from a maze-solving competition that can be realized with most miniature differential-wheel robots that include a camera to manipulation experiments with the Baxter robot, all of which can be entirely conducted in simulation.
+同时，本书并不以特定机器人为例，而是反映当前机器人的基本概念。然而，在附录中有一系列开源的基于项目的课程，从可以用大多数带有摄像头的微型差速轮机器人实现的解迷宫竞赛，到利用Baxter机器人的操作实验。所有这些都可以进行模拟实验。
 
-本书根据创作共用许可证发布，任何人都可以拷贝、分享。但不可用作商业用途，也不可仿造这些工作。除了允许非商业用途的免费拷贝，此许可证非常接近标准教材的“版权”。我认为这种方式是最好的折衷，这样既有了大家希望做贡献的免费教材，同时也可以维护大家可以引用的固定课程。
+% This book is released under a Creative Commons license, which allows anyone to copy and share this book, although not for commercial purposes and not to create derivatives of these works. This license comes very close to the ``copyright'' of a standard textbook, except that you are free to copy it for non-commercial purposes. I have chosen this format as it seems to maintain the best trade-off between a freely available textbook resource that others hopefully contribute to and maintaining a consistent curriculum that others can refer to.
+本书根据创作共用许可证发布，任何人都可以拷贝、分享，但不可用作商业用途，也不可仿造本书。此许可证非常接近标准教材的“版权”，但可以进行非商业用途的免费拷贝。我选择这种方式是因为这是最好的折衷，既有了大家希望参与贡献的免费教材，同时也可以维护大家可以引用的连贯课程。
 
-如果没有我之前其他人的杰出工作，我不可能完成这本书。尤其是John Craig的《Introduction to Robotics: Mechanics and Control》和Roland Siegwart、Illah Nourbakhsh、David Scaramuzza的《Introduction to Autonomous Mobile Robots》，以及我从中学习借鉴例子和数学符号的不计其数的其他书籍和网站。
+% Writing this book would not have been possible without the excellent work of others before me, most notably ``Introduction to Robotics: Mechanics and Control'' by John Craig and ``Introduction to Autonomous Mobile Robots'' by Roland Siegwart, Illah Nourbakhsh and David Scaramuzza, and innumerable other books and websites from which I learned and borrowed examples and notation. Finally, I would like to acknowledge Github users AlWiVo, beardicus, mguida22, aokeson, as1ndu, apnorton, JohnAllen and jmodares for their pull requests. Your interest and motivation in this project has been one of my biggest rewards.
+如果没有之前其他人的杰出工作，我不可能完成这本书。尤其是John Craig的《Introduction to Robotics: Mechanics and Control》和Roland Siegwart、Illah Nourbakhsh和David Scaramuzza的《Introduction to Autonomous Mobile Robots》，以及我从中学习借鉴例子和数学符号的不计其数的其他书籍和网站。
 
+% \begin{flushright}
+% Nikolaus Correll\\
+% Boulder, Colorado, \today
+% \end{flushright}
 
 \begin{flushright}
 Nikolaus Correll\\
