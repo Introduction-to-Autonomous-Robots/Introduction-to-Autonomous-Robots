@@ -3,11 +3,11 @@
 \label{chap:pathplanning}
 % Path-planning is an important primitive for autonomous mobile robots that lets robots find the shortest---or otherwise optimal---path between two points. Optimal paths could be paths that minimize the amount of turning, the amount of braking or whatever a specific application requires. Algorithms to find a shortest path are important not only in robotics, but also in network routing, video games and understanding protein folding.
 
-路径规划是自主移动机器人的重要原语，让机器人找到两点之间最短或最佳的路径。最佳路径可以是最小化转向、制动或特定应用所需要的路径。寻找最短路径的算法不仅对机器人技术，而且对网络路由、视频游戏和理解蛋白质折叠都很重要。
+路径规划是自主移动机器人的重要元素，它使机器人找到两点之间最短或最佳的路径。最佳路径可以是最小化转向、制动或特定应用所需要的路径。寻找最短路径的算法不仅对机器人很重要，而且对网络路由、视频游戏和理解蛋白质折叠也很重要。
 
 % Path-planning requires a map of the environment and the robot to be aware of its location with respect to the map. We will assume for now that the robot is able to localize itself, is equipped with a map, and capable of avoiding temporary obstacles on its way. How to create a map, how to localize a robot, and how to deal with uncertain position information will be major foci of the reminder of this  book. The goals of this chapter are to
 
-路径规划需要环境和机器人的地图来了解其相对于地图的位置。我们现在假设机器人能够定位自己，配有地图，并能够避免临时障碍物。如何创建地图、如何定位机器人，以及如何处理不确定的位置信息将是本书剩下部分的主要焦点。本章的目标是
+路径规划需要知道环境的地图，以及机器人在地图中的位置。现在我们假设机器人能够定位自己、地图已知，并能够避免临时障碍物。如何创建地图、如何定位机器人，以及如何处理不确定的位置信息将是本书剩下部分的主要焦点。本章的目标是：
 
 \begin{itemize}
 % \item introduce suitable map representations,
@@ -25,52 +25,52 @@
 
 % In order to plan a path, we somehow need to represent the environment in the computer. We differentiate between two complementary approaches: discrete and continuous approximations. In a discrete approximation, a map is sub-divided into chunks of equal (e.g., a grid or hexagonal map) or differing sizes (e.g., rooms in a building). The latter maps are also known as \emph{topological maps}.\index{Topological map} Discrete maps lend themselves well to a graph representation. Here, every chunk of the map corresponds to a vertex (also known as ``node''), which are connected by edges, if a robot can navigate from one vertex to the other. For example a road-map is a topological map, with intersections as vertices and roads as edges, labeled with their length (Figure \ref{fig:pathproblem}). Computationally, a graph might be stored as an adjacency or incidence list/matrix. A continuous approximation requires the definition of inner (obstacles) and outer boundaries, typically in the form of a polygon, whereas paths can be encoded as sequences of points defined by real numbers. Despite the memory advantages of a continuous representation, discrete maps are the dominant representation in robotics.
 
-为了规划路径，我们需要在计算机中表示环境。我们区分两种互补的方法：离散近似和连续近似。在离散近似中，地图被细分成相同（例如，网格或六边形地图）或不同大小（例如，建筑物中的房间）的块。后者的地图也称为\emph{拓扑图（Topological map）}\index{拓扑图（Topological map）}。离散地图很适用于图表示。这里，如果机器人可以从一个顶点导航到另一个顶点，那么地图的每个块对应于通过边缘连接的顶点（也称为“顶点”）。例如，路线图是一个拓扑图，其中交叉点作为顶点而道路作为边缘，以其长度标注（如图\ref{fig:pathproblem}）。在计算上，图可以存储为邻接或入口列表或矩阵。连续近似需要内部（障碍物）和外部边界的定义，通常以多边形的形式，而路径可以被编码为由实数定义的点的序列。尽管连续表示的内存优势，但是离散地图是机器人技术中的主要代表。
+为了规划路径，我们需要在计算机中表示环境。有两种互补的方法：离散近似和连续近似。在离散近似中，地图被细分成大小相同的块（例如，网格或六边形地图）或大小不同的块（例如，建筑物中的房间）。后者的地图也称为\emph{拓扑图（Topological Map）}\index{拓扑图（Topological Map）}。离散地图很适用于表示图。这里，如果机器人可以从一个顶点导航到另一个顶点，那么地图的每个块对应于通过边缘连接的顶点（也称为“节点”）。例如，路线图是一个拓扑图，其中交叉点作为顶点，而道路作为边缘，以其长度标注（如图\ref{fig:pathproblem}）。在计算上，图可以存储为邻接\todo{incidence list}列表或矩阵。连续近似通常以多边形的形式定义内部（障碍物）和外部边界，而路径可以被编码为由实数定义的点的序列。尽管连续表示具有内存少的优势，但是机器人中主要使用离散地图。
 
 % For mapping obstacles, the most common map is the \emph{occupancy grid} map\index{Occupancy grid}. In a grid map, the environment is discretized into squares of arbitrary resolution, e.g. 1cm x 1cm, on which obstacles are marked. In a probabilistic occupancy grid, grid cells can also be marked with the probability that they contain an obstacle. This is particularly important when the position of the robot that senses an obstacle is uncertain. Disadvantages of grid maps are their large memory requirements as well as computational time to traverse data structures with large numbers of vertices. A solution to this is storing the grid map as \emph{k-d tree}.\index{k-d tree (data structure)} A k-d tree recursively breaks the environment into $k$ pieces. For $k=4$, an area is broken into four pieces. Each of these pieces is again broken into four pieces and so on, until the desired resolution is reached. These pieces can easily be stored in a graph with each vertex having four children, which are the four pieces the vertex is broken into, or is a leaf of the tree. What makes this data structure attractive is that not all vertices need to be broken down to the smallest possible resolution. Instead only areas, which contain obstacles need to be further broken down. A grid map containing obstacles and the corresponding k-d tree, here a quadtree, are shown in Figure \ref{fig:gridvskdtree}. There is no silver bullet, and each application might require a different solution that could be a combination of different map types.
 
-为了给障碍物建图，最常见的地图是\emph{占用网格（Occupancy grid）}地图\index{占用网格（Occupancy grid）}。在网格图中，将环境离散成任意分辨率的方块，如，1cm$\times$1cm，其上标有障碍物。在概率占用网格中，网格单元也可以以它们含有障碍物的概率来标记。当感知障碍物的机器人的位置不确定时，这是特别重要的。网格图的缺点是它们的内存需求大以及遍历有大量顶点的数据结构的计算时间。一种解决方案是将网格图存储为\emph{k-d树}\index{k-d树（数据结构）}。一个k-d树将环境递归地分解成$k$块。对于$k = 4$，一个区域分为四个块。每一块再次分成四块等等，直到达到所需的分辨率。可以容易地把这些块存储在每个顶点有四个子顶点的图中，这四个顶点是顶点被分解的四块，也可以是树的叶顶点。使该数据结构具有吸引力的是，不是所有的顶点都需要分解成最小的分辨率。相反，只有包含障碍的块需要进一步被细分。包含障碍物的网格图和相应的k-d树（这里是四叉树）如图\ref{fig:gridvskdtree}所示。每个应用程序可能需要一个不同的解决方案，可以是不同的地图类型的组合。
+为了给障碍物建图，最常见的地图是\emph{占用网格（Occupancy grid）}地图\index{占用网格（Occupancy grid）}。网格图将环境离散成任意分辨率的方块（如，1cm$\times$1cm），上面标有障碍物。在概率占用网格中，网格单元以障碍物存在的概率来标记。当感知障碍物的机器人的位置不确定时，这是特别重要的。网格图的缺点是它们的内存需求大、计算时间长，因为需要遍历有大量顶点的数据结构。一种解决方案是将网格图存储为\emph{k-d树}\index{k-d树（数据结构）}。一个k-d树将环境递归地分解成$k$块。对于$k = 4$，一个区域分为四个块。每一块再次分成四块，等等，直到达到所需的分辨率。可以很容易地把这些块存储在四叉树中，树中每个顶点带有四个子顶点，每个子顶点可以继续分解为四块，也可以作为树的叶顶点（不继续分解）。该数据结构具有吸引力，因为不需要把所有的顶点都分解成最小。相反，只有含有障碍物的块需要进一步细分。包含障碍物的网格图和相应的k-d树（这里是四叉树）如图\ref{fig:gridvskdtree}所示。不同应用需要的解决方案可能不同，也可以是不同类型地图的组合。
 
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figs/gridvskdtree.png}
 % \caption{A grid map and its corresponding quadtree (k-d tree).\label{fig:gridvskdtree}}
-\caption{网格图及其对应的四叉树（k-d树)。}
+\caption{网格图及其对应的k-d树（四叉树）。}
 \label{fig:gridvskdtree}
 \end{figure}
 
 
-% There exist also every possible combination of discrete and continuous representation. For example, roadmaps for GPS systems are stored as topological maps that store the GPS coordinates of every vertex, but might also contain overlays of aerial and street photography or even 3D point clouds stored in a 8-d tree, also known as a \emph{Octree}\index{Octree}. These different maps are then used at different stages of the path planning stage. 
+% There exist also every possible combination of discrete and continuous representation. For example, roadmaps for GPS systems are stored as topological maps that store the GPS coordinates of every vertex, but might also contain overlays of aerial and street photography or even 3D point clouds stored in a 8-d tree, also known as a \emph{Octree}\index{Octree}. These different maps are then used at different stages of the path planning stage.
 
-还存在离散和连续表示的每一种可能的组合。例如，GPS系统的路线图可以存储为存储每个顶点的GPS坐标的拓扑图，但也可能包含存储在8-d树中的空中和街道摄影甚至三维点云的叠加层，也称为\emph{八叉树} \index{八叉树}。然后将这些不同的地图用于路径规划的不同阶段。
+离散表示和连续表示有很多种可能的组合。例如，GPS系统的路线图可以是存储每个顶点GPS坐标的拓扑图，也可能是包含存储在8-d树中的空中和街道摄影甚至三维点云的叠加层，也称为\emph{八叉树} \index{八叉树}。然后将这些地图用于路径规划的不同阶段。
 
 
 % \section{Path-Planning Algorithms}
-% The problem to find a ``shortest'' path from one vertex to another through a connected graph is of interest in multiple domains, most prominently in the internet, where it is used to find an optimal route for a data packet. The term ``shortest'' refers here to the minimum cumulative edge cost, which could be physical distance (in a robotic application), delay (in a networking application) or any other metric that is important for a specific application. An example graph with arbitrary edge-lengths is shown in Figure \ref{fig:pathproblem}. 
+% The problem to find a ``shortest'' path from one vertex to another through a connected graph is of interest in multiple domains, most prominently in the internet, where it is used to find an optimal route for a data packet. The term ``shortest'' refers here to the minimum cumulative edge cost, which could be physical distance (in a robotic application), delay (in a networking application) or any other metric that is important for a specific application. An example graph with arbitrary edge-lengths is shown in Figure \ref{fig:pathproblem}.
 
 \section{路径规划算法}
-通过连接图找到从一个顶点到另一个顶点“最短”路径的问题在多个领域出现，最显著的是在互联网中，用于为数据包找到最佳路由。术语“最短”这里指的是最小累积边缘成本，这可能是物理距离（在机器人应用中）、延迟（在联网应用中）或对于特定应用很重要的任何其他度量。具有任意边长的示例图如图\ref{fig:pathproblem}所示。
+通过连接图找到从一个顶点到另一个顶点“最短”路径的问题在多个领域出现，最常见的是在互联网中用于为数据包找到最佳路由。这里，“最短”指的是最小累积边缘成本，这可能是物理距离最短（在机器人应用中）、延迟最少（在网络应用中）或对于特定应用很重要的其他度量。具有任意边长的示例如图\ref{fig:pathproblem}所示。
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=0.6\textwidth]{figs/dijkstra}
-% \caption{A generic path planning problem from vertex I to vertex VI. The shortest path is I-II-III-V-VI with length 13. 
-\caption{从顶点I到顶点VI的一般路径规划问题。最短路径为I-II-III-V-VI，长度为13。} 
+% \caption{A generic path planning problem from vertex I to vertex VI. The shortest path is I-II-III-V-VI with length 13.
+\caption{从顶点I到顶点VI的一般路径规划问题。最短路径为I-II-III-V-VI，长度为13。}
 \label{fig:pathproblem}
 \end{figure}
 
 % \subsection{Robot embodiment}
-\subsection{机器人实例}
-% In order to deal with the physical embodiment of the robot, which complicates the path-planning process, the robot is reduced to a point-mass and all the obstacles in the environment are grown by half of the longest extension of the robot from its center. This representation is known as configuration space \index{Configuration space}as it reduces the representation of the robot to its $x$ and $y$ coordinates in the plane. An example is shown in Figure \ref{fig:cspace}. The configuration space can now either be used as a basis for a grid map or a continuous representation. 
+\subsection{机器人示例}
+% In order to deal with the physical embodiment of the robot, which complicates the path-planning process, the robot is reduced to a point-mass and all the obstacles in the environment are grown by half of the longest extension of the robot from its center. This representation is known as configuration space \index{Configuration space}as it reduces the representation of the robot to its $x$ and $y$ coordinates in the plane. An example is shown in Figure \ref{fig:cspace}. The configuration space can now either be used as a basis for a grid map or a continuous representation.
 
-机器人的物理实施使得路径规划过程复杂化，为了处理这种情况，机器人被简化为一个质点，并且环境中的所有障碍物都以机器人从其中心增加最长体长的一半\todo{to be improved}。 这种表示形式被称为配置空间\index{配置空间（Configuration space）}，因为它将机器人的表示简化为平面上的$x$和$y$坐标。一个例子如图\ref{fig:cspace}所示。配置空间现在可以被用作网格图或连续表示的基础。
+机器人的物理实现使得路径规划过程复杂化，为了处理这种情况，机器人被简化为一个质点，然后环境中的所有障碍物轮廓增加机器人最长体长的一半。这种表示形式被称为\emph{配置空间（Configuration space）}\index{配置空间（Configuration space）}，因为它将机器人的表示简化为平面上的$x$和$y$坐标。一个例子如图\ref{fig:cspace}所示。配置空间现在可以被用作网格图或连续表示的基础。
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=0.9\textwidth]{figs/configurationspace}
 % \caption{A map with obstacles and its representation in configuration space, which can be obtained by growing each obstacle by the robot's extension. \label{fig:cspace}}
-\caption{具有障碍物的地图，及其在配置空间中的表示，可以通过机器人的扩展增加每个障碍物来获得。 \label{fig:cspace}}
+\caption{具有障碍物的地图，及其在配置空间中的表示。可以通过扩大每个障碍物的轮廓来得到。 \label{fig:cspace}}
 \end{figure}
 
 
@@ -78,59 +78,62 @@
 \subsection{Dijkstra算法}\index{Dijkstra最短路径算法（Dijkstra's Shortest Path Algorithm）}
 % One of the earliest and simplest algorithms is Dijkstra's algorithm \cite{dijkstra1959note}. Starting from the initial vertex where the path should start, the algorithm marks all direct neighbors of the initial vertex with the cost to get there. It then proceeds from the vertex with the lowest cost to all of its adjacent vertices and marks them with the cost to get to them via itself if this cost is lower. Once all neighbors of a vertex have been checked, the algorithm proceeds to the vertex with the next lowest cost. Once the algorithm reaches the goal vertex, it terminates and the robot can follow the edges pointing towards the lowest edge cost.
 
-Dijkstra算法是最早和最简单的算法之一\cite{dijkstra1959note}。从路径的初始顶点开始，该算法把所有直接相邻顶点标记为从初始顶点到达每个相邻顶点的所需成本。然后，从成本最低的顶点到其所有相邻的顶点，如果其成本更低，则以该成本来标记。一旦该顶点的所有相邻顶点都已经被检测，则算法以下一个成本最低的顶点继续。一旦到达目标顶点，算法即终止，然后机器人可以沿着指向最低成本顶点的边前进。
+Dijkstra算法是最早和最简单的算法之一\cite{dijkstra1959note}。该算法从路径的起始顶点开始，把所有相邻顶点标记为从起始顶点到达的所需成本。然后，选取成本最低的顶点标记其所有相邻的顶点，并选择最低成本来标记。如果该顶点的所有相邻顶点都已经被标记，那么算法重新选择成本最低的顶点继续。一旦标记到目标顶点，算法即终止。然后机器人可以沿着指向最低成本顶点的边前进。
 
 % In Figure \ref{fig:pathproblem}, Dijkstra would first mark nodes II, III and IV with cost 3, 5 and 7 respectively. It would then continue to explore all edges of node II, which so far has the lowest cost. This would lead to the discovery that node III can actually be reached in $3+1<5$ steps, and node III would be relabeled with cost 4. In order to completely evaluate node II, Dijkstra needs to evaluate the remaining edge before moving on and label node VI with $3+12=15$.
 
-在图\ref{fig:pathproblem}中，Dijkstra算法首先标记顶点II、III和IV，成本为3、5和7。然后，它将继续探索顶点II的所有边，因为该顶点目前成本最低。然后会发现顶点III实际上可以以$3 + 1 <5$步长达到，顶点III将重新标注成本为4。为了完全评估顶点II，继续探索其他顶点之前Dijkstra算法需要评估剩余边并标记顶点VI为$3 + 12 = 15$。
+在图\ref{fig:pathproblem}中，Dijkstra算法首先标记顶点II、III和IV，成本为3、5和7。然后，它将继续探索顶点II的所有相邻顶点，因为该顶点目前成本最低。然后会发现顶点III实际上可以以$3 + 1 <5$步长达到，顶点III将成本更新为4。Dijkstra算法需要评估剩余边并标记顶点VI为$3 + 12 = 15$，然后才能继续探索其他顶点。
 
 % The node with the lowest cost is now node III (4). We can now relabel node VI with 14, which is smaller than 15, and label node V with $4+5=9$, whereas node IV remains at $4+3=7$. Although we have already found two paths to the goal, one of which better than the other, we cannot stop as there still exist nodes with unexplored edges and overall cost lower than 14. Indeed, continuing to explore from node V leads to a shortest path I-II-III-V-VI of cost 13, with no remaining nodes to explore.
 
-成本最低的顶点现在是顶点III（4）。我们现在可以重新标记顶点VI为14（14小于15），标记顶点V为$4+5=9$，而顶点IV保持为$4+3=7$。虽然我们已经找到了目标的两条路径（其中一条比另一条更好），但是我们不能停止，因为仍然存在未探索边的顶点，其总成本低于14。实际上，从顶点V继续探索会发现成本为13的最短路径I-II-III-V-VI，并且没有需要探索的顶点。
+成本最低的顶点现在是顶点III（4）。我们现在可以重新标记顶点VI为14（14小于15），标记顶点V为$4+5=9$，而顶点IV保持为$4+3=7$。虽然我们已经找到了目标的两条路径（其中一条比另一条更好），但是我们不能停止，因为仍然存在未完全探索的顶点，其总成本低于14。实际上，从顶点V继续探索会发现成本为13的最短路径I-II-III-V-VI，并且没有再需要探索的顶点。
 
 % As Dijkstra would not stop until there is no node with lower cost than the current cost to the goal, we can be sure that a shortest path will be found if it exists. We can say that the algorithm is \emph{complete}.\index{Complete (algorithm)}
 
-由于Dijkstra算法不会停止，直到没有成本低于目标的当前成本的顶点，我们可以确定如果存在最短路径，该最短路径将被找到。我们可以说该算法是\emph{完备的（Complete）}。\index{完备的（算法）}
+直到没有成本低于目标当前成本的顶点，Dijkstra算法才会停止，我们可以确定如果存在最短路径，该最短路径将被找到。我们可以说该算法是\emph{完备的（Complete）}\index{完备的Complete）【算法】}。
 
-% As Dijkstra will always explore nodes with the least overall cost first, the environment is explored comparably to a wave front originating from the start vertex, eventually arriving at the goal. This is of course highly inefficient in particular if Dijkstra is exploring nodes away from the goal. This can be visualized by adding a couple of nodes to the left of node I in Figure \ref{fig:pathproblem}. Dijkstra will explore all of these nodes until their cost exceeds the lowest found for the goal. This can also be seen when observing Dijkstra's algorithm on a grid, as shown in Figure \ref{fig:dijkstragrid}. 
+% As Dijkstra will always explore nodes with the least overall cost first, the environment is explored comparably to a wave front originating from the start vertex, eventually arriving at the goal. This is of course highly inefficient in particular if Dijkstra is exploring nodes away from the goal. This can be visualized by adding a couple of nodes to the left of node I in Figure \ref{fig:pathproblem}. Dijkstra will explore all of these nodes until their cost exceeds the lowest found for the goal. This can also be seen when observing Dijkstra's algorithm on a grid, as shown in Figure \ref{fig:dijkstragrid}.
 
-由于Dijkstra算法始终最先探索总体成本最小的顶点，因此对环境的探索就像从起始顶点开始的波峰，最终达到目标。这当然是非常低效的，特别是如果Dijkstra算法探索远离目标的顶点。这可以通过在图\ref{fig:pathproblem}中的顶点I的左侧添加几个顶点来观察。Dijkstra算法将探索所有顶点，直到其成本超过目标的最低值。在网格上观察Dijkstra算法时也可以发现，如图\ref{fig:dijkstragrid}所示。
+由于Dijkstra算法始终最先探索总体成本最小的顶点，因此对环境的探索就像从起始顶点开始的波峰，最终达到目标。当然这是非常低效的，特别是如果Dijkstra算法探索远离目标的顶点。这可以通过在图\ref{fig:pathproblem}中的顶点I的左侧添加几个顶点来观察。Dijkstra算法将探索所有顶点，直到其成本超过目标的最小值。在网格上观察Dijkstra算法时也可以发现，如图\ref{fig:dijkstragrid}所示。
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.9\textwidth]{figs/dijkstragrid}
 % \caption{Dijkstra's algorithm finding a shortest path from `S' to 'G' assuming the robot can only travel laterally (not diagonally) with cost one per grid cell. Note the few number of cells that remain unexplored once the shortest path (grey) is found, as Dijkstra would always consider a cell with the lowest path cost first.\label{fig:dijkstragrid}}
-\caption{Dijkstra算法寻找从“S”到“G”的最短路径，假设机器人只能沿着成本为1的网格单元（不是对角线）行进。请注意，找到最短路径（灰色）时几乎所有单元都被探索，因为Dijkstra总是最先考虑成本最低的单元格。\label{fig:dijkstragrid}}
+\caption{Dijkstra算法寻找从“S”到“G”的最短路径，假设机器人只能沿着成本为1的网格单元行进（不是对角线）。请注意，由于Dijkstra总是最先考虑成本最低的单元格，找到最短路径（灰色）时几乎所有单元都被探索。}
+\label{fig:dijkstragrid}
 \end{figure}
 
 % \subsection{A*}\label{sec:astar}\index{A* Shortest Path Algorithm}
-\subsection{A*}\label{sec:astar}\index{A*最短路径算法（A* Shortest Path Algorithm）}
-% Instead of exploring in all directions, knowledge of an approximate direction of the goal could help avoiding exploring nodes that are obviously wrong to a human observer. Such special knowledge that such an observer has can be encoded using a \emph{heuristic function}\index{Heuristic function}, a fancier word for a ``rule of thumb''. For example, we could give priority to nodes that have a lower estimated distance to the goal than others. For this, we would mark every node not only with the actual distance that it took us to get there (as in Dijkstra's algorithm), but also with the estimated cost ``as the crows flies'', for example by calculating the Euclidean distance or the \emph{Manhattan distance}\index{Manhattan distance} between the vertex we are looking at and the goal vertex. This algorithm is known as A* \cite{hart1968formal}. Depending on the environment, A* might accomplish search much faster than Dijkstra's algorithm, and performs the same in the worst case. This is illustrated in Figure \ref{fig:astargrid} using the Manhattan distance metric, which does not allow for diagonal movements. 
+\subsection{A*算法}\index{A*最短路径算法（A* Shortest Path Algorithm）}
+\label{sec:astar}
+% Instead of exploring in all directions, knowledge of an approximate direction of the goal could help avoiding exploring nodes that are obviously wrong to a human observer. Such special knowledge that such an observer has can be encoded using a \emph{heuristic function}\index{Heuristic function}, a fancier word for a ``rule of thumb''. For example, we could give priority to nodes that have a lower estimated distance to the goal than others. For this, we would mark every node not only with the actual distance that it took us to get there (as in Dijkstra's algorithm), but also with the estimated cost ``as the crows flies'', for example by calculating the Euclidean distance or the \emph{Manhattan distance}\index{Manhattan distance} between the vertex we are looking at and the goal vertex. This algorithm is known as A* \cite{hart1968formal}. Depending on the environment, A* might accomplish search much faster than Dijkstra's algorithm, and performs the same in the worst case. This is illustrated in Figure \ref{fig:astargrid} using the Manhattan distance metric, which does not allow for diagonal movements.
 
-知道探索目标的大致方向可以帮助避免探索对人类观察者明显错误的顶点，从而不用探索所有方向。观察者的这种特殊知识可以使用“启发式函数（Heuristic function）”\index{启发式函数（Heuristic function）}来编码，这是“经验法则”的一个更别致的词。例如，我们可以优先考虑与其他顶点相比离目标估计距离较低的顶点。为此，对每个顶点我们不仅标记到达该点的实际距离（如在Dijkstra的算法中），而且还标记“乌鸦飞行”的估计成本，例如计算欧氏距离或者该顶点和目标顶点之间的\emph{曼哈顿距离（Manhattan distance）}\index{曼哈顿距离（Manhattan distance）}。该算法被称为A* \cite{hart1968formal}。根据环境不同，A*可能比Dijkstra算法更快地完成搜索，并且在最坏的情况下执行相同的操作。这在图\ref{fig:astargrid}中示例，使用曼哈顿距离度量，且不允许对角线运动。
+知道探索目标的大致方向可以避免探索对人类观察者明显错误的顶点，从而不用探索所有方向。这种特殊知识可以使用\emph{启发式函数（Heuristic function）}\index{启发式函数（Heuristic function）}来编码，这是“经验法则”的一个更别致的叫法。例如，我们可以优先考虑与其他顶点相比离目标估计距离较低的顶点。为此，我们不仅标记每个顶点实际距离／成本（如在Dijkstra的算法中），而且还标记估计成本，例如计算欧氏距离或者该顶点和目标顶点之间的\emph{曼哈顿距离（Manhattan distance）}\index{曼哈顿距离（Manhattan distance）}。该算法被称为A*算法 \cite{hart1968formal}。根据环境不同，A*可能比Dijkstra算法更快地完成搜索，并且在最坏的情况下执行一样多的操作。这在图\ref{fig:astargrid}中示例，使用曼哈顿距离度量，且不允许对角线运动。
 
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.9\textwidth]{figs/astargrid}
 % \caption{Finding a shortest path from `S' to 'G' assuming the robot can only travel laterally (not diagonally) with cost one per grid cell using the A* algorithm. Much like Dijkstra, A* evaluates only the cell with the lowest cost, but takes an estimate of the remaining distance into account.\label{fig:astargrid}}
-\caption{假设机器人只能使用A*算法沿着成本为1的网格单元（不对角线）来寻找从“S”到“G”的最短路径。很像Dijkstra，A*只评估成本最低的单元格，但还考虑剩余距离的估计。\label{fig:astargrid}}
+\caption{假设机器人只能使用A*算法沿着成本为1的网格单元（不能走对角线）来寻找从“S”到“G”的最短路径。像Dijkstra算法一样，A*算法只探索成本最低的单元格，但A*算法还考虑剩余距离的估计。}
+\label{fig:astargrid}
 \end{figure}
 
 % An extension of A* that addresses the problem of expensive re-planning when obstacles appear in the path of the robot, is known as D* \cite{stentz1994optimal}. Unlike A*, D* starts from the goal vertex and has the ability to change the costs of parts of the path that include an obstacle. This allows D* to re-plan around an obstacle while maintaining most of the already calculated path.\index{D*}
 
-A*的扩展解决了当障碍物出现在机器人路径中时昂贵的重新规划问题，被称为D*\cite{stentz1994optimal}。与A*不同，D*从目标顶点开始，有改变含有障碍物的路径成本的能力。这样可以让D*在保持大部分已经计算的路径的同时重新规划绕开障碍物。\index{D*算法}
+A*算法的扩展解决了当障碍物出现在机器人路径中时耗时的重新规划问题，被称为D*算法\cite{stentz1994optimal}。与A*算法不同，D*算法从目标顶点开始，有改变含有障碍物的路径成本的能力。这样可以让D*算法在保持大部分已经计算的路径的同时重新规划绕开障碍物。\index{D*算法}
 
 % A* and D* become computationally expensive when either the search space is large, e.g., due to a fine-grain resolution required for the task, or the dimensions of the search problem are high, e.g. when planning for an arm with multiple degrees of freedom. Solutions to these problems are provided by sampling-based path planning algorithms that are described further below.
 
-当搜索空间大（例如由于任务所需的细粒度分辨率）或者搜索问题的维度高（例如规划具有多个自由度的手臂）时，A*和D*在计算上变得昂贵。这些问题的解决方案是基于采样的路径规划算法，下面会进一步描述。
+当搜索空间大（例如，由于任务所需的细粒度分辨率）或者搜索问题的维度高（例如，规划具有多个自由度的手臂）时，A*算法和D*算法在计算上变得耗时。这类问题的解决方案是基于采样的路径规划算法，下面会进一步描述。
 
 % \section{Sampling-based Path Planning}
 \section{基于采样的路径规划}
 
 % The previous sections have introduced a series of complete algorithms for the path planning problem, i.e. they will find a solution eventually if it exists. Complete solutions are often unfeasible, however, when the possible state space is large. This is the case for robots with multiple degrees of freedom such as arms. In practice, most algorithms are only \emph{resolution complete}\index{Resolution complete}, i.e., only complete if the resolution is fine-grained enough, as the state-space needs to be somewhat discretized for them to operate (e.g., into a grid) and some solutions might be missed as a function of the resolution of the discretization.
 
-前面几节介绍了一系列用于路径规划问题的完备算法，即如果存在解决方案，它们将最终找到。然而，当可能的状态空间很大时，完备的解决方案通常是不可行的。对于具有多重自由度的机器人（例如操作臂）就是这种情况。在实践中，大多数算法只是\emph{分辨率完备的（Resolution complete）}\todo{?}\index{分辨率完备的（Resolution complete）}，即只有在分辨率足够细的情况下才能完成，因为状态空间需要稍微离散化才能运行（例如，离散化成网格），并且一些解决方案由于离散化分辨率的原因可能被错过。
+前面几节介绍了一系列用于路径规划问题的完备算法，即如果存在解决方案，它们将最终被找到。然而，当可能的状态空间很大时，完备的解决方案通常是不可行的。对于具有多重自由度的机器人（例如操作臂）就是这种情况。在实践中，大多数算法只是\emph{分辨率完备的（Resolution complete）}\todo{?}\index{分辨率完备的（Resolution complete）}，即只有在分辨率足够细的情况下才能完成，因为状态空间需要稍微离散化才能运行（例如，离散化成网格），并且一些解决方案由于离散化分辨率的原因可能被错过。
 
 % Instead of evaluating all possible solutions or using a non-complete Jacobian-based inverse kinematic solution, sampling-based planners create possible paths by randomly adding points to a tree until some solution is found or time expires. As the probability to find a path approaches one when time goes to infinity, sampling-based path planners are \emph{probabilistic complete}\index{Probabilistic complete}. Prominent examples of sampling-based planners are \emph{Rapidly-exploring Random Trees} (RRT)\index{Rapidly-exploring Random Tree}\index{RRT}\cite{lavalle1998rapidly} and \emph{Probabilistic Roadmaps}\index{Probabilistic Roadmaps}\index{PRM}(PRM) \cite{kavraki1996probabilistic}. An example execution of RRT for an unknown goal, thereby reducing the path-planning problem to a search problem is shown in Figure \ref{fig:rrt}.
 
@@ -218,14 +221,14 @@ return Tree
 由于碰撞检测在路径规划问题中占用执行时间的$90\%$，提高计算速度的一种成功的方法是“懒惰避障（Lazy collision avoidance）”\index{懒惰避障（Lazy collision avoidance）}。该算法首先找到一个合适的路径，而不是检测每个点可能的碰撞。然后检测此路径的每一段。如果某些段有碰撞，则删除，并且算法继续进行，但是保持成功路径的所有段是无碰撞的。
 
 % \section{Path Smoothing}
-% As paths are randomly sampled, they will be most likely shakey and not optimal. For exampe, a grid-map will generate a series of sharp turns and a sampling-based approach will return zig-zag random paths. Results can be drastically improved by running an additional algorithm that smoothes the path. One way of doing this is to connect points of the path using splines, curves or even trajectory snippets that are known to be feasible for a specific platform. Alternatively, one can also use a model of the actual platform and use a feedback controller such as described in Section \ref{sec:fbmobile} for mobile robots and Section \ref{sec:invjac} for arms, sample a series of points in front of the robot, and generate a trajectory that the robot can actually drive. When combined with dynamics, this approach is known as \emph{model-predictive control}\index{Model-predictive control}. Care needs to be taken, however, that the resulting paths are indeed collision free. 
+% As paths are randomly sampled, they will be most likely shakey and not optimal. For exampe, a grid-map will generate a series of sharp turns and a sampling-based approach will return zig-zag random paths. Results can be drastically improved by running an additional algorithm that smoothes the path. One way of doing this is to connect points of the path using splines, curves or even trajectory snippets that are known to be feasible for a specific platform. Alternatively, one can also use a model of the actual platform and use a feedback controller such as described in Section \ref{sec:fbmobile} for mobile robots and Section \ref{sec:invjac} for arms, sample a series of points in front of the robot, and generate a trajectory that the robot can actually drive. When combined with dynamics, this approach is known as \emph{model-predictive control}\index{Model-predictive control}. Care needs to be taken, however, that the resulting paths are indeed collision free.
 
 \section{路径平滑}
 随着随机采样路径，它们很可能是曲折的\todo{shakey}而不是最佳的。例如，网格图将产生一系列急转弯，基于采样的方法会产生曲折的随机路径。运行一个平滑路径的算法可以大大改进结果。其中一种方法是使用已知对特定平台可行的样条线、曲线或轨迹片段来连接路径的点。或者也可以使用实际平台的模型，并使用反馈控制器。如第\ref{sec:fbmobile}节的移动机器人和第\ref{sec:invjac}节的操作臂，在机器人的面前采样一系列的点并产生机器人可以实际驱动的轨迹。当与动力学结合时，这种方法被称为\emph{模型预测控制（Model-predictive control，MPC）}\index{模型预测控制（Model-predictive control，MPC）}。然而，需要注意的是所产生的路径确实是无碰撞的。
 
 
 % \section{Planning at different length-scales}
-% In practice, no one map representation and planning algorithm might be sufficient. To plan a route for a car, for example, might involve a coarse search over the street network such as performed by your car's navigation system, but not involve planning which lane to actually choose. Planning lanes and how to navigate round-abouts and intersections will then involve another layer of discrete planning. How to actually move the robot within a lane and avoid local obstacles, might then be best done with a sampling-based planning algorithm. Finally, trajectories need to be turned into wheel speeds and turn angles, possibly using some form of feedback control. This hierarchy is depicted in Figure \ref{fig:planninglayers}. Here, downward-pointing arrows indicate input that one planning layer provides to the one below. Upward-pointing arrows instead indicate exceptions that cannot be handled by the lower levels. For example, a feedback controller cannot handle obstacles well, requiring the sampling-based planning layer to come up with a new trajectory. Should the entire road be blocked, this planner would need to hand-off control the lane-based planner. A similar case can be made for manipulating robots, which also need to combine multiple different representations and controllers to plan and execute trajectories efficiently. 
+% In practice, no one map representation and planning algorithm might be sufficient. To plan a route for a car, for example, might involve a coarse search over the street network such as performed by your car's navigation system, but not involve planning which lane to actually choose. Planning lanes and how to navigate round-abouts and intersections will then involve another layer of discrete planning. How to actually move the robot within a lane and avoid local obstacles, might then be best done with a sampling-based planning algorithm. Finally, trajectories need to be turned into wheel speeds and turn angles, possibly using some form of feedback control. This hierarchy is depicted in Figure \ref{fig:planninglayers}. Here, downward-pointing arrows indicate input that one planning layer provides to the one below. Upward-pointing arrows instead indicate exceptions that cannot be handled by the lower levels. For example, a feedback controller cannot handle obstacles well, requiring the sampling-based planning layer to come up with a new trajectory. Should the entire road be blocked, this planner would need to hand-off control the lane-based planner. A similar case can be made for manipulating robots, which also need to combine multiple different representations and controllers to plan and execute trajectories efficiently.
 
 \section{在规模不同的尺度上规划}
 实际上，没有一个地图表示和规划算法可能足够的。例如，为了汽车规划路线，可能会在街道网络上进行粗略搜索，例如你的汽车的导航系统，但不涉及规划实际选择的车道。然后，规划车道以及如何导航轮辋和交叉路口涉及另一层离散规划。如何将机器人实际移动到车道内并避免局部障碍物，使用基于采样的规划算法来完成可能是最好的。最后，需要可能采用某种形式的反馈控制将轨迹转化为轮速和转角。这个层次结构如图\ref{fig:planninglayers}所示。这里，向下的箭头\todo{typo in english version}表示一个规划层向下层提供的输入。向上的箭头表示不能被较低级别处理的异常。例如，反馈控制器不能很好地处理障碍物，需要基于采样的规划层提供新的轨迹。如果整个道路被阻挡，这个规划器需要切换到控制基于车道的规划器。类似的情况适用于操作机器人，也需要组合多个不同的表示和控制器以有效地规划和执行轨迹。
@@ -238,7 +241,7 @@ return Tree
 \label{fig:planninglayers}}
 \end{figure}
 
-% Note that this representation does not include a reasoning level that encodes traffic rules and common sense. While some of these might be encoded using cost-functions, such as maximizing distance from obstacles or insuring smooth riding, other more complex behaviors such as adapting driving in the presence of cyclists or properties of the ground need to be implemented in an additional vertical layer that has access to all planning layers. 
+% Note that this representation does not include a reasoning level that encodes traffic rules and common sense. While some of these might be encoded using cost-functions, such as maximizing distance from obstacles or insuring smooth riding, other more complex behaviors such as adapting driving in the presence of cyclists or properties of the ground need to be implemented in an additional vertical layer that has access to all planning layers.
 
 请注意，这种表示不包括考虑交通规则和常识的推理。虽然其中一些可能使用成本函数进行编码（例如最大化与障碍物的距离或确保平稳骑行），但是还需要在附加垂直层中实施其他更复杂的行为（例如存在骑自行车者或不同地面性质的情况下自适应驾驶），此垂直层可以访问每个规划层。
 
@@ -255,7 +258,7 @@ return Tree
 
 % \section{Summary and Outlook}
 % Path planning is an ongoing research problem. Finding collision free paths for mechanisms with high degrees of freedom such as multiple arms operating in a common space, multi-robot systems, or systems involving dynamics (and therefore adding the derivatives of the state variables to the planning problem) might take unacceptably long to solve.
- 
+
 \section{总结和展望}
 路径规划是一个持续的研究课题。寻找具有高度自由度的机制的无碰撞路径可能需要不可接受的长时间解决，例如多个操作臂在同一空间中操作、多机器人系统或涉及动力学的系统（并因此将状态变量的导数添加到规划问题中）。
 
@@ -287,7 +290,7 @@ return Tree
 \begin{enumerate}
 % \item How does the computational complexity of Dijkstra's algorithm change when moving from 2D to 3D search spaces?
 % \item A* uses a ``heuristic'' to bias the search in the expected direction of the goal. Why can it only use a heuristic, not the actual length?
-% \item Assuming points are sampled uniformly at random in a randomized planning algorithm. Calculate the limiting behaviour of the following ratio (number of points in tree)/(number of points sampled) as the number of points sampled goes to infinity. Assume the total area $A_{total}$ and the area of free space $A_{free}$ within are known. 
+% \item Assuming points are sampled uniformly at random in a randomized planning algorithm. Calculate the limiting behaviour of the following ratio (number of points in tree)/(number of points sampled) as the number of points sampled goes to infinity. Assume the total area $A_{total}$ and the area of free space $A_{free}$ within are known.
 
 % \item Assuming a kd-tree is used as a nearest-neighbour data structure, and points are sample uniformly at random, calculate the  run-time of inserting a point into a tree of size $N$. Use ``big-Oh'' notation, e.g. $\mathcal{O}(N)$.
 
