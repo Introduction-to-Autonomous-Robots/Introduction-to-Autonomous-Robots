@@ -137,28 +137,29 @@ A*算法的扩展解决了当障碍物出现在机器人路径中时耗时的重
 
 % Instead of evaluating all possible solutions or using a non-complete Jacobian-based inverse kinematic solution, sampling-based planners create possible paths by randomly adding points to a tree until some solution is found or time expires. As the probability to find a path approaches one when time goes to infinity, sampling-based path planners are \emph{probabilistic complete}\index{Probabilistic complete}. Prominent examples of sampling-based planners are \emph{Rapidly-exploring Random Trees} (RRT)\index{Rapidly-exploring Random Tree}\index{RRT}\cite{lavalle1998rapidly} and \emph{Probabilistic Roadmaps}\index{Probabilistic Roadmaps}\index{PRM}(PRM) \cite{kavraki1996probabilistic}. An example execution of RRT for an unknown goal, thereby reducing the path-planning problem to a search problem is shown in Figure \ref{fig:rrt}.
 
-基于采样的规划器，不会评估所有可能的解决方案或使用非完备的基于雅可比的逆运动学解决方案，而是通过将点随机添加到树中创建可能的路径，直到发现某个解决方案或时间用完。当时间到无穷大时，找到路径的概率接近于一，基于采样的路径规划器是\emph{概率完备的（Probabilistic complete）}\index{概率完备的（Probabilistic complete）}。基于采样的规划器的突出例子是“快速搜索随机树”（Rapidly-exploring Random Trees，RRT）\index{快速搜索随机树（Rapidly-exploring Random Trees，RRT）}\cite{lavalle1998rapidly}和\emph{概率路线图（Probabilistic Roadmaps，PRM）}\index{概率路线图（Probabilistic Roadmaps，PRM）}\cite{kavraki1996probabilistic}。目标未知的RRT将路径规划问题简化为搜索问题，示例如图\ref{fig:rrt}所示。
+基于采样的规划器通过将点随机添加到树中创建可能的路径，直到发现某个解决方案或时间用完，而不是评估所有可能的解决方案，或使用非完备的基于雅可比的逆运动学解决方案。当时间到无穷大时，找到路径的概率接近于一，基于采样的路径规划器是\emph{概率完备的（Probabilistic Complete）}\index{概率完备的（Probabilistic Complete）}。基于采样的规划器的著名算法有\emph{快速搜索随机树（Rapidly-exploring Random Trees，RRT）}\index{快速搜索随机树（Rapidly-exploring Random Trees，RRT）}\cite{lavalle1998rapidly}和\emph{概率路线图（Probabilistic Roadmaps，PRM）}\index{概率路线图（Probabilistic Roadmaps，PRM）}\cite{kavraki1996probabilistic}。目标未知的RRT将路径规划问题简化为搜索问题，示例如图\ref{fig:rrt}所示。
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figs/irrt}
 % \caption{Counterclockwise: Random exploration of a 2D search space by randomly sampling points and connecting them to the graph until a feasible path between start and goal is found.\label{fig:rrt}}
-\caption{逆时针方向：通过随机采样点并把它们连接到图中来随机搜索二维空间，直到发现起始点和目标点之间的可行路径。\label{fig:rrt}}
+\caption{逆时针方向：随机采样点并把它们连接到图中，从而随机搜索二维空间，直到发现起始点和目标点之间的可行路径。}
+\label{fig:rrt}
 \end{figure}
 
 % This example illustrates well how a sampling-based planner can quickly explore a large portion of space and refines a solution as time goes on. Whereas RRT can be understood as growing a single tree from a robot's starting point until one of its branches hit a goal, probabilistic road-maps create a tree by randomly sampling points in the state-space, testing whether they are collision-free, connecting them with neighboring points using paths that reflect the kinematics of a robot, and then using classical graph shortest path algorithms to find shortest paths on the resulting structure. The advantage of this approach is clearly that such a probabilistic roadmap has to be created only once (assuming the environment is not changing) and can then be used for multiple queries. PRMs are therefore a \emph{multi-query} path-planning algorithm.\index{Multi-query (path-planning)} In contrast, RRT's are known as \emph{single-query}\index{Single-query (path-planning)} path-planning algorithms.
 
-此示例很好的说明了基于采样的规划器如何快速探索一个很大的空间，并随着时间的推移来精细改进解决方案。而RRT可以被理解为从机器人的起始点生成单树，直到其一个分叉达到目标，概率路线图通过在状态空间中随机采样点来测试它们是否无碰撞，使用反映机器人的运动学的路径将它们与相邻点连接，然后使用经典的图最短路径算法来找到所得结构上的最短路径。这种方法的优点很明显，这样一个概率路线图只需被创建一次（假设环境没有改变），然后可以用于多个查询。PRM因此是一个\emph{多次查询（Multi-query）}路径规划算法\index{多次查询（Multi-query）（路径规划）}。相反，RRT被称为\emph{单次查询（Single-query）}\index{单次查询（Single-query）（路径规划）}路径规划算法。
+此示例很好的说明了基于采样的规划器是如何快速探索一个很大的空间的，并且可以随着时间的推移来精细改进解决方案。快速搜索随机树（RRT）可以被理解为从机器人的起始点生成单树，直到其一个分叉达到目标。概率路线图（PRM）从状态空间中随机采样点测试它们是否无碰撞，然后用符合机器人运动学的路径将它们与相邻点连接，最后使用经典的图最短路径算法来找到所得结构上的最短路径。这种方法的优点很明显，这样一个概率路线图只需被创建一次（假设环境没有改变），然后可以用于多次查询。概率路线图因此是一个\emph{多次查询（Multi-query）}路径规划算法\index{多次查询（Multi-query）【路径规划】}。相反，快速搜索随机树被称为\emph{单次查询（Single-query）}\index{单次查询（Single-query）【路径规划】}路径规划算法。
 
 % In practice, the boundary between the different historic algorithms has become very diffuse, and single-query and multi-query variants of both RRT and PRM exist. It is important to note that there is no silver bullet algorithm/heuristic and even their parameter-sets are highly problem-specific. We will therefore limit our discussion on useful heuristics that are common to sampling-based planners.
 
-实际上，不同历史性算法之间的边界已经变得非常漫长，存在RRT和PRM的单查询和多查询变体。重要的是要注意，没有捷径\todo{silver bullet}算法/启发式，甚至它们的参数集都是高度问题相关的。因此，我们将只讨论基于采样的规划器常见的有效启发式。
+实际上，不同历史性算法之间的边界已经变得非常模糊，快速搜索随机树和概率路线图的单查询和多查询变体也被提出。要注意，没有通用算法/启发式，甚至它们的参数集都是高度问题相关的。因此，我们将只讨论基于采样的规划器常见的有效启发式。
 
 % \subsection{Basic Algorithm}
 \subsection{基本算法}
 % Let $ \mathcal{X}$ be a $ d$-dimensional state-space. This can either be the robot's state given in terms of translation and rotations (6 dimensions), a subset thereof, or the joint space with one dimension per possible joint angle. Let $ \mathcal{G} \subset \mathcal{X}$ be a  d-ball (d-dimensional sphere) in the state-space that is considered to be the goal, and $ t$ the allowed time. A tree planner proceeds as follows:
 
-令$\mathcal{X}$为一个$d$维度的状态空间。这既可以是根据平移和旋转（6个维度）给出的机器人的状态（其子集），也可以是每个可能的关节角度具有一个维度的关节空间。令$\mathcal{G}\subset\mathcal{X}$为目标的状态空间中的一个$d$球（$d$维球体），允许的时间为$t$。树规划器进行如下：
+令$\mathcal{X}$为一个$d$维度的状态空间。这既可以是根据平移和旋转（6个维度）给出的机器人的状态（其子集），也可以是每个可能的关节角度为一个维度的关节空间。令$\mathcal{G}\subset\mathcal{X}$为目标的状态空间中的一个$d$维球体，允许的时间为$t$。一种树规划器进行如下：
 
 \begin{verbatim}
 Tree=Init(X,start);
@@ -174,7 +175,7 @@ return Tree
 
 % This process can be repeated on the resulting tree as long as time allows. This is known as an \index{AnyTime algorithm} \emph{AnyTime} algorithm. Given a suitable distance metric, the cost-to-goal can be stored at each node of the tree (much easier if growing the tree from the goal to start), which allows retrieving the shortest path easily. There are four key points in this algorithm:
 
-只要时间允许，可以在所得的树上重复此过程。这被称为\emph{随时（AnyTime）}算法\index{随时算法（AnyTime algorithm）}。给定适当的距离度量，可以将到目标点的成本存储在树的每个顶点（如果从目标点开始生成该树更容易），这使我们轻松地检索最短路径。该算法有四个要点：
+只要时间允许，可以在所得的树上重复此过程。这被称为\emph{随时（AnyTime）}算法\index{随时算法（AnyTime algorithm）}。给定适当的距离度量，可以将到目标点的成本存储在树的每个顶点（从目标点开始生成该树更容易），这使我们可以轻松地检索最短路径。该算法有四个要点：
 
 \begin{enumerate}
 % \item Finding the next point to add to the tree (or discard) (StateToExpandFrom).
@@ -182,7 +183,7 @@ return Tree
 % \item Testing whether this path is suitable, i.e., collision-free.
 % \item Finding the next point to add.
 
-\item 找到下一个要添加到树（或丢弃）（StateToExpandFrom）的顶点。
+\item 找到下一个要添加到树（或丢弃）的顶点（StateToExpandFrom）。
 \item 根据机器人运动学，找出在哪及如何将该点连接到树上（CreatePathToTree）。
 \item 测试此路径是否可行，即无碰撞。
 \item 找到下一个要添加的顶点。
@@ -190,81 +191,81 @@ return Tree
 
 % A prominent method is to pick a random point in the state-space and connect it to the closest existing point in the tree or to the goal. This requires searching all nodes in the tree and calculating their distance to the candidate point. Other approaches put preferences on nodes with fewer out-degrees (those which do not yet have very many connections) and chose a new point within its vicinity. Both approaches make it likely to quickly explore the entire state-space.
 
-一个著名的方法是在状态空间中选择一个随机点，并将其连接到树上最接近的顶点或目标点。这需要搜索树中的所有顶点并计算它们到候选点的距离。另一种方法是找到外部度较少的顶点（那些还没有很多连接的顶点），并在其附近选择一个新点。这两种方法都能快速探索整个状态空间。
+一个著名的方法是在状态空间中选择一个随机点，并将其连接到树上最接近的顶点或目标点。这需要搜索树中的所有顶点并计算它们到候选点的距离。另一种方法是找到出度（Out-degree）较少的顶点（即没有很多连接的顶点），并在其附近选择一个新点。这两种方法都能快速探索整个状态空间。
 
 % If there are constraints imposed on the robot's path, for example the robot needs to hold a cup and therefore is not supposed to rotate its wrist, this dimension can simply be taken out of the state-space.
 
-如果对机器人的路径施加约束，例如机器人需要握住杯子，因此不应该旋转其手腕，所以该维度可以简单地从状态空间中排除。
+如果机器人路径上有约束（例如机器人需要握住杯子，因此不应该旋转手腕），相关维度可以直接从状态空间中排除。
 
 % Once a possible path is found, this space can be reduced to the ellipsoid that bounds the maximal path-length. This ellipsoid can be constructed by mounting a wire of the maximum path length between start and goal and pushing it outward with a pen. All the area that can be reached with the pen constrained by the wire can contain a point that can possibly lead to a shorter path. This approach is particularly effective when running multiple copies of the same planner in parallel and exchanging the shortest paths once they are found \cite{otte2012}.
 
-一旦发现了一个可能的路径，这个空间可以简化为限制最大路径长度的椭圆体。该椭圆体可以通过在起始点和目标点之间建立最大路径长度的线并用笔将其向外推。钢丝约束的笔可以达到区域包含一个可能产生较短路径的点。可以并行运行多个相同规划器的副本，一旦找到就相互交换最短路径，这种方法特别有效\cite{otte2012}。
+一旦发现了一个可能的路径，这个空间可以简化为限制最大路径长度的椭圆体。该椭圆体可以通过在起始点和目标点之间建立最大路径长度的线并用笔将其向外推。受约束的笔可以覆盖的区域包含一个可能产生较短路径的点。可以并行运行多个相同规划器的副本，一旦找到就相互交换最短路径，这种方法非常有效\cite{otte2012}。
 
 % \subsection{Connecting Points to the Tree}
 % A new point is classically connected to the closest point already in the tree or to the goal. This can be done by calculating the distance to all points already in the tree. This does not necessarily generate the shortest path, however. A recent improvement has been made by RRT*, which connects the point to the tree in a way that minimizes the overall path length. This can be done by considering all points in the tree within a d-ball (on a 2D map, $d=2$, i.e. a circle) from of fixed radius from the point to add and finding the point that minimizes the overall path length to the start.
 
 \subsection{将顶点与树相连}
-一般地会把新的顶点连到树上最接近的顶点或目标点。这需要计算与树上的所有点的距离。然而，这不一定会产生最短路径。RRT*做了改进，RRT*以最小化整个路径长度的方式将该点连接到树上。这要考虑来自以要添加点为原点、固定半径的$d$维球中的所有点（在2D地图上，$d=2$，即一个圆圈），并找到最小化到起始点的整体路径长度的点。
+一般地会把新顶点连到树上最接近的顶点或目标点。这需要计算新顶点与树上的所有点的距离。但是这不一定会产生最短路径。RRT*做了改进，RRT*以最小化整个路径长度的方式将该点连接到树上。这要考虑来自以要添加点为原点、固定半径的$d$维球中的所有点（在2D地图上，$d=2$，即一个圆圈），并找到最小化到起始点的整体路径长度的点。
 
 % Adding a point to the tree is also a good time to take into account the specific kinematics of a robot, for example a car. Here, a local planner can be used to generate a suitable trajectory that takes into account the orientation of the vehicle at each point in the tree.
 
-向树上添加点也是考虑机器人（例如汽车）的特定运动学的好时机。在这里，可以使用本地规划器来产生考虑了车在树上每个顶点的方向的适当轨迹。
+向树上添加点也是考虑机器人（例如汽车）的特定运动学的好时机。在这里，可以使用局部规划器来产生考虑了车在树上每个顶点的方向的适当轨迹。
 
 % \subsection{Collision Checking}
 % Efficient algorithms for testing collisions deserve a dedicated lecture. While the problem is intuitive in configuration-space planning in 2D (the robot reduces to a point) and can be solved using a simple point-in-polygon test, the problem is more involved for manipulators that are subject to self-collision.
 
 \subsection{碰撞检测}
-用于测试碰撞的高效算法应该有专门的讲座。尽管2D中的配置空间规划中的问题是直观的（机器人缩小到某一点），并且可以使用简单的多边形点测试来解决问题，但更多涉及到受自我碰撞的操作器的问题。
+用于测试碰撞的高效算法值得一节专门的讲座。尽管二维配置空间规划中的问题是直观的（机器人缩小到某一点），并且可以使用简单的多边形点测试来解决问题，但问题更多涉及到受自我碰撞约束的操作臂。
 
 % As collision checking takes up to 90\% of the execution time in the path planning problem, a successful method to increase computational speed is ``lazy collision evaluation''\index{Lazy collision avoidance}. Instead of checking every point for a possible collision, the algorithm first finds a suitable path. Only then, it checks every segment of this path for collisions. In case some segments are in collision, they are deleted and the algorithm goes on, but keeps the segments of the successful path that were collision-free.
 
-由于碰撞检测在路径规划问题中占用执行时间的$90\%$，提高计算速度的一种成功的方法是“懒惰避障（Lazy collision avoidance）”\index{懒惰避障（Lazy collision avoidance）}。该算法首先找到一个合适的路径，而不是检测每个点可能的碰撞。然后检测此路径的每一段。如果某些段有碰撞，则删除，并且算法继续进行，但是保持成功路径的所有段是无碰撞的。
+由于碰撞检测在路径规划问题中占用执行时间的$90\%$，提高计算速度的一种成功的方法是\emph{懒惰避障（Lazy Collision Avoidance）}\index{懒惰避障（Lazy Collision Avoidance）}。该算法首先找到一个合适的路径，而不检测每个点可能的碰撞。然后检测此路径的每一段。保持成功路径的所有段是无碰撞的，如果某些段有碰撞，则删除，然后算法继续进行。
 
 % \section{Path Smoothing}
 % As paths are randomly sampled, they will be most likely shakey and not optimal. For exampe, a grid-map will generate a series of sharp turns and a sampling-based approach will return zig-zag random paths. Results can be drastically improved by running an additional algorithm that smoothes the path. One way of doing this is to connect points of the path using splines, curves or even trajectory snippets that are known to be feasible for a specific platform. Alternatively, one can also use a model of the actual platform and use a feedback controller such as described in Section \ref{sec:fbmobile} for mobile robots and Section \ref{sec:invjac} for arms, sample a series of points in front of the robot, and generate a trajectory that the robot can actually drive. When combined with dynamics, this approach is known as \emph{model-predictive control}\index{Model-predictive control}. Care needs to be taken, however, that the resulting paths are indeed collision free.
 
 \section{路径平滑}
-随着随机采样路径，它们很可能是曲折的\todo{shakey}而不是最佳的。例如，网格图将产生一系列急转弯，基于采样的方法会产生曲折的随机路径。运行一个平滑路径的算法可以大大改进结果。其中一种方法是使用已知对特定平台可行的样条线、曲线或轨迹片段来连接路径的点。或者也可以使用实际平台的模型，并使用反馈控制器。如第\ref{sec:fbmobile}节的移动机器人和第\ref{sec:invjac}节的操作臂，在机器人的面前采样一系列的点并产生机器人可以实际驱动的轨迹。当与动力学结合时，这种方法被称为\emph{模型预测控制（Model-predictive control，MPC）}\index{模型预测控制（Model-predictive control，MPC）}。然而，需要注意的是所产生的路径确实是无碰撞的。
+因为路径是随机采样得到的，它们很可能是弯弯曲曲的\todo{shakey}而不是最佳的。例如，网格图会产生一系列急转弯，基于采样的方法会产生曲折的随机路径。运行一个平滑路径的算法可以大大改进结果。其中一种方法是使用已知对特定平台可行的样条线、曲线或轨迹片段来连接路径的点。或者也可以使用实际平台的模型，并使用反馈控制器。如第\ref{sec:fbmobile}节的移动机器人和第\ref{sec:invjac}节的操作臂，在机器人的前面采样一系列的点并产生机器人可以实际驱动的轨迹。当与动力学结合时，这种方法被称为\emph{模型预测控制（Model-Predictive Control，MPC）}\index{模型预测控制（Model-predictive control，MPC）}。值得一提的是所产生的路径确实是无碰撞的。
 
 
 % \section{Planning at different length-scales}
 % In practice, no one map representation and planning algorithm might be sufficient. To plan a route for a car, for example, might involve a coarse search over the street network such as performed by your car's navigation system, but not involve planning which lane to actually choose. Planning lanes and how to navigate round-abouts and intersections will then involve another layer of discrete planning. How to actually move the robot within a lane and avoid local obstacles, might then be best done with a sampling-based planning algorithm. Finally, trajectories need to be turned into wheel speeds and turn angles, possibly using some form of feedback control. This hierarchy is depicted in Figure \ref{fig:planninglayers}. Here, downward-pointing arrows indicate input that one planning layer provides to the one below. Upward-pointing arrows instead indicate exceptions that cannot be handled by the lower levels. For example, a feedback controller cannot handle obstacles well, requiring the sampling-based planning layer to come up with a new trajectory. Should the entire road be blocked, this planner would need to hand-off control the lane-based planner. A similar case can be made for manipulating robots, which also need to combine multiple different representations and controllers to plan and execute trajectories efficiently.
 
 \section{在规模不同的尺度上规划}
-实际上，没有一个地图表示和规划算法可能足够的。例如，为了汽车规划路线，可能会在街道网络上进行粗略搜索，例如你的汽车的导航系统，但不涉及规划实际选择的车道。然后，规划车道以及如何导航轮辋和交叉路口涉及另一层离散规划。如何将机器人实际移动到车道内并避免局部障碍物，使用基于采样的规划算法来完成可能是最好的。最后，需要可能采用某种形式的反馈控制将轨迹转化为轮速和转角。这个层次结构如图\ref{fig:planninglayers}所示。这里，向下的箭头\todo{typo in english version}表示一个规划层向下层提供的输入。向上的箭头表示不能被较低级别处理的异常。例如，反馈控制器不能很好地处理障碍物，需要基于采样的规划层提供新的轨迹。如果整个道路被阻挡，这个规划器需要切换到控制基于车道的规划器。类似的情况适用于操作机器人，也需要组合多个不同的表示和控制器以有效地规划和执行轨迹。
+实际上，没有一个地图表示和规划算法是完全足够的。例如，为汽车规划行进路线，可能会先在街道网络上进行粗略搜索（例如你汽车的导航系统），但不规划实际行驶的车道。然后，需要另一层离散规划来规划车道以及如何导航环状交叉路口和十字路口。如何将机器人实际移动到车道内并避免局部障碍物，使用基于采样的规划算法来完成可能是最好的。最后，需要某种形式的反馈控制将轨迹转化为轮速和转角。这种层次规划如图\ref{fig:planninglayers}所示。这里，向下的箭头\todo{typo in english version}表示一个规划层向下一层提供输入。向上的箭头表示不能被较低级别层处理的异常。例如，反馈控制器不能很好地处理障碍物，需要基于采样的规划层提供新的轨迹。如果整个道路被阻挡，这个规划器需要切换到基于车道的规划器。类似的情况适用于操作机器人，也需要组合多个不同的表示和控制器以有效地规划和执行路径。
 
 \begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{figs/planninglayers}
 % \caption{Path-planning across different length scales, requiring a variety of map representations and planning paradigms. Arrows indicate information passed between layers.\label{fig:planninglayers}}
-\caption{不同尺度上的路径规划，需要各种地图表示和规划范例。箭头表示信息在各层之间的传递。
+\caption{不同层次的路径规划，需要各种地图表示和规划范例。箭头表示信息在各层之间的传递。
 \label{fig:planninglayers}}
 \end{figure}
 
 % Note that this representation does not include a reasoning level that encodes traffic rules and common sense. While some of these might be encoded using cost-functions, such as maximizing distance from obstacles or insuring smooth riding, other more complex behaviors such as adapting driving in the presence of cyclists or properties of the ground need to be implemented in an additional vertical layer that has access to all planning layers.
 
-请注意，这种表示不包括考虑交通规则和常识的推理。虽然其中一些可能使用成本函数进行编码（例如最大化与障碍物的距离或确保平稳骑行），但是还需要在附加垂直层中实施其他更复杂的行为（例如存在骑自行车者或不同地面性质的情况下自适应驾驶），此垂直层可以访问每个规划层。
+请注意，这种表示不包括对交通规则和常识的推理。虽然其中一些可能使用成本函数进行编码（例如最大化与障碍物的距离或确保平稳骑行），但是还需要在附加的垂直层中实施其他更复杂的行为（例如存在骑自行车者或不同地面性质的情况下自适应驾驶），此垂直层可以访问每个规划层。
 
 
 % \section{Other path-planning applications}
 % Once the environment has been discretized into a graph, we can employ other algorithms from graph theory to plan desirable robot trajectories. For example, floor coverage can be achieved by performing a depth-first search (DFS) or a breadth-first-search (BFS) on a graph where each vertex has the size of the coverage tool of the robot. ``Coverage'' is not only interesting for cleaning a floor: the same algorithms can be used to perform an exhaustive search of a configuration space, such as in the example shown in Figure \ref{fig:inversekinematics}, where we plotted the error of a manipulator arm in reaching a desired position over its configuration space. Finding a minimum in this plot using an exhaustive search solves the inverse kinematics problem. Similarly, the same algorithm can be used to systematically follow all links on a website till a desired depth (or actually retrieving the entire world-wide web).
 
-\section{其他路径规划应用}
-一旦将环境离散成图，我们可以使用图论中的其他算法来规划所需的机器人轨迹。例如，可以通过在每个顶点面积与机器人的覆盖工具一样大的图上执行深度优先搜索（Depth-first search，DFS）或宽度优先搜索（Breadth-first-search，BFS）来实现地板覆盖。“覆盖”不仅适用于清理底板：也可以使用相同的算法来对配置空间进行详尽的搜索，例如在图\ref{fig:inversekinematics}中所示的示例中，我们绘制了操作臂在其配置空间上达到所需位置的误差。详尽搜索找到该图中的最小值可以解决这个逆运动学问题。类似地，可以使用相同的算法来系统地跟踪网站上的所有链接，直到所需的深度（或实际检索整个万维网）。
+\section{其他路径规划的应用}
+一旦将环境离散成图，我们可以使用图论中的其他算法来规划所需的机器人轨迹。例如，可以通过在每个顶点与机器人一样大的图上执行深度优先搜索（Depth-First Search，DFS）或广度优先搜索（Breadth-First Search，BFS）来实现地板覆盖。“覆盖”不仅适用于清理底板，也可以使用相同的算法来对配置空间进行详尽的搜索，例如在图\ref{fig:inversekinematics}所示的例子中，我们绘制了操作臂在其配置空间上达到所需位置的误差。通过详尽搜索找到该图中的最小值可以解决这个逆运动学问题。类似地，可以使用相同的算法来系统地跟踪网站上的所有链接，直到所需的深度（或实际检索整个万维网）。
 
 % Doing a DFS or a BFS might generate efficient coverage paths, but they are far from optimal as many vertices might be visited twice. A path that connects all vertices in a graph but passes every vertex only once is known as a \emph{Hamiltonian Path}.\index{Hamiltonian Path} A Hamiltonian path that returns to its starting vertex is known as a Hamiltonian Cycle. This problem is also known as the Traveling Salesman Problem (TSP), in which a route needs to be calculated that visits every city on his tour only once and is known to be NP Complete.\index{Traveling Salesman Problem}
 
-执行DFS或BFS可能会生成有效的覆盖路径，但是它们远不是最佳的，因为很多顶点可能会被访问两次。连接图中所有顶点且每个顶点仅访问一次的路径称为\emph{汉密尔顿路径（Hamiltonian Path）}\index{汉密尔顿路径（Hamiltonian Path）}，返回到其起始顶点的哈密尔顿路径被称为哈密尔顿循环。这个问题也被称为旅行商问题（Traveling Salesman Problem，TSP）\index{旅行商问题（Traveling Salesman Problem，TSP）}，其中需要计算一次路线访问他的旅程中的每个城市一次，并且被称为NP完备（NP Complete）。
+执行DFS或BFS可能会生成有效的覆盖路径，但是它们远不是最佳的，因为很多顶点可能会被访问两次。连接图中所有顶点且每个顶点仅访问一次的路径称为\emph{汉密尔顿路径（Hamiltonian Path）}\index{汉密尔顿路径（Hamiltonian Path）}，返回到其起始顶点的哈密尔顿路径被称为哈密尔顿循环。这个问题也被称为旅行商问题（Traveling Salesman Problem，TSP）\index{旅行商问题（Traveling Salesman Problem，TSP）}，需要计算一条路线遍历每个城市仅且仅一次，这个问题是NP完备的（NP Complete）。
 
 % \section{Summary and Outlook}
 % Path planning is an ongoing research problem. Finding collision free paths for mechanisms with high degrees of freedom such as multiple arms operating in a common space, multi-robot systems, or systems involving dynamics (and therefore adding the derivatives of the state variables to the planning problem) might take unacceptably long to solve.
 
 \section{总结和展望}
-路径规划是一个持续的研究课题。寻找具有高度自由度的机制的无碰撞路径可能需要不可接受的长时间解决，例如多个操作臂在同一空间中操作、多机器人系统或涉及动力学的系统（并因此将状态变量的导数添加到规划问题中）。
+路径规划是一个持续的研究课题。为自由度很高的机器人寻找无碰撞路径可能需要不可接受的时长，例如多个操作臂在同一空间中操作、多机器人系统或涉及动力学的系统（并因此将状态变量的导数添加到规划问题中）。
 
 % Although sampling-based path planners can drastically speed up the time to find some solution, they are not optimal and struggle with specific situations such as narrow passages. There is no ``silver bullet'' algorithm for solving all path planning problems and heuristics that lead to massive speed-up in one scenario might be detrimental in others. Also, algorithmic parameters are mostly ad-hoc and correctly tuning them to a specific environment might drastically increase performance.
 
-虽然基于采样的路径规划器可以大大加快找到解决方案的时间，但是对于具体的情况（如狭窄的通道）它们并不是最佳的。没有一种用于解决所有路径规划问题的“捷径”算法，在一种情况下大规模加速的启发式算法在其他情况下可能是有害的。此外，算法参数大多是问题特定的，特定环境中正确地调试这些参数可能会大大提高性能。
+虽然基于采样的路径规划器可以大大加快找到解决方案的时间，但是对于具体的情况（如狭窄的通道）它们并不是最佳的。不存在用于解决所有路径规划问题的通用算法，在一种情况下大规模加速的启发式算法在其他情况下可能起到反作用。此外，算法参数大多是问题特定的，特定环境中正确地调试这些参数可能会大大提高性能。
 
 
 % \section*{Take-home lessons}
@@ -277,12 +278,12 @@ return Tree
 % \item As the resulting paths are random, multiple trials might lead to totally different results.
 % \item There is no one-size-fits-all algorithm for a path-planning algorithm and care must be taken to select the right paradigm (single-query vs. multi-query), heuristics, and parameters.
 
-\item 路径规划的第一步是选择适合应用的地图表示。
-\item 第二步是将机器人减少到一个质点，这使我们能在配置空间中进行规划。
-\item 这使我们可以应用通用的最短路径算法，它们在各种各样的领域中都有应用，不仅限于机器人。
-\item 基于采样的规划算法通过随机采样环境中的点来找到路径。 启发式用于最大限度地搜索空间并指导搜索方向。这使得这些算法快速，但既不最优也不完备。
+\item 路径规划的第一步是选择适合的地图表示。
+\item 第二步是将机器人简化成一个质点，这使我们能在配置空间中进行规划。
+\item 这也使我们可以应用常见的最短路径算法，它们在各种各样的领域中都有应用，不仅限于机器人。
+\item 基于采样的规划算法通过随机采样环境中的点来找到路径。启发式用于最大限度地搜索空间并指导搜索方向。这使得这些算法快速找的有效路径，但这些算法既不是最优的也不是完备的。
 \item 由于生成的路径是随机的，多次试验可能会产生完全不同的结果。
-\item 对于路径规划算法，没有一个适合所有情况的算法，必须注意选择正确的范例（单查询与多查询）、启发式和参数。
+\item 不存在适合所有情况的路径规划算法，必须注意选择正确的范例（单查询与多查询）、启发式和参数。
 \end{itemize}
 
 % \section*{Exercises}\small
@@ -297,11 +298,9 @@ return Tree
 % \item What other practical runtime concerns must one consider besides computational complexity alone when doing sampling based motion planning? Can you suggest ways to deal with these other concerns?
 
 \item 从二维空间变到三维空间时，Dijkstra算法的计算复杂度如何变化？
-\item A*使用“启发式”使搜索偏向预期的目标方向。为什么只能使用启发式，而不是实际的长度？
-\item 假设在随机规划算法中随机采样的点。当采样点数达到无穷大时，计算以下比例（树中的点数）/（采样点数）的约束。假设总面积$A_{total}$和可用空间面积$A_{free}$已知。
-
+\item A*使用启发式使搜索偏向预期的目标方向。为什么只能使用启发式，而不使用实际的长度？
+\item 假设在随机规划算法中随机采样点。当采样点数达到无穷大时，计算以下比例（树中的点数）/（采样点数）的约束。假设总面积$A_{total}$和可用空间面积$A_{free}$已知。
 \item 假设使用k-d树作为最近邻数据结构，并且随机采样顶点，计算将顶点插入到大小为$N$的树中的运行时间。使用大“O”表示法，例如$\mathcal{O}(N)$。
-
-\item 在进行基于采样的运动规划时，除了计算复杂度之外，还有哪些实际运行时的问题必须考虑？你能提出处理这些其他问题的方法吗？
+\item 在执行基于采样的运动规划时，除了计算复杂度之外，还有哪些实际运行时的问题必须考虑？你能提出处理这些其他问题的方法吗？
 \end{enumerate}
 \normalsize
