@@ -20,7 +20,7 @@
 % To get an intuition, assume there to be only one link, $l_1$.  Solving (\ref{eq:cosxl1}) for $\alpha$ yields actually two solutions $\left[\cos^{-1}\frac{x_1}{l_1},-\cos^{-1}\frac{x_1}{l_1}\right]$, as cosine is symmetric for positive and negative values. Indeed, for any possible position on the $x-axis$ ranging from $-l_1$ to $l_1$, there exist two solutions. One with the arm above the table, one with the arm within the table. (At the extremes of the workspace, both solutions are the same.)
 
 \subsection{简单操作臂的逆运动学}
-现在我们看一下之前介绍的双链操作臂的运动学。我们需要通过求$\alpha$和$\beta$来求解确定机器人正运动学的方程。然而，这是棘手的，因为我们必须处理复杂的三角表达式。
+现在我们看一下之前介绍的双链操作臂的运动学。我们需要通过求$\alpha$和$\beta$来求解确定机器人正运动学的方程。然而这是棘手的，因为我们必须处理复杂的三角表达式。
 
 要获得直觉，假设只有一个链接$l_1$。求解（\ref{eq:cosxl1}）实际上得到两个$\alpha$的解$\left[\cos^{-1}\frac{x_1}{l_1},-\cos^{-1}\frac{x_1}{l_1}\right]$，因为余弦对应一正一负两个值。实际上，对于$x$轴上任何可能的位置，从$-l_1$到$l_1$，都有两个解。一个是手臂在桌子的上方，一个是手臂在桌子的下方。（在工作空间极端情况下，两个解是一样的。）
 
@@ -36,21 +36,18 @@
 % Solving for both degrees of freedom actually yields eight solutions, of which only two are feasible:
 
 求解这两个自由度实际上得到八个解，其中只有两个是可行的：
-
 \begin{equation}
 \alpha \rightarrow \cos^{-1}\left(\frac{x^2 y + y^3 - \sqrt{4 x^4 - x^6 + 4 x^2 y^2 - 2 x^4 y^2 - x^2 y^4}}{2 (x^2 + y^2)}\right)
 \end{equation}
 % and
 和
-
 \begin{equation}
 \beta \rightarrow -\cos^{-1}\left(1/2(-2+x^2+y^2)\right)
 \end{equation}
 
 % What will drastically simplify this problem, is to not only specificy the desired position, but also the orientation of the end-effector. In this case, a desired pose can be specified by
 
-既指定期望的位置，又指定末端执行器的方向，将大大简化这个问题。 在这种情况下，可以指定期望的姿态
-
+既指定期望的位置，又指定末端执行器的方向，将大大简化这个问题。 在这种情况下，可以指定期望的姿态：
 \begin{equation}
 \left(
 \begin{array}{cccc}
@@ -65,7 +62,6 @@ sin\phi & cos\phi & 0 & y\\
 % A solution can now be found by simply equating the individual entries of the transformation (\ref{eq:2armtrans}) with those of the desired pose. Specifically, we can observe:
 
 现在通过将期望姿态的各项对变换的各项（\ref{eq:2armtrans}）对应赋值，就可以得到一个解。具体来说，我们可以发现：
-
 \begin{eqnarray}
 cos\phi &= cos(\alpha+\beta)\\
 \nonumber
@@ -75,8 +71,7 @@ y &= \sin_{\alpha\beta}l_2+\sin\alpha l_1
 \end{eqnarray}
 
 % These can be reduced to
-这些可以简化为
-
+这些可以简化为：
 \begin{eqnarray}
 \phi &= \alpha + \beta\\
 \nonumber
@@ -89,10 +84,9 @@ y &= \sin_{\alpha\beta}l_2+\sin\alpha l_1
 
 % As such solutions quickly become unhandy with more dimensions, however, you can calculate a numerical solution using an approach that we will later see is very similar to path planning in mobile robotics. One way to do this is to plot the distance of the end-effector from the desired solution in configuration space. To do this, you need to solve the forward kinematics for every point in configuration space and use the Euclidian distance to the desired target as height. In our example this would be
 
-因此，除了指定期望的位置，还指定方向之后，仅以$x$，$y$和$\phi$的函数就可以求得$\alpha$和$\beta$。
+因此，除了指定期望的位置，还指定方向之后，仅以$x$、$y$和$\phi$的函数就可以求得$\alpha$和$\beta$。
 
-随着维度增加这种解决方案很快变得不方便，然而你可以使用一种方法来计算数值解，我们稍后会看到这种方法与移动机器人中的路径规划非常相似。一种方法是绘制配置空间中末端执行器与期望解的距离。为此，你需要为配置空间中的每个点求解正运动学，并将期望目标的欧几里德距离作为高度。在我们的例子中，这将是
-
+随着维度增加这种解决方案很快变得不方便，然而你可以使用一种方法来计算数值解，我们稍后会看到这种方法与移动机器人中的路径规划非常相似。一种方法是绘制配置空间中末端执行器与期望解的距离。为此，你需要为配置空间中的每个点求解正运动学，并将期望目标的欧几里德距离作为高度。在我们的例子中，这将是：
 \begin{equation}
 \small
 f_{x,y}(\alpha,\beta)=\sqrt{\left(\sin(\alpha + \beta) + \sin(\alpha) - y\right)^2 + \left(\cos(\alpha+\beta)+\cos(a) - x\right)^2}
@@ -100,13 +94,13 @@ f_{x,y}(\alpha,\beta)=\sqrt{\left(\sin(\alpha + \beta) + \sin(\alpha) - y\right)
 
 % This is plotted for $\alpha=[-\pi/2,\pi/2]$ and $\beta=[-\pi,\pi]$ and $x=1$, $y=1$ in Figure \ref{fig:inversekinematics}. This function has a minima, in this case zero, for values of $\alpha$ and $\beta$ that bring the manipulator to $(1,1)$. These values are $(\alpha \rightarrow 0, b \rightarrow -\frac{\pi}{2})$ and $(\alpha \rightarrow -\frac{\pi}{2}, b \rightarrow \frac{\pi}{2})$.
 
-对于$ \alpha = [ - \pi / 2，\pi / 2] $和$ \beta = [ - \pi，\pi] $和$ x = 1 $，$ y = 1 $，REF{无花果：逆运动学}。 对于将操纵器设为$（1,1）$的$ \alpha $和$ \beta $的值，此函数具有最小值，在这种情况下为零。 这些值是$（\alpha \rightarrow 0，b \rightarrow - \frac {\pi} {2}）$和$（\alpha \rightarrow - \frac {\pi} {2}，b \rightarrow \frac {\pi} {2}）$。
+对于$ \alpha = [ - \pi / 2, \pi / 2] $和$ \beta = [ - \pi, \pi] $和$ x = 1 $，$ y = 1 $，见图\ref{fig:inversekinematics}。 对于将操纵器设为$(1, 1)$的$ \alpha $和$ \beta $的值，此函数具有最小值，在这种情况下为零。 这些值是$(\alpha \rightarrow 0, b \rightarrow - \frac {\pi} {2})$和$(\alpha \rightarrow - \frac {\pi} {2}, b \rightarrow \frac {\pi} {2})$。
 
 \begin{figure}
 	\centering
 		\includegraphics[width=0.8\textwidth]{figs/inversekinematics}
 	% \caption{Distance to $(x=1,y=1)$ over the configuration space of a two-arm manipulator. Minima corresponds to exact inverse kinematic solutions.}
-	\caption{距离$（x = 1，y = 1）$超过双臂操纵器的配置空间。 Minima对应于精确的反向运动学解。}
+	\caption{距离$(x = 1, y = 1)$超过双臂操纵器的配置空间。最小值对应于精确的逆运动学解。}
 	\label{fig:inversekinematics}
 \end{figure}
 
@@ -123,30 +117,26 @@ f_{x,y}(\alpha,\beta)=\sqrt{\left(\sin(\alpha + \beta) + \sin(\alpha) - y\right)
 \label{sec:ivkmobile}
 由于机器人单个轮子的旋转量与其在空间中的位置之间没有独特的关系，而对于简单的整体平台，例如轨道上的机器人，首先我们将处理仅仅对机器人局部坐标系中速度的逆运动学问题，。
 
-首先让我们探索如何在给定机器人在世界坐标系中期望的速度$\dot{\xi_I}$，计算其中心期望的速度。我们可以通过将方程两边与$T（\theta）$的逆相乘来变换表达式$\dot{\xi_I}=T（\theta）\dot{\xi_R}$：
-
+首先让我们探索如何在给定机器人在世界坐标系中期望的速度$\dot{\xi_I}$，计算其中心期望的速度。我们可以通过将方程两边与$T(\theta)$的逆相乘来变换表达式$\dot{\xi_I}=T(\theta)\dot{\xi_R}$：
 \begin{equation}\label{eq:mbik}
 T^{-1}(\theta)\dot{\xi_I}=T^{-1}(\theta)T(\theta)\dot{\xi_R}
 \end{equation}
 
 % which leads to $ \dot{\xi_R}=T^{-1}(\theta)\dot{\xi_I}$. Here
-这会得到$ \dot{\xi_R}=T^{-1}(\theta)\dot{\xi_I}$。其中
-
+这会得到$ \dot{\xi_R}=T^{-1}(\theta)\dot{\xi_I}$。其中，
 \begin{equation}
 T^{-1}=\left(\begin{array}{ccc}cos \theta & sin \theta & 0 \\-sin \theta & cos \theta & 0 \\0 & 0 & 1\end{array}\right)
 \end{equation}
 
 % which can be determined by actually performing the matrix inversion or by deriving the trigonometric relationships from the drawing.  Similarly, we can now solve
 
-这可以通过对矩阵求逆或通过从图中推导三角关系来确定。同样，我们现在可以求
-
+这可以通过对矩阵求逆或通过从图中推导三角关系来确定。同样，我们现在可以求：
 \begin{equation}
 \left(\begin{array}{c} \dot{x_R}\\\dot{y_R}\\\dot{\theta}\end{array}\right)=\left(\begin{array}{c}\frac{r\dot{\phi_l}}{2}+\frac{r\dot{\phi_r}}{2}\\0\\\frac{\dot{\phi_r} r}{d}-\frac{\dot{\phi_l} r}{d}\end{array}\right)
 \end{equation}
 
 % for $ \phi_l$, $ \phi_r$
-对于$\phi_l$,$\phi_r$
-
+对于$\phi_l$和$\phi_r$：
 \begin{eqnarray}
 \dot{\phi}_l &= (2\dot{x}_R - \dot{\theta}d)/2r\\
 \nonumber
@@ -176,10 +166,9 @@ T^{-1}=\left(\begin{array}{ccc}cos \theta & sin \theta & 0 \\-sin \theta & cos \
 \subsection {移动机器人的反馈控制} 
 \label{sec:fbmobile}
 
-假设机器人的位置由$x_r$，$y_r $和$ \theta_r $给出，期望的姿态为$ x_g$，$y_g $和$ \theta_g $，下标$ g $表示“目标（goal）”。
+假设机器人的位置由$x_r$、$y_r $和$ \theta_r $给出，期望的姿态为$ x_g$、$y_g $和$ \theta_g $，下标$ g $表示“目标（Goal）”。
 
-我们现在可以通过以下方法计算期望姿势中的误差
-
+我们现在可以通过以下方法计算期望姿势中的误差：
 \begin{eqnarray}
 \rho=\sqrt{(x_r-x_g)^2+(y_r-y_g)^2}\\
 \nonumber
@@ -193,8 +182,7 @@ T^{-1}=\left(\begin{array}{ccc}cos \theta & sin \theta & 0 \\-sin \theta & cos \
 
 % These errors can be turned directly into robot's speeds, for example using a simple proportional controller with gains $p_1$, $p_2$ and $p_3$: 
 
-这些错误可以直接转换为机器人的速度，例如使用一个简单的增益为$p_1$，$p_2$和$p_3$的比例控制器获得：
-
+这些错误可以直接转换为机器人的速度，例如使用一个简单的增益为$p_1$、$p_2$和$p_3$的比例控制器获得：
 \begin{eqnarray}
 \dot{x} &=& p_1 \rho\\
 \dot{\theta} &=& p_2 \alpha + p_3 \eta
@@ -218,17 +206,16 @@ T^{-1}=\left(\begin{array}{ccc}cos \theta & sin \theta & 0 \\-sin \theta & cos \
 
 \subsection {逆雅可比技术}
 \label{sec:invjac}
-双链操作臂（图\ref{fig:fwk2dofarm}）仅涉及两个自由参数，但是如果未指定末端执行器姿态，则解析求解已经非常复杂。可以想象，如果有更多的自由度或更复杂的几何形状，就会更加复杂。（例如，某些轴相交的机制比其他的更容易解决）幸运的是，有一些简单的数值技术可以使用。其中一个被称为\emph{逆雅可比（Inverse Jacobian）}\index{逆雅可比（Inverse Jacobian）}技术：
+双链操作臂（图\ref{fig:fwk2dofarm}）仅涉及两个自由参数，但是如果未指定末端执行器姿态，则解析求解非常复杂。可以想象，如果有更多的自由度或更复杂的几何形状，就会更加复杂（例如，某些轴相交的机制比其他的更容易解决）。幸运的是，有一些简单的数值技术可以使用。其中一个被称为\emph{逆雅可比（Inverse Jacobian）}\index{逆雅可比（Inverse Jacobian）}技术：
 
 % As we can easily calculate the resulting pose for every possible joint angle combination using the forward kinematic equations, we can calculate the error between desired and actual pose. This error actually provides us with a direction that the end-effector needs to move. As we only need to move tiny bits at a time and can then re-calculate the error, this is an attractive method to generate a trajectory that moves the arm to where we want it go and thereby solving the inverse kinematics problem.
 
-由于我们可以使用正运动学方程可以很容易地计算每个可能的关节角度组合所得的姿态，所以我们可以计算期望的姿态和实际姿态之间的误差。这个误差为我们提供了末端执行器需要移动的方向。由于我们一次只需要极小的移动，然后重新计算误差，因此这是一种有吸引力的方法，用来生成将操作臂移动到我们期望位置的轨迹，从而解决逆运动学问题。
+由于我们可以使用正运动学方程很容易地计算每个可能的关节角度组合所得的姿态，所以我们可以计算期望的姿态和实际姿态之间的误差。这个误差为我们提供了末端执行器需要移动的方向。由于我们一次只需要极小的移动，然后重新计算误差。因此这是一种有吸引力的方法用来生成将操作臂移动到我们期望位置的轨迹，从而解决逆运动学问题。
 
 % In order to do this, we need an expression that relates the desired speed of the robot's end-effector, i.e., the direction in which we want to move, to the speed at which we need to change our joints. Let the translational speed of a robot be given by 
 
 
-为了做到这一点，我们需要一个表达方式，将机器人末端执行器的期望速度（即我们想要移动的方向）与我们需要改变的关节速度相关联。机器人的平移速度如下
-
+为了做到这一点，我们需要一个表达方式，将机器人末端执行器的期望速度（即我们想要移动的方向）与我们需要改变的关节速度相关联。机器人的平移速度如下：
 \begin{equation}
 v=\left(\begin{array}{c}
 \dot{x}\\
@@ -240,8 +227,7 @@ v=\left(\begin{array}{c}
 
  % As the robot can potentially not only translate, but also rotate, we also need to specify its angular velocity. Let these velocities be given as a vector 
 
-由于机器人不仅可以平移，还可以旋转，我们还需要指定其角速度。给出这些速度为向量
-
+由于机器人不仅可以平移，还可以旋转，我们还需要指定其角速度。给出这些速度为向量：
 \begin{equation}
 \omega=\left(\begin{array}{c}
 \omega_x\\
@@ -253,7 +239,7 @@ v=\left(\begin{array}{c}
 
 % This notation is also called a \emph{velocity screw}.\index{Screw (velocity)}\index{Velocity Screw} %By convention, the speed of rotation is given by the magnitude (or length) of this vector. 
 
-这个符号也称为\emph{速度螺丝（Velocity Crew）}。\index{Screw（velocity）}\index{速度螺丝（Velocity Crew）}
+这个符号也称为\emph{速度螺丝（Velocity Screw）}\index{速度螺丝（Velocity Screw）}。
 
 % We can now write translational and rotational velocities in a 6x1 vector as $ (v \quad \omega)^T$. Let the joint angles/positions be $j=(j_1, \ldots, j_n)$.
 
@@ -261,28 +247,25 @@ v=\left(\begin{array}{c}
 
 % Given a relationship between end-effector velocities $\dot{j}$ and joint velocities $J$, we can write
 
-给定末端执行器速度$\dot{j}$和关节速度$J$之间的关系，我们可以写为
-
+给定末端执行器速度$\dot{j}$和关节速度$J$之间的关系，我们可以写为：
 \begin{equation}
  (v \quad \omega)^T=J(\dot{j}_1,\ldots,\dot{j}_n)^T
 \end{equation}
 
 % with $ n$ the number of joints. $J$ is also known as the Jacobian matrix \index{Jacobian Matrix} and contains all partial derivatives that relate every joint angles to every velocities. In practice, $J$ looks like
 
-其中$n$为关节的数量。$J$也称为雅可比矩阵\index{雅可比矩阵（Jacobian Matrix）}，包含将每个关节角度与每个速度相关联的所有偏导数。实践中，$J$看起来像
-
+其中$n$为关节的数量。$J$也称为雅可比矩阵\index{雅可比矩阵（Jacobian Matrix）}，包含将每个关节角度与每个速度相关联的所有偏导数。实践中，$J$看起来像：
 \begin{equation}
 \left(\begin{array}{c}v\\\omega\end{array}\right)=\left(\begin{array}{ccc}\frac{\partial{x}}{\partial{j_1}} & \ldots & \frac{\partial{x}}{\partial{j_n}}\\\vdots & \quad & \vdots\\\frac{\partial{\omega_z}}{\partial{j_1}} & \ldots & \frac{\partial{\omega_z}}{\partial{j_n}}\end{array}\right)(j_1,\ldots,j_n)^T
 \end{equation}
 
 % This notation is important as it tells us how small changes in the joint space will affect the end-effector's position in cartesian space. Better yet, the forward kinematics of a mechanism can always be calculated, as well as their analytical derivatives, allowing us to calculate numerical values for the entries of matrix $J$ for every possible joint angle/position.
 
-这个符号很重要，因为它告诉我们，联合空间的小变化会如何影响末端执行器在笛卡尔空间中的位置。更好的是，可以总是计算一种机制的正向运动学以及它们的解析导数，这使我们能为每个关节角度/位置计算雅克比矩阵$J$对应项的值。
+这个符号很重要，因为它告诉我们，联合空间的小变化会如何影响末端执行器在笛卡尔空间中的位置。更好的是，可以总是计算一种机制的正运动学以及它们的解析导数，这使我们能为每个关节角度/位置计算雅克比矩阵$J$对应项的值。
 
 % It would now be desirable to just invert $J$ in order to calculate the necessary joint speeds for every desired end-effector speeds. Unfortunately, $ J$ is only invertible if there are exactly 6 independent joints, so that $ J$ is quadratic and has full rank. If this is not the case, we can use the pseudo-inverse instead:
 
 现在，只需要转换$J$，以便为每个期望的末端执行器速度计算关节速度。不幸的是，如果恰好有六个独立关节，$J$才是可逆的，使得$J$是二次的、满秩。如果没有正好六个独立关节，我们可以使用伪逆：
-
 \begin{equation}
 J^+=\frac{J^T}{JJ^T}=J^T(JJ^T)^{-1}
 \end{equation}
@@ -298,7 +281,6 @@ J^+=\frac{J^T}{JJ^T}=J^T(JJ^T)^{-1}
 % We can now write a simple feedback controller that drives our error $e$ as the difference between desired and actual position to zero:
 
 我们现在可以编写一个简单的反馈控制器，驱动机器人使误差$e$（期望值和实际位置之间的差值）趋于零：
-
 \begin{equation}
 \Delta{j}=-J^+e
 \end{equation}
@@ -310,16 +292,14 @@ J^+=\frac{J^T}{JJ^T}=J^T(JJ^T)^{-1}
 
 也就是说，我们将每个关节向最小化$e$的方向移动一点点。可以很容易地看出，如果$e$变为零，则关节速度只能为零。然而，当末端执行器必须经过奇异点才能达到目标时，会出现问题。那么，$J^+$的解会“爆炸”而关节速度变为无穷大。为了解决这个问题，我们可以向控制器引入阻尼。
 
-这可以通过不仅最小化误差，也最小化关节速度实现。因此，最小化问题变成了
-
+这可以通过不仅最小化误差，也最小化关节速度实现。因此，最小化问题变成了：
 \begin{equation}
 \|J\Delta j-e\|+\lambda^2\|\Delta j\|^2
 \end{equation}
 
 % where $\lambda$ is some constant. One can show that the resulting controller that achieves this has the form
 
-其中$\lambda$是常数。可以看出，达到此目的所需的控制器的形式为
-
+其中$\lambda$是常数。可以看出，达到此目的所需的控制器的形式为：
 \begin{equation}
 \Delta j=(J^TJ+\lambda^2 I)^{-1}J^+e
 \end{equation}
@@ -327,3 +307,59 @@ J^+=\frac{J^T}{JJ^T}=J^T(JJ^T)^{-1}
 % This is known as the \emph{Damped Least-Squares} method.\index{Damped Least-Squares Method} Problems with this approach are local minima and singularities of the mechanism, that might render this solution infeasible.
 
 这被称为\emph{阻尼最小二乘法（Damped Least-Squares）}。\index{阻尼最小二乘法（Damped Least-Squares）}该方法的问题是局部最小值和机制的奇异点，这可能使该解决方案不可行。
+
+
+% \section*{Take-home lessons}
+\section*{课后补充}
+
+% \begin{itemize}
+% \item Forward kinematics are equivalent to finding a coordinate transform from a world coordinate system into a coordinate system on the robot. Such a transform is a combination of a (3x1) translation vector and a (3x3) rotation matrix that consists of the unit vectors of the robot coordinate system. Both translation and rotation can be combined into a 4x4 homogeneous transform matrix.
+% \item Forward and Inverse Kinematics of a mobile robot are performed with respect to the speed of the robot and not its position.
+% \item For calculating the effect of each wheel on the speed of the robot, you need to consider the contribution of each wheel independently.
+% \item Calculating the inverse kinematics analytically becomes quickly infeasible. You can then plan in configuration space of the robot using path-planning techniques.
+% \item The inverse kinematics of a robot involves solving the equations for the forward kinematics for the joint angles. This process is often cumbersome if not impossible for complicated mechanisms.
+% \item A simple numerical solution is provided by taking all partial derivatives of the forward kinematics in order to get an easily invertible expression that relates joint speeds to end-effector speeds.
+% The inverse kinematics problem can then be formulated as feedback control problem, which will move the end-effector towards its desired pose using small steps. Problems with this approach are local minima and singularities of the mechanism, that might render this solution infeasible.
+% \end{itemize}
+
+\begin{itemize}
+\item 正运动学等价于寻找从世界坐标系到机器人坐标系的坐标变换。这种变换是由机器人坐标系的单位向量组成的$3\times 1$平移向量和$3\times 3$旋转矩阵的组合。平移和旋转可以组合成$4\times 4$的齐次变换矩阵。
+\item 移动机器人的正、逆运动学是相对于机器人的速度操作，而不是其位置。
+\item 为了计算每个车轮对机器人速度的影响，你需要考虑每个车轮独立的贡献。
+\item 解析的计算逆运动学很快变得不可行。你可以使用路径规划技术在机器人的配置空间中做规划。
+\item 机器人的逆运动学涉及求解正运动学的方程来得到关节角度。对于复杂的机制来说，这个过程即使不是不可能，那通常也会很麻烦。
+\item 有一种简单的数值解，通过对正运动学方程的取偏导数，获得将关节速度与末端执行器速度相关联的容易的可逆表达式。
+\item 可以将逆运动学问题形式化为反馈控制问题，一点点将末端执行器移动到其期望的姿态。这种方法的问题是局部最小值和机制的奇异点，这可能使得该解决方案不可行。
+\end{itemize}
+
+% \section*{Exercises}\small
+% \subsection*{Coordinate systems}
+\section*{习题}\small
+\subsection*{坐标系}
+
+\begin{enumerate}
+\item 
+	\begin{enumerate}
+	 % \item Write out the entries of a rotation matrix $^A_BR$ assuming basis vectors $X_A$, $Y_A$, $Z_A$, and $X_B$, $Y_B$, $Z_B$. 
+	 % \item Write out the entries of rotation matrix $^B_AR$.
+	 \item 假设基向量$X_A$，$Y_A$，$Z_A$和$X_B$，$Y_B$，$Z_B$，写出旋转矩阵$^A_BR$的项。
+	 \item 写出旋转矩阵$^B_AR$的项。
+	 \end{enumerate} 
+% \item Assume two coordinate systems that are co-located in the same origin, but rotated around the z-axis by the angle $\alpha$. Derive the rotation matrix from one coordinate system into the other and verify that each entry of this matrix is indeed the scalar product of each basis vector of one coordinate system with every other basis vector in the second coordinate system.  
+% \item Consider two coordinate systems $\{B\}$ and $\{C\}$, whose orientation is given by the rotation matrix $^C_BR$ and have distance $^BP$. Provide the homogenous transform $^C_BT$ and its inverse $^B_CT$. 
+% \item Consider the frame $\{B\}$ that is defined with respect to frame $\{A\}$ as $\{B\}=\{^A_BR, ^AP\}$. Provide a homogeneous transfrom from $\{A\}$ to $\{B\}$.
+
+\item 假设两个坐标系位于相同的原点，但绕$z$轴旋转角度$\alpha$。将旋转矩阵从一个坐标系推导到另一个坐标系，并验证该矩阵的每一项确实是第一个坐标系的每个基向量与第二个坐标系中的每个其他基向量的标量积。
+\item 考虑两个坐标系$\{B\}$和$\{C\}$，其方向由旋转矩阵$^C_BR$给出，距离为$^BP$。写出齐次变换$^C_BT$及其逆$^B_CT$。
+\item 考虑相对于坐标系$\{A\}$定义的坐标系$\{B\}$，$\{B\}=\{^A_BR，^AP\}$。写出从$\{A\}$到$\{B\}$的齐次变换。
+\end{enumerate}
+
+\subsection*{正、逆运动学}
+\begin{enumerate}
+% \item Consider a differential wheel robot with a broken motor, i.e., one of the wheels cannot be actuated anymore. Derive the forward kinematics of this platform. Assume the right motor is broken.
+% \item Consider a tri-cycle with two independent standard wheels in the rear and the stearable, driven front-wheel. Choose a suitable coordinate system and use $\phi$ as the steering wheel angle and wheel-speed $\dot{\omega}$. Provide forward and inverse kinematics. 
+
+\item 考虑具有一个损坏电动机的差速器轮机器人（即，其中一个车轮不能被驱动）。推导出这个平台的正运动学。假设右侧的电机坏了。
+\item 考虑一个三轮车，有两个独立的标准后轮和一个可转向的、驱动的前轮。选择合适的坐标系，令方向盘角度为$\phi$、车轮速度为$\dot{\omega}$。写出正、逆运动学。
+\end{enumerate}
+\normalsize
