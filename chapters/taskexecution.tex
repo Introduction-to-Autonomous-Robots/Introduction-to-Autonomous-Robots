@@ -1,0 +1,39 @@
+\chapter{Task execution}
+
+\section{Finite State Machines}
+
+\begin{enumerate}
+\item State is kept by a global variable
+\item Robot program is executed in a loop, switch statement is used to enter different branches
+\item Each state includes conditionals that set next state
+\item Loop execution time is constant, usually done via sleep statements. This is important as odometry computations require a constant time to function.
+\item FSMs are difficult to maintain. Adding a state requires modifiying the transitions of all states leading into that state and possibly also out of that new state.
+\end{enumerate}
+
+\section{Hierarchical Finite State Machines}
+\begin{enumerate}
+\item FSMs are grouped into clusters, creating super-states
+\item State transitions between super states can be tied to states to the included FSM or be implicitely connected to all states of the included FSM, which allows to leave the super state from every state therein. 
+\item Super states can also be executed in parallel, providing  events that lead to state transitions in other FSMs
+\item Robot control software like ROS, LCM or Yarp provide frameworks to implement asynchrnous hierarchical FSMs, allowing super-states to subscribe to messages published by other super-states as well as directly triggering state transitions across different processes running in parallel in a service model.
+\item HFSM solve some of the problems of FSMs by increasing modularity, thereby simplifying programmability, but still have the problem that $N$ states can lead to $N^2$ state transitions, each of which need to be manually coded.
+\end{enumerate}
+
+\section{Behavior Trees}
+\begin{enumerate}
+\item Programs are organized into nodes, each implementing certain functionality.
+\item A node can have sub-nodes, like leafs of a tree, that are sequentially executed.
+\item Each node can be \emph{running}, \emph{failed}, or \emph{successful}.
+\item Execution within a node is triggered by a so-called \emph{tick} received by its parent node.
+\item Nodes report their state back to their parent node.
+\item A parent node issues ticks to its child nodes one by another, only moving to the next of its child nodes once the last one has returned \emph{successful}.
+\item As long as a child node is returning \emph{running}, it continues to receive ticks.
+\item If a node fails, this information can be processed by the parent node who either passes it up, or restart the sequence of child nodes.
+\end{enumerate}
+
+\section{Exercises}
+
+\begin{enumerate}
+\item A robot runs at a 100ms loop time. Performing sensor readings takes 3ms, odometry computations 15ms, and executing logic takes 30ms on average. Which of these operations is likely to fail if a computation takes 80ms?
+\item Formulate both a Finite State Machine and a Behavior tree for the game ''Rats Life'', label each state and conditional transition, and compare the two representations.
+\end{enumerate}
