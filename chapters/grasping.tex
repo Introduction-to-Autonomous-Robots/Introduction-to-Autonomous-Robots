@@ -9,6 +9,7 @@ In its most simple form, grasping requires immobilizing an object, at least agai
 
 %% DRAWING OF TWO FINGERS HOLDING AN OBJECT WITH TWO FINGERS AND WITH THREE FINGERS. SHOW COORDINATE SYSTEM. 
 \begin{figure}
+\includegraphics[width=\columnwidth]{figs/idealgrasp}
 \caption{Cross-section from above showing an idealized two-finger (left) and three finger (right) gripper holding a cylinder.\label{fig:idealgrasp}.}
 \end{figure}
 
@@ -97,3 +98,8 @@ We are able to determine whether a contact point leads to a good grasp by compar
 To close the end-effector's fingers around the object requires collision checking. To see what happens, requires dynamic simulation. In short, collision checking routines model an object using a mesh of triangles that can be generated using CAD tools. These triangles are the leafs of a tree that has a coarse bounding object at the top. This coarse bounding object is then split into smaller and smaller elements. Collision checking can now quickly test whether an object collides at all and then recursively refine the exact triangles that collide and finally find the exact points of collision. Dynamic simulation applies Newtonian mechanics to an object (i.e., forces lead to acceleration of a body) and moves the object at very small time-steps. Detecting a collision usually involves moving the objects one step back and then iteratively approaching them until their proximity exceeds a certain treshold.
 
 \section{Exercises}
+\begin{enumerate}
+\item Think about at least three mechanisms to realize a parallel jaw gripper. How does the minimum and maximum aperture of the gripper relate to the gripper width for each of these designs?
+\item Think about at least three mechanisms to actuate a four-bar linkage. Which of these will keep the payload during power failure?
+\item Write code to generate rectangles with random dimensions and orientations. Use a point-in-polygon test to simulate random samples on its surface. Apply principal component analysis to compute the principal axes of the rectangle and compare with ground truth. How does the number of samples affect the accuracy of your estimate?
+\end{enumerate}
