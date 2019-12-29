@@ -80,9 +80,9 @@
      showgrid="false"
      inkscape:current-layer="layer1"
      inkscape:document-units="px"
-     inkscape:cy="332.48293"
-     inkscape:cx="435.48911"
-     inkscape:zoom="2.2378796"
+     inkscape:cy="272.67767"
+     inkscape:cx="377.62388"
+     inkscape:zoom="1.3226835"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
@@ -111,6 +111,8 @@
      inkscape:groupmode="layer"
      inkscape:label="Layer 1">
     <circle
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        r="33.394627"
        transform="rotate(75.248075)"
        cy="-281.00821"
@@ -118,6 +120,8 @@
        id="path1415"
        style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <g
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        id="g2288">
       <path
          style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
@@ -167,18 +171,24 @@
          ry="0.4832285" />
     </g>
     <circle
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        r="9.3838825"
        cy="270.79205"
        cx="318.60516"
        id="path2290"
        style="fill:#000000;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1" />
     <circle
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="circle2292"
        cx="405.29437"
        cy="270.79205"
        r="9.3838825" />
     <circle
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="circle4308"
        cx="387.83664"
@@ -186,18 +196,24 @@
        transform="rotate(75.248075)"
        r="33.394627" />
     <circle
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        r="9.3838825"
        cy="245.76837"
        cx="458.91656"
        id="circle4310"
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <circle
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="circle4312"
        cx="529.96594"
        cy="246.66208"
        r="9.3838825" />
     <circle
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        r="9.3838825"
        cy="314.13666"
        cx="494.2178"

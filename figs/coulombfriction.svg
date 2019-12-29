@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 744.09448 1052.3622"
+   sodipodi:docname="coloumbfriction.svg"
+   inkscape:version="1.0beta2 (2b71d25, 2019-12-03)"
+   version="1.1"
+   id="svg3803"
+   height="1122.5197"
+   width="793.70081">
+  <defs
+     id="defs3805">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="Arrow1Mend"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend">
+      <path
+         transform="scale(0.4) rotate(180) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path12433" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="Arrow1Send"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Send">
+      <path
+         transform="scale(0.2) rotate(180) translate(6,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path12439" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="Arrow1Mstart"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart">
+      <path
+         transform="scale(0.4) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path12430" />
+    </marker>
+    <pattern
+       patternTransform="matrix(0.97682884,0,0,1.1509884,-651.12982,-222.80325)"
+       id="pattern14074"
+       xlink:href="#pattern5092"
+       inkscape:collect="always" />
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="Arrow1Lstart"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path12424" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path5174" />
+    </marker>
+    <pattern
+       patternTransform="translate(-534.19895,-302.90986)"
+       id="pattern5092"
+       xlink:href="#pattern3855"
+       inkscape:collect="always" />
+    <pattern
+       id="pattern3855"
+       patternTransform="translate(202.625,269.71875)"
+       height="32.15625"
+       width="43.25"
+       patternUnits="userSpaceOnUse">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M 0.41566,31.08994 20.11364,0.78536"
+         id="path3832"
+         inkscape:connector-curvature="0" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M 21.74879,31.89088 42.84207,0.28029"
+         id="path3853"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </pattern>
+  </defs>
+  <sodipodi:namedview
+     inkscape:document-rotation="0"
+     inkscape:window-maximized="0"
+     inkscape:window-y="23"
+     inkscape:window-x="0"
+     inkscape:window-height="827"
+     inkscape:window-width="1440"
+     showgrid="false"
+     inkscape:current-layer="g14429"
+     inkscape:document-units="px"
+     inkscape:cy="235.41465"
+     inkscape:cx="377.85727"
+     inkscape:zoom="1.0909289"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata3808">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <g
+       inkscape:export-ydpi="1200.0543"
+       inkscape:export-xdpi="1200.0543"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\coulombfriction.png"
+       transform="translate(-169.22684,-348.35001)"
+       id="g14031">
+      <g
+         id="g11847"
+         transform="translate(-11.25,268.125)">
+        <path
+           inkscape:export-ydpi="1200.0543"
+           inkscape:export-xdpi="1200.0543"
+           inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\robot_distance_to_wall.png"
+           inkscape:connector-curvature="0"
+           id="path3830"
+           d="M 555.62959,273.11683 186.92584,271.92202"
+           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        <rect
+           transform="rotate(-179.81433)"
+           inkscape:export-ydpi="1200.0543"
+           inkscape:export-xdpi="1200.0543"
+           inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\robot_distance_to_wall.png"
+           y="-300.60925"
+           x="-534.28839"
+           height="29.294395"
+           width="335.87558"
+           id="rect3861"
+           style="fill:url(#pattern5092);fill-opacity:1;stroke:none" />
+      </g>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.9375"
+         id="rect11849"
+         width="131.25"
+         height="64.6875"
+         x="296.25"
+         y="475.3125" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+         d="m 285.9375,507.1875 h -56.25"
+         id="path11855"
+         inkscape:connector-curvature="0" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:37.5px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375"
+         x="241.29573"
+         y="482.02896"
+         id="text12714"><tspan
+           sodipodi:role="line"
+           id="tspan12712"
+           x="241.29573"
+           y="482.02896"
+           style="stroke-width:0.9375">F<tspan
+   style="letter-spacing:0px"
+   id="tspan12716"
+   dy="10">t</tspan></tspan></text>
+      <path
+         inkscape:connector-curvature="0"
+         id="path13999"
+         d="m 364.14697,406.7224 -0.7302,56.24526"
+         style="fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+      <text
+         id="text14005"
+         y="386.93048"
+         x="344.59564"
+         style="font-style:normal;font-weight:normal;font-size:37.5px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375"
+         xml:space="preserve"><tspan
+           style="stroke-width:0.9375"
+           y="386.93048"
+           x="344.59564"
+           id="tspan14003"
+           sodipodi:role="line"
+           dy="0 10">Fn</tspan></text>
+      <path
+         inkscape:connector-curvature="0"
+         id="path14007"
+         d="m 333.20495,507.3038 56.24861,0.39597"
+         style="fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+    </g>
+    <text
+       id="text14011"
+       y="515.21417"
+       x="342.5387"
+       style="font-style:normal;font-weight:normal;font-size:37.5px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.9375"
+         y="515.21417"
+         x="342.5387"
+         id="tspan14009"
+         sodipodi:role="line" /></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.999996px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 650.80284,194.79907 431.18313,192.68664"
+       id="path14035"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\coulombfriction.png"
+       inkscape:export-xdpi="1200.0543"
+       inkscape:export-ydpi="1200.0543" />
+    <rect
+       style="fill:url(#pattern14074);fill-opacity:1;stroke:none;stroke-width:1"
+       id="rect14037"
+       width="197.36766"
+       height="29.294294"
+       x="-651.18237"
+       y="-220.50264"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\coulombfriction.png"
+       inkscape:export-xdpi="1200.0543"
+       inkscape:export-ydpi="1200.0543"
+       transform="matrix(-0.99998479,-0.00551469,0.00190421,-0.99999819,0,0)" />
+    <rect
+       inkscape:export-ydpi="1200.0543"
+       inkscape:export-xdpi="1200.0543"
+       inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\coulombfriction.png"
+       style="fill:none;stroke:#000000;stroke-width:0.937497"
+       id="rect14041"
+       width="75.830681"
+       height="64.6875"
+       x="517.92731"
+       y="127.95212" />
+    <text
+       id="text14118"
+       y="140.83272"
+       x="614.38275"
+       style="font-style:normal;font-weight:normal;font-size:37.5px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.9375"
+         y="140.83272"
+         x="614.38275"
+         id="tspan14116"
+         sodipodi:role="line" /></text>
+    <text
+       id="text14122"
+       y="134.01112"
+       x="649.15082"
+       style="font-style:normal;font-weight:normal;font-size:37.5px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.9375"
+         y="134.01112"
+         x="649.15082"
+         id="tspan14120"
+         sodipodi:role="line" /></text>
+    <g
+       style="stroke-width:0.692336"
+       transform="matrix(0,-1.4540431,1.4347922,0,356.72419,978.99395)"
+       id="g14429">
+      <g
+         inkscape:export-ydpi="1200.0543"
+         inkscape:export-xdpi="1200.0543"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\coulombfriction.png"
+         transform="translate(-8.623442,-14.121437)"
+         id="g16060">
+        <path
+           sodipodi:arc-type="arc"
+           sodipodi:open="true"
+           sodipodi:end="4.700345"
+           sodipodi:start="1.5857696"
+           sodipodi:ry="4.2888198"
+           sodipodi:rx="5.9047008"
+           sodipodi:cy="154.04015"
+           sodipodi:cx="600.55255"
+           sodipodi:type="arc"
+           id="path14077"
+           style="fill:none;stroke:#000000;stroke-width:0.649064"
+           d="m 600.46414,158.32848 a 5.9047008,4.2888198 0 0 1 -5.81628,-4.29462 5.9047008,4.2888198 0 0 1 5.83358,-4.28222" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path14079"
+           d="m 600.45005,149.75163 40.81175,-0.0512"
+           style="fill:none;stroke:#000000;stroke-width:0.649064px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path14081"
+           d="m 600.42202,158.32848 40.2538,-0.0866"
+           style="fill:none;stroke:#000000;stroke-width:0.649063px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        <path
+           sodipodi:nodetypes="cc"
+           style="fill:none;stroke:#000000;stroke-width:0.649064;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.29813, 1.29813;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 621.53772,116.19537 -27.95781,37.83876"
+           id="path14088-7"
+           inkscape:connector-curvature="0" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path14105"
+           d="m 593.5784,154.04441 27.08062,37.61823"
+           style="fill:none;stroke:#000000;stroke-width:0.649063;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.29813, 1.29813;stroke-dashoffset:0;stroke-opacity:1"
+           sodipodi:nodetypes="cc" />
+        <path
+           d="m 615.02019,124.95493 a 36.206425,36.086727 0 0 1 14.76593,29.19792 36.206425,36.086727 0 0 1 -14.95836,29.10046"
+           sodipodi:arc-type="arc"
+           sodipodi:open="true"
+           sodipodi:end="0.94362908"
+           sodipodi:start="5.3461359"
+           sodipodi:ry="36.086727"
+           sodipodi:rx="36.206425"
+           sodipodi:cy="154.03413"
+           sodipodi:cx="593.5799"
+           sodipodi:type="arc"
+           id="path14111"
+           style="fill:none;stroke:#000000;stroke-width:0.649065;stroke-miterlimit:4;stroke-dasharray:1.29813, 1.29813;stroke-dashoffset:0" />
+        <text
+           transform="rotate(88.125801)"
+           id="text14126"
+           y="-605.45978"
+           x="153.91716"
+           style="font-style:normal;font-weight:normal;font-size:37.5px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.649065"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.5px;font-family:Symbol;-inkscape-font-specification:Symbol;stroke-width:0.649065"
+             y="-605.45978"
+             x="153.91716"
+             id="tspan14124"
+             sodipodi:role="line">α</tspan></text>
+        <path
+           d="m 646.67287,141.34598 a 42.807957,44.008568 0 0 1 -0.15164,25.88301"
+           sodipodi:arc-type="arc"
+           sodipodi:open="true"
+           sodipodi:end="0.3045089"
+           sodipodi:start="5.9907228"
+           sodipodi:ry="44.008568"
+           sodipodi:rx="42.807957"
+           sodipodi:cy="154.03413"
+           sodipodi:cx="605.68268"
+           sodipodi:type="arc"
+           id="path14136"
+           style="fill:none;stroke:#000000;stroke-width:0.649065;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend)" />
+      </g>
+      <path
+         inkscape:export-ydpi="1200.0543"
+         inkscape:export-xdpi="1200.0543"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\coulombfriction.png"
+         sodipodi:open="true"
+         d="m 140.80832,-585.7785 a 0.62857956,0.62420797 0 0 1 -0.61867,0.63353 0.62857956,0.62420797 0 0 1 -0.63834,-0.61398 0.62857956,0.62420797 0 0 1 0.6179,-0.63427 0.62857956,0.62420797 0 0 1 0.63908,0.61321"
+         sodipodi:arc-type="arc"
+         sodipodi:end="6.2657075"
+         sodipodi:start="6.2681393"
+         sodipodi:ry="0.62420797"
+         sodipodi:rx="0.62857956"
+         sodipodi:cy="-585.7691"
+         sodipodi:cx="140.17981"
+         sodipodi:type="arc"
+         transform="rotate(90)"
+         id="path16758"
+         style="fill:#000000;stroke:#000000;stroke-width:0.649065;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+    </g>
+  </g>
+</svg>
