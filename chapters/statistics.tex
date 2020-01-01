@@ -19,7 +19,7 @@ $\begin{array}{ll}
 12: 6+6 & \rightarrow \frac{1}{6}\frac{1}{6}\\
 \end{array}$
 
-As one can see, there are many more possibilities to sum up to a 7 than there are to a 3, e.g. While it is possible to store probability distributions such as this one as a look-up table to predict the outcome of an experiment (or that of a measurement), we can also calculate the sum of two random processes analytically (Section \ref{sec:convolution}). 
+As one can see, there are many more possibilities to sum up to a 7 than there are to a 3, e.g. While it is possible to store probability distributions such as this one as a look-up table to predict the outcome of an experiment (or that of a measurement), we can also calculate the sum of two random processes analytically (Section \ref{sec:convolution}).
 
 
 \subsection{The Normal Distribution}
@@ -61,29 +61,29 @@ P(A \cap B)=P(A)P(B|A)=P(B)P(A|B)
 \end{equation}
 Here, $P(B|A)$ is the \emph{conditional probability}\index{Conditional Probability} that $B$ happens, knowing that event $A$ happens. Likewise, $P(A|B)$ is the probability that event $A$ happens given that $B$ happens.
 
-Bayes' Rule\index{Bayes' Rule} relates a conditional probability to its inverse. In other words, if we know the probability of event $A$ to happen given that event $B$ is happening, we can calculate the probability of $B$ to occur given that $A$ is happening. Bayes' rule can be derived from the simple observation that the probability of $A$ and $B$ to happen together ($P(A \cap B)$) is given by $P(A)P(B|A)$ or the probability of $A$ to happen and the probability of $B$ to happen given that $A$ happens (Equation \ref{eq:conditionalprob}). 
+Bayes' Rule\index{Bayes' Rule} relates a conditional probability to its inverse. In other words, if we know the probability of event $A$ to happen given that event $B$ is happening, we can calculate the probability of $B$ to occur given that $A$ is happening. Bayes' rule can be derived from the simple observation that the probability of $A$ and $B$ to happen together ($P(A \cap B)$) is given by $P(A)P(B|A)$ or the probability of $A$ to happen and the probability of $B$ to happen given that $A$ happens (Equation \ref{eq:conditionalprob}).
 From this, deriving Bayes' rule is straightforward:
 \begin{equation}
 P(A|B)=\frac{P(A)P(B|A)}{P(B)}
 \end{equation}
-In words, if we know the probability that $B$ happens given that $A$ happens, we can calculate that $A$ happens given that $B$ happens. 
+In words, if we know the probability that $B$ happens given that $A$ happens, we can calculate that $A$ happens given that $B$ happens.
 
 \section{Sum of two random processes}\label{sec:convolution}
 Let $X$ and $Y$ be the random variables associated with the numbers shown on two dice (see above), and $Z=X+Y$. With $P(X=x)$, $P(Y=y)$, and $P(Z=z)$ being the probabilities associated with the random variables taking specific values $x,y$ or $z$. Given $z=x+y$, the event $Z=z$ is the union of the independent events $X=k$ and $Y=z-k$. We can therefore write
 \begin{equation}
 P(Z=z)=\sum_{k=-\infty}^{\infty}P(X=k)P(Y=z-k)
 \end{equation}
-which is the exact definition of a \emph{convolution}\index{Convolution}, also written as 
+which is the exact definition of a \emph{convolution}\index{Convolution}, also written as
 \begin{equation}
 P(Z)=P(X)\star P(Y)
 \end{equation}
 
-Numerically calculating the convolution always works, and can be done analytically for some probability distributions. 
+Numerically calculating the convolution always works, and can be done analytically for some probability distributions.
 
-Conveniently, the convolution of two Gaussian distributions is again a Gaussian distribution with a variance that corresponds to the sum of the variances of the indivdiual Gaussians. 
+Conveniently, the convolution of two Gaussian distributions is again a Gaussian distribution with a variance that corresponds to the sum of the variances of the indivdiual Gaussians.
 
 \section{Linear Combinations of Independent Gaussian Random Variables}\label{sec:lcombrandom}
-Let $X_1$, $X_2$, $\ldots$, $X_n$ be $n$ independent random variables with means $\mu_1$, $\mu_2$, $\ldots$, $\mu_n$ and variances $\sigma_1^2$, $\sigma_2^2$, $\ldots$, and $\sigma^2_n$. Let $Y$ be a random variable that is a linear combination of $X_i$ with weights $a_i$ so that $Y=\sum_{i=1}^na_iX_i$. 
+Let $X_1$, $X_2$, $\ldots$, $X_n$ be $n$ independent random variables with means $\mu_1$, $\mu_2$, $\ldots$, $\mu_n$ and variances $\sigma_1^2$, $\sigma_2^2$, $\ldots$, and $\sigma^2_n$. Let $Y$ be a random variable that is a linear combination of $X_i$ with weights $a_i$ so that $Y=\sum_{i=1}^na_iX_i$.
 
 As the sum of two Gaussian random variables is again a Gaussian, $Y$ is Gaussian distributed with a mean \begin{equation}
 \mu_Y=\sum_{i=1}^na_i\mu_i
@@ -91,7 +91,7 @@ As the sum of two Gaussian random variables is again a Gaussian, $Y$ is Gaussian
 and a variance
 \begin{equation}
 \sigma_Y^2=\sum_{i=1}^na_i^2\sigma_i^2
-\end{equation}  
+\end{equation}
 
 
 

@@ -15,7 +15,7 @@
 \item FSMs are grouped into clusters, creating super-states
 \item Also known as ``Statecharts'' \cite{harel1987statecharts}
 
-\item State transitions between super states can be tied to states to the included FSM or be implicitely connected to all states of the included FSM, which allows to leave the super state from every state therein. 
+\item State transitions between super states can be tied to states to the included FSM or be implicitely connected to all states of the included FSM, which allows to leave the super state from every state therein.
 \item Super states can also be executed in parallel, providing  events that lead to state transitions in other FSMs
 \item Robot control software like ROS, LCM or Yarp provide frameworks to implement asynchrnous hierarchical FSMs, allowing super-states to subscribe to messages published by other super-states as well as directly triggering state transitions across different processes running in parallel in a service model.
 \item HFSM solve some of the problems of FSMs by increasing modularity, thereby simplifying programmability, but still have the problem that $N$ states can lead to $N^2$ state transitions, each of which need to be manually coded.
