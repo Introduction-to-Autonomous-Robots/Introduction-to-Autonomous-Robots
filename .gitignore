@@ -1,0 +1,9 @@
+# ignore files that will be created by latex
+*.idx
+*.ilg
+*.ind
+
+# ignore the final documents
+*.pdf
+*.dvi
+*.ps

@@ -1,21 +1,21 @@
 \chapter{Grasping}
-Grasping is the activity in which the robot extends its body by attaching an external object to its kinematic chain. This allows the robot to move this object and potentially manipulate it, that is change its shape or pose. Grasping has the interesting, and very confusing, property that its relatively easy in practice, but very difficult in theory. In particular, this chapter is able to describe a variety of strategies that will lead to successful grasps for a wide range of objects, but has difficulties to answer questions such as \emph{What makes a good grasp?} or \emph{How to find good grasps?} in any more depth than by providing simple heuristics. 
+Grasping is the activity in which the robot extends its body by attaching an external object to its kinematic chain. This allows the robot to move this object and potentially manipulate it, that is change its shape or pose. Grasping has the interesting, and very confusing, property that its relatively easy in practice, but very difficult in theory. In particular, this chapter is able to describe a variety of strategies that will lead to successful grasps for a wide range of objects, but has difficulties to answer questions such as \emph{What makes a good grasp?} or \emph{How to find good grasps?} in any more depth than by providing simple heuristics.
 
 \section{The theory of grasping}
-The theory of grasping is quite involved, with the state of the art comprehensively described in \cite{rimon2019mechanics}, yet has difficulties to mathematically exactly capture the mechanics of grasping mechanisms that are successful in practice. Rather than describing these developments here --- which will be well beyond the scope of this book --- we will briefly describe different approaches to model grasping, and there limitations, to provide an understanding of what the reasons for grasps that work. 
+The theory of grasping is quite involved, with the state of the art comprehensively described in \cite{rimon2019mechanics}, yet has difficulties to mathematically exactly capture the mechanics of grasping mechanisms that are successful in practice. Rather than describing these developments here --- which will be well beyond the scope of this book --- we will briefly describe different approaches to model grasping, and there limitations, to provide an understanding of what the reasons for grasps that work.
 
 \subsection{Friction}\index{Friction}
-In its most simple form, grasping requires immobilizing an object, at least agains the forces of gravity, by providing appropriate forces in the opposite direction. Specifically, contact points on a robotic finger, gripper or hand are assumed to exert localized forces, thereby constraining the object sufficiently. By this, fingers act essentially as miniature robotic arms, allowing us to apply the methods and tools from previous chapters \ref{chap:locomotion}--\ref{chap:forces}. 
+In its most simple form, grasping requires immobilizing an object, at least agains the forces of gravity, by providing appropriate forces in the opposite direction. Specifically, contact points on a robotic finger, gripper or hand are assumed to exert localized forces, thereby constraining the object sufficiently. By this, fingers act essentially as miniature robotic arms, allowing us to apply the methods and tools from previous chapters~\ref{chap:locomotion}--\ref{ch:forces}.
 
-%% DRAWING OF TWO FINGERS HOLDING AN OBJECT WITH TWO FINGERS AND WITH THREE FINGERS. SHOW COORDINATE SYSTEM. 
+%% DRAWING OF TWO FINGERS HOLDING AN OBJECT WITH TWO FINGERS AND WITH THREE FINGERS. SHOW COORDINATE SYSTEM.
 \begin{figure}
 \includegraphics[width=\columnwidth]{figs/idealgrasp}
 \caption{Cross-section from above showing an idealized two-finger (left) and three finger (right) gripper holding a cylinder.\label{fig:idealgrasp}.}
 \end{figure}
 
-While already very involved for anything but very simple mechanisms, such a model only captures a very small slice of realistic grasps. In any real application, contacts between a gripper and hand are not friction-less. This is the reason a grasp such as shown in Figure \ref{fig:idealgrasp} actually works. If there were really no friction between the fingers and the object, the object would be ejected from the hand for every grasp that is not exactly aligned with a principal axis of the cylinder in Figure \ref{ref:fig:idealgrasp}, left. Furthermore, even the three-finger grasp shown in  Figure \ref{ref:fig:idealgrasp}, right, would \emph{always} fail as there is no force constraining the object from below. Fortunately, the existance of friction makes grasping much easier in practice, yet much harder to describe mathematically. 
+While already very involved for anything but very simple mechanisms, such a model only captures a very small slice of realistic grasps. In any real application, contacts between a gripper and hand are not friction-less. This is the reason a grasp such as shown in Figure~\ref{fig:idealgrasp} actually works. If there were really no friction between the fingers and the object, the object would be ejected from the hand for every grasp that is not exactly aligned with a principal axis of the cylinder in Figure~\ref{fig:idealgrasp}, left. Furthermore, even the three-finger grasp shown in  Figure~\ref{fig:idealgrasp}, right, would \emph{always} fail as there is no force constraining the object from below. Fortunately, the existance of friction makes grasping much easier in practice, yet much harder to describe mathematically.
 
-The reason that the grasps shown in Figure \ref{fig:idealgrasp} do work in most circumstances is that the normal forces shown have a tangential component that is due to friction and covered by \emph{Coloumb's Friction law,}\index{Coloumb Friction}
+The reason that the grasps shown in Figure~\ref{fig:idealgrasp} do work in most circumstances is that the normal forces shown have a tangential component that is due to friction and covered by \emph{Coloumb's Friction law,}\index{Coloumb Friction}
 
 which states that the higher the friction coefficient of a material, the more normal force translates into tangential forces that can resist two surfaces from moving against each other:
 
@@ -28,7 +28,7 @@ Here $F_\mathrm{t}$  is the force of friction exerted by each surface on the oth
 
 The friction coefficient $\mu$ is low for glass on glass and high for rubber on wood.  We are therefore interested in designing grippers with high friction coefficients to avoid objects from slipping.
 
-When do objects slip? Lets say we have a fingertip pressing down on a surface in any orientation. There will be a force normal to the surface $F_\mathrm{n}$, which defines the tangential force $F_\mathrm{t}$ in any direction. Sweeping the tangential force around the normal force creates a cone with an opening angle of 
+When do objects slip? Lets say we have a fingertip pressing down on a surface in any orientation. There will be a force normal to the surface $F_\mathrm{n}$, which defines the tangential force $F_\mathrm{t}$ in any direction. Sweeping the tangential force around the normal force creates a cone with an opening angle of
 \begin{equation}
 \alpha=2tan^{-1}\mu,
 \end{equation}
@@ -43,22 +43,22 @@ If the net force on the object is not within this cone, the object slips.  This 
 
 A force applied to a rigid body will exert both a force as well as a torque to the body's center of gravity. This is called a \emph{wrench}\index{Wrench}. If we consider the possible forces that we can apply to a rigid body without having the end-effector slip to form a space (namely the cone described earlier), we can talk about the \emph{grasping wrench space}\index{Grasping wrench space}, which is the corresponding space of all suitable wrenches.
 
-Knowing the relation between normal and tangential reaction forces can help in designing grippers that are more likely to successfully grasp an object than others, as well as when planning suitable grasp for objects with known friction. 
+Knowing the relation between normal and tangential reaction forces can help in designing grippers that are more likely to successfully grasp an object than others, as well as when planning suitable grasp for objects with known friction.
 
 %In summary: we can use Coloumb's law of friction to determine the direction of forces that we can apply to a certain contact point without that the object slips. These forces translate into wrenches to the object's center of gravity. A grasp fits a certain task if the wrenches that would fulfill the task can be effectuated without slip. The less force is waisted to overcome slip, the better is the grasp.
 
 \subsection{Multiple contacts and deformation}
-In practice, no force will ever be applied at a single point only, but over an area, either due to the size of the finger pad itself or due to the contact area deforming. Even the smallest contact area will allow to not only additional force constraints, but also constraints on torque, thereby adding constraints in additional dimensions and therefore further stabilizing the grasp. This is illustrated in Figure \ref{fig:contactarea}. Whereas the object can easily pivot around the point of contact in Fig. \ref{fig:contactarea}, left, increasing the area of contact only slighlty constrains the rotational degree of freedom. It is therefore desirable to grasp an object with an as large contact area as possible. (A large contact area will also increase friction.)
+In practice, no force will ever be applied at a single point only, but over an area, either due to the size of the finger pad itself or due to the contact area deforming. Even the smallest contact area will allow to not only additional force constraints, but also constraints on torque, thereby adding constraints in additional dimensions and therefore further stabilizing the grasp. This is illustrated in Figure~\ref{fig:contactarea}. Whereas the object can easily pivot around the point of contact in Figure~\ref{fig:contactarea}, left, increasing the area of contact only slighlty constrains the rotational degree of freedom. It is therefore desirable to grasp an object with an as large contact area as possible. (A large contact area will also increase friction.)
 
 \begin{figure}
-\caption{From left to right: ideal force exerted via a single point of contact, forces exerted via an area of contact, contact area increasing due to pressure and conforming with the surface.\label{fig:contactarea}} 
+\caption{From left to right: ideal force exerted via a single point of contact, forces exerted via an area of contact, contact area increasing due to pressure and conforming with the surface.\label{fig:contactarea}}
 \end{figure}
 
-A perfectly flat surface has only a single point of contact when grasping a cylinder or sphere. Indeed, using blank metal grippers or fingers is little successful in practice. Instead, rubber pads are used to increase force closure by conforming around the object. As the rubber is flexible, however, the grasp is not completely fixating the object, but it can move within the grasp, which might not be desirable when picking up a nut, e.g., and trying to mount it on a screw. 
+A perfectly flat surface has only a single point of contact when grasping a cylinder or sphere. Indeed, using blank metal grippers or fingers is little successful in practice. Instead, rubber pads are used to increase force closure by conforming around the object. As the rubber is flexible, however, the grasp is not completely fixating the object, but it can move within the grasp, which might not be desirable when picking up a nut, e.g., and trying to mount it on a screw.
 
 \subsection{Suction}
 
-A highly capable method for grasping is using suction. Here, a suction cup is pressed against an object, using a vacuum applied by a pump to suck the object against the cup. Instead of exerting forces against the object, which always requires at least one antipodal force (or multiple forces that are distributed such that the object remains in equilibrium), suction only requires one point of contact. The rim of the suction cup provides both friction, to prevent the object to slip, and multiple contact points that further constrain the object beyond the normal force applied by the vacuum. The soft nature of the suction cup provides the ability for the rim to conform to the object, ruling out objects that do not have any flat surfaces. The elasticity of the rim also makes it difficult to further manipulate the object as all forces applied by the robot will need to be transferred via a spring-like elastic material. 
+A highly capable method for grasping is using suction. Here, a suction cup is pressed against an object, using a vacuum applied by a pump to suck the object against the cup. Instead of exerting forces against the object, which always requires at least one antipodal force (or multiple forces that are distributed such that the object remains in equilibrium), suction only requires one point of contact. The rim of the suction cup provides both friction, to prevent the object to slip, and multiple contact points that further constrain the object beyond the normal force applied by the vacuum. The soft nature of the suction cup provides the ability for the rim to conform to the object, ruling out objects that do not have any flat surfaces. The elasticity of the rim also makes it difficult to further manipulate the object as all forces applied by the robot will need to be transferred via a spring-like elastic material.
 
 \subsection{Non-prehensile manipulation}
 
@@ -76,11 +76,11 @@ A highly capable method for grasping is using suction. Here, a suction cup is pr
 \subsection{4-bar linkage}
 - Some industrial robotic grippers
 - more complex kinematics, single or dual motor
-- having two motors can be advantageous, in particular in conjunction with torque control 
+- having two motors can be advantageous, in particular in conjunction with torque control
 
 \subsection{Multi-fingered hands}
 - Three finger hand suitable to grasp round object from above
-- more difficult to use for other objects 
+- more difficult to use for other objects
 - changing the kinematics from two finger pinching to two-one pinching and three-finger grasps
 - more fingers provide additional redundancy, in-hand manipulation
 

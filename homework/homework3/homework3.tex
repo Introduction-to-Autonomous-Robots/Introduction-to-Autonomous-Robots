@@ -27,10 +27,10 @@
 %% Please note:
 %% Images can be included using \includegraphics{Dateiname}
 %% resp. using the dialog in the Insert menu.
-%% 
+%%
 %% The mode "LaTeX => PDF" allows the following formats:
 %%   .jpg  .png  .pdf  .mps
-%% 
+%%
 %% The modes "LaTeX => DVI", "LaTeX => PS" und "LaTeX => PS => PDF"
 %% allow the following formats:
 %%   .eps  .ps  .bmp  .pict  .pntg
@@ -94,12 +94,12 @@ Let the variance of your time measurement $\Delta t$ be $\sigma_t^2$. What can y
 \begin{equation}
 \nonumber
 v=f(\dot{\phi},r)=r\dot{\phi}
-\end{equation} 
+\end{equation}
 Assume that your measurement of $\dot{\phi}$ is noisy and has a standard deviation $\sigma_{\phi}$.  Use the error propagation law to calculate the resulting variance of your speed estimate $\sigma_v^2$.
 \item Assume that the ceiling is equipped with infra-red markers that the robot can identify with some certainty. Your task is to develop a probabilistic localization scheme, and you would like to calculate the probability $p(marker|reading)$ to be close to a certain marker given a certain sensing reading and information about how the robot has moved.
 \begin{enumerate}
 \item Derive an expression for $p(marker|reading)$ assuming that you have an estimate of the probability to correctly identify a marker $p(reading|marker)$ and the probability $p(marker)$ of being underneath a specific marker.
-\item Now assume that the likelihood that you are reading a marker correctly is 90\%, that you get a wrong reading is 10\%, and that you do not see a marker when passing right underneath it is 20\%. Consider a narrow corridor that is equipped with 4 markers. You know with certainty that you started from the entry closests to marker 1 and move right in a straight line. The first reading you get is `` Marker 3''. Calculate the probability to be indeed underneath marker 3. 
+\item Now assume that the likelihood that you are reading a marker correctly is 90\%, that you get a wrong reading is 10\%, and that you do not see a marker when passing right underneath it is 20\%. Consider a narrow corridor that is equipped with 4 markers. You know with certainty that you started from the entry closests to marker 1 and move right in a straight line. The first reading you get is `` Marker 3''. Calculate the probability to be indeed underneath marker 3.
 \item Could the robot also possibly be underneath marker 4? \end{enumerate}
 \end{enumerate}
 
