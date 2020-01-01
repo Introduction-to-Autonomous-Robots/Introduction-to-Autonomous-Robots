@@ -243,7 +243,7 @@ This can be addressed by constructing a  minimum spanning-tree  (MST) of the con
 \begin{itemize}
 \item G. Grisetti, R. Kuemmerle, C. Stachniss and W. Burgard. A Tutorial on Graph-Based SLAM. IEEE Intelligent Transportation Systems Magazine, 2(4):31-43, 2010.
 
-\item E. Olson, J. Leonard and S. Teller. Fast Iterative Alignment of Pose Graphs with Poor Initial Estimates. Proc. of ICRA, pp 2262-2269, Orlando, FL, 2006.
+\item E. Olson, J. Leonard and S. Teller. Fast Iterative Alignment of Pose Graphs with Poor Initial Estimates. Proc.\ of ICRA, pp 2262-2269, Orlando, FL, 2006.
 
 \item G. Grisetti, C. Stachniss, S. Grzonka and W. Burgard. A Tree Parameterization for Efficiently Computing Maximum Likelihood Maps using Gradient Descent. Robotics: Science and Systems (RSS), Atlanta, GA, USA, 2007.
 \end{itemize}
@@ -316,7 +316,7 @@ The intuition behind SLAM is to consider each transformation between consecutive
 
 RGB-D Mapping uses a variant of ICP that is enhanced by SIFT features for point selection and matching. Maps are build incrementally. SIFT features, and their spatial relationship, are used for detecting loop closures. Once a loop closure is detected, an additional constraint is added to the pose graph and a SLAM-like optimization algorithm corrects the pose of all previous observations.
 
-As ICP only works when both point clouds are already closely aligned, which might not be the case for a fast moving robot with a relatively noisy sensor (the XBox Kinect has an error of 3cm for a few meters of range vs. millimeters in laser range scanners), RGB-D Mapping uses RANSAC to find an initial transformation. Here, RANSAC works as for line fitting: it keeps guessing possible transformations for 3 pairs of SIFT feature points and then counts the number of inliers when matching the two point clouds, one of which being transformed using the random guess.
+As ICP only works when both point clouds are already closely aligned, which might not be the case for a fast moving robot with a relatively noisy sensor (the XBox Kinect has an error of 3cm for a few meters of range vs.\ millimeters in laser range scanners), RGB-D Mapping uses RANSAC to find an initial transformation. Here, RANSAC works as for line fitting: it keeps guessing possible transformations for 3 pairs of SIFT feature points and then counts the number of inliers when matching the two point clouds, one of which being transformed using the random guess.
 
 
 
@@ -548,7 +548,7 @@ This book is designed to cover two full semesters at undergraduate level, CSCI 3
 
 
 \section{An introduction to autonomous \emph{mobile} robots}
-This describes a possible one semester curriculum, which takes the students from the kinematics of a differential-wheel platform to SLAM. This curriculum is involved and requires a firm background in trigonometry, probability theory and linear algebra. This might be too ambitious for third-year Computer Science students, but fares well with Aerospace and Electrical Engineering students, who often have a stronger, and more applied, mathematical background. This curriculum is therefore also well suited as ``advanced class'', e.g. in the fourth year of a CS curriculum.
+This describes a possible one semester curriculum, which takes the students from the kinematics of a differential-wheel platform to SLAM. This curriculum is involved and requires a firm background in trigonometry, probability theory and linear algebra. This might be too ambitious for third-year Computer Science students, but fares well with Aerospace and Electrical Engineering students, who often have a stronger, and more applied, mathematical background. This curriculum is therefore also well suited as ``advanced class'', e.g.\ in the fourth year of a CS curriculum.
 
 \subsection{Overview}
 The curriculum is motivated by a maze-solving competition that is described in Section~\ref{sec:ratslife}. Solving the game can be accomplished using a variety of algorithms ranging from wall following (which requires simple proportional control) to Depth-first Search on the maze to full SLAM. Here, the rules are designed such that creating a map of the environment leads to a competitive advantage on the long run.
