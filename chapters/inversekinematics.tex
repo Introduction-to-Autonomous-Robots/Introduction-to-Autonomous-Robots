@@ -59,7 +59,7 @@ Providing the orientation of the robot in addition to the desired position there
 
 As such solutions quickly become unhandy with more dimensions, however, you can calculate a numerical solution using an approach that we will later see is very similar to path planning in mobile robotics. One way to do this is to plot the distance of the end-effector from the desired solution in configuration space. To do this, you need to solve the forward kinematics for every point in configuration space and use the Euclidian distance to the desired target as height. In our example this would be
 \begin{equation}
-\small
+\scriptstyle
 f_{x,y}(\alpha,\beta)=\sqrt{\left(\sin(\alpha + \beta) + \sin(\alpha) - y\right)^2 + \left(\cos(\alpha+\beta)+\cos(a) - x\right)^2}
 \end{equation}
 This is plotted for $\alpha=[-\pi/2,\pi/2]$ and $\beta=[-\pi,\pi]$ and $x=1$, $y=1$ in Figure~\ref{fig:inversekinematics}. This function has a minima, in this case zero, for values of $\alpha$ and $\beta$ that bring the manipulator to $(1,1)$. These values are $(\alpha \rightarrow 0, b \rightarrow -\frac{\pi}{2})$ and $(\alpha \rightarrow -\frac{\pi}{2}, b \rightarrow \frac{\pi}{2})$.
