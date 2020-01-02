@@ -63,16 +63,34 @@ A highly capable method for grasping is using suction. Here, a suction cup is pr
 \section{Simple grasping mechanisms}
 Understanding why grasping actually works, namely due to friction and multiplying contacts by deformation, allows us to select grasping mechanism that are both able to successfully grasp a wide range of object and simple to construct. Here, properties of interest are the range of possible object sizes, given by a minimum and maximum size, the maximum weight of an object, and how fragile objects can possibly be. Here, object dimensions are directly dependent on the gripper kinematics, such as minimum and maximum aperture, whereas the maximum weight is given by the torque the mechanism can exert as well as the number of contacts and friction thereof. Whether a gripper can handle fragile objects is a function of how well this torque can be measured and controlled. 
 
-\subsection{1-DoF gripper}
-One of the simplest grippers is a simple one degree-of-freedom claw, which is a popular design in the prosthetic community. 
+\subsection{1-DoF scissor-like gripper}
+One of the simplest grippers is a simple one degree-of-freedom claw, which is a popular design in the prosthetic community, and has been refined for centuries. Actuated by a string actuated by a person's shoulder or more recently by electric motors measuring muscle activity in the lower arm, this simple mechanism enables their wearers to perform a wide range of everyday activities. Indeed, an off-the-shelf prosthetic hand has been shown to perform a large variety of grasping and manipulation tasks, only limited by its ability to conform to specific kinematics such as operating scissors \cite{patel2016manipulation}.
 
--Example: Utah prosthetic hand
--Strategy: make contact with stiff part until contact is made (touch sensor or wrist force), then close gripper
+\begin{figure}
+\includegraphics[width=\columnwidth]{figs/gripper-1-dof}
+\caption{Simple 1-DoF grasping mechanism that relies on friction to grasp objects with a wide variety of sizes (center, right). The mechanism has only one moving part that presses the object against a passive finger. \label{fig:gripper-1-dof}}
+\end{figure}
+
+A simple design is shown in Figure~\ref{fig:gripper-1-dof} and consists of an active finger that presses an object against a passive finger, with both fingers often shaped as a hook. As should be clear by now, such a design can only work by relying on friction, which makes it not very common in traditional robotics. 
+
+The key advantage of this mechanism is the very simple control strategy that it enables: use the passive finger to make contact with the object, then use the active finger to close the grasp. The event ``make contact" can either be detected by measuring the force at the wrist and looking for abrupt changes or using a tactile sensor on the surface with which contact is made. This approach can therefore lead to robust grasps with a minimum of sensing. A disadvantage of this mechanism is that its function relies exclusively on friction, possibly ejecting objects from its grasp if friction is not sufficient or the object is in an otherwise suboptimal conformation. Unlike most other mechanisms, it is also impossible to use the finger position to infer the width of an object, which is illustrated by the illustrations in Figure~\ref{fig:gripper-1-dof}, center. 
+
+The mechanism shown in Figure~\ref{fig:gripper-1-dof} can be actuated in many different ways, for example by attaching a servo motor directly to the active finger, using a shape-memory alloy wire via a suitable lever arm, or a pneumatic piston or balloon.
 
 \subsection{Parallel jaw}
--Most industrial robotic grippers
--Simple kinematics, single motor
--Worm gear drive is slow, range is limited by width of the gripper
+The most common industrial mechanism is the two-finger parallel jaw gripper. It operates by squeezing an object between its two parallel fingers, which are usually driven by a single actuator and thereby move in concert. Although it also relies on friction, parallel fingers usually yield more contact area than a scissor-like 1-DoF gripper, but suffers from a smaller range of motion. 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\columnwidth]{figs/gripper-2-dof}
+\caption{Parallel jaw gripper driven by a single actuator via a system of coupled gears.\label{fig:paralleljaw}}
+\end{figure}
+
+
+Figure~\ref{fig:paralleljaw} shows a minimalist implementation of a parallel jaw gripper that can be actuated by a single servo motor, driving two rack gears to which the gripper jaws are mounted. While using gears and rack gears is unusual --- the gripper jaws typically travel on threads actuated by worm gears or are attached to a pneumatic piston --- this drawing illustrates the relationship between the range of motion of the gripper jaws, the length of the mechanism it is sliding on, here a rack gear, and the resulting body size. In order for this design to fully close, the two rack gears must be mounted at an offset. These constraints often make the gripper body twice as wide as the maximum aperture, making it difficult for the robot to enter tight areas. The mechanical design also affects the speed at which a gripper can operate. Pneumatic grippers, where air pressure coming in on either end of the piston can drive the gripper into an ``open'' or ``close'' position very quickly (2-3 times per second), but cannot be controlle accurately. Electric mechanisms instead trade accuracy and torque with speed as the jaws move on a thread or racket gear. 
+
+The control strategy for parallel jaw grippers requires an accurate pose estimate of the object of interest and positioning the gripper so that the object is right in the center of the two jaws. Note that force-closure with a static object, such as a screw mounted to a structure, requires both jaws to make contact with the object, thereby imposing high accuracy requirements of both object detection and robot motion. Here, compliance can help, allowing the gripper to adjust its pose to the object. This can be accomplished by either measuring forces in the wrist and moving the gripper to minimize lateral forces or a compliant mounting mechanism or structure, such as a robot equipped with series-elastic or pneumatic actuators. An alternative approach is to actuate both gripper jaws independently.
+
 
 \subsection{4-bar linkage}
 - Some industrial robotic grippers
