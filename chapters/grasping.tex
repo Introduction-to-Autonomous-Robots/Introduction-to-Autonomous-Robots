@@ -136,7 +136,7 @@ A typical algorithm proceeds as follows:
 
 Some of these steps might not be necessary for all grasps, and some of them might have arbitrary complexity. For example, pre-processing is often used to remove known quanitites such as a table surface, from the data, but might be non-trivial when removing the edges of a bin, e.g. 
 
-Segmentation is the most critical step and requires some previous knowledge about the objects to grasp such as their size or the geometry of features thereon. In Figure \ref{fig:graspalgorithm}, clustering points based on their distance is sufficient, but requires an assumption about object size. Other segmentation algorithms might use surface normals, or a combination of point cloud and image data such as color or patterns. 
+Segmentation is the most critical step and requires some previous knowledge about the objects to grasp such as their size or the geometry of features thereon. In Figure \ref{fig:graspalgorithm}, clustering points based on their distance is sufficient, e.g. using the DBSCAN algorithm \cite{ester1996density}, but requires an assumption about object size in order to select a suitable threshold. Other segmentation algorithms might use surface normals, or a combination of point cloud and image data such as color or patterns. 
 
 Filtering the resulting clusters to identify objects of interest can be as simple as rejecting those that are too small (as shown in Figure~\ref{fig:graspalgorithm}, e), but might also involve matching the points to a 3D model of a desired object or involving image data. 
 
@@ -146,6 +146,7 @@ After planning all, or some, possible grasps, grasps need to be checked for feas
 
 Even though a grasp might look robust in a point cloud representation, it might not be effective when physically executing it. Possible failures are collisions with objects, insufficient friction with the object, or an object moving before the gripper is fully closed. For this reason, it is important to already close the gripper as much as possible before approaching the object, increasing the requirements for accurate perception. 
 
+With the ability to train neural networks to approximate complex functions, it is also possible to replace parts, or all of, the algorithmic steps shown in Figure~\ref{fig:graspalgorithm} using a convolutional neural network trained by deep learning. While data intensive, such an approach can seamlessly merge image and depth data and adapt to application-specific data better than a hand-coded algorithm can. 
 
 \subsection{Finding good grasps for multi-fingered hands}
 
