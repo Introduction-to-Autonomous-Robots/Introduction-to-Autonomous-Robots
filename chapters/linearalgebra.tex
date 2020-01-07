@@ -1,5 +1,5 @@
 \chapter{Linear Algebra}
-Linear algebra concerns vector spaces and linear mappings between them. It is central to robotics as it allows describing positions and speeds of the robot within the world as well as moving parts connected to it. 
+Linear algebra concerns vector spaces and linear mappings between them. It is central to robotics as it allows describing positions and speeds of the robot within the world as well as moving parts connected to it, as well as in processing image and depth data, which is often presented in matrix form.
 
 \section{Dot product}
 The dot product (or scalar product)\index{Dot product}\index{Scalar product} is the sum of the products of the individual entries of two vectors. Let $hat{a}=(a_1,\ldots,a_n)$ and $\hat{b}=(b_1,\ldots,b_n)$ be two vectors. Then, there dot product $\hat{a}\cdot\hat{b}$ is given by
@@ -19,7 +19,7 @@ If $\hat{a}$ and $\hat{b}$ are orthogonal, it follows $\hat{a}\cdot\hat{b}=0$. I
 \section{Cross product}
 The cross product $\hat{a} \times \hat{b}$ of two vectors is defined as a vector $\hat{c}$ that is perpendicular to both $\hat{a}$ and $\hat{b}$. Its direction is given by the right-hand rule and its magnitude is equal to the area of the parallelogram that the vectors span.  
 
-Let Let $\hat{a}=(a_1,a_2,a_3)^T$ and $\hat{b}=(b_1,a_2,a_3)$ be two vectors in $\mathrm{R}^3$. Then, there cross product $\hat{a}\times\hat{b}$ is given by
+Let $\hat{a}=(a_1,a_2,a_3)^T$ and $\hat{b}=(b_1,a_2,a_3)$ be two vectors in $\mathrm{R}^3$. Then, there cross product $\hat{a}\times\hat{b}$ is given by
 \begin{equation}
 \hat{a}\times\hat{b}=\left(
 \begin{array}{l}
@@ -38,7 +38,7 @@ Given an $n \times m$ matrix $\mathbf{A}$ and a $m\times p$ matrix $\mathbf{B}$,
 \end{equation}
 where the index $ij$ indicates the i-th row and j-th column entry of the resulting $n\times p $ matrix. Each entry therefore consists of the scalar product of the i-th row of $\mathbf{A}$ with the j-th column of $\mathbf{B}$. 
 
-Note that for this two work, the right hand matrix (here $\mathbf{B}$) has to have as many columns as the left hand matrix (here $\mathbf{A}$) has rows. Therefore, the operation is not commutative, i.e., $\mathbf{AB}\neq\mathbf{BA}$.
+Note that for this to work, the right hand matrix (here $\mathbf{B}$) has to have as many columns as the left hand matrix (here $\mathbf{A}$) has rows. Therefore, the operation is not commutative, i.e., $\mathbf{AB}\neq\mathbf{BA}$.
 
 For example, multiplying a 3x3 matrix with a 3x1 matrix (a vector), works as follows:
 Let
@@ -82,8 +82,21 @@ In the particular case of orthonormal matrices\index{Orthonormal matrix}, which 
 \begin{equation}
 \mathbf{A}^{-1}=\mathbf{A}^T
 \end{equation}
+This is important, as rotation matrices are orthonormal.
 
 In case a matrix is not quadratic, we can calculate the pseudo-inverse\index{Pseudo-inverse}, which is defined by
 \begin{equation}
-\mathbf{A}^+=\mathbf{A}^T(\mathbf{AA}^T)^{-1}.
+\mathbf{A}^+=\mathbf{A}^T(\mathbf{AA}^T)^{-1}
 \end{equation}
+and is often used in finding an inverse kinematic solution.
+
+\section{Principal Component Analysis}\label{sec:appendix_PCA}
+\index{Principal Component Analysis}\index{PCA}
+PCA breaks n-dimensional data into $n$ vectors so that each data point can be represented by a linear combination of the $n$ vectors. These $n$ vectors have two interesting properties: first, they are ordered by their variance so that the first vector is representative of the data with the highest variation in the data, and second, they are orthogonal. These vectors are therefore called \emph{principal components}.
+
+This approach has a strong geometrical interpretation: given data such as two-dimensional points, say in the shape of a rectangle, the points along the long axis of the rectangle have higher variance than those along the the short axis. Every point in this point cloud can then be reconstructed by a linear combination of the principal component along the long axis and the principal component along the short axis. Finding these vectors is therefore akin finding the principal axes of the rectangle regardless of its orientation.
+
+
+
+
+
