@@ -41,19 +41,19 @@ sin\phi & cos\phi & 0 & y\\
 \end{equation}
 A solution can now be found by simply equating the individual entries of the transformation (\ref{eq:2armtrans}) with those of the desired pose. Specifically, we can observe:
 \begin{eqnarray}
-cos\phi &= cos(\alpha+\beta)\\
+cos\phi &=& cos(\alpha+\beta)\\
 \nonumber
-x &= \cos_{\alpha\beta}l_2+\cos\alpha l_1\\
+x &=& \cos_{\alpha\beta}l_2+\cos\alpha l_1\\
 \nonumber
-y &= \sin_{\alpha\beta}l_2+\sin\alpha l_1
+y &=& \sin_{\alpha\beta}l_2+\sin\alpha l_1
 \end{eqnarray}
 These can be reduced to
 \begin{eqnarray}
-\phi &= \alpha + \beta\\
+\phi &=& \alpha + \beta\\
 \nonumber
-\cos\alpha &= \frac{\cos_{\alpha\beta}l_2-x}{l_1}=\frac{\cos\phi l_2-x}{l_1}\\
+\cos\alpha &=& \frac{\cos_{\alpha\beta}l_2-x}{l_1}=\frac{\cos\phi l_2-x}{l_1}\\
 \nonumber
-\sin\alpha &= \frac{\sin_{\alpha\beta}l_2-y}{l_1}=\frac{\sin\phi l_2-y}{l_1}\\
+\sin\alpha &=& \frac{\sin_{\alpha\beta}l_2-y}{l_1}=\frac{\sin\phi l_2-y}{l_1}\\
 \end{eqnarray}
 Providing the orientation of the robot in addition to the desired position therefore allows solving for $\alpha$ and $\beta$ just as a function of $x$, $y$ and $\phi$.
 
@@ -76,7 +76,7 @@ You can now think about inverse kinematics as a path finding problem from anywhe
 \subsection{Inverse Kinematics of Mobile Robots}\label{sec:ivkmobile}
 As there is no unique relationship between the amount of rotation of a robot's individual wheels and its position in space, but for simple holonomic platforms such as a robot on a track, we will treat the inverse kinematics problem at first only for the velocities of the local robot coordinate frame.
 
-Lets first establish how to calculate the necessary speed of the robot's center given a desired speed $ \dot{\xi_I}$ in world coordinates. We can transform the expression $ \dot{\xi_I}=T(\theta)\dot{\xi_R}$ by multiplying both sides with the inverse of $ T(\theta)$:
+Let's first establish how to calculate the necessary speed of the robot's center given a desired speed $ \dot{\xi_I}$ in world coordinates. We can transform the expression $ \dot{\xi_I}=T(\theta)\dot{\xi_R}$ by multiplying both sides with the inverse of $ T(\theta)$:
 
 \begin{equation}\label{eq:mbik}
 T^{-1}(\theta)\dot{\xi_I}=T^{-1}(\theta)T(\theta)\dot{\xi_R}
@@ -86,20 +86,17 @@ which leads to $ \dot{\xi_R}=T^{-1}(\theta)\dot{\xi_I}$. Here
 \begin{equation}
 T^{-1}=\left(\begin{array}{ccc}cos \theta & sin \theta & 0 \\ -sin \theta & cos \theta & 0 \\ 0 & 0 & 1\end{array}\right)
 \end{equation}
-
 which can be determined by actually performing the matrix inversion or by deriving the trigonometric relationships from the drawing.  Similarly, we can now solve
 
 \begin{equation}
 \left(\begin{array}{c} \dot{x_R}\\\dot{y_R}\\\dot{\theta}\end{array}\right)=\left(\begin{array}{c}\frac{r\dot{\phi_l}}{2}+\frac{r\dot{\phi_r}}{2}\\0\\\frac{\dot{\phi_r} r}{d}-\frac{\dot{\phi_l} r}{d}\end{array}\right)
 \end{equation}
-
 for $ \phi_l$, $ \phi_r$
 \begin{eqnarray}
 \dot{\phi}_l &= (2\dot{x}_R - \dot{\theta}d)/2r\\
 \nonumber
 \dot{\phi}_r &= (2\dot{x}_R + \dot{\theta}d)/2r
 \end{eqnarray}
-
 allowing us to calculate the robot's wheelspeed as a function of a desired $\dot{x}_R$ and $\dot{\theta}$, which can be calculated using (\ref{eq:mbik}).
 
 Note that this approach does not allow us to deal with $\dot{y}_R \neq 0$, which might result from a desired speed in the inertial frame. Non-zero values for translation in y-direction are simply ignored by the inverse kinematic solution, and driving toward a specific point either requires feedback control (Section~\ref{sec:invjac}) or path planning (Chapter~\ref{chap:pathplanning}).
@@ -167,7 +164,6 @@ Given a relationship between end-effector velocities $\dot{j}$ and joint velocit
 \begin{equation}
  (v \quad \omega)^T=J(\dot{j}_1,\ldots,\dot{j}_n)^T
 \end{equation}
-
 with $ n$ the number of joints. $J$ is also known as the Jacobian matrix \index{Jacobian Matrix} and contains all partial derivatives that relate every joint angles to every velocities. In practice, $J$ looks like
 
 \begin{equation}
@@ -195,11 +191,10 @@ This can be achieved by not only minimizing the error, but also the joint veloci
 \begin{equation}
 \|J\Delta j-e\|+\lambda^2\|\Delta j\|^2
 \end{equation}
-
 where $\lambda$ is some constant. One can show that the resulting controller that achieves this has the form
 \begin{equation}
 \Delta j=(J^TJ+\lambda^2 I)^{-1}J^+e
 \end{equation}
 
-This is known as the \emph{Damped Least-Squares} method.\index{Damped Least-Squares Method} Problems with this approach are local minima and singularities of the mechanism, that might render this solution infeasible.
+This is known as the \emph{Damped Least-Squares} method.\index{Damped Least-Squares Method} Problems with this approach are local minima and singularities of the mechanism, which might render this solution infeasible.
 

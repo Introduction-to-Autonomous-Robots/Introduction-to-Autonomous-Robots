@@ -2,9 +2,9 @@
 Linear algebra concerns vector spaces and linear mappings between them. It is central to robotics as it allows describing positions and speeds of the robot within the world as well as moving parts connected to it, as well as in processing image and depth data, which is often presented in matrix form.
 
 \section{Dot product}
-The dot product (or scalar product)\index{Dot product}\index{Scalar product} is the sum of the products of the individual entries of two vectors. Let $hat{a}=(a_1,\ldots,a_n)$ and $\hat{b}=(b_1,\ldots,b_n)$ be two vectors. Then, there dot product $\hat{a}\cdot\hat{b}$ is given by
+The dot product (or scalar product)\index{Dot product}\index{Scalar product} is the sum of the products of the individual entries of two vectors. Let $hat{a}=(a_1,\ldots,a_n)$ and $\hat{b}=(b_1,\ldots,b_n)$ be two vectors. Then, their dot product $\hat{a}\cdot\hat{b}$ is given by
 \begin{equation}
-\hat{a}\cdot\hat{b}=\sum_{i}^n=a_ib_i
+\hat{a}\cdot\hat{b}=\sum_{i}^n a_ib_i
 \end{equation}
 The dot product therefore takes two sequences of numbers and returns a single scalar. 
 
@@ -19,7 +19,7 @@ If $\hat{a}$ and $\hat{b}$ are orthogonal, it follows $\hat{a}\cdot\hat{b}=0$. I
 \section{Cross product}
 The cross product $\hat{a} \times \hat{b}$ of two vectors is defined as a vector $\hat{c}$ that is perpendicular to both $\hat{a}$ and $\hat{b}$. Its direction is given by the right-hand rule and its magnitude is equal to the area of the parallelogram that the vectors span.  
 
-Let $\hat{a}=(a_1,a_2,a_3)^T$ and $\hat{b}=(b_1,a_2,a_3)$ be two vectors in $\mathrm{R}^3$. Then, there cross product $\hat{a}\times\hat{b}$ is given by
+Let $\hat{a}=(a_1,a_2,a_3)^T$ and $\hat{b}=(b_1,a_2,a_3)$ be two vectors in $\mathrm{R}^3$. Then, their cross product $\hat{a}\times\hat{b}$ is given by
 \begin{equation}
 \hat{a}\times\hat{b}=\left(
 \begin{array}{l}
@@ -76,7 +76,7 @@ Given a matrix $\mathbf{A}$, finding the inverse $\mathbf{B}=\mathbf{A}^{-1}$ in
 \begin{equation}
 \mathbf{AB}=\mathbf{BA}=\mathbf{I}
 \end{equation}
-With $\mathbf{I}$ the identity matrix\index{Identify matrix}. (The identity matrix is zero everywhere expect at its diagonal entries, which are one.)
+with $\mathbf{I}$ the identity matrix\index{Identify matrix}. (The identity matrix is zero everywhere except at its diagonal entries, which are one.)
 
 In the particular case of orthonormal matrices\index{Orthonormal matrix}, which columns are all orthogonal to each other and of length one, the inverse is equivalent to the transpose, i.e.
 \begin{equation}

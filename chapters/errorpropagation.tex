@@ -11,17 +11,17 @@ The goals of this chapter are to understand
 This chapter requires an understanding of random variables, probability density functions, and in particular the Normal distribution. These concepts are explained in a robotic sensing context in Appendix~\ref{sec:pdfs}.
 
 \section{Uncertainty in Robotics as Random Variable}
-As quantities such as ``distance to a wall", ``position on the plane'' or ``I can see a blue cross (yes/no)'' are uncertain, we can consider them random variables. A \emph{random variable}\index{Random Variable} can be thought of us the outcome of a ``random'' experiment, such as the face shown when throwing a dice.
+As quantities such as ``distance to a wall", ``position on the plane'' or ``I can see a blue cross (yes/no)'' are uncertain, we can consider them random variables. A \emph{random variable}\index{Random Variable} can be thought of as the outcome of a ``random'' experiment, such as the face shown when throwing a dice.
 
 Experiments in robotics rarely involve explicit randomness. Instead, sensors are intrinsically noisy due to the physical phenomena associated with them. As sensor readings therefore can be considered random variables, also quantities derived from one or more sensors, such as the examples above, are random variables. This chapter focusses on how to characterize the uncertainty of such aggregated quantities from the uncertainty that characterizes the individual sensors.
 
 \section{Error Propagation}\label{sec:errorprop}
-It turns out that the Gaussian Distribution is very appropriate to model prominent random processes in robotics: the robot's position and distance measurements. A differential wheel robot that drives along a straight line, and is subject to slip, will actually increase its uncertainty the farther it drives. Initially at a known location, the expected value (or mean) of its position will be increasingly uncertain, corresponding to an increasing variance. This variance is obviously somehow related to the variance of the underlying mechanism, namely the slipping wheel and (comparably small) encoder noise. Interestingly, we will see its variance grow much faster orthogonal to the robot's direction, as small errors in orientation have a much larger effect than small errors in longitudnal direction. This is illustrated in Figure~\ref{fig:errorprop_odometry}.
+It turns out that the Gaussian Distribution is very appropriate to model prominent random processes in robotics: the robot's position and distance measurements. A differential wheel robot that drives along a straight line, and is subject to slip, will actually increase its uncertainty the farther it drives. Initially at a known location, the expected value (or mean) of its position will be increasingly uncertain, corresponding to an increasing variance. This variance is obviously somehow related to the variance of the underlying mechanism, namely the slipping wheel and (comparably small) encoder noise. Interestingly, we will see its variance grow much faster orthogonal to the robot's direction, as small errors in orientation have a much larger effect than small errors in longitudinal direction. This is illustrated in Figure~\ref{fig:errorprop_odometry}.
 
 \begin{figure}
 	\centering
 		\includegraphics[width=\textwidth]{figs/errorprop_odometry}
-	\caption{Two-dimensional Normal distribution depicting growing uncertainty as the robot moves. Albeit starting with equal uncertainty in $x$ and $y$, the large effect of small errors in orientation let the error grow faster in y-direction of the robot.}
+	\caption{Two-dimensional Normal distribution depicting growing uncertainty as the robot moves. Albeit starting with equal uncertainty in $x$ and $y$, the large effect of small errors in orientation lets the error grow faster in y-direction of the robot.}
 	\label{fig:errorprop_odometry}
 \end{figure}
 
@@ -31,33 +31,33 @@ The key intuition behind the error propagation law is that the variance of each 
 \begin{equation}
 \sigma_y^2=\left(\frac{\partial f}{\partial x}\right)^2 \sigma_x^2
 \end{equation}
-In case $\mathbf{y}=f(\mathbf{x})$ is a multivariable function that maps $n$ inputs to $m$ outputs, variances become covariance \emph{matrices}. A covariance matrix holds the variance of each variable along its diagonal and is zero otherwise, if the random variables are not correlated. We can then write
+In case $\mathbf{y}=f(\mathbf{x})$ is a multivariable function that maps $n$ inputs to $m$ outputs, variances become \emph{covariance matrices}.\index{Covariance Matrix} A covariance matrix holds the variance of each variable along its diagonal and is zero otherwise, if the random variables are not correlated. We can then write
 \begin{equation}
 \Sigma^Y= J \Sigma^X J^T
 \end{equation}
 where $\Sigma^X$ and $\Sigma^Y$ are the covariance matrices holding the variances of the input and output variables, respectively, and $J$ is a $m$x$n$ \emph{Jacobian} matrix, which holds the partial derivatives $\frac{\partial f_i}{\partial x_j}$. As $J$ has $n$ columns, each row contains partial derivatives with respect to $x_1$ to $x_n$.
 
 \subsection{Example: Line Fitting}\label{sec:linefitting}
-Lets consider an example of estimating angle $ \alpha$ and distance $ r$ of a line from a set of points given by $ (\rho_i,\theta_i)$ using Equations~\ref{eq:linealpha}--\ref{eq:liner}. We can now express the relationship of changes of a variable such as $ \rho_i$ to changes in $ \alpha$ by
+Let's consider an example of estimating angle $ \alpha$ and distance $ r$ of a line from a set of points given by $ (\rho_i,\theta_i)$ using Equations~\ref{eq:linealpha}--\ref{eq:liner}. We can now express the relationship of changes of a variable such as $ \rho_i$ to changes in $ \alpha$ by
 \begin{equation}
 \frac{\partial \alpha}{\partial \rho_i}
 \end{equation}
 Similarly, we can calculate $ \frac{\partial \alpha}{\partial \theta_i}$, $ \frac{\partial r}{\partial \rho_i}$ and $ \frac{\partial r}{\partial \theta_i}$. We can actually do this, because we have derived analytical expressions for $ \alpha$ and $ r$ as a function of $ \theta_i$ and $ \rho_i$ in Chapter~\ref{chap:feature_extraction}.
 
-We are now interested in deriving equations for calculating the variance of $ \alpha$ and $ r$ as a function of the variances of the distance measurements. Lets assume each distance measurement $ \rho_i$ has variance $ \sigma^2_{\rho_i}$ and each angular measurement $ \theta_i$ has variance $ \sigma^2_{\theta_i}$. We now want to calculate $ \sigma^2_{\alpha}$ as the weighted sum of  $ \sigma^2_{\rho_i}$ and $ \sigma^2_{\theta_i}$, each weighted by its influence on $ \alpha$.
-More generally, if we have $ I$ input variables $ X_i$ and $ J$ output variables $Y_j$, the covariance matrix of the output variables $ \sigma_Y$ can be expressed as $\sigma_Y^2=\frac{\partial f}{\partial X}^2 \sigma_X^2$ where $\sigma_X$ is the covariance matrix of input variables and $J$ is a Jacobian matrix of a function $ f$ that calculates $Y$ from $X$ and has the form
+We are now interested in deriving equations for calculating the variance of $ \alpha$ and $ r$ as a function of the variances of the distance measurements. Let's assume each distance measurement $ \rho_i$ has variance $ \sigma^2_{\rho_i}$ and each angular measurement $ \theta_i$ has variance $ \sigma^2_{\theta_i}$. We now want to calculate $ \sigma^2_{\alpha}$ as the weighted sum of  $ \sigma^2_{\rho_i}$ and $ \sigma^2_{\theta_i}$, each weighted by its influence on $ \alpha$.
+More generally, if we have $ I$ input variables $ X_i$ and $K$ output variables $Y_k$, the covariance matrix of the output variables $ \sigma_Y$ can be expressed as $\sigma_Y^2=\frac{\partial f}{\partial X}^2 \sigma_X^2$ where $\sigma_X$ is the covariance matrix of input variables and $J$ is a Jacobian matrix of a function $ f$ that calculates $Y$ from $X$ and has the form
 
 \begin{equation}
 J=\left[
 \begin{array}{ccc}
   \frac{\partial f_1}{\partial X_1} & \ldots & \frac{\partial f_1}{\partial X_I}\\
   \vdots & \ldots & \vdots\\
-  \frac{\partial f_J}{\partial X_1} & \ldots & \frac{\partial f_J}{\partial X_I}
+  \frac{\partial f_K}{\partial X_1} & \ldots & \frac{\partial f_K}{\partial X_I}
  \end{array}
  \right]
 \end{equation}
 
-In the line fitting example $ F_X$ would contain the partial derivatives of $ \alpha$ with respect to all $ \rho_i$ (i-entries) followed by the partial derivates of $ \alpha$ with respect to all $ \theta_i$ in the first row. In the second row, $ F_X$ would hold the partial derivates of $ r$ with respect to $ \rho_i$ followed by the partial derivates of $ r$ with respect to $ \theta_i$. As there are two output variables, $ \alpha$ and $ r$, and 2*I input variables (each measurement consists of an angle and distance), $ F_X$ is a 2 x (2I) matrix.
+In the line fitting example $ F_X$ would contain the partial derivatives of $ \alpha$ with respect to all $ \rho_i$ (i-entries) followed by the partial derivates of $ \alpha$ with respect to all $ \theta_i$ in the first row. In the second row, $ F_X$ would hold the partial derivates of $ r$ with respect to $ \rho_i$ followed by the partial derivates of $ r$ with respect to $ \theta_i$. As there are two output variables, $ \alpha$ and $ r$, and $2I$ input variables (each measurement consists of an angle and distance), $ F_X$ is a 2 x (2I) matrix.
 
 The result is therefore a 2x2 covariance matrix that holds the variances of $ \alpha$ and $ r$ on its diagonal.
 
@@ -104,13 +104,13 @@ The second term is the error propagation of the actual wheel slip. This requires
 \right]
 \end{equation}
 
-Finally, we need to define the covariance matrix for the measurement noise. As the error is proportional to the distance travelled, we can define $ \Sigma_{\Delta}$ by
+Finally, we need to define the covariance matrix for the measurement noise. As the error is proportional to the distance traveled, we can define $ \Sigma_{\Delta}$ by
 \begin{equation}
 \Sigma_{\Delta}=\left[\begin{array}{cc}k_r|\Delta s_r| & 0\\0 & k_l|\Delta s_l|\end{array}\right]
 \end{equation}
 Here $ k_r$ and $ k_l$ are constants that need to be found experimentally and $ |\cdot |$ indicating the absolute value of the distance traveled. We also assume that the error of the two wheels is independent, which is expressed by the zeros in the matrix.
 
-We now have all ingredients for equation~\ref{eq:errorpropodom}, allowing us to calculate the covariance matrix of the robot's pose much like shown in Figure~\ref{fig:errorprop_odometry}.
+We now have all ingredients for Equation~\ref{eq:errorpropodom}, allowing us to calculate the covariance matrix of the robot's pose much like shown in Figure~\ref{fig:errorprop_odometry}.
 
 \section{Take-home lessons}
 \begin{itemize}
@@ -130,13 +130,13 @@ Calculate $\hat{q}$ so that $S$ is minimized.
 \item An ultrasound sensor measures distance $x=c\Delta t/2$. Here, $c$ is the speed of sound and $\Delta t$ is the difference in time between emitting and receiving a signal.
 \begin{enumerate}
 \item Let the variance of your time measurement $\Delta t$ be $\sigma_t^2$. What can you say about the variance of $x$, when $c$ is assumed to be constant? Hint: how does a change in $\Delta t$ affect $x$?
-\item Now assume that also $c$ is changing depending on location, weather, etc.\ and can be estimated with variance $\sigma_c^2$. What is the variance of $x$ now?
+\item Now assume that $c$ is changing depending on location, weather, etc.\ and can be estimated with variance $\sigma_c^2$. What is the variance of $x$ now?
 \end{enumerate}
 \item Consider a unicycle that turns with angular velocity $\dot{\phi}$ and has radius $r$. Its speed is thus a function of $\dot{\phi}$ and $r$ and is given by
 \begin{equation}
 \nonumber
 v=f(\dot{\phi},r)=r\dot{\phi}
 \end{equation}
-Assume that your measurement of $\dot{\phi}$ is noisy and has a standard deviation $\sigma_{\phi}$.  Use the error propagation law to calculate the resulting variance of your speed estimate $\sigma_v^2$.
+Assume that your measurement of $\dot{\phi}$ is noisy and has a standard deviation $\sigma_{\dot{\phi}}$.  Use the error propagation law to calculate the resulting variance of your speed estimate $\sigma_v^2$.
 \end{enumerate}
 \normalsize

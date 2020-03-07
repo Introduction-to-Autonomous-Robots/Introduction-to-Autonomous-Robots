@@ -80,7 +80,7 @@ P(Z)=P(X)\star P(Y)
 
 Numerically calculating the convolution always works, and can be done analytically for some probability distributions.
 
-Conveniently, the convolution of two Gaussian distributions is again a Gaussian distribution with a variance that corresponds to the sum of the variances of the indivdiual Gaussians.
+Conveniently, the convolution of two Gaussian distributions is again a Gaussian distribution with a variance that corresponds to the sum of the variances of the individual Gaussians.
 
 \section{Linear Combinations of Independent Gaussian Random Variables}\label{sec:lcombrandom}
 Let $X_1$, $X_2$, $\ldots$, $X_n$ be $n$ independent random variables with means $\mu_1$, $\mu_2$, $\ldots$, $\mu_n$ and variances $\sigma_1^2$, $\sigma_2^2$, $\ldots$, and $\sigma^2_n$. Let $Y$ be a random variable that is a linear combination of $X_i$ with weights $a_i$ so that $Y=\sum_{i=1}^na_iX_i$.
@@ -96,7 +96,7 @@ and a variance
 
 
 \section{Testing Statistical Significance}\label{sec:stattest}
-Robotics is an experimental discipline. This means that algorithms and systems you develop need to be validated by real hardware experiments. Doing an experiment to validate your hypothesis is at the core of the scientific method and doing it right is a discipline on its own. The key is to show that your results is not simply a result of chance. In practice, this is impossible to show. Instead, it is possible to express the likelihood that your results have not been obtained by chance. This is known as the statistical significance level. How to calculate the statistical significance level depends on the problem you are studying. This section will introduce three common problems in robotics:
+Robotics is an experimental discipline. This means that algorithms and systems you develop need to be validated by real hardware experiments. Doing an experiment to validate your hypothesis is at the core of the scientific method and doing it right is a discipline on its own. The key is to show that your results are not simply a result of chance. In practice, this is impossible to show. Instead, it is possible to express the likelihood that your results have not been obtained by chance. This is known as the statistical significance level. How to calculate the statistical significance level depends on the problem you are studying. This section will introduce three common problems in robotics:
 
 \begin{enumerate}
 \item testing whether data is indeed distributed according to a specific distribution

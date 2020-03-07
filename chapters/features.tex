@@ -1,9 +1,9 @@
 \chapter{Feature extraction}\label{chap:feature_extraction}
 A robot can obtain information about its environment by both active (e.g., ultra-sound, light, and laser) or passive sensing (e.g., acceleration, magnetic field, or cameras). There are only few cases where this information is directly useful to a robot. Before being able to arrive at semantic information such as ``I'm in the kitchen'', ``this is a cup'' or ``this is a horse'', is identifying higher-level \emph{features}.\index{Features}
 
-The goal of this chapter is to introduce a series of standard feature detectors such as the
+The goal of this chapter is to introduce a series of standard feature detectors such as
 \begin{itemize}
-\item Hough-transform to detect lines, circles and other shapes,
+\item the Hough-transform to detect lines, circles and other shapes,
 \item numerical methods such as least-squares, split-and-merge and RANSAC to find high-level features in noisy data,
 \item Scale-invariant features.
 \end{itemize}
@@ -71,7 +71,7 @@ A key problem with this approach is that it is often unclear how many lines ther
 \end{figure}
 
 \subsection{RANSAC: Random Sample and Consensus}
-If the number of ``outliers'' are large, a least square fit will generate poor results as it will generate the ``best'' fit that accomodates both ``inliers'' and ``outliers''. Also, split-and-merge algorithms will fail as they are extremely susceptive to noise: depending on the actual parameters every outlier will split a potential line into two. A solution to this problem is to randomly sample possible lines and keep those that satisfy a certain desired quality given by the number of points being somewhat close to the best fit. This is illustrated in Figure~\ref{fig:ransac}, with darker lines corresponding to better fits. RANSAC\index{RANSAC}\index{Random Sample and Consensus} usually requires two parameters, namely the number of points required to consider a line to be a valid fit, and the maximum $d_i$ from a line to consider a point an inlier and not an outlier. The algorithm proceeds as follows: select two random points from the set and connect them with a line. Grow this line by $d_i$ in both directions and count the number of inliers. Repeat this until one or more lines that have sufficient number of inliers are found, or a maximum number of iterations are reached.
+If the number of ``outliers'' is large, a least square fit will generate poor results as it will generate the ``best'' fit that accomodates both ``inliers'' and ``outliers''. Also, split-and-merge algorithms will fail as they are extremely susceptive to noise: depending on the actual parameters every outlier will split a potential line into two. A solution to this problem is to randomly sample possible lines and keep those that satisfy a certain desired quality given by the number of points being somewhat close to the best fit. This is illustrated in Figure~\ref{fig:ransac}, with darker lines corresponding to better fits. RANSAC\index{RANSAC}\index{Random Sample and Consensus} usually requires two parameters, namely the number of points required to consider a line to be a valid fit, and the maximum $d_i$ from a line to consider a point an inlier and not an outlier. The algorithm proceeds as follows: select two random points from the set and connect them with a line. Grow this line by $d_i$ in both directions and count the number of inliers. Repeat this until one or more lines that have sufficient number of inliers are found, or a maximum number of iterations is reached.
 
 \begin{figure}
 \center
@@ -94,7 +94,7 @@ The Hough transform \index{Hough transform} can best be understood as a voting s
 
 
 \section{Scale-Invariant Feature Transforms}
-Scale-invariant feature transforms are a class of algorithms/signal-processing techniques that allow to extract features that are easily detectable across different scales (or distances to an object), independent of their rotation, and to some extent robust to affine transformations, i.e., views of the same object from different perspectives, and illumination changes. The most prominent in this class is the SIFT algorithm \cite{lowe1999object},\index{SIFT} which however has lost popularity due to closed-source and licensing cost, and has been replaced in the past with SURF (Speed-Up Robust Feature)\index{SURF} and many others,  which are freely available and have slightly different performance and varying use cases. As the math behind SURF is more involved, we focus on the intuition behind SIFT and encourage the reader to download and play with the various open-source implementations of other feature detectors that are available open source.
+Scale-invariant feature transforms are a class of algorithms/signal-processing techniques that allow to extract features that are easily detectable across different scales (or distances to an object), independent of their rotation, and to some extent robust to affine transformations, i.e., views of the same object from different perspectives, and illumination changes. An early algorithm in this class is the SIFT algorithm \cite{lowe1999object},\index{SIFT} which however has lost popularity due to closed-source and licensing cost, and has been replaced in the past with SURF (Speed-Up Robust Feature) \cite{bay2006}\index{SURF} and ORB \cite{rublee2011orb},  which are freely available and have slightly different performance and varying use cases. As the math behind SURF is more involved, we focus on the intuition behind SIFT and encourage the reader to download and play with the various open-source implementations of other feature detectors that are available open source.
 
 \subsection{Overview}
 SIFT proceeds in multiple steps. Descriptions of the algorithm often include its application to object recognition, but these algorithms are independent of feature generation (see below).
@@ -143,7 +143,7 @@ Scale-invariant features of training images can be stored in a database and can 
 \item What other features could you detect using a Hough transform? Can you find parameterizations for a circle, a square or a triangle?
 \item Do an online search for SIFT. What other similar feature detectors can you find? Which provide source code that you can use online?
 \item A line can be represented by the function $y=mx+c$. Then, the Hough-space is given by a 2D coordinate system spanned by $m$ and $c$.\begin{enumerate}
-\item Think about a line representation in polar coordinates. What components has the Hough-space in this case?
+\item Think about a line representation in polar coordinates. What components does the Hough-space consist of in this case?
 \item Derive a parameterization for a circle and describe the resulting Hough space.
 \end{enumerate}
 \end{enumerate}

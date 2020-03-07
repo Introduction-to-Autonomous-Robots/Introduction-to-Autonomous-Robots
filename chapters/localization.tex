@@ -3,7 +3,7 @@ Robots employ sensors and actuators that are subject to uncertainty. Chapter~\re
 %One of the most common probability density functions is the Gaussian distribution. It has the shape of a bell and can entirely be described by its mean --- the center of the bell curve --- and its variance, the width of the bell curve.
 A possible way to localize a robot in its environment is to extract high-level features (Chapter~\ref{chap:feature_extraction}), such as the distance to a wall from a number of different sensors. As the underlying measurements are uncertain, these measurements will be subject to uncertainty. How to calculate the uncertainty of a feature from the uncertainty of the sensors that detect this feature, is covered by the error propagation law. The key insight is that the variance of a feature is the weighted sum of all contributing sensors' variances, weighed by their impact on the feature of interest. This impact can be approximated by the derivative of the function that maps a sensor's input to the measurement of the feature.
 
- Unfortunately, uncertainty keeps propagating without the ability to correct measurements. The goals of this chapter is to present mathematical tools and algorithms that will enable you to actually shrink the uncertainty of a measurement by combining it with additional observations.  In particular, this chapter will cover
+ Unfortunately, uncertainty keeps propagating without the ability to correct measurements. The goals of this chapter are to present mathematical tools and algorithms that will enable you to actually shrink the uncertainty of a measurement by combining it with additional observations.  In particular, this chapter will cover
 \begin{itemize}
 \item Using landmarks to improve the accuracy of a discrete position estimate (Markov Localization)
 \item Approximating continuous position estimates (Particle Filter)
@@ -34,7 +34,7 @@ Calculating the probability to be at a certain location given the likelihood of 
 P(A|B)=\frac{P(A)P(B|A)}{P(B)}
 \end{equation}
 \subsection{Perception Update}
-How does this map into a Localization framework? Lets assume, event $A$ is equivalent to be at a specific location $loc$. Lets also assume that event $B$ corresponds to the event to see a particular feature $feat$. We can now rewrite Bayes' rule to
+How does this map into a Localization framework? Let's assume, event $A$ is equivalent to be at a specific location $loc$. Lets also assume that event $B$ corresponds to the event to see a particular feature $feat$. We can now rewrite Bayes' rule to
 
 \begin{equation}
 P(loc|feat)=\frac{P(loc)P(feat|loc)}{P(feat)}
@@ -46,7 +46,7 @@ Rephrasing Bayes' rule in this way, we can calculate the probability to be at lo
 \item We need to know the probability to see the feature at this location $P(feat|loc)$
 \item We need the probability to encounter the feature feat $P(feat)$
 \end{enumerate}
-Lets start with (3), which might be the most confusing part of information we need to collect. The answer is simple, no matter what $P(feat)$ is, it will cancel out as the probability to be at any of the possible locations has to sum up to 1. (A simpler, although less accurate, explanation would be that the probability to sense a feature is constant and therefore does not matter.)
+Let's start with (3), which might be the most confusing part of information we need to collect. The answer is simple, no matter what $P(feat)$ is, it will cancel out as the probability to be at any of the possible locations has to sum up to 1. (A simpler, although less accurate, explanation would be that the probability to sense a feature is constant and therefore does not matter.)
 
 The prior probability to be at location  $loc$, $P(loc)$, is called the \index{Belief Model} \emph{belief model}. In the case of the 3-door example, it is the value of the Gaussian distribution underneath the door corresponding to $loc$.
 
@@ -55,25 +55,25 @@ Finally, we need to know the probability to see the feature $feat$ at location $
 The final missing piece is how to best represent possible locations. In the graphical example in Figure~\ref{fig:three_door_example} we assumed Gaussian distributions for each possible location. Alternatively, we can also discretize the world into a grid and calculate the likelihood of the robot to be in any of its cells. In our 3-door world, it might make sense to choose grid cells that have just the width of a door.
 
 \subsection{Action Update}
-One of the assumptions in the above thought experiment was that we know with certainty that the robot moved right. We will now more formally study how to treat uncertainty from motion. Recall, that odometry input is just another sensor that we assume to have a Gaussian distribution; if our odometer tells us that the robot traveled a meter, it could have traveled a  little less or a little more, with decreasing likelihood. We can therefore calculate the posterior probability of the robot moving from a position $loc'$ to $loc$ given its odometer input $odo$:
+One of the assumptions in the above thought experiment was that we know with certainty that the robot moved right. We will now more formally study how to treat uncertainty from motion. Recall that odometry input is just another sensor that we assume to have a Gaussian distribution; if our odometer tells us that the robot traveled a meter, it could have traveled a  little less or a little more, with decreasing likelihood. We can therefore calculate the posterior probability of the robot moving from a position $loc'$ to $loc$ given its odometer input $odo$:
 
 \begin{equation}
 P(loc'->loc|odo)=P(loc'->loc)P(odo|loc'->loc)/P(odo)
 \end{equation}
 
-This is again Bayes' rule. The unconditional probability $P(loc'->loc)$ is the prior probability for the robot to have been at location $loc'$. The term $ P(odo|loc'->loc)$ corresponds to the probability to get odometer reading $odo$ after traveling from a position $loc'$ to $loc$. If getting a reading of the amount $odo$ is reasonable for the distance from $loc'$ to $loc$ this probability is high. If its unreasonable, for example if the distance is much larger than the robot could possibly ever have driven, this probability should be very low.
+This is again Bayes' rule. The unconditional probability $P(loc'->loc)$ is the prior probability for the robot to have been at location $loc'$. The term $ P(odo|loc'->loc)$ corresponds to the probability to get odometer reading $odo$ after traveling from a position $loc'$ to $loc$. If getting a reading of the amount $odo$ is reasonable for the distance from $loc'$ to $loc$ this probability is high. If it is unreasonable, for example if the distance is larger than what is physically possible, this probability should be very low.
 
 As the robot's location is uncertain, the real challenge is now that the robot could have potentially been everywhere to start with. We therefore have to calculate the posterior probability $P(loc|odo)$ for all possible positions $loc'$. This can be accomplished by summing over all possible locations:
 \begin{equation}
 P(loc|odo)=\sum_{loc'}P(loc'->loc)P(odo|loc'->loc)
 \end{equation}
-In other words, the law of total probability requires us to consider all possible locations the robot could have ever been at. This step is known as \emph{Action Update}\index{Action Update (Markov Localization)}. In practice we don't need to calculate this for all possible locations, but only those that are technically feasible given the maximum speed of the robot. We note also that the sum notation technically corresponds to a convolution (Section~\ref{sec:convolution}) of the probability distribution of the robot's location in the environment with the robots odometry error probability distribution.
+In other words, the law of total probability requires us to consider all possible locations the robot could have ever been at. This step is known as \emph{Action Update}\index{Action Update (Markov Localization)}. In practice we don't need to calculate this for all possible locations, but only those that are technically feasible given the maximum speed of the robot. We note also that the sum notation technically corresponds to a convolution (Section~\ref{sec:convolution}) of the probability distribution of the robot's location in the environment with the robot's odometry error probability distribution.
 
 \subsection{Summary and Examples}
-We have now learned two methods to update the belief distribution of where the robot could be in the environment. First, a robot can use external landmarks to update its position. This is known as \emph{perception update} in  and relies on exterioception. Second, a robot can observe its internal sensors. This is known as \emph{action update} and relies on proprioception. The combination of action and perception updates is known as \emph{Markov Localization}\index{Markov Localization}. You can think about the action update to increase the uncertainty of the robot's position and the perception update to shrink it. (You can also think about the action update as a discrete version of the error propagation model.) Also here we are using the robotics kinematic model and the noise model of your odometer to calculate $ P(odo|loc'->loc)$.
+We have now learned two methods to update the belief distribution of where the robot could be in the environment. First, a robot can use external landmarks to update its position. This is known as \emph{perception update} and relies on exterioception. Second, a robot can observe its internal sensors. This is known as \emph{action update} and relies on proprioception. The combination of action and perception updates is known as \emph{Markov Localization}\index{Markov Localization}. You can think about the action update to increase the uncertainty of the robot's position and the perception update to shrink it. (You can also think about the action update as a discrete version of the error propagation model.) Also here we are using the robotics kinematic model and the noise model of your odometer to calculate $ P(odo|loc'->loc)$.
 
 \paragraph{Example 1: Topological Map}
-This example describes one of the first successful real robot systems that employed Markov Localization in an office environment. The experiment is described in more detail in a 1994 article of AI Magazine. The office environment consisted of two rooms and a corridor that can be modeled by a topological map\index{Topological Map} (Figure~\ref{fig:dervish_example}). In a topological map, areas that the robot can be in are modeled as vertices, and navigable connections between them are modeled as edges of a graph. The location of the robot can now be represented as a probability distribution over the vertices of  this graph.
+This example describes one of the first successful real robot systems that employed Markov Localization in an office environment. The experiment is described in more detail in a 1995 article of AI Magazine\cite{nourbakhsh1995dervish}. The office environment consisted of two rooms and a corridor that can be modeled by a topological map\index{Topological Map} (Figure~\ref{fig:dervish_example}). In a topological map, areas that the robot can be in are modeled as vertices, and navigable connections between them are modeled as edges of a graph. The location of the robot can now be represented as a probability distribution over the vertices of  this graph.
 
 \begin{figure}
 	\centering
@@ -84,9 +84,8 @@ This example describes one of the first successful real robot systems that emplo
 
 The robot has the following sensing abilities:
 \begin{itemize}
-\item It can detect a wall to its left or right.
-\item It can detect an open door to its left or right.
 \item It can detect a closed door to its left or right.
+\item It can detect an open door to its left or right.
 \item It can detect whether it is an open hallway.
 \end{itemize}
 
@@ -115,17 +114,17 @@ The robot could move from $2-3$ to $3$, $3-4$ and finally $4$. We have chosen th
 \begin{enumerate}
 \item The robot must have started at $2-3$ (20\%)
 \item Not have seen the open door at the left of $3$ (5\%) and not have seen the wall at the right (70\%)
-\item Not have seen the wall to its left (70\%) and not have seen the wall to its right (70\%) at node $3-4$
+\item Not have seen the wall to its left (70\%) and not have seen the wall to its right at node $3-4$ (70\%) 
 \item Correctly identify the open hallway to its left (90\%) and mistake the open hallway to its right for an open door (10\%)
 \end{enumerate}
-Together, the likelihood that the robot got from position $2-3$ to position $4$ is therefore given by $0.2*0.05*0.7*0.7*0.7*0.9*0.1=0.03\%$, that is very unlikely.
+Together, the likelihood that the robot got from position $2-3$ to position $4$ is therefore given by $0.2\times 0.05 \times 0.7 \times 0.7 \times 0.7 \times 0.9 \times0.1=0.03\%$, that is very unlikely.
 
 
 The robot could also move from $1-2$ to $2$, $2-3$, $3$, $3-4$ or $4$. We can evaluate these hypotheses in a similar way:
 \begin{itemize}
-\item The chance that it correctly detects the open hallway and door at position $2$ is $0.9*0.9$, so the chance to be at position $2$, having started at $1-2$, is $0.8*0.9*0.9=64\%$.
+\item The chance that it correctly detects the open hallway and door at position $2$ is $0.9 \times 0.9$, so the chance to be at position $2$, having started at $1-2$, is $0.8 \times 0.9 \times 0.9=64\%$.
 \item The robot cannot have ended up at position $2-3$, $3$, and $3-4$ because the chance of seeing an open door instead of a wall on the right side is zero in all these cases.
-\item In order to reach position $4$, the robot must have started at $1-2$ has a chance of $0.8$. The robot must not have seen the hallway on its left and the open door to its right when passing position $2$. The probability for this is $0.001*0.05$. The robot must then have detected nothing at $2-3$ ($0.7*0.7$), nothing at $3$ ($0.05*0.7$), nothing at $3-4$ ($0.7*0.7$), and finally mistaken the hallway on its right for an open door at position $4$ ($0.9*0.1$). Multiplied together, this outcome is very unlikely.
+\item In order to reach position $4$, the robot must have started at $1-2$ has a chance of $0.8$. The robot must not have seen the hallway on its left and the open door to its right when passing position $2$. The probability for this is $0.001 \times 0.05$. The robot must then have detected nothing at $2-3$ ($0.7 \times 0.7$), nothing at $3$ ($0.05 \times 0.7$), nothing at $3-4$ ($0.7 \times 0.7$), and finally mistaken the hallway on its right for an open door at position $4$ ($0.9 \times 0.1$). Multiplied together, this outcome is very unlikely.
 \end{itemize}
 
 Given this information, we can now calculate the posterior probability to be at a certain location on the topological map by adding up the probabilities for every possible path to get there.
@@ -135,7 +134,7 @@ Given this information, we can now calculate the posterior probability to be at 
 \begin{figure}
 	\centering
 		\includegraphics[width=\textwidth]{figs/markov_grid_example}
-	\caption{Markov localization on a grid. The left colum shows the likelihood to be in a specific cell as grey value (dark colors correspond to high likelihoods). The right column shows the actual robot location. Arrows indicate previous motion. Initially, the position of the robot is unknown, but recorded upwards motion makes positions at the top of the map more likely. After the robot has encountered a wall, positions away from walls become unlikely. After rightwards and down motions, the possible positions have shrunk to a small area.}
+	\caption{Markov localization on a grid. The left column shows the likelihood to be in a specific cell as grey value (dark colors correspond to high likelihoods). The right column shows the actual robot location. Arrows indicate previous motion. Initially, the position of the robot is unknown, but recorded upwards motion makes positions at the top of the map more likely. After the robot has encountered a wall, positions away from walls become unlikely. After rightwards and down motions, the possible positions have shrunk to a small area.}
 	\label{fig:markov_grid_example}
 \end{figure}
 
@@ -144,9 +143,9 @@ Instead of using a coarse topological map, we can also model the environment as 
 \section{Particle Filter}
 Although grid-based Markov Localization can provide compelling results, it can be computationally very expensive, in particular when the environment is large and the resolution of the grid is small. This is in part due to the fact that we need to carry the probability to be at a certain location forward for every cell on the grid, regardless of how small this probability is. An elegant solution to this problem is the particle filter. It works as follows:
 \begin{enumerate}
-\item Represent the robots position by N particles that are randomly distributed around its estimated initial position. For this, we can either use one or more Gaussian distributions around the initial estimate(s) of where the robot is, or choose an uniform distribution (Figure~\ref{fig:particlefilter_example}).
-\item Every time the robot moves, we will move each particle in the exact same way, but add noise to each movement much like we would expect it the real robot to exhibit. Without a perception update, the particles will spread apart farther and farther.
-\item Upon a perception event, we evaluate every single particle using our sensor model. What would the likelihood be to have a perception event such as we observed at this location? We can then use Bayes' rule to update each particles position.
+\item Represent the robot's position by $N$ particles that are randomly distributed around its estimated initial position. For this, we can either use one or more Gaussian distributions around the initial estimate(s) of where the robot is, or choose an uniform distribution (Figure~\ref{fig:particlefilter_example}).
+\item Every time the robot moves, we will move each particle in the exact same way, but add noise to each movement much like we would observe on the real robot. Without a perception update, the particles will spread apart farther and farther.
+\item Upon a perception event, we evaluate every single particle using our sensor model. What would the likelihood be to have a perception event such as we observed at this location? We can then use Bayes' rule to update each particle's position.
 \item Once in a while or during perception events that render certain particles infeasible, particles that have a too low probability can be deleted, while those with the highest probability can be replicated.
 \end{enumerate}
 
@@ -158,7 +157,7 @@ Although grid-based Markov Localization can provide compelling results, it can b
 \end{figure}
 
 \section{The Kalman Filter}
-The location of a robot is subject to uncertainty due to wheel-slip and encoder noise. We learned in the past how the variance in position can be derived from the variance of the robot's drive train using the error propagation law and the forward kinematics of the robot. One can see that this error is continuously increasing unless the robot has additional observations, e.g., of a static object with known location. This update can be formally done using Bayes' rule, which relates the likelihood to be at a certain position given that the robot sees a certain feature to the likelihood to see this feature at the hypothetical location. For example, a robot that drives towards a wall will become less and less certain of its position (action update) until it encounters the wall (perception update). It can then use its sensor model that relates its observation with possible positions. Its real location must be therefore somewhere between its original belief and where the sensor tells it to be. Bayes' rule allows us to perform this location for discrete locations and discrete sensor error distributions. This is inconvenient as we are used to represent our robot's position with a 2D Gaussian distribution. Also, it seems much easier to just change the mean and variances of this Gaussian instead of updating hundreds of variables. The goals of this section are
+The location of a robot is subject to uncertainty due to wheel-slip and encoder noise. We learned in the past how the variance in position can be derived from the variance of the robot's drivetrain using the error propagation law and the forward kinematics of the robot. One can see that this error is continuously increasing unless the robot has additional observations, e.g., of a static object with known location. This update can be formally done using Bayes' rule, which relates the likelihood to be at a certain position given that the robot sees a certain feature to the likelihood to see this feature at the hypothetical location. For example, a robot that drives towards a wall will become less and less certain of its position (action update) until it encounters the wall (perception update). It can then use its sensor model that relates its observation with possible positions. Its real location must be therefore somewhere between its original belief and where the sensor tells it to be. Bayes' rule allows us to perform this location for discrete locations and discrete sensor error distributions. This is inconvenient as we are used to represent our robot's position with a 2D Gaussian distribution. Also, it seems much easier to just change the mean and variances of this Gaussian instead of updating hundreds of variables. The goals of this section are
 \begin{itemize}
 \item to introduce a technique known as the Kalman filter to perform action and perception updates exclusively using Gaussian distributions.
 \item to formally introduce the notion of a feature map.
@@ -175,10 +174,10 @@ In order to localize a robot using a map, we need to perform the following steps
 \item Use the result from (4) to update its belief by weighing each observation with its variance.
 \end{enumerate}
 
-Steps 1-2 are based on the lectures on ``Forward Kinematics'' and ``Line detection''. Step 3 uses again simple forward kinematics to calculate the position of a feature stored in global coordinates in a map in robot coordinates. Step 4 is a simple subtraction of what the sensor sees and what the map says. Step 5 introduces the Kalman filter. Its derivation is involved, but its intuition is simple: why just averaging between where I think I am and what my sensors tell me, if my sensors are much more reliable and should carry much higher weight?
+Steps 1-2 are based on the sections on ``Forward Kinematics'' and ``Line detection''. Step 3 uses again simple forward kinematics to calculate the position of a feature stored in global coordinates in a map in robot coordinates. Step 4 is a simple subtraction of what the sensor sees and what the map says. Step 5 introduces the Kalman filter. Its derivation is involved, but its intuition is simple: why just averaging between where I think I am and what my sensors tell me, if my sensors are much more reliable and should carry much higher weight?
 
 \subsection{Optimal Sensor Fusion}
-The Kalman filter is an optimal way to fuse observations that follow a Gaussian distribution. The Kalman filter has an update and a prediction step. The update step uses a dynamical model of the system (such as the forward kinematics of your robot) and the prediction step uses a sensor model (such as the error distribution calibrated from its sensors). The Kalman filter does not only update the state of the system (the robot's position) but also its variance. For this, it requires knowledge of all the variances involved in the system (e.g., wheel-slip and sensor error) and uses them to weigh each measurement accordingly. Before providing the equations for the Kalman filter, we will make use a simple example that explains what ``optimal'' means in this context.
+The Kalman filter is an optimal way to fuse observations that follow a Gaussian distribution. The Kalman filter has an update and a prediction step. The update step uses a dynamical model of the system (such as the forward kinematics of your robot) and the prediction step uses a sensor model (such as the error distribution calibrated from its sensors). The Kalman filter does not only update the state of the system (the robot's position) but also its variance. For this, it requires knowledge of all the variances involved in the system (e.g., wheel-slip and sensor error) and uses them to weigh each measurement accordingly. Before providing the equations for the Kalman filter, we will make use of a simple example that explains what ``optimal'' means in this context.
 
  Let $ \hat{q_1}$ and $ \hat{q_2}$ be two different estimates of a random variable and $ \sigma^2_1$ and $ \sigma^2_2$ their variances, respectively. Let $ q$ be the true value. This could be the robot's position, e.g. The observations have different variances when they are obtained by  different means, say using odometry for $ \hat{q_1}$ and by using the location of a known feature for $ \hat{q_2}$. We can now define the weighted mean-square error
  \begin{equation}
@@ -200,16 +199,16 @@ We have now derived an expression for fusing two observations with different err
 Interestingly, the resulting variance is smaller than both $\sigma_1$ and $\sigma_2$, that is, adding additional observation always helps  reducing accuracy instead of introducing more uncertainty.
 
 \subsection{Integrating prediction and update: The Kalman Filter}
-Although we have introduced the problem above as fusing two observations of the same quantity and weighing them by their variance, we can also interpret the equation above as an update step that calculates a new estimate of an observation based on its old estimate and a measurement. Remember step (4) from above: $ \hat{q_2}-\hat{q_1}$ is nothing else then the difference between what the robot actually sees and what it thinks it should see. This term is known as innovation in Kalman lingo. We can now
+Although we have introduced the problem above as fusing two observations of the same quantity and weighting them by their variance, we can also interpret the equation above as an update step that calculates a new estimate of an observation based on its old estimate and a measurement. Remember step (4) from above: $ \hat{q_2}-\hat{q_1}$ is nothing else then the difference between what the robot actually sees and what it thinks it should see. This term is known as innovation in Kalman lingo. We can now
 rewrite (\ref{eq:optimalfusion}) from above into
 \begin{equation}
 \hat{x}_{k+1}=\hat{x}_k+K_{k+1}\tilde{y}_{k+1}
 \end{equation}
-Here, $ \hat{x}_k$ is the state we are interested in at time $ k$, $ K_{k+1}=\frac{\sigma_1^2}{\sigma_1^2+\sigma_2^2}$ the Kalman gain, and $ \tilde{y}_{k+1}=\hat{q_2}-\hat{q_1}$  the innovation. Unfortunately, there are few systems that allow us to directly measure the information we are interested in. Rather, we obtain a sensor measurement $ z_k$ that we need to convert into our state somehow. You can think about this the other way round too and predict your measurement $ z_k$ from your state $ x_k$. This is done using the observation model $ H_k$, so that
+Here, $ \hat{x}_k$ is the state we are interested in at time $ k$, $ K_{k+1}=\frac{\sigma_1^2}{\sigma_1^2+\sigma_2^2}$ the Kalman gain, and $ \tilde{y}_{k+1}=\hat{q_2}-\hat{q_1}$  the innovation. Unfortunately, there are few systems that allow us to directly measure the information we are interested in. Rather, we obtain a sensor measurement $ z_k$ that we need to convert into our state somehow. You can think about this the other way too and predict your measurement $ z_k$ from your state $ x_k$. This is done using the observation model $ H_k$, so that
 \begin{equation}
 \tilde{y}_{k}=z_k-H_k x_k
 \end{equation}
-In our example $ H_k$ was just the identity matrix; in a robot position estimation problem $ H_k$ is a function that would predict how a robot would see a certain feature. As you can see, all the weighing based on variances is done in the Kalman gain $ K$.
+In our example $ H_k$ was just the identity matrix; in a robot position estimation problem $ H_k$ is a function that would predict how a robot would see a certain feature. As you can see, all the weighting based on variances is done in the Kalman gain $ K$.
 The perception update step shown above, also known as prediction step is only half of what the Kalman filter does. The first step is the update step, which corresponds to the action update we already know. In fact, the variance update in the Kalman filter is exactly the same as we learned during error propagation. Before going into any more details on the Kalman filter, it is time for a brief disclaimer: the Kalman filter only works for linear systems. Forward kinematics of even the simplest robots are mostly non-linear, and so are observation models that relate sensor observations and the robot position. Non-linear systems can be dealt with the Extended Kalman Filter.
 
 \section{Extended Kalman Filter}\label{sec:EKF}
@@ -253,10 +252,10 @@ We assume for now that the reader is familiar with calculating $ \hat{\boldsymbo
 \begin{equation}
 \boldsymbol{Q}_{k-1}=\left[\begin{array}{cc}k_r|\Delta s_r & 0\\0 & k_l|\Delta s_l|\end{array}\right]
 \end{equation}
-where $ \Delta s$ is the wheel movement of the left and right wheel and $ k$ are constants. See also the odometry lab for detailed derivations of these calculations and how to estimate $ k_r$ and $ k_l$.  The state vector $ \boldsymbol{\hat{x}_{k'|k-1}}$ is a 3x1 vector, the covariance matrix $ \boldsymbol{P_{k'|k-1}}$ is a 3x3 matrix, and $ \nabla_{\Delta_{r,l}}$ that is used during error propagation is a 3x2 matrix. See the error propagation lecture for details on how to calculate $ \nabla_{\Delta_{r,l}}$.
+where $ \Delta s$ is the wheel movement of the left and right wheel and $ k$ are constants. See also the odometry lab for detailed derivations of these calculations and how to estimate $ k_r$ and $ k_l$.  The state vector $ \boldsymbol{\hat{x}_{k'|k-1}}$ is a 3x1 vector, the covariance matrix $ \boldsymbol{P_{k'|k-1}}$ is a 3x3 matrix, and $ \nabla_{\Delta_{r,l}}$ that is used during error propagation is a 3x2 matrix. See the error propagation section for details on how to calculate $ \nabla_{\Delta_{r,l}}$.
 
 \paragraph{2. Observation}
-Let us now assume that we can detect line features $ \boldsymbol{z}_{k,i}=(\alpha_i,r_i)^T$, where $ \alpha$ and $ r$ are the angle and distance of the line from the coordinate system of the robot. These line features are subject to variances $ \sigma_{\alpha,i}$ and $ \sigma_{r,i}$, which make up the diagonal of $ \boldsymbol{R}_{k}$. See the line detection lecture for a derivation of how angle and distance as well as their variance can be calculated from a laser scanner. The observation is a 2x1 matrix.
+Let us now assume that we can detect line features $ \boldsymbol{z}_{k,i}=(\alpha_i,r_i)^T$, where $ \alpha$ and $ r$ are the angle and distance of the line from the coordinate system of the robot. These line features are subject to variances $ \sigma_{\alpha,i}$ and $ \sigma_{r,i}$, which make up the diagonal of $ \boldsymbol{R}_{k}$. See the line detection section for a derivation of how angle and distance as well as their variance can be calculated from a laser scanner. The observation is a 2x1 matrix.
 
 \paragraph{3. Measurement Prediction}
 We assume that we can uniquely identify the lines we are seeing and retrieve their real position from a map. This is much easier for unique features, but can be done also for lines by assuming that our error is small enough and we therefore can search through our map and pick the closest lines. As features are stored in global coordinates, we need to transpose them into how the robot would see them. In practice this is nothing but a list of lines, each with an angle and a distance, but this time with respect to the origin of the global coordinate system. Transposing them into robot coordinates is straightforward. With  $ \hat{\boldsymbol{x}}_{k}=(x_{k},y_{k},\theta_k)^T$ and $ m_i=(\alpha_i,r_i)$ the corresponding entry from the map, we can write
@@ -298,7 +297,7 @@ As the state vector is a 3x1 vector and the innovation a 2x1 matrix, the Kalman 
 
 \section*{Take home lessons}
 \begin{itemize}
-\item If the robot has no additional sensors and its odometry is noisy, error propagation will lead to ever increasing uncertainty of a robots position regardless of using Markov localization or the Kalman filter.
+\item If the robot has no additional sensors and its odometry is noisy, error propagation will lead to ever increasing uncertainty of a robot's position regardless of using Markov localization or the Kalman filter.
 \item Once the robot is able to sense features with known locations, Bayes' rule can be used to update the posterior probability of a possible position. The key insight is that the conditional probability to be at a certain position given a certain observation can be inferred from the likelihood to actually make this observation given a certain position.
 \item A complete solution that performs this process for discrete locations is known as Markov Localization.
 \item The Extended Kalman Filter is the optimal way to fuse observations of different random variables that are Gaussian distributed.

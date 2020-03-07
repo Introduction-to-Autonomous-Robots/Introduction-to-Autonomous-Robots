@@ -130,7 +130,7 @@ Also, the book is explicitely robot-agnostic, reflecting the timeliness of funda
 
 This book is released under a Creative Commons license, which allows anyone to copy and share this book, although not for commercial purposes and not to create derivatives of these works. This license comes very close to the ``copyright'' of a standard textbook, except that you are free to copy it for non-commercial purposes. I have chosen this format as it seems to maintain the best trade-off between a freely available textbook resource that others hopefully contribute to and maintaining a consistent curriculum that others can refer to.   
 
-Writing this book would not have been possible without the excellent work of others before me, most notably ``Introduction to Robotics: Mechanics and Control'' by John Craig and ``Introduction to Autonomous Mobile Robots'' by Roland Siegwart, Illah Nourbakhsh and David Scaramuzza, and innumerable other books and websites from which I learned and borrowed examples and notation. Finally, I would like to acknowledge Github users AlWiVo, beardicus, mguida22, aokeson, as1ndu, apnorton, JohnAllen, jmodares, and countsoduku for their pull requests. Your interest and motivation in this project has been one of my biggest rewards.  
+Writing this book would not have been possible without the excellent work of others before me, most notably ``Introduction to Robotics: Mechanics and Control'' by John Craig and ``Introduction to Autonomous Mobile Robots'' by Roland Siegwart, Illah Nourbakhsh and David Scaramuzza, and innumerable other books and websites from which I learned and borrowed examples and notation. Finally, I would like to acknowledge Github users AlWiVo, beardicus, mguida22, aokeson, as1ndu, apnorton, JohnAllen, jmodares, and countsoduku for their pull requests as well as Haluk Bayram. Your interest and motivation in this project has been one of my biggest rewards.  
 
 \begin{flushright}
 Nikolaus Correll\\
@@ -151,103 +151,10 @@ Boulder, Colorado, \today
 \input{chapters/errorpropagation}
 \input{chapters/localization}
 \input{chapters/grasping}
+\input{chapters/SLAM}
 
 
 
-\chapter{Simultaneous Localization and Mapping}\label{chap:slam}
-Robots are able to keep track of their position using a model of the noise arising in their drive train and their forward kinematics to propagate this error into a spatial probability density function (Section \ref{sec:errorprop}). The variance of this distribution can shrink as soon as the robot sees uniquely identifiable features with known locations. This can be done for discrete locations using Bayes' rule (Section \ref{sec:markovloc}) and for continuous distributions using the Extended Kalman Filter (Section \ref{sec:ekf}). The key insight here was that every observation will reduce the variance of the robot's position estimate. Here, the Kalman filter performs an optimal fusion of two observations by weighting them with their variance, i.e., unreliable information counts less than reliable one. In the robot localization problem, one of the observations is typically the robot's position estimate whereas the other observation comes from a feature with known location on a map. So far, we have assumed that these locations are known. This chapter will introduce
-
-\begin{itemize}
-\item the concept of covariance (or, what all the non-diagonal elements in the covariance matrix are about),
-\item how to estimate the robot's location and that of features in the map at the same time (Simultaneous Localization and Mapping or SLAM)
-\end{itemize}
-
-\section{Introduction}
-The SLAM problem has been considered as the holy grail of mobile robotics for a long time. This lecture will introduce one of the first comprehensive solutions to the problem, which has now be superseded by computationally more efficient versions. We will begin with studying a series of special cases.
-
-\subsection{Special Case I: Single Feature}
-Consider a map that has only a single feature. We assume that the robot is able to obtain the relative range and angle of this feature, each with a certain variance. An example of this and how to calculate the variance of an observation based on sensor uncertainty is described in the line fitting example (Section \ref{sec:linefitting}). This feature could be a wall, but also a graphical tag that the robot can uniquely identify. The position of this measurement $m_i=[\alpha_i,r_i]$  in global coordinates is unknown, but can now easily be calculated if an estimate of the robot's position $\boldsymbol{\hat{x}_k}$ is known.  The variance of $ m_i$'s components is now the variance of the robot's position plus the variance of the observation.
-
-Now consider the robot moving closer to the obstacle and obtaining additional observations. Although its uncertainty in position is growing, it can now rely on the feature $m_i$ to reduce the variance of its old position (as long as its known that the feature is not moving). Also, repeated observations of the same feature from different angles might improve the quality of its observation. The robot has therefore a chance to keep its variance very close to that with which it initially observed the feature and stored it into its map. We can actually do this using the EKF framework from Section \ref{sec:EKF}. There, we assumed that features have a known location (no variance), but that the robot's sensing introduces a variance. This variance was propagated into the covariance matrix of the innovation ($ \boldsymbol{S}$). We can now simply add the variance of the estimate of the feature's position to that of the robot's sensing process.
-
-\subsection{Special Case II: Two Features}
-Consider now a map that has two features. Visiting one after the other, the robot will be able to store both of them in its map, although with a higher variance for the feature observed last. Although the observations of both features are independent from each other, the relationship between their variances depend on the trajectory of the robot. The differences between these two variances are much lower if the robot connect them in a straight line than when it performs a series of turns between them. In fact, even if the variances of both features are huge (because the robot has already driven for quite a while before first encountering them), but the features are close together, the probability density function over their distance would be very small. The latter can also be understood as the covariance of the two random variables (each consisting of range and angle). In probability theory, the covariance is the measure of how much two variables are changing together. Obviously, the covariance between the locations of two features that are visited immediately after each other by a robot is much higher as those far apart. It should therefore be possible to use the covariance between features to correct estimates of features in retrospect. For example, if the robot returns to the first feature it has observed, it will be able to reduce the variance of its position estimate. As it knows that it has not traveled very far since it observed the last feature, it can then correct this feature's position estimate.
-
-\section{The Covariance Matrix}
-When estimating quantities with multiple variables, such as the position of a robot that consists of its x-position, its y-position and its orientation, matrix notation has been a convenient way of writing down equations. For error propagation, we have written the variances of each input variable into the diagonal of a covariance matrix. For example, when using a differential wheel robot, uncertainty in position expressed by $ \sigma_x, \sigma_y$ and $ \sigma_{\theta}$ were grounded in the uncertainty of its left and right wheel. We have entered the variances of the left and right wheel into a 2x2 matrix and obtained a 3x3 matrix that had $ \sigma_x, \sigma_y$ and $ \sigma_{\theta}$ in its diagonal. Here, we set all other entries of the matrix to zero and ignored entries in the resulting matrix that were not in its diagonal. The reason we could actually do this is because uncertainty in the left and right wheel are independent random processes: there is no reason that the left wheel slips, just because the right wheel slips.  Thus the covariance --- the measure on how much two random variables are changing together --- of these is zero. This is not the case for the robot's position: uncertainty in one wheel will affect all output random variables ($ \sigma_x, \sigma_y$ and $ \sigma_{\theta}$) at the same time, which is expressed by their non-zero covariances --- the non-zero entries off the diagonal of the output covariance matrix.
-
-\section{EKF SLAM}\label{sec:ekfslam}\label{sec:ekf}
-The key idea in EKF SLAM is to extend the state vector from the robot's position to contain the position of all features. Thus, the state
-\begin{equation}
-\hat{\boldsymbol{x}}_{k'|k-1}=(x,y,\theta)^T
-\end{equation}
-becomes
-\begin{equation}
-\hat{\boldsymbol{x}}_{k}=(x,y,\theta,\alpha_1,r_1,\ldots,\alpha_N,r_N)^T
-\end{equation}
-assuming $ N$ features, which is a $(3+2N) x1$ vector. The action update (or ``prediction update") is identical to that if features are already known; the robot simply updates its position using odometry and updates the variance of it s position using error propagation. The covariance matrix is now a $(3+2N)x(3+2N)$ matrix that initially holds the variances on position and those of each feature in its diagonal.
-
-The interesting things happen during the perception update. Here it is important that only one feature is observed at a time. Thus, if the robot observes multiple features at once, one needs to do multiple, consecutive perception updates. Care needs to be taken that the matrix multiplications work out. In practice you will need to set only those values of the observation vector (a $(3+2N)x1$ vector) that correspond to the feature that you observe. Similar considerations apply to the observation function and its Jacobian.
-
-\section{Graph-based SLAM}
-Usually, a robot obtains an initial estimate of where it is using some onboard sensors (odometry, optical flow, etc.) and uses this estimate to localize features (walls, corners, graphical patterns) in the environment. As soon as a robot revisits the same feature twice, it can update the estimate on its location. This is because the variance of an estimate based on two independent measurements will always be smaller than any of the variances of the individual measurements. As consecutive observations are not independent, but rather closely correlated, the refined estimate can then be propagated along the robot's path. This is formalized in EKF-based SLAM. A more intuitive understanding is provided by a spring-mass analogy: each possible pose (mass) is constrained to its neighboring pose by a spring. The higher the uncertainty of the relative transformation between two poses (e.g., obtained using odometry), the weaker the spring. Every time a robot gains confidence on a relative pose, the spring is stiffened instead. Eventually, all poses will be pulled in place. This approach is known as \emph{Graph-based SLAM}\index{Graph-based SLAM}. 
-
-\subsection{SLAM as a Maximum-Likelihood Estimation Problem}
-The classical formulation of SLAM describes the problem as maximizing the posterior probability of all points on the robot's trajectory given the odometry input and the observations. Formally,
-\begin{equation}
-p(x_{1:T},m|z_{1:T},u_{1:T})
-\end{equation}
-where $ x_{1:T}$ are all discrete positions from time 1 to time $ T$, $ z$ are the observations, and $ u$ are the odometry measurements. This formulation makes heavily use of the temporal structure of the problem. In practice, solving the SLAM problem requires
-\begin{enumerate}
-\item A motion update model, i.e., the probability $ p(x_t|x_{t-1},u_t)$ to be at location $ x_t$ given an odometry measurement $ u_t$ and being at location $ x_{t-1}$.
-\item  A sensor model, i.e., the probability $ p(z_t|x_t,m_t)$ to make observation $ z_t$ given the robot is at location $ x_t$ and the map $ m_t$.
-\end{enumerate}
-A possible solution to this problem is provided by the Extended Kalman Filter, which maintains a probability density function for the robot pose as well as the positions of all features on the map. Being able to uniquely identify features in the environment is of outmost importance and is known as the data association problem. Like EKF-based SLAM, graph-based SLAM does not solve this problem and will fail if features are confused.
-
-In graph-based SLAM, a robot's trajectory forms the nodes of a graph whose edges are transformations (translation and rotation) that have a variance associated with it. An alternative view is the spring-mass analogy mentioned above. Instead of having each spring wiggle a node into place, graph-based SLAM aims at finding those locations that maximize the joint likelihood of all observations. As such, graph-based SLAM is a \emph{maximum likelihood estimation}\index{Maximum Likelihood Estimation} problem.
-
-Lets revisit the normal distribution:
-\begin{equation}
-\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}
-\end{equation}
-
-It provides the probability for a measurement to have value $ x$ given that this measurement is normal distributed with mean $ \mu$ and variance $ \sigma^2$.  We can now associate such a distribution with every node-to-node transformation, aka constraint. This can be pairs of distance and angle, e.g. In the literature the measurement of a transformation between node i and a node j is denoted $ z_{ij}$. Its expected value is denoted $ \hat{z}_{ij}$. This value is expected for example based on a map of the environment that consists of previous observations.
-
-Formulating a normal distribution of measurements $ z_{ij}$ with mean $ \hat{z}_{ij}$ and a covariance matrix $ \Sigma_{ij}$ (containing all variances of the components of $ z_{ij}$ in its diagonal) is now straightforward. As graph-based SLAM is most often formulated as  information filter, usually the inverse of the covariance matrix (aka information matrix) is used, which we denote by $ \Omega_{ij}=\Sigma_{ij}^{-1}$.
-
-As we are interested in maximizing the joint probability of all measurements $ \prod{z_{ij}}$ over all edge pairings $ ij$ following the maximum likelihood estimation framework, it is customary to express the PDF using the log-likelihood. By taking the natural logarithm on both sides of the PDF expression, the exponential function vanishes and $ ln \prod{z_{ij}}$ becomes $ \sum{ ln z_{ij}}$ or $ \sum{l_{ij}}$, where $ l_{ij}$ is the log-likelihood distribution for $ z_{ij}$.
-\begin{equation}
-l_{ij} \propto (z_{ij}-\hat{z}_{ij}(x_i,x_j))^T\Omega_{ij}(z_{ij}-\hat{z}_{ij}(x_i,x_j))
-\end{equation}
-
-Again, the log-likelihood for observation $ z_{ij}$ is directly derived from the definition of the normal distribution, but using the information matrix instead of the covariance matrix and is ridden of the exponential function by taking the logarithm on both sides.
-
-The optimization problem can now be formulated as
-\begin{equation}
-x^* = \arg \min_{x}\sum_{<i,j>\in \mathcal{C}}e_{ij}^T\Omega_{ij}e_{ij}
-\end{equation}
-with $ e_{ij}(x_i,x_j)=z_{ij}-\hat{z}_{ij}(x_i,xj)$ the error between measurement and expected value. Note that the sum actually needs to be minimized as the individual terms are technically the negative log-likelihood.
-
-\subsection{Numerical Techniques for Graph-based SLAM}
-Solving the MLE problem is non-trivial, especially if the number of constraints provided, i.e., observations that relate one feature to another, is large. A classical approach is to linearize the problem at the current configuration and reducing it to a problem of the form $ Ax=b$. The intuition here is to calculate the impact of small changes in the positions of all nodes on all $ e_{ij}$. After performing this motion, linearization and optimization can be  repeated until convergence. 
-
-Recently, more powerful numerical methods have been developed. Instead of solving the MLE, one can employ a stochastic gradient descent algorithm. A gradient descent algorithm is an iterative approach to find the optimum of a function by moving along its gradient. Whereas a gradient descent algorithm would calculate the gradient on a fitness landscape from all available constraints, a stochastic gradient descent picks only a (non-necessarily random) subset. Intuitive examples are fitting a line to a set of $n$ points, but taking only a subset of these points when calculating the next best guess. As gradient descent works iteratively, the hope is that the algorithm takes a large part of the constraints into account. For solving Graph-based SLAM, a stochastic gradient descent algorithm would not take into account all constraints available to the robot, but  iteratively work on one constraint after the other. Here, constraints are observations on the mutual pose of nodes $i$ and $j$. Optimizing these constraints now requires moving both nodes $i$ and $j$ so that the error between where the robot thinks the nodes should be and what it actually sees gets reduced.  As this is a trade-off between multiple, maybe conflicting observations, the result will approximate a Maximum Likelihood estimate.
-
-More specifically, with $ e_{ij}$ the error between an observation and what the robot expects to see, based on its previous observation and sensor model, one can distribute the error along the entire trajectory between both features that are involved in the constraint. That is, if the constraint involves features $i$ and $j$, not only $i$ and $j$'s pose will be updated but all points inbetween will be moved a tiny bit.
-
-%This approach is cumbersome and quickly gets out of control if a robot is mapping an environment over multiple hours --- leading to millions of nodes in the graph and constraints. To overcome this problem, [Gris07] propose to (1) merge nodes of a graph as it is build up by relying on accurate localization of the robot within the existing map and (2) to chose a different graph representation.
-
-In Graph-based SLAM, edges encode the relative translation and rotation from one node to the other. Thus, altering a relationship between two nodes will automatically propagate to all nodes in the network. This is because the graph is essentially a chain of nodes whose edges consist of odometry measurements. This chain then becomes a graph whenever observations (using any sensor) introduce additional constraints. Whenever such a ``loop-closure'' occurs, the resulting error will be distributed over the entire trajectory that connects the two nodes. This is not always necessary, for example when considering the robot driving a figure-8 pattern. If a loop-closure occurs in one half of the 8, the nodes in the other half of the 8 are probably not involved.
-
-This can be addressed by constructing a  minimum spanning-tree  (MST) of the constraint graph. The MST is constructed by doing a Depth-First Search (DFS) on the constraint graph following odometry constraints. At a loop-closure, i.e., an edge in the graph that imposes a constraint to a previously seen pose, the DFS backtracks to this node and continues from there to construct the spanning tree. Updating all poses affected by this new constraint still requires modifying all nodes along the path between the two features that are involved, but inserting additional constraints is greatly simplified. Whenever a robot observes new relationships between any two nodes, only the nodes on the shortest path between  the two features on the MST need to be updated. %Example graphs illustrating this are shown in Figures 2a and 2b in [Gris07].
-\subsection*{Further reading}
-\begin{itemize}
-\item G. Grisetti, R. Kuemmerle, C. Stachniss and W. Burgard. A Tutorial on Graph-Based SLAM. IEEE Intelligent Transportation Systems Magazine, 2(4):31-43, 2010.
-
-\item E. Olson, J. Leonard and S. Teller. Fast Iterative Alignment of Pose Graphs with Poor Initial Estimates. Proc. of ICRA, pp 2262-2269, Orlando, FL, 2006.
-
-\item G. Grisetti, C. Stachniss, S. Grzonka and W. Burgard. A Tree Parameterization for Efficiently Computing Maximum Likelihood Maps using Gradient Descent. Robotics: Science and Systems (RSS), Atlanta, GA, USA, 2007.
-\end{itemize}
 
 \chapter{RGB-D SLAM} 
  Range sensors have emerged as one of the most effective sensors to make robots autonomous. Unlike vision, range data makes the construction of a 3D model of the robot's environment straightforward and the Velodyne sensor, that combines 64 scanning lasers into one package, was key in mastering the DARPA Grand Challenge.  3D range data has become even more important in robotics with the advent of cheap (priced at a tenth than the cheapest 2D laser scanner) RGB-D (color image plus depth) cameras. Point cloud data allows fitting of lines using RANSAC, which can serve as features in EKF-based localization, but can also be used for improving odometry, loop-closure detection, and mapping. The goals of this chapter are

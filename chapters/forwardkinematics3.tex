@@ -8,7 +8,7 @@
 \item Calculating the inverse kinematics analytically becomes quickly infeasible. You can then plan in configuration space of the robot using path-planning techniques.
 \item The inverse kinematics of a robot involves solving the equations for the forward kinematics for the joint angles. This process is often cumbersome if not impossible for complicated mechanisms.
 \item A simple numerical solution is provided by taking all partial derivatives of the forward kinematics in order to get an easily invertible expression that relates joint speeds to end-effector speeds.
-The inverse kinematics problem can then be formulated as feedback control problem, which will move the end-effector towards its desired pose using small steps. Problems with this approach are local minima and singularities of the mechanism, that might render this solution infeasible.
+The inverse kinematics problem can then be formulated as feedback control problem, which will move the end-effector towards its desired pose using small steps. Problems with this approach are local minima and singularities of the mechanism, which might render this solution infeasible.
 \end{itemize}
 
 \section*{Exercises}\small
@@ -27,6 +27,6 @@ The inverse kinematics problem can then be formulated as feedback control proble
 \subsection*{Forward and inverse kinematics}
 \begin{enumerate}
 \item Consider a differential wheel robot with a broken motor, i.e., one of the wheels cannot be actuated anymore. Derive the forward kinematics of this platform. Assume the right motor is broken.
-\item Consider a tri-cycle with two independent standard wheels in the rear and the stearable, driven front-wheel. Chose a suitable coordinate system and use $\phi$ as the steering wheel angle and wheel-speed $\dot{\omega}$. Provide forward and inverse kinematics.
+\item Consider a tri-cycle with two independent standard wheels in the rear and the stearable, driven front-wheel. Choose a suitable coordinate system and use $\phi$ as the steering wheel angle and wheel-speed $\dot{\omega}$. Provide forward and inverse kinematics.
 \end{enumerate}
 \normalsize
