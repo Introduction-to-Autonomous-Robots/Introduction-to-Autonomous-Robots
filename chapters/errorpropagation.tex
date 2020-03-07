@@ -94,15 +94,25 @@ The first term is the error propagation from a position $ p=[x,y,\theta]$ to a n
 \nabla_p f=\left[\frac{\partial f}{\partial x} \quad \frac{\partial f}{\partial y} \quad \frac{\partial f}{\partial \theta}\right]=\left[\begin{array}{ccc}1 & 0 & -\Delta s sin(\theta +\Delta \theta /2)\\0 & 1 & \Delta s cos(\theta + \Delta \theta/2)\\0 & 0 &1\end{array}\right]
 \end{equation}
 The second term is the error propagation of the actual wheel slip. This requires calculating the partial derivatives of $ f$ with respect to $ \Delta s_r$ and $ \Delta s_l$, which is a 3x2 matrix. The first column contains the partial derivatives of $ x,y,\theta$ with respect to $ \Delta s_r$. The second column contains the partial derivatives of $ x,y,\theta$ with respect to $ \Delta s_l$:
+\begin{scriptsize}
 \begin{equation}
 \nabla_{\Delta_{r,l}} f=\left[
-\begin{array}{cc}
-\frac{1}{2}\cos(\theta+\Delta \theta/2) & \frac{1}{2}\cos(\theta+\Delta \theta/2)\\
-\frac{1}{2}\sin(\theta+\Delta \theta/2) & \frac{1}{2}\cos(\theta+\Delta \theta/2)\\
-\frac{1}{2} & -\frac{1}{2}
+\begin{array}{ccc}
+\frac{1}{2}\cos(\theta+\frac{\Delta \theta/2}{b})
+-\frac{\Delta s}{2b}\sin(\theta+\frac{\Delta \theta}{b})
+& \quad & \frac{1}{2}\cos(\theta+\frac{\Delta \theta/2}{b})
+-\frac{\Delta s}{2b}\sin(\theta+\frac{\Delta \theta}{b})
+\\
+\frac{1}{2}\sin(\theta+\frac{\Delta \theta/2}{b})
++\frac{\Delta s}{2b}\cos(\theta+\frac{\Delta \theta}{b})
+& \quad & \frac{1}{2}\sin(\theta+\frac{\Delta \theta/2}{b})
++\frac{\Delta s}{2b}\cos(\theta+\frac{\Delta \theta}{b})
+\\
+\frac{1}{2} & \quad & -\frac{1}{2}
 \end{array}
 \right]
 \end{equation}
+\end{scriptsize}
 
 Finally, we need to define the covariance matrix for the measurement noise. As the error is proportional to the distance traveled, we can define $ \Sigma_{\Delta}$ by
 \begin{equation}
