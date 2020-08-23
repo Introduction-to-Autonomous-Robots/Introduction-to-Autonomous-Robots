@@ -1,3 +1,37 @@
-\chapter{Forces}
+%!TEX root = ../book.tex
+\chapter{Statics and Force Considerations}
 \label{ch:forces}
 %alessandro
+
+
+The Jacobian formulation introduced in \cref{sec:invjac} pertains to the field known as \emph{Differential Kinematics}, which relates joint velocities with end-effector linear and angular velocities. The (geometric) Jacobian represents a fundamental tool to characterize the motion and the interaction of a robot with its environment, as it is used to perform the following:
+  i) inverse differential kinematics even for robots that do not have a closed-form solution (cf. \cref{sec:invjac});
+ ii) singularity analysis (a kinematic singularity is a robot configuration in which the robot loses the ability to move to one or more directions \cite{sciavicco2012modelling});
+iii) redundancy analysis (a kinematic task is redundant if the robot possesses more degrees of freedom than what are needed to perform the task, resulting in infinite inverse kinematics solutions to choose from \cite{sciavicco2012modelling});
+ iv) manipulability analysis (i.e. how easy or difficult is it for a robot to move in a certain direction \cite{sciavicco2012modelling}).
+In this Chapter, we will investigate the role of the Jacobian in relating forces and moments applied at the end-effector and the resulting joint torques at equilibrium configurations--a field usually referred to as \emph{Statics}.
+
+% \section{Notation}
+
+% \paragraph*{Generalized forces}
+
+\section{Statics}
+
+\emph{Statics} deals with relating forces at the end-effector and generalized forces at the robot joints---either torques for revolute joints or forces for prismatic joints---when the robot is in \emph{static equilibrium}, i.e. the acceleration of the robot and all of its components is zero
+(for simplicity, we will hereinafter refer to robot manipulators equipped with revolute joints unless otherwise specified).
+If such a condition is met, a robot with $n$ degrees of freedom and an end-effector characterized by $m$ degrees of freedom can be fully described by the following quantities:
+\begin{itemize}
+    \item an $\left( n \times 1 \right)$ vector of joint torques $\tau$;
+    \item an $\left( r \times 1 \right)$ vector of \textbf{equivalent} forces exerted at the robot end-effector $F$;
+    \item an $\left( r \times 1 \right)$ vector of forces exerted \textbf{by the environment} on the robot end-effector $F_e$--which, per the principle of action and reaction, are equal and opposite to $F$: $F_e=-F$.
+\end{itemize}
+
+\td{finish}
+\vskip 40pt
+\ar{here's what I will cover:}
+
+\section{Principle of Virtual Work}
+
+\section{Kineto-statics Duality}
+
+\section{Velocity and Force Transformation}
