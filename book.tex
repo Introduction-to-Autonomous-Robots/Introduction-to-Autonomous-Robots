@@ -54,6 +54,16 @@
 \usepackage{makeidx}
 \usepackage{idxlayout}
 
+\let\comment=\relax
+\usepackage[markup=bfit, deletedmarkup=sout, authormarkup=superscript]{changes}
+\definechangesauthor[name={ar}, color=teal]{AR}
+\definechangesauthor[name={nc}, color=ForestGreen]{NC}
+\definechangesauthor[name={td}, color= red]{TODO}
+
+\newcommand{\ar}[1]{\added[id=AR  ]{#1}}
+\newcommand{\nc}[1]{\added[id=NC  ]{#1}}
+\newcommand{\td}[1]{\added[id=TODO]{#1}}
+
 %%% HEADERS & FOOTERS
 %\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
 %\pagestyle{fancy} % options: empty , plain , fancy
@@ -84,7 +94,7 @@
 %\title{Introduction to Autonomous Robots}
 %\author{Nikolaus Correll}
 %\date{} % Activate to display a given date or no date (if empty),
-         % otherwise the current date is printed 
+         % otherwise the current date is printed
 
 \begin{document}
 %\maketitle
@@ -120,17 +130,17 @@ future robot users
 \tableofcontents
 
 \chapter*{Preface}
-This book provides an algorithmic perspective to autonomous robotics to students with a sophomore-level of linear algebra and probability theory. Robotics is an emerging field at the intersection of mechanical and electrical engineering with computer science. With computers becoming more powerful, making robots smart is getting more and more into the focus of attention and robotics research most challenging frontier. While there are a large number of textbooks on the mechanics and dynamics of robots that address sophomore-level undergraduates available, books that provide a broad algorithmic perspective are mostly limited to the graduate level. This book has therefore been developed not to create ``yet another textbook, but better than the others'', but to allow me to teach robotics to the 3rd and 4th year undergraduates at the Department of Computer Science at the University of Colorado. 
+This book provides an algorithmic perspective to autonomous robotics to students with a sophomore-level of linear algebra and probability theory. Robotics is an emerging field at the intersection of mechanical and electrical engineering with computer science. With computers becoming more powerful, making robots smart is getting more and more into the focus of attention and robotics research most challenging frontier. While there are a large number of textbooks on the mechanics and dynamics of robots that address sophomore-level undergraduates available, books that provide a broad algorithmic perspective are mostly limited to the graduate level. This book has therefore been developed not to create ``yet another textbook, but better than the others'', but to allow me to teach robotics to the 3rd and 4th year undergraduates at the Department of Computer Science at the University of Colorado.
 
-Although falling under the umbrella of ``Artificial Intelligence'', standard AI techniques are not sufficient to tackle problems that involve uncertainty, such as a robot's interaction in the real world. This book uses simple trigonometry to develop the kinematic equations of simple manipulators and mobile robots, then introduces path planning, sensing, and hence uncertainty. The robot localization problem is introduced by formally introducing error propagation, which leads to Markov localization, the Particle filter and finally the Extended Kalman Filter, and Simultaneous Localization and Mapping. 
+Although falling under the umbrella of ``Artificial Intelligence'', standard AI techniques are not sufficient to tackle problems that involve uncertainty, such as a robot's interaction in the real world. This book uses simple trigonometry to develop the kinematic equations of simple manipulators and mobile robots, then introduces path planning, sensing, and hence uncertainty. The robot localization problem is introduced by formally introducing error propagation, which leads to Markov localization, the Particle filter and finally the Extended Kalman Filter, and Simultaneous Localization and Mapping.
 
 Instead of focusing on the state-of-the-art solutions to a particular sub-problem, emphasis of the book is on a concise step-by-step development and recurrent examples that capture the essence of a problem, but might not necessarily be the best solution. For example, odometry and line-fitting are used to explain forward kinematics and least-squares solutions, respectively, and later serve as motivating examples for error propagation and the Kalman filter in a localization context.
 
-Also, the book is explicitely robot-agnostic, reflecting the timeliness of fundamental concepts. Instead, a series of possible project-based curricula are described in an Appendix and available online, ranging from a maze-solving competition that can be realized with most miniature differential-wheel robots that include a camera to manipulation experiments with the Baxter robot, all of which can be entirely conducted in simulation. 
+Also, the book is explicitly robot-agnostic, reflecting the timeliness of fundamental concepts. Instead, a series of possible project-based curricula are described in an Appendix and available online, ranging from a maze-solving competition that can be realized with most miniature differential-wheel robots that include a camera to manipulation experiments with the Baxter robot, all of which can be entirely conducted in simulation.
 
-This book is released under a Creative Commons license, which allows anyone to copy and share this book, although not for commercial purposes and not to create derivatives of these works. This license comes very close to the ``copyright'' of a standard textbook, except that you are free to copy it for non-commercial purposes. I have chosen this format as it seems to maintain the best trade-off between a freely available textbook resource that others hopefully contribute to and maintaining a consistent curriculum that others can refer to.   
+This book is released under a Creative Commons license, which allows anyone to copy and share this book, although not for commercial purposes and not to create derivatives of these works. This license comes very close to the ``copyright'' of a standard textbook, except that you are free to copy it for non-commercial purposes. I have chosen this format as it seems to maintain the best trade-off between a freely available textbook resource that others hopefully contribute to and maintaining a consistent curriculum that others can refer to.
 
-Writing this book would not have been possible without the excellent work of others before me, most notably ``Introduction to Robotics: Mechanics and Control'' by John Craig and ``Introduction to Autonomous Mobile Robots'' by Roland Siegwart, Illah Nourbakhsh and David Scaramuzza, and innumerable other books and websites from which I learned and borrowed examples and notation. Finally, I would like to acknowledge Github users AlWiVo, beardicus, mguida22, aokeson, as1ndu, apnorton, JohnAllen, jmodares, countsoduku, and choffmann for their pull requests and comments as well as Haluk Bayram. Your interest and motivation in this project has been one of my biggest rewards.  
+Writing this book would not have been possible without the excellent work of others before me, most notably ``Introduction to Robotics: Mechanics and Control'' by John Craig and ``Introduction to Autonomous Mobile Robots'' by Roland Siegwart, Illah Nourbakhsh and David Scaramuzza, and innumerable other books and websites from which I learned and borrowed examples and notation. Finally, I would like to acknowledge Github users AlWiVo, beardicus, mguida22, aokeson, as1ndu, apnorton, JohnAllen, jmodares, countsoduku, and choffmann for their pull requests and comments as well as Haluk Bayram. Your interest and motivation in this project has been one of my biggest rewards.
 
 \begin{flushright}
 Nikolaus Correll\\
@@ -142,7 +152,7 @@ Boulder, Colorado, \today
 \input{chapters/forwardkinematics1}
 \input{chapters/inversekinematics}
 \input{chapters/forwardkinematics3}
-%\input{chapters/forces} % Alessandro's chapter
+\input{chapters/forces}
 \input{chapters/pathplanning}
 %\input{chapters/taskexecution}
 \input{chapters/sensors}
@@ -156,7 +166,7 @@ Boulder, Colorado, \today
 
 
 
-\chapter{RGB-D SLAM} 
+\chapter{RGB-D SLAM}
  Range sensors have emerged as one of the most effective sensors to make robots autonomous. Unlike vision, range data makes the construction of a 3D model of the robot's environment straightforward and the Velodyne sensor, that combines 64 scanning lasers into one package, was key in mastering the DARPA Grand Challenge.  3D range data has become even more important in robotics with the advent of cheap (priced at a tenth than the cheapest 2D laser scanner) RGB-D (color image plus depth) cameras. Point cloud data allows fitting of lines using RANSAC, which can serve as features in EKF-based localization, but can also be used for improving odometry, loop-closure detection, and mapping. The goals of this chapter are
 \begin{itemize}
 \item introduce the Iterative Closest Point (ICP) algorithm
@@ -220,7 +230,7 @@ A problem with ICP is that errors in each transformation propagate making maps c
 \caption{Fused point cloud data from a walk trough of an office environment using ``Kintinious''. Picture courtesy of John Leonard.\label{fig:kintinous}}
 \end{figure}
 
-The intuition behind SLAM is to consider each transformation between consecutive snapshots as a spring with variable stiffness. Whenever the robot returns to a previously seen location, i.e., a loop-closure has been determined, additional constraints are introduced and the collection of snapshots connected by springs become a mesh. Everytime the robot then re-observes a transformation between any of the snapshots, it can ``stiffen'' the spring connecting the two. As all of the snapshots are connected, this new constraints propagates through the network and literally pull each snapshots in place.
+The intuition behind SLAM is to consider each transformation between consecutive snapshots as a spring with variable stiffness. Whenever the robot returns to a previously seen location, i.e., a loop-closure has been determined, additional constraints are introduced and the collection of snapshots connected by springs become a mesh. Every time the robot then re-observes a transformation between any of the snapshots, it can ``stiffen'' the spring connecting the two. As all of the snapshots are connected, this new constraints propagates through the network and literally pull each snapshots in place.
 
 RGB-D Mapping uses a variant of ICP that is enhanced by SIFT features for point selection and matching. Maps are build incrementally. SIFT features, and their spatial relationship, are used for detecting loop closures. Once a loop closure is detected, an additional constraint is added to the pose graph and a SLAM-like optimization algorithm corrects the pose of all previous observations.
 

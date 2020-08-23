@@ -1,11 +1,11 @@
 \chapter{Feature extraction}\label{chap:feature_extraction}
 A robot can obtain information about its environment by both active (e.g., ultra-sound, light, and laser) or passive sensing (e.g., acceleration, magnetic field, or cameras). There are only few cases where this information is directly useful to a robot. Before being able to arrive at semantic information such as ``I'm in the kitchen'', ``this is a cup'' or ``this is a horse'', is identifying higher-level \emph{features}.\index{Features}
 
-The goal of this chapter is to introduce a series of standard feature detectors such as
+The goal of this chapter is to introduce a series of standard feature detectors such as:
 \begin{itemize}
 \item the Hough-transform to detect lines, circles and other shapes,
 \item numerical methods such as least-squares, split-and-merge and RANSAC to find high-level features in noisy data,
-\item Scale-invariant features.
+\item scale-invariant features.
 \end{itemize}
 
 \section{Feature detection as an information-reduction problem}
