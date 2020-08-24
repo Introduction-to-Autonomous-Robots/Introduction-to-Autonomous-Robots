@@ -50,6 +50,7 @@
 \usepackage{hyperref}
 \usepackage{harvard}
 \usepackage{marginnote}
+\usepackage[capitalize, noabbrev]{cleveref} % Used to improve refernces
 
 \usepackage{makeidx}
 \usepackage{idxlayout}
@@ -63,6 +64,9 @@
 \newcommand{\ar}[1]{\added[id=AR  ]{#1}}
 \newcommand{\nc}[1]{\added[id=NC  ]{#1}}
 \newcommand{\td}[1]{\added[id=TODO]{#1}}
+
+% fixing a scrbook error when compiling the citations
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
 
 %%% HEADERS & FOOTERS
 %\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
@@ -172,7 +176,7 @@ While artificial neural networks have long time been one out of many go-to metho
 Not too long ago, neural networks have been considered ``deep'' with more than two layers. Today, ``deep'' neural networks can have hundreds of layers and thousands of inputs and output, or more. This is still shy of the human brain, or even tiny areas thereof, which contains 100 billion neurons, each with thousands of synapses connecting a single neuron to thousands of others.
 
 \section{Goal of this chapter}
-Machine learning is a large field that shares many of the foundations in probability theory and statistics with robotics. The goal of this chapter is to provide a basic understanding of simple and recurrent neural networks that is sufficient to connect these tools to other topics in this book. In particular, deep learning can be used as a drop-in replacement for forward and inverse kinematics, sensor preprocessing and conditioning, computer vision and feature extraction, localization, and even replace controllers for locomotion and grasping. Here, it is important to understand when deep learning models might provide better solutions as well as when they do not. In a nutshell, deep learning models become first choice when not information exist to model a system using first principles. While a deep enough model with the right architecture might approximate any existing function in robotics, deep learning models lack ``explainability'' beyond statistical accuracy. In addition to providing the roboticist an additional tool, this chapter also provides a foundation to allow the reader to connect to the rapidly growing literature in this field. For this reason, this chapter starts with the simple Perceptron and gradient descent to develop more advanced neural network architectures. 
+Machine learning is a large field that shares many of the foundations in probability theory and statistics with robotics. The goal of this chapter is to provide a basic understanding of simple and recurrent neural networks that is sufficient to connect these tools to other topics in this book. In particular, deep learning can be used as a drop-in replacement for forward and inverse kinematics, sensor preprocessing and conditioning, computer vision and feature extraction, localization, and even replace controllers for locomotion and grasping. Here, it is important to understand when deep learning models might provide better solutions as well as when they do not. In a nutshell, deep learning models become first choice when not information exist to model a system using first principles. While a deep enough model with the right architecture might approximate any existing function in robotics, deep learning models lack ``explainability'' beyond statistical accuracy. In addition to providing the roboticist an additional tool, this chapter also provides a foundation to allow the reader to connect to the rapidly growing literature in this field. For this reason, this chapter starts with the simple Perceptron and gradient descent to develop more advanced neural network architectures.
 
 \section{The simple Perceptron}
 Artificial neural networks are inspired by neurons and synapses in the human brain and have been studied since the 1950ies. One of the earliest model is the \index{Perceptron}\index{Simple Perceptron}\emph{Perceptron}, which can classify an input vector $x$ of dimension $m$ into two classes. Such a problem is shown in Figure \ref{fig:linearsep}. Variations of the simple perceptron remain the basic elements of deep neural networks till today.
@@ -232,20 +236,20 @@ w(t+1)=w(t)+r(d_j-y_j)*x_j
 
 Repeat steps 2 and 3 until a termination criteria, such as a decreasing error or maximum number of iterations, is reached.
 
-Albeit very simple, this simple learning algorithm has still a lot in common with state-of-the-art algorithms. First, weights are updated in an iterative process using small increments governed by a parameter $r$, standing for \index{Learning Rate}\emph{learning rate}. By changing $w$ in small increments, the algorithm is literally rotating and translating the separating line in a direction that minimizes the \emph{loss}, given by $d_i-y_i$. One can easily see that if the learning rate is too low, the algorithm will never find a good solution. One can also see that if the learning rate is too large, the line might move too much, skipping the optimal pose. 
+Albeit very simple, this simple learning algorithm has still a lot in common with state-of-the-art algorithms. First, weights are updated in an iterative process using small increments governed by a parameter $r$, standing for \index{Learning Rate}\emph{learning rate}. By changing $w$ in small increments, the algorithm is literally rotating and translating the separating line in a direction that minimizes the \emph{loss}, given by $d_i-y_i$. One can easily see that if the learning rate is too low, the algorithm will never find a good solution. One can also see that if the learning rate is too large, the line might move too much, skipping the optimal pose.
 
-Notice that this simple implementation is de facto implementing gradient descent on a loss function of the form $(d_i-y_i)^2$, that can be minimized by moving against the direction of its gradient, here $2(d_i-y_i)$. 
+Notice that this simple implementation is de facto implementing gradient descent on a loss function of the form $(d_i-y_i)^2$, that can be minimized by moving against the direction of its gradient, here $2(d_i-y_i)$.
 
-Second, the learning algorithm requires multiple presentations of the data-set, as the error is computed for every point in the data set. The more data, the longer training takes, in this case the increase in time is linear, which is a good approximation also for modern learning algorithms. 
+Second, the learning algorithm requires multiple presentations of the data-set, as the error is computed for every point in the data set. The more data, the longer training takes, in this case the increase in time is linear, which is a good approximation also for modern learning algorithms.
 
-Third, the error between prediction and true class is only calculated based on training data. Even if we train with unlimited amounts of data points, it is still difficult to answer how the algorithm generalizes for new data, and whether also these new measurements will be distributed as the training data. 
+Third, the error between prediction and true class is only calculated based on training data. Even if we train with unlimited amounts of data points, it is still difficult to answer how the algorithm generalizes for new data, and whether also these new measurements will be distributed as the training data.
 
 \section{Activation Functions}
 Using a on-off Heaviside step function makes training a neural network using gradient descent rather difficult as a function that switches from ``not working at all'' to ``working completely'' provides very little information in which direction to move. It is therefore more desirable to have a smooth activation function. One such function is the \index{Sigmoid function}\emph{sigmoid function}:
 \begin{equation}
 \sigma(x)=\frac{1}{1+e^{-x}}
 \end{equation}
-Its main characteristics are that it assymptotically stays between 0 and 1, and crosses the y-axis at 0.5. It is shown in Figure \ref{fig:activationfunctions}, left. 
+Its main characteristics are that it assymptotically stays between 0 and 1, and crosses the y-axis at 0.5. It is shown in Figure \ref{fig:activationfunctions}, left.
 
 \begin{figure}[!htb]
 \centering
@@ -259,18 +263,18 @@ A popular solution to decrease computation time is the \index{Rectified Linear U
 \begin{equation}
 R(x)=max(0,x)
 \end{equation}
-and is shown in Figure \ref{fig:activationfunctions}, right.The dashed line indicates a refinement of the ReLU known as \emph{leaky ReLU} with a slope of typical 0.1, and improves learning for negative $wx$ by providing a directional gradient. 
+and is shown in Figure \ref{fig:activationfunctions}, right.The dashed line indicates a refinement of the ReLU known as \emph{leaky ReLU} with a slope of typical 0.1, and improves learning for negative $wx$ by providing a directional gradient.
 
-Note that we only talk about ``Perceptrons'' when the Heaviside step function is used as activation function. 
+Note that we only talk about ``Perceptrons'' when the Heaviside step function is used as activation function.
 
 \section{From the simple Perceptron to Multi-layer neural networks}
 
-We have seen that the single Perceptron is able to linearly separate a dataset, spitting out ``0'' or ``1'' as a function of the data being below or above the separating hyperplane defined by the weight vector $w$. It is easy to see that some problems cannot be linearly separated. This is illustrated in Figure \ref{fig:xorproblem}. 
+We have seen that the single Perceptron is able to linearly separate a dataset, spitting out ``0'' or ``1'' as a function of the data being below or above the separating hyperplane defined by the weight vector $w$. It is easy to see that some problems cannot be linearly separated. This is illustrated in Figure \ref{fig:xorproblem}.
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=0.9\columnwidth]{figs/xorproblem}
-\caption{Data that cannot be separated using a single line (left) in canonical form (center). This problem is known as the ``XOR'' problem due to the truth table of the associated classification problem (right).\label{fig:xorproblem}} 
+\caption{Data that cannot be separated using a single line (left) in canonical form (center). This problem is known as the ``XOR'' problem due to the truth table of the associated classification problem (right).\label{fig:xorproblem}}
 \end{figure}
 
 In the example above, the red and the blue data points are not separable by a single line, but require at least two lines. This problem is known as the ``XOR'' problem, which can be seen by looking at just four data points at $(0,0)$, $(0,1)$, $(1,0)$, and $(1,1)$. Tabulating this data togethwer with its color, reveals a truth table with the characteristics of logical exclusive or (XOR), that is $x_1$ and $x_2$ have to be different for the output to be true (here ``blue''), whereas the output is false (here ``red'') when the inputs are the same.
@@ -285,11 +289,11 @@ shows the simple-most multi-layer Perceptron that can be trained for the XOR pro
 \end{figure}
 
 \subsection{Formal description of Artificial Neural Networks}
-As with the simple Perceptron, we will use node i's bias as the 0-th weight vector, that is 
+As with the simple Perceptron, we will use node i's bias as the 0-th weight vector, that is
 \begin{equation}
 w^k_{0,j}=b^k_j
 \end{equation}
-Here, we use the following notation. We will denote the layer with a superscript, and the index of the incoming node and the outgoing node with a subscript tuple. That is $w^k_{i,j}$ is connecting the i-th incoming weight to the $j-th$ node of the $k-th$ layer. (The i-th incoming weight is the j-th node in layer $k-1$.) This, as well as the simple example network from above, are illustrated in Figure \ref{fig:backpropnotation}. 
+Here, we use the following notation. We will denote the layer with a superscript, and the index of the incoming node and the outgoing node with a subscript tuple. That is $w^k_{i,j}$ is connecting the i-th incoming weight to the $j-th$ node of the $k-th$ layer. (The i-th incoming weight is the j-th node in layer $k-1$.) This, as well as the simple example network from above, are illustrated in Figure \ref{fig:backpropnotation}.
 
 \begin{figure}[!htb]
 \centering
@@ -314,7 +318,7 @@ with $o_j^{k-1}$ the j-th output of the previous layer. This is illustrated in F
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=0.7\columnwidth]{figs/backpropnotation2}
-\caption{Inputs and outputs of neuron $i$ in the $k$-th layer showing activation $a_i$ and output $o_i$.\label{fig:backpropnotation2}} 
+\caption{Inputs and outputs of neuron $i$ in the $k$-th layer showing activation $a_i$ and output $o_i$.\label{fig:backpropnotation2}}
 \end{figure}
 
 In case of $k$ being the output layer, $o_i^k$ should be equivalent to $y_i^k$. Likewise, in case of $k-1$ being the input layer $o_i^{k-1}=x_i$.
@@ -324,11 +328,11 @@ In case of $k$ being the output layer, $o_i^k$ should be equivalent to $y_i^k$. 
 Finding a set of weights and bias values, that is 9 parameters for a simple two-dimensional problem, but potentially millions for a ``deep network'', is an NP-complete problem \cite{blum1992training}. We therefore need a smart approximative algorithm. We consider a training dataset consisting of input-output pairs $x_i$ and ouput $y_i$ with $i=1..N$, and a feedforward neural network with parameters $w$.
 
 \subsubsection{Loss function}
-The goal of training is to minimize an error function such as the mean squared error 
+The goal of training is to minimize an error function such as the mean squared error
 \begin{equation}
 E(x,y,w)=\frac{1}{2N}\sum_{i=1}^{N}(\hat{y_i}-y_i)^2
 \end{equation}
-between the output $\hat{y_i}$ that the neural network with parameters $w$ computes and the known value $y_i$ from what is known as the \index{Training set}\emph{training set}. 
+between the output $\hat{y_i}$ that the neural network with parameters $w$ computes and the known value $y_i$ from what is known as the \index{Training set}\emph{training set}.
 
 Similar to the Perceptron, we can reduce $E(x,y,w)$ by iteratively descending along its gradient, that is
 \begin{equation}
@@ -336,7 +340,7 @@ w(t+1)=w(t)-\alpha \frac{\partial E(x,y,w(t))}{\partial w}
 \end{equation}
 
 \subsubsection{Backpropagation}
-Calculating the partial derivatives for the error function manually is not straightforward as the neural network implements a computation graph, transforming the input $x$ by a series of multiplications and non-linear activation functions, which in turn require the chain rule. 
+Calculating the partial derivatives for the error function manually is not straightforward as the neural network implements a computation graph, transforming the input $x$ by a series of multiplications and non-linear activation functions, which in turn require the chain rule.
 
 Applying the chain rule can be done in two ways: moving forwards or backwards through the computation graph. Actually doing this by hand for a simple graph shows that going backwards is significantly more efficient. Manually deriving the individual partial derivatives also illustrates that many of the computations can actually be recycled. This solution is known as \index{Backpropagation}\emph{backpropagation} \cite{rumelhart1985learning}, a technique that has been independently discovered in multiple fields. The derivation below follows \cite{backpropagation}.
 
@@ -370,7 +374,7 @@ The chain rule therefore states
 \end{equation}
 
 \paragraph{Error at layer k}
-The first term is part of a vector called the ``error at layer $k$''  that consists of errors at all nodes $j$ in layer $k$ and is denoted by 
+The first term is part of a vector called the ``error at layer $k$''  that consists of errors at all nodes $j$ in layer $k$ and is denoted by
 \begin{equation}
 \delta^k_j=\frac{\partial E}{\partial a_j^k}
 \end{equation}
@@ -386,7 +390,7 @@ Thus, the partial derivative of the error function $E$ with respect to weight $w
 \frac{\partial E}{\partial w^k_{i,j}}=\delta^k_jo^{k-1}_i.
 \end{equation}
 
-We can see that the error $E$ with respect to each individual weight $w_{i,j}^k$ in a layer $k$ depends on the output of the layers coming before that. This is intuitive, as information propagates through the network. We will now also show that the error term $\delta_j^k$ actually depends on the error at layers above $k$, that is stems from the error $\hat{y}-y$ that we ultimately want to minimize. 
+We can see that the error $E$ with respect to each individual weight $w_{i,j}^k$ in a layer $k$ depends on the output of the layers coming before that. This is intuitive, as information propagates through the network. We will now also show that the error term $\delta_j^k$ actually depends on the error at layers above $k$, that is stems from the error $\hat{y}-y$ that we ultimately want to minimize.
 
 \paragraph{Backward propagation of error}
 
@@ -394,7 +398,7 @@ In order to show how the error term $\delta^k_i$ relates to the error  at the ou
 \begin{equation}
 E=\frac{1}{2}(\hat{y}-y)^2=\frac{1}{2}(g(a_1^m)-y)^2
 \end{equation}
-Using the chain rule $\frac{\partial E}{\partial w_{i,1}^m}=\frac{\partial E}{\partial a^m_i}\frac{\partial a^m_i}{\partial w^k_{i,1}}$ as before yields 
+Using the chain rule $\frac{\partial E}{\partial w_{i,1}^m}=\frac{\partial E}{\partial a^m_i}\frac{\partial a^m_i}{\partial w^k_{i,1}}$ as before yields
 \begin{equation}
 \delta^m_1=\frac{\partial E}{\partial a^m_1}=(g(a^m_1)-y)g'(a^m_1)=(\hat{y}-y)g'(a^m_1)
 \end{equation}
@@ -456,10 +460,10 @@ Training a network now follows these simple steps:
 \item Repeat steps 2-3 for a fixed number of iterations or when the error becomes reasonably small.
 \end{enumerate}
 
-Fortunately, calculating the partial derivatives is not very hard in practice as there exist tools that automatically calculate the gradient along a computational chain in various programming languages (autograd, PyTorch, e.g.). These tools are at the core of modern machine learning frameworks and enable you to construct arbitrary network architectures without worrying about how to actually calculate the gradients. Yet, it is difficult to understand how these tools work and what their limitations are without understanding the derivation above. 
+Fortunately, calculating the partial derivatives is not very hard in practice as there exist tools that automatically calculate the gradient along a computational chain in various programming languages (autograd, PyTorch, e.g.). These tools are at the core of modern machine learning frameworks and enable you to construct arbitrary network architectures without worrying about how to actually calculate the gradients. Yet, it is difficult to understand how these tools work and what their limitations are without understanding the derivation above.
 
 \section{From single outputs to representing higher dimensional data}
-Extending a neural network from one single output to multiple binary classifiers is straightforward, requiring only to increase the dimensionality of the output vector. How to represent numerical values, such as digits from 0-9 or characters from A-Z? 
+Extending a neural network from one single output to multiple binary classifiers is straightforward, requiring only to increase the dimensionality of the output vector. How to represent numerical values, such as digits from 0-9 or characters from A-Z?
 
 
 \paragraph{One-Hot Encoding}  A very common approach is known as \emph{One-Hot Encoding (OHE)}. In OHE, $n$ discrete labels such as numbers or characters will be encoded as a binary vector of length $n$. To encode the $i-th$ element of a set of lables, this vector is zero except at position $i$. For example, to encode the characters 0..9, OHE would result into
