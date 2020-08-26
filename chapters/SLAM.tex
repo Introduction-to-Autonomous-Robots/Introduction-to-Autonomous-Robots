@@ -33,6 +33,12 @@ assuming $ N$ features, which is a $(3+2N) x1$ vector. The action update (or ``p
 
 The interesting things happen during the perception update. Here it is important that only one feature is observed at a time. Thus, if the robot observes multiple features at once, one needs to do multiple, consecutive perception updates. Care needs to be taken that the matrix multiplications work out. In practice you will need to set only those values of the observation vector (a $(3+2N)x1$ vector) that correspond to the feature that you observe. Similar considerations apply to the observation function and its Jacobian.
 
+\subsection{State Space}
+
+\subsection{Updates}
+
+\subsection{Multiple Sensors}
+
 \section{Graph-based SLAM}
 Usually, a robot obtains an initial estimate of where it is using some onboard sensors (odometry, optical flow, etc.) and uses this estimate to localize features (walls, corners, graphical patterns) in the environment. As soon as a robot revisits the same feature twice, it can update the estimate on its location. This is because the variance of an estimate based on two independent measurements will always be smaller than any of the variances of the individual measurements. As consecutive observations are not independent, but rather closely correlated, the refined estimate can then be propagated along the robot's path. This is formalized in EKF-based SLAM. A more intuitive understanding is provided by a spring-mass analogy: each possible pose (mass) is constrained to its neighboring pose by a spring. The higher the uncertainty of the relative transformation between two poses (e.g., obtained using odometry), the weaker the spring. Every time a robot gains confidence on a relative pose, the spring is stiffened instead. Eventually, all poses will be pulled in place. This approach is known as \emph{Graph-based SLAM}\index{Graph-based SLAM}, see also \cite{grisetti2010tutorial}. 
 
@@ -71,6 +77,8 @@ The optimization problem can now be formulated as
 x^* = \arg \min_{x}\sum_{<i,j>\in \mathcal{C}}e_{ij}^T\Omega_{ij}e_{ij}
 \end{equation}
 with $ e_{ij}(x_i,x_j)=z_{ij}-\hat{z}_{ij}(x_i,xj)$ the error between measurement and expected value. Note that the sum actually needs to be minimized as the individual terms are technically the negative log-likelihood.
+
+\subsection{Factor Graphs for Sensor Fusion}
 
 \subsection{Numerical Techniques for Graph-based SLAM}
 Solving the MLE problem is non-trivial, especially if the number of constraints provided, i.e., observations that relate one feature to another, is large. A classical approach is to linearize the problem at the current configuration and reducing it to a problem of the form $ Ax=b$. The intuition here is to calculate the impact of small changes in the positions of all nodes on all $ e_{ij}$. After performing this motion, linearization and optimization can be  repeated until convergence. 
