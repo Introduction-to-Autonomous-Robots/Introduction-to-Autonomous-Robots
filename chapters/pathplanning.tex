@@ -24,7 +24,7 @@ For mapping obstacles, the most common map is the \emph{occupancy grid} map\inde
 There exist also every possible combination of discrete and continuous representation. For example, roadmaps for GPS systems are stored as topological maps that store the GPS coordinates of every vertex, but might also contain overlays of aerial and street photography or even 3D point clouds stored in a 8-d tree, also known as a \emph{Octree}\index{Octree}. These different maps are then used at different stages of the path planning stage.
 
 
-\section{Path Planning Algorithms}
+\section{Graph-based Planning Algorithms}
 The problem to find a ``shortest'' path from one vertex to another through a connected graph is of interest in multiple domains, most prominently in the internet, where it is used to find an optimal route for a data packet. The term ``shortest'' refers here to the minimum cumulative edge cost, which could be physical distance (in a robotic application), delay (in a networking application) or any other metric that is important for a specific application. An example graph with arbitrary edge-lengths is shown in Figure~\ref{fig:pathproblem}.
 
 \begin{figure}[!htb]
@@ -91,7 +91,7 @@ This example illustrates well how a sampling-based planner can quickly explore a
 
 In practice, the boundary between the different historic algorithms has become very diffuse, and single-query and multi-query variants of both RRT and PRM exist. It is important to note that there is no silver bullet algorithm/heuristic and even their parameter-sets are highly problem-specific. We will therefore limit our discussion on useful heuristics that are common to sampling-based planners.
 
-\subsection{Basic Algorithm}
+\subsection{Basic Rapidly Exploring Random Trees}
 Let $ \mathcal{X}$ be a $ d$-dimensional state-space. This can either be the robot's state given in terms of translation and rotations (6 dimensions), a subset thereof, or the joint space with one dimension per possible joint angle. Let $ \mathcal{G} \subset \mathcal{X}$ be a  d-ball (d-dimensional sphere) in the state-space that is considered to be the goal, and $ t$ the allowed time. A tree planner proceeds as follows:
 
 \begin{verbatim}

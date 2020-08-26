@@ -64,7 +64,7 @@
 \newcommand{\ar}[1]{\added[id=AR  ]{#1}}
 \newcommand{\nc}[1]{\added[id=NC  ]{#1}}
 \newcommand{\td}[1]{\added[id=TODO]{#1}}
-\newcommand{\cref}[1]{Section \ref{#1}}
+%\newcommand{\cref}[1]{Section \ref{#1}}
 
 % fixing a scrbook error when compiling the citations
 \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
@@ -176,8 +176,9 @@ While artificial neural networks have long time been one out of many go-to metho
 
 Not too long ago, neural networks have been considered ``deep'' with more than two layers. Today, ``deep'' neural networks can have hundreds of layers and thousands of inputs and output, or more. This is still shy of the human brain, or even tiny areas thereof, which contains 100 billion neurons, each with thousands of synapses connecting a single neuron to thousands of others.
 
-\section{Goal of this chapter}
-Machine learning is a large field that shares many of the foundations in probability theory and statistics with robotics. The goal of this chapter is to provide a basic understanding of simple and recurrent neural networks that is sufficient to connect these tools to other topics in this book. In particular, deep learning can be used as a drop-in replacement for forward and inverse kinematics, sensor preprocessing and conditioning, computer vision and feature extraction, localization, and even replace controllers for locomotion and grasping. Here, it is important to understand when deep learning models might provide better solutions as well as when they do not. In a nutshell, deep learning models become first choice when not information exist to model a system using first principles. While a deep enough model with the right architecture might approximate any existing function in robotics, deep learning models lack ``explainability'' beyond statistical accuracy. In addition to providing the roboticist an additional tool, this chapter also provides a foundation to allow the reader to connect to the rapidly growing literature in this field. For this reason, this chapter starts with the simple Perceptron and gradient descent to develop more advanced neural network architectures.
+\section{When to use machine learning?}
+Machine learning is a large field that shares many of the foundations in probability theory and statistics with robotics. The goal of this chapter is to provide a basic understanding of simple and recurrent neural networks that is sufficient to connect these tools to other topics in this book. In particular, deep learning can be used as a drop-in replacement for forward and inverse kinematics, sensor preprocessing and conditioning, computer vision and feature extraction, localization, and even replace controllers for locomotion and grasping. Here, it is important to understand when deep learning models might provide better solutions as well as when they do not. In a nutshell, deep learning models become first choice when not enough information exist to model a system using first principles. While a ``deep enough'' model with the right architecture might approximate any existing function in robotics, deep learning models lack ``explainability'' beyond statistical accuracy, usually making it second choice over an approach based on first principles.  
+
 
 \section{The simple Perceptron}
 Artificial neural networks are inspired by neurons and synapses in the human brain and have been studied since the 1950ies. One of the earliest model is the \index{Perceptron}\index{Simple Perceptron}\emph{Perceptron}, which can classify an input vector $x$ of dimension $m$ into two classes. Such a problem is shown in Figure \ref{fig:linearsep}. Variations of the simple perceptron remain the basic elements of deep neural networks till today.
@@ -501,11 +502,23 @@ That is, a vector $z \in \mathbb{R}^K$ will be turned into a K-dimensional vecto
 
 So, why not just normalizing with the actual values, i.e. using $z_j$ instead of $e^{z_j}$, or even easier, just using $\arg \max_j$ function to set the highest value of $z$ to 1 and leave the rest at zero? The reason is that each layer needs to remain differentiable for backpropagation to work. Yet, a brutal cut-off like the $\arg \max$ function would introduce is what we actually really want for the network to optimally match the training input. This is why the exponential function is used. It - literally - exponentially emphasizes larger values over smaller values, making the class with the highest probability stand out.
 
+\section{Convolutional Neural Networks}
+
+\section{Transfer learning}
+
+\section{Embeddings}
+
+\section{Recurrent Neural Networks}
 
 \section{Exercises}
 \begin{enumerate}
-\item Implement the simple perceptron training algorithm and use it to find a separating hyperplane for simple data.
+\item Implement the simple perceptron training algorithm and use it to find a separating hyperplane for simple data. 
 \item Find out how to implement the auto differentiation (or auto gradient) function in your favorite numerical package, e.g. \emph{NumPy} or \emph{PyTorch} to automatically calculate the derivative of your loss function.
+\item Use a machine learning package of your choice to train a classifier for synthetic images such as the ``Ratslife'' landmarks. If you can, use a real robot to generate appropriate training data.
+\item Select a simple 2D target, e.g. a cross on white background, and record images from different distances and angles. Can you train a CNN to predict these two quantities from your image?
+\item Select a pre-trained image classifier from your preferred machine learning toolkit and use it as the basis to train your classifier for either landmark recognition or pose recognition. How does using a pre-trained classifier affect learning time and accuracy? 
+\item What kind of network architecture would you chose to track the robot's location (odometry) based on encoder inputs?
+\item Download the ``Robot Execution Failures Data Set'' from the UCI machine learning repository. It contains time-series data from a robot's force-torque sensor as well as whether manipulation was successful. Define a recurrent neural network architecture for this data and train it. 
 \end{enumerate}
 
 
