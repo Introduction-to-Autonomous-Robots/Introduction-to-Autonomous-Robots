@@ -148,5 +148,12 @@ Calculate $\hat{q}$ so that $S$ is minimized.
 v=f(\dot{\phi},r)=r\dot{\phi}
 \end{equation}
 Assume that your measurement of $\dot{\phi}$ is noisy and has a standard deviation $\sigma_{\dot{\phi}}$.  Use the error propagation law to calculate the resulting variance of your speed estimate $\sigma_v^2$.
+\item Consider a scenario in which a robot can localize itself against landmarks. Describe what happens to the robot's positional error in the following three cases:
+\begin{enumerate}
+\item the landmark location is known and the robot can reliably localize to it, 
+\item the landmark location has a variance and the robot can realibly localize to it,
+\item both the landmark and localization mechanism have a variance. 
+\end{enumerate}
+\item Write a program that graphically illustrate merging observations with two different variances in 1D and 2D. 
 \end{enumerate}
 \normalsize

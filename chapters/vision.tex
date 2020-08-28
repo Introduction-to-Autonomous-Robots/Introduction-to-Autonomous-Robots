@@ -197,4 +197,12 @@ Important morphological operators are \emph{erosion} and \emph{dilation}\index{E
 \item What kind of features can be detected by the other two kernels?
 \end{enumerate}
 \item How many for-loops are needed to implement a 2D convolution? Explain your reasoning.
+\item Use an appropriate robot simulation environment that allows you access to a simulated camera in a world with simple features such as geometric shapes of different color etc.
+\begin{enumerate}
+\item Implement a thresholding algorithm that allows you to black out anything but an object of a specific color. Is a simple threshold enough? Why not? Can you black out an object using a low and and a high threshold? 
+\item Implement a smoothening algorithm by performing both a convolution with a Gaussian kernel as well as a series of morphological operations. Experiment with kernels of different width and different steepness. What are the advantages and drawbacks of using morphological operations over a simple Gaussian filter?  
+\item Implement an edge detection algorithm, e.g. by performing a convolution with a Sobel kernel. Experiment with different kernels. What else do you need to do to create an image that only contains edges?   
+\end{enumerate}
+\item Can you think about a smoothening algorithm that will only smoothen small amounts of noise, but maintains edges? What kind of filtering algorithms could you combine to achieve this goal? 
+\item Explore the internet for a computer vision toolbox that supports your language of choice. What do you find? Does the toolbox implement all of the algorithms in this chapter? Solve the above assignments using the toolbox's built-in functions.
 \end{enumerate} \normalsize

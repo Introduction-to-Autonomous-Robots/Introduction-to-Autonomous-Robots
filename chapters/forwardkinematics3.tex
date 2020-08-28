@@ -22,11 +22,19 @@ The inverse kinematics problem can then be formulated as feedback control proble
 \item Assume two coordinate systems that are co-located in the same origin, but rotated around the z-axis by the angle $\alpha$. Derive the rotation matrix from one coordinate system into the other and verify that each entry of this matrix is indeed the scalar product of each basis vector of one coordinate system with every other basis vector in the second coordinate system.
 \item Consider two coordinate systems $\{B\}$ and $\{C\}$, whose orientation is given by the rotation matrix $^C_BR$ and have distance $^BP$. Provide the homogenous transform $^C_BT$ and its inverse $^B_CT$.
 \item Consider the frame $\{B\}$ that is defined with respect to frame $\{A\}$ as $\{B\}=\{^A_BR, ^AP\}$. Provide a homogeneous transfrom from $\{A\}$ to $\{B\}$.
+\item Program a simple application that displays a 2D (or 3D) coordinate system and add the ability to move and turn the coordinate system using your keyboard.
 \end{enumerate}
 
 \subsection*{Forward and inverse kinematics}
 \begin{enumerate}
 \item Consider a differential wheel robot with a broken motor, i.e., one of the wheels cannot be actuated anymore. Derive the forward kinematics of this platform. Assume the right motor is broken.
 \item Consider a tri-cycle with two independent standard wheels in the rear and the steerable, driven front-wheel. Choose a suitable coordinate system and use $\phi$ as the steering wheel angle and wheel-speed $\dot{\omega}$. Provide forward and inverse kinematics.
+\item Program an application that displays a differential wheel platform and allows you to control forward and rotational speed with your keyboard. Output the robot's pose after every step. 
+\item Program an application that display a two-link robotic arm moving in the plane and lets you change both joint angles using your keyboard.
+\item Derive the forward kinematics of a two-link robotic arm as well as its Jacobian. Implement its inverse kinematic using the inverse Jacobian technique. 
+\item Program an application that displays a two-link robotic arm moving in the plane and lets you change the position of its end-effector using your keyboard.
+\item Explore the internet for toolkits that allow you to manage forward and inverse kinematics for a robotic arm. What kind of tools do you find and what kind of input do they require to model the robot's geometry?
+\item Download the manual of a commercially available robot arm of your choice. What kind of input does it take from its user? Does it allow you to control its position directly?
+\item Use a robot simulator of your choice to access a simulated vehicle. What kind of actuator input can you provide and what are the sensors that are available? Drive the car using your keyboard and try to estimate its pose by implementing odometry. 
 \end{enumerate}
 \normalsize

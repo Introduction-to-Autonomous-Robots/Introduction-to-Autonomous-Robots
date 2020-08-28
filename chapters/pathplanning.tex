@@ -177,6 +177,24 @@ Although sampling-based path planners can drastically speed up the time to find 
 \item Assuming a kd-tree is used as a nearest-neighbour data structure, and points are sampled uniformly at random, calculate the  run-time of inserting a point into a tree of size $N$. Use ``big-Oh'' notation, e.g. $\mathcal{O}(N)$.
 
 \item What other practical runtime concerns must one consider besides computational complexity alone when doing sampling based motion planning? Can you suggest ways to deal with these other concerns?
+
+\item Write a program that can read in a simple map provided as a textfile where '1' indicate obstacles and '0' indicates free space. 
+\begin{enumerate}
+\item Implement Dijkstra's algorithm to find the shortest path between any two given points in free space.
+\item Implement A* to find the shortest path between any two given points.
+\item How do these two implementations compare in terms of computational complexity?
+\end{enumerate}
+\item Write a program that can read an image file in which white areas represent navigable space and black obstacles. Implement a basic RRT algorithm to find the shortest path between any two points. 
+\item Explore the internet for libraries that implement ``path planning'' in the language of your choice. What tools do you find? How do they define the map? Do they performan obstacle avoidance? Does the kinematics of the robot matter?
+\item Extend your path planning implementation for being used with a differential wheel robot. Describe steps that you would need to take for Dijkstra/A* and for RRT. 
+\item Extend your path planning algorithm for being used with a two-link robot arm. Would you plan in joint or in configuration space, and what are advantages and drawbacks of each? 
+\item How does the computational complexity change when moving from a single 6-DoF robot arm to a torso with two 6-DoF robots? Can you think about an approach that maintains the original computational complexity? What are the drawbacks of this approach. 
+\item Consider a robotic assembly task in which a robot retrieves objects from a known location and assembles them on a table. When can you rely on simple inverse kinematics and when do you need path planning?
+\item How does a planning problem change when you not only consider positions, but also forces and torques? Could you use  a variation of RRT to solve such a problem? 
+\item Download a robotic path planning tool that allows you to try different algorithms. 
+\begin{enumerate}
+\item Compare solution quality and speed among the different solutions. 
+\item What do you need to take into account when using randomized planners? Is comparing single-shot experiments sufficient? 
 \end{enumerate}
 
 \normalsize
