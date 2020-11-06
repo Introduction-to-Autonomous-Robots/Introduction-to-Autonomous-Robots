@@ -386,7 +386,7 @@ Assuming the wheelspeed to be $\dot{\omega}$ and the wheel radius $r$, we can ca
 \end{eqnarray}
 using (\ref{eq:ackermann}) to calculate the circle radius $R$.
 
-\section{Forward Kinematics using the Denavit-Hartenberg scheme}
+\subsection{Forward Kinematics using the Denavit-Hartenberg scheme}
 So far, we have considered the forward kinematics of wheeled mechanisms and simple arms and derived relationships between actuator parameters and velocities using basic trigonometry. In the specific case of multi-link arms, we can also think about the forward kinematics as a chain of homogenous transformations with respect to a coordinate system mounted at the base of a manipulator or a fixed position in the room. Deriving these transformations can be confusing and can be facilitated by following a ``recipe'' such as conceived by Denavit and Hartenberg. The so-called Denavit-Hartenberg (DH) \index{Denavit-Hartenberg parameters}scheme has evolved as quasi-standard and can easily be automatized, i.e., applied to a 3D model of a robotic arm, e.g.
 
 A manipulating arm consists of links that are connected by joints. Joints can be either rotational or prismatic, i.e., change their length and thus providing additional degrees of freedom. Knowing the length of all rigid links, the position of the manipulators end-effector is fully described by its joint angles and joint offset (for prismatic joints).
