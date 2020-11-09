@@ -107,7 +107,7 @@ Using this notation, we can see that leading subscripts cancel the leading super
 \end{equation}
 In order to do this, we need to introduce a 4x1 position vector such that
 \begin{equation}
-\left[\begin{array}{c}^AQ\\\end{array}\right]=\left[\begin{array}{ccc|c} & ^A_BR & & ^AP \\\hline 0 & 0 & 0 & 1\end{array}\right]\left[\begin{array}{c}^BQ\\1\end{array}\right]
+\left[\begin{array}{c}^AQ\\1\end{array}\right]=\left[\begin{array}{ccc|c} & ^A_BR & & ^AP \\\hline 0 & 0 & 0 & 1\end{array}\right]\left[\begin{array}{c}^BQ\\1\end{array}\right]
 \end{equation}
 and $^A_BT$ is a 4x4 matrix.  Note that the added `1`s and $ [0 0 0 1]$ do not affect the other entries in the matrix during matrix multiplication. A 4x4 matrix of this form is called a \emph{homogenous transform}.\index{Homogenous Transform}
 
@@ -489,7 +489,7 @@ R_x(\alpha_n)=\left(
 \end{equation}
 These are a translation of $d_n$ along the previous z-axis ($T_z'(d_n)$), a rotation of $\theta_n$ about the previous z-axis ($R_z'(\theta_n)$), a translation of $r_n$ along the new $x$-axis ($T_x(r_n)$)and a rotation of $\alpha_n$ around the new $x$-axis ($R_x(\alpha_n)$).
 
-Like for any homogeneous transfrom, the inverse $_{n-1}^nT^{-1}n$ is given by
+Like for any homogeneous transform, the inverse $_{n-1}^nT^{-1}n$ is given by
 \begin{equation}
 ^{n-1}_nT=\left(
 \begin{array}{c|c}
