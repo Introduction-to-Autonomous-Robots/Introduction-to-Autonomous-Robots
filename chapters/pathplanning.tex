@@ -34,7 +34,7 @@ The problem to find a ``shortest'' path from one vertex to another through a con
 \end{figure}
 
 \subsection{Robot embodiment}
-In order to deal with the physical embodiment of the robot, which complicates the path-planning process, the robot is reduced to a point-mass and all the obstacles in the environment are grown by half of the longest extension of the robot from its center. This representation is known as configuration space \index{Configuration space}as it reduces the representation of the robot to its $x$ and $y$ coordinates in the plane. An example is shown in Figure~\ref{fig:cspace}. The configuration space can now either be used as a basis for a grid map or a continuous representation.
+In order to deal with the physical embodiment of the robot, which complicates the path-planning process, the robot is reduced to a point-mass and all the obstacles in the environment are grown by the longest extension of the robot from its center. This representation is known as configuration space \index{Configuration space}as it reduces the representation of the robot to its $x$ and $y$ coordinates in the plane. An example is shown in Figure~\ref{fig:cspace}. The configuration space can now either be used as a basis for a grid map or a continuous representation.
 
 \begin{figure}[!htb]
 \centering
