@@ -1,7 +1,7 @@
 Introduction-to-Autonomous-Robots
 =================================
 
-An open textbook focusing on computational principles of autonomous robots. The source-code is released under Creative Commons 2.0 (CC-BY-NC-ND), whereas the print version is copyrighted by MIT Press. 
+An open textbook focusing on computational principles of autonomous robots. The source-code is released under Creative Commons 2.0 (CC-BY-NC-ND), whereas the print version is copyrighted by MIT Press. You are therefore permitted to use images and content from the book for non-commercial purposes (including teaching) with proper attribution, but you cannot post compiled versions of the book online. 
 
 This book can be cited as follows:
 
