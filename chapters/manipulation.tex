@@ -1,0 +1,70 @@
+\chapter{Manipulation}\label{chap:manipulation}
+While grasping is only concerned with attaching an object to a robot's kinematic chain, it is often the case that such an object is not just placed or dropped, but that the intention of the grasping action was to change the pose of this object in some meaningful way. For example, cutlery and dishes on a table need to be in well-specified areas and aligned with each other, merchandise needs to be neatly stacked in a shelf, and machine parts need to be assembled with each other. These activities are known as \emph{manipulation}. Discussing all the possible ways objects might be manipulated, for example inserted, screwed-in, turned, twisted, flipped, etc., and the many different contexts such actions would be required --- which might dramatically change the approach a robot would need to chose --- are well beyond the scope of this book.
+
+Yet, many manipulation problems can be cast into a sequence of grasping and placing problems in which the possible grasp choices are appropriately constrained. For example, an object can be turned or flipped by planning a sequence of pick-and-place movements that each turn the object by a certain degree. Similarly, using two robotic arms, with one grasping an object out of the hand of the other, will allow a robot system to change an object's pose almost arbitrarly. (Which poses an object will be able to reach will depend on the object's exact geometry, the kinematics of the robotic arms, and constraints in the workspace.) So-called \emph{in-hand manipulation}\index{In-hand manipulation} is still an active area of research as  repeatedly picking and placing an object and hand-overs between different arms is considered to be too slow and otherwise impractical for many application areas.  
+
+\section{How to find good grasps?}
+
+Finding a good grasp that fully constrains an object against all possible external forces and torques, that is a grasp that lies in the ``grasping wrench space'' (Section \ref{sec:grasping_friction} is often too restrictive. For example, it might be sufficient to find a grasp that constrains an object simply against gravity. Other applications instead might require the grasp to constrain an object's movement also again lateral forces that happen due to acceleration. In practice, these considerations usually lead to simple application-specific heuristics. For example, in a warehouse picking tasks \cite{correll2016analysis}, the problem can be constrained to have the robot grasp only objects that are suitable to be retrieved with a simple suction cup. Finding a good grasp is then reduced to finding a flat surface close to the object's perceived center of gravity. When considering household tasks, such has handling and placing dishes, using silver ware to scoop food, or holding a pitcher, we are often interested in very specific grasps that support the intended manipulation (Section \ref{sec:manipulation}) that follows. 
+
+Theoretically speaking, grasps such as picking up an object or opening a door by turning its knob are task-specific wrench spaces. We can then say that the grasp is ``good'', when the task wrench space is a subset of the grasping wrench space, and will fail otherwise. We can also look at the ratio of forces actually applied to the object and the minimum needed to perform a desired wrench. If this ratio is high, for example, when the robot grasps an object far from its center of gravity or has to squeeze an object heavily to prevent it from slipping, this grasp is not as good as one, where the ratio is low and all of the force the robot is exerting is actually going into the desired wrench. It is usually not possible to find close-form expressions for the grasping wrench space. Instead, one can sample the space of suitable force vectors, e.g., by picking a couple of forces that are on the boundary of the cone's base, and calculate the convex hull over the resulting wrenches.
+
+\subsection{Finding good grasps for simple grippers}
+Finding good grasps for simple grippers, which have only one or at most two degrees of freedom, reduces the problem to finding geometries on the object that are suitable to place the gripper jaws, that is two parallel faces that are reasonably flat and at a distance that is below the gripper's maximum opening aperture. 
+
+In practice, an object might be perceived by a 3D perception device such as a stereo camera or a laser scanner, which would provide only one perspective of an object. A typical grasping pipeline using such a device is shown in Figure~\ref{fig:graspingpipeline}. 
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{figs/graspingpointcloud}
+\caption{a) Random objects on a table, b) measurements from a laser scanner on the objects' surface, c) removal of table plane, d) connected components after segmentation, e) removal of connected components based on size, f) calculation of principal axes, g) evaluation of possible grasps based on collisions, h) physically trying grasp.\label{fig:graspalgorithm}} 
+\end{figure}
+
+A typical algorithm proceeds as follows:
+\begin{enumerate}
+\item Acquisition: Obtain a ``point cloud'' or ``depth image'' of the objects of interest (Figure \ref{fig:graspalgorithm}, b).
+\item Pre-processing: Remove table plane or other points that are either too close or too far from the sensor (Figure \ref{fig:graspalgorithm}, c).
+\item Segmentation: Cluster points that are close enough, e.g., to identify individual objects (Figure \ref{fig:graspalgorithm}, d).
+\item Filtering: Filter clusters by size, geometry or other features, to down-select objects of interest (Figure \ref{fig:graspalgorithm}, e).
+\item Planning: Compute center-of-mass and principal axes of relevant clusters (Figure \ref{fig:graspalgorithm}, f).
+\item Collision-checking: Generate possible grasps and check for collisions with point clouds ((Figure \ref{fig:graspalgorithm}, g).
+\item Execution: Physically test a grasp by monitoring jaw distances, as well as forces and torques at the wrist ((Figure \ref{fig:graspalgorithm}, h).
+\end{enumerate}
+
+Some of these steps might not be necessary for all grasps, and some of them might have arbitrary complexity. For example, pre-processing is often used to remove known quanitites such as a table surface, from the data, but might be non-trivial when removing the edges of a bin, e.g. 
+
+Segmentation is the most critical step and requires some previous knowledge about the objects to grasp such as their size or the geometry of features thereon. In Figure \ref{fig:graspalgorithm}, clustering points based on their distance is sufficient, e.g. using the DBSCAN algorithm \cite{ester1996density}, but requires an assumption about object size in order to select a suitable threshold. Other segmentation algorithms might use surface normals, or a combination of point cloud and image data such as color or patterns. 
+
+Filtering the resulting clusters to identify objects of interest can be as simple as rejecting those that are too small (as shown in Figure~\ref{fig:graspalgorithm}, e), but might also involve matching the points to a 3D model of a desired object or involving image data. 
+
+A simple approach to plan for possible grasps is to calculate the center-of-mass as well as the principal axes of an object using principal component analysis (Appendix \ref{sec:appendix_PCA}). Other approaches might require matching the existing points to a 3D model of the object to identify specific grasp points (such as the handle of a cup) or again rely on image features to do so.
+
+After planning all, or some, possible grasps, grasps need to be checked for feasibility. While a collision with a point in the point-cloud might rule out a grasp, local search is sometimes being used to find a collision-free variant, for example by moving the gripper up and down as well as along the principal axes. In other applications, for example bin picking, some collisions might be ignored with the expectation that the gripper will push other objects out of its way. 
+
+Even though a grasp might look robust in a point cloud representation, it might not be effective when physically executing it. Possible failures are collisions with objects, insufficient friction with the object, or an object moving before the gripper is fully closed. For this reason, it is important to already close the gripper as much as possible before approaching the object, increasing the requirements for accurate perception. 
+
+With the ability to train neural networks to approximate complex functions, it is also possible to replace parts, or all of, the algorithmic steps shown in Figure~\ref{fig:graspalgorithm} using a convolutional neural network trained by deep learning. While data intensive, such an approach can seamlessly merge image and depth data and adapt to application-specific data better than a hand-coded algorithm can. 
+
+\subsection{Finding good grasps for multi-fingered hands}
+
+The simple grasping pipeline described above is computationally expensive as there exist usually many possible grasp candidates, and each of them need to be checked for collisions. This problem explodes when considering grippers with articulated fingers. This can be overcome by considering only a predefined set of grasps such as two and three finger pinches for small objects and full-hand encompassing grasps for larger objects, e.g.
+
+A suitable method to search the full space of possible grasps with an articulated hand is to use random sampling, that is bringing the end-effector to random positions, close its fingers around the object, and see what happens when generating wrenches that fulfill the task's requirements.
+To ``see what happens'', requires collision checking and dynamic simulation. Dynamic simulation applies Newtonian mechanics to an object (i.e., forces lead to acceleration of a body) and moves the object at very small time-steps. While this can be done using the connected components identified in the point cloud alone and assuming reasonable parameters for friction and contact points, point cloud data can also be augmented by object models to simulate whether a grasp has a high likelihood to be successful. 
+
+
+
+%\subsection{Peg-in-hole problems}
+%A canonical manipulation problem are \emph{peg-in-hole}\index{Peg-in-hole} and variations thereof including hole-on-peg problems, which generalize insertions and assembly operations. 
+%\subsection{Non-prehensile Manipulation}
+
+\section{Exercises}
+\begin{enumerate}
+\item Write code to generate rectangles with random dimensions and orientations. Rectangles can overlap. Use a point-in-polygon test to simulate random point samples on their surface, simulating a top-down view with a depth sensor.
+\begin{enumerate}
+\item Implement a segmentation routine that clusters objects based on a minimum distance.
+\item Implement a filter that rejects connected components based on size. For which kind of objects does this work well and where does this method fail?
+\item Implement a filter that rejects connected components that do not have rectangular shape. Are you able to specify a filter that works independent of the object size?
+\item Apply principal component analysis to compute the principal axes of the rectangle and compare with ground truth. How does the number of samples affect the accuracy of your estimate?
+\end{enumerate}
+\item Use a function of the kind $u(x-i)+rand(j)$ with $u(x)$ the unit step function, $rand()$ uniformly distributed random noise, and $i,j$ suitable parameters to simulate a noisy depth-image a cube with width $i$. Use the nearest neighbor of each point to compute its normals and a suitable clustering algorithm to identify the cube. How do $i$ and $j$ affect the accuracy of your estimate?
+\end{enumerate}
