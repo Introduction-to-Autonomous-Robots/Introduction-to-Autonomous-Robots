@@ -1,20 +1,18 @@
 Introduction-to-Autonomous-Robots
 =================================
 
-An open textbook focusing on computational principles of autonomous robots. The book is released under Creative Commons 2.0, available as a [PDF](https://github.com/correll/Introduction-to-Autonomous-Robots/releases/latest) ("releases" tab) and via Amazon on-demand printing:
-
-http://www.amazon.com/Introduction-Autonomous-Robots-Kinematics-Localization/dp/0692700870/
-
-Please <a href="https://www.amazon.com/review/create-review/ref=cm_cr_dp_mb_wr_but?ie=UTF8&channel=awUDPv3&asin=0692700870#">review the book on Amazon</a> if you liked it and follow me on Twitter <a href="http://www.twitter.com/correlllab">@correlllab</a> to stay tuned!
+An open textbook focusing on computational principles of autonomous robots. The source-code is released under Creative Commons 2.0 (CC-BY-NC-ND), whereas the print version is copyrighted by MIT Press. 
 
 This book can be cited as follows:
 
-Nikolaus Correll. Introduction to Autonomous Robots, 2nd edition, Magellan Scientific, 2016.
+Nikolaus Correll, Bradley Hayes, Christoffer Heckman and Alessandro Roncone. Introduction to Autonomous Robots: Mechanisms,
+Sensors, Actuators, and Algorithms, MIT Press, 2022 (forthcoming). 
 
 @book{correll2016introduction,<br>
-  title={Introduction to Autonomous Robots},<br>
-  author={Correll, Nikolaus},<br>
-  year={2014},<br>
-  edition={2nd},<br>
-  publisher={Magellan Scientific}<br>
+  title={ Introduction to Autonomous Robots: Mechanisms,
+Sensors, Actuators, and Algorithms},<br>
+  author={Correll, Nikolaus and Hayes, Bradley, and Heckman, Christoffer, and Roncone, Alessandro},<br>
+  year={2022},<br>
+  edition={1st},<br>
+  publisher={MIT Press, Cambridge, MA}<br>
 }<br>
