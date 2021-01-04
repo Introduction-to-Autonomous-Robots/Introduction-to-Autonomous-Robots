@@ -189,11 +189,13 @@ Why any rotation can be expressed by a single vector can be seen when considerin
 Now that we have introduced the notion of local coordinate frames, we are interested in how to calculate the pose and speed of these coordinate frames as a function of the robot's actuators. We will first consider simple mechanisms where we can determine the relationship between actuators and the pose of various frames on the robot both in the position and speed domain. We will then consider the special class of non-holonomous mechanisms using a series of wheeled robots, for which the forward kinematics can only be calculated in the speed domain.
 
 \subsection{Forward kinematics of a simple arm}
+
 \begin{figure}[!htb]%{L}{0.3\textwidth}
-  \begin{center}
-    \includegraphics[width=0.27\textwidth]{figs/fwk2dofarm}
-  \end{center}
-  \caption{A simple 2-DOF arm.\label{fig:fwk2dofarm}}
+    \centering
+    % \includegraphics[width=0.27\textwidth]{figs/fwk2dofarm}
+    \def\svgwidth{0.32\textwidth}
+    \import{./figs/}{fwk2dofarm.pdf_tex}
+    \caption{A simple 2-DOF arm.}\label{fig:fwk2dofarm}
 \end{figure}
 
 Consider a robot arm made out of two links and two joints that is mounted to a table. Let the length of the first link be $l_1$ and the length of the second link be $ l_2$. You could specify the position of the link closer to the table by the angle $ \alpha$ and the angle of the second link relative to the first link using the angle $ \beta$. Suitable conventions and coordinate systems are shown in Figure~\ref{fig:fwk2dofarm}
