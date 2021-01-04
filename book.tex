@@ -22,6 +22,13 @@
 \areaset[0.375in]{4.5in}{8in}
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
 
+% \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% Subfigure is deprecated
+% Subfig is not compatible with hyperref
+\usepackage{subcaption}
+\captionsetup     {labelfont  =   it, labelsep=period}
+\captionsetup[sub]{labelformat=simple,labelsep=period}
+
 %%% Examples of Article customizations
 % These packages are optional, depending whether you want the features they provide.
 % See the LaTeX Companion or other references for full information.
@@ -41,17 +48,26 @@
 \usepackage{array} % for better arrays (eg matrices) in maths
 \usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
 \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
-\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
 % These packages are all incorporated in the memoir class to one degree or another...
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{amsfonts}
-\usepackage[font={small,it}]{caption}
-\usepackage{url}
+\usepackage[usenames, dvipsnames, table]{xcolor}
 \usepackage{hyperref}
 \usepackage{harvard}
 \usepackage{marginnote}
 \usepackage[capitalize, noabbrev]{cleveref} % Used to improve refernces
+
+\colorlet{mylinkcolor}{BrickRed}
+\colorlet{mycitecolor}{PineGreen}
+\colorlet{myurlcolor}{NavyBlue}
+
+\hypersetup{
+  linkcolor  = mylinkcolor,
+  citecolor  = mycitecolor,
+  urlcolor   = myurlcolor,
+  colorlinks = true,
+}
 
 \usepackage{makeidx}
 \usepackage{idxlayout}
