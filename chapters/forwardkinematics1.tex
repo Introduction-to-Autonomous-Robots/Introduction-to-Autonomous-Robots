@@ -29,10 +29,11 @@ An example of two nested coordinate systems is shown in Figure~\ref{fig:nestedco
 
 Depending on its degrees-of-freedom, that is the number of independent translations and rotations a robot can achieve in Cartesian space, it is also customary to ignore components of position and orientation that remain constant. For example a simple floor-cleaning robot's pose might be completely defined by its $x$ and $y$ coordinates in a room as well as its orientation, i.e.\ its rotation around the $z$-axis.
 
-
 \begin{figure}
     \centering
-        \includegraphics[width=\textwidth]{figs/frameofreference.png}
+    %\includegraphics[width=\textwidth]{figs/frameofreference.png}
+    \def\svgwidth{\textwidth}
+    \import{./figs/}{nestedcoords.pdf_tex}
     \caption{Two nested coordinate systems (frames of reference).}
     \label{fig:nestedcoords}
 \end{figure}
