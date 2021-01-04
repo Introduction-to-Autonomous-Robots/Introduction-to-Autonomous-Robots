@@ -4,11 +4,11 @@ In order to plan a robot's movements, we have to understand the relationship bet
 The goals of this chapter are:
 
 \begin{itemize}
-\item introduce coordinate systems and their transformations,
-\item to introduce the forward kinematics of simple arms and mobile robots
-\item understand the concept of holonomy,
-\item show how solutions for the inverse kinematics for both static and mobile robots can be derived,
-\item provide an intuition on the relationship between inverse kinematics and path-planning.
+\item to introduce coordinate systems and their transformations;
+\item to introduce the forward kinematics of simple arms and mobile robots;
+\item to understand the concept of holonomy;
+\item to show how solutions for the inverse kinematics for both static and mobile robots can be derived;
+\item to provide an intuition on the relationship between inverse kinematics and path-planning.
 \end{itemize}
 
 \section{Coordinate Systems and Frames of Reference}\label{sec:coordsystems}
@@ -16,10 +16,12 @@ The goals of this chapter are:
 Every robot assumes a position in the real world that can be described by its position (x, y and z) and orientation (pitch, yaw and roll) along the three major axes of a Cartesian Coordinate system (See also Section~\ref{sec:dof}, ``Degrees of freedom''). Such a coordinate system is shown in Figure~\ref{fig:coordinatesystem}. Note that the directions and orientations of the coordinate axes are arbitrary. This book uses the ``right hand rules'', which are illustrated in Figure~\ref{fig:coordinatesystem} to determine axes labels and directions throughout. Pitch, yaw, and roll, are also known as bank, attitude, and heading in other communities. \index{Pitch}\index{Yaw}\index{Roll}\index{Bank}\index{Attitude}\index{Heading} This makes sense, considering the colloquial use of the word ``heading'', which corresponds to a rotation around the z-axis of a vehicle driving on the x-y-plane.
 
 \begin{figure}
-	\centering
-		\includegraphics[width=0.8\textwidth]{figs/coordinatesystem}
-	\caption{A coordinate system indicating the direction of the coordinate axes and rotation around them. These directions have been derived using the right-hand rules.}
-	\label{fig:coordinatesystem}
+    \centering
+    % \includegraphics[width=0.8\textwidth]{figs/coordinatesystem}
+    \def\svgwidth{0.8\textwidth}
+    \import{./figs/}{coordinatesystem.pdf_tex}
+    \caption{A coordinate system indicating the direction of the coordinate axes and rotation around them. These directions have been derived using the right-hand rules.}
+    \label{fig:coordinatesystem}
 \end{figure}
 
 Defining all three position axes and orientations might be cumbersome. What level of detail we care about, where the origin of this coordinate system is, and even what kind of coordinate system we choose, depends on the specific application. For example, a simple mobile robot would typically require a representation with respect to a room, a building, or the earth's coordinate system (given by the longitude and latitude of each point on the earth), whereas a static manipulator usually has the origin of its coordinate system at its base. More complicated systems, such as mobile manipulators or multi-legged robots, make life much easier by defining multiple coordinate systems, e.g.\ one for each leg and one that describes the position of the robot in the world frame. These local coordinate systems are known as \emph{Frames of Reference}\index{Frame of Reference}.
@@ -29,10 +31,10 @@ Depending on its degrees-of-freedom, that is the number of independent translati
 
 
 \begin{figure}
-	\centering
-		\includegraphics[width=\textwidth]{figs/frameofreference.png}
-	\caption{Two nested coordinate systems (frames of reference).}
-	\label{fig:nestedcoords}
+    \centering
+        \includegraphics[width=\textwidth]{figs/frameofreference.png}
+    \caption{Two nested coordinate systems (frames of reference).}
+    \label{fig:nestedcoords}
 \end{figure}
 
 \subsection{Matrix notation}
@@ -52,11 +54,11 @@ As we know, not only the position of the robot is important, but also its orient
 consists of the projections of $\hat{X}_B$ onto $\hat{X}_A$, $\hat{Y}_A$ and $\hat{Z}_A$. Here,  $|\cdot|$ denotes the scalar product (also known as dot or inner product).  Note that all vectors in (\ref{eq:projection}) are unit vectors, i.e.\ their length is one. By definition of the scalar product, $A\cdot B=\|A\|\|B\|\cos \alpha=\cos \alpha$, indeed reduces the projection of $\hat{X}_B$ onto the unit vectors of $\{A\}$. This projection is illustrated in Figure~\ref{fig:projection}.
 
 \begin{figure}
-	\centering
-		\includegraphics[width=0.8\textwidth]{figs/projection.png}
-	\caption{Top: A coordinate system $\{B\}$ with position given by $^AP$ and orientation given by $\hat{X}_B$, $\hat{Y}_B$, and $\hat{Z}_B$. Bottom:
-	The projection of the unit vector $\hat{X}_B$ onto the unit vectors that span coordinate system $\{A\}$ after moving $\{B\}$ into the origin of $\{A\}$. As all vectors are unit vectors, $A\cdot B=\|A\|\|B\|\cos \alpha=\cos \alpha$. }
-	\label{fig:projection}
+    \centering
+        \includegraphics[width=0.8\textwidth]{figs/projection.png}
+    \caption{Top: A coordinate system $\{B\}$ with position given by $^AP$ and orientation given by $\hat{X}_B$, $\hat{Y}_B$, and $\hat{Z}_B$. Bottom:
+    The projection of the unit vector $\hat{X}_B$ onto the unit vectors that span coordinate system $\{A\}$ after moving $\{B\}$ into the origin of $\{A\}$. As all vectors are unit vectors, $A\cdot B=\|A\|\|B\|\cos \alpha=\cos \alpha$. }
+    \label{fig:projection}
 \end{figure}
 
 We can now do this for all three vectors that span coordinate system $\{B\}$ and stack these three vectors together into a 3x3 matrix to obtain the rotation matrix
@@ -222,8 +224,8 @@ The orientation of the arm's end-effector is given by $\alpha+\beta$. We can now
 \label{eq:2armtrans}
 \left(\begin{array}{llll}cos_{\alpha\beta} & -sin_{\alpha\beta} &  0 & \cos_{\alpha\beta}l_2+\cos\alpha l_1\\
                         sin_{\alpha\beta} & cos_{\alpha\beta} & 0 & \sin_{\alpha\beta}l_2+\sin\alpha l_1\\
-												0 & 0 & 1 & 0\\
-												0 & 0 & 0 & 1\end{array}\right)
+                                                0 & 0 & 1 & 0\\
+                                                0 & 0 & 0 & 1\end{array}\right)
 \end{equation}
 The notation $sin_{\alpha\beta}$ and $cos_{\alpha\beta}$ are short-hand for $sin(\alpha+\beta)$ and $cos(\alpha+\beta)$, respectively.
 
@@ -234,10 +236,10 @@ Whereas the pose of a robotic manipulator is uniquely defined by its joint angle
 What complicates matters is that for so-called \emph{non-holonomic} systems, it is not sufficient to simply measure the distance that each wheel traveled, but also when each movement was executed.
 
 \begin{figure}[htb!]
-	\centering
-		\includegraphics[width=0.95\textwidth]{figs/holonomy.png}
-	\caption{Configuration space (left) and workspace (right) for a non-holonomic mobile robot (top) and a holonomic manipulator (bottom). Closed trajectories in configuration space result in closed trajectories in the workspace if the robot's kinematics is holonomic.}
-	\label{fig:holonomy}
+    \centering
+        \includegraphics[width=0.95\textwidth]{figs/holonomy.png}
+    \caption{Configuration space (left) and workspace (right) for a non-holonomic mobile robot (top) and a holonomic manipulator (bottom). Closed trajectories in configuration space result in closed trajectories in the workspace if the robot's kinematics is holonomic.}
+    \label{fig:holonomy}
 \end{figure}
 
 A system is non-holonomic\index{Non-holonomic}\index{Holonomic} when closed trajectories in its configuration space (reminder: the configuration space of a two-link robotic arm is spanned by the possible values of each angle) may not have it return to its original state.  A simple arm is holonomic, as each joint position corresponds to a unique position in space. Going through whatever trajectory that comes back to the starting point in configuration space, will put the robot at the exact same position. A train on  a track is holonomic: moving its wheels backwards by the same amount they have been moving forward brings the train to the exact same position in space. A car and a differential-wheel robot are non-holonomic vehicles: performing a straight line and then a right-turn leads to the same amount of wheel rotation than doing a right turn first and then going in a straight line; getting the robot to its initial position requires not only to rewind both wheels by the same amount, but also getting their relative speeds right. The configuration and corresponding workspace trajectories for a non-holonomic and a holonomic robot are shown in Figure~\ref{fig:holonomy}. Here, a robot first moves on a straight line (both wheels turn an equal amount). Then the left wheel remains fixed and only the right wheel turns forward. Then the right wheel remain fixed and the left wheel turns backward. Finally, the right wheel turns backward, arriving at the initial encoder values (zero). Yet, the robot does not return to its origin. Performing a similar trajectory in the configuration space of a two-link manipulator instead, let the robot return to its initial position.
@@ -245,10 +247,10 @@ A system is non-holonomic\index{Non-holonomic}\index{Holonomic} when closed traj
 It should be clear by now that for a mobile robot, not only traveled distance per wheel matters, but also the speed of each wheel as a function of time. Instead, this information was not required to uniquely determine the pose of a manipulating arm. Let's introduce the following conventions. We will establish a world coordinate system $\{I\}$, which is known as the inertial frame by convention (Figure~\ref{fig:mobilerobot}). We establish a coordinate system $\{R\}$ on the robot and express the robot's speed $^R\dot{\xi}$ as a vector $ ^R\dot{\xi}=[^R\dot{x}, ^R\dot{y}, ^R\dot{\theta}]^T$. Here $^R\dot{x}$ and $^R\dot{y}$ correspond to the speed along the x and y directions in $\{R\}$, whereas $^R\dot{\theta}$ corresponds to the rotation around the imaginary z-axis, that you can imagine to be sticking out of the ground. We denote speeds with dots over the variable name, as speed is simply the derivative of distance.  Think about the robot's position in $\{R\}$. It is always zero, as the coordinate system is fixed on the robot. Therefore, velocities are the only interesting quantities in this coordinate system and we need to understand how velocities in $\{R\}$ map to positions in $ \{I\}$, which we denote by $^I\xi=[^Ix, ^Iy, ^I\theta]^T$. These coordinate systems are shown in Figure~\ref{fig:mobilerobot}.
 
 \begin{figure}[htb!]
-	\centering
-		\includegraphics[width=0.85\textwidth]{figs/mobilerobot.png}
-	\caption{Mobile robot with local coordinate system \{R\} and world frame \{I\}. The arrows indicate the positive direction of position and orientation vectors.}
-	\label{fig:mobilerobot}
+    \centering
+        \includegraphics[width=0.85\textwidth]{figs/mobilerobot.png}
+    \caption{Mobile robot with local coordinate system \{R\} and world frame \{I\}. The arrows indicate the positive direction of position and orientation vectors.}
+    \label{fig:mobilerobot}
 \end{figure}
 
 
@@ -295,10 +297,10 @@ We are now left with the problem of how to calculate the speed $ \dot{\xi_R}$ in
 This becomes apparent when considering that the circumference of a wheel with radius $r$ is $2\pi r$. The distance a wheel rolls when turned by the angle $ \phi$ (in radians) is therefore $ x=\phi r$, see also Figure~\ref{fig:wheelrotation}, right. Taking the derivative of this expression on both sides leads to the above expression.
 
 \begin{figure}[htb!]
-	\centering
-		\includegraphics[width=0.9\textwidth]{figs/wheelrotation.png}
-	\caption{Left: Differential wheel robot pivoting around its left wheel. Right: A wheel with radius $r$ moves by $\phi r$ when rotated by $\phi$ degrees.}
-	\label{fig:wheelrotation}
+    \centering
+        \includegraphics[width=0.9\textwidth]{figs/wheelrotation.png}
+    \caption{Left: Differential wheel robot pivoting around its left wheel. Right: A wheel with radius $r$ moves by $\phi r$ when rotated by $\phi$ degrees.}
+    \label{fig:wheelrotation}
 \end{figure}
 
 How each of the two wheels in our example contributes to the speed of the robot's center---where its coordinate system is anchored---requires the following trick: we calculate the contribution of each individual wheel while assuming all other wheels remaining un-actuated. In this example, the distance traveled by the center point is exactly half of that traveled by each individual wheel, assuming the non-actuated wheel rotating around its ground contact point (Figure~\ref{fig:wheelrotation}). We can therefore write
@@ -359,10 +361,10 @@ Differential wheel drives are very popular in mobile robotics as they are very e
 These drawbacks are mitigated by car-like mechanisms, which are driven by a single motor and can steer their front wheels. This mechanism is known as ``Ackermann steering''. \index{Ackermann steering} Ackermann steering should not be confused with ``turntable'' steering \index{Turntable steering} where the front wheels are fixed on an axis with central pivot point. Instead, each wheel has its own pivot point and the system is constrained in such a way that all wheels of the car drive on circles with a common center point, avoiding skid. As the Ackermann mechanism lets all wheels drive on circles with a common center point, its kinematics can be approximated by those of a tricycle with rear-wheel drive, or even simpler by a bicycle. This is shown in Figure~\ref{fig:ackermann}.
 
 \begin{figure}[htb!]
-	\centering
-		\includegraphics[width=0.9\textwidth]{figs/ackermann.png}
-	\caption{Left: Kinematics of car-like steering and the equivalent bicycle model. Right: Mechanism of an Ackermann vehicle.}
-	\label{fig:ackermann}
+    \centering
+        \includegraphics[width=0.9\textwidth]{figs/ackermann.png}
+    \caption{Left: Kinematics of car-like steering and the equivalent bicycle model. Right: Mechanism of an Ackermann vehicle.}
+    \label{fig:ackermann}
 \end{figure}
 
 Let the car have the shape of a box with length $L$ between rear and front axis. Let the center point of the common circle described by all wheels be distance $ R$ from the car's longitudinal center line.  Then, the steering angle $ \phi$ is given by
@@ -407,10 +409,10 @@ The transformation between two joints is then fully described by the following f
 Two of the D-H parameters describe the link between the joints, and the other two describe the link's connection to a neighboring link. Depending on the link/joint type, these numbers are fixed or can be controlled. For example, in a revolute joint $ \theta$ is the varying joint angle, while all other quantities are fixed.  Similarly, for a prismatic joint $ d$ is the joint variable. An example of two revolute joints is shown in Figure~\ref{fig:denavit}.
 
 \begin{figure}
-	\centering
-		\includegraphics[width=\textwidth]{figs/denavit-hartenberg}
-	\caption{Example of selected Denavit-Hartenberg parameters for three revolute joints. The z-axes of joint $i$ and $i+1$ are parallel.
-	\label{fig:denavit}}
+    \centering
+        \includegraphics[width=\textwidth]{figs/denavit-hartenberg}
+    \caption{Example of selected Denavit-Hartenberg parameters for three revolute joints. The z-axes of joint $i$ and $i+1$ are parallel.
+    \label{fig:denavit}}
 \end{figure}
 
 
