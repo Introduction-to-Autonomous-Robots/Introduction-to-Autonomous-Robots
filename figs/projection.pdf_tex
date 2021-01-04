@@ -1,0 +1,83 @@
+%% Creator: Inkscape 1.0 (4035a4fb49, 2020-05-01), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'projection.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{302.11184692bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,1.74304707)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{projection.pdf}}%
+    \put(0.94653779,0.0209326){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\^{X}$_A$\end{tabular}}}}%
+    \put(0.71367337,0.40519536){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\^{X}$_B$\end{tabular}}}}%
+    \put(0.44574993,0.42537896){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\^{Y}$_A$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{projection.pdf}}%
+    \put(0.10109693,0.24950817){\color[rgb]{0,0,0}\rotatebox{-0.48176408}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\alpha_z$\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{projection.pdf}}%
+    \put(0.03759352,0.7979939){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\^{Z}$_A$\end{tabular}}}}%
+    \put(0.64356695,0.17122944){\color[rgb]{0,0,0}\rotatebox{2.2738331}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\alpha_x$\end{tabular}}}}}%
+    \put(0.08828669,0.09765526){\color[rgb]{0,0,0}\rotatebox{45.642734}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}cos $\alpha_z$\end{tabular}}}}}%
+    \put(0.23791162,0.19264153){\color[rgb]{0,0,0}\rotatebox{-41.792027}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\alpha_y$\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{projection.pdf}}%
+    \put(0.03629536,0.06380073){\color[rgb]{0,0,0}\rotatebox{91.829913}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}cos $\alpha_y$\end{tabular}}}}}%
+    \put(0.25781407,0.00710336){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}cos $\alpha_x$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{projection.pdf}}%
+    \put(0.94390002,0.90698956){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\^{X}$_A$\end{tabular}}}}%
+    \put(0.44311225,1.31143592){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\^{Y}$_A$\end{tabular}}}}%
+    \put(0.03495584,1.6840509){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\^{Z}$_A$\end{tabular}}}}%
+    \put(0.55459698,1.57116392){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\^{X}$_B$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{projection.pdf}}%
+    \put(0.23321437,1.64914111){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\^{Y}$_B$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{projection.pdf}}%
+    \put(0.38625371,1.63383716){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\^{Z}$_B$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{projection.pdf}}%
+    \put(0.32265697,1.38533045){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$^{A}P$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{projection.pdf}}%
+  \end{picture}%
+\endgroup%
