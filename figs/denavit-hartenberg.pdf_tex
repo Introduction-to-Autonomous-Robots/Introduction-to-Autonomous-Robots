@@ -1,0 +1,92 @@
+%% Creator: Inkscape 1.0 (4035a4fb49, 2020-05-01), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'denavit-hartenberg.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{614.56622314bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.71849883)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{denavit-hartenberg.pdf}}%
+    \put(0.11627889,0.63749569){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$z_{i-1}$\end{tabular}}}}%
+    \put(0.71637699,0.65962512){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$z_{i}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{denavit-hartenberg.pdf}}%
+    \put(0.10190792,0.32453648){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$d_{i}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{denavit-hartenberg.pdf}}%
+    \put(0.33325707,0.07922796){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$x_{i}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{denavit-hartenberg.pdf}}%
+    \put(0.19541848,0.03454404){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$y_{i}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{denavit-hartenberg.pdf}}%
+    \put(0.28478633,0.41700823){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$x_{i-1}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{denavit-hartenberg.pdf}}%
+    \put(0.02880043,0.51092022){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$y_{i-1}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{denavit-hartenberg.pdf}}%
+    \put(0.35964342,0.23497735){\color[rgb]{0.50196078,0.50196078,0.50196078}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$x_{i-1}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{denavit-hartenberg.pdf}}%
+    \put(0.2714012,0.18797698){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\theta_{i}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{denavit-hartenberg.pdf}}%
+    \put(0.17546229,0.26683719){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$r_{i-1}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{denavit-hartenberg.pdf}}%
+    \put(0.22639659,0.38953421){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$z_{i}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{denavit-hartenberg.pdf}}%
+    \put(0.14090458,0.34110435){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\alpha_{i-1}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{denavit-hartenberg.pdf}}%
+    \put(0.93847288,0.70287932){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$z_{i+1}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{denavit-hartenberg.pdf}}%
+    \put(0.64239951,0.51991269){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$r_{i}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{denavit-hartenberg.pdf}}%
+    \put(0.77289504,0.34398168){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$x_{i+1}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{denavit-hartenberg.pdf}}%
+    \put(0.66296633,0.28217039){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$y_{i+1}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{denavit-hartenberg.pdf}}%
+    \put(0.49646348,0.25201792){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$d_{i+1}$\end{tabular}}}}%
+    \put(0.88045352,0.48539478){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\alpha_{i}=0$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=17]{denavit-hartenberg.pdf}}%
+  \end{picture}%
+\endgroup%

@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 768.20775 551.9564"
+   sodipodi:docname="denavit-hartenberg.svg"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   version="1.1"
+   id="svg2"
+   height="588.75348"
+   width="819.42163">
+  <defs
+     id="defs4">
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path4385" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path4382" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path4379" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lend-0"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path4379-9"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lend-2"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path4379-4"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lend-7"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path4379-1"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     inkscape:document-rotation="0"
+     inkscape:window-maximized="0"
+     inkscape:window-y="0"
+     inkscape:window-x="4320"
+     inkscape:window-height="1581"
+     inkscape:window-width="1873"
+     showgrid="false"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="347.27952"
+     inkscape:cx="395.22905"
+     inkscape:zoom="1.1278547"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(18.160115,-7.9125252)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       inkscape:connector-curvature="0"
+       id="path3193"
+       d="m 58.28352,298.58665 c -23.22345,22.68969 -30.24494,65.4126 -5.66174,89.64285 21.59058,18.81047 58.62774,16.01377 76.46311,-6.65634 44.68097,-36.71863 104.28051,-50.73102 161.20624,-48.41955 23.48949,-2.3839 50.91808,-8.32674 63.42408,-30.66767 14.24227,-34.5298 13.19888,-75.85831 -5.68823,-108.45691 -12.77078,-14.45347 -40.72964,-8.18668 -44.61744,11.24159 -5.32641,16.21976 2.40719,36.38726 -10.7779,49.84602 -18.08694,15.9646 -43.74207,10.194 -65.63648,13.79179 -57.01285,4.13663 -116.00718,5.64498 -168.99861,29.62621"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:open="true"
+       sodipodi:end="3.586905"
+       sodipodi:start="3.5904474"
+       sodipodi:ry="25.43923"
+       sodipodi:rx="25.43923"
+       sodipodi:cy="350.97061"
+       sodipodi:cx="86.550797"
+       id="path3233"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="arc"
+       sodipodi:arc-type="arc"
+       d="M 63.631458,339.93166 A 25.43923,25.43923 0 0 1 97.569442,328.04151 25.43923,25.43923 0 0 1 109.48965,361.96895 25.43923,25.43923 0 0 1 75.57278,373.9192 25.43923,25.43923 0 0 1 63.592498,340.01292" />
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       transform="matrix(0.98284105,-0.18445453,0,1,0,0)"
+       sodipodi:open="true"
+       sodipodi:end="3.586905"
+       sodipodi:start="3.5904474"
+       sodipodi:ry="21.285887"
+       sodipodi:rx="16.375187"
+       sodipodi:cy="289.05664"
+       sodipodi:cx="334.2179"
+       id="path3235"
+       style="fill:none;stroke:#000000;stroke-width:1.00869;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="arc"
+       sodipodi:arc-type="arc"
+       d="m 319.46476,279.81997 a 16.375187,21.285887 0 0 1 21.84582,-9.94891 16.375187,21.285887 0 0 1 7.67302,28.38827 16.375187,21.285887 0 0 1 -21.83223,9.99919 16.375187,21.285887 0 0 1 -7.71169,-28.37056" />
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:nodetypes="ccccc"
+       inkscape:connector-curvature="0"
+       id="path3193-1"
+       d="m 38.48509,357.72987 c -4.5334,38.26472 2.98181,39.4542 18.21999,60.56944 21.59058,18.81047 58.62774,16.01377 76.46311,-6.65634 44.68097,-36.71863 104.28051,-50.73102 161.20624,-48.41955 23.48949,-2.3839 49.03327,-10.27169 63.78019,-30.54083"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:nodetypes="ccccc"
+       inkscape:connector-curvature="0"
+       id="path3255"
+       d="m 320.69554,187.4327 c 10.93082,-6.55921 24.12442,-10.82992 36.89936,-8.05601 11.18077,4.88245 15.19124,17.73838 16.96076,28.8363 3.1797,20.17568 2.64119,40.67939 3.17745,61.02849 -0.50888,16.3467 -0.11465,21.52101 -2.12446,37.30522"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path3257"
+       d="m 358.07563,332.79972 c 6.80132,-8.79318 14.43424,-15.76814 17.59302,-27.47061"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:nodetypes="ccccccccccccc"
+       inkscape:connector-curvature="0"
+       id="path3351"
+       d="m 346.16623,176.13976 c 16.07826,-7.35851 30.48513,-17.74276 44.867,-27.90485 12.30893,2.17475 10.44191,19.50116 18.92255,26.82816 7.73664,14.64784 21.72776,29.10976 39.73661,27.20726 23.09331,-0.79213 39.74944,-19.11951 53.37447,-35.71107 15.39688,-17.59687 25.51832,-39.14056 40.84318,-56.7089 16.33912,-16.536411 39.27522,-28.723701 62.94438,-27.312651 15.76133,5.02472 19.86767,24.548761 17.48697,39.066331 -4.41382,24.18587 -20.31928,43.896 -33.603,63.83295 -15.68877,19.84777 -32.71736,38.64292 -49.15878,57.82881 -21.49225,20.11707 -51.99681,30.12962 -81.1955,27.85016 -33.45842,-4.01958 -47.70886,-44.87953 -82.98432,-38.11935 -1.37233,-3.05882 -1.96369,-13.54925 -1.23357,-16.85685"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       transform="matrix(0.90588971,-0.42351368,0.24915117,0.96846461,0,0)"
+       sodipodi:open="true"
+       sodipodi:end="3.586905"
+       sodipodi:start="3.5904474"
+       sodipodi:ry="21.285887"
+       sodipodi:rx="16.375187"
+       sodipodi:cy="364.23862"
+       sodipodi:cx="546.88306"
+       id="path3235-7"
+       style="fill:none;stroke:#000000;stroke-width:1.00869;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="arc"
+       sodipodi:arc-type="arc"
+       d="m 532.12992,355.00195 a 16.375187,21.285887 0 0 1 21.84582,-9.94891 16.375187,21.285887 0 0 1 7.67302,28.38827 16.375187,21.285887 0 0 1 -21.83223,9.99919 16.375187,21.285887 0 0 1 -7.71169,-28.37056" />
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       inkscape:connector-curvature="0"
+       id="path4320"
+       d="m 406.16623,165.13976 120,-99.999998"
+       style="fill:none;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path4322"
+       d="m 343.16623,216.13976 -361,311"
+       style="fill:none;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       inkscape:connector-curvature="0"
+       id="path4324"
+       d="M 84.16623,376.13976 V 87.139759"
+       style="fill:none;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+    <circle
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       style="fill:#000000;stroke:none"
+       id="path4326"
+       cx="85.166229"
+       cy="430.13977"
+       r="1.5" />
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path4328"
+       d="M 85.16623,432.13976 V 559.86889"
+       style="fill:none;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text4330"
+       y="70.139763"
+       x="71.166229"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:22px;line-height:1.25;font-family:sans-serif"
+         y="70.139763"
+         x="71.166229"
+         id="tspan4332"
+         sodipodi:role="line">$z_{i-1}$</tspan></text>
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text4334"
+       y="53.139763"
+       x="532.16626"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:22px;line-height:1.25;font-family:sans-serif"
+         y="53.139763"
+         x="532.16626"
+         id="tspan4336"
+         sodipodi:role="line">$z_{i}$</tspan></text>
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path4338"
+       d="M 138.17345,392.07718 84.16623,334.13976"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 1;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend)" />
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:open="true"
+       sodipodi:end="5.6785867"
+       sodipodi:start="4.0073458"
+       sodipodi:ry="9.7424793"
+       sodipodi:rx="9.465704"
+       sodipodi:cy="392.24448"
+       sodipodi:cx="138.12411"
+       id="path4340"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="arc"
+       sodipodi:arc-type="arc"
+       d="m 131.98971,384.82476 a 9.465704,9.7424793 0 0 1 7.3669,-2.23982 9.465704,9.7424793 0 0 1 6.55523,4.1216" />
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:open="true"
+       sodipodi:end="5.6857707"
+       sodipodi:start="5.6958806"
+       sodipodi:ry="0.88047606"
+       sodipodi:rx="0.76583272"
+       sodipodi:cy="386.90646"
+       sodipodi:cx="138.56302"
+       id="path4344"
+       style="fill:#000000;stroke:#000000;stroke-width:0.582749;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="arc"
+       sodipodi:arc-type="arc"
+       d="m 139.20053,386.41857 a 0.76583272,0.88047606 0 0 1 -0.21154,1.2196 0.76583272,0.88047606 0 0 1 -1.06133,-0.24012 0.76583272,0.88047606 0 0 1 0.20617,-1.22081 0.76583272,0.88047606 0 0 1 1.06237,0.23395" />
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:open="true"
+       sodipodi:end="1.7264193"
+       sodipodi:start="0.66175537"
+       sodipodi:ry="6.1709828"
+       sodipodi:rx="6.1709828"
+       sodipodi:cy="336.83475"
+       sodipodi:cx="85.040535"
+       id="path4346"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="arc"
+       sodipodi:arc-type="arc"
+       d="m 89.908914,340.62683 a 6.1709828,6.1709828 0 0 1 -5.824854,2.30432" />
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:open="true"
+       sodipodi:end="5.6857707"
+       sodipodi:start="5.6958806"
+       sodipodi:ry="0.88047606"
+       sodipodi:rx="0.76583272"
+       sodipodi:cy="340.12595"
+       sodipodi:cx="86.274734"
+       id="path4344-4"
+       style="fill:#000000;stroke:#000000;stroke-width:0.582749;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="arc"
+       sodipodi:arc-type="arc"
+       d="m 86.912242,339.63806 a 0.76583272,0.88047606 0 0 1 -0.211535,1.21959 0.76583272,0.88047606 0 0 1 -1.061327,-0.24012 0.76583272,0.88047606 0 0 1 0.20617,-1.2208 0.76583272,0.88047606 0 0 1 1.062369,0.23394" />
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text4366"
+       y="310.55746"
+       x="60.126343"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="310.55746"
+         x="60.126343"
+         id="tspan4368"
+         sodipodi:role="line"
+         style="font-size:22px;line-height:1.25;font-family:sans-serif">$d_{i}$</tspan></text>
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       inkscape:connector-curvature="0"
+       id="path4370"
+       d="m 138.36175,392.53488 97.74338,98.907"
+       style="fill:#ff0000;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text4816"
+       y="499.00537"
+       x="237.85056"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="499.00537"
+         x="237.85056"
+         id="tspan4818"
+         sodipodi:role="line"
+         style="font-size:22px;line-height:1.25;font-family:sans-serif">$x_{i}$</tspan></text>
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       inkscape:connector-curvature="0"
+       id="path4820"
+       d="M 138.36175,391.37127 V 515.87772"
+       style="fill:#ff0000;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text5004"
+       y="533.33191"
+       x="131.96188"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="533.33191"
+         x="131.96188"
+         id="tspan5006"
+         sodipodi:role="line"
+         style="font-size:22px;line-height:1.25;font-family:sans-serif">$y_{i}$</tspan></text>
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       inkscape:connector-curvature="0"
+       id="path5372"
+       d="M 84.09398,256.72318 194.63709,239.269"
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text5556"
+       y="239.51994"
+       x="200.61496"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="239.51994"
+         x="200.61496"
+         id="tspan5558"
+         sodipodi:role="line"
+         style="font-size:22px;line-height:1.25;font-family:sans-serif">$x_{i-1}$</tspan></text>
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       inkscape:connector-curvature="0"
+       id="path5562"
+       d="M 84.43605,256.81431 28.58269,181.17955"
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text5746"
+       y="167.37602"
+       x="3.9646003"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="167.37602"
+         x="3.9646003"
+         id="tspan5748"
+         sodipodi:role="line"
+         style="font-size:22px;line-height:1.25;font-family:sans-serif">$y_{i-1}$</tspan></text>
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       inkscape:connector-curvature="0"
+       id="path5372-4"
+       d="M 138.94284,392.39929 249.48595,374.94511"
+       style="fill:none;stroke:#666666;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text5556-8"
+       y="379.35748"
+       x="258.12076"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#808080;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="379.35748"
+         x="258.12076"
+         id="tspan5558-8"
+         sodipodi:role="line"
+         style="font-size:22px;line-height:1.25;font-family:sans-serif">$x_{i-1}$</tspan></text>
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:open="true"
+       sodipodi:end="0.88163339"
+       sodipodi:start="5.8164394"
+       sodipodi:ry="34.950356"
+       sodipodi:rx="34.950356"
+       sodipodi:cy="401.10095"
+       sodipodi:cx="152.30478"
+       id="path5795"
+       style="fill:none;stroke:#000000"
+       sodipodi:type="arc"
+       sodipodi:arc-type="arc"
+       d="m 183.51675,385.3739 a 34.950356,34.950356 0 0 1 -8.98734,42.70099" />
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text5797"
+       y="415.46353"
+       x="190.3324"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="415.46353"
+         x="190.3324"
+         id="tspan5799"
+         sodipodi:role="line"
+         style="font-size:22px;line-height:1.25;font-family:sans-serif">$\theta_{i}$</tspan></text>
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       inkscape:connector-curvature="0"
+       id="path6179"
+       d="m 84.00824,332.79914 0.25094,-75.53511"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend)" />
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text6557"
+       y="354.88251"
+       x="116.63138"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="354.88251"
+         x="116.63138"
+         id="tspan6559"
+         sodipodi:role="line"
+         style="font-size:22px;line-height:1.25;font-family:sans-serif">$r_{i-1}$</tspan></text>
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       inkscape:connector-curvature="0"
+       id="path6561"
+       d="M 83.70293,332.68228 159.14775,265.821"
+       style="fill:none;stroke:#999999;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend-0)" />
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text6939"
+       y="260.6257"
+       x="155.75951"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="260.6257"
+         x="155.75951"
+         id="tspan6941"
+         sodipodi:role="line"
+         style="font-size:22px;line-height:1.25;font-family:sans-serif">$z_{i}$</tspan></text>
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:open="true"
+       sodipodi:end="5.6220798"
+       sodipodi:start="4.7374825"
+       sodipodi:ry="63.250378"
+       sodipodi:rx="54.305882"
+       sodipodi:cy="333.60788"
+       sodipodi:cx="83.694946"
+       id="path6943"
+       style="fill:none;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="arc"
+       sodipodi:arc-type="arc"
+       d="m 85.057529,270.37741 a 54.305882,63.250378 0 0 1 41.501811,24.39538" />
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text6945"
+       y="297.8299"
+       x="90.083878"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:18px;line-height:1.25;font-family:sans-serif"
+         y="297.8299"
+         x="90.083878"
+         id="tspan6947"
+         sodipodi:role="line">$\alpha_{i-1}$</tspan></text>
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path6949"
+       d="M 599.28137,110.63431 407.61356,281.85756"
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path6951"
+       d="M 629.15738,85.756467 696.39306,26.300475"
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend-0)" />
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text7141"
+       y="19.911549"
+       x="702.78204"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="19.911549"
+         x="702.78204"
+         id="tspan7143"
+         sodipodi:role="line"
+         style="font-size:22px;line-height:1.25;font-family:sans-serif">$z_{i+1}$</tspan></text>
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path7145"
+       d="m 441.92002,138.33043 55.15697,60.56334"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend)" />
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text7711"
+       y="160.46794"
+       x="475.33618"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="160.46794"
+         x="475.33618"
+         id="tspan7713"
+         sodipodi:role="line"
+         style="font-size:22px;line-height:1.25;font-family:sans-serif">$r_{i}$</tspan></text>
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path4370-5"
+       d="m 498.01544,201.16983 73.70175,81.22933"
+       style="fill:#ff0000;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text4816-5"
+       y="295.61951"
+       x="575.58386"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="295.61951"
+         x="575.58386"
+         id="tspan4818-1"
+         sodipodi:role="line"
+         style="font-size:22px;line-height:1.25;font-family:sans-serif">$x_{i+1}$</tspan></text>
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       inkscape:connector-curvature="0"
+       id="path4820-1"
+       d="M 497.53564,201.14284 V 325.64929"
+       style="fill:#ff0000;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text5004-5"
+       y="343.10342"
+       x="491.13577"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="343.10342"
+         x="491.13577"
+         id="tspan5006-2"
+         sodipodi:role="line"
+         style="font-size:22px;line-height:1.25;font-family:sans-serif">$y_{i+1}$</tspan></text>
+    <path
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path7775"
+       d="M 219.82598,473.90288 509.56118,217.29023"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend)" />
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text8353"
+       y="366.26678"
+       x="363.22699"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="366.26678"
+         x="363.22699"
+         id="tspan8355"
+         sodipodi:role="line"
+         style="font-size:22px;line-height:1.25;font-family:sans-serif">$d_{i+1}$</tspan></text>
+    <text
+       inkscape:export-ydpi="300.01538"
+       inkscape:export-xdpi="300.01538"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
+       id="text6945-1"
+       y="186.98486"
+       x="658.21112"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:18px;line-height:1.25;font-family:sans-serif"
+         y="186.98486"
+         x="658.21112"
+         id="tspan6947-4"
+         sodipodi:role="line">$\alpha_{i}=0$</tspan></text>
+    <path
+       inkscape:connector-curvature="0"
+       id="path8399"
+       d="m 484.5603,270.77573 -1.1648,1.16481"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       id="path8401"
+       d="m 483.3955,271.94054 c 29.40481,3.57336 49.86032,-11.33305 76.63133,-34.74346 35.85232,-32.59352 69.41108,-72.25714 78.28814,-121.34087"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path8403"
+       d="m 603.37076,83.241576 c 19.69433,-9.842965 44.38517,15.567518 33.77945,34.944254"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  </g>
+</svg>

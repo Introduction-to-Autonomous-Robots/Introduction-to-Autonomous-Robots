@@ -427,11 +427,12 @@ Two of the D-H parameters describe the link between the joints, and the other tw
 
 \begin{figure}
     \centering
-        \includegraphics[width=\textwidth]{figs/denavit-hartenberg}
-    \caption{Example of selected Denavit-Hartenberg parameters for three revolute joints. The z-axes of joint $i$ and $i+1$ are parallel.
-    \label{fig:denavit}}
+    % \includegraphics[width=\textwidth]{figs/denavit-hartenberg.png}
+    \def\svgwidth{\textwidth}
+    \import{./figs/}{denavit-hartenberg.pdf_tex}
+    \caption{Example of selected Denavit-Hartenberg parameters for three revolute joints. The z-axes of joint $i$ and $i+1$ are parallel.}
+    \label{fig:denavit}
 \end{figure}
-
 
 
 The coordinate transform from one link ($ i-1$) to another ($i$) can now be constructed  using the following matrix:
