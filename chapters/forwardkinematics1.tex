@@ -56,11 +56,14 @@ consists of the projections of $\hat{X}_B$ onto $\hat{X}_A$, $\hat{Y}_A$ and $\h
 
 \begin{figure}
     \centering
-        \includegraphics[width=0.8\textwidth]{figs/projection.png}
+    % \includegraphics[width=0.8\textwidth]{figs/projection.png}
+    \def\svgwidth{0.8\textwidth}
+    \import{./figs/}{projection.pdf_tex}
     \caption{Top: A coordinate system $\{B\}$ with position given by $^AP$ and orientation given by $\hat{X}_B$, $\hat{Y}_B$, and $\hat{Z}_B$. Bottom:
     The projection of the unit vector $\hat{X}_B$ onto the unit vectors that span coordinate system $\{A\}$ after moving $\{B\}$ into the origin of $\{A\}$. As all vectors are unit vectors, $A\cdot B=\|A\|\|B\|\cos \alpha=\cos \alpha$. }
     \label{fig:projection}
 \end{figure}
+
 
 We can now do this for all three vectors that span coordinate system $\{B\}$ and stack these three vectors together into a 3x3 matrix to obtain the rotation matrix
 %
@@ -186,11 +189,13 @@ Why any rotation can be expressed by a single vector can be seen when considerin
 Now that we have introduced the notion of local coordinate frames, we are interested in how to calculate the pose and speed of these coordinate frames as a function of the robot's actuators. We will first consider simple mechanisms where we can determine the relationship between actuators and the pose of various frames on the robot both in the position and speed domain. We will then consider the special class of non-holonomous mechanisms using a series of wheeled robots, for which the forward kinematics can only be calculated in the speed domain.
 
 \subsection{Forward kinematics of a simple arm}
+
 \begin{figure}[!htb]%{L}{0.3\textwidth}
-  \begin{center}
-    \includegraphics[width=0.27\textwidth]{figs/fwk2dofarm}
-  \end{center}
-  \caption{A simple 2-DOF arm.\label{fig:fwk2dofarm}}
+    \centering
+    % \includegraphics[width=0.27\textwidth]{figs/fwk2dofarm}
+    \def\svgwidth{0.32\textwidth}
+    \import{./figs/}{fwk2dofarm.pdf_tex}
+    \caption{A simple 2-DOF arm.}\label{fig:fwk2dofarm}
 \end{figure}
 
 Consider a robot arm made out of two links and two joints that is mounted to a table. Let the length of the first link be $l_1$ and the length of the second link be $ l_2$. You could specify the position of the link closer to the table by the angle $ \alpha$ and the angle of the second link relative to the first link using the angle $ \beta$. Suitable conventions and coordinate systems are shown in Figure~\ref{fig:fwk2dofarm}
@@ -237,8 +242,11 @@ Whereas the pose of a robotic manipulator is uniquely defined by its joint angle
 What complicates matters is that for so-called \emph{non-holonomic} systems, it is not sufficient to simply measure the distance that each wheel traveled, but also when each movement was executed.
 
 \begin{figure}[htb!]
+    \small
     \centering
-        \includegraphics[width=0.95\textwidth]{figs/holonomy.png}
+    % \includegraphics[width=0.95\textwidth]{figs/holonomy.png}
+    \def\svgwidth{\textwidth}
+    \import{./figs/}{holonomy.pdf_tex}
     \caption{Configuration space (left) and workspace (right) for a non-holonomic mobile robot (top) and a holonomic manipulator (bottom). Closed trajectories in configuration space result in closed trajectories in the workspace if the robot's kinematics is holonomic.}
     \label{fig:holonomy}
 \end{figure}
@@ -249,7 +257,9 @@ It should be clear by now that for a mobile robot, not only traveled distance pe
 
 \begin{figure}[htb!]
     \centering
-        \includegraphics[width=0.85\textwidth]{figs/mobilerobot.png}
+    % \includegraphics[width=0.85\textwidth]{figs/mobilerobot.png}
+    \def\svgwidth{0.85\textwidth}
+    \import{./figs/}{mobilerobot.pdf_tex}
     \caption{Mobile robot with local coordinate system \{R\} and world frame \{I\}. The arrows indicate the positive direction of position and orientation vectors.}
     \label{fig:mobilerobot}
 \end{figure}
@@ -299,10 +309,14 @@ This becomes apparent when considering that the circumference of a wheel with ra
 
 \begin{figure}[htb!]
     \centering
-        \includegraphics[width=0.9\textwidth]{figs/wheelrotation.png}
+    % \includegraphics[width=0.9\textwidth]{figs/wheelrotation.png}
+    \def\svgwidth{0.86\textwidth}
+    \import{./figs/}{wheelrotation.pdf_tex}
     \caption{Left: Differential wheel robot pivoting around its left wheel. Right: A wheel with radius $r$ moves by $\phi r$ when rotated by $\phi$ degrees.}
     \label{fig:wheelrotation}
 \end{figure}
+
+
 
 How each of the two wheels in our example contributes to the speed of the robot's center---where its coordinate system is anchored---requires the following trick: we calculate the contribution of each individual wheel while assuming all other wheels remaining un-actuated. In this example, the distance traveled by the center point is exactly half of that traveled by each individual wheel, assuming the non-actuated wheel rotating around its ground contact point (Figure~\ref{fig:wheelrotation}). We can therefore write
 \begin{equation}
@@ -314,11 +328,11 @@ given the speeds $ \dot{\phi_l}$ and $ \dot{\phi_r}$ of the left and the right w
 Think about how the robot's speed along its y-axis is affected by the wheel-speed given the coordinate system in the drawing above. Think about the kinematic constraints that the standard wheels impose.
 \end{framed}
 
-Hard to believe at first, but the speed of the robot along its y-axis is always zero. This is because the constraints of the standard wheel tell us that the robot can never slide.  We are now left with calculating the rotation of the robot around its z-axis. That there is such a thing can be immediately seen when imaging the robot's wheels spinning in opposite directions. We will again consider each wheel independently. Assuming the left wheel to be non-actuated, spinning the right wheel forwards will lead to counter-clockwise rotation. Given an axle diameter (distance between the robot's wheels) $ d$, we can now write
+Hard to believe at first, but the speed of the robot along its y-axis is always zero. This is because the constraints of the standard wheel tell us that the robot can never slide.  We are now left with calculating the rotation of the robot around its z-axis. That there is such a thing can be immediately seen when imaging the robot's wheels spinning in opposite directions. We will again consider each wheel independently. Assuming the left wheel to be non-actuated, spinning the right wheel forwards will lead to counter-clockwise rotation. Given an axle diameter (distance between the robot's wheels) $d$, we can now write
 \begin{equation}
 \omega_r d = \phi_r r
 \end{equation}
-with $ \omega_r$ the angle of rotation around the left wheel (Figure~\ref{fig:wheelrotation}, right). Taking the derivative on both sides yields speeds and we can write
+with $\omega_r$ the angle of rotation around the left wheel (Figure~\ref{fig:wheelrotation}, right). Taking the derivative on both sides yields speeds and we can write
 \begin{equation}
 \dot{\omega_r} = \frac{\dot{\phi_r} r}{d}
 \end{equation}

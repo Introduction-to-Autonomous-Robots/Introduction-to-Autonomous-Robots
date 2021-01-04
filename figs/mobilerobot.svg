@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -9,87 +7,89 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
-   id="svg3023"
+   viewBox="0 0 374.60725 336.84197"
+   sodipodi:docname="mobilerobot.svg"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="mobilerobot.svg">
+   id="svg3023"
+   height="359.2981"
+   width="399.58109">
   <defs
      id="defs3025">
     <marker
-       inkscape:stockid="Arrow1Lstart"
-       orient="auto"
-       refY="0.0"
-       refX="0.0"
+       style="overflow:visible"
        id="Arrow1Lstart"
-       style="overflow:visible">
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
       <path
-         id="path3826"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt"
-         transform="scale(0.8) translate(12.5,0)" />
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3826" />
     </marker>
     <marker
-       inkscape:stockid="Arrow1Lend"
-       orient="auto"
-       refY="0.0"
-       refX="0.0"
+       style="overflow:visible"
        id="Arrow1Lend"
-       style="overflow:visible;">
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
       <path
-         id="path3829"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
-         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3829" />
     </marker>
     <marker
-       inkscape:stockid="Arrow1Lend"
-       orient="auto"
-       refY="0"
-       refX="0"
+       style="overflow:visible"
        id="Arrow1Lend-1"
-       style="overflow:visible">
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
       <path
-         inkscape:connector-curvature="0"
-         id="path3829-7"
-         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
          style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
-         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3829-7"
+         inkscape:connector-curvature="0" />
     </marker>
     <marker
-       inkscape:stockid="Arrow1Lend"
-       orient="auto"
-       refY="0"
-       refX="0"
+       style="overflow:visible"
        id="marker4834"
-       style="overflow:visible">
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
       <path
-         inkscape:connector-curvature="0"
-         id="path4836"
-         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
          style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
-         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path4836"
+         inkscape:connector-curvature="0" />
     </marker>
   </defs>
   <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="348"
-     inkscape:cy="849"
-     inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     inkscape:window-maximized="0"
+     inkscape:window-y="0"
+     inkscape:window-x="4320"
+     inkscape:window-height="1581"
+     inkscape:window-width="1873"
      showgrid="false"
-     inkscape:window-width="1600"
-     inkscape:window-height="837"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="176.79563"
+     inkscape:cx="199.79055"
+     inkscape:zoom="1.6354628"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
   <metadata
      id="metadata3028">
     <rdf:RDF>
@@ -103,235 +103,199 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Layer 1"
+     transform="translate(-95.111176,-34.813126)"
+     id="layer1"
      inkscape:groupmode="layer"
-     id="layer1">
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot4889"
-       style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:Sans;font-style:normal;font-weight:normal;font-size:24px;line-height:125%;letter-spacing:0px;word-spacing:0px"><flowRegion
-         id="flowRegion4891"><rect
-           id="rect4893"
-           width="29.076923"
-           height="33.384617"
-           x="-282.15384"
-           y="-64.407051" /></flowRegion><flowPara
-         id="flowPara4895"></flowPara></flowRoot>    <text
-       xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="278.92307"
-       y="62.669876"
+     inkscape:label="Layer 1">
+    <text
        id="text4948"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
+       y="77.669876"
+       x="235.79807"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:24px;line-height:1.25;font-family:sans-serif"
+         y="77.669876"
+         x="235.79807"
          id="tspan4950"
-         x="278.92307"
-         y="62.669876" /></text>
-    <g
-       id="g4818"
-       transform="translate(0,-0.70710678)"
-       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\mobilerobot.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150">
-      <path
-         inkscape:connector-curvature="0"
-         id="path3050"
-         d="M 126,356.66987 126,43.28526"
-         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)" />
-      <path
-         inkscape:connector-curvature="0"
-         id="path3052"
-         d="m 113.07692,340.51603 351.07693,0"
-         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)" />
-    </g>
-    <text
-       xml:space="preserve"
-       style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="99.076912"
-       y="362.42432"
-       id="text4860"
-       sodipodi:linespacing="125%"
-       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\mobilerobot.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150"><tspan
-         sodipodi:role="line"
-         id="tspan4862"
-         x="99.076912"
-         y="362.42432"
-         style="font-size:24px">{I}</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="444.76923"
-       y="365.65509"
-       id="text4885"
-       sodipodi:linespacing="125%"
-       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\mobilerobot.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150"><tspan
-         sodipodi:role="line"
-         id="tspan4887"
-         x="444.76923"
-         y="365.65509"
-         dy="0 6">XI</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="95.040863"
-       y="52.262344"
-       id="text4885-8"
-       sodipodi:linespacing="125%"
-       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\mobilerobot.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150"><tspan
-         sodipodi:role="line"
-         id="tspan4887-2"
-         x="95.040863"
-         y="52.262344"
-         dy="0 6">YI</tspan></text>
-    <g
-       id="g4960"
-       transform="matrix(0.68682758,0.72682038,-0.72682038,0.68682758,236.01634,-167.52158)"
-       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\mobilerobot.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150">
-      <g
-         id="g3780"
-         transform="matrix(0.46269487,0.8865176,-0.8865176,0.46269487,547.44389,-189.11987)">
-        <path
-           sodipodi:type="arc"
-           style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           id="path2985"
-           sodipodi:cx="247.48738"
-           sodipodi:cy="398.79349"
-           sodipodi:rx="47.477169"
-           sodipodi:ry="47.477169"
-           d="m 294.96455,398.79349 c 0,26.22091 -21.25625,47.47717 -47.47717,47.47717 -26.22092,0 -47.47717,-21.25626 -47.47717,-47.47717 0,-26.22092 21.25625,-47.47717 47.47717,-47.47717 26.22092,0 47.47717,21.25625 47.47717,47.47717 z" />
-        <rect
-           style="fill:#ffffff"
-           id="rect3755"
-           width="9.6428576"
-           height="22.142857"
-           x="211.78572"
-           y="391.50504" />
-        <rect
-           style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
-           id="rect3757"
-           width="10"
-           height="21.785715"
-           x="215.71428"
-           y="389.00504" />
-        <rect
-           style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
-           id="rect3757-1"
-           width="10"
-           height="21.785715"
-           x="269.64285"
-           y="388.82645" />
-        <path
-           sodipodi:type="arc"
-           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1"
-           id="path3777"
-           sodipodi:cx="245.89285"
-           sodipodi:cy="363.96933"
-           sodipodi:rx="3.3928571"
-           sodipodi:ry="3.75"
-           d="m 249.28571,363.96933 c 0,2.07107 -1.51903,3.75 -3.39286,3.75 -1.87382,0 -3.39285,-1.67893 -3.39285,-3.75 0,-2.07107 1.51903,-3.75 3.39285,-3.75 1.87383,0 3.39286,1.67893 3.39286,3.75 z"
-           transform="translate(2,-2)" />
-      </g>
-      <g
-         id="g4818-4"
-         transform="matrix(0.25753841,-0.14061082,0.17552572,0.32148747,214.71307,124.4817)">
-        <path
-           style="fill:none;stroke:#000000;stroke-width:3.05030918px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
-           d="M 126,356.66987 126,43.28526"
-           id="path3050-0"
-           inkscape:connector-curvature="0" />
-        <path
-           style="fill:none;stroke:#000000;stroke-width:3.05030918px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
-           d="m 113.07692,340.51603 351.07693,0"
-           id="path3052-9"
-           inkscape:connector-curvature="0" />
-      </g>
-      <text
-         transform="matrix(0.87184749,-0.48977746,0.48977746,0.87184749,0,0)"
-         sodipodi:linespacing="125%"
-         id="text4860-4"
-         y="337.5697"
-         x="121.98693"
-         style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-         xml:space="preserve"><tspan
-           style="font-size:24px"
-           y="337.5697"
-           x="121.98693"
-           id="tspan4862-8"
-           sodipodi:role="line">{R}</tspan></text>
-      <text
-         transform="matrix(0.86578788,-0.50041118,0.50041118,0.86578788,0,0)"
-         sodipodi:linespacing="125%"
-         id="text4885-4"
-         y="367.81369"
-         x="231.36519"
-         style="font-size:24px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-         xml:space="preserve"><tspan
-           dy="0 6"
-           y="367.81369"
-           x="231.36519"
-           id="tspan4887-5"
-           sodipodi:role="line">XR</tspan></text>
-      <text
-         transform="matrix(0.89815876,-0.43967129,0.43967129,0.89815876,0,0)"
-         sodipodi:linespacing="125%"
-         id="text4885-4-5"
-         y="215.35701"
-         x="135.94806"
-         style="font-size:24px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-         xml:space="preserve"><tspan
-           dy="0 6"
-           y="215.35701"
-           x="135.94806"
-           id="tspan4887-5-1"
-           sodipodi:role="line">YR</tspan></text>
-    </g>
-    <text
-       xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="348.81421"
-       y="221.34854"
-       id="text4952"
-       sodipodi:linespacing="125%"
-       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\mobilerobot.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150"><tspan
-         style="font-size:20px"
-         dy="0 6"
-         sodipodi:role="line"
-         id="tspan4954"
-         x="348.81421"
-         y="221.34854">θI</tspan></text>
+         sodipodi:role="line"> </tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0"
-       d="m 288.69231,203.85507 175.70769,0"
-       id="path4977"
        inkscape:connector-curvature="0"
-       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\mobilerobot.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
+       id="path3050"
+       d="M 126,355.96276 V 42.578153"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)" />
     <path
-       sodipodi:type="arc"
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;marker-start:url(#Arrow1Lstart)"
-       id="path5169"
-       sodipodi:cx="289.52307"
-       sodipodi:cy="203.31602"
-       sodipodi:rx="81.830772"
-       sodipodi:ry="81.830772"
-       d="m 371.35384,203.31602 a 81.830772,81.830772 0 0 1 -4.19928,25.87717"
-       sodipodi:start="0"
-       sodipodi:end="0.32175054"
-       sodipodi:open="true"
-       transform="translate(0,-0.70710678)"
-       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\mobilerobot.png"
+       inkscape:connector-curvature="0"
+       id="path3052"
+       d="M 113.07692,339.80892 H 464.15385"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)" />
+    <text
+       inkscape:export-ydpi="150"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
+       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\mobilerobot.png"
+       id="text4860"
+       y="362.42432"
+       x="99.076912"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:24px;line-height:1.25;font-family:sans-serif"
+         y="362.42432"
+         x="99.076912"
+         id="tspan4862"
+         sodipodi:role="line">${I}$</tspan></text>
+    <text
+       inkscape:export-ydpi="150"
+       inkscape:export-xdpi="150"
+       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\mobilerobot.png"
+       id="text4885"
+       y="365.65509"
+       x="444.76923"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:24px;line-height:1.25;font-family:sans-serif"
+         y="365.65509"
+         x="444.76923"
+         id="tspan4887"
+         sodipodi:role="line">$X_I$</tspan></text>
+    <text
+       inkscape:export-ydpi="150"
+       inkscape:export-xdpi="150"
+       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\mobilerobot.png"
+       id="text4885-8"
+       y="52.262344"
+       x="95.040863"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:24px;line-height:1.25;font-family:sans-serif"
+         y="52.262344"
+         x="95.040863"
+         id="tspan4887-2"
+         sodipodi:role="line">$Y_I$</tspan></text>
+    <text
+       inkscape:export-ydpi="150"
+       inkscape:export-xdpi="150"
+       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\mobilerobot.png"
+       id="text4952"
+       y="238.22354"
+       x="335.68921"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="238.22354"
+         x="335.68921"
+         id="tspan4954"
+         sodipodi:role="line"
+         style="font-size:20px;line-height:1.25;font-family:sans-serif">$\theta_I$</tspan></text>
+    <g
+       id="g3780"
+       transform="rotate(109.05935,312.03344,309.37986)">
+      <circle
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="path2985"
+         cx="247.48738"
+         cy="398.79349"
+         r="47.477169" />
+      <rect
+         style="fill:#ffffff"
+         id="rect3755"
+         width="9.6428576"
+         height="22.142857"
+         x="211.78572"
+         y="391.50504" />
+      <rect
+         style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
+         id="rect3757"
+         width="10"
+         height="21.785715"
+         x="215.71428"
+         y="389.00504" />
+      <rect
+         style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
+         id="rect3757-1"
+         width="10"
+         height="21.785715"
+         x="269.64285"
+         y="388.82645" />
+      <ellipse
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+         id="path3777"
+         transform="translate(2,-2)"
+         cx="245.89285"
+         cy="363.96933"
+         rx="3.3928571"
+         ry="3.75" />
+    </g>
+    <g
+       id="g4818-4"
+       transform="matrix(0.27908329,0.09060878,-0.11310774,0.34838213,249.88635,89.033716)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:3.05031px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
+         d="M 126,356.66987 V 43.28526"
+         id="path3050-0"
+         inkscape:connector-curvature="0" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:3.05031px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
+         d="M 113.07692,340.51603 H 464.15385"
+         id="path3052-9"
+         inkscape:connector-curvature="0" />
+    </g>
+    <text
+       transform="rotate(17.294538)"
+       id="text4860-4"
+       y="134.60027"
+       x="260.81528"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:24px;line-height:1.25;font-family:sans-serif"
+         y="134.60027"
+         x="260.81528"
+         id="tspan4862-8"
+         sodipodi:role="line">${R}$</tspan></text>
+    <text
+       transform="rotate(16.593287)"
+       id="text4885-4"
+       y="166.55856"
+       x="372.66724"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="166.55856"
+         x="372.66724"
+         id="tspan4887-5"
+         sodipodi:role="line"
+         style="font-size:24px;line-height:1.25;font-family:sans-serif">$X_R$</tspan></text>
+    <text
+       transform="rotate(20.537584)"
+       id="text4885-4-5"
+       y="5.521832"
+       x="277.33591"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="5.521832"
+         x="277.33591"
+         id="tspan4887-5-1"
+         sodipodi:role="line"
+         style="font-size:24px;line-height:1.25;font-family:sans-serif">$Y_R$</tspan></text>
+    <path
+       inkscape:export-ydpi="150"
+       inkscape:export-xdpi="150"
+       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\mobilerobot.png"
+       inkscape:connector-curvature="0"
+       id="path4977"
+       d="M 245.56731,218.85507 H 421.275"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       sodipodi:arc-type="arc"
+       inkscape:export-ydpi="150"
+       inkscape:export-xdpi="150"
+       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\mobilerobot.png"
+       sodipodi:open="true"
+       sodipodi:end="0.32175054"
+       sodipodi:start="0"
+       d="m 328.22884,217.60892 a 81.830772,81.830772 0 0 1 -4.19928,25.87716"
+       sodipodi:ry="81.830772"
+       sodipodi:rx="81.830772"
+       sodipodi:cy="217.60892"
+       sodipodi:cx="246.39807"
+       id="path5169"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;marker-start:url(#Arrow1Lstart)"
+       sodipodi:type="arc" />
   </g>
 </svg>
