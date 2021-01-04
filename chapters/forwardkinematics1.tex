@@ -242,6 +242,7 @@ Whereas the pose of a robotic manipulator is uniquely defined by its joint angle
 What complicates matters is that for so-called \emph{non-holonomic} systems, it is not sufficient to simply measure the distance that each wheel traveled, but also when each movement was executed.
 
 \begin{figure}[htb!]
+    \small
     \centering
     % \includegraphics[width=0.95\textwidth]{figs/holonomy.png}
     \def\svgwidth{\textwidth}
@@ -256,7 +257,9 @@ It should be clear by now that for a mobile robot, not only traveled distance pe
 
 \begin{figure}[htb!]
     \centering
-        \includegraphics[width=0.85\textwidth]{figs/mobilerobot.png}
+    % \includegraphics[width=0.85\textwidth]{figs/mobilerobot.png}
+    \def\svgwidth{0.85\textwidth}
+    \import{./figs/}{mobilerobot.pdf_tex}
     \caption{Mobile robot with local coordinate system \{R\} and world frame \{I\}. The arrows indicate the positive direction of position and orientation vectors.}
     \label{fig:mobilerobot}
 \end{figure}
