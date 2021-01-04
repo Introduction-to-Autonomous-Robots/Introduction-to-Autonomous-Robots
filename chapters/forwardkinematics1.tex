@@ -309,10 +309,14 @@ This becomes apparent when considering that the circumference of a wheel with ra
 
 \begin{figure}[htb!]
     \centering
-        \includegraphics[width=0.9\textwidth]{figs/wheelrotation.png}
+    % \includegraphics[width=0.9\textwidth]{figs/wheelrotation.png}
+    \def\svgwidth{0.86\textwidth}
+    \import{./figs/}{wheelrotation.pdf_tex}
     \caption{Left: Differential wheel robot pivoting around its left wheel. Right: A wheel with radius $r$ moves by $\phi r$ when rotated by $\phi$ degrees.}
     \label{fig:wheelrotation}
 \end{figure}
+
+
 
 How each of the two wheels in our example contributes to the speed of the robot's center---where its coordinate system is anchored---requires the following trick: we calculate the contribution of each individual wheel while assuming all other wheels remaining un-actuated. In this example, the distance traveled by the center point is exactly half of that traveled by each individual wheel, assuming the non-actuated wheel rotating around its ground contact point (Figure~\ref{fig:wheelrotation}). We can therefore write
 \begin{equation}
@@ -324,11 +328,11 @@ given the speeds $ \dot{\phi_l}$ and $ \dot{\phi_r}$ of the left and the right w
 Think about how the robot's speed along its y-axis is affected by the wheel-speed given the coordinate system in the drawing above. Think about the kinematic constraints that the standard wheels impose.
 \end{framed}
 
-Hard to believe at first, but the speed of the robot along its y-axis is always zero. This is because the constraints of the standard wheel tell us that the robot can never slide.  We are now left with calculating the rotation of the robot around its z-axis. That there is such a thing can be immediately seen when imaging the robot's wheels spinning in opposite directions. We will again consider each wheel independently. Assuming the left wheel to be non-actuated, spinning the right wheel forwards will lead to counter-clockwise rotation. Given an axle diameter (distance between the robot's wheels) $ d$, we can now write
+Hard to believe at first, but the speed of the robot along its y-axis is always zero. This is because the constraints of the standard wheel tell us that the robot can never slide.  We are now left with calculating the rotation of the robot around its z-axis. That there is such a thing can be immediately seen when imaging the robot's wheels spinning in opposite directions. We will again consider each wheel independently. Assuming the left wheel to be non-actuated, spinning the right wheel forwards will lead to counter-clockwise rotation. Given an axle diameter (distance between the robot's wheels) $d$, we can now write
 \begin{equation}
 \omega_r d = \phi_r r
 \end{equation}
-with $ \omega_r$ the angle of rotation around the left wheel (Figure~\ref{fig:wheelrotation}, right). Taking the derivative on both sides yields speeds and we can write
+with $\omega_r$ the angle of rotation around the left wheel (Figure~\ref{fig:wheelrotation}, right). Taking the derivative on both sides yields speeds and we can write
 \begin{equation}
 \dot{\omega_r} = \frac{\dot{\phi_r} r}{d}
 \end{equation}
