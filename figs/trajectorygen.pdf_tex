@@ -1,0 +1,73 @@
+%% Creator: Inkscape 1.0 (4035a4fb49, 2020-05-01), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'trajectorygen.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{424.41023254bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.59069251)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{trajectorygen.pdf}}%
+    \put(0.94668832,0.00674503){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(-0.00026144,0.54463831){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{trajectorygen.pdf}}%
+    \put(0.20260853,0.1418152){\color[rgb]{0,0,0}\rotatebox{0.29892824}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$x_r$\end{tabular}}}}}%
+    \put(0.18874932,0.26860501){\color[rgb]{0,0,0}\rotatebox{2.5381628}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$y_r$\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{trajectorygen.pdf}}%
+    \put(0.64625293,0.54676776){\color[rgb]{0,0,0}\rotatebox{38.327873}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$x_r$\end{tabular}}}}}%
+    \put(0.5937272,0.454627){\color[rgb]{0,0,0}\rotatebox{37.824957}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$y_r$\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{trajectorygen.pdf}}%
+    \put(0.25031017,0.19149682){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\alpha$\end{tabular}}}}%
+    \put(0.40251952,0.29976936){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\rho$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{trajectorygen.pdf}}%
+    \put(0.85562379,0.1246192){\color[rgb]{0,0,0}\rotatebox{-1.5777023}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$x_r$\end{tabular}}}}}%
+    \put(0.77033979,0.27709008){\color[rgb]{0,0,0}\rotatebox{-1.4426235}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$x_r$\end{tabular}}}}}%
+    \put(0.82777054,0.20869296){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\eta$\end{tabular}}}}%
+  \end{picture}%
+\endgroup%
