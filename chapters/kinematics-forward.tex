@@ -4,11 +4,24 @@
 Now that we have introduced the notion of local coordinate frames, we are interested in calculating the pose and speed of these coordinate frames as a function of the robot's actuators and joint configuration.
 That is, we are interested in computing a function $f$ that allows us to map a joint configuration to its corresponding end-effector pose:
 \begin{equation}\label{eq:kinematics:forward}
-r=f(q)\ ,
+r=f(q)\ , \qquad f : \mathbb{R}^n \rightarrow \mathbb{R}^m \ ,
 \end{equation}
-where $r$ is the task-space (end-effector) configuration and $q$ is the joint-space configuration  (e.g. a sequence of joint angles in case of a manipulator with revolute joints \td{we have not talked about revolute joints yet, remember to fix this}).
-%
-We will first consider simple mechanisms where we can determine the relationship between actuators and the pose of various frames on the robot both in the position and speed domain. We will then consider the special class of non-holonomous mechanisms using a series of wheeled robots, for which the forward kinematics can only be calculated in the speed domain.
+where $r$ is the task-space (end-effector) configuration and $q$ is the joint-space configuration.
+It is important to remember that the choice of $q$ and $r$ (and, consequently, the complexity of $f$) depends on your specific robot platform and the specific task you are investigating.
+$q$ generally corresponds to the number of actuators/joint that you can control on your robot; it is of size $n$, where $n$ is the number of degrees of freedom in joint space (see also \cref{sec:dof}).
+Conversely, $r$ depends on the task and its dimensionality is $m$, where $m$ is the number of DoFs in task space.
+% (e.g. a sequence of joint angles in case of a manipulator with revolute joints \td{we have not talked about revolute joints yet, remember to fix this}).
+
+In the following, we will compute the forward kinematics mapping $f$ for a number of selected but diverse mechanisms.
+We will first consider simple mechanisms where we can determine the relationship between actuators and the pose of various frames on the robot both in the position and speed domain.
+We will then consider the special class of non-holonomous mechanisms using a series of wheeled robots, for which the forward kinematics can only be calculated in the speed domain.
+
+\begin{framed}
+\noindent Remember:\\
+configuration space $\equiv$ joint space;
+cartesian space $\equiv$ task space.
+Forward kinematics maps from joint space to task space, and inverse kinematics does the opposite.
+\end{framed}
 
 \subsection{Forward Kinematics of a simple robot arm}
 
@@ -17,12 +30,14 @@ We will first consider simple mechanisms where we can determine the relationship
     % \includegraphics[width=0.27\textwidth]{figs/fwk2dofarm}
     \def\svgwidth{0.4\textwidth}
     \import{./figs/}{fwk2dofarm.pdf_tex}
-    \caption{A simple 2-DOF arm.}\label{fig:fwk2dofarm}
+    \caption{A simple 2-DOF arm.\td{add theta to this picture}}\label{fig:fwk2dofarm}
 \end{figure}
 
 Consider the robot arm in \cref{fig:fwk2dofarm}; it is mounted to a table, and is composed of two links and two joints. Let the length of the first link be $l_1$ and the length of the second link be $l_2$. You could specify the position of the link closer to the table by the angle $\alpha$ and the angle of the second link relative to the first link using the angle $\beta$.
+Therefore, in this case $q = [\alpha, \beta]^T$.
+Our goal is to calculate the position $[x, y]^T$ and orientation $\theta$ of the end-effector; consequently, $f$ will map to $r = [x, y, \theta]^T$.
 
-We can now calculate the position $P_1 = (x_1, y_1)$ of the joint between the first and the second link using simple trigonometry:
+Let's now calculate the position $P_1 = (x_1, y_1)$ of the joint between the first and the second link using simple trigonometry:
 %
 \begin{eqnarray}\label{eq:cosxl1}
 x_1 &=&l_1 \cos \alpha \nonumber \\
@@ -36,32 +51,35 @@ x_2&=&x_1 + l_2 \cos(\alpha+\beta) \nonumber \\
 y_2&=&y_1 + l_2 \sin(\alpha+\beta)
 \end{eqnarray}
 %
-or together, the position of the end-effector $(x,y)$ is given by
+For what concerns the orientation of the arm's end-effector $\theta$, we know it is just the sum of $\alpha+\beta$.
+Altogether, the configuration $r$ of the end-effector is given by:
 %
 \begin{eqnarray}\label{eq:fwk2dofarm}
 x&=&l_1 \cos \alpha + l_2 \cos(\alpha+\beta) \nonumber \\
-y&=&l_1 \sin \alpha + l_2 \sin(\alpha+\beta)
+y&=&l_1 \sin \alpha + l_2 \sin(\alpha+\beta) \\
+\theta&=& \alpha + \beta \nonumber
 \end{eqnarray}
 %
-The above equations represent \textsl{the forward kinematic equations} of the robot---as they relate its control parameters $ \alpha$ and $\beta$ (also known as joint configuration) to the position of its end-effector in the local coordinate system spanned by $ x$ and $ y$ with the origin at the robot's base.
+The above equations represent \textsl{the forward kinematic equations} of the robot---as they relate its control parameters $ \alpha$ and $\beta$ (also known as joint configuration) to the pose of its end-effector in the local coordinate system spanned by $x$ and $ y$ with the origin at the robot's base.
 Note that both $\alpha$ and $\beta$ shown in the figure are positive: both links rotate around the $z-$axis. Using the right-hand rule, the direction of positive angles is defined to be counter-clockwise.
 
 The \emph{configuration space}\index{Configuration space}\index{C-Space (Configuration space)} of the robot---i.e. the set of angles each actuator can be set to---is given by $ 0 < \alpha < \pi $ as it is not supposed to run into the table, and $ -\pi < \beta < \pi$.
 The configuration space is given with respect to the robot's joints and allows us to use the forward kinematics equations to calculate the \emph{workspace}\index{Workspace} of the robot, i.e. the physical space it can move to.
 This terminology will be identical for mobile robots. An example of configuration and workspace for both a manipulator and a mobile robot is shown in \cref{fig:holonomy}.
 
-As shown in \cref{fig:fwk2dofarm}, the orientation of the arm's end-effector is given by $\alpha+\beta$. We can now write down  a transformation that includes a rotation around the z-axis:
+% As shown in \cref{fig:fwk2dofarm}, the orientation of the arm's end-effector is given by $\alpha+\beta$.
+We can now write down  a transformation that includes a rotation around the z-axis:
 \begin{equation}
 \label{eq:2armtrans}
-\left[\begin{array}{cccc}cos_{\alpha\beta} & -sin_{\alpha\beta} &  0 & \cos_{\alpha\beta}l_2+\cos\alpha l_1\\
+f(q) = \left[\begin{array}{cccc}cos_{\alpha\beta} & -sin_{\alpha\beta} &  0 & \cos_{\alpha\beta}l_2+\cos\alpha l_1\\
                         sin_{\alpha\beta} & cos_{\alpha\beta} & 0 & \sin_{\alpha\beta}l_2+\sin\alpha l_1\\
                                                 0 & 0 & 1 & 0\\
                                                 0 & 0 & 0 & 1\end{array}\right]
 \end{equation}
 The notation $sin_{\alpha\beta}$ and $cos_{\alpha\beta}$ are shorthand for $sin(\alpha+\beta)$ and $cos(\alpha+\beta)$, respectively.
-
-This transformation now allows us to translate from the robot's base to the robot's end-effector as a function of the joint configuration $\alpha$ and $\beta$.
-This transformation will be helpful if we want to calculate suitable joint angles in order to reach a certain pose or if we want to convert measurements taken relative to the end-effector back into the base's coordinate system.
+%
+This transformation now allows us to transform from the robot's base to the robot's end-effector configuration $r = [x, y, \theta]^T$ as a function of the joint configuration $q = [\alpha, \beta]^T$.
+This transformation will be helpful if we want to calculate suitable joint angles in order to reach a certain pose (i.e., inverse kinematics) or if we want to convert measurements taken relative to the end-effector back into the base's coordinate system (e.g., when we have sensors mounted on the end effector whose output needs to be mapped back to the world reference frame).
 
 \subsection{Forward Kinematics of a Differential Wheels Robot}\label{sec:kinematics:fwkmobile}
 
@@ -69,7 +87,7 @@ Whereas the pose of a robotic manipulator is uniquely defined by its joint angle
 Here, the encoder values simply refer to wheel orientation and need to be integrated over time in order to assess the robot's position with respect to the worlds frame of reference; as we will later see, this is a great source of uncertainty.
 What complicates matters is that for so-called \emph{non-holonomic} systems, it is not sufficient to simply measure the distance that each wheel traveled, but also when each movement was executed.
 
-\begin{figure}
+\begin{figure}[!t]
     \small
     \centering
     % \includegraphics[width=0.95\textwidth]{figs/holonomy.png}
@@ -195,7 +213,7 @@ Adding the rotation speeds up (with the one around the right wheel being negativ
 %
 Putting it all together, we can finally write:
 
-\begin{equation}\label{eq:diffwheels}
+\begin{equation}\label{eq:kinematics:forward:mobile}
 \left[\begin{array}{c} \dot{x_I}\\\dot{y_I}\\\dot{\theta}\end{array}\right]=\left[\begin{array}{ccc}
 cos(\theta) & -sin(\theta) & 0 \\
 sin(\theta) & cos(\theta) & 0 \\
@@ -256,9 +274,9 @@ This is important, as it allows us to calculate the resulting wheel angles resul
 
 Assuming the wheel speed to be $\dot{\omega}$ and the wheel radius $r$, we can calculate the speeds in the robot's coordinate frame as:
 \begin{eqnarray}
-\dot{x}_r&=\dot{\omega}r \nonumber \\
-\dot{y}_r&=0\\
-\dot{\theta}_r&=\frac{\dot{\omega}r\tan\phi}{L} \nonumber
+\dot{x}_r&=&\dot{\omega}r \nonumber \\
+\dot{y}_r&=&0\\
+\dot{\theta}_r&=&\frac{\dot{\omega}r\tan\phi}{L} \nonumber
 \end{eqnarray}
 using (\ref{eq:ackermann}) to calculate the circle radius $R$.
 
