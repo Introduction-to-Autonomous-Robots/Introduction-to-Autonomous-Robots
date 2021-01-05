@@ -2,6 +2,12 @@
 \section{Forward Kinematics}\label{sec:kinematics:fwkarm}
 
 Now that we have introduced the notion of local coordinate frames, we are interested in calculating the pose and speed of these coordinate frames as a function of the robot's actuators and joint configuration.
+That is, we are interested in computing a function $f$ that allows us to map a joint configuration to its corresponding end-effector pose:
+\begin{equation}\label{eq:kinematics:forward}
+r=f(q)\ ,
+\end{equation}
+where $r$ is the task-space (end-effector) configuration and $q$ is the joint-space configuration  (e.g. a sequence of joint angles in case of a manipulator with revolute joints \td{we have not talked about revolute joints yet, remember to fix this}).
+%
 We will first consider simple mechanisms where we can determine the relationship between actuators and the pose of various frames on the robot both in the position and speed domain. We will then consider the special class of non-holonomous mechanisms using a series of wheeled robots, for which the forward kinematics can only be calculated in the speed domain.
 
 \subsection{Forward Kinematics of a simple robot arm}
@@ -32,7 +38,7 @@ y_2&=&y_1 + l_2 \sin(\alpha+\beta)
 %
 or together, the position of the end-effector $(x,y)$ is given by
 %
-\begin{eqnarray}\label{eq:cosx}
+\begin{eqnarray}\label{eq:fwk2dofarm}
 x&=&l_1 \cos \alpha + l_2 \cos(\alpha+\beta) \nonumber \\
 y&=&l_1 \sin \alpha + l_2 \sin(\alpha+\beta)
 \end{eqnarray}
