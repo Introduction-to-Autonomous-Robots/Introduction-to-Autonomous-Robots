@@ -16,3 +16,6 @@
 *.pdf
 *.dvi
 *.ps
+
+# ignore authors' working drafts
+book_*.tex
