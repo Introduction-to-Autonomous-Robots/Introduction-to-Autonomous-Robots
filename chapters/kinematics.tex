@@ -1,3 +1,27 @@
+%!TEX root = ../book.tex
+\chapter{Kinematics}\label{chap:kinematics}
+
+In order to plan a robot's movements, we have to understand the relationship between the actuators that we can control and the robot's resulting position in the environment. For static arms, this is rather straightforward: if we know the position/angle of each joint, we can calculate the position of its end-effectors using trigonometry. This process is known as \emph{forward kinematics}. \index{Forward Kinematics} If we want to calculate the position each joint needs to be at, we need to invert this relationship. This is known as \emph{inverse kinematics}. \index{Inverse Kinematics} For mobile robots, this process is usually more involved, as speeds need to be integrated, which we refer to as \emph{odometry}\index{Odometry}.
+
+The goals of this chapter are:
+
+\begin{itemize}
+\item to introduce coordinate systems and their transformations;
+\item to introduce the forward kinematics of simple arms and mobile robots;
+\item to understand the concept of holonomy;
+\item to show how solutions for the inverse kinematics for both static and mobile robots can be derived;
+\item to provide an intuition on the relationship between inverse kinematics and path-planning.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%
+%% ACTUAL CONTENT %%
+%%%%%%%%%%%%%%%%%%%%
+
+\input{chapters/kinematics-coordinatesystems}
+\input{chapters/kinematics-forward}
+\input{chapters/kinematics-inverse}
+
+%%%%%%%%%%%%%%%%%%%%
 
 \section*{Take-home lessons}
 
@@ -29,12 +53,13 @@ The inverse kinematics problem can then be formulated as feedback control proble
 \begin{enumerate}
 \item Consider a differential wheel robot with a broken motor, i.e., one of the wheels cannot be actuated anymore. Derive the forward kinematics of this platform. Assume the right motor is broken.
 \item Consider a tri-cycle with two independent standard wheels in the rear and the steerable, driven front-wheel. Choose a suitable coordinate system and use $\phi$ as the steering wheel angle and wheel-speed $\dot{\omega}$. Provide forward and inverse kinematics.
-\item Program an application that displays a differential wheel platform and allows you to control forward and rotational speed with your keyboard. Output the robot's pose after every step. 
+\item Program an application that displays a differential wheel platform and allows you to control forward and rotational speed with your keyboard. Output the robot's pose after every step.
 \item Program an application that display a two-link robotic arm moving in the plane and lets you change both joint angles using your keyboard.
-\item Derive the forward kinematics of a two-link robotic arm as well as its Jacobian. Implement its inverse kinematic using the inverse Jacobian technique. 
+\item Derive the forward kinematics of a two-link robotic arm as well as its Jacobian. Implement its inverse kinematic using the inverse Jacobian technique.
 \item Program an application that displays a two-link robotic arm moving in the plane and lets you change the position of its end-effector using your keyboard.
 \item Explore the internet for toolkits that allow you to manage forward and inverse kinematics for a robotic arm. What kind of tools do you find and what kind of input do they require to model the robot's geometry?
 \item Download the manual of a commercially available robot arm of your choice. What kind of input does it take from its user? Does it allow you to control its position directly?
-\item Use a robot simulator of your choice to access a simulated vehicle. What kind of actuator input can you provide and what are the sensors that are available? Drive the car using your keyboard and try to estimate its pose by implementing odometry. 
+\item Use a robot simulator of your choice to access a simulated vehicle. What kind of actuator input can you provide and what are the sensors that are available? Drive the car using your keyboard and try to estimate its pose by implementing odometry.
 \end{enumerate}
 \normalsize
+

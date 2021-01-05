@@ -4,6 +4,7 @@
 % US Trade => 6x9, with a 0.125 bleed
 % Adjust images size and gutter so tabs bleed by .125
 % See https://www.createspace.com/Products/Book/InteriorPDF.jsp
+
 \documentclass[paper=6.14in:9.21in,pagesize=pdftex,11pt,twoside,openright]{scrbook}
 %openright
 % Paper width
@@ -20,6 +21,13 @@
 % w = W - 2m - BCOR = 4.5in
 \areaset[0.375in]{4.5in}{8in}
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+% \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% Subfigure is deprecated
+% Subfig is not compatible with hyperref
+\usepackage{subcaption}
+\captionsetup     {labelfont  =   it, labelsep=period, font=small}
+\captionsetup[sub]{labelformat=simple,labelsep=period, font=small}
 
 %%% Examples of Article customizations
 % These packages are optional, depending whether you want the features they provide.
@@ -40,20 +48,34 @@
 \usepackage{array} % for better arrays (eg matrices) in maths
 \usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
 \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
-\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
 % These packages are all incorporated in the memoir class to one degree or another...
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{amsfonts}
-\usepackage[font={small,it}]{caption}
-\usepackage{url}
+\usepackage[usenames, dvipsnames, table]{xcolor}
 \usepackage{hyperref}
 \usepackage{harvard}
 \usepackage{marginnote}
 \usepackage[capitalize, noabbrev]{cleveref} % Used to improve refernces
 
+\colorlet{mylinkcolor}{BrickRed}
+\colorlet{mycitecolor}{PineGreen}
+\colorlet{myurlcolor}{NavyBlue}
+
+\hypersetup{
+  linkcolor  = mylinkcolor,
+  citecolor  = mycitecolor,
+  urlcolor   = myurlcolor,
+  colorlinks = true,
+}
+
 \usepackage{makeidx}
 \usepackage{idxlayout}
+
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
 
 \let\comment=\relax
 \usepackage[markup=bfit, deletedmarkup=sout, authormarkup=superscript]{changes}
@@ -79,8 +101,8 @@
 %\lfoot{}\cfoot{\thepage}\rfoot{}
 
 %%% SECTION TITLE APPEARANCE
-\usepackage{sectsty}
-\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+%\usepackage{sectsty} % HAD TO REMOVE THIS FOR \part TO WORK
+%\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
 % (This matches ConTeXt defaults)
 
 %%% ToC (table of contents) APPEARANCE
@@ -109,7 +131,7 @@
 \thispagestyle{empty}
 \begin{flushleft}
 Nikolaus Correll, Bradley Hayes, Christoffer Heckman, and Alessandro Roncone
-\\Introduction to Autonomous Robots
+\\Introduction to Autonomous Robots:  Mechanisms, Sensors, Actuators, and Algorithms
 \\v2.0, \today\\
 %Magellan Scientific\\
 %ISBN-13: 978-1493773077
@@ -122,7 +144,7 @@ Nikolaus Correll, Bradley Hayes, Christoffer Heckman, and Alessandro Roncone
 \includegraphics[width=1in]{figs/by-nc}
 \end{figure}
 
-This book is licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License. You are free to share, i.e., copy, distribute and transmit the work under the following conditions: You must attribute the work to its main author, and you may not use this work for commercial purposes. For more information, please consult \url{https://creativecommons.org/licenses/by-nc/3.0/us/}.
+This book is copyright by MIT Press. Its source code is licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License. You are free to share, i.e., copy, distribute and transmit sources under the following conditions: You must attribute the work to its main author, and you may not use this work for commercial purposes. For more information, please consult \url{https://creativecommons.org/licenses/by-nc/3.0/us/}.
 
 
 \cleardoublepage
@@ -161,28 +183,29 @@ Boulder, Colorado, \today
 \end{flushright}
 
 \input{chapters/introduction}
+
+\part{Mechanisms}
 \input{chapters/locomotion}
-\input{chapters/forwardkinematics1}
-\input{chapters/inversekinematics}
-\input{chapters/forwardkinematics3}
+\input{chapters/kinematics}
 \input{chapters/forces}
 \input{chapters/grasping}
 
+\part{Sensing}
 \input{chapters/sensors}
-
-
 \input{chapters/vision}
+
+\part{Actuation}
+
+\part{Computation}
+\input{chapters/taskexecution}
+\input{chapters/pathplanning}
+
 \input{chapters/features}
 \input{chapters/deeplearning}
 \input{chapters/errorpropagation}
-
-
 \input{chapters/localization}
 \input{chapters/mapping}
 \input{chapters/SLAM}
-
-\input{chapters/pathplanning}
-\input{chapters/taskexecution}
 \input{chapters/manipulation}
 
 
