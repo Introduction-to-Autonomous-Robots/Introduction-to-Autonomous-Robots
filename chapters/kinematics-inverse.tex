@@ -133,8 +133,8 @@ which will let the robot drive in a curve until it reaches the desired pose.
 \end{figure}
 
 
-\subsection{Inverse Jacobian Technique
-}\label{sec:invjac}
+\subsection{Inverse Jacobian Technique}\label{sec:invjac}
+
 The two-link arm (Figure~\ref{fig:fwk2dofarm}) involved only two free parameters, but was already pretty complex to solve analytically if the end-effector pose was not specified. One can imagine that things become very hard with more degrees of freedom or more complex geometries. (Mechanisms in which some axes intersect are simpler to solve than others, for example.) Fortunately, there are simple numerical techniques that work reasonably well. One of them known is as \emph{Inverse Jacobian}\index{Inverse Jacobian} technique:
 
 As we can easily calculate the resulting pose for every possible joint angle combination using the forward kinematic equations, we can calculate the error between desired and actual pose. This error actually provides us with a direction that the end-effector needs to move. As we only need to move tiny bits at a time and can then re-calculate the error, this is an attractive method to generate a trajectory that moves the arm to where we want it go and thereby solving the inverse kinematics problem.

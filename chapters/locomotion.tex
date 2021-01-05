@@ -8,6 +8,7 @@ Autonomous robots are systems that sense, actuate, compute, and communicate. Act
 \end{itemize}
 
 \section{Locomotion and Manipulation Examples}
+
 Locomotion includes very different concepts of motion including rolling, walking, running, jumping, sliding (undulatory locomotion), crawling, climbing, swimming, and flying. They are drastically different in terms of energy consumption, kinematics, stability, and capabilities required by the robot that implements them. Yet, the above definitions are loose and ambiguous: for example, ``swimming'' can be done using many different forms of propulsion systems. Similarly, a sliding motion on the ground might result into swimming with only few modifications.
 
 The way in which the individual parts of a robot can move with respect to each other and the environment is called the \emph{kinematics}\index{Kinematics} of the robot. Kinematics are only concerned with the position and speed (first derivative of position) of those parts, but not its \emph{dynamics}, which include acceleration (second derivative of position) and jerk (third derivative of position).
@@ -45,6 +46,8 @@ An example of a robot that has both statically and dynamically stable configurat
 
 
 \section{Degrees of Freedom}\label{sec:dof}
+
+\td{Add somewhere that there is a distinction to be made between the DoF in operational space and the DoF in joint space}
 
 The concept of \emph{degree of freedom}\index{Degree of Freedom}, often abbreviated as DoF, is important for defining the possible positions and orientations a robot can reach. An object in the physical world can have up to six degrees of freedom, namely forward/backward, sideways, and up/down as well as rotations around those axes. These rotations are known as pitch, yaw and roll and are illustrated in \cref{fig:pitchyawandroll}.
 
