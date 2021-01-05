@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{72.30287933bp}%
+    \setlength{\unitlength}{86.29358482bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,17 +50,19 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.14596912)%
+  \begin{picture}(1,0.96652434)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{fwk2dofarm.pdf}}%
-    \put(0.8115904,0.00000003){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}x\end{tabular}}}}%
-    \put(0.0727257,0.39288836){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}y\end{tabular}}}}%
+    \put(0.68000792,-0.00000006){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}x\end{tabular}}}}%
+    \put(0.06093474,0.32918962){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}y\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{fwk2dofarm.pdf}}%
-    \put(0.40843979,0.18178436){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\alpha$\end{tabular}}}}%
+    \put(0.34221979,0.15231173){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\alpha$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{fwk2dofarm.pdf}}%
-    \put(0.64886415,0.73593263){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\beta$\end{tabular}}}}%
-    \put(0.3175478,0.40608224){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$l_1$\end{tabular}}}}%
-    \put(0.32634394,0.65237047){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$l_2$\end{tabular}}}}%
+    \put(0.54366435,0.6166164){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\beta$\end{tabular}}}}%
+    \put(0.26606404,0.34024438){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$l_1$\end{tabular}}}}%
+    \put(0.27343407,0.54660211){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$l_2$\end{tabular}}}}%
+    \put(0.65734699,0.44338349){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$P_1$\end{tabular}}}}%
+    \put(0.23886622,0.88091544){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$P_2$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

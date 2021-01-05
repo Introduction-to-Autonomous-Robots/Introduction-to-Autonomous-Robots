@@ -86,7 +86,7 @@
     \put(0.66296633,0.28217039){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$y_{i+1}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=16]{denavit-hartenberg.pdf}}%
     \put(0.49646348,0.25201792){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$d_{i+1}$\end{tabular}}}}%
-    \put(0.88045352,0.48539478){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\alpha_{i}=0$\end{tabular}}}}%
+    \put(0.71923097,0.09478184){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\Large$\alpha_{i}=0$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=17]{denavit-hartenberg.pdf}}%
   \end{picture}%
 \endgroup%

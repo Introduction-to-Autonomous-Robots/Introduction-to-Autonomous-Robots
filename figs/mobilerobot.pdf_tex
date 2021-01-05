@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{299.6858139bp}%
+    \setlength{\unitlength}{334.91706848bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,19 +50,19 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.89918695)%
+  \begin{picture}(1,0.73562673)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0.37555836,0.78478246){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l} \end{tabular}}}}%
+    \put(0.33188108,0.6980013){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l} \end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{mobilerobot.pdf}}%
-    \put(0.01058638,0.02464119){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}${I}$\end{tabular}}}}%
-    \put(0.93339902,0.01601676){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$X_I$\end{tabular}}}}%
-    \put(-0.0001877,0.85260691){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$Y_I$\end{tabular}}}}%
-    \put(0.64221401,0.35619049){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\theta_I$\end{tabular}}}}%
+    \put(0.00530195,0.01782231){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}${I}$\end{tabular}}}}%
+    \put(0.83104026,0.01010512){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$X_I$\end{tabular}}}}%
+    \put(-0.00433876,0.69151133){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$Y_I$\end{tabular}}}}%
+    \put(0.57048616,0.31449462){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\theta_I$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{mobilerobot.pdf}}%
-    \put(0.30404625,0.44207376){\color[rgb]{0,0,0}\rotatebox{-17.294538}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}${R}$\end{tabular}}}}}%
-    \put(0.57252382,0.28191613){\color[rgb]{0,0,0}\rotatebox{-16.593287}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$X_R$\end{tabular}}}}}%
-    \put(0.43421665,0.71858924){\color[rgb]{0,0,0}\rotatebox{-20.537584}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$Y_R$\end{tabular}}}}}%
+    \put(0.2813277,0.37790738){\color[rgb]{0,0,0}\rotatebox{-17.294538}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}${R}$\end{tabular}}}}}%
+    \put(0.50812695,0.24803348){\color[rgb]{0,0,0}\rotatebox{-16.593287}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$X_R$\end{tabular}}}}}%
+    \put(0.38436887,0.6387712){\color[rgb]{0,0,0}\rotatebox{-20.537584}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$Y_R$\end{tabular}}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{mobilerobot.pdf}}%
   \end{picture}%
 \endgroup%

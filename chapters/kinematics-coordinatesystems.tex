@@ -1,3 +1,4 @@
+%!TEX root = ../book.tex
 \section{Coordinate Systems and Frames of Reference}\label{sec:coordsystems}
 
 \screencast{http://youtu.be/klBJi-MEeNQ}{coordinatesystem}
@@ -132,7 +133,7 @@ The inverse of an homogeneous transform can be constructed by inverting rotation
 
 We have now established a convenient notation to convert points from one coordinate system to another. There are many possible ways this can be done, in particular how rotation can be represented (see below), but all can be converted from one into the other.
 
-\subsection{Transformation arithmetic}
+\subsection{Concatenation of Transformations}\label{sec:kinematics:coordsystems:concatenation}
 
 Transformations can be combined: consider for example an arm with two links, reference frame $\{A\}$ at the base, $ \{B\} $ at its first joint, and $\{C\}$ at its end-effector. Given the transforms $ ^B_CT$ and $ ^A_BT$, we can write
 \begin{equation}

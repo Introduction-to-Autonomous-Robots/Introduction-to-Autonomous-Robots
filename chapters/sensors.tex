@@ -21,7 +21,7 @@ Think about the kind of data that you could obtain from an encoder, an accelerom
 Although an encoder is able to measure position, it is used in this function only on robotic arms. If the robot is non-holonomic, closed tours in its configuration space, i.e., robot motions that return the encoder values to their initial position, do not necessarily drive the robot back to its starting point. In those robots, encoders are therefore mainly useful to measure speed. An accelerometer instead, by definition, measures the derivative of speed. Vision, finally, allows to calculate the absolute position (or the integral of speed) if the environment is equipped with unique features. An additional fundamental difference between those three sensors is the amount and kind of data they provide. An accelerometer samples real-valued quantities that are digitized with some precision. An odometer instead delivers discrete values that correspond to encoder increments. Finally, a vision sensor delivers an array of digitized real-valued quantities (namely colors). Although the information content of this sensor exceeds that of the other sensors by far, cherry-picking the information that are really useful remains a hard, and largely unsolved, problem.
 
 
-\section{Proprioception of robot kinematics and internal forces}
+\section{Proprioception of robot kinematics and internal forces}\label{sec:sensors:encoders}
 \emph{Proprioception} \index{Proprioception} refers to the perception of internal states of a robot.
 This is different from \emph{exteroception}\index{Exteroception}, which describes sensing of anything outside of the robot. Proprioception includes awareness of the robot's joint angles, its speeds, as well torques and forces.
 
@@ -151,7 +151,7 @@ The speed at which a sensor can provide measurements is known as its \index{Band
 \item Construct a simple range scanner by mounting an ultra-sound sensor onto a servo motor. Implement a scanning routine that allows you to collect the raw data and display it on the screen. Can you see simple features such as corners and openings?
 \item Explore the internet for do-it-yourself robotics shops. What kind of sensors do they offer? What are the interfaces these sensors provide?
 \item Pick a physical sensor that you have access to. Can you design an experiment to characterize its precision and accuracy?
-\item Your task is to design a sensor that can detect the remaining void in a parcel for an e-commerce application. 
+\item Your task is to design a sensor that can detect the remaining void in a parcel for an e-commerce application.
 \begin{enumerate}
 \item What sensors could you think off that would allow you to measure the volume of the content in the box?
 \item What additional sensors could you use assuming the box is moving on a conveyor belt.
@@ -160,7 +160,7 @@ The speed at which a sensor can provide measurements is known as its \index{Band
 \end{enumerate}
 \item Your task is to design an autonomous cart that can automatically dock with shelves in the environment.
 \begin{enumerate}
-\item What kind of sensors could you use to locate the shelf in the environment? Assume that the shelf is the only object in a certain target area. 
+\item What kind of sensors could you use to locate the shelf in the environment? Assume that the shelf is the only object in a certain target area.
 \item What kind of physical measures could you take to simplify detection of the shelf?
 \item  What kind of sensors could you use to detect whether the shelf is in a suitable position for docking?
 \item What kind of physical measures could you take to simplify the sensing process?
