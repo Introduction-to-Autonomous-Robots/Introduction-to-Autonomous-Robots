@@ -1,5 +1,5 @@
 %!TEX root = ../book.tex
-\section{Inverse Kinematics}
+\section{Inverse Kinematics}\label{sec:kinematics:ik}
 
 The forward kinematics of a system are computed by means of a transformation matrix from the base of a manipulator (or a corner of the room) to the end-effector of a manipulator (or a mobile robot).
 As such, they are an exact description of the pose of the robot and they fully characterize its kinematic state.
@@ -7,7 +7,7 @@ Inverse Kinematics deal with the opposite problem, that is how to find a joint c
 To achieve this goal, we will need to solve the forward kinematics equations for joint angles as a function of the desired pose.
 With reference to \cref{eq:kinematics:forward}, inverse kinematics aims to solve the following:
 \begin{equation}\label{eq:kinematics:inverse}
-q = f^{-1} (r)\ ,
+q = f^{-1} (r)\ , \qquad f^{-1} : \mathbb{R}^m \rightarrow \mathbb{R}^n \ ,
 \end{equation}
 with a notation similar to \cref{eq:kinematics:forward}.
 For a mobile robot, we can do this only for velocities in the local coordinate system, and need more sophisticated methods to calculate appropriate trajectories for the robot.
@@ -25,7 +25,7 @@ For example a three-link arm that wants to reach a point that can be reached wit
 How many solutions there are for a given mechanism and pose quickly becomes non-intuitive.
 For example, a 6-DOF arm can reach certain points with up to $16$ different configurations!
 
-\subsection{Inverse Kinematics of a Simple Manipulator Arm}
+\subsection{Inverse Kinematics of a Simple Manipulator Arm}\label{sec:kinematics:inverse:arm}
 
 We will now look at the inverse kinematics of the $2-$link arm that we introduced in \cref{fig:fwk2dofarm}. We need to solve the equations determining the robot's forward kinematics by solving for $\alpha$ and $ \beta$.
 This is tricky, however, as we have to deal with complicated trigonometric expressions.
@@ -53,13 +53,13 @@ Solving for both degrees of freedom actually yields eight solutions, of which on
 \alpha &\rightarrow& \cos^{-1}\left(\frac{x^2 y + y^3 - \sqrt{4 x^4 - x^6 + 4 x^2 y^2 - 2 x^4 y^2 - x^2 y^4}}{2 (x^2 + y^2)}\right) \nonumber \\
 \beta &\rightarrow& -\cos^{-1}\left( \frac{1}{2}(-2+x^2+y^2) \right)
 \end{eqnarray}
-
-What will drastically simplify this problem, is to not only specificy the desired position, but also the orientation of the end-effector. In this case, a desired pose can be specified by
+1
+What will drastically simplify this problem, is to not only specify the desired position, but also the orientation $\theta$ of the end-effector. In this case, a desired pose can be specified by
 \begin{equation}
 \left[
 \begin{array}{cccc}
-cos\phi & -sin\phi & 0 & x\\
-sin\phi & cos\phi & 0 & y\\
+cos\theta & -sin\theta & 0 & x\\
+sin\theta & cos\theta & 0 & y\\
 0 & 0 & 1 & 0\\
 0 & 0 & 0 & 1
 \end{array}
@@ -67,7 +67,7 @@ sin\phi & cos\phi & 0 & y\\
 \end{equation}
 A solution can now be found by simply equating the individual entries of the transformation (\ref{eq:2armtrans}) with those of the desired pose. Specifically, we can observe:
 \begin{eqnarray}
-cos\phi &=& cos(\alpha+\beta)\\
+cos\theta &=& cos(\alpha+\beta)\\
 \nonumber
 x &=& \cos_{\alpha\beta}l_2+\cos\alpha l_1\\
 \nonumber
@@ -75,11 +75,11 @@ y &=& \sin_{\alpha\beta}l_2+\sin\alpha l_1
 \end{eqnarray}
 These can be reduced to
 \begin{eqnarray}
-\phi &=& \alpha + \beta \nonumber \\
-\cos\alpha &=& \frac{\cos_{\alpha\beta}l_2-x}{l_1}=\frac{\cos\phi l_2-x}{l_1} \\
-\sin\alpha &=& \frac{\sin_{\alpha\beta}l_2-y}{l_1}=\frac{\sin\phi l_2-y}{l_1} \nonumber
+\theta &=& \alpha + \beta \nonumber \\
+\cos\alpha &=& \frac{\cos_{\alpha\beta}l_2-x}{l_1}=\frac{\cos\theta l_2-x}{l_1} \\
+\sin\alpha &=& \frac{\sin_{\alpha\beta}l_2-y}{l_1}=\frac{\sin\theta l_2-y}{l_1} \nonumber
 \end{eqnarray}
-Providing the orientation of the robot in addition to the desired position therefore allows solving for $\alpha$ and $\beta$ just as a function of $x$, $y$ and $\phi$.
+Providing the orientation of the robot in addition to the desired position therefore allows solving for $\alpha$ and $\beta$ just as a function of $x$, $y$ and $\theta$.
 
 The main issue with the geometric approach detailed above is that it does not scale easily with an increase of DoF at the joints, and and it quickly becomes unhandy with more dimensions.
 For higher-DoF platforms, we can calculate a \textsl{numerical solution} using an approach that we will later see is very similar to path planning in mobile robotics.
@@ -101,11 +101,12 @@ As shown in \cref{fig:inversekinematics}, this function has a minima, in this ca
     \label{fig:inversekinematics}
 \end{figure}
 
-You can now think about inverse kinematics as a path finding problem from anywhere in the configuration space to the nearest minima. A formal approach to doing this will be discussed in Section~\ref{sec:advinvkinematics}. How to find shortest paths in space, that is finding the shortest route for a robot to get from A to B will be a subject of chapter~\ref{chap:pathplanning}.
+You can now think about inverse kinematics as a path finding problem from anywhere in the configuration space to the nearest minima. A formal approach to doing this will be discussed in \cref{sec:kinematics:inverse:feedbackcontrol}. How to find shortest paths in space, that is finding the shortest route for a robot to get from A to B will be a subject of chapter~\ref{chap:pathplanning}.
 
-\subsection{Inverse Kinematics of Mobile Robots}\label{sec:ivkmobile}
-As there is no unique relationship between the amount of rotation of a robot's individual wheels and its position in space, but for simple holonomic platforms such as a robot on a track, we will treat the inverse kinematics problem at first only for the velocities of the local robot coordinate frame.
+\subsection{Inverse Kinematics of Mobile Robots}\label{sec:kinematics:ik:mobile}
 
+There is no unique relationship between the amount of rotation of a robot's individual wheels and its position in space; however, for simple holonomic platforms such as a robot on a track, we will treat the inverse kinematics problem at first only for the velocities of the local robot coordinate frame.
+%
 Let's first establish how to calculate the necessary speed of the robot's center given a desired speed $ \dot{\xi_I}$ in world coordinates. We can transform the expression $ \dot{\xi_I}=T(\theta)\dot{\xi_R}$ by multiplying both sides with the inverse of $ T(\theta)$:
 
 \begin{equation}\label{eq:mbik}
@@ -114,39 +115,40 @@ T^{-1}(\theta)\dot{\xi_I}=T^{-1}(\theta)T(\theta)\dot{\xi_R}
 which leads to $ \dot{\xi_R}=T^{-1}(\theta)\dot{\xi_I}$. Here
 
 \begin{equation}
-T^{-1}=\left(\begin{array}{ccc}cos \theta & sin \theta & 0 \\ -sin \theta & cos \theta & 0 \\ 0 & 0 & 1\end{array}\right)
+T^{-1}=\left[\begin{array}{ccc}cos \theta & sin \theta & 0 \\ -sin \theta & cos \theta & 0 \\ 0 & 0 & 1\end{array}\right]
 \end{equation}
-which can be determined by actually performing the matrix inversion or by deriving the trigonometric relationships from the drawing.  Similarly, we can now solve
-
-\begin{equation}
-\left(\begin{array}{c} \dot{x_R}\\\dot{y_R}\\\dot{\theta}\end{array}\right)=\left(\begin{array}{c}\frac{r\dot{\phi_l}}{2}+\frac{r\dot{\phi_r}}{2}\\0\\\frac{\dot{\phi_r} r}{d}-\frac{\dot{\phi_l} r}{d}\end{array}\right)
-\end{equation}
-for $ \phi_l$, $ \phi_r$
+which can be computed by performing the matrix inversion or by deriving the trigonometric relationships from the drawing.  Similarly to \cref{sec:kinematics:inverse:arm}, we can now solve \cref{eq:kinematics:forward:mobile}
+% \begin{equation}
+% \left[\begin{array}{c} \dot{x_R}\\\dot{y_R}\\\dot{\theta}\end{array}\right]=\left[\begin{array}{c}\frac{r\dot{\phi_l}}{2}+\frac{r\dot{\phi_r}}{2}\\0\\\frac{\dot{\phi_r} r}{d}-\frac{\dot{\phi_l} r}{d}\end{array}\right]
+% \end{equation}
+for $ \phi_l$, $ \phi_r$:
 \begin{eqnarray}
 \dot{\phi}_l &= (2\dot{x}_R - \dot{\theta}d)/2r\\
 \nonumber
 \dot{\phi}_r &= (2\dot{x}_R + \dot{\theta}d)/2r
 \end{eqnarray}
-allowing us to calculate the robot's wheelspeed as a function of a desired $\dot{x}_R$ and $\dot{\theta}$, which can be calculated using (\ref{eq:mbik}).
+allowing us to calculate the robot's wheel speed as a function of a desired $\dot{x}_R$ and $\dot{\theta}$, which can be calculated using (\ref{eq:mbik}).
 
 Note that this approach does not allow us to deal with $\dot{y}_R \neq 0$, which might result from a desired speed in the inertial frame. Non-zero values for translation in y-direction are simply ignored by the inverse kinematic solution, and driving toward a specific point either requires feedback control (Section~\ref{sec:invjac}) or path planning (Chapter~\ref{chap:pathplanning}).
 
+\section{Inverse Kinematics using Feedback Control}\label{sec:kinematics:inverse:feedbackcontrol}
 
-\section{Inverse Kinematics using Feedback-Control}\label{sec:advinvkinematics}
-Solving the inverse kinematic problem for non-holonomic mobile robots require us to find a sequence of actuation commands. One way of doing this is to employ \emph{feedback control}\index{Feedback Control}. In a nutshell, feedback control uses the error between actual and desired position to calculate a trajectory piece that drives the robot a little closer to its desired pose. The process is then repeated until the error is marginally small. This approach can not only be used for mobile robots, but also for manipulator arms with kinematics that are too complicated to solve analytically.
+Solving the inverse kinematic problem for non-holonomic mobile robots requires us to find a sequence of actuation commands.
+One way of doing this is to employ \emph{feedback control}\index{Feedback Control}.
+In a nutshell, feedback control uses the error between actual and desired position to calculate a trajectory that drives the robot a little closer to its desired pose. The process is then repeated until the error is marginally small.
+This approach can not only be used for mobile robots, but also for manipulator arms with kinematics that are too complicated to solve analytically.
 
 \subsection{Feedback control for mobile robots}\label{sec:fbmobile}
-Assume the robot's position given by $x_r, y_r$ and $\theta_r$ and the desired pose as $x_g, y_g$ and $\theta_g$ with the subscript $g$ indicating ``goal''.
-We can now calculate the error in the desired pose by
+
+Assume the robot's position given by $x_r, y_r$ and $\theta_r$ and the desired pose as $x_g, y_g$ and $\theta_g$---with the subscript $g$ indicating ``goal''.
+We can now calculate the error in the desired pose by:
 \begin{eqnarray}
-\rho=\sqrt{(x_r-x_g)^2+(y_r-y_g)^2}\\
-\nonumber
-\alpha=\tan^{-1}{\frac{y_g-y_r}{x_g-x_r}}-\theta_r\\
-\nonumber
-\eta=\theta_g-\theta_r
+\rho  &=& \sqrt{(x_r-x_g)^2+(y_r-y_g)^2} \nonumber \\
+\alpha&=& \tan^{-1}{\frac{y_g-y_r}{x_g-x_r}}-\theta_r \\
+\eta  &=& \theta_g-\theta_r\ , \nonumber
 \end{eqnarray}
 which is illustrated in Figure~\ref{fig:trajectorygen}.
-These errors can be turned directly into robot's speeds, for example using a simple proportional controller with gains $p_1$, $p_2$ and $p_3$:
+These errors can be converted directly into robot's speeds, for example using a simple proportional controller with gains $p_1$, $p_2$ and $p_3$:
 \begin{eqnarray}
 \dot{x} &=& p_1 \rho\\
 \dot{\theta} &=& p_2 \alpha + p_3 \eta
@@ -165,68 +167,85 @@ which will let the robot drive in a curve until it reaches the desired pose.
 
 \subsection{Inverse Jacobian Technique}\label{sec:invjac}
 
-The two-link arm (Figure~\ref{fig:fwk2dofarm}) involved only two free parameters, but was already pretty complex to solve analytically if the end-effector pose was not specified. One can imagine that things become very hard with more degrees of freedom or more complex geometries. (Mechanisms in which some axes intersect are simpler to solve than others, for example.) Fortunately, there are simple numerical techniques that work reasonably well. One of them known is as \emph{Inverse Jacobian}\index{Inverse Jacobian} technique:
+The two-link arm in Figure~\ref{fig:fwk2dofarm} involved only two free parameters, but was already pretty complex to solve analytically if the end-effector pose was not specified.
+One can imagine that things become very hard with more degrees of freedom or more complex geometries (mechanisms in which some axes intersect are simpler to solve than others, for example).
+Fortunately, there are simple numerical techniques that work reasonably well in such situations.
+One of them is known as the \emph{Inverse Jacobian}\index{Inverse Jacobian} technique.
 
-As we can easily calculate the resulting pose for every possible joint angle combination using the forward kinematic equations, we can calculate the error between desired and actual pose. This error actually provides us with a direction that the end-effector needs to move. As we only need to move tiny bits at a time and can then re-calculate the error, this is an attractive method to generate a trajectory that moves the arm to where we want it go and thereby solving the inverse kinematics problem.
+As we can easily calculate the resulting pose for every possible joint angle combination using the forward kinematic equations, we can calculate the error between desired and actual pose.
+This error actually provides us with a direction of motion that the end-effector needs to move toward so as to minimize such error.
+As we only need to move tiny bits at a time and can then re-calculate the error, this is an attractive method to generate a trajectory that moves the arm to where we want it go and thereby solves the inverse kinematics problem.
 
-In order to do this, we need an expression that relates the desired speed of the robot's end-effector, i.e., the direction in which we want to move, to the speed at which we need to change our joints. Let the translational speed of a robot be given by
+In order to do this, we need an expression that relates the desired speed of the robot's end-effector, i.e. the direction in which we want to move, to the speed at which we need to change our joints.
+This is known as \emph{Differential Kinematics}\index{Differential Kinematics}, as we are operating in the space of velocities, which are the derivative of positions.
+Let the translational speed of a robot be given by:
 \begin{equation}
-v=\left(\begin{array}{c}
+v=\left[\begin{array}{c}
 \dot{x}\\
 \dot{y}\\
 \dot{z}
 \end{array}
-\right).
+\right].
 \end{equation}
-
- As the robot can potentially not only translate, but also rotate, we also need to specify its angular velocity. Let these velocities be given as a vector
+As the robot can potentially not only translate, but also rotate, we also need to specify its angular velocity. Let these velocities be given as a vector
 \begin{equation}
-\omega=\left(\begin{array}{c}
+\omega=\left[\begin{array}{c}
 \omega_x\\
 \omega_y\\
 \omega_z
 \end{array}
-\right).
+\right].
 \end{equation}
-
+We can now write translational and rotational velocities in a $6\times1$ vector as $[v \ \omega]^T$.
 This notation is also called a \emph{velocity screw}.\index{Screw (velocity)}\index{Velocity Screw} %By convention, the speed of rotation is given by the magnitude (or length) of this vector.
-We can now write translational and rotational velocities in a 6x1 vector as $ (v \quad \omega)^T$. Let the joint angles/positions be $j=(j_1, \ldots, j_n)$.
-
-Given a relationship between end-effector velocities $\dot{j}$ and joint velocities $J$, we can write
+Let the joint angles/positions be $q=[q_1, \ldots, q_n]^T$, and the set of joint speeds be $\dot{q}=[\dot{q}_1, \ldots, \dot{q}_n]^T$.
+\td{I changed from $j$ to $q$ since $q$ is what everybody uses. I also changed a lot of the stuff below because it was confusing. Nikolaus please ack that you are aware of this.}
+%
+We now want to compute the differential kinematics version of \cref{eq:kinematics:forward}, which relates end-effector velocities $[v \ \omega]^T$ and joint velocities $\dot{q}$:
 \begin{equation}
- (v \quad \omega)^T=J(\dot{j}_1,\ldots,\dot{j}_n)^T
+[v \quad \omega]^T=J\cdot [\dot{q}_1,\ldots,\dot{q}_n]^T
 \end{equation}
-with $ n$ the number of joints. $J$ is also known as the Jacobian matrix \index{Jacobian Matrix} and contains all partial derivatives that relate every joint angles to every velocities. In practice, $J$ looks like
+$J$ is known as the \emph{Jacobian matrix} \index{Jacobian Matrix} and contains all the partial derivatives of $f$ that relate every joint angle to every velocity. In practice, $J$ looks like:
 
 \begin{equation}
-\left(\begin{array}{c}v\\\omega\end{array}\right)=\left(\begin{array}{ccc}\frac{\partial{x}}{\partial{j_1}} & \ldots & \frac{\partial{x}}{\partial{j_n}}\\\vdots & \quad & \vdots\\\frac{\partial{\omega_z}}{\partial{j_1}} & \ldots & \frac{\partial{\omega_z}}{\partial{j_n}}\end{array}\right)(j_1,\ldots,j_n)^T
+\left[\begin{array}{c}v\\\omega\end{array}\right]=
+\left[\begin{array}{c}\dot{x}\\
+\dot{y}\\
+\dot{z}\\
+\omega_x\\
+\omega_y\\
+\omega_z\end{array}\right]=
+\left[\begin{array}{cccc}\frac{\partial{x}}{\partial{q_1}} & \frac{\partial{x}}{\partial{q_2}} & \ldots & \frac{\partial{x}}{\partial{q_n}}\\\frac{\partial{y}}{\partial{q_1}} & \frac{\partial{y}}{\partial{q_2}} & \ldots & \frac{\partial{y}}{\partial{q_n}}\\\vdots & \vdots & \vdots & \vdots\\\frac{\partial{\omega_z}}{\partial{q_1}} & \frac{\partial{\omega_z}}{\partial{q_2}} & \ldots & \frac{\partial{\omega_z}}{\partial{q_n}}\end{array}\right]\left[\begin{array}{c}q_1\\\vdots\\q_n\end{array}\right]
 \end{equation}
 
-This notation is important as it tells us how small changes in the joint space will affect the end-effector's position in cartesian space. Better yet, the forward kinematics of a mechanism can always be calculated, as well as their analytical derivatives, allowing us to calculate numerical values for the entries of matrix $J$ for every possible joint angle/position.
+This notation is important as it tells us how small changes in joint space will affect the end-effector's position in cartesian space. Better yet, the forward kinematics of a mechanism can always be calculated, as well as their analytical derivatives, allowing us to calculate numerical values for the entries of matrix $J$ for every possible joint angle/position.
 
-It would now be desirable to just invert $J$ in order to calculate the necessary joint speeds for every desired end-effector speeds. Unfortunately, $ J$ is only invertible if there are exactly 6 independent joints, so that $ J$ is quadratic and has full rank. If this is not the case, we can use the pseudo-inverse instead:
+It would now be desirable to just invert $J$ in order to calculate the necessary joint speeds for every desired end-effector speeds---a problem known as \emph{Inverse Differential Kinematics}\index{Inverse Differential Kinematics}. Unfortunately, as any matrix $J$ is only invertible if the number of degrees of freedom in joint space $n$ equals the number of degrees of freedom in task space $m$, so that $ J$ is quadratic and has full rank.
+In the case above, the velocity wrench $[v \ \omega]^T$ is $6-$dimensional, and this means that $n$ should be equal to $6$: therefore, inversion of $J$ is only possible if the robot under consideration is equipped with exactly $6$ actuators/joints.
+If this is not the case, we can use the pseudo-inverse computation:
 \begin{equation}
 J^+=\frac{J^T}{JJ^T}=J^T(JJ^T)^{-1}
 \end{equation}
 As you can see, $J^T$ cancels from the equation leaving $1/J$, while being applicable to non-quadratic matrices.
-
-This solution might or might not be numerically stable, depending on the current joint values. If the inverse of $J$ is mathematically not feasible, we speak of a \emph{singularity}\index{Singularity} of the mechanism. This happens for example when two joint axes line up, therefore effectively removing a degree of freedom from the mechanism, or at the boundary of the workspace. Mathematically speaking the rank of the Jacobian is smaller than six.
-
 We can now write a simple feedback controller that drives our error $e$ as the difference between desired and actual position to zero:
 \begin{equation}
-\Delta{j}=-J^+e
+\Delta{q}=-J^+e
 \end{equation}
-That is, we move each joint a tiny bit into the direction that minimizes $e$.
-It can be easily seen that the joint speeds are only zero if $e$ has become zero. A problem arises, however, when the end-effector has to go through a singularity to get to its goal. Then, the solution to $ J^+$ ``explodes'' and joint speeds go to infinity. In order to work around this, we can introduce damping to the controller.
+That is, we move each joint a tiny bit into the direction that minimizes our error $e$.
+It can be easily seen that the joint speeds are only zero if $e$ has become zero.
 
-This can be achieved by not only minimizing the error, but also the joint velocities. Thus, the minimization problem becomes
+This solution might or might not be numerically stable, depending on the current joint values. If the inverse of $J$ is mathematically not feasible, we speak of a \emph{singularity}\index{Singularity} of the mechanism. This happens for example when two joint axes line up, therefore effectively removing a degree of freedom from the mechanism, or at the boundary of the workspace. As it happens very often in robotics, the concept of singularity has both a strong methematical justification (the joint configuration is such that the Jacobian is not full rank any more), and a direct physical consequence: singularity configurations are to be avoided as no solution for the inverse differential kinematics problem exist and the robot might become unsafe to operate.
+In a singularity, the solution to $ J^+$ ``explodes'' and joint speeds go to infinity. In order to work around this, we can introduce damping to the controller.
+
+In this case, we do not only minimize the error, but also the joint velocities. The minimization problem then becomes:
 \begin{equation}
-\|J\Delta j-e\|+\lambda^2\|\Delta j\|^2
+\|J\Delta q-e\|+\lambda^2\|\Delta q\|^2
 \end{equation}
-where $\lambda$ is some constant. One can show that the resulting controller that achieves this has the form
+where $\lambda$ is some constant. One can show that the resulting controller that achieves this has the form:
 \begin{equation}
-\Delta j=(J^TJ+\lambda^2 I)^{-1}J^+e
+\Delta q=(J^TJ+\lambda^2 I)^{-1}J^+e
 \end{equation}
 
 This is known as the \emph{Damped Least-Squares} method.\index{Damped Least-Squares Method} Problems with this approach are local minima and singularities of the mechanism, which might render this solution infeasible.
 
+\td{Nikolaus: Given that you ended the Forward kinematics chapter with Denavit Hartenberg, do you want me to add a couple pages on how to compute the jacobian under the DH convention? }
