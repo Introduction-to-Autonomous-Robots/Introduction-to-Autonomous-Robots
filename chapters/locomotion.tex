@@ -46,10 +46,7 @@ An example of a robot that has both statically and dynamically stable configurat
 
 
 \section{Degrees of Freedom}\label{sec:dof}
-
-\td{Add somewhere that there is a distinction to be made between the DoF in operational space and the DoF in joint space}
-
-The concept of \emph{degree of freedom}\index{Degree of Freedom}, often abbreviated as DoF, is important for defining the possible positions and orientations a robot can reach. An object in the physical world can have up to six degrees of freedom, namely forward/backward, sideways, and up/down as well as rotations around those axes. These rotations are known as pitch, yaw and roll and are illustrated in \cref{fig:pitchyawandroll}.
+The concept of \emph{degree of freedom}\index{Degree of Freedom}, often abbreviated as DoF, is important for defining the possible positions and orientations a robot can reach. An object in the physical world can have up to six \bh{\emph{Cartesian}} degrees of freedom, namely forward/backward, sideways, and up/down as well as rotations around those axes. These rotations are known as pitch, yaw and roll and are illustrated in \cref{fig:pitchyawandroll}. \bh{These Cartesian degrees of freedom are distinct from the robot's mechanical degrees of freedom, which correspond to the number of points of actuation for a robot (i.e., a robotic arm with five joint motors is referred to as having five mechanical degrees of freedom).}
 
 \begin{figure}
 	\centering
@@ -95,15 +92,15 @@ Spherical wheel \includegraphics[width=2.5cm]{figs/wheeltype_spherical.png}& Bal
 \caption{Different types of wheels and their degrees of freedom. Adopted from \protect\citeasnoun{siegwart2011introduction},\label{tab:wheels}}
 \end{table}
 
-Only robots that use exclusively wheels with three degrees-of-freedom (3-DOF wheels) will be able to freely move on a plane. This is because the pose of a robot on a plane is fully given by its position (two values) and its orientation (one value). Robots that don't have wheels with three degrees of freedom will have \emph{kinematic constraints}\index{Kinematic constraints} that prevent them from reaching every possible point at every possible orientation. For example, a bicycle wheel can only roll into one direction and turn on the spot. Moving the bicycle wheel orthogonal to its direction of rolling is not possible, unless it is forcefully dragged (``skidding''), which requires more involved treatment not covered in this book. On the other hand, not having three degrees of freedom does not mean that not all poses in the plane can be reached.
-A good analogue are figures on a chess-board. For example, a knight can reach every cell on a chess-board but might require multiple moves to do so. This is similar to a car, which can parallel park using back-and-forth motions. Instead, a bishop can only reach either black or white fields on the board.
+Only robots that use exclusively wheels with three degrees-of-freedom (3-DOF wheels) will be able to freely move on a plane. This is because the pose of a robot on a plane is fully given by its position (two values) and its orientation (one value). Robots that don't have wheels with three degrees of freedom will have \emph{kinematic constraints}\index{Kinematic constraints} that prevent them from reaching every possible point at every possible orientation. For example, a bicycle wheel can only roll into one direction and turn on the spot. Moving the bicycle wheel orthogonal to its direction of rolling is not possible, unless it is forcefully dragged (``skidding''), which requires more involved treatment not covered in this book. On the other hand, not having three degrees of freedom does not imply that some poses in the plane are unreachable, it may just require additional movements to achieve them.
+A good analogue are figures on a chess-board. For example, a knight can reach every cell on a chess-board but might require multiple moves to do so. This is similar to a car, which can parallel park using back-and-forth motions. Instead, a bishop can only reach either black or white fields on the board, based upon its starting position.
 
 Similar reasoning applies to aerial and underwater robots. Here, the position of the robot is affected by the position and orientation of thrusters, either in the form of jets or propellers, mounted on the robot. Things become complicated quickly, however, as the dynamics of the system are subject to fluid- and aerodynamic effects, which also change as a function of size of the robot. This book will not go into the details of flying and swimming robots, but the general principles of localization and planning will be applicable to them as well.
 
 \begin{framed}Think about possible wheel, propeller and thruster configurations. Don't limit yourself to robots, but consider also street and aerial vehicles and be creative --- if you can think about a setup that makes sense, i.e., allows for reasonable mobility --- somebody will already have built it and analyzed it. What are the advantages and disadvantages of each?
 \end{framed}
 
-For manipulating arms, degrees of freedom usually refer to the positions and orientations, i.e., rotations around the primary axes, the end-effector can reach. As a rule of thumb, each joint usually adds a degree of freedom unless they are redundant, that is, moving in the same direction. \cref{fig:basickinematics} shows a series of manipulators operating in a plane. By this, the degrees of freedom of the end-effector are limited to moving up and down, sideways, and rotating around its pivot point. As a plane only has those three degrees of freedom, adding additional joints cannot increase the degrees of freedom unless they allow the robot to also move in and out of the plane.
+For manipulating arms, Cartesian degrees of freedom refer to the positions and orientations (rotations around the primary axes) that the end-effector can reach. Each actuated joint will typically add a degree of freedom, unless it is redundant (moving in the same direction, with the same physical effect, as a different joint). \cref{fig:basickinematics} shows a series of manipulators operating in a plane. By this, the degrees of freedom of the end-effector are limited to moving up and down, sideways, and rotating around its pivot point. As a plane only has those three degrees of freedom, adding additional joints cannot increase the Cartesian degrees of freedom unless they allow the robot to also move in and out of the plane.
 
 An exact definition of the number of degrees of freedom is tricky and requires deriving analytical expressions for the end-effector position and orientation, which will be subject to \cref{chap:kinematics}.
 
@@ -120,7 +117,7 @@ Choosing the ``right'' kinematics is a trade-off between mechanical complexity, 
 \section*{Take-home lessons}
 
 \begin{itemize}
-\item In order to do planning for a robot, you need to understand how its control parameters map to actions in the physical world.
+\item In order to perform planning for a robot, it's necessary to understand how its control parameters map to actions in the physical world.
 \item The kinematics of a robot are fully defined by the position and orientation of its wheels, joints and links no matter whether it swims, flies, crawls or drives.
 \item Many robotic systems cannot be fully understood by considering kinematics alone, but require you to model their dynamics as well. This book will be limited to modeling kinematics, which is sufficient for low-speed, mobile robots and arms.
 \end{itemize}
@@ -128,12 +125,12 @@ Choosing the ``right'' kinematics is a trade-off between mechanical complexity, 
 
 \section*{Exercises}\small
 \begin{enumerate}
-\item What are the degrees of freedom of a lawnmower with four standard wheels? Why are you still able to mow your entire lawn? In other words, what is the trick you are using to increase the lawnmower's degrees of freedom.
-\item Is a car statically or dynamically stable? What about a roller?
-\item What are the degrees of freedom of an office chair with all caster-wheels?
-\item What are the maximum degrees of freedom for objects driving on the plane?
-\item What are the maximum degrees of freedom for objects that can freely move in the world?
-\item Calculate the degrees of freedom of a differential wheels robot with a front caster wheel. What happens when you add a second caster wheel?
-\item Calculate the degrees of freedom of a standard car. How can you still reach every point on the plane?
+\item What are the Cartesian degrees of freedom of a push lawnmower with four wheels? How is it still possible to mow an entire lawn with one, even though the wheels don't yaw?
+\item Is a car statically or dynamically stable? What about a motorcycle?
+\item What are the Cartesian degrees of freedom of an office chair with all caster-wheels?
+\item What are the maximum Cartesian degrees of freedom for orientable objects driving on the plane?
+\item What are the maximum Cartesian degrees of freedom for objects that can freely translate and rotate in the world?
+\item Calculate the Cartesian degrees of freedom of a differential drive robot with two powered rear wheels and a central, front-mounted caster wheel. What happens when you add a second caster wheel?
+\item Calculate the Cartesian degrees of freedom of a standard car. How is it possible to still reach every point on the plane?
 \item A steering wheel allows you to change the yaw of your car. Can you also change its pitch and its roll?
 \end{enumerate}\normalsize
