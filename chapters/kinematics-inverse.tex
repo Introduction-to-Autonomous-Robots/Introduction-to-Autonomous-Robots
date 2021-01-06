@@ -1,5 +1,5 @@
 %!TEX root = ../book.tex
-\section{Inverse Kinematics}
+\section{Inverse Kinematics}\label{sec:kinematics:ik}
 
 The forward kinematics of a system are computed by means of a transformation matrix from the base of a manipulator (or a corner of the room) to the end-effector of a manipulator (or a mobile robot).
 As such, they are an exact description of the pose of the robot and they fully characterize its kinematic state.
@@ -101,9 +101,9 @@ As shown in \cref{fig:inversekinematics}, this function has a minima, in this ca
     \label{fig:inversekinematics}
 \end{figure}
 
-You can now think about inverse kinematics as a path finding problem from anywhere in the configuration space to the nearest minima. A formal approach to doing this will be discussed in Section~\ref{sec:advinvkinematics}. How to find shortest paths in space, that is finding the shortest route for a robot to get from A to B will be a subject of chapter~\ref{chap:pathplanning}.
+You can now think about inverse kinematics as a path finding problem from anywhere in the configuration space to the nearest minima. A formal approach to doing this will be discussed in \cref{sec:kinematics:inverse:feedbackcontrol}. How to find shortest paths in space, that is finding the shortest route for a robot to get from A to B will be a subject of chapter~\ref{chap:pathplanning}.
 
-\subsection{Inverse Kinematics of Mobile Robots}\label{sec:kinematics:inverse:mobile}
+\subsection{Inverse Kinematics of Mobile Robots}\label{sec:kinematics:ik:mobile}
 
 There is no unique relationship between the amount of rotation of a robot's individual wheels and its position in space; however, for simple holonomic platforms such as a robot on a track, we will treat the inverse kinematics problem at first only for the velocities of the local robot coordinate frame.
 %
@@ -248,3 +248,4 @@ where $\lambda$ is some constant. One can show that the resulting controller tha
 
 This is known as the \emph{Damped Least-Squares} method.\index{Damped Least-Squares Method} Problems with this approach are local minima and singularities of the mechanism, which might render this solution infeasible.
 
+\td{Nikolaus: Given that you ended the Forward kinematics chapter with Denavit Hartenberg, do you want me to add a couple pages on how to compute the jacobian under the DH convention? }

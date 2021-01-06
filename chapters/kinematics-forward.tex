@@ -1,5 +1,5 @@
 %!TEX root = ../book.tex
-\section{Forward Kinematics}\label{sec:kinematics:fwkarm}
+\section{Forward Kinematics}\label{sec:kinematics:fwk}
 
 Now that we have introduced the notion of local coordinate frames, we are interested in calculating the pose and speed of these coordinate frames as a function of the robot's actuators and joint configuration.
 That is, we are interested in computing a function $f$ that allows us to map a joint configuration to its corresponding end-effector pose:
@@ -23,7 +23,7 @@ cartesian space $\equiv$ task space.
 Forward kinematics maps from joint space to task space, and inverse kinematics does the opposite.
 \end{framed}
 
-\subsection{Forward Kinematics of a simple robot arm}
+\subsection{Forward Kinematics of a simple robot arm}\label{sec:kinematics:fwk:arm}
 
 \begin{figure}[!htb]%{L}{0.3\textwidth}
     \centering
@@ -81,7 +81,7 @@ The notation $sin_{\alpha\beta}$ and $cos_{\alpha\beta}$ are shorthand for $sin(
 This transformation now allows us to transform from the robot's base to the robot's end-effector configuration $r = [x, y, \theta]^T$ as a function of the joint configuration $q = [\alpha, \beta]^T$.
 This transformation will be helpful if we want to calculate suitable joint angles in order to reach a certain pose (i.e., inverse kinematics) or if we want to convert measurements taken relative to the end-effector back into the base's coordinate system (e.g., when we have sensors mounted on the end effector whose output needs to be mapped back to the world reference frame).
 
-\subsection{Forward Kinematics of a Differential Wheels Robot}\label{sec:kinematics:fwkmobile}
+\subsection{Forward Kinematics of a Differential Wheels Robot}\label{sec:kinematics:fwk:mobile}
 
 Whereas the pose of a robotic manipulator is uniquely defined by its joint angles---which can be made available using encoders in almost real-time, see \cref{sec:sensors:encoders}---this is not the case for a mobile robot.
 Here, the encoder values simply refer to wheel orientation and need to be integrated over time in order to assess the robot's position with respect to the worlds frame of reference; as we will later see, this is a great source of uncertainty.
@@ -222,8 +222,8 @@ sin(\theta) & cos(\theta) & 0 \\
 
 \subsubsection{From Forward Kinematics to Odometry}
 
-\cref{eq:diffwheels} only provides us with the relationship between the robot's wheel speed and its speed in the inertial frame.
-Calculating its actual pose in the inertial frame is known as \emph{odometry}\index{Odometry}. Technically, it requires integrating \cref{eq:diffwheels} from 0 to the current time $T$.
+\cref{eq:kinematics:forward:mobile} only provides us with the relationship between the robot's wheel speed and its speed in the inertial frame.
+Calculating its actual pose in the inertial frame is known as \emph{odometry}\index{Odometry}. Technically, it requires integrating \cref{eq:kinematics:forward:mobile} from 0 to the current time $T$.
 As this is not possible but for very special cases, one can approximate the robot's pose by summing up speeds over discrete time intervals, or more precisely:
 \begin{equation}
 \left[\begin{array}{c} {x_I}(T)\\{y_I}(T)\\{\theta}(T)\end{array}\right]=
@@ -239,7 +239,7 @@ using $\Delta x(k) \approx \dot{x_I}(t)$ and similar expressions for $y_I$ and $
 \noindent Don't let the notion of an integral worry you! As robots' computers are fundamentally discrete, integrals usually turn into sums, which are nothing than for-loops.
 \end{framed}
 
-\subsection{Forward kinematics of Car-like steering}\label{sec:kinematics:carsteering}
+\subsection{Forward kinematics of Car-like steering}\label{sec:kinematics:fwk:car}
 
 Differential wheel drives are very popular in mobile robotics as they are very easy to build, maintain, and control.
 Although not holonomic, a differential drive can approximate the function of a fully holonomic robot by first driving on the spot to achieve the desired heading and then driving straight.
@@ -280,7 +280,7 @@ Assuming the wheel speed to be $\dot{\omega}$ and the wheel radius $r$, we can c
 \end{eqnarray}
 using (\ref{eq:ackermann}) to calculate the circle radius $R$.
 
-\subsection{The Denavit-Hartenberg notation}\label{sec:kinematics:dh}
+\subsection{The Denavit-Hartenberg notation}\label{sec:kinematics:fwk:dh}
 
 So far, we have considered the forward kinematics of wheeled mechanisms and simple arms and derived relationships between actuator parameters and velocities using basic trigonometry.
 In the case of multi-link arms (which is the vast majority of robot manipulators in existence), the approach detailed in \cref{sec:kinematics:fwkarm} is difficult to scale, and alternative solutions are needed.
