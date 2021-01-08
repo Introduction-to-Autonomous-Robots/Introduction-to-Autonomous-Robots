@@ -129,7 +129,7 @@ for $ \phi_l$, $ \phi_r$:
 \end{eqnarray}
 allowing us to calculate the robot's wheel speed as a function of a desired $\dot{x}_R$ and $\dot{\theta}$, which can be calculated using (\ref{eq:mbik}).
 
-Note that this approach does not allow us to deal with $\dot{y}_R \neq 0$, which might result from a desired speed in the inertial frame. Non-zero values for translation in y-direction are simply ignored by the inverse kinematic solution, and driving toward a specific point either requires feedback control (Section~\ref{sec:invjac}) or path planning (Chapter~\ref{chap:pathplanning}).
+Note that this approach does not allow us to deal with $\dot{y}_R \neq 0$, which might result from a desired speed in the inertial frame. Non-zero values for translation in y-direction are simply ignored by the inverse kinematic solution, and driving toward a specific point either requires feedback control (Section~\ref{sec:kinematics:ik:invjac}) or path planning (Chapter~\ref{chap:pathplanning}).
 
 \section{Inverse Kinematics using Feedback Control}\label{sec:kinematics:inverse:feedbackcontrol}
 
@@ -165,7 +165,7 @@ which will let the robot drive in a curve until it reaches the desired pose.
 \end{figure}
 
 
-\subsection{Inverse Jacobian Technique}\label{sec:invjac}
+\subsection{Inverse Jacobian Technique}\label{sec:kinematics:ik:invjac}
 
 The two-link arm in Figure~\ref{fig:fwk2dofarm} involved only two free parameters, but was already pretty complex to solve analytically if the end-effector pose was not specified.
 One can imagine that things become very hard with more degrees of freedom or more complex geometries (mechanisms in which some axes intersect are simpler to solve than others, for example).
@@ -248,4 +248,6 @@ where $\lambda$ is some constant. One can show that the resulting controller tha
 
 This is known as the \emph{Damped Least-Squares} method.\index{Damped Least-Squares Method} Problems with this approach are local minima and singularities of the mechanism, which might render this solution infeasible.
 
-\td{Nikolaus: Given that you ended the Forward kinematics chapter with Denavit Hartenberg, do you want me to add a couple pages on how to compute the jacobian under the DH convention? }
+\td{Nikolaus: Given that you ended the Forward kinematics chapter with Denavit Hartenberg, do you want me to add a couple pages on how to compute the jacobian under the DH convention? It's kinda easy}
+
+\td{Nikolaus: what about redundancy? It's also an easy enough to understand concept}

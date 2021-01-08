@@ -1,11 +1,11 @@
 %!TEX root = ../book.tex
-\chapter{Statics and Force Considerations}
-\label{ch:forces}
+\chapter{Statics and Force Considerations}\label{ch:forces}
 %alessandro
 
-So fare, we have only been concerned with how robots move. Obviously, moving a robot not only requires force, but also exerts forces in the environment. While this aspect can be ignored in basic applications of mobile robots and simple manipulation, it becomes critical as soon as robots interact more closely with people or need to diligently manipulate an object.
+So far, we have only been concerned with how robots move and the \textsl{geometry of motion}.
+However, moving a robot not only requires a kinematic model of the platforms, but also an understanding of the forces needed to move the robot and interact with the environment.
+While this aspect can be ignored in basic applications of mobile robots and simple manipulation, it becomes critical as soon as robots interact more closely with people or need to engage in more complex manipulation.
 
-The Jacobian formulation introduced in \cref{sec:invjac} pertains to the field known as \emph{Differential Kinematics}, which relates joint velocities with end-effector linear and angular velocities. 
 %The (geometric) Jacobian represents a fundamental tool to characterize the motion and the interaction of a robot with its environment, as it is used to perform the following \cite{sciavicco2012modelling}):
 %\begin{enumerate}
 %\item inverse differential kinematics even for robots that do not have a closed-form solution (\cref{sec:invjac});
@@ -13,29 +13,67 @@ The Jacobian formulation introduced in \cref{sec:invjac} pertains to the field k
 %\item redundancy analysis (a kinematic task is redundant if the robot possesses more degrees of freedom than what are needed to perform the task, resulting in infinite inverse kinematics solutions to choose from);
 %\item manipulability analysis (i.e. how easy or difficult is it for a robot to move in a certain direction).
 %\end{enumerate}
-In this Chapter, we will investigate the role of the Jacobian in relating forces and moments applied at the end-effector and the resulting joint torques at equilibrium configurations--a field usually referred to as \emph{Statics}.
+In this Chapter, we will introduce the reader to the concept of \emph{Statics}\index{Statics}, which introduces a third dimension to the problem of analyzing how robots move in space and interact with their surroundings.
+More specifically, in \cref{sec:kinematics:fwk,sec:kinematics:ik} we have investigated the \textsl{kinematic} problem and operated in the space of \textsl{positions}, that is, how to map joint angles with end effector poses.
+In \cref{sec:kinematics:ik:invjac}, we introduced the \textsl{differential kinematics} problem and operated in the space of \textsl{velocities}, i.e. how to map joint velocities with end-effector velocity screws (remember: velocity is derivative of position, hence the name ``differential'').
+In the following, we will operate in the space of \textsl{forces}; however, we will simplify the more general dynamical problem by looking at the robot in equilibrium---otherwise known as a \textsl{static} configuration.
+As we will see, a lot can be done by simply looking at the robot in an equilibrium configuration!
+The last dimension, which goes beyond the scope of this book, is called \textsl{dynamics} and operates in the space of forces from a non-static perspective; it involves the second derivative of position (i.e. the acceleration), and is a generalization of the second law of Newton ($F=ma$).
+We will briefly introduce the reader to the topic in \cref{ch:forces:dynamics}.\td{remember to remove this sentence if we decide not to have the subchapter on dynamics}
+%
+The goals of this chapter are to:
 
-% \section{Notation}
+\begin{itemize}
+\item introduce the concept of statics
+\item understand the so called kineto-statics duality
+\item \td{finish thiswhen the chapter is finished}
+\item briefly introduce the dynamics problem.
+\end{itemize}
 
-% \paragraph*{Generalized forces}
+
+\begin{framed}
+\noindent The analysis of motion of a robot can be thought as a layered system with multiple levels of abstraction of increasing complexity.
+The more complex it becomes, the more comprehensive your analysis will be, and the more capability you will be able to squeeze out of the robot!
+However, it is good practice to start with the simplest layer first (i.e. kinematics), and gradually progress toward a dynamic analysis only if needed.
+\end{framed}
 
 \section{Statics}
 
-\emph{Statics} deals with relating forces at the end-effector and generalized forces at the robot joints---either torques for revolute joints or forces for prismatic joints---when the robot is in \emph{static equilibrium}, i.e. the acceleration of the robot and all of its components is zero
+In this Chapter, we will investigate the role of the Jacobian in relating joint torques $\tau$ with forces and moments $[f \ m]^T$ applied at the end-effector--and we are going to do all of this in equilibrium (or \textsl{static}) configurations.
+
+
+The Jacobian formulation introduced in \cref{sec:invjac} pertains to the field known as \emph{Differential Kinematics}, which relates joint velocities $\dot{q}$ with end-effector linear and angular velocities (i.e. the velocity screw $[v \ \omega]^T$).
+
+
+  deals with relating forces at the end-effector and generalized forces at the robot joints---either torques for revolute joints or forces for prismatic joints---when the robot is in \emph{static equilibrium}, i.e. the acceleration of the robot and all of its components is zero
 (for simplicity, we will hereinafter refer to robot manipulators equipped with revolute joints unless otherwise specified).
 If such a condition is met, a robot with $n$ degrees of freedom and an end-effector characterized by $m$ degrees of freedom can be fully described by the following quantities:
 \begin{itemize}
     \item an $\left( n \times 1 \right)$ vector of joint torques $\tau$;
-    \item an $\left( r \times 1 \right)$ vector of \textbf{equivalent} forces exerted at the robot end-effector $F$;
-    \item an $\left( r \times 1 \right)$ vector of forces exerted \textbf{by the environment} on the robot end-effector $F_e$--which, per the principle of action and reaction, are equal and opposite to $F$: $F_e=-F$.
+    \item an $\left( m \times 1 \right)$ vector of \textbf{equivalent} forces exerted at the robot end-effector $F$;
+    \item an $\left( m \times 1 \right)$ vector of forces exerted \textbf{by the environment} on the robot end-effector $F_e$--which, per the principle of action and reaction, are equal and opposite to $F$: $F_e=-F$.
 \end{itemize}
 
 \td{finish}
 \vskip 40pt
 \ar{here's what I will cover:}
 
-\section{Principle of Virtual Work}
-
 \section{Kineto-statics Duality}
 
-\section{Velocity and Force Transformation}
+\section{Manipulability}
+
+\section{Dynamics}\label{ch:forces:dynamics}
+
+
+\section*{Take-home lessons}
+
+\section*{Exercises}\small
+
+\begin{enumerate}
+\item Think about the four layer of abstraction we have just investigated (kinematics, differential kinematics, statics, dynamics).
+\begin{enumerate}
+\item Can you think of an application for which you would need a dynamic analysis? (Hint: this is generally something really hard)
+\item What can be done by just looking at the static problem instead? (Hint: you are still considering an exchange of forces here)
+\item What can you do with a robot from a purely kinematic perspective? (Hint: this is typically easy)
+\end{enumerate}
+\end{enumerate}
