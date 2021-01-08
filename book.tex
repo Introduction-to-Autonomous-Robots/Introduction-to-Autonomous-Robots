@@ -104,16 +104,12 @@
 %\lhead{}\chead{}\rhead{}
 %\lfoot{}\cfoot{\thepage}\rfoot{}
 
-%%% SECTION TITLE APPEARANCE
-%\usepackage{sectsty} % HAD TO REMOVE THIS FOR \part TO WORK
-%\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
-% (This matches ConTeXt defaults)
+%%% APPEARANCE OF SECTIONS
+\usepackage[up,md,sf]{titlesec}
 
-%%% ToC (table of contents) APPEARANCE
+%%% APPEARANCE OF ToC (Table of Content)
 \usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
 \usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
-\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
-\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
 
 \newcommand{\screencast}[2]{
   \marginnote{\href{#1}{\includegraphics[width=1cm]{figs/youtube/#2}}}}
@@ -134,9 +130,9 @@
 
 \thispagestyle{empty}
 \begin{flushleft}
-Nikolaus Correll, Bradley Hayes, Christoffer Heckman, and Alessandro Roncone
-\\Introduction to Autonomous Robots:  Mechanisms, Sensors, Actuators, and Algorithms
-\\v2.0, \today\\
+Nikolaus Correll, Bradley Hayes,\\ Christoffer Heckman, and Alessandro Roncone \\~\\
+Introduction to Autonomous Robots:\\ Mechanisms, Sensors, Actuators, and Algorithms\\~\\
+v2.0, \today\\
 %Magellan Scientific\\
 %ISBN-13: 978-1493773077
 %ISBN-13: 978-0692700877
@@ -192,33 +188,33 @@ Boulder, Colorado, \today
 \input{chapters/locomotion}
 \input{chapters/kinematics}
 \input{chapters/forces}
-\input{chapters/grasping}
+% \input{chapters/grasping}
 
 \part{Sensing}
 \input{chapters/sensors}
-\input{chapters/vision}
+% \input{chapters/vision}
 
 \part{Actuation}
 
 \part{Computation}
-\input{chapters/taskexecution}
-\input{chapters/pathplanning}
+% \input{chapters/taskexecution}
+% \input{chapters/pathplanning}
 
-\input{chapters/features}
-\input{chapters/deeplearning}
-\input{chapters/errorpropagation}
-\input{chapters/localization}
-\input{chapters/mapping}
-\input{chapters/SLAM}
-\input{chapters/manipulation}
+% \input{chapters/features}
+% \input{chapters/deeplearning}
+% \input{chapters/errorpropagation}
+% \input{chapters/localization}
+% \input{chapters/mapping}
+% \input{chapters/SLAM}
+% \input{chapters/manipulation}
 
-\appendix
+% \appendix
 
-\input{chapters/trigonometry}
-\input{chapters/linearalgebra}
-\input{chapters/statistics}
-\input{chapters/paperwriting}
-\input{chapters/samplecurricula}
+% \input{chapters/trigonometry}
+% \input{chapters/linearalgebra}
+% \input{chapters/statistics}
+% \input{chapters/paperwriting}
+% \input{chapters/samplecurricula}
 
 
 \bibliographystyle{agsm}
