@@ -8,7 +8,7 @@ This book can be cited as follows:
 Nikolaus Correll, Bradley Hayes, Christoffer Heckman and Alessandro Roncone. Introduction to Autonomous Robots: Mechanisms,
 Sensors, Actuators, and Algorithms, MIT Press, 2022 (forthcoming). 
 
-@book{correll2016introduction,<br>
+@book{correll2022introduction,<br>
   title={ Introduction to Autonomous Robots: Mechanisms,
 Sensors, Actuators, and Algorithms},<br>
   author={Correll, Nikolaus and Hayes, Bradley, and Heckman, Christoffer, and Roncone, Alessandro},<br>
