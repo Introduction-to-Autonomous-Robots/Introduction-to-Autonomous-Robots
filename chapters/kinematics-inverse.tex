@@ -196,26 +196,26 @@ As the robot can potentially not only translate, but also rotate, we also need t
 \end{array}
 \right].
 \end{equation}
-We can now write translational and rotational velocities in a $6\times1$ vector as $[v \ \omega]^T$.
-This notation is also called a \emph{velocity screw}.\index{Screw (velocity)}\index{Velocity Screw} %By convention, the speed of rotation is given by the magnitude (or length) of this vector.
+We can now write translational and rotational velocities in a $6\times1$ vector as $\nu = [v \ \omega]^T$.
+This notation is also called a \emph{velocity twist}.\index{Twist (velocity)}\index{Velocity Twist} %By convention, the speed of rotation is given by the magnitude (or length) of this vector.
 Let the joint angles/positions be $q=[q_1, \ldots, q_n]^T$, and the set of joint speeds be $\dot{q}=[\dot{q}_1, \ldots, \dot{q}_n]^T$.
 \td{I changed from $j$ to $q$ since $q$ is what everybody uses. I also changed a lot of the stuff below because it was confusing. Nikolaus please ack that you are aware of this.}
 %
-We now want to compute the differential kinematics version of \cref{eq:kinematics:forward}, which relates end-effector velocities $[v \ \omega]^T$ and joint velocities $\dot{q}$:
-\begin{equation}
-[v \quad \omega]^T=J\cdot [\dot{q}_1,\ldots,\dot{q}_n]^T
+We now want to compute the differential kinematics version of \cref{eq:kinematics:forward}, which relates end-effector velocities $[v \ \omega]^T$ and joint velocities $\dot{q}$. In this case, it is given by:
+\begin{equation}\label{eq:kinematics:diff:short}
+\nu = [v \quad \omega]^T=J\cdot [\dot{q}_1,\ldots,\dot{q}_n]^T = J \cdot \dot{q}
 \end{equation}
 $J$ is known as the \emph{Jacobian matrix} \index{Jacobian Matrix} and contains all the partial derivatives of $f$ that relate every joint angle to every velocity. In practice, $J$ looks like:
 
-\begin{equation}
-\left[\begin{array}{c}v\\\omega\end{array}\right]=
+\begin{equation}\label{eq:kinematics:diff}
+\nu = \left[\begin{array}{c}v\\\omega\end{array}\right]=
 \left[\begin{array}{c}\dot{x}\\
 \dot{y}\\
 \dot{z}\\
 \omega_x\\
 \omega_y\\
 \omega_z\end{array}\right]=
-\left[\begin{array}{cccc}\frac{\partial{x}}{\partial{q_1}} & \frac{\partial{x}}{\partial{q_2}} & \ldots & \frac{\partial{x}}{\partial{q_n}}\\\frac{\partial{y}}{\partial{q_1}} & \frac{\partial{y}}{\partial{q_2}} & \ldots & \frac{\partial{y}}{\partial{q_n}}\\\vdots & \vdots & \vdots & \vdots\\\frac{\partial{\omega_z}}{\partial{q_1}} & \frac{\partial{\omega_z}}{\partial{q_2}} & \ldots & \frac{\partial{\omega_z}}{\partial{q_n}}\end{array}\right]\left[\begin{array}{c}q_1\\\vdots\\q_n\end{array}\right]
+\left[\begin{array}{cccc}\frac{\partial{x}}{\partial{q_1}} & \frac{\partial{x}}{\partial{q_2}} & \ldots & \frac{\partial{x}}{\partial{q_n}}\\\frac{\partial{y}}{\partial{q_1}} & \frac{\partial{y}}{\partial{q_2}} & \ldots & \frac{\partial{y}}{\partial{q_n}}\\\vdots & \vdots & \vdots & \vdots\\\frac{\partial{\omega_z}}{\partial{q_1}} & \frac{\partial{\omega_z}}{\partial{q_2}} & \ldots & \frac{\partial{\omega_z}}{\partial{q_n}}\end{array}\right]\left[\begin{array}{c}q_1\\\vdots\\q_n\end{array}\right] = J \cdot \dot{q}
 \end{equation}
 
 This notation is important as it tells us how small changes in joint space will affect the end-effector's position in cartesian space. Better yet, the forward kinematics of a mechanism can always be calculated, as well as their analytical derivatives, allowing us to calculate numerical values for the entries of matrix $J$ for every possible joint angle/position.
