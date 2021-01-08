@@ -16,13 +16,13 @@ In the following, we will compute the forward kinematics mapping $f$ for a numbe
 We will first consider simple mechanisms where we can determine the relationship between actuators and the pose of various frames on the robot both in the position and speed domain.
 We will then consider the special class of non-holonomous mechanisms using a series of wheeled robots, for which the forward kinematics can only be calculated in the speed domain.
 
-\begin{framed}
+\begin{mdframed}
 \noindent Remember:
 configuration space $\equiv$ joint space;
 cartesian space $\equiv$ task space.
 Forward kinematics maps from joint space to task space, and inverse kinematics does the opposite.
 The number of mechanical degrees-of-freedom $n$ (i.e. DoFs in task space) depends on the robot, the number of Cartesian degrees-of-freedom $m$ (i.e. DoFs in task space) depends on the task. In general, $n \neq m$!
-\end{framed}
+\end{mdframed}
 
 \subsection{Forward Kinematics of a simple robot arm}\label{sec:kinematics:fwk:arm}
 
@@ -191,9 +191,9 @@ In this example, the distance traveled by the center point is exactly half of th
 \end{equation}
 given the speeds $ \dot{\phi_l}$ and $ \dot{\phi_r}$ of the left and the right wheel, respectively.
 
-\begin{framed}
+\begin{mdframed}
 Think about how the robot's speed along its y-axis is affected by the wheel speed given the coordinate system in the drawing above. Think about the kinematic constraints that the standard wheels impose.
-\end{framed}
+\end{mdframed}
 
 Hard to believe at first, but the speed of the robot along its y-axis is always zero. This is because the constraints of the standard wheel tell us that the robot can never slide.
 We are now left with calculating the rotation of the robot around its z-axis.
@@ -236,9 +236,9 @@ x_I(k+1)=x_I(k)+\Delta x (k) \Delta t
 \end{equation}
 using $\Delta x(k) \approx \dot{x_I}(t)$ and similar expressions for $y_I$ and $\theta$. Note that \cref{eq:odometry} is just an approximation. The larger $\Delta t$ becomes, the more inaccurate this approximation becomes as the robot's speed might change during the interval.
 
-\begin{framed}
+\begin{mdframed}
 \noindent Don't let the notion of an integral worry you! As robots' computers are fundamentally discrete, integrals usually turn into sums, which are nothing than for-loops.
-\end{framed}
+\end{mdframed}
 
 \subsection{Forward kinematics of Car-like steering}\label{sec:kinematics:fwk:car}
 

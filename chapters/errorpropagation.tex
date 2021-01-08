@@ -261,9 +261,9 @@ Let us now assume that we can detect the motion of the robot through an optical 
 %and calculate its Jacobian $ \boldsymbol{H}_{k}$ as the partial derivatives of $ \alpha$ to $ x,y,\theta$ in the first row, and the partial derivatives of $ r$ in the second. How to calculate $ h()$ to predict the radius at which the robot should see the feature with radius $ r_i$ from the map is illustrated in the figure below.
 
 
-%\begin{framed}
+%\begin{mdframed}
 %Example on how to predict the distance to a feature the robot would see given its estimated position and its known location from a map.
-%\end{framed}
+%\end{mdframed}
 
 \paragraph{4. Matching}
 %We are now equipped with a measurement $ \boldsymbol{z}_k$ and a prediction $ h(\hat{\boldsymbol{x}}_{k|k-1})$ based on all features stored in our map. We can now calculate the innovation
@@ -318,10 +318,10 @@ v=f(\dot{\phi},r)=r\dot{\phi}
 Assume that your measurement of $\dot{\phi}$ is noisy and has a standard deviation $\sigma_{\dot{\phi}}$.  Use the error propagation law to calculate the resulting variance of your speed estimate $\sigma_v^2$.
 \item Consider a scenario in which a robot can localize itself against landmarks. Describe what happens to the robot's positional error in the following three cases:
 \begin{enumerate}
-\item the landmark location is known and the robot can reliably localize to it, 
+\item the landmark location is known and the robot can reliably localize to it,
 \item the landmark location has a variance and the robot can realibly localize to it,
-\item both the landmark and localization mechanism have a variance. 
+\item both the landmark and localization mechanism have a variance.
 \end{enumerate}
-\item Write a program that graphically illustrate merging observations with two different variances in 1D and 2D. 
+\item Write a program that graphically illustrate merging observations with two different variances in 1D and 2D.
 \end{enumerate}
 \normalsize

@@ -109,9 +109,9 @@ The Null Hypothesis is a term from the statistical significance literature and f
 
 An import class of Null Hypothesis are on the distribution of data. Consider the following example from Lab 1 (message passing in ROS). Students were asked to experimentally study the time it takes to pass a message from one process to another:
 
-\begin{framed}
+\begin{mdframed}
 Histogram of the time it takes to send a ROS message from one process to another based on 10 trials.
-\end{framed}
+\end{mdframed}
 
 We observe three peaks in this Histogram. What can we say about message passing times? For example
 \begin{itemize}
@@ -122,9 +122,9 @@ We observe three peaks in this Histogram. What can we say about message passing 
 
 The first Null Hypothesis implies that messages take sometimes a little longer and sometimes a little shorter, but have an average and a variance. The second Null Hypothesis implies that usually messages take some low average time, but occasionally are delayed due to the influence of some other process, for example operating system duties. You can now test each of these hypotheses by calculating the parameters of the distribution to expect and calculate the joint probability that each of your measurements are actually drawn from this distribution. You will find, that all of the above hypotheses are almost equally likely. Together, none of your tests will reject your hypothesis. You therefore will need more data:
 
-\begin{framed}
+\begin{mdframed}
 Histogram of message passing times in ROS based on a 1000 trials.
-\end{framed}
+\end{mdframed}
 
 You can now again calculate parameters for each distribution you suspect. For example, you can calculate the mean and variance of this data and plot the resulting Gaussian distribution. In this example, the Gaussian distribution will have a mean slightly offset to the right of the peak. You can also fit the data to a log-normal distribution. You can now calculate the likelihood for the data actually be drawn from either of the two distributions. You will see that the joint probability (the product of all likelihoods) for all data points is actually much higher than that for any Gaussian distribution or any bimodal distribution that you are able to fit.
 

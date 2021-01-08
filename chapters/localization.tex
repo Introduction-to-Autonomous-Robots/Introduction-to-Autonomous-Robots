@@ -114,7 +114,7 @@ The robot could move from $2-3$ to $3$, $3-4$ and finally $4$. We have chosen th
 \begin{enumerate}
 \item The robot must have started at $2-3$ (20\%)
 \item Not have seen the open door at the left of $3$ (5\%) and not have seen the wall at the right (70\%)
-\item Not have seen the wall to its left (70\%) and not have seen the wall to its right at node $3-4$ (70\%) 
+\item Not have seen the wall to its left (70\%) and not have seen the wall to its right at node $3-4$ (70\%)
 \item Correctly identify the open hallway to its left (90\%) and mistake the open hallway to its right for an open door (10\%)
 \end{enumerate}
 Together, the likelihood that the robot got from position $2-3$ to position $4$ is therefore given by $0.2\times 0.05 \times 0.7 \times 0.7 \times 0.7 \times 0.9 \times0.1=0.03\%$, that is very unlikely.
@@ -170,9 +170,9 @@ We assume that we can uniquely identify the lines we are seeing and retrieve the
 and calculate its Jacobian $ \boldsymbol{H}_{k}$ as the partial derivatives of $ \alpha$ to $ x,y,\theta$ in the first row, and the partial derivatives of $ r$ in the second. How to calculate $ h()$ to predict the radius at which the robot should see the feature with radius $ r_i$ from the map is illustrated in the figure below.
 
 
-%\begin{framed}
+%\begin{mdframed}
 %Example on how to predict the distance to a feature the robot would see given its estimated position and its known location from a map.
-%\end{framed}
+%\end{mdframed}
 
 \paragraph{4. Matching}
 We are now equipped with a measurement $ \boldsymbol{z}_k$ and a prediction $ h(\hat{\boldsymbol{x}}_{k|k-1})$ based on all features stored in our map. We can now calculate the innovation
