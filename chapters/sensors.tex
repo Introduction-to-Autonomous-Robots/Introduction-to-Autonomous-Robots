@@ -1,5 +1,5 @@
 \chapter{Sensors}\label{chap:sensors}
-Robots are systems that sense, actuate, and compute. So far, we have studied the basic physical principles of actuation, i.e., locomotion and manipulation, and computation, i.e., inverse kinematics and path-planning. We now need to understand the basic principles of robotic sensors that provide the data-basis for computation.
+Robots are systems that sense, actuate, and compute. So far, we have studied the basic physical principles of motion, i.e., locomotion and manipulation. We now need to understand the basic principles of robotic sensors that provide the data-basis for a robot to make decisions and control its body.
 
 The goals of this chapter are
 \begin{itemize}
@@ -18,6 +18,7 @@ This chapter is therefore organized by the physical quantities (and derivatives 
 \begin{mdframed}
 Think about the kind of data that you could obtain from an encoder, an accelerometer, or a vision sensor on a non-holonomic robot. What are the fundamental differences?
 \end{mdframed}
+\td{The encoder is only introduced in a later section, we should rephrase}
 Although an encoder is able to measure position, it is used in this function only on robotic arms. If the robot is non-holonomic, closed tours in its configuration space, i.e., robot motions that return the encoder values to their initial position, do not necessarily drive the robot back to its starting point. In those robots, encoders are therefore mainly useful to measure speed. An accelerometer instead, by definition, measures the derivative of speed. Vision, finally, allows to calculate the absolute position (or the integral of speed) if the environment is equipped with unique features. An additional fundamental difference between those three sensors is the amount and kind of data they provide. An accelerometer samples real-valued quantities that are digitized with some precision. An odometer instead delivers discrete values that correspond to encoder increments. Finally, a vision sensor delivers an array of digitized real-valued quantities (namely colors). Although the information content of this sensor exceeds that of the other sensors by far, cherry-picking the information that are really useful remains a hard, and largely unsolved, problem.
 
 

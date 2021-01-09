@@ -1,0 +1,48 @@
+\chapter{Actuators}
+The first part of this book has been concerned with different mechanisms, helping us understand how robots look like and how they move. We have then learned how robots can get information about their internal states and the world around them. This part will introduce the devices that allow to turn energy into rotation and translation. We generally call such devices \emph{actuators}\index{Actuators}.
+
+\section{Electric motors}
+Due to the dominance of rolling robots, the electric motor is among the most popular actuators. Electric motors come in different variations, starting with stepper and DC motors to servo and so-called ``brushless'' DC motors. Except for the stepper motor, which uses large electromagnets to rotate an internal spindle by a few degrees every time, the physics of the electrical motor requires it to revolve at very high speeds (multiple thousand rotations per minute). Therefore, motors are almost always used in conjunction with gears to reduce the speed and increase the torque, that is the force that the motor can exert to rotate an axis. In order to be able to measure the number of revolutions and the axis' position, motors are also often combined with rotary encoders (Section \ref{sec:sensors:encoders}). Motors that combine an electric motor with a gear-box, encoder, and controller to move toward desired position are known as servo motors, and are popular among hobbyists.
+
+\subsection{AC and DC motors}
+Electric motors turn electric and into kinetic energy via the electromagnetic effect. An electric current running through a wire creates a circular magnetic field around the wire due to Ampere's law. This effect can be amplified by winding the wire into a coil. Due to the coil shape, the magnetic fields all superimpose and create a strong magnetic field in the center of the coil. This field can be used to magnetize a ferromagnetic material such as iron, which in turn amplifies the magnetic field. 
+
+\subsection{AC motor}
+As magnets of opposite polarity repel each other, this effect can be used to create motion. In its simplest form, an electric motor consists of a simple coil that can spin between two permanent magnets, one oriented with its south pole to the center, the other with its north pole. Attaching a shaft to the central coil would then allow to turn a wheel, for example. The turning part with the shaft is known as the \emph{rotor}\index{Rotor}, whereas the static part is known as the \emph{stator}\index{Stator}. When turning on a current in the coil, the iron core will get magnetized. Its north pole will then be attracted by the south pole of the magnet in the stator and repelled by the north pole in the stator, while the opposite will happen to its south pole.
+
+In order for this simple motor to get stuck in its new configuration, we will need to swap the direction of the rotor's magnetic field. This can be achieved by swapping the direction of the current running through the coil. This can easily be accomplished by using so-called \emph{alternating current}\index{Alternating Current}, or \emph{AC} \index{AC --- alternating current}. This is commonly used in the powergrid, where the direction of current changes at 50 or 60 Hz. The speed of the motor now depends on the frequency at which the AC is provided, and its maximum torque is given by its voltage and maximum current. 
+
+AC motors exist in different forms, often using multiple coils in parallel pairs to creating smoother motions. Some motor designs also place the permanent magnets onto the rotor and coils on the outside. Whatever the design is, the basic principles remain the same, however.
+
+\subsection{DC motor}
+As the speed of an AC motor is constant it is mostly used in heavy industrial applications. An alternative design is to generate the desired switch in directionality by a so-called \emph{commutator}\index{commutator}. This allows running the motor with what is known as \emph{direct current}\index{Direct Current}, or \emph{DC}\index{DC --- direct current}, in which the direction of current does not change. DC is what is commonly available from batteries or from a ``wall wart'', that turns AC into DC by means of a tranformer and a rectifier. 
+
+The commutator now provides positive and negative voltage at a series of interleaving pads. These can be placed along the circumference of the stator and provide power to the rotor coil via metal brushes attached to the shaft. By this, the central coil will receive power at the right polarity no matter where it is. As with the AC motor, there exist multiple designs using pairs of parallel coils, various number of brushes, and commuators mounted both in the stator or the rotor.
+
+Such a motor can now turn at arbitrary speeds and will become faster and faster, only limited by friction and torque applied to its shaft. Its speed is therefore proportional to the voltage that is applied, whereas its torque is limited by the maximum current that is provided. 
+
+Electric DC motors are widely used in robotics, but are being replaced by brushless DC motors, which do not have the problems with friction that stem from the brushes and their tear-and-wear. Designing the power electronics that turn digital information into precisely controlled voltage and currents is involved and care needs to be taken that off-the-shelf solutions are meeting the specifications of the motors and applications as peak-loads of tens of Amperes will already arise in smaller systems such as remote controlled cars and can create substantial damage if shortened. 
+
+\subsection{Stepper motor}
+Even when using more than one coil, it is difficult to precisely control the angular position of a DC motor shaft. Although the rotation can be geared down by factors of hundred and thousands, the motor itself usually spins in the order of thousands of time per minute, also known as ``rotations per minute'' or RPM\index{Rotations per minute}index{RPM --- rotations per minute}.
+
+An early solution to this problem is the \emph{stepper motor}\index{Stepper motor} that --- in its simplest form --- uses a ferromagnetic rotary wheel with a fixed number of teeth as its stator. Teethed coils in its stator can attract these teeths, creating a small rotation of a few degrees when the teeths in the rotor and stator-coil align. Selectively turning pairs of coils on and off will allow the motor shaft to turn at a fixed number of degrees (in the order of one degree or less). For example, a stepper motor that turns 3.6 degrees per step will require 100 steps for one complete revolution.
+
+The required voltage pattern is usually generated by a microcontroller. A stepper motor with four phases, that is four sets of coils in the inside, requires four electrical signals that are carefully interleaved. That is, the first wire is on for a set amount of time while the other three are off, then the second, the third, and the fourth. Here, the period, that is the length, of this signal determines the stepper motor's speed, whereas the maximum current determines its holding torque. 
+
+There exists a variety of low-cost integrated circuits (ICs) that generate this pattern, reducing the microcontroller's task to simply sending a single bit for every step and another for the desired direction. 
+
+The advantage of this approach is that stepper motors usually do not require gears or encoders (as one can simply count the steps being sent), making them attractive as drivers for small differential wheel robots or grippers. Stepper motors are usually much more expensive and bulky than their DC counterparts.
+
+\subsection{Brushless DC motor}\label{sec:brushlessDC}
+\subsection{Servo motor}
+\subsection{Linear actuators}
+
+\section{Hydraulic and pneumatic actuators}
+Another popular class of actuator, in particular for legged robots, are linear actuators, that might exist in electric, pneumatic or hydraulic form. 
+
+\subsection{Hydraulic actuators}
+\subsection{Pneumatic actuators and soft robotics}
+ 
+\section{Other actuators} 
+ Finally, there exist a wide array of specialty actuators such as Shape-Memory Alloys, Electroactive Polymers or Piezo-elements, which often allow for extreme miniaturization, but do not provide attractive energy-to-force ratios and are difficult to control.
