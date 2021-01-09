@@ -35,7 +35,19 @@ There exists a variety of low-cost integrated circuits (ICs) that generate this 
 The advantage of this approach is that stepper motors usually do not require gears or encoders (as one can simply count the steps being sent), making them attractive as drivers for small differential wheel robots or grippers. Stepper motors are usually much more expensive and bulky than their DC counterparts.
 
 \subsection{Brushless DC motor}\label{sec:brushlessDC}
+The advent of microelectronics in the 1970ies has enabled to generate driving patterns at the speeds required by conventional DC motors (thousands of rpm), which has led to the \emph{brushless DC motor}\index{brushless DC motor}. The brushless DC motor resembles a stepper motor, but can operate with much smaller coils as its torque results from the kinetic energy of rotating at high speeds. In order to improve control, brushless DC motors either use encoders, a hall effect sensor, or small changes in current that result from the dynamo effect in the currently unused coils, to measure the current position of the rotor within the stator. Sensing and control of a brushless DC motor is involved and usually provided by purposely designed solid-state electronic devices. 
+
+Unlike a brushed DC motor, whose brushes induce friction, the maximum speed of a brushless DC motor is mostly limited by heat, which is a byproduct of runnign electric current through its coils. Due to the absence of friction, brushless DC motors are far more efficient than their brushed counter parts and can provide equivalent speed and torque at a smaller formfactor and lower weight. 
+
+The performance of electric motors has been further boosted by the discovery of rare earth magnets such as neodymium in the 1980ies, allowing motors to exert even more torque at smaller weight and using lesser current. Together, these advances have led to a renaissance of electric cars and, together with solid-state IMUs (Section \ref{sec:gyroscopes}), enabled small-scale drones.
+
 \subsection{Servo motor}
+To be useful in a robotic system, electric motors usually require gears, an encoder, and control electronics. Modules that package these components into a convenient formfactor are known as \emph{servo motors}\index{servo motors}. 
+
+Servo motors have been classically used in remote controlled (RC) cars to provide a simple actuator to stear a car or move the flaps of an airplane. A simple digital signal was used to set the servo angle, usually in the range of 360 degrees or less, which was then held by the integrated electronics. More recently, a new class of digital servo motors have emerged that allows to not only control the angle, but set the speed at which the servo moves as well as the maximum current (and thereby torque), as well as read information such as actual angle, temperature and other operational parameters. 
+
+Due to their built-in gear reduction, servo motors are usually not suitable in the drive-train of mobile platforms, but have become increasingly prominent to drive the joints of simple manipulating arms, articulated hands and grippers. 
+
 \subsection{Linear actuators}
 
 \section{Hydraulic and pneumatic actuators}
