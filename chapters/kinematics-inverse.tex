@@ -31,9 +31,9 @@ We will now look at the inverse kinematics of the $2-$link arm that we introduce
 This is tricky, however, as we have to deal with complicated trigonometric expressions.
 
 To get an intuition, assume there to be only one link, $l_1$.  Solving (\ref{eq:cosxl1}) for $\alpha$ yields to two distinct solutions:
-\td{Nikolaus: Can't we just say +-cos here?}
+
 \begin{equation}
-\alpha = \left[\cos^{-1}\frac{x_1}{l_1},-\cos^{-1}\frac{x_1}{l_1}\right]\ ,
+\alpha = \pm \cos^{-1}\frac{x_1}{l_1},
 \end{equation}
 as cosine is symmetric for positive and negative values.
 Indeed, for any possible position on the $x-$axis ranging from $-l_1$ to $l_1$, there exist two solutions: the first one with the arm above the table, and the other one with the arm below it.
@@ -41,20 +41,15 @@ At the extremes of the workspace, both solutions are the same.
 
 %\begin{verbatim}
 %sol = Solve[Sin[a + b] + Sin[a] == y
-%              && Cos[a + b] + Cos[a] == x,
-%             {a, b}];
+%             && Cos[a + b] + Cos[a] == x,
+%            {a, b}];
 %min = sol /. {x -> 1, y -> 1}
 %\end{verbatim}
 
-Solving for both degrees of freedom actually yields eight solutions, of which only two are feasible:
-\td{Nikolaus: where are the two solutions in the equations below and why is there an arrow ?}
+Solving \ref{eq:fwk2dofarm} for $\alpha$ and $\beta$ adds two additional solutions that are cumbersome to reproduce here, involving terms of $x$ and $y$ to the sixth power, and is left as an exercise to the reader, for example using an online symbolic solver. 
 
-\begin{eqnarray}
-\alpha &\rightarrow& \cos^{-1}\left(\frac{x^2 y + y^3 - \sqrt{4 x^4 - x^6 + 4 x^2 y^2 - 2 x^4 y^2 - x^2 y^4}}{2 (x^2 + y^2)}\right) \nonumber \\
-\beta &\rightarrow& -\cos^{-1}\left( \frac{1}{2}(-2+x^2+y^2) \right)
-\end{eqnarray}
-1
-What will drastically simplify this problem, is to not only specify the desired position, but also the orientation $\theta$ of the end-effector. In this case, a desired pose can be specified by
+
+What will drastically simplify this problem, is to not only specify the desired position, but also the orientation $\theta$ of the end-effector. In this case, a desired pose can be specified in the following form
 \begin{equation}
 \left[
 \begin{array}{cccc}
@@ -63,7 +58,7 @@ sin\theta & cos\theta & 0 & y\\
 0 & 0 & 1 & 0\\
 0 & 0 & 0 & 1
 \end{array}
-\right]
+\right].
 \end{equation}
 A solution can now be found by simply equating the individual entries of the transformation (\ref{eq:2armtrans}) with those of the desired pose. Specifically, we can observe:
 \begin{eqnarray}
@@ -84,12 +79,12 @@ Providing the orientation of the robot in addition to the desired position there
 The main issue with the geometric approach detailed above is that it does not scale easily with an increase of DoF at the joints, and and it quickly becomes unhandy with more dimensions.
 For higher-DoF platforms, we can calculate a \textsl{numerical solution} using an approach that we will later see is very similar to path planning in mobile robotics.
 To this end, we will first calculate a measure of error between the current solution and the desired one, and then optimize the joint configuration so as to minimize such error.
-In our example, the measure of error is the distance between the current end-effector pose as given by the forward kinematics equations in \cref{eq:fwk2dofarm} and the desired solution $[x,y]$ in configuration space, i.e.:
+In our example, the measure of error is the Euclidian distance between the current end-effector pose as given by the forward kinematics equations in \cref{eq:fwk2dofarm} and the desired solution $[x,y]$ in configuration space, i.e.:
 % To do this, you need to solve the forward kinematics for every point in configuration space and use the Euclidean distance to the desired target as height.
-\td{nikolaus: why there are no $l_1$ and $l_2$ in the eq below?}
 \begin{equation}\label{eq:kinematics:inverse:numerical}
 f_{x,y}(\alpha,\beta)=\sqrt{\left(\sin_{\alpha\beta} + \sin_\alpha - y\right)^2 + \left(\cos_{\alpha\beta}+\cos_\alpha - x\right)^2}
 \end{equation}
+Here, the first two terms in the parentheses are given by the forward kinematics of the robot, whereas the third terms in the parentheses are the desired positions. For improved readability, we assume $l_1=l_2=1$.
 \cref{eq:kinematics:inverse:numerical} is a 3D functional and can be plotted as a function of $\alpha$ and $\beta$, our joint-space variables.
 % This is plotted for $\alpha=[-\pi/2,\pi/2]$ and $\beta=[-\pi,\pi]$ and $x=1$, $y=1$ in Figure~\ref{fig:inversekinematics}.
 As shown in \cref{fig:inversekinematics}, this function has a minima, in this case zero, for values of $\alpha$ and $\beta$ that bring the manipulator to $(1,1)$. These values are $(\alpha \rightarrow 0, b \rightarrow -\frac{\pi}{2})$ and $(\alpha \rightarrow -\frac{\pi}{2}, b \rightarrow \frac{\pi}{2})$.
@@ -199,7 +194,6 @@ As the robot can potentially not only translate, but also rotate, we also need t
 We can now write translational and rotational velocities in a $6\times1$ vector as $\nu = [v \ \omega]^T$.
 This notation is also called a \emph{velocity twist}.\index{Twist (velocity)}\index{Velocity Twist} %By convention, the speed of rotation is given by the magnitude (or length) of this vector.
 Let the joint angles/positions be $q=[q_1, \ldots, q_n]^T$, and the set of joint speeds be $\dot{q}=[\dot{q}_1, \ldots, \dot{q}_n]^T$.
-\td{I changed from $j$ to $q$ since $q$ is what everybody uses. I also changed a lot of the stuff below because it was confusing. Nikolaus please ack that you are aware of this.}
 %
 We now want to compute the differential kinematics version of \cref{eq:kinematics:forward}, which relates end-effector velocities $[v \ \omega]^T$ and joint velocities $\dot{q}$. In this case, it is given by:
 \begin{equation}\label{eq:kinematics:diff:short}
@@ -248,6 +242,4 @@ where $\lambda$ is some constant. One can show that the resulting controller tha
 
 This is known as the \emph{Damped Least-Squares} method.\index{Damped Least-Squares Method} Problems with this approach are local minima and singularities of the mechanism, which might render this solution infeasible.
 
-\td{Nikolaus: Given that you ended the Forward kinematics chapter with Denavit Hartenberg, do you want me to add a couple pages on how to compute the jacobian under the DH convention? It's kinda easy}
-
-\td{Nikolaus: what about redundancy? It's also an easy enough to understand concept}
+\td{We can add redundancy here}

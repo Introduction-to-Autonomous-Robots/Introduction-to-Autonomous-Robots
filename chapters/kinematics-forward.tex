@@ -287,7 +287,7 @@ So far, we have considered the forward kinematics of wheeled mechanisms and simp
 In the case of multi-link arms (which is the vast majority of robot manipulators in existence), the approach detailed in \cref{sec:kinematics:fwkarm} is difficult to scale, and alternative solutions are needed.
 Interestingly, we can think of the forward kinematics as a chain of homogeneous transformations with respect to a coordinate system mounted at the base of a manipulator or a fixed position in the room.
 Deriving these transformations can be confusing and can be facilitated by following a ``recipe'' such as the one conceived by Denavit and Hartenberg in $1955$ (see \cite{hartenberg1955kinematic} and \cite{craig2009introduction}).
-The so-called Denavit-Hartenberg (DH)\index{Denavit-Hartenberg parameters} representation has evolved as a \textsl{de-facto} standard and can easily be automatized, i.e., applied to a 3D model of a robotic arm, e.g. \td{Nikolaus, what did you mean here?}
+The so-called Denavit-Hartenberg (DH)\index{Denavit-Hartenberg parameters} representation has evolved as a \textsl{de-facto} standard.
 
 A manipulator consists of a series of typically rigid links that are connected by joints.
 In the vast majority of cases, a joint can either be revolute (i.e. change its angle/orientation) or prismatic (i.e. change its length).
