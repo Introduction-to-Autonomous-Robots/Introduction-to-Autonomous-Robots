@@ -21,7 +21,7 @@ The commutator now provides positive and negative voltage at a series of interle
 
 Such a motor can now turn at arbitrary speeds and will become faster and faster, only limited by friction and torque applied to its shaft. Its speed is therefore proportional to the voltage that is applied, whereas its torque is limited by the maximum current that is provided. 
 
-Electric DC motors are widely used in robotics, but are being replaced by brushless DC motors, which do not have the problems with friction that stem from the brushes and their tear-and-wear. Designing the power electronics that turn digital information into precisely controlled voltage and currents is involved and care needs to be taken that off-the-shelf solutions are meeting the specifications of the motors and applications as peak-loads of tens of Amperes will already arise in smaller systems such as remote controlled cars and can create substantial damage if shortened. 
+Electric DC motors are widely used in robotics, but are being replaced by brushless DC motors, which do not have the problems with friction that stem from the brushes and their tear-and-wear.  
 
 \subsection{Stepper motor}
 Even when using more than one coil, it is difficult to precisely control the angular position of a DC motor shaft. Although the rotation can be geared down by factors of hundred and thousands, the motor itself usually spins in the order of thousands of time per minute, also known as ``rotations per minute'' or RPM\index{Rotations per minute}index{RPM --- rotations per minute}.
@@ -42,22 +42,34 @@ Unlike a brushed DC motor, whose brushes induce friction, the maximum speed of a
 The performance of electric motors has been further boosted by the discovery of rare earth magnets such as neodymium in the 1980ies, allowing motors to exert even more torque at smaller weight and using lesser current. Together, these advances have led to a renaissance of electric cars and, together with solid-state IMUs (Section \ref{sec:gyroscopes}), enabled small-scale drones.
 
 \subsection{Servo motor}
-To be useful in a robotic system, electric motors usually require gears, an encoder, and control electronics. Modules that package these components into a convenient formfactor are known as \emph{servo motors}\index{servo motors}. 
+To be useful in a robotic system, electric motors usually require gears, an encoder, and control electronics. Modules that package these components into a convenient form-factor are known as \emph{servo motors}\index{servo motors}. 
 
-Servo motors have been classically used in remote controlled (RC) cars to provide a simple actuator to stear a car or move the flaps of an airplane. A simple digital signal was used to set the servo angle, usually in the range of 360 degrees or less, which was then held by the integrated electronics. More recently, a new class of digital servo motors have emerged that allows to not only control the angle, but set the speed at which the servo moves as well as the maximum current (and thereby torque), as well as read information such as actual angle, temperature and other operational parameters. 
+Servo motors have been classically used in remote controlled (RC) cars to provide a simple actuator to steer a car or move the flaps of an airplane. A simple digital signal was used to set the servo angle, usually in the range of 360 degrees or less, which was then held by the integrated electronics. More recently, a new class of digital servo motors have emerged that allows to not only control the angle, but set the speed at which the servo moves as well as the maximum current (and thereby torque), as well as read information such as actual angle, temperature and other operational parameters. 
 
 Due to their built-in gear reduction, servo motors are usually not suitable in the drive-train of mobile platforms, but have become increasingly prominent to drive the joints of simple manipulating arms, articulated hands and grippers. 
 
-\subsection{Linear actuators}
+A special kind of servo motor is the \emph{linear actuator}\index{linear actuator}. Here, a (brush-less) DC motor is driving a spindle that turns rotation into translation. Linear servo motors are available with a wide range of protocols and with or without built-in encoders that provide position feedback.
+
+\subsection{Motor controllers}
+Designing the power electronics that turn digital information into precisely controlled voltage and currents is involved and care needs to be taken that off-the-shelf solutions are meeting the specifications of the motors and applications as peak-loads of tens of Amperes will already arise in smaller systems such as remote controlled cars and can create substantial damage.
+
+The biggest challenge in selecting appropriate circuits for motor drivers is selecting a circuit that can not only accommodate the voltage ($U$) and current ($I$) requirements, but can actually handle the overall energy ($P=UI$). Here, the first hurdle is providing the desired supply voltage. As it is difficult to convert supply voltages without loss, in particular when the required current is large, voltage requirements of the main driving motors often determine the operating voltage of the overall power system. 
+
+A second hurdle is that there is nothing like loss-less energy switching. In particular, all power transistors have an internal resistance ($R$). Given $P=I^2R$, already small resistances generate substantial heat. Dissipating the resulting heat can quickly become a major problem and usually is not part of an off-the-shelf motor control solution, but a mechanical design problem. A standard approach is to use the (metal) robot chassis to dissipate heat, but sometimes active cooling using a fan is required. 
+
 
 \section{Hydraulic and pneumatic actuators}
 Another popular class of actuator, in particular for legged robots, are linear actuators, that might exist in electric, pneumatic or hydraulic form. 
 
 \subsection{Hydraulic actuators}
+Hydraulic actuators, mostly in the form of pistons, are well known from construction machines and other heavy equipment. Hydraulics usually exceed the forces electric motors can generate and are in a different ballpark as far as size is concerned. That is the smallest available hydraulic actuators are orders of magnitude larger (in the order of tens of centimeters) than the smallest DC motors (in the order of millimeters). They are relevant for larger bipedal and quadrupedal platforms, however, where they are often used in conjunction with electric motors. 
+
+Hydraulic actuators require a tank with pressurized liquid and a compressor pump (which again driven by a DC motor). The liquid is pressurized using a gas, and released into the actuators via solenoid valves. A second solenoid valve is used to let the liquid escape the actuator. The compressor is then pumping the liquid back into the tank. Here, the gas in the tank acts as a buffer allowing the system to release a burst of energy, which then needs to be slowly restored by the compressor. As the performance of a hydraulic system is strongly related to its mechanical properties such as size and pressure of the tank, diameter of the tubes connecting the components, and dimensions of the valve, hydraulic systems have a narrower operational range than electric motors, which allow a higher variation of forces and speeds. 
+
 \subsection{Pneumatic actuators and soft robotics}
  
-\section{Other actuators} 
- Finally, there exist a wide array of specialty actuators such as Shape-Memory Alloys, Electroactive Polymers or Piezo-elements, which often allow for extreme miniaturization, but do not provide attractive energy-to-force ratios and are difficult to control.
+%\section{Other actuators} 
+% Finally, there exist a wide array of specialty actuators such as Shape-Memory Alloys, Electroactive Polymers or Piezo-elements, which often allow for extreme miniaturization, but do not provide attractive energy-to-force ratios and are difficult to control.
 
 \section{Exercises}
 \begin{itemize}
