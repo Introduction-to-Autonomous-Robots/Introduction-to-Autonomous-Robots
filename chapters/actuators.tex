@@ -85,6 +85,15 @@ As soft actuators are flexible, they break with the tradition of kinematics intr
 %\section{Other actuators} 
 % Finally, there exist a wide array of specialty actuators such as Shape-Memory Alloys, Electroactive Polymers or Piezo-elements, which often allow for extreme miniaturization, but do not provide attractive energy-to-force ratios and are difficult to control.
 
+\section{Safety considerations}
+Which actuator system is the best choice is also driven by safety considerations. We distinguish \emph{active} and \emph{passive} safety. Active safety is the ability to control the actuator sufficiently to do harm, for example by squeezing a person's finger or limb, or damaging infrastructure in the environment. The class of \emph{collaborative robots}\index{Collaborative robot}\index{Cobot} achieves that by limiting the torque a robot can achieve by means of control, an approach known as \emph{soft robotics} \cite{albu2008soft}, albeit unrelated to soft pneumatic actuators that derive additional safety properties from compliance. 
+
+Controlling torque can be accomplished by measuring and regulating the current that is used at any given actuators. By comparing the necessary joint torque (see Chapter \ref{ch:forces}) with the actual current, a robot can detect whether it is about to incur damage. This usually requires telling the robot the approximate weight of its payload. A better, but more expensive way, to control torque is to actually measure it at each joint by means of load cells (see Chapter \ref{chap:sensors}). Using actual sensors to measure forces and torques actually incurred allows to extend this method to other actuation systems, not limited to electrical motors. 
+
+Passive safety is the ability to maintain a robot's safety even in the absence of control. This can be achieved by cushioning a robot, using actuators that ``give in'' at a lower force than can do harm, such as pneumatic actuators, or by coupling the motor with an elastic element. In such \emph{series elastic actuators}\index{Series Elastic Actuators}, power is not directly transmitted via a motor shaft, but indirectly via a spring.  In addition to doubling as a force/torque sensor, see also Chapter \ref{chap:sensors}, this limits the maximum force such an actuator can exert. 
+
+An important failure mode that can only be addressed by a passive safety mechanism is \emph{power failure}\index{Power failure}. In the absence of power, a mobile robot might keep driving (based on inertia) and hit an object, a humanoid robot might collapse, and a gripper might let a heavy (or sharp) payload fall. These problems can be addressed by always-on breaking mechanisms that engage in the absence of power or by using gear ratios that are so high that the overall mechanism is not back-driveable. 
+
 \section{Exercises}
 \begin{itemize}
 \item You are designing a robotic arm. Your goal is to maximize strength, while minimizing weight. Which kind of electric motor do you chose and why?
