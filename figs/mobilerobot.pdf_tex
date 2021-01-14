@@ -1,4 +1,4 @@
-%% Creator: Inkscape 1.0 (4035a4fb49, 2020-05-01), www.inkscape.org
+%% Creator: Inkscape 1.0 (4035a4f, 2020-05-01), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'mobilerobot.pdf' (pdf, eps, ps)
 %%
@@ -58,7 +58,7 @@
     \put(0.00530195,0.01782231){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}${I}$\end{tabular}}}}%
     \put(0.83104026,0.01010512){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$X_I$\end{tabular}}}}%
     \put(-0.00433876,0.69151133){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$Y_I$\end{tabular}}}}%
-    \put(0.57048616,0.31449462){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\theta_I$\end{tabular}}}}%
+    \put(0.57048616,0.31449462){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$-\theta_I$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{mobilerobot.pdf}}%
     \put(0.2813277,0.37790738){\color[rgb]{0,0,0}\rotatebox{-17.294538}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}${R}$\end{tabular}}}}}%
     \put(0.50812695,0.24803348){\color[rgb]{0,0,0}\rotatebox{-16.593287}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$X_R$\end{tabular}}}}}%
