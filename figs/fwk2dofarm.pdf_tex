@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{86.29358482bp}%
+    \setlength{\unitlength}{87.22961426bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,19 +50,22 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.96652434)%
+  \begin{picture}(1,1.15618676)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{fwk2dofarm.pdf}}%
-    \put(0.68000792,-0.00000006){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}x\end{tabular}}}}%
-    \put(0.06093474,0.32918962){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}y\end{tabular}}}}%
+    \put(0.81055775,-0.00000007){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}x\end{tabular}}}}%
+    \put(0.19812763,0.32565718){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}y\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{fwk2dofarm.pdf}}%
-    \put(0.34221979,0.15231173){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\alpha$\end{tabular}}}}%
+    \put(0.4763943,0.1506773){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\alpha$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{fwk2dofarm.pdf}}%
-    \put(0.54366435,0.6166164){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\beta$\end{tabular}}}}%
-    \put(0.26606404,0.34024438){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$l_1$\end{tabular}}}}%
-    \put(0.27343407,0.54660211){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$l_2$\end{tabular}}}}%
-    \put(0.65734699,0.44338349){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$P_1$\end{tabular}}}}%
-    \put(0.23886622,0.88091544){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$P_2$\end{tabular}}}}%
+    \put(0.67567723,0.60999968){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\beta$\end{tabular}}}}%
+    \put(0.40105575,0.33659331){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$l_1$\end{tabular}}}}%
+    \put(0.40834669,0.54073669){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$l_2$\end{tabular}}}}%
+    \put(0.78813998,0.43862568){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$P_1=(x_1,y_1)$\end{tabular}}}}%
+    \put(-0.16366472,0.65790427){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$P_2=(x_2,y_2)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{fwk2dofarm.pdf}}%
+    \put(0.24819081,1.01774052){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\theta$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{fwk2dofarm.pdf}}%
   \end{picture}%
 \endgroup%

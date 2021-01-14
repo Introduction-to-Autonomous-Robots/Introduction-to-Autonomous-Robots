@@ -11,7 +11,7 @@ Autonomous robots are systems that sense, compute, communicate, and actuate. Act
 
 Locomotion includes very different concepts of motion including rolling, walking, running, jumping, sliding (undulatory locomotion), crawling, climbing, swimming, and flying. They are drastically different in terms of energy consumption, kinematics, stability, and capabilities required by the robot that implements them. Yet, the above definitions are loose and ambiguous: for example, ``swimming'' can be done using many different forms of propulsion systems. Similarly, a sliding motion on the ground might result into swimming with only few modifications.
 
-The way in which the individual parts of a robot can move with respect to each other and the environment is called the \emph{kinematics}\index{Kinematics} of the robot. Kinematics are only concerned with the position and speed (first derivative of position) of those parts, but not its \emph{dynamics}, which include acceleration (second derivative of position) and jerk (third derivative of position).
+The way in which the individual parts of a robot can move with respect to each other and the environment is called the \textsl{kinematics}\index{Kinematics} of the robot. Kinematics are only concerned with the position and speed (first derivative of position) of those parts, but not its \textsl{dynamics}, which include acceleration (second derivative of position) and jerk (third derivative of position).
 
 Commercially, the most dominant form of locomotion is rolling. This is due to the fact that rolling provides by far the most efficient energy-speed ratio (\cref{fig:todd}), making the invention of the wheel one of the greatest technological breakthroughs in history. Consequently, humans have modified their environment to have smooth surfaces of large extent such as the road network, but also warehouse and residential floors. In contrast, evolution has not evolved a single animal with wheel-like actuators.
 
@@ -44,8 +44,9 @@ An example of a robot that has both statically and dynamically stable configurat
 
 
 \section{Degrees of Freedom}\label{sec:dof}
-The concept of \emph{degree of freedom}\index{Degree of Freedom}, often abbreviated as DoF, is important for defining the possible positions and orientations a robot can reach. An object in the physical world can have up to six \bh{\emph{Cartesian}} degrees of freedom, namely forward/backward, sideways, and up/down as well as rotations around those axes. These rotations are known as pitch, yaw and roll and are illustrated in \cref{fig:pitchyawandroll}. \bh{These Cartesian degrees of freedom are distinct from the robot's mechanical degrees of freedom, which correspond to the number of points of actuation for a robot (i.e., a robotic arm with five joint motors is referred to as having five mechanical degrees of freedom).}
 
+The concept of \textsl{degree of freedom}\index{Degree of Freedom}, often abbreviated as DoF, is important for defining the possible positions and orientations a robot can reach. An object in the physical world can have up to six \textsl{Cartesian}\index{Cartesian}\index{Cartesian Degree of Freedom} degrees of freedom, namely forward/backward, sideways, and up/down as well as rotations around those axes. These rotations are known as pitch, yaw and roll and are illustrated in \cref{fig:pitchyawandroll}. These Cartesian degrees of freedom are distinct from the robot's \textsl{mechanical} degrees of freedom, which correspond to the number of points of actuation for a robot (i.e., a robotic arm with five joint motors is referred to as having five mechanical degrees of freedom).
+As a rule of thumb, the number of mechanical DoFs available to the user depends on the robot platform and cannot easily be changed by the user unless mechanical modifications to the robot are made; conversely, the number of Cartesian DoFs depends on the task, can be modified by the user, and vary according to what the robot needs to do.
 \begin{figure}
 	\centering
 		\includegraphics[width=\textwidth]{figs/pitchyawroll.png}
@@ -53,7 +54,7 @@ The concept of \emph{degree of freedom}\index{Degree of Freedom}, often abbrevia
 	\label{fig:pitchyawandroll}
 \end{figure}
 
-How many of those directions a robot can move in depends on the configuration of its actuators and the constraints the robot has with the environment. These relationships are not always intuitive and require more rigorous mathematical treatment (\cref{chap:kinematics}). The goal of this section is to introduce the degrees of freedom of standard mechanisms that are recurrent in robot design such as wheels or simple arms. For wheeled platforms, the degrees-of-freedom are defined by the types of wheels used and their orientation. Common wheel types are listed in \cref{tab:wheels}.
+After specifying the mechanical and Cartesian DoFs for your kinematic problem, the number of Cartesian DoFs (i.e. directions) a robot can actually move in depends on the configuration of its actuators and the constraints the robot has with the environment. These relationships are not always intuitive and require more rigorous mathematical treatment (see \cref{chap:kinematics}). The goal of this section is to introduce the degrees of freedom of standard mechanisms that are recurrent in robot design such as wheels or simple arms. For wheeled platforms, the degrees-of-freedom are defined by the types of wheels used and their orientation. Common wheel types are listed in \cref{tab:wheels}.
 
 \begin{table}
 \begin{tabular}{p{2.8cm}p{3cm}p{4cm}}
@@ -90,7 +91,7 @@ Spherical wheel \includegraphics[width=2.5cm]{figs/wheeltype_spherical.png}& Bal
 \caption{Different types of wheels and their degrees of freedom. Adopted from \protect\citeasnoun{siegwart2011introduction},\label{tab:wheels}}
 \end{table}
 
-Only robots that use exclusively wheels with three degrees-of-freedom (3-DOF wheels) will be able to freely move on a plane. This is because the pose of a robot on a plane is fully given by its position (two values) and its orientation (one value). Robots that don't have wheels with three degrees of freedom will have \emph{kinematic constraints}\index{Kinematic constraints} that prevent them from reaching every possible point at every possible orientation. For example, a bicycle wheel can only roll into one direction and turn on the spot. Moving the bicycle wheel orthogonal to its direction of rolling is not possible, unless it is forcefully dragged (``skidding''), which requires more involved treatment not covered in this book. On the other hand, not having three degrees of freedom does not imply that some poses in the plane are unreachable, it may just require additional movements to achieve them.
+Only robots that use exclusively wheels with three degrees-of-freedom ($3-$DoF wheels) will be able to freely move on a plane. This is because the pose of a robot on a plane is fully given by its position (two values) and its orientation (one value). Robots that don't have wheels with three degrees of freedom will have \textsl{kinematic constraints}\index{Kinematic constraints} that prevent them from reaching every possible point at every possible orientation. For example, a bicycle wheel can only roll into one direction and turn on the spot. Moving the bicycle wheel orthogonal to its direction of rolling is not possible, unless it is forcefully dragged (``skidding''), which requires more involved treatment not covered in this book. On the other hand, not having three degrees of freedom does not imply that some poses in the plane are unreachable, it may just require additional movements to achieve them.
 A good analogue are figures on a chess-board. For example, a knight can reach every cell on a chess-board but might require multiple moves to do so. This is similar to a car, which can parallel park using back-and-forth motions. Instead, a bishop can only reach either black or white fields on the board, based upon its starting position.
 
 Similar reasoning applies to aerial and underwater robots. Here, the position of the robot is affected by the position and orientation of thrusters, either in the form of jets or propellers, mounted on the robot. Things become complicated quickly, however, as the dynamics of the system are subject to fluid- and aerodynamic effects, which also change as a function of size of the robot. This book will not go into the details of flying and swimming robots, but the general principles of localization and planning will be applicable to them as well.
@@ -105,7 +106,7 @@ An exact definition of the number of degrees of freedom is tricky and requires d
 \begin{figure}
 	\centering
 		\includegraphics[width=\textwidth]{figs/basickinematics.png}
-	\caption{From left to right: Manipulators with one, two, three and three DOF. The degrees of freedom of moving in a plane are the position of the end-effector with respect to its height and displacement with respect to the base, as well as its orientation.}
+	\caption{From left to right: Manipulators with one, two, three and three DoF. The degrees of freedom of moving in a plane are the position of the end-effector with respect to its height and displacement with respect to the base, as well as its orientation.}
 	\label{fig:basickinematics}
 \end{figure}
 

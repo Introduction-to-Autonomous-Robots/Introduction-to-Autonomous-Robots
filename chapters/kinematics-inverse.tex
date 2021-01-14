@@ -46,7 +46,7 @@ At the extremes of the workspace, both solutions are the same.
 %min = sol /. {x -> 1, y -> 1}
 %\end{verbatim}
 
-Solving \ref{eq:fwk2dofarm} for $\alpha$ and $\beta$ adds two additional solutions that are cumbersome to reproduce here, involving terms of $x$ and $y$ to the sixth power, and is left as an exercise to the reader, for example using an online symbolic solver. 
+Solving \ref{eq:fwk2dofarm} for $\alpha$ and $\beta$ adds two additional solutions that are cumbersome to reproduce here, involving terms of $x$ and $y$ to the sixth power, and is left as an exercise to the reader, for example using an online symbolic solver.
 
 
 What will drastically simplify this problem, is to not only specify the desired position, but also the orientation $\theta$ of the end-effector. In this case, a desired pose can be specified in the following form
@@ -228,7 +228,7 @@ We can now write a simple feedback controller that drives our error $e$ as the d
 That is, we move each joint a tiny bit into the direction that minimizes our error $e$.
 It can be easily seen that the joint speeds are only zero if $e$ has become zero.
 
-This solution might or might not be numerically stable, depending on the current joint values. If the inverse of $J$ is mathematically not feasible, we speak of a \emph{singularity}\index{Singularity} of the mechanism. This happens for example when two joint axes line up, therefore effectively removing a degree of freedom from the mechanism, or at the boundary of the workspace. As it happens very often in robotics, the concept of singularity has both a strong methematical justification (the joint configuration is such that the Jacobian is not full rank any more), and a direct physical consequence: singularity configurations are to be avoided as no solution for the inverse differential kinematics problem exist and the robot might become unsafe to operate.
+This solution might or might not be numerically stable, depending on the current joint values. If the inverse of $J$ is mathematically not feasible, we speak of a \emph{singularity}\index{Singularity} of the mechanism. This happens for example when two joint axes line up, therefore effectively removing a degree of freedom from the mechanism, or at the boundary of the workspace. As it happens very often in robotics, the concept of singularity has both a strong mathematical justification (the joint configuration is such that the Jacobian is not full rank any more), and a direct physical consequence: singularity configurations are to be avoided as no solution for the inverse differential kinematics problem exist and the robot might become unsafe to operate.
 In a singularity, the solution to $ J^+$ ``explodes'' and joint speeds go to infinity. In order to work around this, we can introduce damping to the controller.
 
 In this case, we do not only minimize the error, but also the joint velocities. The minimization problem then becomes:
