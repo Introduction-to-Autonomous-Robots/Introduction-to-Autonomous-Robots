@@ -1,0 +1,90 @@
+%!TEX root = ../book.tex
+\section{Differential Kinematics}\label{sec:kinematics:diff}
+
+The two-link arm in Figure~\ref{fig:fwk2dofarm} involved only two free parameters, but was already pretty complex to solve analytically if the end-effector pose was not specified.
+One can imagine that things become very hard with more degrees of freedom or more complex geometries (mechanisms in which some axes intersect are simpler to solve than others, for example).
+It is worth noting that, so far, we have analyzed the geometry of motion of a robot at its simplest level of abstraction, i.e. in the space of positions. Despite its potential, this abstraction becomes quickly ineffective at modeling complex behaviors, because it does not incorporate any notion of time.
+In order to include a notion of temporal evolution of the robot configuration, it is convenient to shift toward a slightly more complex abstraction, that is the space of generalized velocities. This modeling is called \textsl{differential kinematics}\index{Differential Kinematics}, as velocities are the derivative (i.e. the differential) of positions.
+Similarly to before, with ``generalized velocities'' we mean ``any velocity-equivalent quantity needed to describe the element'', as we will detail below.
+
+\subsection{Forward Differential Kinematics}\label{sec:kinematics:diff:fwd}
+
+Forward differential kinematics deals with the problem of computing an expression that relates the generalized velocities at the joints (i.e. the ``speed'' of our motors) to the generalized velocity of the robot's end-effector. In all, it is the corresponding differential version of \cref{sec:kinematics:fwd}.
+% This is known as \textsl{Differential Kinematics}\index{Differential Kinematics}, as we are operating in the space of velocities, which are the derivative of positions.
+Let the translational speed of a robot be given by:
+\begin{equation}
+v=\left[\begin{array}{c}
+\dot{x}\\
+\dot{y}\\
+\dot{z}
+\end{array}
+\right].
+\end{equation}
+As the robot can potentially not only translate, but also rotate, we also need to specify its angular velocity. Let these velocities be given as a vector
+\begin{equation}
+\omega=\left[\begin{array}{c}
+\omega_x\\
+\omega_y\\
+\omega_z
+\end{array}
+\right].
+\end{equation}
+We can now write translational and rotational velocities in a $6\times1$ generalized velocity vector as $\nu = [v \ \omega]^T$.
+This notation is also called a \textsl{velocity twist}.\index{Twist (velocity)}\index{Velocity Twist} %By convention, the speed of rotation is given by the magnitude (or length) of this vector.
+Let the generalized configuration in joint space (i.e. joint angles/positions) be $q=[q_1, \ldots, q_n]^T$; therefore, we can define the set of joint speeds as $\dot{q}=[\dot{q}_1, \ldots, \dot{q}_n]^T$.
+%
+We now want to compute the differential kinematics version of \cref{eq:kinematics:forward}, and in this case relate joint velocities $\dot{q}$ with end-effector velocities $[v \ \omega]^T$. A simple derivation with respect to time of \cref{eq:kinematics:forward} gives:
+\begin{equation}\label{eq:kinematics:diff:fwd:short}
+\nu = [v \quad \omega]^T=J(q)\cdot [\dot{q}_1,\ldots,\dot{q}_n]^T = J(q) \cdot \dot{q} \ ,
+\end{equation}
+which is our forward kinematics equation. $J(q)$ is known as the \textsl{Jacobian matrix}\index{Jacobian Matrix}, is function of the joint configuration $q$, and contains all the partial derivatives of $f$ that relate every joint angle to every velocity. In practice, $J$ looks like the following:
+
+\begin{equation}\label{eq:kinematics:diff:fwd}
+\nu = \left[\begin{array}{c}v\\\omega\end{array}\right]=
+\left[\begin{array}{c}\dot{x}\\
+\dot{y}\\
+\dot{z}\\
+\omega_x\\
+\omega_y\\
+\omega_z\end{array}\right]=
+\left[\begin{array}{cccc}\frac{\partial{x}}{\partial{q_1}} & \frac{\partial{x}}{\partial{q_2}} & \ldots & \frac{\partial{x}}{\partial{q_n}}\\\frac{\partial{y}}{\partial{q_1}} & \frac{\partial{y}}{\partial{q_2}} & \ldots & \frac{\partial{y}}{\partial{q_n}}\\\vdots & \vdots & \vdots & \vdots\\\frac{\partial{\omega_z}}{\partial{q_1}} & \frac{\partial{\omega_z}}{\partial{q_2}} & \ldots & \frac{\partial{\omega_z}}{\partial{q_n}}\end{array}\right]\left[\begin{array}{c}\dot{q}_1\\\vdots\\\dot{q}_n\end{array}\right] = J (q) \cdot \dot{q}
+\end{equation}
+
+This notation is important as it tells us how small changes in joint space will affect the end-effector's position in Cartesian space. Better yet, the forward kinematics of a mechanism can always be calculated, as well as their analytical derivatives, allowing us to calculate numerical values for the entries of matrix $J$ for every possible joint angle/position.
+
+\subsection{Inverse Differential Kinematics}\label{sec:kinematics:diff:inv}
+
+% Fortunately, there are simple numerical techniques that work reasonably well in such situations.
+% One of them is known as the \textsl{inverse Jacobian}\index{Inverse Jacobian} technique.
+
+It would now be desirable to just invert $J$ in \cref{eq:kinematics:diff:fwd} in order to calculate the necessary joint speeds for every desired end-effector speeds---a problem known as \textsl{Inverse Differential Kinematics}\index{Inverse Differential Kinematics}. Unfortunately, as any matrix $J$ is only invertible if the number of degrees of freedom in joint space $n$ equals the number of degrees of freedom in task space $m$, so that $ J$ is quadratic and has full rank.
+In the case above, the velocity wrench $[v \ \omega]^T$ is $6-$dimensional, and this means that $n$ should be equal to $6$: therefore, inversion of $J$ is only possible if the robot under consideration is equipped with exactly $6$ actuators/joints.
+If this is not the case, we can use the pseudo-inverse computation:
+\begin{equation}
+J^+=\frac{J^T}{JJ^T}=J^T(JJ^T)^{-1}
+\end{equation}
+As you can see, $J^T$ cancels from the equation leaving $1/J$, while being applicable to non-quadratic matrices.
+We can now write a simple feedback controller that drives our error $e$ as the difference between desired and actual position to zero:
+\begin{equation}
+\Delta{q}=-J^+e
+\end{equation}
+That is, we move each joint a tiny bit into the direction that minimizes our error $e$.
+It can be easily seen that the joint speeds are only zero if $e$ has become zero.
+
+This solution might or might not be numerically stable, depending on the current joint values. If the inverse of $J$ is mathematically not feasible, we speak of a \textsl{singularity}\index{Singularity} of the mechanism. This happens for example when two joint axes line up, therefore effectively removing a degree of freedom from the mechanism, or at the boundary of the workspace. As it happens very often in robotics, the concept of singularity has both a strong mathematical justification (the joint configuration is such that the Jacobian is not full rank any more), and a direct physical consequence: singularity configurations are to be avoided as no solution for the inverse differential kinematics problem exist and the robot might become unsafe to operate.
+In a singularity, the solution to $ J^+$ ``explodes'' and joint speeds go to infinity. In order to work around this, we can introduce damping to the controller.
+
+In this case, we do not only minimize the error, but also the joint velocities. The minimization problem then becomes:
+\begin{equation}
+\|J\Delta q-e\|+\lambda^2\|\Delta q\|^2
+\end{equation}
+where $\lambda$ is some constant. One can show that the resulting controller that achieves this has the form:
+\begin{equation}
+\Delta q=(J^TJ+\lambda^2 I)^{-1}J^+e
+\end{equation}
+
+This is known as the \textsl{Damped Least-Squares} method.\index{Damped Least-Squares Method} Problems with this approach are local minima and singularities of the mechanism, which might render this solution infeasible.
+
+\subsection{Under-actuation and Over-actuation}
+
+\td{We can add redundancy here}

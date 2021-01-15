@@ -1,5 +1,5 @@
 %!TEX root = ../book.tex
-\section{Forward Kinematics}\label{sec:kinematics:fwk}
+\section{Forward Kinematics}\label{sec:kinematics:fwd}
 
 Now that we have introduced the notion of local coordinate frames, we are interested in calculating the pose and speed of these coordinate frames as a function of the robot's actuators and joint configuration.
 That is, we are interested in computing a function $f$ that allows us to map a joint configuration to its corresponding end-effector pose:
@@ -15,14 +15,6 @@ Conversely, $r$ depends on the task and its dimensionality is $m$, where $m$ is 
 In the following, we will compute the forward kinematics mapping $f$ for a number of selected but diverse mechanisms.
 We will first consider simple mechanisms where we can determine the relationship between actuators and the pose of various frames on the robot both in the position and speed domain.
 We will then consider the special class of non-holonomous mechanisms using a series of wheeled robots, for which the forward kinematics can only be calculated in the speed domain.
-
-\begin{mdframed}
-\noindent Remember:
-configuration space $\equiv$ joint space;
-cartesian space $\equiv$ task space.
-Forward kinematics maps from joint space to task space, and inverse kinematics does the opposite.
-The number of mechanical degrees-of-freedom $n$ (i.e. DoFs in task space) depends on the robot, the number of Cartesian degrees-of-freedom $m$ (i.e. DoFs in task space) depends on the task. In general, $n \neq m$!
-\end{mdframed}
 
 \subsection{Forward Kinematics of a simple robot arm}\label{sec:kinematics:fwk:arm}
 

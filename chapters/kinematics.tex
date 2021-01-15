@@ -1,17 +1,33 @@
 %!TEX root = ../book.tex
 \chapter{Kinematics}\label{chap:kinematics}
 
-In order to plan a robot's movements, we have to understand the relationship between the actuators that we can control and the robot's resulting position in the environment. For static arms, this is rather straightforward: if we know the position/angle of each joint, we can calculate the position of its end-effectors using trigonometry. This process is known as \emph{forward kinematics}. \index{Forward Kinematics} If we want to calculate the position each joint needs to be at, we need to invert this relationship. This is known as \emph{inverse kinematics}. \index{Inverse Kinematics} For mobile robots, this process is usually more involved, as speeds need to be integrated, which we refer to as \emph{odometry}\index{Odometry}.
+In order to plan a robot's movements, we have to understand the relationship between our control variables (i.e. the actuators that we can control at any given time) and the effect of these control variables on the motion of the robot.
+The simplest model of such relationship is to look at the geometry of our robot, a field known as \textsl{kinematics}\index{Kinematics}.
+For simple arms in static configurations, a kinematic model is rather straightforward: if we know the generalized position / configuration angle of each joint, we can calculate the generalized position of its end-effectors using trigonometry---a process known as \textsl{forward kinematics}\index{Forward Kinematics}.
+A more interesting, useful, and complex problem is trying to compute the inverse relationship, i.e. the position each joint needs to be in order for the end-effector to be in a desired position or pose. This inverse process is known as \textsl{inverse kinematics}\index{Inverse Kinematics}.
+For mobile robots, this process is usually more involved, as speeds need to be integrated, which we refer to as \textsl{odometry}\index{Odometry}.
 
-The goals of this chapter are to:
+As we will see below, kinematics is the simplest and most fundamental level of abstraction that a roboticist can use to model the motion of a robot and its geometry: it deals exclusively with positional quantities, and considers the robot as if it was frozen in time. Although this simplification is far from being realistic, we will see that a lot can be done through kinematics alone! However, a more expressive tool at our disposal is to do a similar modeling in a second level of abstraction that operates in velocity space; this domain is called \textsl{differential kinematics}\index{Differential Kinematics} and is introduced in \cref{sec:kinematics:diff}.
+In all, the goals of this chapter are to:
 
 \begin{itemize}
 \item introduce coordinate systems and their transformations;
-\item introduce the forward kinematics of simple arms and mobile robots;
-\item understand the concept of holonomy;
-\item show how solutions for the inverse kinematics for both static and mobile robots can be derived;
-\item provide an intuition on the relationship between inverse kinematics and path-planning.
+\item introduce the forward kinematics of simple arms and mobile robots, and understand the concept of holonomy;
+\item provide an intuition on the relationship between inverse kinematics and path-planning;
+\item become familiar with differential kinematics and the Jacobian technique.
 \end{itemize}
+
+It is worth remembering that, within the scope of a kinematic analysis, the term \textsl{generalized position} or \textsl{generalized configuration}\index{Generalized Position}\index{Generalized Configuration} means ``any position-equivalent quantity needed to describe the element''.
+For what concerns joint space, it depends on the type of actuation: a revolute joint imparts a rotational motion around its axis and its configuration is fully described by an angle; a prismatic joint commands a translational motion along its axis and its configuration is represented by a distance.
+Conversely, generalized position in task space depends on the specific task; in its most general case, a generalized position equates to the end-effector pose, which is composed of a $3D$ position and a $3D$ orientation---as we will see below.
+
+\begin{mdframed}
+\noindent Remember:
+configuration space $\equiv$ joint space;
+cartesian space $\equiv$ task space.
+Forward kinematics maps from joint space to task space, and inverse kinematics does the opposite.
+The number of mechanical degrees-of-freedom $n$ (i.e. DoFs in task space) depends on the robot, the number of Cartesian degrees-of-freedom $m$ (i.e. DoFs in task space) depends on the task. In general, $n \neq m$!
+\end{mdframed}
 
 %%%%%%%%%%%%%%%%%%%%
 %% ACTUAL CONTENT %%
@@ -20,10 +36,13 @@ The goals of this chapter are to:
 \input{chapters/kinematics-coordinatesystems}
 \input{chapters/kinematics-forward}
 \input{chapters/kinematics-inverse}
+\input{chapters/kinematics-differential}
 
 %%%%%%%%%%%%%%%%%%%%
 
 \section*{Take-home lessons}
+
+\td{modify the take home lessons because now there's double the content}
 
 \begin{itemize}
 \item Forward kinematics deals with finding a coordinate transform from a world coordinate system into a coordinate system on the robot.

@@ -13,12 +13,12 @@ While this aspect can be ignored in basic applications of mobile robots and simp
 %\item redundancy analysis (a kinematic task is redundant if the robot possesses more degrees of freedom than what are needed to perform the task, resulting in infinite inverse kinematics solutions to choose from);
 %\item manipulability analysis (i.e. how easy or difficult is it for a robot to move in a certain direction).
 %\end{enumerate}
-In this Chapter, we will introduce the reader to these concepts through \emph{statics}\index{statics}, which introduces a third dimension to the problem of analyzing how robots move in space and interact with their surroundings.
+In this Chapter, we will introduce the reader to these concepts through \emph{statics}\index{statics}, which introduces a third abstraction to the problem of analyzing how robots move in space and interact with their surroundings.
 More specifically, in \cref{sec:kinematics:fwk,sec:kinematics:ik} we have investigated the \textsl{kinematic} problem and operated in the space of \textsl{positions}, that is, how to map joint angles with end effector poses.
 In \cref{sec:kinematics:ik:invjac}, we introduced the \textsl{differential kinematics} problem and operated in the space of \textsl{velocities}, i.e. how to map joint velocities with end-effector velocity twists (remember: velocity is derivative of position, hence the name ``differential'').
 In the following, we will operate in the space of \textsl{forces}; however, we will simplify the more general dynamical problem by looking at the robot in static equilibrium---otherwise known as a \textsl{static} configuration.
 As we will see, a lot can be done by simply looking at the robot in an equilibrium configuration!
-The fourth and last dimension, which goes beyond the scope of this book, is called \textsl{dynamics} and operates in the space of forces from a non-static perspective; it involves the second derivative of position (i.e. the acceleration), and it can be thought as a generalization of the second law of Newton ($F=ma$).
+The fourth and last abstraction, which goes beyond the scope of this book, is called \textsl{dynamics} and operates in the space of forces from a non-static perspective; it involves the second derivative of position (i.e. the acceleration), and it can be thought as a generalization of the second law of Newton ($F=ma$).
 We will briefly introduce the reader to the topic in \cref{ch:forces:dynamics}.\td{remember to remove this sentence if we decide not to have the subchapter on dynamics}
 %
 The goals of this chapter are to:
@@ -48,27 +48,27 @@ If such a condition is met, a robot with $n$ degrees of freedom and an end-effec
     \item an $\left( m \times 1 \right)$ vector of generalized forces $F$ exerted \textsl{by the robot end-effector} on the environment---or, more generally, by any part of the robot that may be in direct physical contact with the environment;
     \item an $\left( m \times 1 \right)$ vector of forces exerted \textsl{by the environment} on the robot end-effector $F_e$---which, per the principle of action and reaction, are equal and opposite to $F$: $F_e=-F$.
 \end{itemize}
-In this case, ``generalized force'' means ``any force-like quantity needed to describe the element''.
+In this case, \textsl{generalized force}\index{Generalized Force} means ``any force-equivalent quantity needed to describe the element''.
 In the case of joints, it depends on the actuation: generalized forces at the joints are either forces for prismatic joints (as they impart a translational motion on the joint) or torques for revolute joints (as they impart a rotational motion on the joint); the size of this vector depends on the number of mechanical degrees-of-freedom $n$.
 In the case of the end-effector, it depends on the number of DoFs in task space $m$; if we are operating with a $6-$DoF problem, the $m \times 1$ vector of generalized forces will be composed of a linear force component given by the forces on the three axes:
 \begin{equation}
 f=\left[\begin{array}{c}
-\dot{f_x}\\
-\dot{f_y}\\
-\dot{f_z}
+f_x\\
+f_y\\
+f_z
 \end{array}
 \right],
 \end{equation}
-and a angular force component (or moment) around the three axes:
+and an angular force component (or moment) $\mu$ around the three axes:
 \begin{equation}
-m=\left[\begin{array}{c}
-m_x\\
-m_y\\
-m_z
+\mu=\left[\begin{array}{c}
+\mu_x\\
+\mu_y\\
+\mu_z
 \end{array}
 \right].
 \end{equation}
-We can now combine the above elements in a $6\times1$ vector as $F=[f \ m]^T$.
+We can now combine the above elements in a $6\times1$ vector as $F=[f \ \mu]^T$.
 This vector of generalized forces is also called a \textsl{spatial force} or \textsl{wrench}\index{Wrench}\index{Spatial Force}.
 We now want to compute the statics version of \cref{eq:kinematics:diff}, and relate our $n \times 1$ vector of torques $\tau$ with the $6\times1$ wrench vector $F$.
 To find this relationship, let's recall the definition of \textsl{power} from physics. Mechanical power $W$ is defined as force times velocity, which can be generalized as generalized forces times generalized velocities: $W=F^T \cdot \nu$.
@@ -116,7 +116,7 @@ F=\left[\begin{array}{c} 0\\ 0\\ -5N\\ 0\\ 0\\ 0\\ \end{array} \right].
 \section*{Exercises}\small
 
 \begin{enumerate}
-\item Think about the four layer of abstraction we have just investigated (kinematics, differential kinematics, statics, dynamics).
+\item Think about the four layers of abstraction we have just investigated (kinematics, differential kinematics, statics, dynamics).
 \begin{enumerate}
 \item Can you think of an application for which you would need a dynamic analysis? (Hint: this is generally something really hard)
 \item What can be done by just looking at the static problem instead? (Hint: you are still considering an exchange of forces here)

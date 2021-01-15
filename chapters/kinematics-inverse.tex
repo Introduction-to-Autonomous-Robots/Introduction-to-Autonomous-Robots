@@ -126,14 +126,17 @@ allowing us to calculate the robot's wheel speed as a function of a desired $\do
 
 Note that this approach does not allow us to deal with $\dot{y}_R \neq 0$, which might result from a desired speed in the inertial frame. Non-zero values for translation in y-direction are simply ignored by the inverse kinematic solution, and driving toward a specific point either requires feedback control (Section~\ref{sec:kinematics:ik:invjac}) or path planning (Chapter~\ref{chap:pathplanning}).
 
-\section{Inverse Kinematics using Feedback Control}\label{sec:kinematics:inverse:feedbackcontrol}
+\subsection{Inverse Kinematics using Feedback Control}\label{sec:kinematics:inverse:feedbackcontrol}
 
-Solving the inverse kinematic problem for non-holonomic mobile robots requires us to find a sequence of actuation commands.
-One way of doing this is to employ \emph{feedback control}\index{Feedback Control}.
+As we can easily calculate the resulting pose for every possible joint angle combination using the forward kinematic equations (\cref{sec:kinematics:fwd}), we can calculate the error between desired and actual pose.
+This error actually provides us with a \textsl{direction of motion} that the end-effector needs to move toward so as to minimize such error.
+As we only need to move tiny bits at a time and can then re-calculate the error, this is an attractive method to generate a trajectory that moves the arm to where we want it go and thereby solves the inverse kinematics problem.
+This is even more effective for non-holonomic mobile robots, where solving the inverse kinematic problem requires us to find a sequence of actuation commands.
+A more formal way of doing this is to employ \emph{feedback control}\index{Feedback Control}.
 In a nutshell, feedback control uses the error between actual and desired position to calculate a trajectory that drives the robot a little closer to its desired pose. The process is then repeated until the error is marginally small.
 This approach can not only be used for mobile robots, but also for manipulator arms with kinematics that are too complicated to solve analytically.
 
-\subsection{Feedback control for mobile robots}\label{sec:fbmobile}
+\subsubsection{Feedback control for mobile robots}\label{sec:fbmobile}
 
 Assume the robot's position given by $x_r, y_r$ and $\theta_r$ and the desired pose as $x_g, y_g$ and $\theta_g$---with the subscript $g$ indicating ``goal''.
 We can now calculate the error in the desired pose by:
@@ -158,88 +161,3 @@ which will let the robot drive in a curve until it reaches the desired pose.
     \caption{Difference in desired and actual pose as a function of distance $\rho$, bearing $\alpha$ and heading $\eta$.}
     \label{fig:trajectorygen}
 \end{figure}
-
-
-\subsection{Inverse Jacobian Technique}\label{sec:kinematics:ik:invjac}
-
-The two-link arm in Figure~\ref{fig:fwk2dofarm} involved only two free parameters, but was already pretty complex to solve analytically if the end-effector pose was not specified.
-One can imagine that things become very hard with more degrees of freedom or more complex geometries (mechanisms in which some axes intersect are simpler to solve than others, for example).
-Fortunately, there are simple numerical techniques that work reasonably well in such situations.
-One of them is known as the \emph{Inverse Jacobian}\index{Inverse Jacobian} technique.
-
-As we can easily calculate the resulting pose for every possible joint angle combination using the forward kinematic equations, we can calculate the error between desired and actual pose.
-This error actually provides us with a direction of motion that the end-effector needs to move toward so as to minimize such error.
-As we only need to move tiny bits at a time and can then re-calculate the error, this is an attractive method to generate a trajectory that moves the arm to where we want it go and thereby solves the inverse kinematics problem.
-
-In order to do this, we need an expression that relates the desired speed of the robot's end-effector, i.e. the direction in which we want to move, to the speed at which we need to change our joints.
-This is known as \emph{Differential Kinematics}\index{Differential Kinematics}, as we are operating in the space of velocities, which are the derivative of positions.
-Let the translational speed of a robot be given by:
-\begin{equation}
-v=\left[\begin{array}{c}
-\dot{x}\\
-\dot{y}\\
-\dot{z}
-\end{array}
-\right].
-\end{equation}
-As the robot can potentially not only translate, but also rotate, we also need to specify its angular velocity. Let these velocities be given as a vector
-\begin{equation}
-\omega=\left[\begin{array}{c}
-\omega_x\\
-\omega_y\\
-\omega_z
-\end{array}
-\right].
-\end{equation}
-We can now write translational and rotational velocities in a $6\times1$ vector as $\nu = [v \ \omega]^T$.
-This notation is also called a \emph{velocity twist}.\index{Twist (velocity)}\index{Velocity Twist} %By convention, the speed of rotation is given by the magnitude (or length) of this vector.
-Let the joint angles/positions be $q=[q_1, \ldots, q_n]^T$, and the set of joint speeds be $\dot{q}=[\dot{q}_1, \ldots, \dot{q}_n]^T$.
-%
-We now want to compute the differential kinematics version of \cref{eq:kinematics:forward}, which relates end-effector velocities $[v \ \omega]^T$ and joint velocities $\dot{q}$. In this case, it is given by:
-\begin{equation}\label{eq:kinematics:diff:short}
-\nu = [v \quad \omega]^T=J\cdot [\dot{q}_1,\ldots,\dot{q}_n]^T = J \cdot \dot{q}
-\end{equation}
-$J$ is known as the \emph{Jacobian matrix} \index{Jacobian Matrix} and contains all the partial derivatives of $f$ that relate every joint angle to every velocity. In practice, $J$ looks like:
-
-\begin{equation}\label{eq:kinematics:diff}
-\nu = \left[\begin{array}{c}v\\\omega\end{array}\right]=
-\left[\begin{array}{c}\dot{x}\\
-\dot{y}\\
-\dot{z}\\
-\omega_x\\
-\omega_y\\
-\omega_z\end{array}\right]=
-\left[\begin{array}{cccc}\frac{\partial{x}}{\partial{q_1}} & \frac{\partial{x}}{\partial{q_2}} & \ldots & \frac{\partial{x}}{\partial{q_n}}\\\frac{\partial{y}}{\partial{q_1}} & \frac{\partial{y}}{\partial{q_2}} & \ldots & \frac{\partial{y}}{\partial{q_n}}\\\vdots & \vdots & \vdots & \vdots\\\frac{\partial{\omega_z}}{\partial{q_1}} & \frac{\partial{\omega_z}}{\partial{q_2}} & \ldots & \frac{\partial{\omega_z}}{\partial{q_n}}\end{array}\right]\left[\begin{array}{c}q_1\\\vdots\\q_n\end{array}\right] = J \cdot \dot{q}
-\end{equation}
-
-This notation is important as it tells us how small changes in joint space will affect the end-effector's position in cartesian space. Better yet, the forward kinematics of a mechanism can always be calculated, as well as their analytical derivatives, allowing us to calculate numerical values for the entries of matrix $J$ for every possible joint angle/position.
-
-It would now be desirable to just invert $J$ in order to calculate the necessary joint speeds for every desired end-effector speeds---a problem known as \emph{Inverse Differential Kinematics}\index{Inverse Differential Kinematics}. Unfortunately, as any matrix $J$ is only invertible if the number of degrees of freedom in joint space $n$ equals the number of degrees of freedom in task space $m$, so that $ J$ is quadratic and has full rank.
-In the case above, the velocity wrench $[v \ \omega]^T$ is $6-$dimensional, and this means that $n$ should be equal to $6$: therefore, inversion of $J$ is only possible if the robot under consideration is equipped with exactly $6$ actuators/joints.
-If this is not the case, we can use the pseudo-inverse computation:
-\begin{equation}
-J^+=\frac{J^T}{JJ^T}=J^T(JJ^T)^{-1}
-\end{equation}
-As you can see, $J^T$ cancels from the equation leaving $1/J$, while being applicable to non-quadratic matrices.
-We can now write a simple feedback controller that drives our error $e$ as the difference between desired and actual position to zero:
-\begin{equation}
-\Delta{q}=-J^+e
-\end{equation}
-That is, we move each joint a tiny bit into the direction that minimizes our error $e$.
-It can be easily seen that the joint speeds are only zero if $e$ has become zero.
-
-This solution might or might not be numerically stable, depending on the current joint values. If the inverse of $J$ is mathematically not feasible, we speak of a \emph{singularity}\index{Singularity} of the mechanism. This happens for example when two joint axes line up, therefore effectively removing a degree of freedom from the mechanism, or at the boundary of the workspace. As it happens very often in robotics, the concept of singularity has both a strong mathematical justification (the joint configuration is such that the Jacobian is not full rank any more), and a direct physical consequence: singularity configurations are to be avoided as no solution for the inverse differential kinematics problem exist and the robot might become unsafe to operate.
-In a singularity, the solution to $ J^+$ ``explodes'' and joint speeds go to infinity. In order to work around this, we can introduce damping to the controller.
-
-In this case, we do not only minimize the error, but also the joint velocities. The minimization problem then becomes:
-\begin{equation}
-\|J\Delta q-e\|+\lambda^2\|\Delta q\|^2
-\end{equation}
-where $\lambda$ is some constant. One can show that the resulting controller that achieves this has the form:
-\begin{equation}
-\Delta q=(J^TJ+\lambda^2 I)^{-1}J^+e
-\end{equation}
-
-This is known as the \emph{Damped Least-Squares} method.\index{Damped Least-Squares Method} Problems with this approach are local minima and singularities of the mechanism, which might render this solution infeasible.
-
-\td{We can add redundancy here}
