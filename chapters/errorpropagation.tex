@@ -104,8 +104,8 @@ Whereas the line fitting example demonstrated a many-to-one mapping, odometry re
 
 As usual, we describe the robot's position by a tuple $ (x,y,\theta)$. These are the three output variables. We can measure the distance each wheel travels $ \Delta s_r$ and $ \Delta s_l$ based on the encoder ticks and the known wheel radius. These are the two input variables. We can now calculate the change in the robot's position by calculating
 \begin{eqnarray}
-\Delta x  &=& \Delta s cos(\theta+\Delta \theta /2)\\
-\Delta y  &=& \Delta s sin(\theta+\Delta \theta/2)\\
+\Delta x  &=& \Delta s cos(\theta)\\
+\Delta y  &=& \Delta s sin(\theta)\\
 \Delta \theta &=& \frac{\Delta s_r-\Delta s_l}{b}
 \end{eqnarray}
 with
