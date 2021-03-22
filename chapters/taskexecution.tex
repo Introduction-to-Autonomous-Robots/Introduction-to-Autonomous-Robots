@@ -3,7 +3,7 @@ In its most basic implementation, sensors and actuators can be directly tied to 
 
 \section{Reactive control}\label{sec:braitenberg}
 A large variety of robotic behaviors can be accomplished by directly connecting sensor input to actuator output. This can even be accomplished without using a computer, but by using analog electronics that provide appropriate conditioning. Simple autonomous robots using this concept have been demonstrated as early as 1953 \cite{walter1953living} and have become known as ``tortoises''. For example, by tying the output of a light sensor to a motor controller, the motor turns faster the brighter the light is. Using an inverse relationship, the motor turns slower the brighter the light is. When used in a differential wheel configuration with two motors and two light sensors, such a robot either drives toward or away from the light. Formally, we can express the light following behavior, also known as \emph{phototaxis}\index{Phototaxis},
-\begin{eqnarray}\ref{eq:simplereactive}
+\begin{eqnarray}\label{eq:simplereactive}
 \dot{\phi_l}=a \lambda_r + b\\
 \dot{\phi_r}=a \lambda_l + b
 \end{eqnarray}
