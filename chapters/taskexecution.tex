@@ -1,6 +1,43 @@
 \chapter{Task execution}
+In its most basic implementation, sensors and actuators can be directly tied to each other, making a computer obsolete. Such robots are purely reactive, thereby missing the ability to ``think'' or plan. This chapter introduces these basic principles, starting with basic reactive controllers (Section \ref{sec:braitenberg}), then introduces more advanced concepts that let the robot make basic ``if'' \ldots ``then'' decisions using ``Finite State Machines'' (FSM) in Sections \ref{sec:fsm} and \ref{sec:stateflow}, and finally introduces advanced concepts such as ``behavior trees'' and semantic planning in Sections \ref{sec:behaviortrees} and \ref{sec:strips}.
 
-\section{Finite State Machines}
+\section{Reactive control}\label{sec:braitenberg}
+A large variety of robotic behaviors can be accomplished by directly connecting sensor input to actuator output. This can even be accomplished without using a computer, but by using analog electronics that provide appropriate conditioning. Simple autonomous robots using this concept have been demonstrated as early as 1953 \cite{walter1953living} and have become known as ``tortoises''. For example, by tying the output of a light sensor to a motor controller, the motor turns faster the brighter the light is. Using an inverse relationship, the motor turns slower the brighter the light is. When used in a differential wheel configuration with two motors and two light sensors, such a robot either drives toward or away from the light. Formally, we can express the light following behavior, also known as \emph{phototaxis}\index{Phototaxis},
+\begin{eqnarray}\ref{eq:simplereactive}
+\dot{\phi_l}=a \lambda_r + b\\
+\dot{\phi_r}=a \lambda_l + b
+\end{eqnarray}
+using $\lambda_r$ and $\lambda_l$ the measurements of the right and left light sensors, respectively, $\dot{\phi_l}$ and $\dot{\phi_r}$ as the left and right wheel speeds, $a$ a constant weight, and $b$ a bias term. We observe that the left wheel turns faster, the brighter the light shines on the right sensor. If the right light sensor receives more light than the left sensor, the right wheel will turn slower, resulting into a right turn, thereby exhibiting phototaxis behavior.
+
+A more complex behavior is obstacle avoidance. Assuming the output of an obstacle sensor to increase with the obstacle approaching, e.g. an infrared proximity sensor, we can use the same principle to compute the wheel speeds such that the obstacle is actively avoided. An example for a differential-wheel robot with eight infrared proximity sensors is given by
+\begin{eqnarray}
+\nonumber
+\dot{\phi_l}&=&-6d_0-6d_1-19d_2-13d_3+94d_4+63d_5-50d_6-6d_7+b\\
+\nonumber
+\dot{\phi_r}&=&-6d_0+50d_1+63d_2+94d_3-22d_4-10d_5-6d_6-6d_7+b
+\end{eqnarray}
+
+% back, left {-0.06, -0.06}, 
+% left {-0.06, 0.5}, 
+% front, left {-0.19, 0.63}, 
+% front, front, left{-0.13, 0.942}
+% front, front, right {0.942, -0.22}, % left right motor
+% front, right {0.63, -0.1}, 
+% right {0.5, -0.06},  
+% back, right {-0.06, -0.06},
+
+with $d_0$ the left rearward sensing, the sensors being arranged clockwise, and $d_7$ the right rearward sensing sensor, arranged as on the E-Puck differential wheel robot \cite{mondada2009puck}, see also Figure \ref{fig:epucksensors}.
+
+\todo{Add figure into sensors chapter and show non-linear properties.}
+
+Behaviors such as phototaxis and obstacle avoidance can also be combined by simply adding them and weighing each input accordingly. This idea has been popularized by the neuroscientist Valentino Braitenberg who augmented this system with additional ideas around learning (changing the weights based on events such as collisions), natural selection (building robots with random weights and selecting those that perform best), and analogies to the human brain \cite{braitenberg1986vehicles}. Controllers of these kind are therefore often called ``Braitenberg''.
+
+Indeed, the controllers above bear strong resemblance to artificial neural networks such as described in Chapter \ref{chap:anns}, and ``optimal'' values to obtain a certain behavior can be obtained using evolutionary computation \cite{floreano1998evolutionary} or by training a neural network that yields appropriate input/output pairs. 
+
+There are various variants of the control architecture including the \emph{subsumption architecture} \cite{brooks1990elephants} and \emph{motor schemas} \cite{arkin1989motor} that propose variations of switching different components of a reactive controller on and off to obtain a certain behavior. While useful to achieve simple behaviors, these approaches are difficult to manage in practice, and are better managed by being embedded in high-level control frameworks. 
+%
+%
+\section{Finite State Machines}\label{sec:fsm}
 
 \begin{enumerate}
 \item State is kept by a global variable
@@ -10,7 +47,7 @@
 \item FSMs are difficult to maintain. Adding a state requires modifiying the transitions of all states leading into that state and possibly also out of that new state.
 \end{enumerate}
 
-\section{Hierarchical Finite State Machines}
+\section{Hierarchical Finite State Machines}\label{sec:stateflow}
 \begin{enumerate}
 \item FSMs are grouped into clusters, creating super-states
 \item Also known as ``Statecharts'' \cite{harel1987statecharts}
@@ -21,7 +58,7 @@
 \item HFSM solve some of the problems of FSMs by increasing modularity, thereby simplifying programmability, but still have the problem that $N$ states can lead to $N^2$ state transitions, each of which need to be manually coded.
 \end{enumerate}
 
-\section{Behavior Trees}
+\section{Behavior Trees}\label{sec:behaviortrees}
 \begin{enumerate}
 \item Programs are organized into nodes, each implementing certain functionality.
 \item A node can have sub-nodes, like leafs of a tree, that are sequentially executed.
@@ -33,7 +70,7 @@
 \item If a node fails, this information can be processed by the parent node who either passes it up, or restart the sequence of child nodes.
 \end{enumerate}
 
-\section{Mission Planning}
+\section{Mission Planning}\label{sec:strips}
 \begin{enumerate}
 \item The original GPS algorithm: operations that transform a set of pre-conditions into a set of post-states, and search thereon
 \item Mission planning with BTs
