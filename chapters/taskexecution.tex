@@ -79,6 +79,9 @@ There are various variants of the control architecture including the \emph{subsu
 \section{Exercises}
 
 \begin{enumerate}
-\item A robot runs at a 100ms loop time. Performing sensor readings takes 3ms, odometry computations 15ms, and executing logic takes 30ms on average. Which of these operations is likely to fail if a computation takes 80ms?
+\item A differential wheel robot has three downward-facing light sensors at its tip. The sensors are spaced such that the robot can detect a black line on a white ground. Derive the equations for a line-following robot using the Braitenberg formalism.
+\item Derive a control scheme that combines line following and obstacle avoidance. Discuss your choices assuming that the robot has to avoid obstacles at all cost. 
+\item Use a robotic simulator of your choice to implement basic phototaxis and obstacle avoidance. 
+\item A robot runs at a 100ms loop time. Performing sensor readings takes 3ms, odometry computations 15ms, and executing logic takes 30ms on average. Which of these operations is likely to fail if the task logic takes 80ms?
 \item Formulate both a Finite State Machine and a Behavior tree for the game ``Rats Life'', label each state and conditional transition, and compare the two representations.
 \end{enumerate}
