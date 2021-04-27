@@ -22,7 +22,7 @@ We will then consider the special class of non-holonomous mechanisms using a ser
     \centering
     % \includegraphics[width=0.27\textwidth]{figs/fwk2dofarm}
     \def\svgwidth{0.4\textwidth}
-    \import{./figs/}{fwk2dofarm.pdf_tex}
+    \import{./figs/kinematics/}{fwk2dofarm.pdf_tex}
     \caption{A simple 2-DOF arm.}\label{fig:fwk2dofarm}
 \end{figure}
 
@@ -85,7 +85,7 @@ What complicates matters is that for so-called \emph{non-holonomic} systems, it 
     \centering
     % \includegraphics[width=0.95\textwidth]{figs/holonomy.png}
     \def\svgwidth{\textwidth}
-    \import{./figs/}{holonomy.pdf_tex}
+    \import{./figs/kinematics/}{holonomy.pdf_tex}
     \caption{Configuration or joint space (left) and workspace or operational space (right) for a non-holonomic mobile robot (top) and a holonomic manipulator (bottom). Closed trajectories in configuration space result in closed trajectories in the workspace if the robot's kinematics is holonomic.}
     \label{fig:holonomy}
 \end{figure}
@@ -115,7 +115,7 @@ Therefore, velocities are the only interesting quantities in this coordinate sys
     \centering
     % \includegraphics[width=0.85\textwidth]{figs/mobilerobot.png}
     \def\svgwidth{0.85\textwidth}
-    \import{./figs/}{mobilerobot.pdf_tex}
+    \import{./figs/kinematics/}{mobilerobot.pdf_tex}
     \caption{Mobile robot with local coordinate system \{R\} and world frame \{I\}. The arrows indicate the positive direction of position and orientation vectors.}
     \label{fig:mobilerobot}
 \end{figure}
@@ -166,7 +166,7 @@ This becomes apparent when considering that the circumference of a wheel with ra
     \centering
     % \includegraphics[width=0.9\textwidth]{figs/wheelrotation.png}
     \def\svgwidth{\textwidth}
-    \import{./figs/}{wheelrotation_2.pdf_tex}
+    \import{./figs/kinematics/}{wheelrotation_2.pdf_tex}
     \caption{Left: Differential wheel robot pivoting around its left wheel first and its right wheel next. For infinitesimal motion, it is possible to decouple left and right wheel to simplify computation of the forward kinematics. Right: A wheel with radius $r$ moves by $\phi r$ when rotated by $\phi$ degrees.}
     \label{fig:wheelrotation}
 \end{figure}
@@ -242,7 +242,7 @@ As the Ackermann mechanism lets all wheels drive on circles with a common center
     \centering
     % \includegraphics[width=0.9\textwidth]{figs/ackermann.png}
     \def\svgwidth{0.9\textwidth}
-    \import{./figs/}{ackermann.pdf_tex}
+    \import{./figs/kinematics/}{ackermann.pdf_tex}
     \caption{Left: Kinematics of car-like steering and the equivalent bicycle model. Right: Mechanism of an Ackermann vehicle.}
     \label{fig:ackermann}
 \end{figure}
@@ -288,7 +288,7 @@ Knowing the robot's kinematic properties (e.g. the length of all rigid links, si
     \centering
     % \includegraphics[width=\textwidth]{figs/denavit-hartenberg.png}
     \def\svgwidth{\textwidth}
-    \import{./figs/}{denavit-hartenberg.pdf_tex}
+    \import{./figs/kinematics/}{denavit-hartenberg.pdf_tex}
     \caption{Example of selected Denavit-Hartenberg parameters for three sequential revolute joints. The z-axes of joint $i$ and $i+1$ are parallel, which results in $\alpha_i = 0$.}
     \label{fig:denavit}
 \end{figure}
