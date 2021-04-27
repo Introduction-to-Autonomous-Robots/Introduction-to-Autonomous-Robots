@@ -7,13 +7,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="819.42163"
-   height="588.75348"
+   width="875.31152"
+   height="570.51184"
    id="svg2"
    version="1.1"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
    sodipodi:docname="denavit-hartenberg.svg"
-   viewBox="0 0 768.20775 551.9564">
+   viewBox="0 0 820.60452 534.85486">
   <defs
      id="defs4">
     <marker
@@ -106,12 +106,12 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.1278547"
-     inkscape:cx="395.22905"
-     inkscape:cy="347.27952"
+     inkscape:cx="245.09162"
+     inkscape:cy="396.71802"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1863"
+     inkscape:window-width="1865"
      inkscape:window-height="1581"
      inkscape:window-x="4320"
      inkscape:window-y="0"
@@ -133,7 +133,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(18.160115,-7.9125252)">
+     transform="translate(18.160217,-25.014041)">
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 58.28352,298.58665 c -23.22345,22.68969 -30.24494,65.4126 -5.66174,89.64285 21.59058,18.81047 58.62774,16.01377 76.46311,-6.65634 44.68097,-36.71863 104.28051,-50.73102 161.20624,-48.41955 23.48949,-2.3839 50.91808,-8.32674 63.42408,-30.66767 14.24227,-34.5298 13.19888,-75.85831 -5.68823,-108.45691 -12.77078,-14.45347 -40.72964,-8.18668 -44.61744,11.24159 -5.32641,16.21976 2.40719,36.38726 -10.7779,49.84602 -18.08694,15.9646 -43.74207,10.194 -65.63648,13.79179 -57.01285,4.13663 -116.00718,5.64498 -168.99861,29.62621"
@@ -229,7 +229,7 @@
        inkscape:export-xdpi="300.01538"
        inkscape:export-ydpi="300.01538" />
     <path
-       style="fill:none;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       style="fill:none;stroke:#000000;stroke-width:1.00031;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        d="m 406.16623,165.13976 120,-99.999998"
        id="path4320"
        inkscape:connector-curvature="0"
@@ -237,7 +237,7 @@
        inkscape:export-xdpi="300.01538"
        inkscape:export-ydpi="300.01538" />
     <path
-       style="fill:none;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="fill:none;stroke:#000000;stroke-width:1.00015494;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2.00030987, 1.00015494000000005;stroke-dashoffset:0;stroke-opacity:1"
        d="m 343.16623,216.13976 -361,311"
        id="path4322"
        inkscape:connector-curvature="0"
@@ -246,24 +246,15 @@
        inkscape:export-xdpi="300.01538"
        inkscape:export-ydpi="300.01538" />
     <path
-       style="fill:none;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       style="fill:none;stroke:#000000;stroke-width:1.00030995;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2.0006199,1.00030995;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        d="M 84.16623,376.13976 V 87.139759"
        id="path4324"
        inkscape:connector-curvature="0"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
        inkscape:export-xdpi="300.01538"
        inkscape:export-ydpi="300.01538" />
-    <circle
-       r="1.5"
-       cy="430.13977"
-       cx="85.166229"
-       id="path4326"
-       style="fill:#000000;stroke:none"
-       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
-       inkscape:export-xdpi="300.01538"
-       inkscape:export-ydpi="300.01538" />
     <path
-       style="fill:none;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="fill:none;stroke:#000000;stroke-width:1.00030995;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2.0006199,1.00030995;stroke-dashoffset:0;stroke-opacity:1"
        d="M 85.16623,432.13976 V 559.86889"
        id="path4328"
        inkscape:connector-curvature="0"
@@ -300,7 +291,7 @@
          y="53.139763"
          style="font-size:22px;line-height:1.25;font-family:sans-serif">$z_{i}$</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 1;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend)"
+       style="fill:none;stroke:#000000;stroke-width:1.97812498;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend)"
        d="M 138.17345,392.07718 84.16623,334.13976"
        id="path4338"
        inkscape:connector-curvature="0"
@@ -308,75 +299,11 @@
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
        inkscape:export-xdpi="300.01538"
        inkscape:export-ydpi="300.01538" />
-    <path
-       d="m 131.98971,384.82476 a 9.465704,9.7424793 0 0 1 7.3669,-2.23982 9.465704,9.7424793 0 0 1 6.55523,4.1216"
-       sodipodi:arc-type="arc"
-       sodipodi:type="arc"
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path4340"
-       sodipodi:cx="138.12411"
-       sodipodi:cy="392.24448"
-       sodipodi:rx="9.465704"
-       sodipodi:ry="9.7424793"
-       sodipodi:start="4.0073458"
-       sodipodi:end="5.6785867"
-       sodipodi:open="true"
-       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
-       inkscape:export-xdpi="300.01538"
-       inkscape:export-ydpi="300.01538" />
-    <path
-       d="m 139.20053,386.41857 a 0.76583272,0.88047606 0 0 1 -0.21154,1.2196 0.76583272,0.88047606 0 0 1 -1.06133,-0.24012 0.76583272,0.88047606 0 0 1 0.20617,-1.22081 0.76583272,0.88047606 0 0 1 1.06237,0.23395"
-       sodipodi:arc-type="arc"
-       sodipodi:type="arc"
-       style="fill:#000000;stroke:#000000;stroke-width:0.582749;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path4344"
-       sodipodi:cx="138.56302"
-       sodipodi:cy="386.90646"
-       sodipodi:rx="0.76583272"
-       sodipodi:ry="0.88047606"
-       sodipodi:start="5.6958806"
-       sodipodi:end="5.6857707"
-       sodipodi:open="true"
-       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
-       inkscape:export-xdpi="300.01538"
-       inkscape:export-ydpi="300.01538" />
-    <path
-       d="m 89.908914,340.62683 a 6.1709828,6.1709828 0 0 1 -5.824854,2.30432"
-       sodipodi:arc-type="arc"
-       sodipodi:type="arc"
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path4346"
-       sodipodi:cx="85.040535"
-       sodipodi:cy="336.83475"
-       sodipodi:rx="6.1709828"
-       sodipodi:ry="6.1709828"
-       sodipodi:start="0.66175537"
-       sodipodi:end="1.7264193"
-       sodipodi:open="true"
-       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
-       inkscape:export-xdpi="300.01538"
-       inkscape:export-ydpi="300.01538" />
-    <path
-       d="m 86.912242,339.63806 a 0.76583272,0.88047606 0 0 1 -0.211535,1.21959 0.76583272,0.88047606 0 0 1 -1.061327,-0.24012 0.76583272,0.88047606 0 0 1 0.20617,-1.2208 0.76583272,0.88047606 0 0 1 1.062369,0.23394"
-       sodipodi:arc-type="arc"
-       sodipodi:type="arc"
-       style="fill:#000000;stroke:#000000;stroke-width:0.582749;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path4344-4"
-       sodipodi:cx="86.274734"
-       sodipodi:cy="340.12595"
-       sodipodi:rx="0.76583272"
-       sodipodi:ry="0.88047606"
-       sodipodi:start="5.6958806"
-       sodipodi:end="5.6857707"
-       sodipodi:open="true"
-       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
-       inkscape:export-xdpi="300.01538"
-       inkscape:export-ydpi="300.01538" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="60.126343"
-       y="310.55746"
+       x="41.376343"
+       y="306.80746"
        id="text4366"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
        inkscape:export-xdpi="300.01538"
@@ -384,10 +311,10 @@
          style="font-size:22px;line-height:1.25;font-family:sans-serif"
          sodipodi:role="line"
          id="tspan4368"
-         x="60.126343"
-         y="310.55746">$d_{i}$</tspan></text>
+         x="41.376343"
+         y="306.80746">$d_{i}$</tspan></text>
     <path
-       style="fill:#ff0000;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       style="fill:#ff0000;stroke:#000000;stroke-width:1.00015494;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2.00030987, 1.00015494000000005;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        d="m 138.36175,392.53488 97.74338,98.907"
        id="path4370"
        inkscape:connector-curvature="0"
@@ -409,7 +336,7 @@
          x="237.85056"
          y="499.00537">$x_{i}$</tspan></text>
     <path
-       style="fill:#ff0000;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       style="fill:#ff0000;stroke:#000000;stroke-width:1.00015494;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2.00030987, 1.00015494000000005;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        d="M 138.36175,391.37127 V 515.87772"
        id="path4820"
        inkscape:connector-curvature="0"
@@ -431,7 +358,7 @@
          x="131.96188"
          y="533.33191">$y_{i}$</tspan></text>
     <path
-       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       style="fill:none;stroke:#000000;stroke-width:1.00030995;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2.0006199,1.00030995;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        d="M 84.09398,256.72318 194.63709,239.269"
        id="path5372"
        inkscape:connector-curvature="0"
@@ -453,7 +380,7 @@
          x="200.61496"
          y="239.51994">$x_{i-1}$</tspan></text>
     <path
-       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       style="fill:none;stroke:#000000;stroke-width:1.00030995;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2.0006199,1.00030995;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        d="M 84.43605,256.81431 28.58269,181.17955"
        id="path5562"
        inkscape:connector-curvature="0"
@@ -475,7 +402,7 @@
          x="3.9646003"
          y="167.37602">$y_{i-1}$</tspan></text>
     <path
-       style="fill:none;stroke:#666666;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       style="fill:none;stroke:#808080;stroke-width:1.00015494;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2.00030987, 1.00015494000000005;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        d="M 138.94284,392.39929 249.48595,374.94511"
        id="path5372-4"
        inkscape:connector-curvature="0"
@@ -486,7 +413,7 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#808080;fill-opacity:1;stroke:none"
        x="258.12076"
-       y="379.35748"
+       y="383.10748"
        id="text5556-8"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
        inkscape:export-xdpi="300.01538"
@@ -495,12 +422,12 @@
          sodipodi:role="line"
          id="tspan5558-8"
          x="258.12076"
-         y="379.35748">$x_{i-1}$</tspan></text>
+         y="383.10748">$x_{i-1}$</tspan></text>
     <path
        d="m 183.51675,385.3739 a 34.950356,34.950356 0 0 1 -8.98734,42.70099"
        sodipodi:arc-type="arc"
        sodipodi:type="arc"
-       style="fill:none;stroke:#000000"
+       style="fill:none;stroke:#000000;stroke-width:2.00062498;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
        id="path5795"
        sodipodi:cx="152.30478"
        sodipodi:cy="401.10095"
@@ -527,7 +454,7 @@
          x="190.3324"
          y="415.46353">$\theta_{i}$</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend)"
+       style="fill:none;stroke:#000000;stroke-width:1.97812498;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none"
        d="m 84.00824,332.79914 0.25094,-75.53511"
        id="path6179"
        inkscape:connector-curvature="0"
@@ -538,7 +465,7 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="116.63138"
-       y="354.88251"
+       y="351.13251"
        id="text6557"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
        inkscape:export-xdpi="300.01538"
@@ -547,9 +474,9 @@
          sodipodi:role="line"
          id="tspan6559"
          x="116.63138"
-         y="354.88251">$r_{i-1}$</tspan></text>
+         y="351.13251">$r_{i-1}$</tspan></text>
     <path
-       style="fill:none;stroke:#999999;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend-0)"
+       style="fill:none;stroke:#808080;stroke-width:1.00015494;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2.00030987, 1.00015494000000005;stroke-dashoffset:0;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend-0)"
        d="M 83.70293,332.68228 159.14775,265.821"
        id="path6561"
        inkscape:connector-curvature="0"
@@ -558,14 +485,14 @@
        inkscape:export-ydpi="300.01538" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#808080;fill-opacity:1;stroke:none;"
        x="155.75951"
        y="260.6257"
        id="text6939"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
        inkscape:export-xdpi="300.01538"
        inkscape:export-ydpi="300.01538"><tspan
-         style="font-size:22px;line-height:1.25;font-family:sans-serif"
+         style="font-size:22px;line-height:1.25;font-family:sans-serif;fill:#808080;fill-opacity:1;"
          sodipodi:role="line"
          id="tspan6941"
          x="155.75951"
@@ -574,7 +501,7 @@
        d="m 85.057529,270.37741 a 54.305882,63.250378 0 0 1 41.501811,24.39538"
        sodipodi:arc-type="arc"
        sodipodi:type="arc"
-       style="fill:none;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       style="fill:none;stroke:#000000;stroke-width:2.00062498;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path6943"
        sodipodi:cx="83.694946"
        sodipodi:cy="333.60788"
@@ -601,8 +528,8 @@
          y="297.8299"
          style="font-size:18px;line-height:1.25;font-family:sans-serif">$\alpha_{i-1}$</tspan></text>
     <path
-       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 599.28137,110.63431 407.61356,281.85756"
+       style="fill:none;stroke:#000000;stroke-width:1.00031;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3.00094, 1.00031;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 599.28137,110.63431 498.01544,201.16983"
        id="path6949"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc"
@@ -610,7 +537,7 @@
        inkscape:export-xdpi="300.01538"
        inkscape:export-ydpi="300.01538" />
     <path
-       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend-0)"
+       style="fill:none;stroke:#000000;stroke-width:1.0003124;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3.00093722,1.0003124;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend-0)"
        d="M 629.15738,85.756467 696.39306,26.300475"
        id="path6951"
        inkscape:connector-curvature="0"
@@ -621,8 +548,8 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="702.78204"
-       y="19.911549"
+       x="684.49512"
+       y="60.641529"
        id="text7141"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\introduction-to-autonomous-robots\figs\denavit-hartenberg.png"
        inkscape:export-xdpi="300.01538"
@@ -630,10 +557,10 @@
          style="font-size:22px;line-height:1.25;font-family:sans-serif"
          sodipodi:role="line"
          id="tspan7143"
-         x="702.78204"
-         y="19.911549">$z_{i+1}$</tspan></text>
+         x="684.49512"
+         y="60.641529">$z_{i+1}$</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend)"
+       style="fill:none;stroke:#000000;stroke-width:1.97812498;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none"
        d="m 441.92002,138.33043 55.15697,60.56334"
        id="path7145"
        inkscape:connector-curvature="0"
@@ -656,7 +583,7 @@
          x="475.33618"
          y="160.46794">$r_{i}$</tspan></text>
     <path
-       style="fill:#ff0000;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       style="fill:#ff0000;stroke:#000000;stroke-width:1.0003124;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3.00093722,1.0003124;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        d="m 498.01544,201.16983 73.70175,81.22933"
        id="path4370-5"
        inkscape:connector-curvature="0"
@@ -679,7 +606,7 @@
          x="575.58386"
          y="295.61951">$x_{i+1}$</tspan></text>
     <path
-       style="fill:#ff0000;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       style="fill:#ff0000;stroke:#000000;stroke-width:1.0003124;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3.00093722,1.0003124;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        d="M 497.53564,201.14284 V 325.64929"
        id="path4820-1"
        inkscape:connector-curvature="0"
@@ -701,7 +628,7 @@
          x="491.13577"
          y="343.10342">$y_{i+1}$</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend)"
+       style="fill:none;stroke:#000000;stroke-width:1.97812498;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none"
        d="M 219.82598,473.90288 509.56118,217.29023"
        id="path7775"
        inkscape:connector-curvature="0"
