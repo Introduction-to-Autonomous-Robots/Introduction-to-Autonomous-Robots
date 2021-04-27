@@ -167,18 +167,17 @@ This becomes apparent when considering that the circumference of a wheel with ra
 \begin{figure}[htb!]
     \centering
     % \includegraphics[width=0.9\textwidth]{figs/wheelrotation.png}
-    \def\svgwidth{0.86\textwidth}
-    \import{./figs/}{wheelrotation.pdf_tex}
-    \caption{Left: Differential wheel robot pivoting around its left wheel. Right: A wheel with radius $r$ moves by $\phi r$ when rotated by $\phi$ degrees.}
+    \def\svgwidth{\textwidth}
+    \import{./figs/}{wheelrotation_2.pdf_tex}
+    \caption{Left: Differential wheel robot pivoting around its left wheel first and its right wheel next. For infinitesimal motion, it is possible to decouple left and right wheel to simplify computation of the forward kinematics. Right: A wheel with radius $r$ moves by $\phi r$ when rotated by $\phi$ degrees.}
     \label{fig:wheelrotation}
 \end{figure}
 
-
-
-How each of the two wheels in our example contributes to the speed of the robot's center---where its coordinate system is anchored---requires the following trick: we calculate the contribution of each individual wheel while assuming all other wheels remaining un-actuated.
-In this example, the distance traveled by the center point is exactly half of that traveled by each individual wheel, assuming the non-actuated wheel rotating around its ground contact point (\cref{fig:wheelrotation}). We can therefore write:
+How each of the two wheels in our example contributes to the speed of the robot's center---where its coordinate system is anchored---requires the following trick: we calculate the contribution of each individual wheel while assuming all other wheels remaining un-actuated (see \cref{fig:wheelrotation}, left).
+In this example, the left wheel will move of $r \phi_l$, and the right wheel will move of $r \phi_r$, which in the space of velocities will become $r\dot{\phi_l}$ and $r\dot{\phi_r}$ respectively.
+Then, the distance traveled by the center point is exactly half of that traveled by each individual wheel, assuming the non-actuated wheel rotating around its ground contact point (\cref{fig:wheelrotation}). We can therefore write:
 \begin{equation}
-\dot{x_R}=\frac{r\dot{\phi_l}}{2}+\frac{r\dot{\phi_r}}{2}
+\dot{x_R}=\frac{1}{2}\left( r\dot{\phi_l} + r\dot{\phi_r} \right)=\frac{r\dot{\phi_l}}{2}+\frac{r\dot{\phi_r}}{2}
 \end{equation}
 given the speeds $ \dot{\phi_l}$ and $ \dot{\phi_r}$ of the left and the right wheel, respectively.
 
