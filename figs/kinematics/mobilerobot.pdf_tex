@@ -1,4 +1,4 @@
-%% Creator: Inkscape 1.0 (4035a4f, 2020-05-01), www.inkscape.org
+%% Creator: Inkscape 1.0.2 (e86c870879, 2021-01-15, custom), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'mobilerobot.pdf' (pdf, eps, ps)
 %%
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{334.91706848bp}%
+    \setlength{\unitlength}{334.85144806bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,19 +50,19 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.73562673)%
+  \begin{picture}(1,0.64617892)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0.33188108,0.6980013){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l} \end{tabular}}}}%
+    \put(0.33194612,0.60854579){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l} \end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{mobilerobot.pdf}}%
-    \put(0.00530195,0.01782231){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}${I}$\end{tabular}}}}%
-    \put(0.83104026,0.01010512){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$X_I$\end{tabular}}}}%
-    \put(-0.00433876,0.69151133){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$Y_I$\end{tabular}}}}%
-    \put(0.57048616,0.31449462){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$-\theta_I$\end{tabular}}}}%
+    \put(0.00530299,0.0178258){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}${I}$\end{tabular}}}}%
+    \put(0.83120312,0.01010709){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$X_I$\end{tabular}}}}%
+    \put(-0.00433961,0.60205488){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$Y_I$\end{tabular}}}}%
+    \put(0.57059796,0.22496399){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$-\theta_I$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{mobilerobot.pdf}}%
-    \put(0.2813277,0.37790738){\color[rgb]{0,0,0}\rotatebox{-17.294538}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}${R}$\end{tabular}}}}}%
-    \put(0.50812695,0.24803348){\color[rgb]{0,0,0}\rotatebox{-16.593287}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$X_R$\end{tabular}}}}}%
-    \put(0.38436887,0.6387712){\color[rgb]{0,0,0}\rotatebox{-20.537584}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$Y_R$\end{tabular}}}}}%
+    \put(0.28138279,0.28838917){\color[rgb]{0,0,0}\rotatebox{-17.294538}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}${R}$\end{tabular}}}}}%
+    \put(0.50822653,0.1584898){\color[rgb]{0,0,0}\rotatebox{-16.593287}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$X_R$\end{tabular}}}}}%
+    \put(0.38444418,0.54930412){\color[rgb]{0,0,0}\rotatebox{-20.537584}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$Y_R$\end{tabular}}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{mobilerobot.pdf}}%
   \end{picture}%
 \endgroup%
