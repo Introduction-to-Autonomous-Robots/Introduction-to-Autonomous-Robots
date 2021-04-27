@@ -120,8 +120,6 @@ Therefore, velocities are the only interesting quantities in this coordinate sys
     \label{fig:mobilerobot}
 \end{figure}
 
-
-
 Notice that the positioning of the coordinate frames and their orientation are arbitrary. Here, we choose to place the coordinate system in the center of the robot's axle and align $^Rx$ with its default driving direction.
 In order to calculate the robot's position in the inertial frame, we need to first find out how speed in the robot coordinate frame maps to speed in the inertial frame.
 This can be done again by employing trigonometry. There is only one complication: a movement into the robot's $x-$axis might lead to movement along both the $x-$axis and the $y-$axis of the world coordinate frame ${I}$. By looking at \cref{fig:mobilerobot}, we can derive the following components to $\dot{x}_I$. First,
@@ -276,7 +274,7 @@ So far, we have considered the forward kinematics of wheeled mechanisms and simp
 In the case of multi-link arms (which is the vast majority of robot manipulators in existence), the approach detailed in \cref{sec:kinematics:fwkarm} is difficult to scale, and alternative solutions are needed.
 Interestingly, we can think of the forward kinematics as a chain of homogeneous transformations with respect to a coordinate system mounted at the base of a manipulator or a fixed position in the room.
 Deriving these transformations can be confusing and can be facilitated by following a ``recipe'' such as the one conceived by Denavit and Hartenberg in $1955$ (see \cite{hartenberg1955kinematic} and \cite{craig2009introduction}).
-The so-called Denavit-Hartenberg (DH)\index{Denavit-Hartenberg parameters} representation has evolved as a \textsl{de-facto} standard.
+The so-called Denavit-Hartenberg (DH)\index{Denavit-Hartenberg parameters} representation has since evolved as a \textsl{de-facto} standard.
 
 A manipulator consists of a series of typically rigid links that are connected by joints.
 In the vast majority of cases, a joint can either be revolute (i.e. change its angle/orientation) or prismatic (i.e. change its length).
@@ -291,7 +289,7 @@ Knowing the robot's kinematic properties (e.g. the length of all rigid links, si
     % \includegraphics[width=\textwidth]{figs/denavit-hartenberg.png}
     \def\svgwidth{\textwidth}
     \import{./figs/}{denavit-hartenberg.pdf_tex}
-    \caption{Example of selected Denavit-Hartenberg parameters for three sequential revolute joints. The z-axes of joint $i$ and $i+1$ are parallel.}
+    \caption{Example of selected Denavit-Hartenberg parameters for three sequential revolute joints. The z-axes of joint $i$ and $i+1$ are parallel, which results in $\alpha_i = 0$.}
     \label{fig:denavit}
 \end{figure}
 
@@ -322,7 +320,7 @@ _{n-1}^nT=T_z'(d_n) R_z'(\theta_n) T_x(r_n)  R_x(\alpha_n)
 with
 \begin{equation}
 T_z'(d_n)=
-\left[
+\left[ \arraycolsep=2pt%\def\arraystretch{2.2}
 \begin{array}{ccc|c}
 1 & 0 & 0 & 0\\
 0 & 1 & 0 & 0\\
@@ -332,7 +330,7 @@ T_z'(d_n)=
 \end{array}
 \right]
 \enskip
-R_z'(\theta_n)=\left[
+R_z'(\theta_n)=\left[ \arraycolsep=2pt%\def\arraystretch{2.2}
 \begin{array}{ccc|c}
 \cos\theta_n & -\sin\theta_n & 0 & 0\\
 \sin\theta_n & \cos\theta_n & 0 & 0\\
@@ -345,7 +343,7 @@ R_z'(\theta_n)=\left[
 and
 \begin{equation}
 T_x(r_n)=
-\left[
+\left[ \arraycolsep=2pt%\def\arraystretch{2.2}
 \begin{array}{ccc|c}
 1 & 0 & 0 & r_n\\
 0 & 1 & 0 & 0\\
@@ -355,7 +353,7 @@ T_x(r_n)=
 \end{array}
 \right]
 \enskip
-R_x(\alpha_n)=\left[
+R_x(\alpha_n)=\left[ \arraycolsep=2pt%\def\arraystretch{2.2}
 \begin{array}{ccc|c}
 1 & 0 & 0 & 0\\
 0 & \cos\alpha_n & -\sin\alpha_n & 0\\
@@ -371,7 +369,7 @@ These are a translation of $d_n$ along the previous z-axis ($T_z'(d_n)$), a rota
 By replacing each element in \cref{eq:kinematics:dh:composition}, the following matrix is created:
 \begin{eqnarray}
 _{n-1}^nT&=
-\left[
+\left[ \arraycolsep=2pt%\def\arraystretch{2.2}
 \begin{array}{ccc|c}
 \cos \theta_n & -\sin \theta_n \cos\alpha_n & \sin\theta_n \sin\alpha_n & r_n \cos\theta_n\\
 \sin \theta_n & \cos\theta_n \cos\alpha_n & -\cos\theta_n\sin\alpha_n & r_n \sin\theta_n\\
@@ -381,7 +379,7 @@ _{n-1}^nT&=
 \end{array}
 \right]\\
 &=
-\left[
+\left[ \arraycolsep=2pt%\def\arraystretch{2.2}
 \begin{array}{c|c}
 R & t\\
 \hline
@@ -393,7 +391,7 @@ where $R$ is the $3\times3$ rotation matrix and $t$ is the $3\times1$ translatio
 
 Like for any homogeneous transform, the inverse $_{n-1}^nT^{-1}n$ is given by
 \begin{equation}
-^{n-1}_nT=\left[
+^{n-1}_nT=\left[ \arraycolsep=2pt%\def\arraystretch{2.2}
 \begin{array}{c|c}
 R^{-1} & -R^{-1}T\\
 \hline
@@ -404,4 +402,4 @@ R^{-1} & -R^{-1}T\\
 with the inverse of $R$ simply being its transpose, $R^{-1}=R^T$.
 
 Similar to the concatenation of transformations detailed in \cref{sec:kinematics:coordsystems:concatenation}, $_{n-1}^nT$ in \cref{eq:kinematics:dh:composition} can be concatenated with the other transformation matrices relative to the remaining links in order to compute a the full kinematics of the robot arm from the base reference frame up to the end-effector.
-\td{Nikolaus, should we add half a page of text plus a figure to describe this further? I feel they are left hanging without it}
+% \td{Nikolaus, should we add half a page of text plus a figure to describe this further? I feel they are left hanging without it}
