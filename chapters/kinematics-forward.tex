@@ -56,8 +56,8 @@ y&=&l_1 \sin \alpha + l_2 \sin(\alpha+\beta) \\
 The above equations represent \textsl{the forward kinematic equations} of the robot---as they relate its control parameters $ \alpha$ and $\beta$ (also known as joint configuration) to the pose of its end-effector in the local coordinate system spanned by $x$ and $ y$ with the origin at the robot's base.
 Note that both $\alpha$ and $\beta$ shown in the figure are positive: both links rotate around the $z-$axis. Using the right-hand rule, the direction of positive angles is defined to be counter-clockwise.
 
-The \emph{configuration space}\index{Configuration space}\index{C-Space (Configuration space)} of the robot---i.e. the set of angles each actuator can be set to---is given by $ 0 < \alpha < \pi $ as it is not supposed to run into the table, and $ -\pi < \beta < \pi$.
-The configuration space is given with respect to the robot's joints and allows us to use the forward kinematics equations to calculate the \emph{workspace}\index{Workspace} of the robot, i.e. the physical space it can move to.
+The \textsl{configuration space}\index{Configuration space}\index{C-Space (Configuration space)} of the robot---i.e. the set of angles each actuator can be set to---is given by $ 0 < \alpha < \pi $ as it is not supposed to run into the table, and $ -\pi < \beta < \pi$.
+The configuration space is given with respect to the robot's joints and allows us to use the forward kinematics equations to calculate the \textsl{workspace}\index{Workspace} of the robot, i.e. the physical space it can move to.
 This terminology will be identical for mobile robots. An example of configuration and workspace for both a manipulator and a mobile robot is shown in \cref{fig:holonomy}.
 
 % As shown in \cref{fig:fwk2dofarm}, the orientation of the arm's end-effector is given by $\alpha+\beta$.
@@ -78,7 +78,7 @@ This transformation will be helpful if we want to calculate suitable joint angle
 
 Whereas the pose of a robotic manipulator is uniquely defined by its joint angles---which can be made available using encoders in almost real-time, see \cref{sec:sensors:encoders}---this is not the case for a mobile robot.
 Here, the encoder values simply refer to wheel orientation and need to be integrated over time in order to assess the robot's position with respect to the worlds frame of reference; as we will later see, this is a great source of uncertainty.
-What complicates matters is that for so-called \emph{non-holonomic} systems, it is not sufficient to simply measure the distance that each wheel traveled, but also when each movement was executed.
+What complicates matters is that for so-called \textsl{non-holonomic} systems, it is not sufficient to simply measure the distance that each wheel traveled, but also when each movement was executed.
 
 \begin{figure}[!t]
     \small
@@ -155,7 +155,7 @@ sin(\theta) & cos(\theta) & 0 \\
 0 & 0 & 1\end{array}\right]
 \end{equation}
 
-We are now left with the problem of how to calculate the speed $ \dot{\xi_R}$ in robot coordinates. For this, we make use of the \emph{kinematic constraints}\index{Kinematic constraints} of the robotic wheels.
+We are now left with the problem of how to calculate the speed $ \dot{\xi_R}$ in robot coordinates. For this, we make use of the \textsl{kinematic constraints}\index{Kinematic constraints} of the robotic wheels.
 For a standard wheel in an ideal case scenario, the kinematic constraints are that every rotation of the wheel leads to strictly forward or backward motion and does not allow side-way motion or sliding. We can therefore calculate the forward speed of a wheel $ \dot{x}$ using its rotational speed $ \dot{\phi}$ (assuming the encoder value/angle is expressed as $ \phi$) and radius $ r$ by
 \begin{equation}
 \dot{x}=\dot{\phi}r.
@@ -211,7 +211,7 @@ sin(\theta) & cos(\theta) & 0 \\
 \subsubsection{From Forward Kinematics to Odometry}
 
 \cref{eq:kinematics:forward:mobile} only provides us with the relationship between the robot's wheel speed and its speed in the inertial frame.
-Calculating its actual pose in the inertial frame is known as \emph{odometry}\index{Odometry}. Technically, it requires integrating \cref{eq:kinematics:forward:mobile} from 0 to the current time $T$.
+Calculating its actual pose in the inertial frame is known as \textsl{odometry}\index{Odometry}. Technically, it requires integrating \cref{eq:kinematics:forward:mobile} from 0 to the current time $T$.
 As this is not possible but for very special cases, one can approximate the robot's pose by summing up speeds over discrete time intervals, or more precisely:
 \begin{equation}
 \left[\begin{array}{c} {x_I}(T)\\{y_I}(T)\\{\theta}(T)\end{array}\right]=

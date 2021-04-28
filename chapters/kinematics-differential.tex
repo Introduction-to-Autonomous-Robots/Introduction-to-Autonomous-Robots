@@ -87,4 +87,18 @@ This is known as the \textsl{Damped Least-Squares} method.\index{Damped Least-Sq
 
 \subsection{Under-actuation and Over-actuation}
 
-\td{We can add redundancy here}
+As detailed at the beginning of this Chapter, kinematics is concerned with analyzing the mapping between our control variables (i.e. the robot's motors represented by the $n$ DoFs in joint space) and their effect on the motion of the robot (our $m$ DoFs in task/configuration space). These two spaces might have different dimensionality, and the relation between these two dimensions greatly affects how we can solve the kinematic problem. It is convenient to analyze these differences by looking at the Jacobian $J$, since the size of the matrix is $m \times n$; in all, we have three different conditions:
+
+\begin{itemize}
+\item $n   =  m \rightarrow$ The robot is \textsl{fully actuated}. The Jacobian $J$ is square and full rank, and the forward kinematics equation is directly invertible;
+\item $n \leq m \rightarrow$ The robot is \textsl{under actuated}, and the kinematics problem is \textsl{kinematically deficient}. The Jacobian $J$ is ``tall'', because there are more columns $m$ than rows $n$, and not invertible any more; the only way to solve the inverse kinematics problem is through the pseudo-inverse $J^+$ (and similar/more advanced approaches).
+\item $n \geq m \rightarrow$ The robot is \textsl{over actuated}, and the kinematics problem is \textsl{kinematically redundant}. The Jacobian $J$ is ``fat'', because there are more rows $n$ than columns $m$, and not invertible any more; the only way to solve the inverse kinematics problem is through the pseudo-inverse $J^+$ (and similar/more advanced approaches). In this scenario, it is useful to determine the redundancy coefficient $n-m$ which affects the space of solutions of the inverse kinematic problem.
+\end{itemize}
+
+Over and under actuation are important design considerations to keep in mind when choosing a robot for a particular task.
+In a \textsl{kinematically deficient} scenario, the robot is not capable of full motion in task space, as it does not have sufficient degrees of freedom in joint space to ``cover'' every possible configuration in task space. This does not mean that the robot is useless! It can still perform tasks---just not \textsl{every} possible task you might ask it to perform.
+Conversely, if the problem is \textsl{kinematically redundant}, the robot has more joint DoFs available than it needs, and there exist an infinite number of inverse kinematics solutions in non-singular configurations.
+Contrarily to what one may think, redundancy is actually a great feature to have in a robot system, in that it enables flexibility and versatility in solving the kinematic problem: that is, it is possible to choose \textsl{the best} solution among many, and one that satisfies additional constraints and requirements.
+% As a matter of fact, the number of inverse kinematics solutions is $\infty^{n-m}$,
+A human arm (without considering the hand) is a good example of a kinematically redundant manipulator, as it is equipped with $7$ DoFs in joint space ($3$ at the shoulder, $1$ at the elbow and $3$ at the wrist), whereas the task space is of dimension $6$ (i.e. the $3$ positions and $3$ orientations of the wrist).
+This additional degree of mobility allows humans to reach for objects in multiple configurations, choose motions that are energy efficient, avoid obstacles, and more!

@@ -132,7 +132,7 @@ As we can easily calculate the resulting pose for every possible joint angle com
 This error actually provides us with a \textsl{direction of motion} that the end-effector needs to move toward so as to minimize such error.
 As we only need to move tiny bits at a time and can then re-calculate the error, this is an attractive method to generate a trajectory that moves the arm to where we want it go and thereby solves the inverse kinematics problem.
 This is even more effective for non-holonomic mobile robots, where solving the inverse kinematic problem requires us to find a sequence of actuation commands.
-A more formal way of doing this is to employ \emph{feedback control}\index{Feedback Control}.
+A more formal way of doing this is to employ \textsl{feedback control}\index{Feedback Control}.
 In a nutshell, feedback control uses the error between actual and desired position to calculate a trajectory that drives the robot a little closer to its desired pose. The process is then repeated until the error is marginally small.
 This approach can not only be used for mobile robots, but also for manipulator arms with kinematics that are too complicated to solve analytically.
 

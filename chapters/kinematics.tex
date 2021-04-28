@@ -42,8 +42,6 @@ The number of mechanical degrees-of-freedom $n$ (i.e. DoFs in task space) depend
 
 \section*{Take-home lessons}
 
-\td{modify the take home lessons because now there's double the content}
-
 \begin{itemize}
 \item Forward kinematics deals with finding a coordinate transform from a world coordinate system into a coordinate system on the robot.
 Such a transform is a combination of a ($3\times1$) translation vector and a ($3\times3$) rotation matrix that consists of the unit vectors of the robot coordinate system. Both translation and rotation can be combined into a $4\times4$ homogeneous transform matrix.
@@ -53,7 +51,8 @@ Such a transform is a combination of a ($3\times1$) translation vector and a ($3
 \item The inverse kinematics of a robot involves solving the forward kinematics equations for the joint angles.
 Calculating the inverse kinematics analytically becomes quickly infeasible, and is impossible for complicated mechanisms.
 \item A simple numerical solution is provided by taking all partial derivatives of the forward kinematics in order to get an easily invertible expression that relates joint speeds to end-effector speeds.
-The inverse kinematics problem can then be formulated as feedback control problem, which will move the end-effector towards its desired pose using small steps. Problems with this approach are local minima and singularities of the mechanism, which might render this solution infeasible.
+\item The inverse kinematics problem can then be formulated as feedback control problem, which will move the end-effector towards its desired pose using small steps. Problems with this approach are local minima and singularities of the mechanism, which might render this solution infeasible.
+\item Redundancy allows a robot to solve a kinematic problem in multiple different ways, thus providing better dexterity and versatility in its motion.
 \end{itemize}
 
 \section*{Exercises}\small
@@ -81,6 +80,7 @@ The inverse kinematics problem can then be formulated as feedback control proble
 \item Explore the internet for toolkits that allow you to manage forward and inverse kinematics for a robotic arm. What kind of tools do you find and what kind of input do they require to model the robot's geometry?
 \item Download the manual of a commercially available robot arm of your choice. What kind of input does it take from its user? Does it allow you to control its position directly?
 \item Use a robot simulator of your choice to access a simulated vehicle. What kind of actuator input can you provide and what are the sensors that are available? Drive the car using your keyboard and try to estimate its pose by implementing odometry.
+\item Can you provide an example of a kinematically deficient and a kinematically redundant robot manipulator?
 \end{enumerate}
 \normalsize
 

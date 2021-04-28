@@ -96,7 +96,7 @@ A good analogue are figures on a chess-board. For example, a knight can reach ev
 
 Similar reasoning applies to aerial and underwater robots. Here, the position of the robot is affected by the position and orientation of thrusters, either in the form of jets or propellers, mounted on the robot. Things become complicated quickly, however, as the dynamics of the system are subject to fluid- and aerodynamic effects, which also change as a function of size of the robot. This book will not go into the details of flying and swimming robots, but the general principles of localization and planning will be applicable to them as well.
 
-\begin{mdframed}Think about possible wheel, propeller and thruster configurations. Don't limit yourself to robots, but consider also street and aerial vehicles and be creative --- if you can think about a setup that makes sense, i.e., allows for reasonable mobility --- somebody will already have built it and analyzed it. What are the advantages and disadvantages of each?
+\begin{mdframed}Think about possible wheel, propeller and thruster configurations. Don't limit yourself to robots, but consider also street and aerial vehicles and be creative---if you can think about a setup that makes sense, i.e., allows for reasonable mobility---somebody will already have built it and analyzed it. What are the advantages and disadvantages of each?
 \end{mdframed}
 
 For manipulating arms, Cartesian degrees of freedom refer to the positions and orientations (rotations around the primary axes) that the end-effector can reach. Each actuated joint will typically add a degree of freedom, unless it is redundant (moving in the same direction, with the same physical effect, as a different joint). \cref{fig:basickinematics} shows a series of manipulators operating in a plane. By this, the degrees of freedom of the end-effector are limited to moving up and down, sideways, and rotating around its pivot point. As a plane only has those three degrees of freedom, adding additional joints cannot increase the Cartesian degrees of freedom unless they allow the robot to also move in and out of the plane.
@@ -106,7 +106,7 @@ An exact definition of the number of degrees of freedom is tricky and requires d
 \begin{figure}
 	\centering
 		\includegraphics[width=\textwidth]{figs/basickinematics.png}
-	\caption{From left to right: Manipulators with one, two, three and three DoF. The degrees of freedom of moving in a plane are the position of the end-effector with respect to its height and displacement with respect to the base, as well as its orientation.}
+	\caption{From left to right: Manipulators with one, two, three and four DoF. The degrees of freedom of moving in a plane are the position of the end-effector with respect to its height and displacement with respect to the base, as well as its orientation.}
 	\label{fig:basickinematics}
 \end{figure}
 
