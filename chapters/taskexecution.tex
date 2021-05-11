@@ -158,10 +158,35 @@ Unlike a computer program that can process information as fast as possible, the 
 \end{enumerate}
 
 \section{Mission Planning}\label{sec:strips}
+So far, we have seen how reactive behaviors can be composed into more complex programs using Finite State Machines and Behavior trees. Although Behavior Trees facilitate dealing with the exploding number of possible state transitions by making them implicit, the programmer still needs to define the entire program flow. Consider again a pick-and-place task. This time, we will not simply grasp a new item in case the object falls out of the hand, but try to find it on the table and try to pick it up from there. In a further advanced version, we might also go on and search for the object on the floor if it cannot be find on the table. But why not even have the robot replace an object from a warehouse if it cannot be found, or even mail order a new version? Obviously, it is very cumbersome to foresee all these eventualities when programming a robot. We therefore need a framework to make it easier. This is mission planning.
+
+An example of mission planning is described in \cite{saito2011semantic} where a robot is tasked to provide a sandwich. The robot initially moves to a fridge, opens it and looks for a sandwich there, and then decides to take the elevator to the sandwich store in the basement of the University of Tokyo's engineering tower. Here, the robot is not only piecing together behaviors as it goes, but also using what is known as ``semantic planning'' to select the right actions, exploiting data bases of common sense knowledge in textual form. How to represent such knowledge in an efficient and general manner is an active research topic in robotics and artificial intelligence and goes beyond the scope of this introductory book. Yet, we will describe the basic algorithms that will allow you to compose complex behaviors during run-time, thereby generating much more complex robot responses than could ever be accomplished using hand-coding.
+
+\subsection{The General Problem Solver and STRIPS}
+One of the first planning frameworks has been introduced in 1959 as ``General Problem Solver'' (GPS) \cite{newell1959report,}, an idea that was popularized, refined and actually demonstrated on real robots later on as the ``STanford Research Institute Problem Solver'' (STRIPS)\cite{fikes1971strips}. 
+
+In STRIPS, a robotic problem is composed of:
+
 \begin{enumerate}
-\item The original GPS algorithm: operations that transform a set of pre-conditions into a set of post-states, and search thereon
-\item Mission planning with BTs
-\end{enumerate}
+\item A set of symbols that represent the \emph{initial state}
+\item A set of symbols that represent the desired \emph{goal state}
+\item A set of \emph{actions}, each with a set of \emph{preconditions} and a set of \emph{postconditions}. 
+\end{enumerate} 
+
+An action's preconditions are a set of symbols that need to be part of the current state for the action to execute. An action's postconditions is the set of symbols the action creates and thereby affect state. In a nutshell, a STRIPS planner will work backwards from a desired goal state, find actions that have equivalent post-conditions and then recursively try to satisfy these actions preconditions. 
+
+Formally, an instance of a STRIPS problem is a quadruple $\langle P, O, I, G \rangle$:
+\begin{itemize}
+\item $P$ is a set of propositional variables that can be either true or false and exhaustively describe the world the robot operates in. 
+\item $O$ is a set of operators, each itself a quadruple $\langle \alpha, \beta, \gamma, \delta \rangle$ whose entries determine the set of conditions that need to be true ($\alpha$) and that need to be false ($\beta$) for the action to take place, and a set of conditions that will be true ($\gamma$) and that will be false ($\delta$) if the action is successful. 
+\item $I$ is a set of conditions $I \subset P$ that are initially true and define the initial state, all other conditions are initially false. 
+\item $G$ is a tuple $\langle N, M\rangle$ in which $N$ is a set of conditions that need to be true and $M$ is a set of conditions that need to be false. 
+\end{itemize}
+
+\subsection{A classic example --- the hungry monkey}
+
+
+
 
 \section{Exercises}
 
