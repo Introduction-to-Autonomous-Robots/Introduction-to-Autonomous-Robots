@@ -108,6 +108,34 @@ Unlike a computer program that can process information as fast as possible, the 
 \end{enumerate}
 
 \section{Behavior Trees}\label{sec:behaviortrees}
+A Behavior Tree provides structure for hierarchically organizing the decision-making flow of a system. The leaves of a Behavior Tree are ``Action Nodes'' that can represent actual discrete behaviors, such as ``Close Gripper'' or ``Find Block''. The root and internal nodes of the Behavior Tree are made up of ``Utility Nodes" that guide the path of traversal through the tree. One powerful aspect of this abstraction is that Behavior Trees specifying complex behaviors, such as ``Navigate to Kitchen", can be encapsulated within a single node of another tree.
+
+\subsection{Node Definition and Status}
+In a traditional implementation, the nodes within a Behavior Tree can return any of three statuses when queried: ``Success", ``Failure", or ``Running". The incorporation of a ``Running" status allows the Behavior Tree to use behaviors that operate over longer time periods, such as a block picking behavior that persists over multiple control cycles of a robot's main processing loop, including time required to plan the end-effector's path, the time required to physically move the robot to the destination, and the time required to close the gripper. In this example, the node might return ``Failure" if any of the individual behaviors didn't work or if the end-effector didn't successfully grasp the block by the end of the behavior, and ``Success" otherwise. Thus, each node in the Behavior Tree needs a rigidly defined notion of ``Success" or ``Failure" that can be propagated throughout the Behavior Tree, informing which sequence of behaviors is executed to achieve the desired result.
+
+Unlike the Finite State Machine formalism from before that didn't incorporate an explicit notion of time, the ``Running" status enables nodes to operate using the information that their child nodes may take variable amounts of time, with each discrete unit of time defined as a \emph{tick}. This design choice simplifies the specification of control flow, and dramatically reduces the number of explicit transitions that are needed to model a system. Suffice to say, for a robot with a 100ms control loop, many of the discrete behaviors that a programmer would be interested in (such as turning 180 degrees or moving forward one meter) are likely to require more than a single program cycle. 
+
+Nodes may also be parameterized, allowing for information computed from one node to be passed on and used in a subsequent node. Consider building a Behavior Tree for sorting blocks on a table into bins by color: one way to organize this Behavior Tree is repeating the sequence of behaviors ``Find Block", ``Pick Block", ``Get Block Color", ``Place Block in Bin" until no blocks remain. In this case, the behaviors ``Get Block Color" and ``Place Block in Bin" are connected, since the color of the block will determine which bin it should be placed in. This potential for interaction between nodes enables the powerful expressivity of this tool.
+
+\subsection{Node Types}
+Within a Behavior Tree, nodes can generally be classified based on their connectivity (do they have children, and if so, how many?) and function (is this a utility node that determines control flow, or is it an action node executing the action itself?). The three primary node types are \emph{composite}, \emph{decorator}, and \emph{action}. 
+
+\emph{Composite nodes} have one or more children and are responsible for regulating the control flow. Three important examples of composite nodes are the \emph{sequence node}, \emph{selector node}, and \emph{parallel node}. A sequence node executes each of its child nodes in order, returning ``Failure" if a single one fails and ``Success" after all have finished successfully. A selector node executes each of its child nodes in order, but returns ``Success" once a single child node succeeds, only returning ``Failure" if all child nodes have failed. Sequence nodes can be thought of as analogous to an \emph{AND} conditional statement, while selector nodes are similar to an \emph{OR} conditional statement. Parallel nodes have $N>1$ children and attempts to execute its child nodes in parallel, returning ``Success" if $M$ or more children succeed and failure if more than $(N-M)$ children fail.
+
+\emph{Decorator nodes} have exactly one child node and perform transformations on its child node's outputs back to its parents. An example of a simple decorator node is the \emph{Inverter}, a node that inverts the return status of its child, effectively producing a \emph{NOT} operation: if the child node returns ``Success" then the decorator returns ``Failure", and vice versa. Another useful decorator node is one that returns ``Success" when its child returns a status of either ``Success" or ``Failure", allowing for the inclusion of action nodes where success is not critical for the behavior. Decorator nodes can also be designed to repeat the execution of its child, for instance until it returns a ``Success" status, until it returns a ``Failure" state, or endlessly (which is typically placed as the tree's root node to ensure continuous operation).
+
+\emph{Action nodes} have zero child nodes, and represent the execution of a discrete behavior. These nodes can use input parameters, return output values, and generally have any amount of complexity that the designer desires to program within them. Crucially, an entire Behavior Tree can be treated as a single action node, allowing for the composition of multiple Behavior Trees to build arbitrarily complex behaviors!
+
+\todo{Insert pick and place BT figure, describe below}
+
+\subsection{Behavior Tree Execution}
+For each unit of time (e.g., control cycle) that passes, a preorder tree traversal occurs where nodes are recursively visited and evaluated left-to-right, commonly described as propagating a ``tick" signal through the tree. In doing so, each parent node calls on its child nodes in order to retrieve their status. If a child node returns ``Success", the parent node will move on to its next child node. If a child node returns a status of ``Running" then the parent node will return ``Running" without moving on to the next child node unless it permits running multiple child nodes in parallel. If a child node returns a status of ``Failure", its behavior will depend on the type of node of the parent, for example returning ``Failure" if the parent is a sequence node or moving on to the next child node if it is a selector node.
+
+
+
+
+
+
 \begin{figure}
     \centering
     \begin{forest}
