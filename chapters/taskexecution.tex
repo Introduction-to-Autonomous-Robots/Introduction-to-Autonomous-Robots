@@ -12,7 +12,11 @@ the left and right wheel speeds, $\dot{\phi_l}$ and $\dot{\phi_r}$, and the meas
 \end{eqnarray}
 with $a$ a constant weight, and $b$ a bias term. We observe that the left wheel turns faster, the brighter the light shines on the right sensor. If the right light sensor receives more light than the left sensor, the right wheel will turn slower, resulting into a right turn, thereby exhibiting phototaxis behavior.
 
-\todo{Include figure showing simple braitenberg vehicles}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\columnwidth]{figs/braitenberg.png}
+\caption{Two vehicles approaching a light source. The brighter the light, the more does each motor turn. The left vehicle will therefore approach the light by turning toward it, the right vehicle will avoid it by turning away from it.\label{fig:braitenberg}}
+\end{figure}
 
 A more complex behavior is obstacle avoidance. Assuming the output of an obstacle sensor to increase with the obstacle approaching (e.g., an infrared proximity sensor), we can use the same principle to compute the wheel speeds such that the obstacle is actively avoided. An example for a differential-wheel robot with eight infrared proximity sensors is given by
 \begin{eqnarray}
@@ -33,7 +37,11 @@ A more complex behavior is obstacle avoidance. Assuming the output of an obstacl
 %
 with $d_0$ as the left rearward sensor and the other sensors being arranged clockwise such that $d_7$ is the right rearward sensing sensor, arranged as on the E-Puck differential wheel robot \cite{mondada2009puck}, see also Figure \ref{fig:epucksensors}.
 
-\todo{Add figure showing infrared proximity into sensors chapter and show non-linear properties.}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\columnwidth]{figs/ePuck.png}
+\caption{\ref{fig:epucksensors}A schematic of a differential-wheel robot with eight infrared distance sensors (left) and typical sensor response as a function of distance (right).}
+\end{figure}
 
 Behaviors such as phototaxis and obstacle avoidance can also be combined by simply adding them and weighing each input accordingly. This idea has been popularized by the neuroscientist Valentino Braitenberg who augmented this system with additional ideas around learning (changing the weights based on events such as collisions), natural selection (building robots with random weights and selecting those that perform best), and analogies to the human brain \cite{braitenberg1986vehicles}. Controllers of these kind are therefore often called ``Braitenberg''.
 
@@ -44,7 +52,12 @@ There are numerous variants of the control architecture including the \emph{subs
 \subsection{Limitations of reactive control}
 The limitations of a reactive control scheme can be illustrated when considering that a robot combining both phototaxis and obstacle avoidance will still get stuck in a U-shaped obstacle. While obstacle avoidance will prevent the robot from hitting the obstacle, as soon as the way is clear, the robot will keep turning toward the light, thereby getting stuck in a loop. This type of behavior is also exhibited in simple insects such as flies or moths.
 
-\todo{Show a simple U-Obstacle}
+\begin{figure}
+\centering
+\includegraphics[width=0.8\columnwidth]{figs/uobstacle.png}
+\caption{\label{fig:uobstacle}A differential wheel robot with distance and light sensors wired in a ``light following'' configuration in an U-shaped obstacle. Although the obstacle will be avoided, the light following behavior will continuously drive the robot into the obstacle unless state is added.}
+\end{figure}
+
 
 In order to avoid this situation, the robot needs to memorize its previous state and switch behaviors accordingly. For example, in addition to the basic combined avoidance and following behavior (``avoid and follow''), we can introduce an additional term (``wall following') in which the robot uses its proximity sensors to maintain a constant distance to a wall. In order to switch from one to the other behavior, we need to change the constant gains into dynamic ones that change their value based on other observations the robot makes. For example, the robot could estimate its progress by monitoring whether its light sensor is constantly increasing, and if it is not, inhibiting phototaxis behavior and emphasizing wall following. 
 
@@ -173,10 +186,35 @@ For each unit of time (e.g., control cycle) that passes, a preorder tree travers
 \end{enumerate}
 
 \section{Mission Planning}\label{sec:strips}
+So far, we have seen how reactive behaviors can be composed into more complex programs using Finite State Machines and Behavior trees. Although Behavior Trees facilitate dealing with the exploding number of possible state transitions by making them implicit, the programmer still needs to define the entire program flow. Consider again a pick-and-place task. This time, we will not simply grasp a new item in case the object falls out of the hand, but try to find it on the table and try to pick it up from there. In a further advanced version, we might also go on and search for the object on the floor if it cannot be find on the table. But why not even have the robot replace an object from a warehouse if it cannot be found, or even mail order a new version? Obviously, it is very cumbersome to foresee all these eventualities when programming a robot. We therefore need a framework to make it easier. This is mission planning.
+
+An example of mission planning is described in \cite{saito2011semantic} where a robot is tasked to provide a sandwich. The robot initially moves to a fridge, opens it and looks for a sandwich there, and then decides to take the elevator to the sandwich store in the basement of the University of Tokyo's engineering tower. Here, the robot is not only piecing together behaviors as it goes, but also using what is known as ``semantic planning'' to select the right actions, exploiting data bases of common sense knowledge in textual form. How to represent such knowledge in an efficient and general manner is an active research topic in robotics and artificial intelligence and goes beyond the scope of this introductory book. Yet, we will describe the basic algorithms that will allow you to compose complex behaviors during run-time, thereby generating much more complex robot responses than could ever be accomplished using hand-coding.
+
+\subsection{The General Problem Solver and STRIPS}
+One of the first planning frameworks has been introduced in 1959 as ``General Problem Solver'' (GPS) \cite{newell1959report,}, an idea that was popularized, refined and actually demonstrated on real robots later on as the ``STanford Research Institute Problem Solver'' (STRIPS)\cite{fikes1971strips}. 
+
+In STRIPS, a robotic problem is composed of:
+
 \begin{enumerate}
-\item The original GPS algorithm: operations that transform a set of pre-conditions into a set of post-states, and search thereon
-\item Mission planning with BTs
-\end{enumerate}
+\item A set of symbols that represent the \emph{initial state}
+\item A set of symbols that represent the desired \emph{goal state}
+\item A set of \emph{actions}, each with a set of \emph{preconditions} and a set of \emph{postconditions}. 
+\end{enumerate} 
+
+An action's preconditions are a set of symbols that need to be part of the current state for the action to execute. An action's postconditions is the set of symbols the action creates and thereby affect state. In a nutshell, a STRIPS planner will work backwards from a desired goal state, find actions that have equivalent post-conditions and then recursively try to satisfy these actions preconditions. 
+
+Formally, an instance of a STRIPS problem is a quadruple $\langle P, O, I, G \rangle$:
+\begin{itemize}
+\item $P$ is a set of propositional variables that can be either true or false and exhaustively describe the world the robot operates in. 
+\item $O$ is a set of operators, each itself a quadruple $\langle \alpha, \beta, \gamma, \delta \rangle$ whose entries determine the set of conditions that need to be true ($\alpha$) and that need to be false ($\beta$) for the action to take place, and a set of conditions that will be true ($\gamma$) and that will be false ($\delta$) if the action is successful. 
+\item $I$ is a set of conditions $I \subset P$ that are initially true and define the initial state, all other conditions are initially false. 
+\item $G$ is a tuple $\langle N, M\rangle$ in which $N$ is a set of conditions that need to be true and $M$ is a set of conditions that need to be false. 
+\end{itemize}
+
+\subsection{A classic example --- the hungry monkey}
+
+
+
 
 \section{Exercises}
 
