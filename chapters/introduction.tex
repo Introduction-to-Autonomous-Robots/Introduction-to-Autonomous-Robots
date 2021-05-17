@@ -11,10 +11,12 @@ The goals of this introductory chapter are to introduce the kind of problems rob
 Our notion of ``intelligent behavior'' is strongly biased by our understanding of the brain and how computers work: intelligence is located in our heads. In fact, however, a lot of behavior that looks intelligent can be achieved by very simple means. For example, mechanical wind-up toys can avoid falling off an edge simply by using a fly-wheel that rotates at a right angle to their direction of motion and a caster wheel. Once the caster wheel loses contact with the ground---that is the robot has reached the edge---the fly-wheel kicks in and pulls the robot to the right (Figure~\ref{fig:winduptoy}).
 
 \begin{figure}
-	\centering
-		\includegraphics[width=\textwidth]{figs/winduptoysketch.png}
-	\caption{A wind-up toy that does not fall off the table using purely mechanical control. A fly-wheel that turns orthogonal to the robot's motion induces a right turn as soon as it hits the ground once the front caster wheel goes off the edge.}
-	\label{fig:winduptoy}
+    \centering
+    % \includegraphics[width=\textwidth]{figs/winduptoysketch.png}
+    \def\svgwidth{\textwidth}
+    \import{./figs/}{winduptoy.pdf_tex}
+    \caption{A wind-up toy that does not fall off the table using purely mechanical control. A fly-wheel that turns orthogonal to the robot's motion induces a right turn as soon as it hits the ground once the front caster wheel goes off the edge.}
+    \label{fig:winduptoy}
 \end{figure}
 
 A robot vacuum cleaner might solve the same problem very differently: it employs infrared sensors that are pointed downwards to detect edges such as stairs and then issues a command to make an avoiding turn. Once electronics are on-board, this is a much more efficient, albeit much more complex, approach.
@@ -22,10 +24,12 @@ A robot vacuum cleaner might solve the same problem very differently: it employs
 Whereas the above examples provide different approaches to implement intelligent behaviors, similar trade-offs exist for robotic planning. For example, ants can find the shortest path between their nest and a food source by simply choosing the trail that already has more pheromones, the chemicals ants communicate with, on it. As shorter paths have ants not only moving faster towards the food, but also returning faster, their pheromone trails build up quicker (Figure~\ref{fig:ants}). But ants are not stuck to this solution. Every now and then, ants give the longer path another shot, eventually finding new food sources. What looks like intelligent behavior at the swarm level, is essentially achieved by a pheromone sensor that occasionally fails. A modern industrial robot would solve the problem completely different: it would first acquire some representation of the environment in the form of a map populated with obstacles, and then plan a path using an algorithm.
 
 \begin{figure}
-	\centering
-		\includegraphics[width=\textwidth]{figs/ants.png}
-	\caption{Ants finding the shortest path from their nest (bottom) to a food source (top). From left to right: The ants initially have equal preference for the left and the right branch, both going back and forth. As ants return faster on the shorter branch there will be more pheromones present on the short branch once a new ant arrives from the nest.}
-	\label{fig:ants}
+    \centering
+    % \includegraphics[width=\textwidth]{figs/ants.png}
+    \def\svgwidth{\textwidth}
+    \import{./figs/}{ants.pdf_tex}
+    \caption{Ants finding the shortest path from their nest (bottom) to a food source (top). From left to right: The ants initially have equal preference for the left and the right branch, both going back and forth. As ants return faster on the shorter branch there will be more pheromones present on the short branch once a new ant arrives from the nest.}
+    \label{fig:ants}
 \end{figure}
 
 Which solution to achieve a certain desired behavior is best depends on the resources that are available to the designer. We will now study a more elaborate problem for which many, more or less efficient, solutions exist.
@@ -46,13 +50,13 @@ Ratslife is a miniature robot maze competition developed by Olivier Michel from 
 
 
 \begin{figure}
-	\centering
-		\includegraphics[width=\textwidth]{figs/ratslife.png}
-	\caption{A simple maze made from cardboard, wood or Lego bricks with one or more charging stations. Locations in the maze are marked with unique markers that can be recognized by a simple robot.}
-	\label{fig:ratslife}
+    \centering
+    % \includegraphics[width=\textwidth]{figs/ratslife.png}
+    \def\svgwidth{\textwidth}
+    \import{./figs/}{ratslife.pdf_tex}
+    \caption{A simple maze made from cardboard, wood or Lego bricks with one or more charging stations. Locations in the maze are marked with unique markers that can be recognized by a simple robot.}
+    \label{fig:ratslife}
 \end{figure}
-
-
 
 In RatsLife, two miniature robots  compete on searching for four ``feeders'' that are hidden in  a maze. Once a robot reaches a feeder, it receives ``energy'' to go on for another 60s, and the feeder becomes temporarily unavailable. After a short while, the feeder becomes available again. The feeders can be either controlled by a referee who also takes care of time-keeping or constructed as part of a simple curriculum on electronics or mechatronics.
 
