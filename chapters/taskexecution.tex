@@ -203,6 +203,8 @@ In STRIPS, a robotic problem is composed of:
 
 An action's preconditions are a set of symbols that need to be part of the current state for the action to execute. An action's postconditions is the set of symbols the action creates and thereby affect state. In a nutshell, a STRIPS planner will work backwards from a desired goal state, find actions that have equivalent post-conditions and then recursively try to satisfy these actions preconditions. 
 
+For a robot to be able to get you a sandwich, a suitable goal state could be \textsc{robot has sandwich}, possible actions ``pick sandwich from fridge'' and ``open fridge door'', and initial states ``sandwich in fridge'' and ``fridge door closed''.  An action ``open fridge door''
+
 Formally, an instance of a STRIPS problem is a quadruple $\langle P, O, I, G \rangle$:
 \begin{itemize}
 \item $P$ is a set of propositional variables that can be either true or false and exhaustively describe the world the robot operates in. 
