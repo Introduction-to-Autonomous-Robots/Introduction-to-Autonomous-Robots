@@ -12,7 +12,7 @@
    viewBox="0 0 153.82355 144.00781"
    version="1.1"
    id="svg2433"
-   inkscape:version="1.0beta2 (2b71d25, 2019-12-03)"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
    sodipodi:docname="backpropnotation.svg">
   <defs
      id="defs2427">
@@ -55,9 +55,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.8114147"
-     inkscape:cx="162.85059"
-     inkscape:cy="267.21023"
+     inkscape:zoom="1.2364925"
+     inkscape:cx="290.69017"
+     inkscape:cy="303.14243"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -95,6 +95,19 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-61.203606,34.587259)">
+    <text
+       inkscape:export-ydpi="300"
+       inkscape:export-xdpi="300"
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="132.41304"
+       y="32.318707"
+       id="text1017-0"><tspan
+         sodipodi:role="line"
+         id="tspan1015-9"
+         x="132.41304"
+         y="32.318707"
+         style="font-size:5.29167px;stroke-width:0.264583">$w^{1}_{1,1}$</tspan></text>
     <circle
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -130,33 +143,7 @@
          id="tspan3172"
          x="61.493141"
          y="24.586302"
-         style="font-size:7.05556px;stroke-width:0.264583">w</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="67.193565"
-       y="21.214216"
-       id="text3178"><tspan
-         sodipodi:role="line"
-         id="tspan3176"
-         x="67.193565"
-         y="21.214216"
-         style="stroke-width:0.264583">k</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text3184"
-       y="26.673782"
-       x="66.952705"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.264583"
-         y="26.673782"
-         x="66.952705"
-         id="tspan3182"
-         sodipodi:role="line">0,j</tspan></text>
+         style="font-size:7.05556px;stroke-width:0.264583">$w^{k}_{0,j}$</tspan></text>
     <text
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -224,33 +211,7 @@
          y="37.735237"
          x="61.580704"
          id="tspan3206"
-         sodipodi:role="line">w</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text3212"
-       y="34.363152"
-       x="67.281128"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.264583"
-         y="34.363152"
-         x="67.281128"
-         id="tspan3210"
-         sodipodi:role="line">k</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="67.040268"
-       y="39.82272"
-       id="text3216"><tspan
-         sodipodi:role="line"
-         id="tspan3214"
-         x="67.040268"
-         y="39.82272"
-         style="stroke-width:0.264583">1,j</tspan></text>
+         sodipodi:role="line">$w^{k}_{1,j}$</tspan></text>
     <path
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -270,7 +231,7 @@
          id="tspan3222"
          x="82.993248"
          y="-30.56683"
-         style="font-size:5.29167px;stroke-width:0.264583">k-th layer</tspan></text>
+         style="font-size:5.29167px;stroke-width:0.264583">$k-$th layer</tspan></text>
     <text
        id="text27478-1"
        y="59.411915"
@@ -377,8 +338,7 @@
          id="tspan11120"
          x="126.88125"
          y="42.277386"
-         style="font-size:7.05556px;stroke-width:0.264583"
-         dy="0 3">x1</tspan></text>
+         style="font-size:7.05556px;stroke-width:0.264583">$x_1$</tspan></text>
     <text
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -391,8 +351,7 @@
          id="tspan11124"
          x="128.34891"
          y="72.731255"
-         style="font-size:7.05556px;stroke-width:0.264583"
-         dy="0 3">x2</tspan></text>
+         style="font-size:7.05556px;stroke-width:0.264583">$x_2$</tspan></text>
     <path
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -469,91 +428,33 @@
          id="tspan1015"
          x="145.96078"
          y="8.8881922"
-         style="font-size:5.29167px;stroke-width:0.264583"
-         dy="0 3">w0,1</tspan></text>
+         style="font-size:5.29167px;stroke-width:0.264583">$w^{1}_{0,1}$</tspan></text>
     <text
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
        id="text1021"
-       y="16.59339"
-       x="135.64154"
+       y="19.768393"
+       x="130.34995"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        xml:space="preserve"><tspan
-         dy="0 3"
          style="font-size:5.29167px;stroke-width:0.264583"
-         y="16.59339"
-         x="135.64154"
+         y="19.768393"
+         x="130.34995"
          id="tspan1019"
-         sodipodi:role="line">w0,2</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="135.63977"
-       y="33.265167"
-       id="text1025"><tspan
-         sodipodi:role="line"
-         id="tspan1023"
-         x="135.63977"
-         y="33.265167"
-         style="font-size:5.29167px;stroke-width:0.264583"
-         dy="0 3">w1,1</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text1029"
-       y="46.125816"
-       x="136.09331"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         dy="0 3"
-         style="font-size:5.29167px;stroke-width:0.264583"
-         y="46.125816"
-         x="136.09331"
-         id="tspan1027"
-         sodipodi:role="line">w1,2</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="135.77203"
-       y="59.903019"
-       id="text1033"><tspan
-         sodipodi:role="line"
-         id="tspan1031"
-         x="135.77203"
-         y="59.903019"
-         style="font-size:5.29167px;stroke-width:0.264583"
-         dy="0 3">w2,1</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text1037"
-       y="69.617065"
-       x="143.70943"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         dy="0 3"
-         style="stroke-width:0.264583"
-         y="69.617065"
-         x="143.70943"
-         id="tspan1035"
-         sodipodi:role="line">w2,2</tspan></text>
+         sodipodi:role="line">$w^{1}_{0,2}$</tspan></text>
     <text
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="161.37117"
-       y="-6.5222034"
+       y="-2.8180366"
        id="text1041"><tspan
          sodipodi:role="line"
          id="tspan1039"
          x="161.37117"
-         y="-6.5222034"
-         style="font-size:5.29167px;stroke-width:0.264583">1-th layer</tspan></text>
+         y="-2.8180366"
+         style="font-size:5.29167px;stroke-width:0.264583">$1-$th layer</tspan></text>
     <ellipse
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -574,179 +475,20 @@
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
        id="text1062"
-       y="11.15903"
+       y="9.042366"
        x="182.32085"
        style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
        xml:space="preserve"><tspan
          style="font-size:7.05556px;stroke-width:0.264583"
-         y="11.15903"
+         y="9.042366"
          x="182.32085"
          id="tspan1060"
          sodipodi:role="line">1</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text1066"
-       y="11.137097"
-       x="191.58144"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         dy="0 3"
-         style="font-size:5.29167px;stroke-width:0.264583"
-         y="11.137097"
-         x="191.58144"
-         id="tspan1064"
-         sodipodi:role="line">w0,1</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text1025-9"
-       y="27.574457"
-       x="180.98033"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         dy="0 3"
-         style="font-size:5.29167px;stroke-width:0.264583"
-         y="27.574457"
-         x="180.98033"
-         id="tspan1023-2"
-         sodipodi:role="line">w1,1</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="181.83434"
-       y="51.991146"
-       id="text1029-4"><tspan
-         sodipodi:role="line"
-         id="tspan1027-5"
-         x="181.83434"
-         y="51.991146"
-         style="font-size:5.29167px;stroke-width:0.264583"
-         dy="0 3">w1,2</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-       x="150.35663"
-       y="6.9054327"
-       id="text1106"><tspan
-         sodipodi:role="line"
-         id="tspan1104"
-         x="150.35663"
-         y="6.9054327"
-         style="stroke-width:0.264583">1</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text1110"
-       y="14.776602"
-       x="140.07591"
-       style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.264583"
-         y="14.776602"
-         x="140.07591"
-         id="tspan1108"
-         sodipodi:role="line">1</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-       x="139.9227"
-       y="30.842695"
-       id="text1110-7"><tspan
-         sodipodi:role="line"
-         id="tspan1108-3"
-         x="139.9227"
-         y="30.842695"
-         style="stroke-width:0.264583">1</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-       x="140.56526"
-       y="44.336128"
-       id="text1110-75"><tspan
-         sodipodi:role="line"
-         id="tspan1108-0"
-         x="140.56526"
-         y="44.336128"
-         style="stroke-width:0.264583">1</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-       x="140.24397"
-       y="57.668922"
-       id="text1110-2"><tspan
-         sodipodi:role="line"
-         id="tspan1108-1"
-         x="140.24397"
-         y="57.668922"
-         style="stroke-width:0.264583">1</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-       x="148.27579"
-       y="67.628365"
-       id="text1110-8"><tspan
-         sodipodi:role="line"
-         id="tspan1108-7"
-         x="148.27579"
-         y="67.628365"
-         style="stroke-width:0.264583">1</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-       x="186.18591"
-       y="49.797752"
-       id="text1110-1"><tspan
-         sodipodi:role="line"
-         id="tspan1108-5"
-         x="186.18591"
-         y="49.797752"
-         style="stroke-width:0.264583">2</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text1110-1-1"
-       y="25.575293"
-       x="185.42407"
-       style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.264583"
-         y="25.575293"
-         x="185.42407"
-         id="tspan1108-5-6"
-         sodipodi:role="line">2</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text1110-1-12"
-       y="9.3510485"
-       x="196.18669"
-       style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.264583"
-         y="9.3510485"
-         x="196.18669"
-         id="tspan1108-5-0"
-         sodipodi:role="line">2</tspan></text>
     <path
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 172.52443,-4.1784578 c 0,2.9449953 0,5.8899905 0,8.8349856"
+       d="m 172.52443,-0.47429093 c 0,2.94499513 0,5.88999053 0,8.83498563"
        id="path1188"
        inkscape:connector-curvature="0" />
     <circle
@@ -769,7 +511,7 @@
          y="102.94225"
          x="92.33432"
          id="tspan3198-7"
-         sodipodi:role="line">r</tspan></text>
+         sodipodi:role="line">$r^k$</tspan></text>
     <path
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -777,19 +519,6 @@
        id="path3220-3"
        d="m 96.610373,80.645196 v 9.955677"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 4;stroke-dashoffset:0;stroke-opacity:1" />
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text3178-5"
-       y="100.30405"
-       x="96.0541"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.264583"
-         y="100.30405"
-         x="96.0541"
-         id="tspan3176-6"
-         sodipodi:role="line">k</tspan></text>
     <path
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -818,5 +547,83 @@
          x="93.386925"
          id="tspan3186-9"
          sodipodi:role="line">1</tspan></text>
+    <text
+       inkscape:export-ydpi="300"
+       inkscape:export-xdpi="300"
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="133.45978"
+       y="49.223042"
+       id="text1017-0-2"><tspan
+         sodipodi:role="line"
+         id="tspan1015-9-0"
+         x="133.45978"
+         y="49.223042"
+         style="font-size:5.29167px;stroke-width:0.264583">$w^{1}_{1,2}$</tspan></text>
+    <text
+       inkscape:export-ydpi="300"
+       inkscape:export-xdpi="300"
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="144.45076"
+       y="74.900513"
+       id="text1017-0-2-9"><tspan
+         sodipodi:role="line"
+         id="tspan1015-9-0-1"
+         x="144.45076"
+         y="74.900513"
+         style="font-size:5.29167px;stroke-width:0.264583">$w^{1}_{2,2}$</tspan></text>
+    <text
+       inkscape:export-ydpi="300"
+       inkscape:export-xdpi="300"
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="128.8766"
+       y="61.408279"
+       id="text1017-0-2-9-7"><tspan
+         sodipodi:role="line"
+         id="tspan1015-9-0-1-7"
+         x="128.8766"
+         y="61.408279"
+         style="font-size:5.29167px;stroke-width:0.264583">$w^{1}_{2,1}$</tspan></text>
+    <text
+       inkscape:export-ydpi="300"
+       inkscape:export-xdpi="300"
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="192.50638"
+       y="14.231707"
+       id="text1017-2"><tspan
+         sodipodi:role="line"
+         id="tspan1015-2"
+         x="192.50638"
+         y="14.231707"
+         style="font-size:5.29167px;stroke-width:0.264583">$w^{2}_{0,1}$</tspan></text>
+    <text
+       inkscape:export-ydpi="300"
+       inkscape:export-xdpi="300"
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="177.85461"
+       y="34.018978"
+       id="text1017-2-8"><tspan
+         sodipodi:role="line"
+         id="tspan1015-2-2"
+         x="177.85461"
+         y="34.018978"
+         style="font-size:5.29167px;stroke-width:0.264583">$w^{2}_{1,1}$</tspan></text>
+    <text
+       inkscape:export-ydpi="300"
+       inkscape:export-xdpi="300"
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="188.44078"
+       y="56.171574"
+       id="text1017-2-4"><tspan
+         sodipodi:role="line"
+         id="tspan1015-2-6"
+         x="188.44078"
+         y="56.171574"
+         style="font-size:5.29167px;stroke-width:0.264583">$w^{2}_{0,2}$</tspan></text>
   </g>
 </svg>

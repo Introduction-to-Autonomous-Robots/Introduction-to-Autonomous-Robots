@@ -1,0 +1,93 @@
+%% Creator: Inkscape 1.0.2 (e86c870879, 2021-01-15, custom), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'backpropnotation.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{436.03525237bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.93618835)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0.46292935,0.50123566){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w^{1}_{1,1}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{backpropnotation.pdf}}%
+    \put(0.00188226,0.55150368){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w^{k}_{0,j}$\end{tabular}}}}%
+    \put(0.22375696,0.43157452){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}j\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{backpropnotation.pdf}}%
+    \put(0.19504988,0.60172925){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}j-1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{backpropnotation.pdf}}%
+    \put(0.19296209,0.25985399){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}j+1\end{tabular}}}}%
+    \put(0.0024515,0.46602303){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w^{k}_{1,j}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{backpropnotation.pdf}}%
+    \put(0.14165349,0.91005172){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$k-$th layer\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{backpropnotation.pdf}}%
+    \put(0.71558792,0.57245642){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0.7179731,0.31007421){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{backpropnotation.pdf}}%
+    \put(0.45320559,0.64401521){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0.42696742,0.43649473){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_1$\end{tabular}}}}%
+    \put(0.4365086,0.23851549){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_2$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{backpropnotation.pdf}}%
+    \put(0.92787898,0.45319179){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{backpropnotation.pdf}}%
+    \put(0.55100263,0.65355638){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w^{1}_{0,1}$\end{tabular}}}}%
+    \put(0.44951726,0.58282469){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w^{1}_{0,2}$\end{tabular}}}}%
+    \put(0.65118485,0.72965805){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$1-$th layer\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{backpropnotation.pdf}}%
+    \put(0.78737776,0.65255411){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{backpropnotation.pdf}}%
+    \put(0.20237938,0.04211514){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$r^k$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{backpropnotation.pdf}}%
+    \put(0.20922232,0.81133672){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0.46973414,0.39134133){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w^{1}_{1,2}$\end{tabular}}}}%
+    \put(0.54118602,0.22441324){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w^{1}_{2,2}$\end{tabular}}}}%
+    \put(0.43993912,0.31212565){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w^{1}_{2,1}$\end{tabular}}}}%
+    \put(0.85359345,0.61881844){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w^{2}_{0,1}$\end{tabular}}}}%
+    \put(0.75834299,0.49018227){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w^{2}_{1,1}$\end{tabular}}}}%
+    \put(0.82716318,0.34616924){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w^{2}_{0,2}$\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

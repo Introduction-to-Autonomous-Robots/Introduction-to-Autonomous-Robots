@@ -8,12 +8,12 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="linearlyseparable.svg"
-   inkscape:version="1.0beta2 (2b71d25, 2019-12-03)"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
    id="svg1049"
    version="1.1"
-   viewBox="0 0 210 297"
-   height="297mm"
-   width="210mm">
+   viewBox="0 0 72.460701 52.824017"
+   height="52.824017mm"
+   width="72.460701mm">
   <defs
      id="defs1043">
     <marker
@@ -58,8 +58,8 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="135.71429"
-     inkscape:cx="152.85714"
+     inkscape:cy="100.04381"
+     inkscape:cx="129.70811"
      inkscape:zoom="1.3625786"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
@@ -82,7 +82,8 @@
   <g
      id="layer1"
      inkscape:groupmode="layer"
-     inkscape:label="Layer 1">
+     inkscape:label="Layer 1"
+     transform="translate(-6.1248469,-8.2727452)">
     <path
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -220,29 +221,27 @@
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
        id="text21642"
-       y="60.358181"
-       x="58.674915"
+       y="60.164001"
+       x="62.364307"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        xml:space="preserve"><tspan
-         dy="0 3"
          style="font-size:5.29167px;stroke-width:0.264583"
-         y="60.358181"
-         x="58.674915"
+         y="60.164001"
+         x="62.364307"
          id="tspan21640"
-         sodipodi:role="line">x1</tspan></text>
+         sodipodi:role="line">$x_1$</tspan></text>
     <text
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="3.5883918"
-       y="10.985601"
+       x="5.7243543"
+       y="12.344851"
        id="text21642-6"><tspan
          sodipodi:role="line"
          id="tspan21640-4"
-         x="3.5883918"
-         y="10.985601"
-         style="font-size:5.29167px;stroke-width:0.264583"
-         dy="0 3">x2</tspan></text>
+         x="5.7243543"
+         y="12.344851"
+         style="font-size:5.29167px;stroke-width:0.264583">$x_2$</tspan></text>
   </g>
 </svg>

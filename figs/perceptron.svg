@@ -10,12 +10,12 @@
    inkscape:export-ydpi="300.11426"
    inkscape:export-xdpi="300.11426"
    inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/perceptron.png"
-   width="75.893875mm"
-   height="60.961052mm"
-   viewBox="0 0 75.893875 60.961052"
+   width="88.999657mm"
+   height="57.429966mm"
+   viewBox="0 0 88.999657 57.429966"
    version="1.1"
    id="svg19015"
-   inkscape:version="1.0beta2 (2b71d25, 2019-12-03)"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
    sodipodi:docname="perceptron.svg">
   <defs
      id="defs19009">
@@ -137,9 +137,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.1613601"
-     inkscape:cx="78.385944"
-     inkscape:cy="158.40646"
+     inkscape:zoom="2.4557152"
+     inkscape:cx="154.7595"
+     inkscape:cy="116.7576"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -148,7 +148,7 @@
      inkscape:guide-bbox="true"
      inkscape:window-width="1440"
      inkscape:window-height="827"
-     inkscape:window-x="-5"
+     inkscape:window-x="0"
      inkscape:window-y="45"
      inkscape:window-maximized="0"
      fit-margin-top="0"
@@ -156,11 +156,11 @@
      fit-margin-right="0"
      fit-margin-bottom="0">
     <sodipodi:guide
-       position="14.205363,58.43258"
+       position="6.8538129,53.71552"
        orientation="1,0"
        id="guide19666" />
     <sodipodi:guide
-       position="20.960198,73.09922"
+       position="13.608648,68.38216"
        orientation="1,0"
        id="guide19696" />
   </sodipodi:namedview>
@@ -180,7 +180,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-34.873333,-22.898808)">
+     transform="translate(-42.224883,-21.712834)">
     <g
        id="g25193">
       <circle
@@ -225,27 +225,25 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="55.83353"
+       x="56.036564"
        y="29.439499"
        id="text19672"><tspan
          sodipodi:role="line"
          id="tspan19670"
-         x="55.83353"
+         x="56.036564"
          y="29.439499"
-         style="stroke-width:0.264583"
-         dy="0 3">w1</tspan></text>
+         style="stroke-width:0.264583">$w_1$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="55.93504"
+       x="56.036564"
        y="75.019958"
        id="text19676"><tspan
          sodipodi:role="line"
          id="tspan19674"
-         x="55.93504"
+         x="56.036564"
          y="75.019958"
-         style="stroke-width:0.264583"
-         dy="0 3">wm</tspan></text>
+         style="stroke-width:0.264583">$w_m$</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker19740)"
        d="M 49.078694,33.906179 74.106322,47.712288"
@@ -257,12 +255,11 @@
        x="56.036564"
        style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        xml:space="preserve"><tspan
-         dy="0 3"
          style="stroke-width:0.264583"
          y="36.951649"
          x="56.036564"
          id="tspan19702"
-         sodipodi:role="line">w2</tspan></text>
+         sodipodi:role="line">$w_2$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -273,32 +270,29 @@
          id="tspan19706"
          x="41.82439"
          y="25.784939"
-         style="font-size:5.29167px;stroke-width:0.264583"
-         dy="0 3">x1</tspan></text>
+         style="font-size:5.29167px;stroke-width:0.264583">$x_1$</tspan></text>
     <text
        id="text19712"
        y="33.906181"
        x="41.82439"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        xml:space="preserve"><tspan
-         dy="0 3"
          style="font-size:5.29167px;stroke-width:0.264583"
          y="33.906181"
          x="41.82439"
          id="tspan19710"
-         sodipodi:role="line">x2</tspan></text>
+         sodipodi:role="line">$x_2$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="34.718304"
+       x="41.82439"
        y="76.542694"
        id="text19726"><tspan
          sodipodi:role="line"
          id="tspan19724"
-         x="34.718304"
+         x="41.82439"
          y="76.542694"
-         style="font-size:5.29167px;stroke-width:0.264583"
-         dy="0 3">xm-1</tspan></text>
+         style="font-size:5.29167px;stroke-width:0.264583">$x_m$</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker19826)"
        d="M 93.191236,51.366848 110.24584,51.163817"
@@ -316,12 +310,11 @@
        x="84.70797"
        y="69.726128"
        id="text20016"><tspan
-         dy="0 0 0 0 0 3"
          sodipodi:role="line"
          id="tspan20014"
          x="84.70797"
          y="69.726128"
-         style="font-size:5.29167px;stroke-width:0.264583">b / w0</tspan></text>
+         style="font-size:5.29167px;stroke-width:0.264583">$\frac{b}{w_0}$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -335,13 +328,13 @@
          style="font-size:5.29167px;stroke-width:0.264583">...</tspan></text>
     <text
        id="text24474"
-       y="83.497063"
-       x="82.062622"
+       y="78.756424"
+       x="85.49128"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        xml:space="preserve"><tspan
          style="font-size:5.29167px;stroke-width:0.264583"
-         y="83.497063"
-         x="82.062622"
+         y="78.756424"
+         x="85.49128"
          id="tspan24472"
          sodipodi:role="line">1</tspan></text>
   </g>

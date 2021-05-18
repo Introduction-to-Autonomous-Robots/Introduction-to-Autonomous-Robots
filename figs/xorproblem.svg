@@ -8,11 +8,11 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="170.27324mm"
-   height="55.258709mm"
-   viewBox="0 0 170.27324 55.258709"
+   height="53.69566mm"
+   viewBox="0 0 170.27324 53.695659"
    version="1.1"
    id="svg20112"
-   inkscape:version="1.0beta2 (2b71d25, 2019-12-03)"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
    sodipodi:docname="xorproblem.svg">
   <defs
      id="defs20106">
@@ -86,9 +86,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49856403"
-     inkscape:cx="681.26054"
-     inkscape:cy="199.24289"
+     inkscape:zoom="1.3860565"
+     inkscape:cx="348.45475"
+     inkscape:cy="102.33151"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -118,7 +118,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-53.597953,-10.238073)">
+     transform="translate(-53.597953,-9.733882)">
     <path
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -432,8 +432,7 @@
          id="tspan21640"
          x="162.94615"
          y="62.49678"
-         style="font-size:5.29167px;stroke-width:0.264583"
-         dy="0 3">x1</tspan></text>
+         style="font-size:5.29167px;stroke-width:0.264583">$x_1$</tspan></text>
     <text
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -442,26 +441,24 @@
        x="179.57939"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        xml:space="preserve"><tspan
-         dy="0 3"
          style="font-size:5.29167px;stroke-width:0.264583"
          y="14.03325"
          x="179.57939"
          id="tspan21640-5"
-         sodipodi:role="line">x1</tspan></text>
+         sodipodi:role="line">$x_1$</tspan></text>
     <text
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
        id="text21642-6"
-       y="13.124204"
+       y="14.182536"
        x="107.85963"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        xml:space="preserve"><tspan
-         dy="0 3"
          style="font-size:5.29167px;stroke-width:0.264583"
-         y="13.124204"
+         y="14.182536"
          x="107.85963"
          id="tspan21640-4"
-         sodipodi:role="line">x2</tspan></text>
+         sodipodi:role="line">$x_2$</tspan></text>
     <text
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -474,8 +471,7 @@
          id="tspan21640-4-6"
          x="194.24155"
          y="13.805987"
-         style="font-size:5.29167px;stroke-width:0.264583"
-         dy="0 3">x2</tspan></text>
+         style="font-size:5.29167px;stroke-width:0.264583">$x_2$</tspan></text>
     <text
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
