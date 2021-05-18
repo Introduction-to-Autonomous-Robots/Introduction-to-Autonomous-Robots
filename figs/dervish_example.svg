@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -9,26 +7,27 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
+   width="535.46735"
+   height="229.33337"
    id="svg7135"
    version="1.1"
-   inkscape:version="0.48.5 r10040"
-   sodipodi:docname="dervish_example.svg">
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
+   sodipodi:docname="dervish_example.svg"
+   viewBox="0 0 502.00062 215.00004">
   <defs
      id="defs7137">
     <marker
        inkscape:stockid="Arrow1Lend"
        orient="auto"
-       refY="0.0"
-       refX="0.0"
+       refY="0"
+       refX="0"
        id="Arrow1Lend"
-       style="overflow:visible;">
+       style="overflow:visible">
       <path
          id="path4626"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
-         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
     </marker>
   </defs>
   <sodipodi:namedview
@@ -38,19 +37,20 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.0920001"
-     inkscape:cx="298.47584"
-     inkscape:cy="466.9748"
+     inkscape:zoom="2.5622478"
+     inkscape:cx="267.73367"
+     inkscape:cy="114.66669"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1280"
-     inkscape:window-height="660"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-width="1920"
+     inkscape:window-height="1021"
+     inkscape:window-x="-7"
+     inkscape:window-y="-7"
      inkscape:window-maximized="1"
      showguides="true"
-     inkscape:guide-bbox="true" />
+     inkscape:guide-bbox="true"
+     inkscape:document-rotation="0" />
   <metadata
      id="metadata7140">
     <rdf:RDF>
@@ -66,10 +66,11 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-68.499373,-504.36214)">
     <path
        style="fill:#000000"
-       d="m 501.5,719.36218 -2,0 0,-33 0,-33 -116,0 -116,0 0,-2.5 0,-2.5 118.61658,0 118.61657,0 c 0.78225,9.57149 -0.42373,18.28421 -0.42373,39 l -0.80942,32 z"
+       d="m 501.5,719.36218 h -2 v -33 -33 h -116 -116 v -2.5 -2.5 h 118.61658 118.61657 c 0.78225,9.57149 -0.42373,18.28421 -0.42373,39 l -0.80942,32 z"
        id="path7512"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccccccccc"
@@ -78,112 +79,112 @@
        inkscape:export-ydpi="300.13943" />
     <path
        style="fill:#000000"
-       d="m 568,719.36218 -2.5,0 0,-107.5 0,-107.5 2.5,0 2.5,0 0,107.5 0,107.5 -2.5,0 z"
+       d="m 568,719.36218 h -2.5 v -107.5 -107.5 h 2.5 2.5 v 107.5 107.5 z"
        id="path7510"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
        inkscape:export-xdpi="300.13943"
        inkscape:export-ydpi="300.13943" />
     <text
        xml:space="preserve"
-       style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="99"
        y="620.36218"
        id="text7516"
-       sodipodi:linespacing="125%"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
        inkscape:export-xdpi="300.13943"
        inkscape:export-ydpi="300.13943"><tspan
          sodipodi:role="line"
          id="tspan7518"
          x="99"
-         y="620.36218">1</tspan></text>
+         y="620.36218"
+         style="font-size:16px;line-height:1.25;font-family:sans-serif">1</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="154"
        y="619.36218"
        id="text7520"
-       sodipodi:linespacing="125%"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
        inkscape:export-xdpi="300.13943"
        inkscape:export-ydpi="300.13943"><tspan
          sodipodi:role="line"
          id="tspan7522"
          x="154"
-         y="619.36218">1-2</tspan></text>
+         y="619.36218"
+         style="font-size:16px;line-height:1.25;font-family:sans-serif">1-2</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="227"
        y="619.36218"
        id="text7524"
-       sodipodi:linespacing="125%"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
        inkscape:export-xdpi="300.13943"
        inkscape:export-ydpi="300.13943"><tspan
          sodipodi:role="line"
          id="tspan7526"
          x="227"
-         y="619.36218">2</tspan></text>
+         y="619.36218"
+         style="font-size:16px;line-height:1.25;font-family:sans-serif">2</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="298"
        y="618.36218"
        id="text7528"
-       sodipodi:linespacing="125%"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
        inkscape:export-xdpi="300.13943"
        inkscape:export-ydpi="300.13943"><tspan
          sodipodi:role="line"
          id="tspan7530"
          x="298"
-         y="618.36218">2-3</tspan></text>
+         y="618.36218"
+         style="font-size:16px;line-height:1.25;font-family:sans-serif">2-3</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="380"
        y="617.36218"
        id="text7532"
-       sodipodi:linespacing="125%"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
        inkscape:export-xdpi="300.13943"
        inkscape:export-ydpi="300.13943"><tspan
          sodipodi:role="line"
          id="tspan7534"
          x="380"
-         y="617.36218">3</tspan></text>
+         y="617.36218"
+         style="font-size:16px;line-height:1.25;font-family:sans-serif">3</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="439.70493"
        y="617.0097"
        id="text7536"
-       sodipodi:linespacing="125%"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
        inkscape:export-xdpi="300.13943"
        inkscape:export-ydpi="300.13943"><tspan
          sodipodi:role="line"
          id="tspan7538"
          x="439.70493"
-         y="617.0097">3-4</tspan></text>
+         y="617.0097"
+         style="font-size:16px;line-height:1.25;font-family:sans-serif">3-4</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="524"
-       y="616.36218"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="527.75"
+       y="618.23718"
        id="text7540"
-       sodipodi:linespacing="125%"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
        inkscape:export-xdpi="300.13943"
        inkscape:export-ydpi="300.13943"><tspan
          sodipodi:role="line"
          id="tspan7542"
-         x="524"
-         y="616.36218">4</tspan></text>
+         x="527.75"
+         y="618.23718"
+         style="font-size:16px;line-height:1.25;font-family:sans-serif">4</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="m 131,560.36218 0,-41"
+       d="m 131,565.98718 v -41"
        id="path7544"
        inkscape:connector-curvature="0"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
@@ -191,21 +192,21 @@
        inkscape:export-ydpi="300.13943" />
     <text
        xml:space="preserve"
-       style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="125"
        y="518.36218"
        id="text8238"
-       sodipodi:linespacing="125%"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
        inkscape:export-xdpi="300.13943"
        inkscape:export-ydpi="300.13943"><tspan
          sodipodi:role="line"
          id="tspan8240"
          x="125"
-         y="518.36218">N</tspan></text>
+         y="518.36218"
+         style="font-size:16px;line-height:1.25;font-family:sans-serif">N</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1,2;stroke-dashoffset:0"
-       d="m 134,585.36218 0,65"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 2;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 134,585.36218 v 65"
        id="path8242"
        inkscape:connector-curvature="0"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
@@ -213,7 +214,7 @@
        inkscape:export-ydpi="300.13943" />
     <path
        style="fill:#000000"
-       d="m 256.25,678.29723 c -0.6875,-0.0357 -9.125,-5.64686 -18.75,-12.46919 L 220,653.4238 144.25,653.393 68.5,653.3622 l -3.14e-4,-35.75 -3.13e-4,-35.75 66.000317,0.29054 66.00031,0.29054 0,-39.04054 0,-39.04054 2.5,0 2.5,0 0,37.53222 0.22387,37.66655 c -0.0309,3.9482 -0.6386,-8.61649 -0.0266,1.66694 l -0.005,3.01864 0.0653,2.13024 -2.37296,0.0879 c -4.74238,-0.42359 -11.87456,-1.02005 0.0156,-0.0128 l -35.29819,-0.0896 -29.88016,-0.0364 c -3.541,0.004 3.57627,0.0245 -1.44926,0.0364 -6.51086,-0.27089 5.37589,-0.0588 -1.40093,-10e-6 l -30.37136,0 -31.5,0 0,31 0,31 72.44098,0 72.44099,0 0.5761,0.93216 c 0.31686,0.51268 9.11842,6.89561 19.55902,14.18427 10.4406,7.28866 18.98291,13.61919 18.98291,14.06784 l 0,0.81573 -1.25,-0.065 z"
+       d="m 256.25,678.29723 c -0.6875,-0.0357 -9.125,-5.64686 -18.75,-12.46919 L 220,653.4238 144.25,653.393 68.5,653.3622 l -3.14e-4,-35.75 -3.13e-4,-35.75 66.000317,0.29054 66.00031,0.29054 V 543.40274 504.3622 h 2.5 2.5 v 37.53222 l 0.22387,37.66655 c -0.0309,3.9482 -0.6386,-8.61649 -0.0266,1.66694 l -0.005,3.01864 0.0653,2.13024 -2.37296,0.0879 c -4.74238,-0.42359 -11.87456,-1.02005 0.0156,-0.0128 l -35.29819,-0.0896 -29.88016,-0.0364 c -3.541,0.004 3.57627,0.0245 -1.44926,0.0364 -6.51086,-0.27089 5.37589,-0.0588 -1.40093,-10e-6 h -30.37136 -31.5 v 31 31 h 72.44098 72.44099 l 0.5761,0.93216 c 0.31686,0.51268 9.11842,6.89561 19.55902,14.18427 10.4406,7.28866 18.98291,13.61919 18.98291,14.06784 v 0.81573 l -1.25,-0.065 z"
        id="path7504"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cscccccccccccccccccccccccccccccssccc"
@@ -221,8 +222,8 @@
        inkscape:export-xdpi="300.13943"
        inkscape:export-ydpi="300.13943" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:1,2;stroke-dashoffset:0"
-       d="m 204,649.36218 0,-67 66,0 0,68"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 2;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 204,649.36218 v -67 h 66 v 68"
        id="path8244"
        inkscape:connector-curvature="0"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
@@ -230,7 +231,7 @@
        inkscape:export-ydpi="300.13943" />
     <path
        style="fill:#000000"
-       d="m 272.49997,586.78334 -2.75,0.0394 -2.75,0.0394 0.0714,-2.25 c 0.0393,-1.2375 0.15178,-19.8 0.25,-41.25 l 0.17863,-39 2.5,0 2.5,0 0,39 0,39 43.75,0.0179 43.75,0.0179 23.80661,-8.16135 23.8066,-8.16134 0.91945,0.91945 0.91946,0.91945 -24.47606,8.35444 -24.47606,8.35445 0,0.8695 0,0.8695 -1.5,0 c -18.22738,0.50624 -27.50956,0.4655 -44,0.80942 -15.48238,0.0736 -28.52908,-0.51477 -42.50003,-0.38812 z"
+       d="m 272.49997,586.78334 -2.75,0.0394 -2.75,0.0394 0.0714,-2.25 c 0.0393,-1.2375 0.15178,-19.8 0.25,-41.25 l 0.17863,-39 h 2.5 2.5 v 39 39 l 43.75,0.0179 43.75,0.0179 23.80661,-8.16135 23.8066,-8.16134 0.91945,0.91945 0.91946,0.91945 -24.47606,8.35444 -24.47606,8.35445 v 0.8695 0.8695 H 359 c -18.22738,0.50624 -27.50956,0.4655 -44,0.80942 -15.48238,0.0736 -28.52908,-0.51477 -42.50003,-0.38812 z"
        id="path7388"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccscccccccccccccccccc"
@@ -238,8 +239,8 @@
        inkscape:export-xdpi="300.13943"
        inkscape:export-ydpi="300.13943" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:1,2;stroke-dashoffset:0"
-       d="m 358.73361,585.49047 0,63.13452"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 2;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 358.73361,585.49047 v 63.13452"
        id="path8246"
        inkscape:connector-curvature="0"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
@@ -247,7 +248,7 @@
        inkscape:export-ydpi="300.13943" />
     <path
        style="fill:#000000"
-       d="m 413.49997,586.36218 -2,0 0,-1.98949 0,-1.98949 43.75,-0.26051 43.75,-0.26051 0.26174,-38.75 0.26175,-38.75 1.98825,0 1.98826,0 0,37.53222 c 1.77095,21.63995 0.3559,34.91306 0.49996,44.96781 l -2.5,0 c -10.5202,0.16376 -26.21358,-0.50001 -44.03216,-0.50001 -13.84816,0.30017 -39.90333,0.51432 -43.9678,-2e-5 z"
+       d="m 413.49997,586.36218 h -2 v -1.98949 -1.98949 l 43.75,-0.26051 43.75,-0.26051 0.26174,-38.75 0.26175,-38.75 h 1.98825 1.98826 v 37.53222 c 1.77095,21.63995 0.3559,34.91306 0.49996,44.96781 h -2.5 c -10.5202,0.16376 -26.21358,-0.50001 -44.03216,-0.50001 -13.84816,0.30017 -39.90333,0.51432 -43.9678,-2e-5 z"
        id="path7386"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccccccccccc"
@@ -255,7 +256,7 @@
        inkscape:export-xdpi="300.13943"
        inkscape:export-ydpi="300.13943" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:1,2;stroke-dashoffset:0"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 2;stroke-dashoffset:0;stroke-opacity:1"
        d="m 413.77396,585.00482 -0.48565,65.07712"
        id="path8248"
        inkscape:connector-curvature="0"
@@ -263,7 +264,7 @@
        inkscape:export-xdpi="300.13943"
        inkscape:export-ydpi="300.13943" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:1,2;stroke-dashoffset:0"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 2;stroke-dashoffset:0;stroke-opacity:1"
        d="m 501.35288,585.00482 0.32376,68.96232"
        id="path8250"
        inkscape:connector-curvature="0"
@@ -271,16 +272,16 @@
        inkscape:export-xdpi="300.13943"
        inkscape:export-ydpi="300.13943" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:1,2;stroke-dashoffset:0"
-       d="m 501.02911,650.72948 65.56278,0"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 2;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 501.02911,650.72948 h 65.56278"
        id="path8252"
        inkscape:connector-curvature="0"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
        inkscape:export-xdpi="300.13943"
        inkscape:export-ydpi="300.13943" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:1,2;stroke-dashoffset:0"
-       d="m 501.83853,584.51917 64.75336,0"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 2;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 501.83853,584.51917 h 64.75336"
        id="path8254"
        inkscape:connector-curvature="0"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
@@ -294,14 +295,15 @@
        sodipodi:cy="614.62946"
        sodipodi:rx="12.950672"
        sodipodi:ry="12.303138"
-       d="m 91.937538,609.29071 a 12.950672,12.303138 0 1 1 -0.01983,0.0393"
+       d="m 91.937538,609.29071 a 12.950672,12.303138 0 0 1 17.277242,-5.75042 12.950672,12.303138 0 0 1 6.06837,16.40827 12.950672,12.303138 0 0 1 -17.266491,5.77949 A 12.950672,12.303138 0 0 1 91.917704,609.33"
        sodipodi:start="3.5904474"
-       sodipodi:end="9.8700903"
+       sodipodi:end="3.586905"
        sodipodi:open="true"
        transform="matrix(1.1684575,0,0,1.1684575,-17.18674,-103.3817)"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
        inkscape:export-xdpi="300.13943"
-       inkscape:export-ydpi="300.13943" />
+       inkscape:export-ydpi="300.13943"
+       sodipodi:arc-type="arc" />
     <path
        sodipodi:type="arc"
        style="fill:none;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
@@ -310,14 +312,15 @@
        sodipodi:cy="614.62946"
        sodipodi:rx="12.950672"
        sodipodi:ry="12.303138"
-       d="m 91.937538,609.29071 a 12.950672,12.303138 0 1 1 -0.01983,0.0393"
+       d="m 91.937538,609.29071 a 12.950672,12.303138 0 0 1 17.277242,-5.75042 12.950672,12.303138 0 0 1 6.06837,16.40827 12.950672,12.303138 0 0 1 -17.266491,5.77949 A 12.950672,12.303138 0 0 1 91.917704,609.33"
        sodipodi:start="3.5904474"
-       sodipodi:end="9.8700903"
+       sodipodi:end="3.586905"
        sodipodi:open="true"
        transform="matrix(1.1684575,0,0,1.1684575,45.357641,-103.53892)"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
        inkscape:export-xdpi="300.13943"
-       inkscape:export-ydpi="300.13943" />
+       inkscape:export-ydpi="300.13943"
+       sodipodi:arc-type="arc" />
     <path
        sodipodi:type="arc"
        style="fill:none;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
@@ -326,14 +329,15 @@
        sodipodi:cy="614.62946"
        sodipodi:rx="12.950672"
        sodipodi:ry="12.303138"
-       d="m 91.937538,609.29071 a 12.950672,12.303138 0 1 1 -0.01983,0.0393"
+       d="m 91.937538,609.29071 a 12.950672,12.303138 0 0 1 17.277242,-5.75042 12.950672,12.303138 0 0 1 6.06837,16.40827 12.950672,12.303138 0 0 1 -17.266491,5.77949 A 12.950672,12.303138 0 0 1 91.917704,609.33"
        sodipodi:start="3.5904474"
-       sodipodi:end="9.8700903"
+       sodipodi:end="3.586905"
        sodipodi:open="true"
        transform="matrix(1.1684575,0,0,1.1684575,110.111,-104.18645)"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
        inkscape:export-xdpi="300.13943"
-       inkscape:export-ydpi="300.13943" />
+       inkscape:export-ydpi="300.13943"
+       sodipodi:arc-type="arc" />
     <path
        sodipodi:type="arc"
        style="fill:none;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
@@ -342,14 +346,15 @@
        sodipodi:cy="614.62946"
        sodipodi:rx="12.950672"
        sodipodi:ry="12.303138"
-       d="m 91.937538,609.29071 a 12.950672,12.303138 0 1 1 -0.01983,0.0393"
+       d="m 91.937538,609.29071 a 12.950672,12.303138 0 0 1 17.277242,-5.75042 12.950672,12.303138 0 0 1 6.06837,16.40827 12.950672,12.303138 0 0 1 -17.266491,5.77949 A 12.950672,12.303138 0 0 1 91.917704,609.33"
        sodipodi:start="3.5904474"
-       sodipodi:end="9.8700903"
+       sodipodi:end="3.586905"
        sodipodi:open="true"
        transform="matrix(1.1684575,0,0,1.1684575,188.46256,-104.83398)"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
        inkscape:export-xdpi="300.13943"
-       inkscape:export-ydpi="300.13943" />
+       inkscape:export-ydpi="300.13943"
+       sodipodi:arc-type="arc" />
     <path
        sodipodi:type="arc"
        style="fill:none;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
@@ -358,14 +363,15 @@
        sodipodi:cy="614.62946"
        sodipodi:rx="12.950672"
        sodipodi:ry="12.303138"
-       d="m 91.937538,609.29071 a 12.950672,12.303138 0 1 1 -0.01983,0.0393"
+       d="m 91.937538,609.29071 a 12.950672,12.303138 0 0 1 17.277242,-5.75042 12.950672,12.303138 0 0 1 6.06837,16.40827 12.950672,12.303138 0 0 1 -17.266491,5.77949 A 12.950672,12.303138 0 0 1 91.917704,609.33"
        sodipodi:start="3.5904474"
-       sodipodi:end="9.8700903"
+       sodipodi:end="3.586905"
        sodipodi:open="true"
        transform="matrix(1.1684575,0,0,1.1684575,262.92892,-103.53891)"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
        inkscape:export-xdpi="300.13943"
-       inkscape:export-ydpi="300.13943" />
+       inkscape:export-ydpi="300.13943"
+       sodipodi:arc-type="arc" />
     <path
        sodipodi:type="arc"
        style="fill:none;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
@@ -374,14 +380,15 @@
        sodipodi:cy="614.62946"
        sodipodi:rx="12.950672"
        sodipodi:ry="12.303138"
-       d="m 91.937538,609.29071 a 12.950672,12.303138 0 1 1 -0.01983,0.0393"
+       d="m 91.937538,609.29071 a 12.950672,12.303138 0 0 1 17.277242,-5.75042 12.950672,12.303138 0 0 1 6.06837,16.40827 12.950672,12.303138 0 0 1 -17.266491,5.77949 A 12.950672,12.303138 0 0 1 91.917704,609.33"
        sodipodi:start="3.5904474"
-       sodipodi:end="9.8700903"
+       sodipodi:end="3.586905"
        sodipodi:open="true"
        transform="matrix(1.1684575,0,0,1.1684575,330.27242,-105.48152)"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
        inkscape:export-xdpi="300.13943"
-       inkscape:export-ydpi="300.13943" />
+       inkscape:export-ydpi="300.13943"
+       sodipodi:arc-type="arc" />
     <path
        sodipodi:type="arc"
        style="fill:none;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
@@ -390,17 +397,18 @@
        sodipodi:cy="614.62946"
        sodipodi:rx="12.950672"
        sodipodi:ry="12.303138"
-       d="m 91.937538,609.29071 a 12.950672,12.303138 0 1 1 -0.01983,0.0393"
+       d="m 91.937538,609.29071 a 12.950672,12.303138 0 0 1 17.277242,-5.75042 12.950672,12.303138 0 0 1 6.06837,16.40827 12.950672,12.303138 0 0 1 -17.266491,5.77949 A 12.950672,12.303138 0 0 1 91.917704,609.33"
        sodipodi:start="3.5904474"
-       sodipodi:end="9.8700903"
+       sodipodi:end="3.586905"
        sodipodi:open="true"
        transform="matrix(1.1684575,0,0,1.1684575,409.27152,-105.48152)"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\dervish_example.png"
        inkscape:export-xdpi="300.13943"
-       inkscape:export-ydpi="300.13943" />
+       inkscape:export-ydpi="300.13943"
+       sodipodi:arc-type="arc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 119.00745,614.74865 32.27298,-0.0811"
+       d="m 119.00374,614.74866 32.28041,-0.0811"
        id="path8368"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -413,7 +421,7 @@
        inkscape:export-ydpi="300.13943" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 181.55095,614.47813 34.48372,-0.34484"
+       d="m 181.54735,614.47817 34.49082,-0.34491"
        id="path8370"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -426,7 +434,7 @@
        inkscape:export-ydpi="300.13943" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 246.3046,613.85686 48.08134,-0.39736"
+       d="m 246.30106,613.8569 48.08826,-0.39743"
        id="path8372"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -439,7 +447,7 @@
        inkscape:export-ydpi="300.13943" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 324.65448,613.59761 44.19951,0.76869"
+       d="m 324.65077,613.59755 44.20703,0.76882"
        id="path8374"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -452,7 +460,7 @@
        inkscape:export-ydpi="300.13943" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 399.11586,614.19309 37.08659,-1.06981"
+       d="m 399.11266,614.19318 37.09309,-1.07"
        id="path8376"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -465,7 +473,7 @@
        inkscape:export-ydpi="300.13943" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 466.46669,612.68688 48.72754,0"
+       d="m 466.46293,612.68688 h 48.735"
        id="path8378"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
