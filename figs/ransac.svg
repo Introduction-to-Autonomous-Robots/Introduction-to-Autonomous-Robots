@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -9,39 +7,40 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
+   width="196.17255"
+   height="113.71933"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="ransac.svg">
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
+   sodipodi:docname="ransac.svg"
+   viewBox="0 0 183.91176 106.61187">
   <defs
      id="defs4">
     <marker
        inkscape:stockid="Arrow1Mend"
        orient="auto"
-       refY="0.0"
-       refX="0.0"
+       refY="0"
+       refX="0"
        id="Arrow1Mend"
-       style="overflow:visible;">
+       style="overflow:visible">
       <path
          id="path3926"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
-         transform="scale(0.4) rotate(180) translate(10,0)" />
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
     </marker>
     <marker
        inkscape:stockid="Arrow1Mstart"
        orient="auto"
-       refY="0.0"
-       refX="0.0"
+       refY="0"
+       refX="0"
        id="Arrow1Mstart"
        style="overflow:visible">
       <path
          id="path3923"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt"
-         transform="scale(0.4) translate(10,0)" />
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(0.4,0,0,0.4,4,0)" />
     </marker>
     <marker
        inkscape:stockid="Arrow1Mend"
@@ -53,7 +52,7 @@
       <path
          inkscape:connector-curvature="0"
          id="path3926-2"
-         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
          style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
          transform="matrix(-0.4,0,0,-0.4,-4,0)" />
     </marker>
@@ -67,7 +66,7 @@
       <path
          inkscape:connector-curvature="0"
          id="path3926-8"
-         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
          style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
          transform="matrix(-0.4,0,0,-0.4,-4,0)" />
     </marker>
@@ -79,17 +78,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8714286"
-     inkscape:cx="120.5"
-     inkscape:cy="949"
+     inkscape:zoom="1.7484607"
+     inkscape:cx="98.086276"
+     inkscape:cy="56.859664"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1440"
-     inkscape:window-height="805"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="1920"
+     inkscape:window-height="1021"
+     inkscape:window-x="-7"
+     inkscape:window-y="-7"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -98,14 +98,15 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-37.350852,-35.270177)">
     <g
        id="g3081"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Introduction-to-Autonomous-Robots\figs\splitandmerge.png"
@@ -124,7 +125,8 @@
          sodipodi:cx="221.39536"
          id="path2987"
          style="fill:#000000;stroke:#000000"
-         sodipodi:type="arc" />
+         sodipodi:type="arc"
+         sodipodi:arc-type="arc" />
       <path
          transform="matrix(0.03231037,0,0,0.03231037,85.711026,111.44762)"
          sodipodi:open="true"
@@ -137,7 +139,8 @@
          sodipodi:cx="221.39536"
          id="path2987-1"
          style="fill:#000000;stroke:#000000"
-         sodipodi:type="arc" />
+         sodipodi:type="arc"
+         sodipodi:arc-type="arc" />
       <path
          transform="matrix(0.03231037,0,0,0.03231037,98.78623,104.05831)"
          sodipodi:open="true"
@@ -150,7 +153,8 @@
          sodipodi:cx="221.39536"
          id="path2987-7"
          style="fill:#000000;stroke:#000000"
-         sodipodi:type="arc" />
+         sodipodi:type="arc"
+         sodipodi:arc-type="arc" />
       <path
          transform="matrix(0.03231037,0,0,0.03231037,110.78623,90.05831)"
          sodipodi:open="true"
@@ -163,7 +167,8 @@
          sodipodi:cx="221.39536"
          id="path2987-4"
          style="fill:#000000;stroke:#000000"
-         sodipodi:type="arc" />
+         sodipodi:type="arc"
+         sodipodi:arc-type="arc" />
       <path
          transform="matrix(0.03231037,0,0,0.03231037,126.78623,80.05831)"
          sodipodi:open="true"
@@ -176,7 +181,8 @@
          sodipodi:cx="221.39536"
          id="path2987-0"
          style="fill:#000000;stroke:#000000"
-         sodipodi:type="arc" />
+         sodipodi:type="arc"
+         sodipodi:arc-type="arc" />
       <path
          transform="matrix(0.03231037,0,0,0.03231037,144.78623,86.05831)"
          sodipodi:open="true"
@@ -189,7 +195,8 @@
          sodipodi:cx="221.39536"
          id="path2987-9"
          style="fill:#000000;stroke:#000000"
-         sodipodi:type="arc" />
+         sodipodi:type="arc"
+         sodipodi:arc-type="arc" />
       <path
          transform="matrix(0.03231037,0,0,0.03231037,152.78623,96.05831)"
          sodipodi:open="true"
@@ -202,7 +209,8 @@
          sodipodi:cx="221.39536"
          id="path2987-9-4"
          style="fill:#000000;stroke:#000000"
-         sodipodi:type="arc" />
+         sodipodi:type="arc"
+         sodipodi:arc-type="arc" />
       <path
          transform="matrix(0.03231037,0,0,0.03231037,168.78623,100.05831)"
          sodipodi:open="true"
@@ -215,7 +223,8 @@
          sodipodi:cx="221.39536"
          id="path2987-9-8"
          style="fill:#000000;stroke:#000000"
-         sodipodi:type="arc" />
+         sodipodi:type="arc"
+         sodipodi:arc-type="arc" />
       <path
          transform="matrix(0.03231037,0,0,0.03231037,176.78623,112.05831)"
          sodipodi:open="true"
@@ -228,7 +237,8 @@
          sodipodi:cx="221.39536"
          id="path2987-9-82"
          style="fill:#000000;stroke:#000000"
-         sodipodi:type="arc" />
+         sodipodi:type="arc"
+         sodipodi:arc-type="arc" />
       <path
          transform="matrix(0.03231037,0,0,0.03231037,190.78623,118.05831)"
          sodipodi:open="true"
@@ -241,7 +251,8 @@
          sodipodi:cx="221.39536"
          id="path2987-9-45"
          style="fill:#000000;stroke:#000000"
-         sodipodi:type="arc" />
+         sodipodi:type="arc"
+         sodipodi:arc-type="arc" />
     </g>
     <path
        style="fill:none;stroke:#cccccc;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
