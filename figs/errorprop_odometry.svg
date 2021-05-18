@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -9,52 +7,53 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
+   width="565.88031"
+   height="334.26126"
    id="svg3012"
    version="1.1"
-   inkscape:version="0.48.2 r9819"
-   sodipodi:docname="errorprop_odometry.svg">
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
+   sodipodi:docname="errorprop_odometry.svg"
+   viewBox="0 0 530.51277 313.36994">
   <defs
      id="defs3014">
     <marker
        inkscape:stockid="Arrow2Lstart"
        orient="auto"
-       refY="0.0"
-       refX="0.0"
+       refY="0"
+       refX="0"
        id="Arrow2Lstart"
        style="overflow:visible">
       <path
          id="path4220"
-         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round"
-         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
-         transform="scale(1.1) translate(1,0)" />
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(1.1,0,0,1.1,1.1,0)" />
     </marker>
     <marker
        inkscape:stockid="Arrow2Lend"
        orient="auto"
-       refY="0.0"
-       refX="0.0"
+       refY="0"
+       refX="0"
        id="Arrow2Lend"
-       style="overflow:visible;">
+       style="overflow:visible">
       <path
          id="path4223"
-         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
-         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
-         transform="scale(1.1) rotate(180) translate(1,0)" />
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)" />
     </marker>
     <marker
        inkscape:stockid="Arrow1Lend"
        orient="auto"
-       refY="0.0"
-       refX="0.0"
+       refY="0"
+       refX="0"
        id="Arrow1Lend"
-       style="overflow:visible;">
+       style="overflow:visible">
       <path
          id="path3815"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
-         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
     </marker>
   </defs>
   <sodipodi:namedview
@@ -64,17 +63,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.42549527"
-     inkscape:cx="712.93532"
-     inkscape:cy="430.24314"
+     inkscape:zoom="2.424541"
+     inkscape:cx="282.94016"
+     inkscape:cy="167.13063"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="705"
-     inkscape:window-x="-4"
-     inkscape:window-y="-4"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="1920"
+     inkscape:window-height="1021"
+     inkscape:window-x="-7"
+     inkscape:window-y="-7"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0" />
   <metadata
      id="metadata3017">
     <rdf:RDF>
@@ -90,9 +90,10 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-42.857143,-84.706534)">
     <path
-       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Lend);marker-start:url(#Arrow2Lstart)"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow2Lstart);marker-end:url(#Arrow2Lend)"
        d="m 118.8321,271.36055 23.94269,33.49039 34.66549,-25.11779"
        id="path3057"
        inkscape:connector-curvature="0"
@@ -106,15 +107,12 @@
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332">
-      <path
-         d="m 294.96455,398.79349 c 0,26.22091 -21.25625,47.47717 -47.47717,47.47717 -26.22092,0 -47.47717,-21.25626 -47.47717,-47.47717 0,-26.22092 21.25625,-47.47717 47.47717,-47.47717 26.22092,0 47.47717,21.25625 47.47717,47.47717 z"
-         sodipodi:ry="47.477169"
-         sodipodi:rx="47.477169"
-         sodipodi:cy="398.79349"
-         sodipodi:cx="247.48738"
+      <circle
          id="path2985"
          style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         sodipodi:type="arc" />
+         cx="247.48738"
+         cy="398.79349"
+         r="47.477169" />
       <rect
          y="391.50504"
          x="211.78572"
@@ -136,20 +134,18 @@
          width="10"
          id="rect3757-1"
          style="fill:#ffffff;stroke:#000000;stroke-opacity:1" />
-      <path
+      <ellipse
          transform="translate(2,-2)"
-         d="m 249.28571,363.96933 c 0,2.07107 -1.51903,3.75 -3.39286,3.75 -1.87382,0 -3.39285,-1.67893 -3.39285,-3.75 0,-2.07107 1.51903,-3.75 3.39285,-3.75 1.87383,0 3.39286,1.67893 3.39286,3.75 z"
-         sodipodi:ry="3.75"
-         sodipodi:rx="3.3928571"
-         sodipodi:cy="363.96933"
-         sodipodi:cx="245.89285"
          id="path3777"
          style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1"
-         sodipodi:type="arc" />
+         cx="245.89285"
+         cy="363.96933"
+         rx="3.3928571"
+         ry="3.75" />
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="m 62.857143,398.07647 0,-311.428573"
+       d="M 62.857143,398.07647 V 86.647897"
        id="path3037"
        inkscape:connector-curvature="0"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
@@ -157,7 +153,7 @@
        inkscape:export-ydpi="150.06332" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="m 42.857143,375.21933 528.571427,0"
+       d="M 42.857143,375.21933 H 571.42857"
        id="path3039"
        inkscape:connector-curvature="0"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
@@ -165,11 +161,10 @@
        inkscape:export-ydpi="150.06332" />
     <text
        xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="545.0874"
        y="394.49814"
        id="text4435"
-       sodipodi:linespacing="125%"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332"><tspan
@@ -177,14 +172,13 @@
          id="tspan4437"
          x="545.0874"
          y="394.49814"
-         style="font-size:16px">x</tspan></text>
+         style="font-size:16px;line-height:1.25;font-family:sans-serif">x</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="42.718445"
        y="109.13888"
        id="text4439"
-       sodipodi:linespacing="125%"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332"><tspan
@@ -192,43 +186,38 @@
          id="tspan4441"
          x="42.718445"
          y="109.13888"
-         style="font-size:16px">y</tspan></text>
-    <path
-       sodipodi:type="arc"
-       style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         style="font-size:16px;line-height:1.25;font-family:sans-serif">y</tspan></text>
+    <circle
+       style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4443"
-       sodipodi:cx="146.09709"
-       sodipodi:cy="302.22626"
-       sodipodi:rx="3.4174757"
-       sodipodi:ry="3.4174757"
-       d="m 149.51457,302.22626 a 3.4174757,3.4174757 0 1 1 -6.83495,0 3.4174757,3.4174757 0 1 1 6.83495,0 z"
        transform="translate(-3.1520407,2.820247)"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
        inkscape:export-xdpi="150.06332"
-       inkscape:export-ydpi="150.06332" />
+       inkscape:export-ydpi="150.06332"
+       cx="146.09709"
+       cy="302.22626"
+       r="3.4174757" />
     <path
-       style="fill:none;stroke:#999999;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:1,1;stroke-dashoffset:0"
+       style="fill:none;stroke:#999999;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        d="m 143.58353,304.41397 c 103.99,-78.38758 220.9421,-97.74948 347.22816,-96.66081"
        id="path4447"
        inkscape:connector-curvature="0"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332" />
-    <path
-       sodipodi:type="arc"
-       style="fill:none;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+    <ellipse
+       style="fill:none;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path4449"
-       sodipodi:cx="193.04015"
-       sodipodi:cy="277.37314"
-       sodipodi:rx="6.3639612"
-       sodipodi:ry="15.556349"
-       d="m 199.40411,277.37314 a 6.3639612,15.556349 0 1 1 -12.72793,0 6.3639612,15.556349 0 1 1 12.72793,0 z"
-       transform="matrix(0.88108594,-0.4729562,0.4729562,0.88108594,-110.51624,120.93018)"
+       transform="rotate(-28.226362,185.22933,280.24289)"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
        inkscape:export-xdpi="150.06332"
-       inkscape:export-ydpi="150.06332" />
+       inkscape:export-ydpi="150.06332"
+       cx="193.04015"
+       cy="277.37314"
+       rx="6.3639612"
+       ry="15.556349" />
     <path
-       style="fill:none;stroke:#999999;stroke-width:0.50000000000000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 183.03905,260.00578 14.78334,27.58541"
        id="path4451"
        inkscape:connector-curvature="0"
@@ -236,28 +225,26 @@
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332" />
     <path
-       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 184.71551,276.46558 11.12561,-6.24862"
        id="path4453"
        inkscape:connector-curvature="0"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332" />
-    <path
-       sodipodi:type="arc"
-       style="fill:none;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+    <ellipse
+       style="fill:none;stroke:#999999;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path4455"
-       sodipodi:cx="234.09491"
-       sodipodi:cy="250.70905"
-       sodipodi:rx="11.582821"
-       sodipodi:ry="30.481108"
-       d="m 245.67773,250.70905 a 11.582821,30.481108 0 1 1 -23.16564,0 11.582821,30.481108 0 1 1 23.16564,0 z"
-       transform="matrix(0.93589328,-0.35228365,0.35228365,0.93589328,-71.888427,99.354353)"
+       transform="rotate(-20.627057,237.04522,247.20028)"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
        inkscape:export-xdpi="150.06332"
-       inkscape:export-ydpi="150.06332" />
+       inkscape:export-ydpi="150.06332"
+       cx="234.09491"
+       cy="250.70905"
+       rx="11.582821"
+       ry="30.481108" />
     <path
-       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 224.20481,222.93892 22.35717,57.16102"
        id="path4457"
        inkscape:connector-curvature="0"
@@ -266,28 +253,26 @@
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332" />
     <path
-       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 224.50119,255.47448 21.1995,-8.99835"
        id="path4459"
        inkscape:connector-curvature="0"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332" />
-    <path
-       sodipodi:type="arc"
-       style="fill:none;stroke:#999999;stroke-width:0.59379889;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+    <ellipse
+       style="fill:none;stroke:#999999;stroke-width:0.593799;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path4455-1"
-       sodipodi:cx="234.09491"
-       sodipodi:cy="250.70905"
-       sodipodi:rx="11.582821"
-       sodipodi:ry="30.481108"
-       d="m 245.67773,250.70905 a 11.582821,30.481108 0 1 1 -23.16564,0 11.582821,30.481108 0 1 1 23.16564,0 z"
        transform="matrix(1.6378586,-0.3918127,0.3918127,1.6378586,-183.13327,-89.176178)"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
        inkscape:export-xdpi="150.06332"
-       inkscape:export-ydpi="150.06332" />
+       inkscape:export-ydpi="150.06332"
+       cx="234.09491"
+       cy="250.70905"
+       rx="11.582821"
+       ry="30.481108" />
     <path
-       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 285.61667,179.58727 25.33564,100.2114"
        id="path4457-7"
        inkscape:connector-curvature="0"
@@ -296,28 +281,26 @@
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332" />
     <path
-       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 279.26979,234.01294 37.31435,-10.57709"
        id="path4459-4"
        inkscape:connector-curvature="0"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332" />
-    <path
-       sodipodi:type="arc"
-       style="fill:none;stroke:#999999;stroke-width:0.45777445;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+    <ellipse
+       style="fill:none;stroke:#999999;stroke-width:0.457774;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path4455-1-0"
-       sodipodi:cx="234.09491"
-       sodipodi:cy="250.70905"
-       sodipodi:rx="11.582821"
-       sodipodi:ry="30.481108"
-       d="m 245.67773,250.70905 a 11.582821,30.481108 0 1 1 -23.16564,0 11.582821,30.481108 0 1 1 23.16564,0 z"
        transform="matrix(2.2184243,-0.13731538,0.14219758,2.1422571,-165.43965,-291.58704)"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
        inkscape:export-xdpi="150.06332"
-       inkscape:export-ydpi="150.06332" />
+       inkscape:export-ydpi="150.06332"
+       cx="234.09491"
+       cy="250.70905"
+       rx="11.582821"
+       ry="30.481108" />
     <path
-       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 384.0078,147.57351 394.48082,278.9415"
        id="path4457-7-9"
        inkscape:connector-curvature="0"
@@ -326,28 +309,26 @@
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332" />
     <path
-       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 363.54087,214.56429 50.91137,-5.20182"
        id="path4459-4-4"
        inkscape:connector-curvature="0"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332" />
-    <path
-       sodipodi:type="arc"
-       style="fill:none;stroke:#999999;stroke-width:0.3155314;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+    <ellipse
+       style="fill:none;stroke:#999999;stroke-width:0.315531;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path4455-1-8"
-       sodipodi:cx="234.09491"
-       sodipodi:cy="250.70905"
-       sodipodi:rx="11.582821"
-       sodipodi:ry="30.481108"
-       d="m 245.67773,250.70905 a 11.582821,30.481108 0 1 1 -23.16564,0 11.582821,30.481108 0 1 1 23.16564,0 z"
        transform="matrix(3.1679485,0.091052,-0.091052,3.1679485,-228.29872,-606.44329)"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
        inkscape:export-xdpi="150.06332"
-       inkscape:export-ydpi="150.06332" />
+       inkscape:export-ydpi="150.06332"
+       cx="234.09491"
+       cy="250.70905"
+       rx="11.582821"
+       ry="30.481108" />
     <path
-       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 491.62565,111.6803 488.5308,306.17746"
        id="path4457-7-8"
        inkscape:connector-curvature="0"
@@ -356,7 +337,7 @@
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332" />
     <path
-       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#999999;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 453.41212,207.45616 72.98268,-0.92473"
        id="path4459-4-2"
        inkscape:connector-curvature="0"
@@ -365,12 +346,11 @@
        inkscape:export-ydpi="150.06332" />
     <text
        xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="-67.237144"
        y="294.79675"
        id="text5569"
-       sodipodi:linespacing="125%"
-       transform="matrix(0.78528821,-0.61913038,0.61913038,0.78528821,0,0)"
+       transform="rotate(-38.252658)"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332"><tspan
@@ -378,17 +358,14 @@
          id="tspan5571"
          x="-67.237144"
          y="294.79675"
-         style="font-size:16px">x<tspan
-   style="font-size:64.99999999%;baseline-shift:sub"
-   id="tspan5583">r</tspan></tspan></text>
+         style="font-size:16px;line-height:1.25;font-family:sans-serif">$x_r$</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="337.03427"
        y="48.455017"
        id="text5575"
-       sodipodi:linespacing="125%"
-       transform="matrix(0.63436751,0.77303161,-0.77303161,0.63436751,0,0)"
+       transform="rotate(50.626911)"
        inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\errorprop_odometry.png"
        inkscape:export-xdpi="150.06332"
        inkscape:export-ydpi="150.06332"><tspan
@@ -396,8 +373,6 @@
          id="tspan5577"
          x="337.03427"
          y="48.455017"
-         style="font-size:16px">y<tspan
-   style="font-size:64.99999975%;baseline-shift:sub"
-   id="tspan5585">r</tspan></tspan></text>
+         style="font-size:16px;line-height:1.25;font-family:sans-serif">$y_r$</tspan></text>
   </g>
 </svg>
