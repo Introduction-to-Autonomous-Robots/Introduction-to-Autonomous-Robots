@@ -1,4 +1,5 @@
 \chapter{Uncertainty and Error Propagation}\label{chap:uncertainty}
+
 Robots are systems that combine sensing, actuation, computation, and communication. All of its sub-systems are subject to a high degree
 of uncertainty. This can be observed in daily life: phone calls often are of poor quality, making it hard to understand the other party,
 characters are difficult to read from far away,  the front wheels of your car slip when accelerating on a rainy road from a red light,
@@ -11,17 +12,18 @@ types of uncertainties be quantified?
 
 The goals of this chapter are to understand
 \begin{itemize}
-\item how to treat uncertainty mathematically using probability theory,
-\item how measurements with different uncertainty can be combined,
-\item how error propagates when taking multiple measurements in a row.
+    \item how to treat uncertainty mathematically using probability theory,
+    \item how measurements with different uncertainty can be combined,
+    \item how error propagates when taking multiple measurements in a row.
 \end{itemize}
 
 This chapter requires an understanding of random variables, probability density functions, and in particular the Normal
 (alternatively called the ``Gaussian'') distribution. These concepts are explained in a robotic sensing context in Appendix~\ref{sec:pdfs}.
 
 \section{Uncertainty in Robotics as Random Variable}
+
 As quantities such as ``distance to a wall,'' ``position on the plane,'' or ``I can see a blue cross (yes/no)'' are uncertain, we can
-consider them random variables. A \emph{random variable}\index{Random Variable} can be thought of as the outcome of a ``random''
+consider them random variables. A \textsl{random variable}\index{Random Variable} can be thought of as the outcome of a ``random''
 experiment, such as the face shown when throwing a die, or the speed of an individual molecule of gas in a room. Just because a
 variable is random does not mean we know nothing about it, however. For instance, we can roll a fair six-sided die hundreds of times
 and create a table of likelihoods of each side coming up. We can also measure the temperature in a room and understand the
@@ -36,13 +38,15 @@ of such aggregated quantities from the uncertainty that characterizes the indivi
 
 \section{Error Propagation}\label{sec:errorprop}
 We'll begin with an example of error propagation that is a core motivation for needing to quantify uncertainty: the distance traveled by a
-differential wheel robot along a straight line. It turns out that the Gaussian Distribution is very appropriate to model the uncertainty in this process. The robot moves with an expected displacement (e.g.\ as commanded by the motors on each wheel) plus some uncertain displacement decomposed into the radial and tangential directions for each timestep, as a result of wheel slip; see Figure~\ref{fig:errorprop_odometry} for a diagram of this. We can say that \emph{process noise} drawn from a Gaussian distribution was added to the position resulting from the commanded motion. This process noise has zero mean and distinct variance in the radial and tangential direction; the process noise is a static property of the wheel-ground interaction.
+differential wheel robot along a straight line. It turns out that the Gaussian Distribution is very appropriate to model the uncertainty in this process. The robot moves with an expected displacement (e.g.\ as commanded by the motors on each wheel) plus some uncertain displacement decomposed into the radial and tangential directions for each timestep, as a result of wheel slip; see \cref{fig:errorprop_odometry} for a diagram of this. We can say that \textsl{process noise} drawn from a Gaussian distribution was added to the position resulting from the commanded motion. This process noise has zero mean and distinct variance in the radial and tangential direction; the process noise is a static property of the wheel-ground interaction.
 
-Such a robot when subject to slip will actually increase the uncertainty in its position the farther it drives. Initially at a known location, the expected value (or mean) of its position will become increasingly uncertain, corresponding to an increasing position variance. This variance is obviously somehow related to the variance of the underlying mechanism (the process variance), namely the slipping wheel. Interestingly, we will see its position variance grow much faster orthogonal to the robot's direction, as small errors in orientation have a much larger effect than small errors in longitudinal direction. This is illustrated in Figure~\ref{fig:errorprop_odometry}.
+Such a robot when subject to slip will actually increase the uncertainty in its position the farther it drives. Initially at a known location, the expected value (or mean) of its position will become increasingly uncertain, corresponding to an increasing position variance. This variance is obviously somehow related to the variance of the underlying mechanism (the process variance), namely the slipping wheel. Interestingly, we will see its position variance grow much faster orthogonal to the robot's direction, as small errors in orientation have a much larger effect than small errors in longitudinal direction. This is illustrated in \cref{fig:errorprop_odometry}.
 
 \begin{figure}
 	\centering
-		\includegraphics[width=\textwidth]{figs/errorprop_odometry}
+	% \includegraphics[width=\textwidth]{figs/errorprop_odometry}
+    \def\svgwidth{\textwidth}
+    \import{./figs/}{errorprop_odometry.pdf_tex}
 	\caption{Two-dimensional Normal distribution depicting growing uncertainty as the robot moves. Albeit starting with equal
     uncertainty in $x$ and $y$, the large effect of small errors in orientation lets the error grow faster in $y$-direction of the robot.}
 	\label{fig:errorprop_odometry}
@@ -50,7 +54,7 @@ Such a robot when subject to slip will actually increase the uncertainty in its 
 
 If only there were a way to correct this unbounded error with some sort of sensor measurement! However, even such sensor measurements would be affected by uncertainty. We'll get back to such a correction shortly (or you can check out Section \ref{sec:KF} if you're really champing at the bit).
 
-Similar to this example, when estimating distance and angle to a line feature from point cloud data, the uncertainty of the random variables describing distance and angle to the line are somewhat related to the uncertainty of \emph{each} point measured on the line. These relationships are formally captured by the \emph{error propagation law}\index{Error Propagation Law}.
+Similar to this example, when estimating distance and angle to a line feature from point cloud data, the uncertainty of the random variables describing distance and angle to the line are somewhat related to the uncertainty of \textsl{each} point measured on the line. These relationships are formally captured by the \textsl{error propagation law}\index{Error Propagation Law}.
 
 The key intuition behind the error propagation law is that the variance of each component that contributes to a random variable should
 be weighted as a function of how strongly this component influences this random variable. Measurements that have little effect on the
@@ -61,20 +65,20 @@ than the partial derivative of the first variable with respect to the second. Fo
 \sigma_y^2=\left(\frac{\partial f}{\partial x}\right)^2 \sigma_x^2
 \end{equation}
 In case $\mathbf{y}=f(\mathbf{x})$ is a multivariable function that maps $n$ inputs to $m$ outputs, variances between these
-variables may be represented by \emph{covariance matrices}\index{Covariance Matrix}, a representation of the various combinations in
+variables may be represented by \textsl{covariance matrices}\index{Covariance Matrix}, a representation of the various combinations in
 which these variables may affect one another, one by one. A covariance matrix holds the variance of each variable along its diagonal and is zero otherwise, if the random variables are not correlated. We can then write
 \begin{equation}
 \Sigma^Y= J \Sigma^X J^T
 \end{equation}
 where $\Sigma^X$ and $\Sigma^Y$ are the covariance matrices holding the variances of the input and output variables, respectively, and
-$J$ is a $m \times n$ \emph{Jacobian} matrix, which holds the partial derivatives $\frac{\partial f_i}{\partial x_j}$. As $J$ has $n$ columns, each row contains partial derivatives with respect to $x_1$ to $x_n$.
+$J$ is a $m \times n$ \textsl{Jacobian} matrix, which holds the partial derivatives $\frac{\partial f_i}{\partial x_j}$. As $J$ has $n$ columns, each row contains partial derivatives with respect to $x_1$ to $x_n$.
 
 \subsection{Example: Line Fitting}\label{sec:linefitting}
-Let's consider an example of estimating the angle $\alpha$ and distance $r$ of a line from a set of points given by $(\rho_i,\theta_i)$ using Equations~\ref{eq:linealpha}--\ref{eq:liner}. We can now express the relationship of changes of a variable such as $ \rho_i$ to changes in $ \alpha$ by
+Let's consider an example of estimating the angle $\alpha$ and distance $r$ of a line from a set of points given by $(\rho_i,\theta_i)$ using \cref{eq:linealpha}--\ref{eq:liner}. We can now express the relationship of changes of a variable such as $ \rho_i$ to changes in $ \alpha$ by
 \begin{equation}
 \frac{\partial \alpha}{\partial \rho_i}
 \end{equation}
-Similarly, we can calculate $ \frac{\partial \alpha}{\partial \theta_i}$, $ \frac{\partial r}{\partial \rho_i}$ and $ \frac{\partial r}{\partial \theta_i}$. We can actually do this, because we have derived analytical expressions for $ \alpha$ and $ r$ as a function of $ \theta_i$ and $ \rho_i$ in Chapter~\ref{chap:feature_extraction}.
+Similarly, we can calculate $ \frac{\partial \alpha}{\partial \theta_i}$, $ \frac{\partial r}{\partial \rho_i}$ and $ \frac{\partial r}{\partial \theta_i}$. We can actually do this, because we have derived analytical expressions for $ \alpha$ and $ r$ as a function of $ \theta_i$ and $ \rho_i$ in \cref{chap:feature_extraction}.
 
 We are now interested in deriving equations for calculating the variance of $ \alpha$ and $ r$ as a function of the variances of the distance measurements. Let's assume each distance measurement $ \rho_i$ has variance $ \sigma^2_{\rho_i}$ and each angular measurement $ \theta_i$ has variance $ \sigma^2_{\theta_i}$. We now want to calculate $ \sigma^2_{\alpha}$ as the weighted sum of  $ \sigma^2_{\rho_i}$ and $ \sigma^2_{\theta_i}$, each weighted by its influence on $ \alpha$.
 More generally, if we have $ I$ input variables $ X_i$ and $K$ output variables $Y_k$, the covariance matrix of the output variables $ \sigma_Y$ can be expressed as $\sigma_Y^2=\frac{\partial f}{\partial X}^2 \sigma_X^2$ where $\sigma_X$ is the covariance matrix of input variables and $J$ is a Jacobian matrix of a function $ f$ that calculates $Y$ from $X$ and has the form
@@ -152,7 +156,7 @@ Finally, we need to define the covariance matrix for the measurement noise. As t
 \end{equation}
 Here $ k_r$ and $ k_l$ are constants that need to be found experimentally and $ |\cdot |$ indicating the absolute value of the distance traveled. We also assume that the error of the two wheels is independent, which is expressed by the zeros in the matrix.
 
-We now have all ingredients for Equation~\ref{eq:errorpropodom}, allowing us to calculate the covariance matrix of the robot's pose much like shown in Figure~\ref{fig:errorprop_odometry}.
+We now have all ingredients for Equation~\ref{eq:errorpropodom}, allowing us to calculate the covariance matrix of the robot's pose much like shown in \cref{fig:errorprop_odometry}.
 
 \section{The Kalman Filter}
 The location of a robot is subject to uncertainty due to wheel-slip and (to a much lesser extent) encoder noise. We learned in the past how the variance in position can be derived from the variance of the robot's drivetrain using the error propagation law and the forward kinematics of the robot. One can see that this error is continuously increasing unless the robot has additional observations, e.g., some external measurement of motion.
@@ -246,9 +250,9 @@ We assume for now that the reader is familiar with calculating $ \hat{\boldsymbo
 \end{equation}
 where $ \Delta s$ is the wheel movement of the left and right wheel and $ k$ are constants. See also the odometry lab for detailed derivations of these calculations and how to estimate $ k_r$ and $ k_l$.  The state vector $ \boldsymbol{\hat{x}_{k'|k-1}}$ is a 3$\times$1 vector, the covariance matrix $ \boldsymbol{P_{k'|k-1}}$ is a 3$\times$3 matrix, and $ \nabla_{\Delta_{r,l}}$ that is used during error propagation is a 3$\times$ matrix. See the error propagation section for details on how to calculate $ \nabla_{\Delta_{r,l}}$.
 
-\textbf{TODO: EDIT THIS FROM MAPPING TO LOCALIZATION ONLY}
+\td{EDIT THIS FROM MAPPING TO LOCALIZATION ONLY}
 \paragraph{2. Observation}
-Let us now assume that we can detect the motion of the robot through an optical flow sensor \textbf{TODO.}
+Let us now assume that we can detect the motion of the robot through an optical flow sensor \td{TODO.}
 %\paragraph{2. Observation}
 %Let us now assume that we can detect line features $ \boldsymbol{z}_{k,i}=(\alpha_i,r_i)^T$, where $ \alpha$ and $ r$ are the angle and distance of the line from the coordinate system of the robot. These line features are subject to variances $ \sigma_{\alpha,i}$ and $ \sigma_{r,i}$, which make up the diagonal of $ \boldsymbol{R}_{k}$. See the line detection section for a derivation of how angle and distance as well as their variance can be calculated from a laser scanner. The observation is a 2x1 matrix.
 

@@ -121,7 +121,9 @@ This measure provides you with a quantity that approaches one for very accurate 
 A sensor's precision \index{Precision (sensor)} instead is given by the ratio of range and statistical variance of the signal. Precision is therefore a measure of repeatability of a signal, whereas accuracy describes a systematic error that is introduced by the sensor physics. This is illustrated in Figure~\ref{fig:precision}.
 \begin{figure}
 	\centering
-		\includegraphics[width=0.9\textwidth]{figs/precisionvsaccuracy.png}
+	% \includegraphics[width=0.9\textwidth]{figs/precisionvsaccuracy.png}
+	\def\svgwidth{0.9\textwidth}
+    \import{./figs/}{precisionvsaccuracy.pdf_tex}
 	\caption{From left to right, the cross corresponds to the true value of the signal: neither precise nor accurate, precise but not accurate, accurate but not precise, accurate and precise.
 	\label{fig:precision}}
 \end{figure}

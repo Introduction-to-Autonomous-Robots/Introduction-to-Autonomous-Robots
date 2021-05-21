@@ -8,11 +8,11 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="basicmultilayernetwork.svg"
-   inkscape:version="1.0beta2 (2b71d25, 2019-12-03)"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
    id="svg25854"
    version="1.1"
-   viewBox="0 0 112.18848 71.106697"
-   height="71.106697mm"
+   viewBox="0 0 112.18849 67.931694"
+   height="67.931694mm"
    width="112.18848mm">
   <defs
      id="defs25848">
@@ -992,7 +992,7 @@
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
      inkscape:cy="158.2754"
-     inkscape:cx="228.36878"
+     inkscape:cx="219.63131"
      inkscape:zoom="1.7548932"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
@@ -1008,7 +1008,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1105,32 +1105,6 @@
        id="path27453-1"
        cx="19.938663"
        cy="67.022736" />
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text27478"
-       y="28.346535"
-       x="11.290568"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         dy="0 3"
-         style="stroke-width:0.264583"
-         y="28.346535"
-         x="11.290568"
-         id="tspan27476"
-         sodipodi:role="line">x1</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;inline-size:28.0015;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="9.8199749"
-       y="67.463264"
-       id="text27478-1"><tspan
-         sodipodi:role="line"
-         x="9.8199749"
-         y="67.463264"><tspan
-           style="stroke-width:0.264583">xm</tspan></tspan></text>
     <text
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -1334,8 +1308,7 @@
          id="tspan22796"
          x="11.290568"
          y="28.346535"
-         style="stroke-width:0.264583"
-         dy="0 3">x1</tspan></text>
+         style="stroke-width:0.264583">$x_1$</tspan></text>
     <text
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -1344,10 +1317,8 @@
        x="9.8199749"
        style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;inline-size:28.0015;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        xml:space="preserve"><tspan
-         sodipodi:role="line"
          x="9.8199749"
-         y="67.463264"><tspan
-           style="stroke-width:0.264583">xm</tspan></tspan></text>
+         y="67.463264"><tspan>$x_m$</tspan></tspan></text>
     <text
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -1360,7 +1331,7 @@
          id="tspan22806"
          x="12.993425"
          y="17.865959"
-         style="font-size:5.29167px;stroke-width:0.264583">1</tspan></text>
+         style="font-size:5.29167px;stroke-width:0.264583">$1$</tspan></text>
     <path
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -1450,7 +1421,7 @@
          y="18.082685"
          x="68.384445"
          id="tspan22834"
-         sodipodi:role="line">1</tspan></text>
+         sodipodi:role="line">$1$</tspan></text>
     <circle
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -1473,23 +1444,23 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="1.7947297"
-       y="83.155815"
+       y="79.980812"
        id="text47718"><tspan
          sodipodi:role="line"
          id="tspan47716"
          x="1.7947297"
-         y="83.155815"
+         y="79.980812"
          style="font-size:5.29167px;stroke-width:0.264583">Input layer</tspan></text>
     <text
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
        id="text47718-4"
-       y="83.138161"
+       y="79.963158"
        x="38.078506"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        xml:space="preserve"><tspan
          style="font-size:5.29167px;stroke-width:0.264583"
-         y="83.138161"
+         y="79.963158"
          x="38.078506"
          id="tspan47716-1"
          sodipodi:role="line">Hidden layer</tspan></text>
@@ -1499,12 +1470,12 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="78.363991"
-       y="82.839035"
+       y="79.664032"
        id="text47718-4-1"><tspan
          sodipodi:role="line"
          id="tspan47716-1-5"
          x="78.363991"
-         y="82.839035"
+         y="79.664032"
          style="font-size:5.29167px;stroke-width:0.264583">Output layer</tspan></text>
   </g>
 </svg>

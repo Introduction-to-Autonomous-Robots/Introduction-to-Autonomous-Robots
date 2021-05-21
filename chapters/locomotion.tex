@@ -16,10 +16,10 @@ The way in which the individual parts of a robot can move with respect to each o
 Commercially, the most dominant form of locomotion is rolling. This is due to the fact that rolling provides by far the most efficient energy-speed ratio (\cref{fig:todd}), making the invention of the wheel one of the greatest technological breakthroughs in history. Consequently, humans have modified their environment to have smooth surfaces of large extent such as the road network, but also warehouse and residential floors. In contrast, evolution has not evolved a single animal with wheel-like actuators.
 
 \begin{figure}
-	\centering
-		\includegraphics[width=0.8\textwidth]{figs/todd85.png}
-	\caption{Power consumption vs.\ speed for various means of locomotion. From \protect\citeasnoun{todd1985walking}.}
-	\label{fig:todd}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figs/todd85.png}
+    \caption{Power consumption vs.\ speed for various means of locomotion. From \protect\citeasnoun{todd1985walking}.}
+    \label{fig:todd}
 \end{figure}
 
 
@@ -34,10 +34,12 @@ Most mechanisms capable of locomotion can also be used for manipulation with onl
 A fundamental difference between locomotion mechanisms is whether they are statically or dynamically stable\index{Static stability}\index{Dynamic Stability}. A statically stable mechanism will not fall even when all of its joints freeze (\cref{fig:stability}, left). A dynamically stable robot instead requires constant motion to prevent it from falling. Technically, stability requires the robot to keep its center of mass to fall within the polygon spanned by its ground-contact points. For example a quadruped robot's feet span a rectangle. Once such a robot lifts one of its feet, this rectangle becomes a triangle. If the projection of the center of mass of the robot along the direction of gravity is outside of this triangle, the robot will fall. A dynamically stable robot can overcome this problem by changing its configuration so rapidly that a fall is prevented. An example of a purely dynamically stable robot is an inverted pendulum on a cart  (\cref{fig:stability}, middle). Such a robot has no statically stable configurations and needs to keep moving all the time to keep the pendulum upright. While dynamic stability is desirable for high-speed, agile motions, robots should be designed so that they can easily switch into a statically stable configuration (\cref{fig:stability}, right).
 
 \begin{figure}
-	\centering
-		\includegraphics[width=\textwidth]{figs/stability.png}
-	\caption{From left to right: statically stable robot. Dynamically stable inverted pendulum robot. Static and dynamically stable robot (depending on configuration).}
-	\label{fig:stability}
+    \centering
+    % \includegraphics[width=\textwidth]{figs/stability.png}
+    \def\svgwidth{\textwidth}
+    \import{./figs/}{stability.pdf_tex}
+    \caption{From left to right: statically stable robot. Dynamically stable inverted pendulum robot. Static and dynamically stable robot (depending on configuration).}
+    \label{fig:stability}
 \end{figure}
 
 An example of a robot that has both statically and dynamically stable configurations is a quadruped (``four legs'') runner. Unlike walking, a running robot will always have two legs in the air and alternate between them faster than the robot could fall in either direction. Although statically stable walking is possible with only 4 legs, most animals (and robots) require 6 legs for statically stable walking and use dynamically stable gaits (such as galloping) when they have four legs. Six legs allow the animal to move three legs at a time while the three other legs maintain a stable pose.
@@ -47,48 +49,63 @@ An example of a robot that has both statically and dynamically stable configurat
 
 The concept of \textsl{degree of freedom}\index{Degree of Freedom}, often abbreviated as DoF, is important for defining the possible positions and orientations a robot can reach. An object in the physical world can have up to six \textsl{Cartesian}\index{Cartesian}\index{Cartesian Degree of Freedom} degrees of freedom, namely forward/backward, sideways, and up/down as well as rotations around those axes. These rotations are known as pitch, yaw and roll and are illustrated in \cref{fig:pitchyawandroll}. These Cartesian degrees of freedom are distinct from the robot's \textsl{mechanical} degrees of freedom, which correspond to the number of points of actuation for a robot (i.e., a robotic arm with five joint motors is referred to as having five mechanical degrees of freedom).
 As a rule of thumb, the number of mechanical DoFs available to the user depends on the robot platform and cannot easily be changed by the user unless mechanical modifications to the robot are made; conversely, the number of Cartesian DoFs depends on the task, can be modified by the user, and vary according to what the robot needs to do.
+
 \begin{figure}
-	\centering
-		\includegraphics[width=\textwidth]{figs/pitchyawroll.png}
-	\caption{Pitch, yaw and roll around the principal axis of an airplane.}
-	\label{fig:pitchyawandroll}
+    \centering
+    % \includegraphics[width=\textwidth]{figs/pitchyawroll.png}
+    \def\svgwidth{\textwidth}
+    \import{./figs/}{pitchyawroll.pdf_tex}
+    \caption{Pitch, yaw and roll around the principal axis of an airplane.}
+    \label{fig:pitchyawandroll}
 \end{figure}
 
 After specifying the mechanical and Cartesian DoFs for your kinematic problem, the number of Cartesian DoFs (i.e. directions) a robot can actually move in depends on the configuration of its actuators and the constraints the robot has with the environment. These relationships are not always intuitive and require more rigorous mathematical treatment (see \cref{chap:kinematics}). The goal of this section is to introduce the degrees of freedom of standard mechanisms that are recurrent in robot design such as wheels or simple arms. For wheeled platforms, the degrees-of-freedom are defined by the types of wheels used and their orientation. Common wheel types are listed in \cref{tab:wheels}.
 
 \begin{table}
-\begin{tabular}{p{2.8cm}p{3cm}p{4cm}}
+\begin{tabular}{p{2.5cm}p{2.6cm}p{4.7cm}}
 \hline
-Wheel type & Example & Degrees-of-Freedom\\
+Wheel type & Example & Degrees of Freedom\\
 \hline
-Standard \includegraphics[width=2.5cm]{figs/wheeltype_standard.png} &	Front-wheel of a wheelbarrow	& Two
-\begin{compactitem}
+Standard
+% \includegraphics[width=2.5cm]{figs/wheeltype_standard.png}
+\def\svgwidth{2.5cm}
+\import{./figs/}{wheeltype_standard.pdf_tex}  & Front-wheel of a wheelbarrow    & Two:%
+\begin{itemize}[wide=0.8\parindent,listparindent=4pt,itemsep=-2pt]
 \item Rotation around the wheel axle
 \item Rotation around its contact point with the ground
-\end{compactitem}\\
+\end{itemize}\\
 \hline
-Caster wheel	\includegraphics[width=2.5cm]{figs/wheeltype_caster.png}& Office chair & Three
-\begin{compactitem}
+Caster wheel
+% \includegraphics[width=2.5cm]{figs/wheeltype_caster.png}
+\def\svgwidth{2.5cm}
+\import{./figs/}{wheeltype_caster.pdf_tex}  & Office chair & Three:%
+\begin{itemize}[wide=0.8\parindent,listparindent=4pt,itemsep=-2pt]
 \item Rotation around the wheel axle
 \item Rotation around its contact point with the ground
 \item Rotation around the caster axis
-\end{compactitem}\\
+\end{itemize}\\
 \hline
-Swedish wheel \includegraphics[width=2.5cm]{figs/wheeltype_swedish.png}& Standard wheel with non-actuated rollers around its circumference& Three
-\begin{compactitem}
+Swedish wheel
+% \includegraphics[width=2.5cm]{figs/wheeltype_swedish.png}
+\def\svgwidth{2.5cm}
+\import{./figs/}{wheeltype_swedish.pdf_tex} & Standard wheel with non-actuated rollers around its circumference& Three:%
+\begin{itemize}[wide=0.8\parindent,listparindent=4pt,itemsep=-2pt]
 \item Rotation around the wheel axle
 \item Rotation around its contact point with the ground
 \item Rotation around the roller axles
-\end{compactitem}\\
+\end{itemize}\\
 \hline
-Spherical wheel \includegraphics[width=2.5cm]{figs/wheeltype_spherical.png}& Ball Bearing & Three
-\begin{compactitem}
+Spherical wheel
+% \includegraphics[width=2.5cm]{figs/wheeltype_spherical.png}
+\def\svgwidth{2.5cm}
+\import{./figs/}{wheeltype_spherical.pdf_tex} & Ball Bearing & Three:%
+\begin{itemize}[wide=0.8\parindent,listparindent=4pt,itemsep=-2pt]
 \item Rotation in any direction
 \item Rotation around its contact point
-\end{compactitem}\\
+\end{itemize}\\
 \hline
 \end{tabular}
-\caption{Different types of wheels and their degrees of freedom. Adopted from \protect\citeasnoun{siegwart2011introduction},\label{tab:wheels}}
+\caption{Different types of wheels and their degrees of freedom. Adopted from \protect\citeasnoun{siegwart2011introduction}.}\label{tab:wheels}
 \end{table}
 
 Only robots that use exclusively wheels with three degrees-of-freedom ($3-$DoF wheels) will be able to freely move on a plane. This is because the pose of a robot on a plane is fully given by its position (two values) and its orientation (one value). Robots that don't have wheels with three degrees of freedom will have \textsl{kinematic constraints}\index{Kinematic constraints} that prevent them from reaching every possible point at every possible orientation. For example, a bicycle wheel can only roll into one direction and turn on the spot. Moving the bicycle wheel orthogonal to its direction of rolling is not possible, unless it is forcefully dragged (``skidding''), which requires more involved treatment not covered in this book. On the other hand, not having three degrees of freedom does not imply that some poses in the plane are unreachable, it may just require additional movements to achieve them.
@@ -104,10 +121,12 @@ For manipulating arms, Cartesian degrees of freedom refer to the positions and o
 An exact definition of the number of degrees of freedom is tricky and requires deriving analytical expressions for the end-effector position and orientation, which will be subject to \cref{chap:kinematics}.
 
 \begin{figure}
-	\centering
-		\includegraphics[width=\textwidth]{figs/basickinematics.png}
-	\caption{From left to right: Manipulators with one, two, three and four DoF. The degrees of freedom of moving in a plane are the position of the end-effector with respect to its height and displacement with respect to the base, as well as its orientation.}
-	\label{fig:basickinematics}
+    \centering
+    % \includegraphics[width=\textwidth]{figs/basickinematics.png}
+    \def\svgwidth{\textwidth}
+    \import{./figs/}{basickinematics.pdf_tex}
+    \caption{From left to right: Manipulators with one, two, three and four DoFs. The degrees of freedom of moving in a plane are the position of the end-effector with respect to its height and displacement with respect to the base, as well as its orientation.}
+    \label{fig:basickinematics}
 \end{figure}
 
 Choosing the ``right'' kinematics is a trade-off between mechanical complexity, maneuverability, achievable precision, cost, and ease of control. The very popular differential-wheel drive consisting of two independently controlled wheels that share a common axis such as on the iRobot Roomba is cheap, highly maneuverable and easy to control, but makes it hard to drive in a straight line. This requires both motors to turn at the exact same speed and both wheels to have the exact same diameter, which is hard to achieve in practice. This problem is solved well by car-like steering mechanisms, but they have poor maneuverability and are difficult to control (think parallel-parking).

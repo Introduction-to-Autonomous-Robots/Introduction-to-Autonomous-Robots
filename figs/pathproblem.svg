@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="193.01979"
+   height="180.61832"
+   id="svg144537"
+   version="1.1"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
+   sodipodi:docname="pathproblem.svg"
+   viewBox="0 0 180.95605 169.32968">
+  <defs
+     id="defs144539" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="4.8001777"
+     inkscape:cx="96.509891"
+     inkscape:cy="90.309156"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1021"
+     inkscape:window-x="-7"
+     inkscape:window-y="-7"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0" />
+  <metadata
+     id="metadata144542">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-28.313186,-65.136907)">
+    <g
+       id="g144652"
+       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\dijkstra.png"
+       inkscape:export-xdpi="299.7811"
+       inkscape:export-ydpi="299.7811">
+      <circle
+         transform="translate(9.0989011,-12.131868)"
+         id="path144545"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         cx="83.406593"
+         cy="92.428116"
+         r="14.659341" />
+      <circle
+         id="path144545-0"
+         style="fill:#f2f2f2;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         transform="translate(-39.934066,51.054946)"
+         cx="83.406593"
+         cy="92.428116"
+         r="14.659341" />
+      <circle
+         id="path144545-7"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         transform="translate(110.7033,17.692311)"
+         cx="83.406593"
+         cy="92.428116"
+         r="14.659341" />
+      <circle
+         id="path144545-73"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         transform="translate(36.901103,63.186815)"
+         cx="83.406593"
+         cy="92.428116"
+         r="14.659341" />
+      <circle
+         id="path144545-4"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         transform="translate(2.5274757,126.87912)"
+         cx="83.406593"
+         cy="92.428116"
+         r="14.659341" />
+      <circle
+         id="path144545-7-7"
+         style="fill:#999999;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         transform="translate(110.7033,110.7033)"
+         cx="83.406593"
+         cy="92.428116"
+         r="14.659341" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path144604"
+         d="M 51.513779,130.71349 82.590025,91.518227"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path144606"
+         d="m 47.874218,157.87021 28.836517,49.83398"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path144608"
+         d="m 57.953001,144.43184 47.874219,8.67895"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path144610"
+         d="M 106.66712,82.559309 179.45833,106.6364"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path144612"
+         d="m 135.50363,155.07055 47.59426,-35.27574"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path144614"
+         d="m 131.02418,165.4293 50.39391,28.55655"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path144616"
+         d="m 197.0962,124.55424 0.27996,63.83229"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path144618"
+         d="m 100.50786,221.98247 79.5104,-13.71834"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <text
+         id="text144620"
+         y="112.79566"
+         x="55.433304"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="112.79566"
+           x="55.433304"
+           id="tspan144622"
+           sodipodi:role="line"
+           style="font-size:12px;line-height:1.25;font-family:sans-serif">7</tspan></text>
+      <text
+         id="text144624"
+         y="192.02609"
+         x="50.953846"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="192.02609"
+           x="50.953846"
+           id="tspan144626"
+           sodipodi:role="line"
+           style="font-size:12px;line-height:1.25;font-family:sans-serif">3</tspan></text>
+      <text
+         id="text144628"
+         y="227.02185"
+         x="133.82384"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="227.02185"
+           x="133.82384"
+           id="tspan144630"
+           sodipodi:role="line"
+           style="font-size:12px;line-height:1.25;font-family:sans-serif">12</tspan></text>
+      <text
+         id="text144632"
+         y="160.94984"
+         x="77.550636"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="160.94984"
+           x="77.550636"
+           id="tspan144634"
+           sodipodi:role="line"
+           style="font-size:12px;line-height:1.25;font-family:sans-serif">5</tspan></text>
+      <text
+         id="text144636"
+         y="174.38821"
+         x="151.74167"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="174.38821"
+           x="151.74167"
+           id="tspan144638"
+           sodipodi:role="line"
+           style="font-size:12px;line-height:1.25;font-family:sans-serif">10</tspan></text>
+      <text
+         id="text144640"
+         y="137.43269"
+         x="150.06187"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="137.43269"
+           x="150.06187"
+           id="tspan144642"
+           sodipodi:role="line"
+           style="font-size:12px;line-height:1.25;font-family:sans-serif">5</tspan></text>
+      <text
+         id="text144644"
+         y="153.39075"
+         x="201.85562"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="153.39075"
+           x="201.85562"
+           id="tspan144646"
+           sodipodi:role="line"
+           style="font-size:12px;line-height:1.25;font-family:sans-serif">4</tspan></text>
+      <text
+         id="text144648"
+         y="87.598701"
+         x="132.42401"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="87.598701"
+           x="132.42401"
+           id="tspan144650"
+           sodipodi:role="line"
+           style="font-size:12px;line-height:1.25;font-family:sans-serif">8</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 91.856219,206.65148 112.44468,168.642"
+       id="path145162"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\dijkstra.png"
+       inkscape:export-xdpi="299.7811"
+       inkscape:export-ydpi="299.7811" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 96.607403,93.414929 115.61214,140.1349"
+       id="path145164"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\dijkstra.png"
+       inkscape:export-xdpi="299.7811"
+       inkscape:export-ydpi="299.7811" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="106.90163"
+       y="191.60606"
+       id="text145166"
+       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\dijkstra.png"
+       inkscape:export-xdpi="299.7811"
+       inkscape:export-ydpi="299.7811"><tspan
+         sodipodi:role="line"
+         id="tspan145168"
+         x="106.90163"
+         y="191.60606"
+         style="font-size:12px;line-height:1.25;font-family:sans-serif">1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="95.023674"
+       y="118.37898"
+       id="text145170"
+       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\dijkstra.png"
+       inkscape:export-xdpi="299.7811"
+       inkscape:export-ydpi="299.7811"><tspan
+         sodipodi:role="line"
+         id="tspan145172"
+         x="95.023674"
+         y="118.37898"
+         style="font-size:12px;line-height:1.25;font-family:sans-serif">3</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="41.176926"
+       y="146.09422"
+       id="text145174"
+       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\dijkstra.png"
+       inkscape:export-xdpi="299.7811"
+       inkscape:export-ydpi="299.7811"><tspan
+         sodipodi:role="line"
+         id="tspan145176"
+         x="41.176926"
+         y="146.09422"
+         style="font-size:12px;line-height:1.25;font-family:sans-serif">I</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="82.353851"
+       y="224.07248"
+       id="text145178"
+       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\dijkstra.png"
+       inkscape:export-xdpi="299.7811"
+       inkscape:export-ydpi="299.7811"><tspan
+         sodipodi:role="line"
+         id="tspan145180"
+         x="82.353851"
+         y="224.07248"
+         style="font-size:12px;line-height:1.25;font-family:sans-serif">II</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="114.82027"
+       y="158.34778"
+       id="text145182"
+       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\dijkstra.png"
+       inkscape:export-xdpi="299.7811"
+       inkscape:export-ydpi="299.7811"><tspan
+         sodipodi:role="line"
+         id="tspan145184"
+         x="114.82027"
+         y="158.34778"
+         style="font-size:12px;line-height:1.25;font-family:sans-serif">III</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="87.105034"
+       y="83.120697"
+       id="text145186"
+       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\dijkstra.png"
+       inkscape:export-xdpi="299.7811"
+       inkscape:export-ydpi="299.7811"><tspan
+         sodipodi:role="line"
+         id="tspan145188"
+         x="87.105034"
+         y="83.120697"
+         style="font-size:12px;line-height:1.25;font-family:sans-serif">IV</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="189.25549"
+       y="113.25221"
+       id="text145190"
+       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\dijkstra.png"
+       inkscape:export-xdpi="299.7811"
+       inkscape:export-ydpi="299.7811"><tspan
+         sodipodi:role="line"
+         id="tspan145192"
+         x="189.25549"
+         y="113.25221"
+         style="font-size:12px;line-height:1.25;font-family:sans-serif">V</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="186.8392"
+       y="206.27588"
+       id="text145194"
+       inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\dijkstra.png"
+       inkscape:export-xdpi="299.7811"
+       inkscape:export-ydpi="299.7811"><tspan
+         sodipodi:role="line"
+         id="tspan145196"
+         x="186.8392"
+         y="206.27588"
+         style="font-size:12px;line-height:1.25;font-family:sans-serif">VI</tspan></text>
+  </g>
+</svg>

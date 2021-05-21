@@ -8,7 +8,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="backpropnotation3.svg"
-   inkscape:version="1.0beta2 (2b71d25, 2019-12-03)"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
    id="svg1520"
    version="1.1"
    viewBox="0 0 263.80896 150.31227"
@@ -544,17 +544,17 @@
   </defs>
   <sodipodi:namedview
      inkscape:window-maximized="0"
-     inkscape:window-y="1223"
-     inkscape:window-x="0"
+     inkscape:window-y="122"
+     inkscape:window-x="39"
      inkscape:window-height="827"
-     inkscape:window-width="1440"
+     inkscape:window-width="1673"
      showgrid="false"
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="112.69155"
-     inkscape:cx="527.26595"
-     inkscape:zoom="0.55486863"
+     inkscape:cy="288.15327"
+     inkscape:cx="599.79996"
+     inkscape:zoom="0.89461835"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
@@ -638,46 +638,20 @@
          id="tspan3206"
          x="84.359497"
          y="96.894966"
-         style="font-size:7.05556px;stroke-width:0.264583">w</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="90.059898"
-       y="93.522881"
-       id="text3212"><tspan
-         sodipodi:role="line"
-         id="tspan3210"
-         x="90.059898"
-         y="93.522881"
-         style="stroke-width:0.264583">m</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text3216"
-       y="98.98246"
-       x="89.819061"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.264583"
-         y="98.98246"
-         x="89.819061"
-         id="tspan3214"
-         sodipodi:role="line">1,1</tspan></text>
+         style="font-size:7.05556px;stroke-width:0.264583">$w^m_{1,1}$</tspan></text>
     <text
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
        id="text3224"
-       y="127.50945"
-       x="144.00638"
+       y="137.03433"
+       x="139.7731"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        xml:space="preserve"><tspan
          style="font-size:5.29167px;stroke-width:0.264583"
-         y="127.50945"
-         x="144.00638"
+         y="137.03433"
+         x="139.7731"
          id="tspan3222"
-         sodipodi:role="line">m-th layer</tspan></text>
+         sodipodi:role="line">\small$m-th$ layer</tspan></text>
     <path
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -685,19 +659,6 @@
        d="m 165.59798,149.91914 h 28.85386"
        id="path2365"
        inkscape:connector-curvature="0" />
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-       x="174.14024"
-       y="145.93277"
-       id="text2403"><tspan
-         sodipodi:role="line"
-         id="tspan2401"
-         x="174.14024"
-         y="145.93277"
-         style="stroke-width:0.264583">a</tspan></text>
     <path
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -718,60 +679,7 @@
          y="209.18045"
          x="84.678551"
          id="tspan3206-1"
-         sodipodi:role="line">w</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="89.565567"
-       y="211.18269"
-       id="text3216-8"><tspan
-         sodipodi:role="line"
-         id="tspan3214-1"
-         x="89.565567"
-         y="211.18269"
-         style="stroke-width:0.264583"
-         dy="0 3 0 0 0">rm-1,1</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="89.753555"
-       y="206.79881"
-       id="text3178-5"><tspan
-         sodipodi:role="line"
-         id="tspan3176-1"
-         x="89.753555"
-         y="206.79881"
-         style="stroke-width:0.264583">m</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="176.70796"
-       y="143.95657"
-       id="text3178-2"><tspan
-         sodipodi:role="line"
-         id="tspan3176-6"
-         x="176.70796"
-         y="143.95657"
-         style="stroke-width:0.264583">m</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="177.00882"
-       y="148.90994"
-       id="text3216-6"><tspan
-         sodipodi:role="line"
-         id="tspan3214-5"
-         x="177.00882"
-         y="148.90994"
-         style="stroke-width:0.264583">1</tspan></text>
+         sodipodi:role="line">$w^m_{r_{m-1},1}$</tspan></text>
     <path
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -793,55 +701,29 @@
          style="fill:none;stroke:#000000;stroke-width:0.529167;stroke-miterlimit:4;stroke-dasharray:none" />
       <text
          id="text2996"
-         y="31.321625"
+         y="32.379959"
          x="213.9362"
          style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
          xml:space="preserve"><tspan
            style="stroke-width:0.264583"
-           y="31.321625"
+           y="32.379959"
            x="213.9362"
            id="tspan2994"
-           sodipodi:role="line">g()</tspan></text>
+           sodipodi:role="line">\small$g()$</tspan></text>
     </g>
     <text
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
        id="text2403-6"
        y="146.30348"
-       x="217.30125"
+       x="212.00966"
        style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
        xml:space="preserve"><tspan
          style="stroke-width:0.264583"
          y="146.30348"
-         x="217.30125"
+         x="212.00966"
          id="tspan2401-7"
-         sodipodi:role="line">o     / y</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text3178-2-8"
-       y="144.13748"
-       x="221.57741"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.264583"
-         y="144.13748"
-         x="221.57741"
-         id="tspan3176-6-9"
-         sodipodi:role="line">m</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text3216-6-7"
-       y="149.09085"
-       x="221.87827"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.264583"
-         y="149.09085"
-         x="221.87827"
-         id="tspan3214-5-5"
-         sodipodi:role="line">1</tspan></text>
+         sodipodi:role="line">$o^m_1 / y$</tspan></text>
     <circle
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -917,12 +799,12 @@
          id="tspan3222-7"
          x="43.989559"
          y="74.068565"
-         style="font-size:5.29167px;line-height:1.15;text-align:center;text-anchor:middle;stroke-width:0.264583">k+1 layer /</tspan><tspan
+         style="font-size:5.29167px;line-height:1.15;text-align:center;text-anchor:middle;stroke-width:0.264583">\small$k+1$ layer /</tspan><tspan
          sodipodi:role="line"
          x="43.989559"
          y="80.153984"
          style="font-size:5.29167px;line-height:1.15;text-align:center;text-anchor:middle;stroke-width:0.264583"
-         id="tspan30572">m-1 layer</tspan></text>
+         id="tspan30572">$m-1$ layer</tspan></text>
     <circle
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -935,15 +817,15 @@
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
        id="text3200-7"
-       y="213.88208"
-       x="39.027546"
+       y="214.41124"
+       x="37.440044"
        style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        xml:space="preserve"><tspan
          style="stroke-width:0.264583"
-         y="213.88208"
-         x="39.027546"
+         y="214.41124"
+         x="37.440044"
          id="tspan3198-7"
-         sodipodi:role="line">r</tspan></text>
+         sodipodi:role="line">$r_{k+1}$</tspan></text>
     <path
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -951,19 +833,6 @@
        id="path3220-3"
        d="m 44.891101,191.58504 v 9.95569"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 4;stroke-dashoffset:0;stroke-opacity:1" />
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text3178-5-6"
-       y="215.61736"
-       x="41.482224"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.264583"
-         y="215.61736"
-         x="41.482224"
-         id="tspan3176-6-8"
-         sodipodi:role="line">k+1</tspan></text>
     <path
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -1067,7 +936,7 @@
          y="79.993347"
          x="-26.569824"
          id="tspan8656"
-         sodipodi:role="line">k layer</tspan></text>
+         sodipodi:role="line">\small$k$ layer</tspan></text>
     <circle
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -1088,7 +957,7 @@
          id="tspan8662"
          x="-21.473845"
          y="213.50244"
-         style="stroke-width:0.264583">r</tspan></text>
+         style="stroke-width:0.264583">$r_k$</tspan></text>
     <path
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -1096,19 +965,6 @@
        d="m -15.610295,191.20538 v 9.95568"
        id="path8666"
        inkscape:connector-curvature="0" />
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="-19.019165"
-       y="215.8054"
-       id="text8670"><tspan
-         sodipodi:role="line"
-         id="tspan8668"
-         x="-19.019165"
-         y="215.8054"
-         style="stroke-width:0.264583">k</tspan></text>
     <path
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -1153,13 +1009,13 @@
          xml:space="preserve"
          style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
          x="213.9362"
-         y="31.321625"
+         y="32.379959"
          id="text2996-4"><tspan
            sodipodi:role="line"
            id="tspan2994-0"
            x="213.9362"
-           y="31.321625"
-           style="stroke-width:0.264583">g()</tspan></text>
+           y="32.379959"
+           style="stroke-width:0.264583">\small$g()$</tspan></text>
     </g>
     <g
        inkscape:export-ydpi="300"
@@ -1175,15 +1031,15 @@
          style="fill:none;stroke:#000000;stroke-width:0.529167;stroke-miterlimit:4;stroke-dasharray:none" />
       <text
          id="text2996-4-6"
-         y="31.321625"
+         y="32.379959"
          x="213.9362"
          style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
          xml:space="preserve"><tspan
            style="stroke-width:0.264583"
-           y="31.321625"
+           y="32.379959"
            x="213.9362"
            id="tspan2994-0-1"
-           sodipodi:role="line">g()</tspan></text>
+           sodipodi:role="line">\small$g()$</tspan></text>
     </g>
     <g
        inkscape:export-ydpi="300"
@@ -1199,15 +1055,15 @@
          style="fill:none;stroke:#000000;stroke-width:0.529167;stroke-miterlimit:4;stroke-dasharray:none" />
       <text
          id="text2996-4-4"
-         y="31.321625"
+         y="32.379959"
          x="213.9362"
          style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
          xml:space="preserve"><tspan
            style="stroke-width:0.264583"
-           y="31.321625"
+           y="32.379959"
            x="213.9362"
            id="tspan2994-0-9"
-           sodipodi:role="line">g()</tspan></text>
+           sodipodi:role="line">\small$g()$</tspan></text>
     </g>
     <g
        inkscape:export-ydpi="300"
@@ -1223,15 +1079,15 @@
          style="fill:none;stroke:#000000;stroke-width:0.529167;stroke-miterlimit:4;stroke-dasharray:none" />
       <text
          id="text2996-4-8"
-         y="31.321625"
+         y="32.379959"
          x="213.9362"
          style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
          xml:space="preserve"><tspan
            style="stroke-width:0.264583"
-           y="31.321625"
+           y="32.379959"
            x="213.9362"
            id="tspan2994-0-4"
-           sodipodi:role="line">g()</tspan></text>
+           sodipodi:role="line">\small$g()$</tspan></text>
     </g>
     <g
        inkscape:export-ydpi="300"
@@ -1247,15 +1103,15 @@
          style="fill:none;stroke:#000000;stroke-width:0.529167;stroke-miterlimit:4;stroke-dasharray:none" />
       <text
          id="text2996-4-1"
-         y="31.321625"
+         y="32.379959"
          x="213.9362"
          style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
          xml:space="preserve"><tspan
            style="stroke-width:0.264583"
-           y="31.321625"
+           y="32.379959"
            x="213.9362"
            id="tspan2994-0-0"
-           sodipodi:role="line">g()</tspan></text>
+           sodipodi:role="line">\small$g()$</tspan></text>
     </g>
     <path
        inkscape:export-ydpi="300"
@@ -1343,15 +1199,15 @@
          style="fill:none;stroke:#000000;stroke-width:0.529167;stroke-miterlimit:4;stroke-dasharray:none" />
       <text
          id="text10235"
-         y="31.321625"
+         y="32.379959"
          x="213.9362"
          style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
          xml:space="preserve"><tspan
            style="stroke-width:0.264583"
-           y="31.321625"
+           y="32.379959"
            x="213.9362"
            id="tspan10233"
-           sodipodi:role="line">g()</tspan></text>
+           sodipodi:role="line">\small$g()$</tspan></text>
     </g>
     <g
        inkscape:export-ydpi="300"
@@ -1369,13 +1225,13 @@
          xml:space="preserve"
          style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
          x="213.9362"
-         y="31.321625"
+         y="32.379959"
          id="text10243"><tspan
            sodipodi:role="line"
            id="tspan10241"
            x="213.9362"
-           y="31.321625"
-           style="stroke-width:0.264583">g()</tspan></text>
+           y="32.379959"
+           style="stroke-width:0.264583">\small$g()$</tspan></text>
     </g>
     <g
        inkscape:export-ydpi="300"
@@ -1393,13 +1249,13 @@
          xml:space="preserve"
          style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
          x="213.9362"
-         y="31.321625"
+         y="32.379959"
          id="text10251"><tspan
            sodipodi:role="line"
            id="tspan10249"
            x="213.9362"
-           y="31.321625"
-           style="stroke-width:0.264583">g()</tspan></text>
+           y="32.379959"
+           style="stroke-width:0.264583">\small$g()$</tspan></text>
     </g>
     <g
        inkscape:export-ydpi="300"
@@ -1417,13 +1273,13 @@
          xml:space="preserve"
          style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
          x="213.9362"
-         y="31.321625"
+         y="32.379959"
          id="text10259"><tspan
            sodipodi:role="line"
            id="tspan10257"
            x="213.9362"
-           y="31.321625"
-           style="stroke-width:0.264583">g()</tspan></text>
+           y="32.379959"
+           style="stroke-width:0.264583">\small$g()$</tspan></text>
     </g>
     <g
        inkscape:export-ydpi="300"
@@ -1441,13 +1297,13 @@
          xml:space="preserve"
          style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
          x="213.9362"
-         y="31.321625"
+         y="32.379959"
          id="text10267"><tspan
            sodipodi:role="line"
            id="tspan10265"
            x="213.9362"
-           y="31.321625"
-           style="stroke-width:0.264583">g()</tspan></text>
+           y="32.379959"
+           style="stroke-width:0.264583">\small$g()$</tspan></text>
     </g>
     <path
        inkscape:export-ydpi="300"
@@ -1589,33 +1445,7 @@
          y="123.90845"
          x="84.715309"
          id="tspan3206-13"
-         sodipodi:role="line">w</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text3212-8"
-       y="120.53635"
-       x="90.41571"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.264583"
-         y="120.53635"
-         x="90.41571"
-         id="tspan3210-4"
-         sodipodi:role="line">m</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="90.174873"
-       y="125.99593"
-       id="text3216-80"><tspan
-         sodipodi:role="line"
-         id="tspan3214-4"
-         x="90.174873"
-         y="125.99593"
-         style="stroke-width:0.264583">j-1,1</tspan></text>
+         sodipodi:role="line">$w^m_{j-1,1}$</tspan></text>
     <path
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -1642,33 +1472,7 @@
          id="tspan3206-13-1"
          x="84.966484"
          y="147.80775"
-         style="font-size:7.05556px;stroke-width:0.264583">w</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="90.666885"
-       y="144.43565"
-       id="text3212-8-3"><tspan
-         sodipodi:role="line"
-         id="tspan3210-4-7"
-         x="90.666885"
-         y="144.43565"
-         style="stroke-width:0.264583">m</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text3216-80-8"
-       y="149.89523"
-       x="90.426056"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.264583"
-         y="149.89523"
-         x="90.426056"
-         id="tspan3214-4-8"
-         sodipodi:role="line">j,1</tspan></text>
+         style="font-size:7.05556px;stroke-width:0.264583">$w^m_{j,1}$</tspan></text>
     <text
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -1681,32 +1485,17 @@
          y="180.67102"
          x="84.543388"
          id="tspan3206-13-1-5"
-         sodipodi:role="line">w</tspan></text>
+         sodipodi:role="line">$w^m_{j+1,1}$</tspan></text>
     <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text3212-8-3-4"
-       y="177.29892"
-       x="90.24379"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.264583"
-         y="177.29892"
-         x="90.24379"
-         id="tspan3210-4-7-3"
-         sodipodi:role="line">m</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="90.00296"
-       y="182.7585"
-       id="text3216-80-8-6"><tspan
+       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="170.85193"
+       y="158.11928"
+       id="text1292"><tspan
          sodipodi:role="line"
-         id="tspan3214-4-8-5"
-         x="90.00296"
-         y="182.7585"
-         style="stroke-width:0.264583">j+1,1</tspan></text>
+         id="tspan1290"
+         x="170.85193"
+         y="158.11928"
+         style="font-size:5.29167px;stroke-width:0.264583">$a^m_1$</tspan></text>
   </g>
 </svg>

@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -9,12 +7,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
+   width="762.77789"
+   height="201.17181"
    id="svg8159"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="ants.svg">
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
+   sodipodi:docname="ants.svg"
+   viewBox="0 0 715.10425 188.59858">
   <defs
      id="defs8161" />
   <sodipodi:namedview
@@ -24,22 +23,23 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="441.62494"
-     inkscape:cy="999.2129"
+     inkscape:zoom="1.7986888"
+     inkscape:cx="381.38893"
+     inkscape:cy="100.58591"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:window-width="1920"
-     inkscape:window-height="1018"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1">
+     inkscape:window-height="1021"
+     inkscape:window-x="-7"
+     inkscape:window-y="-7"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0">
     <sodipodi:guide
        orientation="0,1"
-       position="241,839"
+       position="169.59968,0.38069236"
        id="guide9344" />
   </sodipodi:namedview>
   <metadata
@@ -57,66 +57,67 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-71.400319,-25.144297)">
     <g
        id="g8746"
-       transform="translate(22,0)"
+       transform="translate(22)"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
        inkscape:export-ydpi="150">
       <g
-         style="stroke-width:0.67236173;stroke-miterlimit:4;stroke-dasharray:none"
+         style="stroke-width:0.672362;stroke-miterlimit:4;stroke-dasharray:none"
          transform="matrix(1.4297389,0,0,1.5471672,-20.100086,-14.566138)"
          id="g8221">
         <g
-           style="stroke-width:0.61950523;stroke-miterlimit:4;stroke-dasharray:none"
+           style="stroke-width:0.619505;stroke-miterlimit:4;stroke-dasharray:none"
            id="g8189"
            transform="matrix(1,0,0,1.1779208,0,-7.1693104)">
           <path
              inkscape:connector-curvature="0"
              id="path8167"
-             d="m 86.931818,41.061251 0,32.283074"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="M 86.931818,41.061251 V 73.344325"
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
              inkscape:connector-curvature="0"
              id="path8171"
              d="M 87.366376,72.885483 49.419948,91.513729 86.931818,104.25192"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
           <path
              inkscape:connector-curvature="0"
              id="path8177"
-             d="m 86.931818,104.25192 0,14.30183"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+             d="m 86.931818,104.25192 v 14.30183"
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
           <path
              inkscape:connector-curvature="0"
              id="path8179"
-             d="m 95.778928,41.18866 -0.288926,31.859268 69.197748,15.024145 -68.908822,15.890917 0,14.42951 0,-0.27214"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="M 95.778928,41.18866 95.490002,73.047928 164.68775,88.072073 95.778928,103.96299 v 14.42951 -0.27214"
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
              sodipodi:nodetypes="cccccc" />
           <path
              sodipodi:nodetypes="ccc"
              inkscape:connector-curvature="0"
              id="path8185"
              d="M 86.931818,79.664546 65.586174,90.38348 86.580399,97.194193"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
           <path
              sodipodi:nodetypes="ccc"
              inkscape:connector-curvature="0"
              id="path8187"
-             d="m 95.778928,79.693223 36.982512,9.390091 -36.982512,8.089924 -9.298191,0"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+             d="m 95.778928,79.693223 36.982512,9.390091 -36.982512,8.089924 h -9.298191"
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         </g>
         <path
            transform="translate(4.767277,-0.72231467)"
-           style="fill:none;stroke:#000000;stroke-width:0.67236173;stroke-miterlimit:4;stroke-dasharray:none"
+           style="fill:none;stroke:#000000;stroke-width:0.672362;stroke-miterlimit:4;stroke-dasharray:none"
            d="m 82.335146,42.336467 c -0.676483,-0.357538 -1.296891,-0.793443 -1.846264,-1.294081 -1.620844,-1.47706 -2.623357,-3.517598 -2.623357,-5.771516 0,-4.507834 4.010052,-8.162156 8.956702,-8.162156 4.946651,0 8.956703,3.654322 8.956703,8.162156 0,3.187378 -2.004847,5.948038 -4.928057,7.291876"
            id="path8199"
            inkscape:connector-curvature="0"
            sodipodi:nodetypes="cssssc" />
         <path
            transform="translate(4.7672745,103.79662)"
-           style="fill:none;stroke:#000000;stroke-width:0.67236173;stroke-miterlimit:4;stroke-dasharray:none"
+           style="fill:none;stroke:#000000;stroke-width:0.672362;stroke-miterlimit:4;stroke-dasharray:none"
            d="m 91.011653,28.024747 c 2.797116,1.380789 4.696698,4.079048 4.696698,7.181621 0,4.507835 -3.939473,8.226658 -8.886124,8.226658 -4.94665,0 -8.956702,-3.654321 -8.956702,-8.162156 0,-2.960683 1.710162,-5.601566 4.299019,-7.032377"
            id="path8199-8"
            inkscape:connector-curvature="0"
@@ -125,8 +126,8 @@
       <path
          inkscape:connector-curvature="0"
          id="path8234"
-         d="m 103.74577,119.65104 13.37785,0"
-         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+         d="m 103.74577,119.65104 h 13.37785"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
     <g
        transform="translate(201.04103,-0.378205)"
@@ -135,58 +136,58 @@
        inkscape:export-xdpi="150"
        inkscape:export-ydpi="150">
       <g
-         style="stroke-width:0.67236173;stroke-miterlimit:4;stroke-dasharray:none"
+         style="stroke-width:0.672362;stroke-miterlimit:4;stroke-dasharray:none"
          transform="matrix(1.4297389,0,0,1.5471672,-20.100086,-14.566138)"
          id="g8221-9">
         <g
-           style="stroke-width:0.61950523;stroke-miterlimit:4;stroke-dasharray:none"
+           style="stroke-width:0.619505;stroke-miterlimit:4;stroke-dasharray:none"
            id="g8189-1"
            transform="matrix(1,0,0,1.1779208,0,-7.1693104)">
           <path
              inkscape:connector-curvature="0"
              id="path8167-3"
-             d="m 86.931818,41.061251 0,32.283074"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="M 86.931818,41.061251 V 73.344325"
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
              inkscape:connector-curvature="0"
              id="path8171-5"
              d="M 87.366376,72.885483 49.419948,91.513729 86.931818,104.25192"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
           <path
              inkscape:connector-curvature="0"
              id="path8177-9"
-             d="m 86.931818,104.25192 0,14.30183"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+             d="m 86.931818,104.25192 v 14.30183"
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
           <path
              inkscape:connector-curvature="0"
              id="path8179-8"
-             d="m 95.778928,41.18866 -0.288926,31.859268 69.197748,15.024145 -68.908822,15.890917 0,14.42951 0,-0.27214"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="M 95.778928,41.18866 95.490002,73.047928 164.68775,88.072073 95.778928,103.96299 v 14.42951 -0.27214"
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
              sodipodi:nodetypes="cccccc" />
           <path
              sodipodi:nodetypes="ccc"
              inkscape:connector-curvature="0"
              id="path8185-4"
              d="M 86.931818,79.664546 65.586174,90.38348 86.580399,97.194193"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
           <path
              sodipodi:nodetypes="ccc"
              inkscape:connector-curvature="0"
              id="path8187-0"
-             d="m 95.778928,79.693223 36.982512,9.390091 -36.982512,8.089924 -9.298191,0"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+             d="m 95.778928,79.693223 36.982512,9.390091 -36.982512,8.089924 h -9.298191"
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         </g>
         <path
            transform="translate(4.767277,-0.72231467)"
-           style="fill:none;stroke:#000000;stroke-width:0.67236173;stroke-miterlimit:4;stroke-dasharray:none"
+           style="fill:none;stroke:#000000;stroke-width:0.672362;stroke-miterlimit:4;stroke-dasharray:none"
            d="m 82.335146,42.336467 c -0.676483,-0.357538 -1.296891,-0.793443 -1.846264,-1.294081 -1.620844,-1.47706 -2.623357,-3.517598 -2.623357,-5.771516 0,-4.507834 4.010052,-8.162156 8.956702,-8.162156 4.946651,0 8.956703,3.654322 8.956703,8.162156 0,3.187378 -2.004847,5.948038 -4.928057,7.291876"
            id="path8199-7"
            inkscape:connector-curvature="0"
            sodipodi:nodetypes="cssssc" />
         <path
            transform="translate(4.7672745,103.79662)"
-           style="fill:none;stroke:#000000;stroke-width:0.67236173;stroke-miterlimit:4;stroke-dasharray:none"
+           style="fill:none;stroke:#000000;stroke-width:0.672362;stroke-miterlimit:4;stroke-dasharray:none"
            d="m 91.011653,28.024747 c 2.797116,1.380789 4.696698,4.079048 4.696698,7.181621 0,4.507835 -3.939473,8.226658 -8.886124,8.226658 -4.94665,0 -8.956702,-3.654321 -8.956702,-8.162156 0,-2.960683 1.710162,-5.601566 4.299019,-7.032377"
            id="path8199-8-6"
            inkscape:connector-curvature="0"
@@ -195,477 +196,405 @@
       <path
          inkscape:connector-curvature="0"
          id="path8234-3"
-         d="m 103.74577,119.65104 13.37785,0"
-         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+         d="m 103.74577,119.65104 h 13.37785"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
-    <path
-       sodipodi:type="arc"
+    <ellipse
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
-       transform="translate(22,0)"
+       transform="translate(22)"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(25.171479,0.90614194)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-6"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(17.620336,-1.8122696)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(18.09326,-10.873641)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-5"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(22.453067,-4.5306811)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-4"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(24.265342,-4.2286354)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-2"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(29.400119,-5.4368183)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-0"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(26.077616,-9.0613671)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-9"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(18.224427,-6.3429554)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-7"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(17.620335,2.7184164)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-3"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(19.130564,2.1143249)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-72"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(29.400119,3.0204621)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-60"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(28.493982,1.8122792)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-16"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(22.755113,-8.4572755)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-57"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(14.297832,-3.9265896)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-54"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(17.620335,-27.788202)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-12"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(22.453067,-20.539104)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-00"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(21.848976,-25.975928)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-14"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(268.21661,-65.168471)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-607"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(258.70217,-61.54392)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-6-1"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(251.75512,-59.127552)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-7"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(185.47594,-49.764133)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-5-7"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(240.88147,-56.711185)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-4-7"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(222.15463,-49.764139)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-2-7"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(168.69254,-57.315279)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-0-3"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(177.14983,-54.596869)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-9-3"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(213.69736,-50.066184)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-7-5"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(198.29303,-45.837537)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-3-9"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(156.61072,-66.074609)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-72-9"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(169.59868,-76.344161)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-60-8"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(163.25572,-71.20938)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-16-1"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(230.61192,-53.690733)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-57-8"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(162.04753,-59.127552)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-54-2"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(196.48075,-28.922978)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-12-6"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(201.01144,-22.88206)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-00-6"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(200.70939,-33.151622)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-14-0"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
     <g
        transform="translate(385.62106,-0.5526929)"
        id="g8746-2-3"
@@ -673,58 +602,58 @@
        inkscape:export-xdpi="150"
        inkscape:export-ydpi="150">
       <g
-         style="stroke-width:0.67236173;stroke-miterlimit:4;stroke-dasharray:none"
+         style="stroke-width:0.672362;stroke-miterlimit:4;stroke-dasharray:none"
          transform="matrix(1.4297389,0,0,1.5471672,-20.100086,-14.566138)"
          id="g8221-9-8">
         <g
-           style="stroke-width:0.61950523;stroke-miterlimit:4;stroke-dasharray:none"
+           style="stroke-width:0.619505;stroke-miterlimit:4;stroke-dasharray:none"
            id="g8189-1-0"
            transform="matrix(1,0,0,1.1779208,0,-7.1693104)">
           <path
              inkscape:connector-curvature="0"
              id="path8167-3-1"
-             d="m 86.931818,41.061251 0,32.283074"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="M 86.931818,41.061251 V 73.344325"
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
              inkscape:connector-curvature="0"
              id="path8171-5-2"
              d="M 87.366376,72.885483 49.419948,91.513729 86.931818,104.25192"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
           <path
              inkscape:connector-curvature="0"
              id="path8177-9-5"
-             d="m 86.931818,104.25192 0,14.30183"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+             d="m 86.931818,104.25192 v 14.30183"
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
           <path
              inkscape:connector-curvature="0"
              id="path8179-8-0"
-             d="m 95.778928,41.18866 -0.288926,31.859268 69.197748,15.024145 -68.908822,15.890917 0,14.42951 0,-0.27214"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="M 95.778928,41.18866 95.490002,73.047928 164.68775,88.072073 95.778928,103.96299 v 14.42951 -0.27214"
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
              sodipodi:nodetypes="cccccc" />
           <path
              sodipodi:nodetypes="ccc"
              inkscape:connector-curvature="0"
              id="path8185-4-9"
              d="M 86.931818,79.664546 65.586174,90.38348 86.580399,97.194193"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
           <path
              sodipodi:nodetypes="ccc"
              inkscape:connector-curvature="0"
              id="path8187-0-4"
-             d="m 95.778928,79.693223 36.982512,9.390091 -36.982512,8.089924 -9.298191,0"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+             d="m 95.778928,79.693223 36.982512,9.390091 -36.982512,8.089924 h -9.298191"
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         </g>
         <path
            transform="translate(4.767277,-0.72231467)"
-           style="fill:none;stroke:#000000;stroke-width:0.67236173;stroke-miterlimit:4;stroke-dasharray:none"
+           style="fill:none;stroke:#000000;stroke-width:0.672362;stroke-miterlimit:4;stroke-dasharray:none"
            d="m 82.335146,42.336467 c -0.676483,-0.357538 -1.296891,-0.793443 -1.846264,-1.294081 -1.620844,-1.47706 -2.623357,-3.517598 -2.623357,-5.771516 0,-4.507834 4.010052,-8.162156 8.956702,-8.162156 4.946651,0 8.956703,3.654322 8.956703,8.162156 0,3.187378 -2.004847,5.948038 -4.928057,7.291876"
            id="path8199-7-7"
            inkscape:connector-curvature="0"
            sodipodi:nodetypes="cssssc" />
         <path
            transform="translate(4.7672745,103.79662)"
-           style="fill:none;stroke:#000000;stroke-width:0.67236173;stroke-miterlimit:4;stroke-dasharray:none"
+           style="fill:none;stroke:#000000;stroke-width:0.672362;stroke-miterlimit:4;stroke-dasharray:none"
            d="m 91.011653,28.024747 c 2.797116,1.380789 4.696698,4.079048 4.696698,7.181621 0,4.507835 -3.939473,8.226658 -8.886124,8.226658 -4.94665,0 -8.956702,-3.654321 -8.956702,-8.162156 0,-2.960683 1.710162,-5.601566 4.299019,-7.032377"
            id="path8199-8-6-8"
            inkscape:connector-curvature="0"
@@ -733,412 +662,350 @@
       <path
          inkscape:connector-curvature="0"
          id="path8234-3-3"
-         d="m 103.74577,119.65104 13.37785,0"
-         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+         d="m 103.74577,119.65104 h 13.37785"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
-    <path
+    <ellipse
        transform="translate(452.79664,-65.342959)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-607-5"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(443.2822,-61.718408)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-6-1-1"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(436.33515,-59.30204)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-7-2"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(435.90194,-78.028874)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-5-7-0"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(425.4615,-56.885673)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-4-7-1"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(422.13899,-81.955474)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-2-7-6"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(382.26896,-98.56799)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-0-3-4"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(428.78401,-79.841152)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-9-3-0"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(377.43623,-90.110708)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-7-5-6"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(442.37607,-76.820689)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-3-9-1"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(341.19075,-66.249097)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-72-9-8"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(354.17871,-76.518649)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-60-8-9"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(347.83575,-71.383868)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-16-1-8"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(415.494,-84.069794)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-57-8-4"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(382.571,-107.02527)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-54-2-1"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(451.73948,-74.404325)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-12-6-4"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(361.42781,-80.747282)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-00-6-3"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(367.77077,-85.277975)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-14-0-9"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(13.089649,2.4163706)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-8"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(13.089649,2.4163706)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-80"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(14.297832,3.9265993)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-87"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(16.714198,5.7388736)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-78"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(21.848975,5.4368279)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-3"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(201.91757,-2.9470469)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-71"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(191.04392,-3.5511384)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-0"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(198.59506,-5.6654584)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-73"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(203.72984,-12.310464)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-4"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(409.39049,-85.936217)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-9"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(387.94525,-6.800236)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-6"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(386.43502,-1.061367)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-5"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(382.81047,-115.5367)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-1"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
     <g
        transform="translate(571.04465,-0.593608)"
        id="g8746-2-3-0"
@@ -1146,58 +1013,58 @@
        inkscape:export-xdpi="150"
        inkscape:export-ydpi="150">
       <g
-         style="stroke-width:0.67236173;stroke-miterlimit:4;stroke-dasharray:none"
+         style="stroke-width:0.672362;stroke-miterlimit:4;stroke-dasharray:none"
          transform="matrix(1.4297389,0,0,1.5471672,-20.100086,-14.566138)"
          id="g8221-9-8-9">
         <g
-           style="stroke-width:0.61950523;stroke-miterlimit:4;stroke-dasharray:none"
+           style="stroke-width:0.619505;stroke-miterlimit:4;stroke-dasharray:none"
            id="g8189-1-0-9"
            transform="matrix(1,0,0,1.1779208,0,-7.1693104)">
           <path
              inkscape:connector-curvature="0"
              id="path8167-3-1-6"
-             d="m 86.931818,41.061251 0,32.283074"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="M 86.931818,41.061251 V 73.344325"
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
              sodipodi:nodetypes="cc" />
           <path
              inkscape:connector-curvature="0"
              id="path8171-5-2-8"
              d="M 87.366376,72.885483 49.419948,91.513729 86.931818,104.25192"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
           <path
              inkscape:connector-curvature="0"
              id="path8177-9-5-3"
-             d="m 86.931818,104.25192 0,14.30183"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+             d="m 86.931818,104.25192 v 14.30183"
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
           <path
              inkscape:connector-curvature="0"
              id="path8179-8-0-4"
-             d="m 95.778928,41.18866 -0.288926,31.859268 69.197748,15.024145 -68.908822,15.890917 0,14.42951 0,-0.27214"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="M 95.778928,41.18866 95.490002,73.047928 164.68775,88.072073 95.778928,103.96299 v 14.42951 -0.27214"
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
              sodipodi:nodetypes="cccccc" />
           <path
              sodipodi:nodetypes="ccc"
              inkscape:connector-curvature="0"
              id="path8185-4-9-8"
              d="M 86.931818,79.664546 65.586174,90.38348 86.580399,97.194193"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
           <path
              sodipodi:nodetypes="ccc"
              inkscape:connector-curvature="0"
              id="path8187-0-4-4"
-             d="m 95.778928,79.693223 36.982512,9.390091 -36.982512,8.089924 -9.298191,0"
-             style="fill:none;stroke:#000000;stroke-width:0.61950523;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+             d="m 95.778928,79.693223 36.982512,9.390091 -36.982512,8.089924 h -9.298191"
+             style="fill:none;stroke:#000000;stroke-width:0.619505;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         </g>
         <path
            transform="translate(4.767277,-0.72231467)"
-           style="fill:none;stroke:#000000;stroke-width:0.67236173;stroke-miterlimit:4;stroke-dasharray:none"
+           style="fill:none;stroke:#000000;stroke-width:0.672362;stroke-miterlimit:4;stroke-dasharray:none"
            d="m 82.335146,42.336467 c -0.676483,-0.357538 -1.296891,-0.793443 -1.846264,-1.294081 -1.620844,-1.47706 -2.623357,-3.517598 -2.623357,-5.771516 0,-4.507834 4.010052,-8.162156 8.956702,-8.162156 4.946651,0 8.956703,3.654322 8.956703,8.162156 0,3.187378 -2.004847,5.948038 -4.928057,7.291876"
            id="path8199-7-7-9"
            inkscape:connector-curvature="0"
            sodipodi:nodetypes="cssssc" />
         <path
            transform="translate(4.7672745,103.79662)"
-           style="fill:none;stroke:#000000;stroke-width:0.67236173;stroke-miterlimit:4;stroke-dasharray:none"
+           style="fill:none;stroke:#000000;stroke-width:0.672362;stroke-miterlimit:4;stroke-dasharray:none"
            d="m 91.011653,28.024747 c 2.797116,1.380789 4.696698,4.079048 4.696698,7.181621 0,4.507835 -3.939473,8.226658 -8.886124,8.226658 -4.94665,0 -8.956702,-3.654321 -8.956702,-8.162156 0,-2.960683 1.710162,-5.601566 4.299019,-7.032377"
            id="path8199-8-6-8-9"
            inkscape:connector-curvature="0"
@@ -1206,294 +1073,250 @@
       <path
          inkscape:connector-curvature="0"
          id="path8234-3-3-2"
-         d="m 103.74577,119.65104 13.37785,0"
-         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+         d="m 103.74577,119.65104 h 13.37785"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
-    <path
+    <ellipse
        transform="translate(626.1384,-75.955473)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-607-5-5"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(633.23648,-71.726831)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-6-1-1-5"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(532.65525,-60.853183)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-7-2-3"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(603.20279,-83.20456)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-5-7-0-3"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(540.81048,-56.926586)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-4-7-1-3"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(622.96691,-59.947043)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-2-7-6-7"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(567.69255,-98.6089)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-0-3-4-4"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(594.27258,-85.620932)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-9-3-0-3"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(562.85982,-90.15162)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-7-5-6-8"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(610.58306,-81.090243)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-3-9-1-0"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(526.61434,-66.290011)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-72-9-8-8"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(542.32071,-78.069792)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-60-8-9-8"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(533.25934,-71.424782)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-16-1-8-0"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(579.1703,-90.15162)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-57-8-4-6"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(567.99459,-107.06618)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-54-2-1-8"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(618.73828,-78.673879)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-12-6-4-1"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(557.12095,-49.677483)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-00-6-3-9"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(550.1739,-83.808664)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-14-0-9-8"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(568.83815,-4.122742)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-9-9"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(630.75753,-62.417562)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-6-7"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(571.85861,-1.102278)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-5-2"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
+    <ellipse
        transform="translate(549.20518,-53.356192)"
-       sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="path8812-1-1-2"
-       sodipodi:cx="111.90794"
-       sodipodi:cy="204.21777"
-       sodipodi:rx="0.45306858"
-       sodipodi:ry="0.60409147"
-       d="m 112.36101,204.21777 a 0.45306858,0.60409147 0 1 1 -0.90613,0 0.45306858,0.60409147 0 1 1 0.90613,0 z"
        inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\ants.png"
        inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
+       inkscape:export-ydpi="150"
+       cx="111.90794"
+       cy="204.21777"
+       rx="0.45306858"
+       ry="0.60409147" />
   </g>
 </svg>

@@ -1,11 +1,11 @@
 \chapter{Statistics}\label{chap:statistics}
 \section{Random Variables and Probability Distributions}\label{sec:pdfs}
-Random variables can describe either discrete variables, such as the result from throwing a dice, or continuous variables such as measuring a distance. In order to learn about the likelihood that a random variable has a certain outcome, we can repeat the experiment many times and record the resulting \emph{random variates}\index{Variate (Random variable)}, that is the actual values of the random variable, and the number of times they occurred. For a perfectly cubic dice we will see that the random variable can hold natural numbers from 1 to 6, that have the same likelihood of 1/6.
+Random variables can describe either discrete variables, such as the result from throwing a dice, or continuous variables such as measuring a distance. In order to learn about the likelihood that a random variable has a certain outcome, we can repeat the experiment many times and record the resulting \textsl{random variates}\index{Variate (Random variable)}, that is the actual values of the random variable, and the number of times they occurred. For a perfectly cubic dice we will see that the random variable can hold natural numbers from 1 to 6, that have the same likelihood of 1/6.
 
-The function that describes the probability of a random variable to take certain values is called a \emph{probability distribution}\index{Probability Distribution}.
-As the likelihood of all possible random variates in the dice experiment is the same, the dice follows what we call a \emph{uniform distribution}\index{Uniform Distribution}. More accurately, as the outcomes of rolling a dice are discrete numbers, it is actually a discrete uniform distribution. Most random variables are not uniformly distributed, but some variates are more likely than others. For example, when considering a random variable that describes the sum of two simultaneously thrown dice, we can see that the distribution is anything but uniform:
+The function that describes the probability of a random variable to take certain values is called a \textsl{probability distribution}\index{Probability Distribution}.
+As the likelihood of all possible random variates in the dice experiment is the same, the dice follows what we call a \textsl{uniform distribution}\index{Uniform Distribution}. More accurately, as the outcomes of rolling a dice are discrete numbers, it is actually a discrete uniform distribution. Most random variables are not uniformly distributed, but some variates are more likely than others. For example, when considering a random variable that describes the sum of two simultaneously thrown dice, we can see that the distribution is anything but uniform:
 
-$\begin{array}{ll}
+\begin{equation}\begin{array}{ll}
 2: 1+1 & \rightarrow \frac{1}{6}\frac{1}{6}\\
 3: 1+2, 2+1 &\rightarrow 2\frac{1}{6}\frac{1}{6}\\
 4: 1+3, 2+2, 3+1 &\rightarrow 3\frac{1}{6}\frac{1}{6}\\
@@ -17,15 +17,15 @@ $\begin{array}{ll}
 10: 4+6, 5+5, 6+4 & \rightarrow 3\frac{1}{6}\frac{1}{6}\\
 11: 5+6, 6+5 & \rightarrow 2\frac{1}{6}\frac{1}{6}\\
 12: 6+6 & \rightarrow \frac{1}{6}\frac{1}{6}\\
-\end{array}$
+\end{array}\end{equation}
 
-As one can see, there are many more possibilities to sum up to a 7 than there are to a 3, e.g. While it is possible to store probability distributions such as this one as a look-up table to predict the outcome of an experiment (or that of a measurement), we can also calculate the sum of two random processes analytically (Section~\ref{sec:convolution}).
+As one can see, there are many more possibilities to sum up to a 7 than there are to a 3, e.g. While it is possible to store probability distributions such as this one as a look-up table to predict the outcome of an experiment (or that of a measurement), we can also calculate the sum of two random processes analytically (\cref{sec:convolution}).
 
 
 \subsection{The Normal Distribution}
-One of the most prominent distribution is the Gaussian or Normal Distribution. The \emph{Normal distribution}\index{Normal Distribution}\index{Gaussian Distribution} is characterized by a \emph{mean} and a \emph{variance}. Here, the mean corresponds to the average value of a random variable (or the peak of the distribution) and the variance is a measure of how broadly variates are spread around the mean (or the width of the distribution).
+One of the most prominent distribution is the Gaussian or Normal Distribution. The \textsl{Normal distribution}\index{Normal Distribution}\index{Gaussian Distribution} is characterized by a \textsl{mean} and a \textsl{variance}. Here, the mean corresponds to the average value of a random variable (or the peak of the distribution) and the variance is a measure of how broadly variates are spread around the mean (or the width of the distribution).
 
- The Normal distribution is defined by the following function
+The Normal distribution is defined by the following function
  \begin{equation}
 f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
 \end{equation}
@@ -33,8 +33,11 @@ where $ \mu$ is the mean and $ \sigma^2$ the variance. ($ \sigma$ on its own is 
 
 \begin{figure}
 	\centering
-		\includegraphics[width=\textwidth]{figs/Normal_Distribution_PDF}
-	\caption{Normal distribution for different variances and $\mu=0$.}
+	% \includegraphics[width=\textwidth]{figs/Normal_Distribution_PDF}
+    \def\svgwidth{\textwidth}
+    \import{./figs/}{Normal_Distribution.pdf_tex}
+	\caption{Normal distribution for different variances and $\mu=0$.
+    \td{I have absolutely no idea why there are these numbers in the middle of the plot}}
 	\label{fig:Normal_Distribution_PDF}
 \end{figure}
 
@@ -52,14 +55,14 @@ or in other words, we calculate the deviation of each random variable from the m
 
 
 \subsection{Normal distribution in two dimensions}
-The Normal Distribution is not limited to random processes with only one random variable. For example, the X/Y position of a robot in the plane is a random process with two dimensions. In case of a multi-variate distribution with $k$ dimensions, the random variable $ X$ is a k-dimensional vector of random variables, $ \mu$ is a k-dimensional vector of means, and $ \sigma$ gets replaced with $ \Sigma$,  a k-by-k dimensional \emph{covariance matrix}\index{Covariance Matrix} (a matrix that carries the variances of each random variable in its diagonal).
+The Normal Distribution is not limited to random processes with only one random variable. For example, the X/Y position of a robot in the plane is a random process with two dimensions. In case of a multi-variate distribution with $k$ dimensions, the random variable $ X$ is a k-dimensional vector of random variables, $ \mu$ is a k-dimensional vector of means, and $ \sigma$ gets replaced with $ \Sigma$,  a k-by-k dimensional \textsl{covariance matrix}\index{Covariance Matrix} (a matrix that carries the variances of each random variable in its diagonal).
 
 \section{Conditional Probabilities and Bayes Rule}\label{sec:bayesrule}
-Let $A$ and $B$ be random events with probabilities $P(A)$ and $P(B)$. We can now say that the probability $P(A \cap B)$ that event $A$ \emph{and} $B$ happen is given by
+Let $A$ and $B$ be random events with probabilities $P(A)$ and $P(B)$. We can now say that the probability $P(A \cap B)$ that event $A$ \textsl{and} $B$ happen is given by
 \begin{equation}\label{eq:conditionalprob}
 P(A \cap B)=P(A)P(B|A)=P(B)P(A|B)
 \end{equation}
-Here, $P(B|A)$ is the \emph{conditional probability}\index{Conditional Probability} that $B$ happens, knowing that event $A$ happens. Likewise, $P(A|B)$ is the probability that event $A$ happens given that $B$ happens.
+Here, $P(B|A)$ is the \textsl{conditional probability}\index{Conditional Probability} that $B$ happens, knowing that event $A$ happens. Likewise, $P(A|B)$ is the probability that event $A$ happens given that $B$ happens.
 
 Bayes' Rule\index{Bayes' Rule} relates a conditional probability to its inverse. In other words, if we know the probability of event $A$ to happen given that event $B$ is happening, we can calculate the probability of $B$ to occur given that $A$ is happening. Bayes' rule can be derived from the simple observation that the probability of $A$ and $B$ to happen together ($P(A \cap B)$) is given by $P(A)P(B|A)$ or the probability of $A$ to happen and the probability of $B$ to happen given that $A$ happens (Equation~\ref{eq:conditionalprob}).
 From this, deriving Bayes' rule is straightforward:
@@ -73,7 +76,7 @@ Let $X$ and $Y$ be the random variables associated with the numbers shown on two
 \begin{equation}
 P(Z=z)=\sum_{k=-\infty}^{\infty}P(X=k)P(Y=z-k)
 \end{equation}
-which is the exact definition of a \emph{convolution}\index{Convolution}, also written as
+which is the exact definition of a \textsl{convolution}\index{Convolution}, also written as
 \begin{equation}
 P(Z)=P(X)\star P(Y)
 \end{equation}

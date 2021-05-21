@@ -1,0 +1,114 @@
+%% Creator: Inkscape 1.0.2 (e86c870879, 2021-01-15, custom), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'backpropnotation3.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{747.80492587bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.56977697)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{backpropnotation3.pdf}}%
+    \put(0.6868441,0.25885111){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0.41860081,0.4680108){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w^m_{1,1}$\end{tabular}}}}%
+    \put(0.62865282,0.31585764){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\small$m-th$ layer\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{backpropnotation3.pdf}}%
+    \put(0.41981022,0.04237899){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w^m_{r_{m-1},1}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{backpropnotation3.pdf}}%
+    \put(0.84527365,0.25868708){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\small$g()$\end{tabular}}}}%
+    \put(0.90247429,0.2807218){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$o^m_1 / y$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{backpropnotation3.pdf}}%
+    \put(0.26524713,0.25164548){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}j\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{backpropnotation3.pdf}}%
+    \put(0.24850841,0.35086051){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}j-1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{backpropnotation3.pdf}}%
+    \put(0.24729104,0.1515175){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}j+1\end{tabular}}}}%
+    \put(0.26557364,0.55453705){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\small$k+1$ layer /\\$m-1$ layer\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{backpropnotation3.pdf}}%
+    \put(0.2407469,0.02255105){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$r_{k+1}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{backpropnotation3.pdf}}%
+    \put(0.25677217,0.47307986){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{backpropnotation3.pdf}}%
+    \put(0.03590925,0.25308466){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}j\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{backpropnotation3.pdf}}%
+    \put(0.01917052,0.35229957){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}j-1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{backpropnotation3.pdf}}%
+    \put(0.01795315,0.15295663){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}j+1\end{tabular}}}}%
+    \put(-0.0018903,0.53207844){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\small$k$ layer\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{backpropnotation3.pdf}}%
+    \put(0.01742663,0.02599596){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$r_k$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{backpropnotation3.pdf}}%
+    \put(0.02743429,0.47451899){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{backpropnotation3.pdf}}%
+    \put(0.09836724,0.47636992){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\small$g()$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{backpropnotation3.pdf}}%
+    \put(0.0983672,0.35059864){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\small$g()$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{backpropnotation3.pdf}}%
+    \put(0.09806156,0.25129847){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\small$g()$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=17]{backpropnotation3.pdf}}%
+    \put(0.09806156,0.15487662){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\small$g()$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=18]{backpropnotation3.pdf}}%
+    \put(0.0980616,0.03111118){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\small$g()$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=19]{backpropnotation3.pdf}}%
+    \put(0.33506147,0.47636992){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\small$g()$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=20]{backpropnotation3.pdf}}%
+    \put(0.33506144,0.35059864){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\small$g()$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=21]{backpropnotation3.pdf}}%
+    \put(0.3347558,0.25129847){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\small$g()$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=22]{backpropnotation3.pdf}}%
+    \put(0.3347558,0.15487662){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\small$g()$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=23]{backpropnotation3.pdf}}%
+    \put(0.33475584,0.0291053){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\small$g()$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=24]{backpropnotation3.pdf}}%
+    \put(0.41994955,0.36561291){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w^m_{j-1,1}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=25]{backpropnotation3.pdf}}%
+    \put(0.42090166,0.27501967){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w^m_{j,1}$\end{tabular}}}}%
+    \put(0.41929787,0.15044746){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w^m_{j+1,1}$\end{tabular}}}}%
+    \put(0.7464609,0.23593259){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a^m_1$\end{tabular}}}}%
+  \end{picture}%
+\endgroup%
