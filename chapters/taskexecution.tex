@@ -133,11 +133,29 @@ Nodes may also be parameterized, allowing for information computed from one node
 \subsection{Node Types}
 Within a Behavior Tree, nodes can generally be classified based on their connectivity (do they have children, and if so, how many?) and function (is this a utility node that determines control flow, or is it an action node executing the action itself?). The three primary node types are \emph{composite}, \emph{decorator}, and \emph{action}. 
 
-\emph{Composite nodes} have one or more children and are responsible for regulating the control flow. Three important examples of composite nodes are the \emph{sequence node}, \emph{selector node}, and \emph{parallel node}. A sequence node executes each of its child nodes in order, returning ``Failure" if a single one fails and ``Success" after all have finished successfully. A selector node executes each of its child nodes in order, but returns ``Success" once a single child node succeeds, only returning ``Failure" if all child nodes have failed. Sequence nodes can be thought of as analogous to an \emph{AND} conditional statement, while selector nodes are similar to an \emph{OR} conditional statement. Parallel nodes have $N>1$ children and attempts to execute its child nodes in parallel, returning ``Success" if $M$ or more children succeed and failure if more than $(N-M)$ children fail.
+\emph{Composite nodes} have one or more children and are responsible for regulating the control flow. Three important examples of composite nodes are the \emph{sequence node}, \emph{selector/fallback node}, and \emph{parallel node}. A sequence node executes each of its child nodes in order, returning ``Failure" if a single one fails and ``Success" after all have finished successfully. A selector (or fallback) node executes each of its child nodes in order, but returns ``Success" once a single child node succeeds, only returning ``Failure" if all child nodes have failed. Sequence nodes can be thought of as analogous to an \emph{AND} conditional statement, while selector nodes are similar to an \emph{OR} conditional statement. A parallel node has $N>1$ children and attempts to execute its child nodes in parallel, returning ``Success" if $M$ or more children succeed and failure if more than $(N-M)$ children fail, for any choice of $M\leq N$.
 
 \emph{Decorator nodes} have exactly one child node and perform transformations on its child node's outputs back to its parents. An example of a simple decorator node is the \emph{Inverter}, a node that inverts the return status of its child, effectively producing a \emph{NOT} operation: if the child node returns ``Success" then the decorator returns ``Failure", and vice versa. Another useful decorator node is one that returns ``Success" when its child returns a status of either ``Success" or ``Failure", allowing for the inclusion of action nodes where success is not critical for the behavior. Decorator nodes can also be designed to repeat the execution of its child, for instance until it returns a ``Success" status, until it returns a ``Failure" state, or endlessly (which is typically placed as the tree's root node to ensure continuous operation).
 
 \emph{Action nodes} have zero child nodes, and represent the execution of a discrete behavior. These nodes can use input parameters, return output values, and generally have any amount of complexity that the designer desires to program within them. Crucially, an entire Behavior Tree can be treated as a single action node, allowing for the composition of multiple Behavior Trees to build arbitrarily complex behaviors!
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{ ||c c c|| }
+		\hline
+		\hline
+		Node Class & Node Type & Symbol \\
+		\hline
+		Composite & Sequence & \fbox{$\rightarrow$} \\
+		Composite & Selector/Fallback & \fbox{?} \\
+		Composite & Parallel & \fbox{$\rightrightarrows$} \\
+		Decorator & Decorator & $\Diamond$ \\
+		Action & Action & \fbox{Text} \\
+		\hline
+		\hline
+	\end{tabular}
+	\caption{Common Behavior Tree nodes and their symbols.}
+\end{table}
 
 \todo{Insert pick and place BT figure, describe below}
 
