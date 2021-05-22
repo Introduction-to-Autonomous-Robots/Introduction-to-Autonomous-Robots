@@ -206,6 +206,9 @@ An action's preconditions are a set of symbols that need to be part of the curre
 
 For a robot to be able to get you a sandwich, a suitable goal state could be \textsc{robot has sandwich}=\emph{true}, possible actions \textsc{pick sandwich from fridge} and \textsc{open fridge door}, and initial states \textsc{sandwich in fridge}=\emph{true} and \textsc{fridge door closed}=\emph{true}.  An action \textsc{open fridge door} would then require \textsc{fridge door closed}=\emph{true} as a precondition and lead to \textsc{fridge door closed}=\emph{false} as a postcondition. The action \textsc{pick sandwich from fridge} would require \textsc{sandwich in fridge}=\emph{true} and \textsc{fridge door closed}=\emph{false} as preconditions and result in \textsc{robot has sandwich}=\emph{true}. A planner can now work backwards from the desired state to identify appropriate actions and then satisfy their preconditions recursively. In this case, the planner will discover the action \textsc{pick sandwich from fridge} and then identify \textsc{open fridge door} to satisfy the precondition \textsc{fridge door closed}=\emph{false}.
 
+
+
+
 Formally, an instance of a STRIPS problem is a quadruple $\langle P, O, I, G \rangle$:
 \begin{itemize}
 \item $P$ is a set of propositional variables that can be either true or false and exhaustively describe the world the robot operates in.
