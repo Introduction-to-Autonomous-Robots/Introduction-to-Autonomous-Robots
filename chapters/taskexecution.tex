@@ -139,57 +139,87 @@ Nodes may also be parameterized, allowing for information computed from one node
 \subsection{Node Types}
 Within a Behavior Tree, nodes can generally be classified based on their connectivity (do they have children, and if so, how many?) and function (is this a utility node that determines control flow, or is it an action node executing the action itself?). The three primary node types are \emph{composite}, \emph{decorator}, and \emph{action}.
 
-\emph{Composite nodes} have one or more children and are responsible for regulating the control flow. Three important examples of composite nodes are the \emph{sequence node}, \emph{selector node}, and \emph{parallel node}. A sequence node executes each of its child nodes in order, returning ``Failure" if a single one fails and ``Success" after all have finished successfully. A selector node executes each of its child nodes in order, but returns ``Success" once a single child node succeeds, only returning ``Failure" if all child nodes have failed. Sequence nodes can be thought of as analogous to an \emph{AND} conditional statement, while selector nodes are similar to an \emph{OR} conditional statement. Parallel nodes have $N>1$ children and attempts to execute its child nodes in parallel, returning ``Success" if $M$ or more children succeed and failure if more than $(N-M)$ children fail.
+\emph{Composite nodes} have one or more children and are responsible for regulating the control flow. Three important examples of composite nodes are the \emph{sequence node}, \emph{selector/fallback node}, and \emph{parallel node}. A sequence node executes each of its child nodes in order, returning ``Failure" if a single one fails and ``Success" after all have finished successfully. A selector (or fallback) node executes each of its child nodes in order, but returns ``Success" once a single child node succeeds, only returning ``Failure" if all child nodes have failed. Sequence nodes can be thought of as analogous to an \emph{AND} conditional statement, while selector nodes are similar to an \emph{OR} conditional statement. A parallel node has $N>1$ children and attempts to execute its child nodes in parallel, returning ``Success" if $M$ or more children succeed and failure if more than $(N-M)$ children fail, for any choice of $M\leq N$.
 
 \emph{Decorator nodes} have exactly one child node and perform transformations on its child node's outputs back to its parents. An example of a simple decorator node is the \emph{Inverter}, a node that inverts the return status of its child, effectively producing a \emph{NOT} operation: if the child node returns ``Success" then the decorator returns ``Failure'', and vice versa. Another useful decorator node is one that returns ``Success'' when its child returns a status of either ``Success'' or ``Failure'', allowing for the inclusion of action nodes where success is not critical for the behavior. Decorator nodes can also be designed to repeat the execution of its child, for instance until it returns a ``Success'' status, until it returns a ``Failure'' state, or endlessly (which is typically placed as the tree's root node to ensure continuous operation).
 
 \emph{Action nodes} have zero child nodes, and represent the execution of a discrete behavior. These nodes can use input parameters, return output values, and generally have any amount of complexity that the designer desires to program within them. Crucially, an entire Behavior Tree can be treated as a single action node, allowing for the composition of multiple Behavior Trees to build arbitrarily complex behaviors!
 
-\todo{Insert pick and place BT figure, describe below}
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{ ||c c c|| }
+		\hline
+		\hline
+		Node Class & Node Type & Symbol \\
+		\hline
+		Composite & Sequence & \fbox{$\rightarrow$} \\
+		Composite & Selector/Fallback & \fbox{?} \\
+		Composite & Parallel & \fbox{$\rightrightarrows$} \\
+		Decorator & Decorator & $\Diamond$ \\
+		Action & Action & \fbox{Text} \\
+		\hline
+		\hline
+	\end{tabular}
+	\caption{Common Behavior Tree nodes and their symbols.}
+\end{table}
 
 \subsection{Behavior Tree Execution}
-For each unit of time (e.g., control cycle) that passes, a preorder tree traversal occurs where nodes are recursively visited and evaluated left-to-right, commonly described as propagating a ``tick'' signal through the tree. In doing so, each parent node calls on its child nodes in order to retrieve their status. If a child node returns ``Success'', the parent node will move on to its next child node. If a child node returns a status of ``Running'' then the parent node will return ``Running'' without moving on to the next child node unless it permits running multiple child nodes in parallel. If a child node returns a status of ``Failure'', its behavior will depend on the type of node of the parent, for example returning ``Failure'' if the parent is a sequence node or moving on to the next child node if it is a selector node.
+For each unit of time (e.g., control cycle) that passes, a preorder tree traversal occurs where nodes are recursively visited and evaluated left-to-right, commonly described as propagating a ``tick'' signal through the tree. In doing so, each parent node calls on its child nodes in order to retrieve their status. If a child node returns ``Success'', the parent node will move on to its next child node. If a child node returns a status of ``Running'' then the parent node will return ``Running'' without moving on to the next child node unless it permits running multiple child nodes in parallel. If a child node returns a status of ``Failure'', its behavior will depend on the type of node of the parent, for example returning ``Failure'' if the parent is a sequence node or moving on to the next child node if it is a selector node. Consider the example of a robotic manipulator inserting a peg into a hole in Figure \ref{BTpeg}: the first tick through the tree will trigger the \emph{Move Peg to Surface} action. Subsequent ticks will be absorbed into this action until it returns a status other than ``Running'', at which point the next action will be triggered and the same absorption of ticks will occur in the new action being executed. If any single action node returns a status of ``Failure", the entire behavior will result in a ``Failure" status. A slightly more complex behavior tree is demonstrated via the \emph{Pick Square Peg} behavior shown in Figure \ref{BTPick}, which allows the robot to check whether or not it is holding a peg already, only moving its gripper for the pick action if this check fails.
 
 \begin{figure}
-    \centering
-    \begin{forest}
-    {for tree={%
-        minimum height = 4ex,
-        minimum width = 4ex,
-        draw,
-        parent anchor=south,
-        child anchor=north,
-        align=center
-        }
-    }
-        [{\scriptsize Tilt Insert}\\ $\longrightarrow^*$
-            [\scriptsize Rotate\\ $\theta_{tilt}$]
-            [\scriptsize Move to\\ \scriptsize Contact \normalsize $-Z$]
-            [\scriptsize Rotate\\ $-\theta_{tilt}-\delta \theta$]
-            [\scriptsize Rotate\\ $\delta \theta$]
-            [\scriptsize Hand at\\ $Z_{insert}$, ellipse]
-        ]
-    \end{forest}
-    \caption{Tilt Insert Skill BT. The sequence first ..., then moves downwards until contact is made, rotates ... }
-    \label{BTtilt}
+	\centering
+	\begin{forest}
+		{for tree={%
+				minimum height = 4ex,
+				minimum width = 4ex,
+				draw,
+				parent anchor=south,
+				child anchor=north,
+				align=center
+			}
+		}
+		[{\scriptsize Pick Square Peg}\\ $?$
+		[{\scriptsize Sense if peg already in gripper}]
+		[{\scriptsize Get Peg\\ $\rightarrow$}
+		[{\scriptsize Locate Peg}]
+		[{\scriptsize Open Gripper}]
+		[{\scriptsize Move Gripper to Peg}]
+		[{\scriptsize Close Gripper \\ \scriptsize around peg}]
+		]
+		]
+	\end{forest}
+	\caption{Behavior Tree for a peg picking task. First, the selector node will check if a peg is already in the robot's gripper. If it is not, the first action node will fail and the \emph{Get Peg} behavior will execute, returning ``Success'' only if the gripper is successfully closed around the peg.}
+	\label{BTpick}
 \end{figure}
 
-\begin{enumerate}
-\item Programs are organized into nodes, each implementing certain functionality.
-\item A node can have sub-nodes, like leafs of a tree, that are sequentially executed.
-\item Each node can be \emph{running}, \emph{failed}, or \emph{successful}.
-\item Execution within a node is triggered by a so-called \emph{tick} received by its parent node.
-\item Nodes report their state back to their parent node.
-\item A parent node issues ticks to its child nodes one by another, only moving to the next of its child nodes once the last one has returned \emph{successful}. (Or when a single one returns successful: ``Any" vs. ``All" type node)
-\item As long as a child node is returning \emph{running}, it continues to receive ticks.
-\item If a node fails, this information can be processed by the parent node who either passes it up, or restart the sequence of child nodes.
-\item Popular in video game AI, give Minecraft example
-\end{enumerate}
+\begin{figure}
+	\centering
+	\begin{forest}
+		{for tree={%
+				minimum height = 4ex,
+				minimum width = 4ex,
+				draw,
+				parent anchor=south,
+				child anchor=north,
+				align=center
+			}
+		}
+		[{\scriptsize Insert Square Peg}\\ $\longrightarrow$
+		[{\scriptsize Move Peg \\ \scriptsize to Surface}]
+		[{\scriptsize Move Peg\\ \scriptsize over hole}]
+		[{\scriptsize Rotate Peg\\ \scriptsize until aligned}]
+		[{\scriptsize Move Peg \\ \scriptsize down until \\ \scriptsize new contact.}]
+		]
+	\end{forest}
+	\caption{Behavior Tree for a peg insertion task. A sequence node triggers the execution of movement actions that align a peg over a hole and lower it until the gripper makes contact with the surface.}
+	\label{BTpeg}
+\end{figure}
+
 
 \section{Mission Planning}\label{sec:strips}
-So far, we have seen how reactive behaviors can be composed into more complex programs using Finite State Machines and Behavior trees. Although Behavior Trees facilitate dealing with the exploding number of possible state transitions by making them implicit, the programmer still needs to define the entire program flow. Consider again a pick-and-place task. This time, we will not simply grasp a new item in case the object falls out of the hand, but try to find it on the table and try to pick it up from there. In a further advanced version, we might also go on and search for the object on the floor if it cannot be find on the table. But why not even have the robot replace an object from a warehouse if it cannot be found, or even mail order a new version? Obviously, it is very cumbersome to foresee all these eventualities when programming a robot. We therefore need a framework to make it easier to compose behaviors in real-time. This is mission planning.
+So far, we have seen how reactive behaviors can be composed into more complex programs using Finite State Machines and Behavior Trees. Although Behavior Trees facilitate dealing with the exploding number of possible state transitions by making them implicit, the programmer still needs to define the entire program flow. Consider again a pick-and-place task. This time, we will not simply grasp a new item in case the object falls out of the hand, but try to find it on the table and try to pick it up from there. In a further advanced version, we might also go on and search for the object on the floor if it cannot be find on the table. But why not have the robot replace an object from a warehouse if it cannot be found, or even mail order a new version? Obviously, it is very cumbersome to foresee all these eventualities when programming a robot. We therefore need a framework to make it easier to compose behaviors in real-time. This is where \emph{mission planning} excels.
 
-An example of mission planning is described in \cite{saito2011semantic} where a robot is tasked to deliver a sandwich. The robot initially moves to a fridge, opens it and looks for a sandwich there, and then decides to take the elevator to the sandwich store in the basement of the University of Tokyo's engineering tower. Here, the robot is not only piecing together behaviors as it goes, but also using what is known as ``semantic planning'' to select the right actions, exploiting data bases of common sense knowledge in textual form. How to represent such knowledge in an efficient and general manner is an active research topic in robotics and artificial intelligence and goes beyond the scope of this introductory book. Yet, we will describe the basic algorithms that will allow you to compose complex behaviors during run-time, thereby generating much more complex robot responses than could ever be accomplished using hand-coding.
+An example of mission planning is described in \cite{saito2011semantic} where a robot is tasked to deliver a sandwich. The robot initially moves to a fridge, opens it and looks for a sandwich there, and then decides to take the elevator to the sandwich store in the basement of the University of Tokyo's engineering tower. Here, the robot is not only piecing together behaviors as it goes, but also using what is known as ``semantic planning'' to select the right actions, exploiting databases of common sense knowledge in textual form. How to represent such knowledge in an efficient and general manner is an active research topic in robotics and artificial intelligence and goes beyond the scope of this introductory book. Yet, we describe the basic algorithms that will allow you to compose complex behaviors during run-time, thereby generating much more complex robot responses than could ever be accomplished using hand-coding.
 
 \subsection{The General Problem Solver and STRIPS}
 One of the first planning frameworks has been introduced in 1959 as ``General Problem Solver'' (GPS) \cite{newell1959report,}, an idea that was popularized, refined and actually demonstrated on real robots later on as the ``STanford Research Institute Problem Solver'' (STRIPS)\cite{fikes1971strips}.
@@ -235,5 +265,7 @@ Other challenges with STRIPS planning are exogenous events that change the envir
 \item A FSM implements the following behavior: perform photo-taxis until an obstacle is it; then perform wall-following for 10 time steps. Draw an appropriate Finite State Machine. How many states do you need?
 \item A robot runs at a 100ms loop time. Performing sensor readings takes 3ms, odometry computations 15ms, and executing logic takes 30ms on average. Which of these operations is likely to fail if the task logic takes 80ms?
 \item Formulate both a Finite State Machine and a Behavior tree for the game ``Rats Life'', label each state and conditional transition, and compare the two representations.
-\item Formally describe a STRIPS instance for a robotic sandwich retrieval problem in which the fridge door is closed after the robot has retrieved a sandwhich. 
+\item Construct a behavior tree that enables a single robot manipulator arm to sort red, green, and blue blocks on a table into bins by color.
+\item Construct a behavior tree that enables a bi-manual (two manipulator arm) robot to sort red, green, and blue blocks on a table into bins by color with both arms.
+\item Formally describe a STRIPS instance for a robotic sandwich retrieval problem in which the fridge door is closed after the robot has retrieved a sandwich. 
 \end{enumerate}
