@@ -1,5 +1,5 @@
 \chapter{Actuators}
-The first part of this book has been concerned with different mechanisms, helping us understand how robots look like and how they move. We have then learned how robots can get information about their internal states and the world around them. This part will introduce the devices that allow to turn energy into rotation and translation. We generally call such devices \textsl{actuators}\index{Actuators}. The goals of this chapter are to:
+The first part of this book has been concerned with different mechanisms, helping us understand how robots look like and how they move. We have then learned how robots can get information about their internal states and the world around them. We will conclude this part by introducing the devices that allow to turn energy into rotation and translation. We generally call such devices \textsl{actuators}\index{Actuators}. The goals of this chapter are to:
 
 \begin{itemize}
 \item Provide a general overview over the different types of actuators and what their advantages and drawbacks are.
@@ -13,10 +13,10 @@ Due to the dominance of rolling robots, the electric motor \cite{hughes2019elect
 
 \subsection{AC and DC motors}
 
-Electric motors turn electric energy and into kinetic energy via electromagnetism. More specifically, an electric current running through a wire creates a circular magnetic field around the wire due to Ampere's law. This effect can be amplified by winding the wire into a coil. Due to the coil shape, the magnetic fields of all wires superimpose and create a strong magnetic field in the center of the coil. This field can be used to magnetize a ferromagnetic material such as iron, which in turn amplifies the magnetic field. The resulting \textsl{magnetomotive force} (MMF)\index{Magnetomotive force}\index{MMF---magnetomotive force} is directly proportional to the number of windings of the coil and the current running through it.
+Electric motors turn electric energy into kinetic energy via electromagnetism. More specifically, an electric current running through a wire creates a circular magnetic field around the wire due to Ampere's law. This effect can be amplified by winding the wire into a coil. Due to the coil shape, the magnetic fields of all wires superimpose and create a strong magnetic field in the center of the coil. This field can be used to magnetize a ferromagnetic material such as iron, which in turn amplifies the magnetic field. The resulting \textsl{magnetomotive force} (MMF)\index{Magnetomotive force}\index{MMF---magnetomotive force} is directly proportional to the number of windings of the coil and the current running through it.
 
 \subsection{AC motor}
-In a motor, an electromagnetic coil is usually paired with a permanent magnet. As magnets of opposite polarity repel each other, this effect can be used to create motion. In its simplest form, an electric motor consists of a simple coil that can spin between two permanent magnets, one oriented with its south pole to the center, the other with its north pole. Attaching a shaft to the central coil would then allow to turn a wheel, for example. The turning part with the shaft is known as the \textsl{rotor}\index{Rotor}, whereas the static part is known as the \textsl{stator}\index{Stator}. When running an electric current in the coil, the iron core will get magnetized. Its north pole will then be attracted by the south pole of one magnet in the stator and repelled by the north pole of the other permanent magnet in the stator, while the opposite will happen to its south pole.
+In a motor, an electromagnetic coil is usually paired with a permanent magnet. As magnets of opposite polarity repel each other, this effect can be used to create motion. In its simplest form, an electric motor consists of a simple coil that can spin between two permanent magnets, one oriented with its south pole to the center, the other with its north pole (Figure \ref{fig:motor}, \emph{a}). Attaching a shaft to the central coil would then allow to turn a wheel, for example. The turning part with the shaft is known as the \textsl{rotor}\index{Rotor}, whereas the static part is known as the \textsl{stator}\index{Stator}. When running an electric current in the coil, the iron core will get magnetized. Its north pole will then be attracted by the south pole of one magnet in the stator and repelled by the north pole of the other permanent magnet in the stator, while the opposite will happen to its south pole.
 
 In order for this simple motor to not get stuck in its new configuration, we will need to swap the direction of the rotor's magnetic field. This can be achieved by swapping the direction of the current running through the coil. This happens by itself when using so-called \textsl{alternating current}\index{Alternating Current}, or \textsl{AC}\index{AC---Alternating Current}. AC is commonly used in the power-grid, where the direction of current changes at 50 or 60 Hz. The speed of the motor now depends on the frequency of the AC, and its maximum torque is given by its current.
 
@@ -24,9 +24,15 @@ AC motors exist in different forms, often using multiple coils in parallel pairs
 
 \subsection{DC motor}
 
-As the speed of an AC motor is constant, it is mostly used in heavy industrial applications. An alternative design is to generate the desired switch in directionality by a so-called \textsl{commutator}\index{commutator}. This allows running the motor with what is known as \textsl{direct current}\index{Direct Current}, or \textsl{DC}\index{DC---Direct current}, in which the direction of current does not change. DC is what is commonly available from batteries or from a ``wall wart'', that turns AC into DC by means of a transformer and a rectifier.
+As the speed of an AC motor is constant, it is mostly used in heavy industrial applications. An alternative design is to generate the desired switch in directionality by a so-called \textsl{commutator}\index{commutator} (Figure \ref{fig:motor}, \emph{b}). This allows running the motor with what is known as \textsl{direct current}\index{Direct Current}, or \textsl{DC}\index{DC---Direct current}, in which the direction of current does not change. DC is what is commonly available from batteries or from a ``wall wart'', that turns AC into DC by means of a transformer and a rectifier.
 
-\td{Draw figure showing a simple coil spinning in a magnetic field (left), a commutator circuit (middle), and the activation pattern of a stepper motor (right)}
+\begin{figure}
+\centering
+    % \includegraphics[width=\columnwidth]{figs/gripper-2-dof}
+    \def\svgwidth{\textwidth}
+    \import{./figs/}{motor.pdf_tex}
+    \caption{Left: A simple motor consisting of a coil and two permanent magnets. In it's current configuration, the electromagnetic force will result in the coil to turn 180 degrees. Right: A simple commutator, which will switch the direction of the current and therefore of the magnetic field as the coil rotates.}\label{fig:motor}
+\end{figure}
 
 The commutator now provides positive and negative voltage at a series of interleaving pads. These can be placed along the circumference of the stator and provide power to the rotor coil via metal brushes attached to the shaft. By this, the central coil will receive power at the right polarity no matter where it is. As with the AC motor, there exist multiple designs using pairs of parallel coils, various number of brushes, and commutators mounted either in the stator or the rotor.
 
