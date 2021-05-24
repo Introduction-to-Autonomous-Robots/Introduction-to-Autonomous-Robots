@@ -85,7 +85,7 @@ where $\lambda$ is some constant. One can show that the resulting controller tha
 
 This is known as the \textsl{Damped Least-Squares} method.\index{Damped Least-Squares Method} Problems with this approach are local minima and singularities of the mechanism, which might render this solution infeasible.
 
-\subsection{Under-actuation and Over-actuation}
+\subsection{Under-actuation and Over-actuation}\label{sec:kinematics:diff:underover}
 
 As detailed at the beginning of this Chapter, kinematics is concerned with analyzing the mapping between our control variables (i.e. the robot's motors represented by the $n$ DoFs in joint space) and their effect on the motion of the robot (our $m$ DoFs in task/configuration space). These two spaces might have different dimensionality, and the relation between these two dimensions greatly affects how we can solve the kinematic problem. It is convenient to analyze these differences by looking at the Jacobian $J$, since the size of the matrix is $m \times n$; in all, we have three different conditions:
 

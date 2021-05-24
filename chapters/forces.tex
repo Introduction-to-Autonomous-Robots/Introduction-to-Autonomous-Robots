@@ -99,8 +99,6 @@ Interestingly, this equation clearly shows how statics acts as a middle ground b
 F=\left[\begin{array}{c} 0\\ 0\\ -5N\\ 0\\ 0\\ 0\\ \end{array} \right].
 \end{equation}
 
-
-
 % ---either torques for revolute joints or forces for prismatic joints---
 
 % joint torques $\tau$
@@ -109,6 +107,12 @@ F=\left[\begin{array}{c} 0\\ 0\\ -5N\\ 0\\ 0\\ 0\\ \end{array} \right].
 % In this Chapter, we will investigate the role of the Jacobian in relating joint torques $\tau$ with forces and moments $[f \ m]^T$ applied at the end-effector--and we are going to do all of this in equilibrium (or \textsl{static}) configurations.
 
 \section{Kineto-statics Duality}
+
+The analogy between \cref{eq:kinematics:diff:fwd,eq:forces:statics} by means of the Jacobian makes it interesting to analyze \cref{eq:forces:statics} similarly to what we did \cref{sec:kinematics:diff,sec:kinematics:diff:underover}.
+This analogy is defined as \textsl{kineto-statics duality}\index{Kineto-Statics Duality}, and helps the novice roboticist to more intuitively correlate these two levels of abstraction.
+More specifically, singular configurations are as relevant to the statics problem as they are to the differential kinematics one, but they have different physical interpretation.
+In a singular configuration, both the Jacobian and its transpose lose rank---as transposing a matrix does not affect its rank. However, while loss of full rank affects the \textsl{inverse} kinematics problem (i.e. its solution ``explodes'' and joint speeds go to infinity), in this case it is the \textsl{direct} statics mapping that is affected by it: in a singular configuration, forces exerted by the robot on the environment go to infinity.
+This is an additional (and arguably more compelling) reason to avoid singularities at all costs: the robot would move very fast \textsl{and} exert strong forces on anything on its path.
 
 \section{Manipulability}
 
@@ -128,4 +132,5 @@ F=\left[\begin{array}{c} 0\\ 0\\ -5N\\ 0\\ 0\\ 0\\ \end{array} \right].
 \item What can be done by just looking at the static problem instead? (Hint: you are still considering an exchange of forces here)
 \item What can you do with a robot from a purely kinematic perspective? (Hint: this is typically easy)
 \end{enumerate}
+\item Why are singular configuration dangerous for the robot and its surroundings? Think about the relationship between forces and velocities.
 \end{enumerate}
