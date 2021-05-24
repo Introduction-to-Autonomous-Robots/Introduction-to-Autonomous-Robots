@@ -61,7 +61,7 @@ It would now be desirable to just invert $J$ in \cref{eq:kinematics:diff:fwd} in
 In the case above, the velocity wrench $[v \ \omega]^T$ is $6-$dimensional, and this means that $n$ should be equal to $6$: therefore, inversion of $J$ is only possible if the robot under consideration is equipped with exactly $6$ actuators/joints.
 If this is not the case, we can use the pseudo-inverse computation:
 \begin{equation}
-J^+=\frac{J^T}{JJ^T}=J^T(JJ^T)^{-1}
+J^+=\frac{J^T}{JJ^T}=J^T(JJ^T)^{-1}\label{eq:kinematics:diff:pseudoinverse}
 \end{equation}
 As you can see, $J^T$ cancels from the equation leaving $1/J$, while being applicable to non-quadratic matrices.
 We can now write a simple feedback controller that drives our error $e$ as the difference between desired and actual position to zero:
@@ -85,7 +85,7 @@ where $\lambda$ is some constant. One can show that the resulting controller tha
 
 This is known as the \textsl{Damped Least-Squares} method.\index{Damped Least-Squares Method} Problems with this approach are local minima and singularities of the mechanism, which might render this solution infeasible.
 
-\subsection{Under-actuation and Over-actuation}
+\subsection{Under-actuation and Over-actuation}\label{sec:kinematics:diff:underover}
 
 As detailed at the beginning of this Chapter, kinematics is concerned with analyzing the mapping between our control variables (i.e. the robot's motors represented by the $n$ DoFs in joint space) and their effect on the motion of the robot (our $m$ DoFs in task/configuration space). These two spaces might have different dimensionality, and the relation between these two dimensions greatly affects how we can solve the kinematic problem. It is convenient to analyze these differences by looking at the Jacobian $J$, since the size of the matrix is $m \times n$; in all, we have three different conditions:
 
@@ -95,7 +95,7 @@ As detailed at the beginning of this Chapter, kinematics is concerned with analy
 \item $n \geq m \rightarrow$ The robot is \textsl{over actuated}, and the kinematics problem is \textsl{kinematically redundant}. The Jacobian $J$ is ``fat'', because there are more rows $n$ than columns $m$, and not invertible any more; the only way to solve the inverse kinematics problem is through the pseudo-inverse $J^+$ (and similar/more advanced approaches). In this scenario, it is useful to determine the redundancy coefficient $n-m$ which affects the space of solutions of the inverse kinematic problem.
 \end{itemize}
 
-Over and under actuation are important design considerations to keep in mind when choosing a robot for a particular task.
+Over- and under-actuation are important design considerations to keep in mind when choosing a robot for a particular task.
 In a \textsl{kinematically deficient} scenario, the robot is not capable of full motion in task space, as it does not have sufficient degrees of freedom in joint space to ``cover'' every possible configuration in task space. This does not mean that the robot is useless! It can still perform tasks---just not \textsl{every} possible task you might ask it to perform.
 Conversely, if the problem is \textsl{kinematically redundant}, the robot has more joint DoFs available than it needs, and there exist an infinite number of inverse kinematics solutions in non-singular configurations.
 Contrarily to what one may think, redundancy is actually a great feature to have in a robot system, in that it enables flexibility and versatility in solving the kinematic problem: that is, it is possible to choose \textsl{the best} solution among many, and one that satisfies additional constraints and requirements.
