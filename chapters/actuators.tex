@@ -111,18 +111,20 @@ Passive safety is the ability to maintain a robot's safety even in the absence o
 An important failure mode that can only be addressed by a passive safety mechanism is \textsl{power failure}\index{Power failure}. In the absence of power, a mobile robot might keep driving (based on inertia) and hit an object, a humanoid robot might collapse, and a gripper might let a heavy (or sharp) payload fall. These problems can be addressed by always-on breaking mechanisms that engage in the absence of power or by using gear ratios that are so high that the overall mechanism is not back-driveable.
 
 \section{Exercises}
-\begin{itemize}
+\begin{enumerate}
 \item You are designing a robotic arm. Your goal is to maximize strength, while minimizing weight. Which kind of electric motor do you chose and why?
 \item You are designing a gantry system for a 3D printer that can move the print head left, right, up and down.
-\begin{itemize}
+\begin{enumerate}
 \item What kind of electric motor is your preferred choice and why?
 \item The motor you selected requires 5V and up to 1A. Select an appropriate driver board from an online vendor.
 \item What additional components would you need to realize the gantry with a brushless DC motor?
-\end{itemize}
-\item A motor you selected for the shoulder joint of a robotic arm is to weak and stalls under load. Assuming power is provided uninterrupted, what will eventually lead to permanent damage?
+\end{enumerate}
+\item A motor you selected for the shoulder joint of a robotic arm is too weak and stalls under load. Assuming power is provided uninterrupted, what will eventually lead to permanent damage?
 \item The key component in a motor controller has a so-called ON-resistance of 0.2$\Omega$. Your motor requires 10A at average load.
-\begin{itemize}
+\begin{enumerate}
 \item What is the power dissipated at heat?
 \item Search the internet for thermal heat sinks. What are the key quantities to look out for here?
-\end{itemize}
-\end{itemize}
+\end{enumerate}
+\item Compare the parallel jaw gripper with a 2-bar linkage gripper. Discuss their safety properties in case of power failure.
+\item The end-effector of a ``soft'' robotic arm is hitting an object with 3 m/s. Discuss its safety when compared with a conventional robotic arm and state the assumptions you are making. 
+\end{enumerate}
