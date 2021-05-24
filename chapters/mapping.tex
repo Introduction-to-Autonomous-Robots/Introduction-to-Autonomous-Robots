@@ -71,12 +71,13 @@ RGB-D Mapping uses a variant of ICP that is enhanced by SIFT features for point 
 
 As ICP only works when both point clouds are already closely aligned, which might not be the case for a fast moving robot with a relatively noisy sensor (the XBox Kinect has an error of 3cm for a few meters of range vs. millimeters in laser range scanners), RGB-D Mapping uses RANSAC to find an initial transformation. Here, RANSAC works as for line fitting: it keeps guessing possible transformations for 3 pairs of SIFT feature points and then counts the number of inliers when matching the two point clouds, one of which being transformed using the random guess.
 
-\section{Dense Mapping}
-
-\subsection{The Distance Transform}
-
-\subsection{Octomap}
-
-\subsection{TSDF Fusion}
+%% TODO CHRIS: Add dense mapping section.
+%\section{Dense Mapping}
+%
+%\subsection{The Distance Transform}
+%
+%\subsection{Octomap}
+%
+%\subsection{TSDF Fusion}
 
 
