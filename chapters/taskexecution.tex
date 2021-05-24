@@ -4,7 +4,9 @@ In its most basic implementation, sensors and actuators can be directly tied to 
 This chapter introduces these basic principles as well as their implementation, starting with basic reactive controllers (Section \ref{sec:braitenberg}), then introduces more advanced concepts that let the robot make basic ``if'' \ldots ``then'' decisions using ``Finite State Machines'' (FSM) in Sections \ref{sec:fsm} and \ref{sec:stateflow}, and finally introduces advanced concepts such as ``behavior trees'' and semantic planning in Sections \ref{sec:behaviortrees} and \ref{sec:strips}.
 
 \section{Reactive control}\label{sec:braitenberg}
-A large variety of robotic behaviors can be accomplished by directly connecting sensor input to actuator output. These behaviors can even be accomplished without a computer, instead using analog electronics that provide appropriate conditioning. Simple autonomous robots using this concept have been demonstrated as early as 1953 \cite{walter1953living} and have become known as ``tortoises''. For example, by tying the output of a light sensor to a motor controller, the motor turns faster when the light is brighter. Using an inverse relationship, the motor will turn slower when the light is brighter. When used in a differential wheel configuration with two motors and two light sensors, such a robot either drives toward or away from the light. Formally, we can express the light following behavior, also known as \emph{phototaxis}\index{Phototaxis}, by the following relationship between
+A large variety of robotic behaviors can be accomplished by directly connecting sensor input to actuator output. These behaviors can even be accomplished without a computer, instead using analog electronics that provide appropriate conditioning. Simple autonomous robots using this concept have been demonstrated as early as 1953 \cite{walter1953living} and have become known as ``tortoises''. For example, by tying the output of a light sensor to a motor controller, the motor turns faster when the light is brighter. Using an inverse relationship between sensor and motor, the motor will turn slower when the light is brighter. When used in a differential wheel configuration with two motors and two light sensors, such a robot either drives toward or away from the light. 
+
+Formally, we can express the light following behavior, also known as \emph{phototaxis}\index{Phototaxis}, by the following relationship between
 the left and right wheel speeds, $\dot{\phi_l}$ and $\dot{\phi_r}$, and the measurements of the right and left light sensors, $\lambda_r$ and $\lambda_l$
 \begin{eqnarray}\label{eq:simplereactive}
 \dot{\phi_l}=a \lambda_r + b\\
@@ -47,14 +49,14 @@ with $d_0$ as the left rearward sensor and the other sensors being arranged cloc
     \caption{A schematic of a differential-wheel robot with eight infrared distance sensors (left) and typical sensor response as a function of distance (right).}
 \end{figure}
 
-Behaviors such as phototaxis and obstacle avoidance can also be combined by simply adding them and weighing each input accordingly. This idea has been popularized by the neuroscientist Valentino Braitenberg who augmented this system with additional ideas around learning (changing the weights based on events such as collisions), natural selection (building robots with random weights and selecting those that perform best), and analogies to the human brain \cite{braitenberg1986vehicles}. Controllers of these kind are therefore often called ``Braitenberg''.
+Behaviors such as phototaxis and obstacle avoidance can also be combined by simply adding them and weighing each input accordingly. This idea has been popularized by the neuroscientist Valentino Braitenberg who augmented this system with additional ideas around learning (changing the weights based on events such as collisions), natural selection (building robots with random weights and selecting those that perform best), and analogies to the human brain, which is also organized into a left and a right hemisphere, which control the opposite halfs of the body \cite{braitenberg1986vehicles}. Controllers of these kind are therefore often called ``Braitenberg''.
 
-Indeed, the controllers above bear strong resemblance to artificial neural networks such as described in Chapter \ref{chap:anns}, and ``optimal'' values to obtain a certain behavior can be obtained using evolutionary computation \cite{floreano1998evolutionary} or by training a neural network that yields appropriate input/output pairs.
+Indeed, the controllers above bear strong resemblance to artificial neural networks such as described in Chapter \ref{chap:anns}, and ``optimal'' values to obtain a certain behavior can be obtained using evolutionary computation \cite{floreano1998evolutionary} or by training a neural network on recordings of input/output pairs that correspond to a desired behavior. 
 
-There are numerous variants of the control architecture including the \emph{subsumption architecture} \cite{brooks1990elephants} and \emph{motor schemas} \cite{arkin1989motor} that propose variations of switching different components of a reactive controller on and off to obtain desired behaviors. While useful for achieving relatively simple behaviors, these approaches are difficult to manage in practice and are better managed by being embedded in high-level control frameworks.
+There are numerous variants of the control architecture including the \emph{subsumption architecture} \cite{brooks1990elephants} and \emph{motor schemas} \cite{arkin1989motor} that propose variations of switching different components of a reactive controller on and off to obtain desired behaviors. While useful for achieving relatively simple behaviors, these approaches are difficult to manage in practice and are better solved by being embedded in high-level control frameworks.
 
 \subsection{Limitations of reactive control}
-The limitations of a reactive control scheme can be illustrated when considering that a robot combining both phototaxis and obstacle avoidance will still get stuck in a U-shaped obstacle. While obstacle avoidance will prevent the robot from hitting the obstacle, as soon as the way is clear, the robot will keep turning toward the light, thereby getting stuck in a loop. This type of behavior is also exhibited in simple insects such as flies or moths.
+The limitations of a reactive control scheme can be illustrated when considering that a robot combining both phototaxis and obstacle avoidance will still get stuck in a U-shaped obstacle (Figure \ref{fig:uobstacle}). While obstacle avoidance will prevent the robot from hitting the obstacle, as soon as the way is clear, the robot will keep turning toward the light, thereby getting stuck in a loop. This type of behavior can also be observed in simple insects such as flies or moths.
 
 \begin{figure}
 \centering
@@ -71,12 +73,23 @@ While feasible and potentially realizable with simple analog electronics, design
 %
 %
 \section{Finite State Machines}\label{sec:fsm}
-A simple, yet powerful tool to facilitate switching between different behaviors is a so-called \emph{Finite State Machine} (FSM)\index{Finite State Machine}\index{FSM}. In an FSM, each state is associated with a specific controller. In practice, an FSM consists of a global variable that stores the current state and a series of ``if'' statements that contain the code that is associated with each unique state. For example, an FSM to perform phototaxis while avoiding U-obstacles could consist of two states, with one for each desired behavior: one state that computes wheel-speeds so the robot moves toward the light while using its sensors to avoiding obstacles ahead of it, and another state that computes wheel-speeds so the performs a wall following behavior. To specify an FSM, one also needs to specify the \emph{state transitions}\index{state transition}\index{transition (state)}, the conditions that determine when to switch which state the FSM is in. For example, if multiple sensors detect an obstacle (implying that it may be a large one), then it may be desirable to have the FSM transition from its first state (phototaxis with simple obstacle avoidance) to its second (wall following). Finally, it is necessary to specify an initial state (the state the system starts in) and any final states (terminal states that signify program termination). An FSM can be depicted graphically, as shown in Figure \ref{fig:fsm_example}.
+A simple, yet powerful tool to facilitate switching between different behaviors is a so-called \emph{Finite State Machine} (FSM)\index{Finite State Machine}\index{FSM}. In an FSM, each state is associated with a specific controller. In practice, an FSM consists of a global variable that stores the current state and a series of ``if'' statements that contain the code that is associated with each unique state. For example, an FSM to perform phototaxis while avoiding U-obstacles could consist of four states, with one for each desired behavior: one state that computes wheel-speeds so that the robot moves toward the light, another to use its sensors to avoid obstacles ahead of it, a state that computes wheel-speeds so the performs a wall following behavior for a fixed amount of time, and finally a state to stop the robot. These states are shown in Figure \ref{fig:fsm}.
 
-\todo{Insert FSM figure}
 \begin{figure}
-\caption{A simple Finite State Machine (FSM) with two states, an initial state, state transitions, and conditions that trigger a state transition.}
+\centering
+    % \includegraphics[width=0.8\columnwidth]{figs/uobstacle.png}
+    \small
+    \def\svgwidth{0.9\textwidth}
+    \import{./figs/}{FSM.pdf_tex}
+\caption{A simple Finite State Machine (FSM) with four states. The final state is colored gray, the initial state is set apart with a double circle.\label{fig:fsm}}
 \end{figure}
+
+
+To specify an FSM, one also needs to specify the \emph{state transitions}\index{state transition}\index{transition (state)}, the conditions that determine when to switch which state the FSM is in. For example, if multiple sensors detect an obstacle (implying that it may be a large one), then it may be desirable to have the FSM transition from its first state (phototaxis with simple obstacle avoidance) to its second (avoid obstacles). Should the light measurement decrease, such as when the robot needs to make a u-turn in order to avoid the obstacle, the behavior should transition to wall following. Once the light increases again, such as when the robot has gone around the obstacle, it resumes light following. Once the light sensor exceeds a treshold (``bright enough''), the robot stops. 
+
+Finally, it is necessary to specify an initial state (the state the system starts in) and any final states (terminal states that signify program termination). In Figure \ref{fig:fsm}, the final state is filled in gray, and the initial state is indicated by a double hull. 
+
+
 
 Formally, a FSM is defined by a Tuple $(\Sigma, S, s_0, \delta, F)$ where:
 \begin{itemize}
