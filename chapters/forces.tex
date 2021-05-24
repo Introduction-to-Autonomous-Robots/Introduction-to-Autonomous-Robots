@@ -3,7 +3,7 @@
 %alessandro
 
 So far, we have only been concerned with how robots move and the \textsl{geometry of motion}.
-However, moving a robot not only requires a kinematic model of the platforms, but also an understanding of the (generalized) forces needed to actuate the robot's motors and those needed for the robot to interact with the environment.
+However, moving a robot not only requires a kinematic model of the platform under consideration, but also an understanding of the (generalized) forces needed to actuate the robot's motors and those needed for the robot to interact with the environment.
 While this aspect can be ignored in basic applications of mobile robots and simple manipulation, it becomes critical as soon as robots interact more closely with people or need to engage in more complex manipulation: in these scenarios, \textsl{safety} and \textsl{model accuracy} are of paramount importance.
 
 %The (geometric) Jacobian represents a fundamental tool to characterize the motion and the interaction of a robot with its environment, as it is used to perform the following \cite{sciavicco2012modelling}):
@@ -14,8 +14,8 @@ While this aspect can be ignored in basic applications of mobile robots and simp
 %\item manipulability analysis (i.e. how easy or difficult is it for a robot to move in a certain direction).
 %\end{enumerate}
 In this Chapter, we will introduce the reader to these concepts through \emph{statics}\index{statics}, which introduces a third abstraction to the problem of analyzing how robots move in space and interact with their surroundings.
-More specifically, in \cref{sec:kinematics:fwk,sec:kinematics:ik} we have investigated the \textsl{kinematic} problem and operated in the space of \textsl{positions}, that is, how to map joint angles with end effector poses.
-In \cref{sec:kinematics:ik:invjac}, we introduced the \textsl{differential kinematics} problem and operated in the space of \textsl{velocities}, i.e. how to map joint velocities with end-effector velocity twists (remember: velocity is derivative of position, hence the name ``differential'').
+More specifically, in \cref{sec:kinematics:fwd,sec:kinematics:ik} we have investigated the \textsl{kinematic} problem and operated in the space of \textsl{positions}, that is, how to map joint angles with end effector poses.
+In \cref{sec:kinematics:diff}, we introduced the \textsl{differential kinematics} problem and operated in the space of \textsl{velocities}, i.e. how to map joint velocities with end-effector velocity twists (remember: velocity is derivative of position, hence the name ``differential'').
 In the following, we will operate in the space of \textsl{forces}; however, we will simplify the more general dynamical problem by looking at the robot in static equilibrium---otherwise known as a \textsl{static} configuration.
 As we will see, a lot can be done by simply looking at the robot in an equilibrium configuration!
 The fourth and last abstraction, which goes beyond the scope of this book, is called \textsl{dynamics} and operates in the space of forces from a non-static perspective; it involves the second derivative of position (i.e. the acceleration), and it can be thought as a generalization of the second law of Newton ($F=ma$).
@@ -44,7 +44,7 @@ However, it is good practice to start with the simplest layer first (i.e. kinema
 \textsl{Statics} deals with relating (generalized) forces at the robot's joints and generalized forces at the end-effector when the robot is in \textsl{static equilibrium}, i.e. the acceleration of the robot and all of its components is zero.
 If such a condition is met, a robot with $n$ degrees of freedom and an end-effector characterized by $m$ degrees of freedom can be fully described by the following quantities:
 \begin{itemize}
-    \item an $\left( n \times 1 \right)$ vector of generalized forces at the joints;
+    \item an $\left( n \times 1 \right)$ vector of generalized forces $\tau$ at the joints;
     \item an $\left( m \times 1 \right)$ vector of generalized forces $F$ exerted \textsl{by the robot end-effector} on the environment---or, more generally, by any part of the robot that may be in direct physical contact with the environment;
     \item an $\left( m \times 1 \right)$ vector of forces exerted \textsl{by the environment} on the robot end-effector $F_e$---which, per the principle of action and reaction, are equal and opposite to $F$: $F_e=-F$.
 \end{itemize}
@@ -70,13 +70,13 @@ and an angular force component (or moment) $\mu$ around the three axes:
 \end{equation}
 We can now combine the above elements in a $6\times1$ vector as $F=[f \ \mu]^T$.
 This vector of generalized forces is also called a \textsl{spatial force} or \textsl{wrench}\index{Wrench}\index{Spatial Force}.
-We now want to compute the statics version of \cref{eq:kinematics:diff}, and relate our $n \times 1$ vector of torques $\tau$ with the $6\times1$ wrench vector $F$.
+We now want to compute the statics version of \cref{eq:kinematics:diff:fwd:short,eq:kinematics:diff:fwd}, and relate our $n \times 1$ vector of torques $\tau$ with the $6\times1$ wrench vector $F$.
 To find this relationship, let's recall the definition of \textsl{power} from physics. Mechanical power $W$ is defined as force times velocity, which can be generalized as generalized forces times generalized velocities: $W=F^T \cdot \nu$.
 Now, we know that the forces exchanged at the end-effector come from our source of actuation, i.e. our motors, whose generated power is defined by $W=\tau ^T \cdot \dot{q}$. We therefore have that:
 \begin{equation}\label{eq:forces:statics:work}
 W=\tau ^T \cdot \dot{q} = F^T  \cdot \nu
 \end{equation}
-We also know the relation between $\nu$ and $\dot{q}$ from \cref{eq:kinematics:diff:short}: $\nu =J(q) \cdot \dot{q}$. \cref{eq:forces:statics:work} then becomes:
+We also know the relation between $\nu$ and $\dot{q}$ from \cref{eq:kinematics:diff:fwd:short}: $\nu =J(q) \cdot \dot{q}$. \cref{eq:forces:statics:work} then becomes:
 \begin{equation}
 \tau ^T \cdot \dot{q} = F^T  \cdot J(q) \cdot \dot{q} \ ,
 \end{equation}
@@ -84,8 +84,14 @@ which, with minor rearrangements, turns into the following:
 \begin{equation}\label{eq:forces:statics}
 \tau = J(q) ^T \cdot F
 \end{equation}
-This is the final statics equation we were looking for.
-It can be interpreted as the following: to counteract a wrench $F_e = -F$ applied on the end effector by the environment in a static configuration $q$, the robot needs to apply torques $\tau$ at its joints as specified by \cref{eq:forces:statics}.
+This is the final statics equation we were looking for!
+It can be interpreted as the following: to counteract an external wrench $F_e = -F$ applied on the end effector by the environment in a static configuration $q$, the robot needs to apply torques $\tau$ at its joints as specified by \cref{eq:forces:statics}.
+Interestingly, this equation clearly shows how statics acts as a middle ground between the ``geometry-only'' kinematics approach and the more general dynamics problem: even though we are dealing with forces and torques, their relationship is defined via a geometric relation---i.e. the same Jacobian used in \cref{sec:kinematics:diff:inv}. In this case, we are using its $n\times m$ transpose:
+
+\begin{equation}\label{eq:forces:statics:long}
+\tau = \left[\begin{array}{c}\tau_1\\\vdots\\\tau_n\end{array}\right] =
+\left[\begin{array}{cccc}\frac{\partial{x}}{\partial{q_1}} & \frac{\partial{y}}{\partial{q_1}} & \ldots & \frac{\partial{\omega_z}}{\partial{q_1}}\\\frac{\partial{x}}{\partial{q_2}} & \frac{\partial{y}}{\partial{q_2}} & \ldots & \frac{\partial{\omega_z}}{\partial{q_2}}\\\vdots & \vdots & \vdots & \vdots\\\frac{\partial{x}}{\partial{q_n}} & \frac{\partial{y}}{\partial{q_n}} & \ldots & \frac{\partial{\omega_z}}{\partial{q_n}}\end{array}\right]\left[\begin{array}{c}f_x\\f_y\\f_z\\\mu_x\\\mu_y\\\mu_z\end{array}\right] = J(q) ^T \cdot F
+\end{equation}
 
 \cref{eq:forces:statics} is useful on a variety of different problems. The most typical application is \textsl{force control}\index{Force Control}, i.e. the robot's motors are actuated so as to apply a specified wrench on the environment. For example, one may want to use a robot for a polishing task in which it needs exert a vertical force of $5N$ on a table. In this case, the desired wrench (assuming our $z-$ axis in Cartesian space is the vertical one and it is pointing upwards) would be:
 
