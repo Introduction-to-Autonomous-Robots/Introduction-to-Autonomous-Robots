@@ -37,7 +37,6 @@ where $ \mu$ is the mean and $ \sigma^2$ the variance. ($ \sigma$ on its own is 
     \def\svgwidth{\textwidth}
     \import{./figs/}{Normal_Distribution.pdf_tex}
 	\caption{Normal distribution for different variances and $\mu=0$.
-    \td{I have absolutely no idea why there are these numbers in the middle of the plot}}
 	\label{fig:Normal_Distribution_PDF}
 \end{figure}
 
@@ -110,12 +109,7 @@ Robotics is an experimental discipline. This means that algorithms and systems y
 \subsection{Null Hypothesis on Distributions}
 The Null Hypothesis is a term from the statistical significance literature and formally captures your main claim. A statistical test can either reject the Null Hypothesis or fail to reject it. It can never be proven as there will always be a non-zero probability that all your experiments are just a lucky coincidence. The statistical significance level of a Null Hypothesis is known as the p-value.
 
-An import class of Null Hypothesis are on the distribution of data. Consider the following example from Lab 1 (message passing in ROS). Students were asked to experimentally study the time it takes to pass a message from one process to another:
-
-\begin{mdframed}
-Histogram of the time it takes to send a ROS message from one process to another based on 10 trials.
-\end{mdframed}
-
+An import class of Null Hypothesis are on the distribution of data. Consider for example the time it takes to pass a message from one process to another and which follows a log-normal distribution with outliers.
 We observe three peaks in this Histogram. What can we say about message passing times? For example
 \begin{itemize}
 \item H0: Message passing times follow a Gaussian distribution.
@@ -123,13 +117,9 @@ We observe three peaks in this Histogram. What can we say about message passing 
 \item H0: Message passing times follow a log-normal distribution.
 \end{itemize}
 
-The first Null Hypothesis implies that messages take sometimes a little longer and sometimes a little shorter, but have an average and a variance. The second Null Hypothesis implies that usually messages take some low average time, but occasionally are delayed due to the influence of some other process, for example operating system duties. You can now test each of these hypotheses by calculating the parameters of the distribution to expect and calculate the joint probability that each of your measurements are actually drawn from this distribution. You will find, that all of the above hypotheses are almost equally likely. Together, none of your tests will reject your hypothesis. You therefore will need more data:
+The first Null Hypothesis implies that messages take sometimes a little longer and sometimes a little shorter, but have an average and a variance. The second Null Hypothesis implies that usually messages take some low average time, but occasionally are delayed due to the influence of some other process, for example operating system duties. You can now test each of these hypotheses by calculating the parameters of the distribution to expect and calculate the joint probability that each of your measurements are actually drawn from this distribution. You will find, that all of the above hypotheses are almost equally likely. Together, none of your tests will reject your hypothesis. You therefore will need more data.
 
-\begin{mdframed}
-Histogram of message passing times in ROS based on a 1000 trials.
-\end{mdframed}
-
-You can now again calculate parameters for each distribution you suspect. For example, you can calculate the mean and variance of this data and plot the resulting Gaussian distribution. In this example, the Gaussian distribution will have a mean slightly offset to the right of the peak. You can also fit the data to a log-normal distribution. You can now calculate the likelihood for the data actually be drawn from either of the two distributions. You will see that the joint probability (the product of all likelihoods) for all data points is actually much higher than that for any Gaussian distribution or any bimodal distribution that you are able to fit.
+You can now again calculate parameters for each distribution you suspect. For example, you can calculate the mean and variance of this data and plot the resulting Gaussian distribution. For example, the Gaussian distribution might have a mean slightly offset to the right of the peak. You can also fit the data to a log-normal distribution. You can now calculate the likelihood for the data actually be drawn from either of the two distributions. You will see that the joint probability (the product of all likelihoods) for all data points is actually much higher than that for any Gaussian distribution or any bimodal distribution that you are able to fit.
 
 Formally, this can be done by following Pearsons $ \chi^2$-Test (read Chi-Squared Test). This test calculates a value that will approximate a $ \chi^2$-distribution from all samples and the likelihood of that sample based on the expected distribution. Plugging the resulting value into the $ \chi^2$-distribution leads to the statistical significance level (or p-value).
 

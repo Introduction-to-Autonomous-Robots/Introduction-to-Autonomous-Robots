@@ -1,4 +1,4 @@
-%% Creator: Inkscape 1.0.2 (e86c870879, 2021-01-15, custom), www.inkscape.org
+%% Creator: Inkscape 1.0 (4035a4f, 2020-05-01), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'Normal_Distribution.pdf' (pdf, eps, ps)
 %%
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{555.07644653bp}%
+    \setlength{\unitlength}{555.0766059bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,49 +50,49 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.63415412)%
+  \begin{picture}(1,0.63415393)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0.09283866,0.28638956){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}-\end{tabular}}}}%
-    \put(0.105618,0.28638956){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
-    \put(0.20570582,0.28638956){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}-\end{tabular}}}}%
-    \put(0.21848516,0.28638956){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
-    \put(0.31857298,0.28638956){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}-\end{tabular}}}}%
-    \put(0.33135232,0.28638956){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0.09283892,0.28638947){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}-\end{tabular}}}}%
+    \put(0.10561826,0.28638947){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
+    \put(0.20570604,0.28638947){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}-\end{tabular}}}}%
+    \put(0.21848538,0.28638947){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0.31857317,0.28638947){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}-\end{tabular}}}}%
+    \put(0.33135251,0.28638947){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{Normal_Distribution.pdf}}%
-    \put(1.44245004,0.35890509){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(1.51882438,0.35890509){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
-    \put(1.59519877,0.35890509){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
-    \put(1.34806016,0.24403768){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}-\end{tabular}}}}%
-    \put(1.35742824,0.24403768){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
-    \put(1.34806016,0.28665055){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}-\end{tabular}}}}%
-    \put(1.35742824,0.28665055){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
-    \put(1.34806016,0.32926342){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}-\end{tabular}}}}%
-    \put(1.35742824,0.32926342){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(1.44244991,0.35890498){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(1.51882423,0.35890498){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(1.5951986,0.35890498){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
+    \put(1.34806006,0.2440376){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}-\end{tabular}}}}%
+    \put(1.35742813,0.2440376){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
+    \put(1.34806006,0.28665046){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}-\end{tabular}}}}%
+    \put(1.35742813,0.28665046){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(1.34806006,0.32926332){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}-\end{tabular}}}}%
+    \put(1.35742813,0.32926332){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{Normal_Distribution.pdf}}%
-    \put(0.0680732,0.49159895){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{0}\smash{\begin{tabular}[t]{r}0.8\end{tabular}}}}%
-    \put(0.0680732,0.38782946){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{0}\smash{\begin{tabular}[t]{r}0.6\end{tabular}}}}%
-    \put(0.0680732,0.28405997){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{0}\smash{\begin{tabular}[t]{r}0.4\end{tabular}}}}%
-    \put(0.0680732,0.18029049){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{0}\smash{\begin{tabular}[t]{r}0.2\end{tabular}}}}%
-    \put(0.0680732,0.076521){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{0}\smash{\begin{tabular}[t]{r}0.0\end{tabular}}}}%
-    \put(0.10325417,0.02558207){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}-5\end{tabular}}}}%
-    \put(0.2762606,0.02558207){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}-3\end{tabular}}}}%
-    \put(0.62302086,0.02558207){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}1\end{tabular}}}}%
-    \put(0.79578027,0.02558207){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}3\end{tabular}}}}%
-    \put(0.96874868,0.02558207){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}5\end{tabular}}}}%
-    \put(0.0680732,0.59536844){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{0}\smash{\begin{tabular}[t]{r}1.0\end{tabular}}}}%
-    \put(0.45018541,0.02558207){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}-1\end{tabular}}}}%
-    \put(0.53624527,0.02558207){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}0\end{tabular}}}}%
-    \put(0.70967607,0.02558207){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}2\end{tabular}}}}%
-    \put(0.88258119,0.02558207){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}4\end{tabular}}}}%
-    \put(0.36309318,0.02558207){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}-2\end{tabular}}}}%
-    \put(0.18942803,0.02558207){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}-4\end{tabular}}}}%
+    \put(0.06807347,0.4915988){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{0}\smash{\begin{tabular}[t]{r}0.8\end{tabular}}}}%
+    \put(0.06807347,0.38782934){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{0}\smash{\begin{tabular}[t]{r}0.6\end{tabular}}}}%
+    \put(0.06807347,0.28405989){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{0}\smash{\begin{tabular}[t]{r}0.4\end{tabular}}}}%
+    \put(0.06807347,0.18029043){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{0}\smash{\begin{tabular}[t]{r}0.2\end{tabular}}}}%
+    \put(0.06807347,0.07652097){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{0}\smash{\begin{tabular}[t]{r}0.0\end{tabular}}}}%
+    \put(0.10325442,0.02558205){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}-5\end{tabular}}}}%
+    \put(0.27626081,0.02558205){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}-3\end{tabular}}}}%
+    \put(0.62302097,0.02558205){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}1\end{tabular}}}}%
+    \put(0.79578032,0.02558205){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}3\end{tabular}}}}%
+    \put(0.96874868,0.02558205){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}5\end{tabular}}}}%
+    \put(0.06807347,0.59536826){\color[rgb]{0,0,0}\makebox(0,0)[rt]{\lineheight{0}\smash{\begin{tabular}[t]{r}1.0\end{tabular}}}}%
+    \put(0.45018556,0.02558205){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}-1\end{tabular}}}}%
+    \put(0.5362454,0.02558205){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}0\end{tabular}}}}%
+    \put(0.70967615,0.02558205){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}2\end{tabular}}}}%
+    \put(0.88258123,0.02558205){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}4\end{tabular}}}}%
+    \put(0.36309336,0.02558205){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}-2\end{tabular}}}}%
+    \put(0.18942826,0.02558205){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{0}\smash{\begin{tabular}[t]{c}-4\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{Normal_Distribution.pdf}}%
-    \put(0.76922098,0.55487852){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\sigma^2=0.2$\end{tabular}}}}%
-    \put(0.76922098,0.52028869){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\sigma^2=1.0$\end{tabular}}}}%
-    \put(0.76922098,0.48686987){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\sigma^2=5.0$\end{tabular}}}}%
-    \put(0.01803217,0.32982821){\color[rgb]{0,0,0}\rotatebox{90.723582}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}f(x)\end{tabular}}}}}%
-    \put(0.52727233,0.00000001){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}x\end{tabular}}}}%
+    \put(0.76922105,0.55487836){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\sigma^2=0.2$\end{tabular}}}}%
+    \put(0.76922105,0.52028854){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\sigma^2=1.0$\end{tabular}}}}%
+    \put(0.76922105,0.48686973){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\sigma^2=5.0$\end{tabular}}}}%
+    \put(0.01803245,0.3298281){\color[rgb]{0,0,0}\rotatebox{90.723582}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}f(x)\end{tabular}}}}}%
+    \put(0.52727247,0){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}x\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{Normal_Distribution.pdf}}%
   \end{picture}%
 \endgroup%
