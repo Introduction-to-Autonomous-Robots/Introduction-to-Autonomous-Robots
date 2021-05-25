@@ -26,8 +26,8 @@ Things are just slightly more complicated if our door detector is also subject t
 	% \includegraphics[width=\textwidth]{figs/three_door_example}
     \def\svgwidth{\textwidth}
     \import{./figs/}{three_door_example.pdf_tex}
-	\caption{A robot localizing itself using a ``door detector'' in a known map. Top: Upon encountering a door, the robot can be in front of any of the three doors. Middle: When driving to the right, the Gaussian distributions representing its location also shift to the right and widen, representing growing uncertainty. Bottom: After detecting the second door, the robot can discard hypotheses that are not in front of the door and gains certainty on its location. }
-	\label{fig:three_door_example}
+	\caption{A robot localizing itself using a ``door detector'' in a known map. Top: Upon encountering a door, the robot can be in front of any of the three doors. Middle: When driving to the right, the Gaussian distributions representing its location also shift to the right and widen, representing growing uncertainty. Bottom: After detecting the second door, the robot can discard hypotheses that are not in front of the door and gains certainty on its location. 
+	\label{fig:three_door_example}}
 \end{figure}
 
 \section{Markov Localization}\label{sec:markovloc}
@@ -35,6 +35,7 @@ Calculating the probability to be at a certain location given the likelihood of 
 \begin{equation}
 P(A|B)=\frac{P(A)P(B|A)}{P(B)}
 \end{equation}
+
 \subsection{Perception Update}
 How does this map into a Localization framework? Let's assume, event $A$ is equivalent to be at a specific location $loc$. Lets also assume that event $B$ corresponds to the event to see a particular feature $feat$. We can now rewrite Bayes' rule to
 
@@ -82,8 +83,8 @@ This example describes one of the first successful real robot systems that emplo
 	% \includegraphics[width=\textwidth]{figs/dervish_example}
     \def\svgwidth{\textwidth}
     \import{./figs/}{dervish_example.pdf_tex}
-	\caption{An office environment consisting of two rooms connected by a hallway. A topological map is super-imposed.}
-	\label{fig:dervish_example}
+	\caption{An office environment consisting of two rooms connected by a hallway. A topological map is super-imposed.
+	\label{fig:dervish_example}}
 \end{figure}
 
 The robot has the following sensing abilities:
@@ -159,8 +160,8 @@ Although grid-based Markov Localization can provide compelling results, it can b
 	% \includegraphics[width=\textwidth]{figs/particlefilter_example}
     \def\svgwidth{0.92\textwidth}
     \import{./figs/}{particlefilter_example.pdf_tex}
-	\caption{Particle filter example. Possible positions and orientations of the robot are initially uniformly distributed. Particles move based on the robot's motion model. Particles that would require the robot to move through a wall in absence of a wall perception event are deleted (stars). After a perception event, particles too far of a wall become unlikely and their positions are resampled in the vicinity of a wall. Eventually, the particle filter converges.}
-	\label{fig:particlefilter_example}
+	\caption{Particle filter example. Possible positions and orientations of the robot are initially uniformly distributed. Particles move based on the robot's motion model. Particles that would require the robot to move through a wall in absence of a wall perception event are deleted (stars). After a perception event, particles too far of a wall become unlikely and their positions are resampled in the vicinity of a wall. Eventually, the particle filter converges.
+	\label{fig:particlefilter_example}}
 \end{figure}
 
 %\td{TODO: Lots of editing from the Kalman filter section.}
@@ -224,5 +225,4 @@ It is derived by minimizing the least-square error between prediction and real v
 \item Now assume that the likelihood that you are reading a marker correctly is 90\%, that you get a wrong reading is 10\%, and that you do not see a marker when passing right underneath it is 50\%. Consider a narrow corridor that is equipped with 4 markers. You know with certainty that you started from the entry closest to marker 1 and move right in a straight line. The first reading you get is ``Marker 3''. Calculate the probability to be indeed underneath marker 3.
 \item Could the robot also possibly be underneath marker 4?
 \end{enumerate}
-
 \end{enumerate}\normalsize
