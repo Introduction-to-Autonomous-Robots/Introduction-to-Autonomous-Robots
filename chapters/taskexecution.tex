@@ -147,7 +147,7 @@ There exist many IPC frameworks that are particularly targeted at robotics and i
 HFSM solve some of the problems of FSMs by increasing modularity, simplifying programmability, but still have the problem that $N$ states can lead to $N^2$ state transitions, each of which need to be manually coded.
 
 \section{Behavior Trees}\label{sec:behaviortrees}
-A Behavior Tree provides structure for hierarchically organizing the decision-making flow of a system that make many things that need to be explicitly coded in a FSM implicit. The leaves of a Behavior Tree are ``Action Nodes'' that can represent actual discrete behaviors, such as ``Close Gripper'' or ``Find Block''. The root and internal nodes of the Behavior Tree are made up of ``Utility Nodes'' that guide the path of traversal through the tree. What will require manual addition and removal of state transitions in a FSM can often be accomplished in a Behavior Tree by simply changing the type of an utility node from one to another. Another powerful aspect of this abstraction is that Behavior Trees specifying complex behaviors, such as ``Navigate to Kitchen", can be encapsulated within a single node of another tree.
+A Behavior Tree \cite{colledanchise2018behavior} provides structure for hierarchically organizing the decision-making flow of a system that make many things that need to be explicitly coded in a FSM implicit. The leaves of a Behavior Tree are ``Action Nodes'' that can represent actual discrete behaviors, such as ``Close Gripper'' or ``Find Block''. The root and internal nodes of the Behavior Tree are made up of ``Utility Nodes'' that guide the path of traversal through the tree. What will require manual addition and removal of state transitions in a FSM can often be accomplished in a Behavior Tree by simply changing the type of an utility node from one to another. Another powerful aspect of this abstraction is that Behavior Trees specifying complex behaviors, such as ``Navigate to Kitchen", can be encapsulated within a single node of another tree.
 
 \subsection{Node Definition and Status}
 In a traditional implementation, the nodes within a Behavior Tree can return any of three statuses when queried: ``Success'', ``Failure'', or ``Running''. The incorporation of a ``Running'' status allows the Behavior Tree to use behaviors that operate over longer time periods, such as a block picking behavior that persists over multiple control cycles of a robot's main processing loop, including time required to plan the end-effector's path, the time required to physically move the robot to the destination, and the time required to close the gripper. In this example, the node might return ``Failure'' if any of the individual behaviors didn't work or if the end-effector didn't successfully grasp the block by the end of the behavior, and ``Success'' otherwise. Thus, each node in the Behavior Tree needs a rigidly defined notion of ``Success'' or ``Failure'' that can be propagated throughout the Behavior Tree, informing which sequence of behaviors is executed to achieve the desired result.
@@ -246,7 +246,7 @@ So far, we have seen how reactive behaviors can be composed into more complex pr
 An example of mission planning is described in \cite{saito2011semantic} where a robot is tasked to deliver a sandwich. The robot initially moves to a fridge, opens it and looks for a sandwich there, and then decides to take the elevator to the sandwich store in the basement of the University of Tokyo's engineering tower. Here, the robot is not only piecing together behaviors as it goes, but also using what is known as ``semantic planning'' to select the right actions, exploiting databases of common sense knowledge in textual form. How to represent such knowledge in an efficient and general manner is an active research topic in robotics and artificial intelligence and goes beyond the scope of this introductory book. Yet, we describe the basic algorithms that will allow you to compose complex behaviors during run-time, thereby generating much more complex robot responses than could ever be accomplished using hand-coding.
 
 \subsection{The General Problem Solver and STRIPS}
-One of the first planning frameworks has been introduced in 1959 as ``General Problem Solver'' (GPS) \cite{newell1959report,}, an idea that was popularized, refined and actually demonstrated on real robots later on as the ``STanford Research Institute Problem Solver'' (STRIPS)\cite{fikes1971strips}.
+One of the first planning frameworks has been introduced in 1959 as ``General Problem Solver'' (GPS) \cite{newell1959report}, an idea that was popularized, refined and actually demonstrated on real robots later on as the ``STanford Research Institute Problem Solver'' (STRIPS) \cite{fikes1971strips}.
 
 In STRIPS, a robotic problem is composed of:
 
@@ -278,7 +278,14 @@ A common extension in a STRIPS instance is to parametrize locations and objects.
 Other challenges with STRIPS planning are exogenous events that change the environment state, such as a draft that closes the fridge door after the robot has opened it or probabilistic operators that might lead to different outcomes for an operator depending on chance. These are situations that are well covered by the BT framework, making the combination of BT and STRIPS planning particularly compelling (see also \cite{colledanchise2018behavior}, Chapter 7). 
 
 
-\section{Exercises}
+\section*{Take-home lessons}
+\begin{enumerate}
+\item Writing a robotic program is fundamentally different from regular computer programs as the program flow needs to be coordinated with the actual physics of the world taking its course.
+\item Discrete states are an abstraction of the physical world, and more complex behaviors lead to exponential growth in the number of states and transitions between them.
+\item There exist multiple programming paradigms that make managing large number of states and possible transitions between them more manageable, but require an increasing amount of software and thereby increasing computational infrastructure.
+\end{enumerate}
+
+\section*{Exercises}
 
 \begin{enumerate}
 \item A differential wheel robot has three downward-facing light sensors at its tip. The sensors are spaced such that the robot can detect a black line on a white ground. Derive the equations for a line-following robot using the Braitenberg formalism.
