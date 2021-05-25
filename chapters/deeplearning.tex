@@ -551,7 +551,7 @@ This relationship is shown in Figure \ref{fig:RNN}. As a RNN cell is reusing its
 \item Simple neural networks are capable of both classification and regression akin to techniques described in Chapter \ref{chap:feature_extraction}, whereas convolutional networks are capable of filtering and pre-processing such as described in Chapter \ref{chap:vision}.
 \item Once a system is not purely reactive anymore, but requires state such as described in Chapter \ref{chap:taskexecution}, recurrent networks are needed to implement memory. 
 \end{itemize}
-\section*{Exercises}
+\section*{Exercises}\small
 \begin{enumerate}
 \item Implement the simple perceptron training algorithm and use it to find a separating hyperplane for simple data.
 \item Find out how to implement the auto differentiation (or auto gradient) function in your favorite numerical package, e.g. \textsl{NumPy} or \textsl{PyTorch} to automatically calculate the derivative of your loss function.
@@ -560,6 +560,8 @@ This relationship is shown in Figure \ref{fig:RNN}. As a RNN cell is reusing its
 \item Select a pre-trained image classifier from your preferred machine learning toolkit and use it as the basis to train your classifier for either landmark recognition or pose recognition. How does using a pre-trained classifier affect learning time and accuracy?
 \item What kind of network architecture would you chose to track the robot's location (odometry) based on encoder inputs?
 \item Download the ``Robot Execution Failures Data Set'' from the UCI machine learning repository. It contains time-series data from a robot's force-torque sensor as well as whether manipulation was successful. Define a recurrent neural network architecture for this data and train it.
-\end{enumerate}
+\item Implement a light-following robot in a simulator of your choice and manually control it toward the light. Train a neural network for a Braitenberg controller using this data.
+
+\end{enumerate}\normalsize
 
 
