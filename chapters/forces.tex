@@ -41,7 +41,7 @@ However, it is good practice to start with the simplest layer first (i.e. kinema
 
 \section{Statics}\label{sec:forces:statics}
 
-\textsl{Statics} deals with relating (generalized) forces at the robot's joints and generalized forces at the end-effector when the robot is in \textsl{mechanical equilibrium}\index{Mechanical Equilibrium}, i.e. the acceleration of the robot and all of its components is zero.
+\textsl{Statics} deals with relating (generalized) forces at the robot's joints and generalized forces at the end-effector when the robot is in \textsl{static (or mechanical) equilibrium}\index{Mechanical Equilibrium}\index{Static Equilibrium}, i.e. the acceleration of the robot and all of its components is zero.
 If such a condition is met, a robot with $n$ degrees of freedom and an end-effector characterized by $m$ degrees of freedom can be fully described by the following quantities:
 \begin{itemize}
     \item an $\left( n \times 1 \right)$ vector of generalized forces $\tau$ at the joints;
@@ -181,8 +181,8 @@ The velocity and force manipulability ellipsoids are useful for a variety of tas
 \section*{Take-home lessons}
 \begin{enumerate}
 \item Looking at forces in mechanical equilibrium, that is when end-effector forces and joint torques cancel each other, allows us to extend control of the robot from poses and velocities to the force domain.
-\item The torques required by a robotic arm are related to end-effector forces using the same Jacobian that also defines the robot’s kinematics, which is known as the Kineto-Statics Duality.
-\item Although a robotic arm might reach a desired pose using multiple different configurations, some configurations are better suited than others, which is known as manipulability.
+\item The torques required by a robotic arm are related to end-effector forces using the same Jacobian that also defines the robot’s differential kinematics---a concept known as the Kineto-Statics Duality.
+\item Although a robotic arm might reach a desired pose using multiple different configurations, some configurations are better suited than others; a manipulability analysis helps in characterizing this problem.
 \end{enumerate}
 
 \section*{Exercises}\small
