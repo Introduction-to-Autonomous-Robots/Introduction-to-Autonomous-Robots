@@ -163,10 +163,10 @@ Although grid-based Markov Localization can provide compelling results, it can b
 	\label{fig:particlefilter_example}
 \end{figure}
 
-\td{TODO: Lots of editing from the Kalman filter section.}
+%\td{TODO: Lots of editing from the Kalman filter section.}
 
-%\paragraph{2. Observation}
-%Let us now assume that we can detect line features $ \boldsymbol{z}_{k,i}=(\alpha_i,r_i)^T$, where $ \alpha$ and $ r$ are the angle and distance of the line from the coordinate system of the robot. These line features are subject to variances $ \sigma_{\alpha,i}$ and $ \sigma_{r,i}$, which make up the diagonal of $ \boldsymbol{R}_{k}$. See the line detection section for a derivation of how angle and distance as well as their variance can be calculated from a laser scanner. The observation is a 2x1 matrix.
+\paragraph{2. Observation}
+Let us now assume that we can detect line features $ \boldsymbol{z}_{k,i}=(\alpha_i,r_i)^T$, where $ \alpha$ and $ r$ are the angle and distance of the line from the coordinate system of the robot. These line features are subject to variances $ \sigma_{\alpha,i}$ and $ \sigma_{r,i}$, which make up the diagonal of $ \boldsymbol{R}_{k}$. See the line detection section for a derivation of how angle and distance as well as their variance can be calculated from a laser scanner. The observation is a 2x1 matrix.
 
 \paragraph{3. Measurement Update}
 We assume that we can uniquely identify the lines we are seeing and retrieve their real position from a map. This is much easier for unique features, but can be done also for lines by assuming that our error is small enough and we therefore can search through our map and pick the closest lines. As features are stored in global coordinates, we need to transpose them into how the robot would see them. In practice this is nothing but a list of lines, each with an angle and a distance, but this time with respect to the origin of the global coordinate system. Transposing them into robot coordinates is straightforward. With  $ \hat{\boldsymbol{x}}_{k}=(x_{k},y_{k},\theta_k)^T$ and $ m_i=(\alpha_i,r_i)$ the corresponding entry from the map, we can write
@@ -189,7 +189,7 @@ We are now equipped with a measurement $ \boldsymbol{z}_k$ and a prediction $ h(
 
 which is simply the difference between each feature that we can see and those that we predict from the map. The innovation is again a 2x1 matrix.
 
-\td{End TODO.}
+%\td{End TODO.}
 
 \section{Probabilistic Map based localization}
 In order to localize a robot using a map, we need to perform the following steps
