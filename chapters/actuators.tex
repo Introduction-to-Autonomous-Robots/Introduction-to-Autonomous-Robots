@@ -96,7 +96,8 @@ The principles of fluid-based (hydraulic) actuators also extend to operation by 
 In addition to pistons and other actuators available for hydraulic systems, pneumatic acutators can be designed in arbitrary form factors, allowing the designer to turn air pressure into almost any desired bending or torsional movement. These actuators usually consist of a flexible rubber material with an internal cavity that can be filled with air. Materials such as fabrics that are stiff in one dimension (when pulling), but flexible in another (when bending), are used to direct the force of the incoming air into a desired direction, resulting into the actuator bending or twisting in a desired way \cite{polygerinos2017soft}. Please note that soft actuators are \textsl{not} balloons. While balloons change their volume as they are inflated, a change of volume is considered a failure mode in a soft robotic actuator and, ideally, all energy should directly convert into motion.
 
 As soft actuators are flexible, they break with the tradition of kinematics for rigid robots introduced in Chapter \ref{chap:kinematics}. From a kinematic perspective, an ideal, fully soft robot can be modeled as a platform with an infinite number of mechanical degrees of freedom!
-However, although their complex mechanics makes modeling and control more difficult, soft robotics opens up an entirely new spectrum of robot capabilities; for example, it is possible to design non-traditional kinematics that more resemble the motion of animals than those of machines. This also allows to employ control strategies that rely on the mechanism to give in, also known as \textsl{compliance}\index{Compliance}, a concept briefly introduced in Section \ref{sec:simplegrasp} on robotic grasping.\td{If I add the section on compliance in the force chapter, please revise this last sentence to accommodate for it}
+However, although their complex mechanics makes modeling and control more difficult, soft robotics opens up an entirely new spectrum of robot capabilities; for example, it is possible to design non-traditional kinematics that more resemble the motion of animals than those of machines. This also allows to employ control strategies that rely on the mechanism to give in, also known as \textsl{compliance}\index{Compliance}, a concept briefly introduced in Section \ref{sec:simplegrasp} on robotic grasping, and enabled by force control (Chapter \ref{ch:forces}).
+
 
 %\section{Other actuators}
 % Finally, there exist a wide array of specialty actuators such as Shape-Memory Alloys, Electroactive Polymers or Piezo-elements, which often allow for extreme miniaturization, but do not provide attractive energy-to-force ratios and are difficult to control.
@@ -110,7 +111,16 @@ Passive safety is the ability to maintain a robot's safety even in the absence o
 
 An important failure mode that can only be addressed by a passive safety mechanism is \textsl{power failure}\index{Power failure}. In the absence of power, a mobile robot might keep driving (based on inertia) and hit an object, a humanoid robot might collapse, and a gripper might let a heavy (or sharp) payload fall. These problems can be addressed by always-on breaking mechanisms that engage in the absence of power or by using gear ratios that are so high that the overall mechanism is not back-driveable.
 
-\section{Exercises}
+\section*{Take-home lessons}
+\begin{itemize}
+\item There exist an almost limit-less repertoire of techniques to turn energy into motion, many of which have been explored to create robots, with the electric motor remaining the dominant actuator in small-scale robotic systems.
+\item What makes a good actuator is not only determined by its efficiency with respect to the available energy source, but also in how far its position, velocity, and torque can be measured to enable accurate and precise control.
+\item A robot's safety is determined not only by the choice of actuator, but also by the control system around it.
+\end{itemize}
+
+
+
+\section*{Exercises}
 \begin{enumerate}
 \item You are designing a robotic arm. Your goal is to maximize strength, while minimizing weight. Which kind of electric motor do you chose and why?
 \item You are designing a gantry system for a 3D printer that can move the print head left, right, up and down.
