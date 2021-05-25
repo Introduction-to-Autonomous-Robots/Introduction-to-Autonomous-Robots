@@ -448,7 +448,7 @@ During a convolution, the kernel is swept across the input image, summing over a
 x(n_1,n_2)*h(n_1,n_2)=\sum_{k_1=-\infty}^{\infty} \sum_{k_2=-\infty}^{\infty} h(k_1,k_2)x(n_1-k_1,n_2-k_2)
 \end{equation}
 
-where bounds (here, infinity) need to be chosen so that the kernel starts at the upper left corner of the image and ends at the lower right corner. It is also possible to artificially grow the input image by adding pixels around it, which is known as \emph{padding}. Note that the resulting output is identical to examples shown in Chapter \ref{fig:vision}.
+where bounds (here, infinity) need to be chosen so that the kernel starts at the upper left corner of the image and ends at the lower right corner. It is also possible to artificially grow the input image by adding pixels around it, which is known as \emph{padding}. Note that the resulting output is identical to examples shown in Chapter \ref{chap:vision}.
 
 \subsection{From convolutions to 2D neural networks}
 
