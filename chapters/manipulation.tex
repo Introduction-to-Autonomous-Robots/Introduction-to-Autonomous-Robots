@@ -6,7 +6,7 @@ Yet, many manipulation problems can be cast into a sequence of grasping and plac
 
 \section{How to find good grasps?}
 
-Finding a good grasp that fully constrains an object against all possible external forces and torques, that is a grasp that lies in the ``grasping wrench space'' (\cref{sec:grasping_friction} is often too restrictive. For example, it might be sufficient to find a grasp that constrains an object simply against gravity. Other applications instead might require the grasp to constrain an object's movement also again lateral forces that happen due to acceleration. In practice, these considerations usually lead to simple application-specific heuristics. For example, in a warehouse picking tasks \cite{correll2016analysis}, the problem can be constrained to have the robot grasp only objects that are suitable to be retrieved with a simple suction cup. Finding a good grasp is then reduced to finding a flat surface close to the object's perceived center of gravity. When considering household tasks, such has handling and placing dishes, using silver ware to scoop food, or holding a pitcher, we are often interested in very specific grasps that support the intended manipulation (\cref{sec:manipulation}) that follows.
+Finding a good grasp that fully constrains an object against all possible external forces and torques, that is a grasp that lies in the ``grasping wrench space'' (\cref{sec:grasping_friction} is often too restrictive. For example, it might be sufficient to find a grasp that constrains an object simply against gravity. Other applications instead might require the grasp to constrain an object's movement also again lateral forces that happen due to acceleration. In practice, these considerations usually lead to simple application-specific heuristics. For example, in a warehouse picking tasks \cite{correll2016analysis}, the problem can be constrained to have the robot grasp only objects that are suitable to be retrieved with a simple suction cup. Finding a good grasp is then reduced to finding a flat surface close to the object's perceived center of gravity. When considering household tasks, such has handling and placing dishes, using silver ware to scoop food, or holding a pitcher, we are often interested in very specific grasps that support the intended manipulation that follows.
 
 Theoretically speaking, grasps such as picking up an object or opening a door by turning its knob are task-specific wrench spaces. We can then say that the grasp is ``good'', when the task wrench space is a subset of the grasping wrench space, and will fail otherwise. We can also look at the ratio of forces actually applied to the object and the minimum needed to perform a desired wrench. If this ratio is high, for example, when the robot grasps an object far from its center of gravity or has to squeeze an object heavily to prevent it from slipping, this grasp is not as good as one, where the ratio is low and all of the force the robot is exerting is actually going into the desired wrench. It is usually not possible to find close-form expressions for the grasping wrench space. Instead, one can sample the space of suitable force vectors, e.g., by picking a couple of forces that are on the boundary of the cone's base, and calculate the convex hull over the resulting wrenches.
 
@@ -60,7 +60,14 @@ To ``see what happens'', requires collision checking and dynamic simulation. Dyn
 %A canonical manipulation problem are \textsl{peg-in-hole}\index{Peg-in-hole} and variations thereof including hole-on-peg problems, which generalize insertions and assembly operations.
 %\subsection{Non-prehensile Manipulation}
 
-\section{Exercises}
+\section*{Take-home lessons}
+\begin{itemize}
+\item Performing simple pick and place tasks is now possible thanks to high-resolution in-hand sensing and fast enough computation that can sift through large amounts of point cloud data in real-time. 
+\item Planning and executing a grasp is a complex problem that encompasses topics from a majority of previous chapters ranging from identifying an object, localizing it and computing the inverse kinematics to reach it.
+\item Manipulation extends these techniques from the robot itself to the objects the robot deals with and how they relate to each other, and remains an open field of research. 
+\end{itemize}
+
+\section*{Exercises}
 \begin{enumerate}
 \item Write code to generate rectangles with random dimensions and orientations. Rectangles can overlap. Use a point-in-polygon test to simulate random point samples on their surface, simulating a top-down view with a depth sensor.
 \begin{enumerate}
