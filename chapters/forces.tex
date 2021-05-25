@@ -19,15 +19,15 @@ In \cref{sec:kinematics:diff}, we introduced the \textsl{differential kinematics
 In the following, we will operate in the space of \textsl{forces}; however, we will simplify the more general dynamical problem by looking at the robot in static equilibrium---otherwise known as a \textsl{static} configuration.
 As we will see, a lot can be done by simply looking at the robot in an equilibrium configuration!
 The fourth and last abstraction, which goes beyond the scope of this book, is called \textsl{dynamics} and operates in the space of forces from a non-static perspective; it involves the second derivative of position (i.e. the acceleration), and it can be thought as a generalization of the second law of Newton ($F=ma$).
-We will briefly introduce the reader to the topic in \cref{sec:forces:dynamics}.\td{remember to remove this sentence if we decide not to have the subchapter on dynamics}
+%We will briefly introduce the reader to the topic in \cref{sec:forces:dynamics}.\td{remember to remove this sentence if we decide not to have the subchapter on dynamics}
 %
 The goals of this chapter are to:
 
 \begin{itemize}
-\item introduce the concept of statics
-\item understand the so called ``kineto-statics duality''
-\item become familiar with the notion of ``manipulability''
-\item briefly introduce the dynamics problem.
+\item Introduce the concept of statics,
+\item understand the so called ``kineto-statics duality'',
+\item become familiar with the notion of ``manipulability''.
+%\item briefly introduce the dynamics problem.
 \end{itemize}
 
 Most of the concepts below are typically considered in the context of manipulation, as mobile robots generally do not exchange forces with their environment.
@@ -41,7 +41,7 @@ However, it is good practice to start with the simplest layer first (i.e. kinema
 
 \section{Statics}\label{sec:forces:statics}
 
-\textsl{Statics} deals with relating (generalized) forces at the robot's joints and generalized forces at the end-effector when the robot is in \textsl{static equilibrium}, i.e. the acceleration of the robot and all of its components is zero.
+\textsl{Statics} deals with relating (generalized) forces at the robot's joints and generalized forces at the end-effector when the robot is in \textsl{mechanical equilibrium}\index{Mechanical Equilibrium}, i.e. the acceleration of the robot and all of its components is zero.
 If such a condition is met, a robot with $n$ degrees of freedom and an end-effector characterized by $m$ degrees of freedom can be fully described by the following quantities:
 \begin{itemize}
     \item an $\left( n \times 1 \right)$ vector of generalized forces $\tau$ at the joints;
@@ -121,13 +121,13 @@ The duality property that exists between differential kinematics (\cref{sec:kine
 \subsection{Manipulability Ellipsoid in Velocity space}
 
 As a first step, we may inspect the capacity of the manipulator to arbitrarily change its end-effector's position and orientation from the current configuration.
-More specifically, we may ask the following question: what effect does a small increment in joint positions (i.e. a small joint velocity) have on the end-effector pose?
+More specifically, we may ask the following question: what effect does a small increment in joint positions (i.e.\ a small joint velocity) have on the end-effector pose?
 Let's consider the set of joint velocities of unit norm defined by the following equation:
 \begin{equation}
 \dot{q}^T\cdot\dot{q} = 1 \quad .  \label{eq:forces:manipulability:velocitysphere}
 \end{equation}
-This equation represents a multi-dimensional ``sphere'' in joint space $n$.
-We now from \cref{sec:kinematics:diff} that this corresponds to a similarly multidimensional shape in operational space $m$, and we know that this correspondence is mediated by \cref{eq:kinematics:diff:fwd:short} and its inverse. In the generic case of a redundant manipulator, \cref{eq:forces:manipulability:velocitysphere} becomes:
+This equation represents a multi-dimensional ``sphere'' in joint space $\mathbb{R}^n$.
+We know from \cref{sec:kinematics:diff} that this corresponds to a similarly multidimensional shape in operational space $\mathbb{R}^m$, and we know that this correspondence is mediated by \cref{eq:kinematics:diff:fwd:short} and its inverse. In the generic case of a redundant manipulator, \cref{eq:forces:manipulability:velocitysphere} becomes:
 \begin{equation}
 \nu^T J(q)^{+T} \cdot J(q)^+ \nu = 1 \quad ,
 \end{equation}
@@ -149,10 +149,9 @@ The properties above can easily be verified in \cref{fig:manipulability}, left. 
 
 \begin{figure}
     \centering
-    % \includegraphics[width=0.27\textwidth]{figs/fwk2dofarm}
-    % \def\svgwidth{0.4\textwidth}
-    % \import{./figs/kinematics/}{fwk2dofarm.pdf_tex}
-    \caption{Velocity (left) and force (right) manipulability ellipsoids for a 2 DoF planar arm ($n=m=2$). In this simple $2x2$ case, the ellipsoids collapse to simple ellipses. \td{add figure} }\label{fig:manipulability}
+     \def\svgwidth{0.9\textwidth}
+    \import{./figs/}{manipulability.pdf_tex}
+    \caption{Velocity (left) and force (right) manipulability ellipsoids for a 2 DoF planar arm ($n=m=2$). In this simple $2x2$ case, the ellipsoids collapse to simple ellipses. }\label{fig:manipulability}
 \end{figure}
 
 \subsection{Manipulability Ellipsoid in Force space}
@@ -180,6 +179,11 @@ The velocity and force manipulability ellipsoids are useful for a variety of tas
 
 
 \section*{Take-home lessons}
+\begin{enumerate}
+\item Looking at forces in mechanical equilibrium, that is when end-effector forces and joint torques cancel each other, allows us to extend control of the robot from poses and velocities to the force domain.
+\item The torques required by a robotic arm are related to end-effector forces using the same Jacobian that also defines the robot’s kinematics, which is known as the Kineto-Statics Duality.  
+\item Although a robotic arm might reach a desired pose using multiple different configurations, some configurations are better suited than others, which is known as manipulability.
+\end{enumerate}
 
 \section*{Exercises}\small
 

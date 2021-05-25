@@ -113,12 +113,17 @@ The drawback of this design is that closing the gripper also results in a forwar
 \subsection{Multi-fingered hands}
 Grippers with more than two fingers/jaws are rarely used in industrial practice. One common use case is grasping cylindrical objects from above, for which three-fingered hands, such as indicated in Figure~\ref{fig:idealgrasp}, right, are best suited. In most other cases, three fingers are not an advantage, and might even be a hindrance, however. For example, it is difficult to perform simple pinching grasps with three fingers. This has led to designs in which two of the fingers are reconfigurable from performing an inwards motion to behave identical to a parallel jaw gripper, while the third finger is stored in a safe position. In addition to mechanical complexity, such an approach requires also additional planning steps.
 
-How many grasps are possible and how many possible grasps are needed to grasp every possible object remains a difficult theoretical problem (which is further complicated by the fact that successful grasping often happens at the boundary of what is mathematically tractable). Generally, we can say however, that additional fingers --- such as in the human hand --- provide additional redundancy, which allows grasping and manipulating (see Section \ref{sec:manipulation}) the same object in many different ways, including manipulating the object within the hand, that is without intermettent placement or handing it over to another gripper.
+How many grasps are possible and how many possible grasps are needed to grasp every possible object remains a difficult theoretical problem (which is further complicated by the fact that successful grasping often happens at the boundary of what is mathematically tractable). Generally, we can say however, that additional fingers --- such as in the human hand --- provide additional redundancy, which allows grasping and manipulating (see Section \ref{chap:manipulation}) the same object in many different ways, including manipulating the object within the hand, that is without intermittent placement or handing it over to another gripper.
+
+\section*{Take-home lessons}
+\begin{itemize}
+\item Making a good gripper requires to take advantage of compliance and friction in a way that still eludes mathematical analysis, making gripper design an experimental process.
+\item Successfully grasping an item does not necessarily mean that the robot will also be able to successfully manipulate that item. Designing a grasping mechanism therefore requires to understand the entire task, from grasping to placing or otherwise manipulating the item. 
+\item Simple mechanisms such as suction or two finger grippers are sufficient for most grasping and manipulation tasks, but are not suitable for in-hand manipulation, which --- for the large part --- remains an open research challenge. 
+\end{itemize}
 
 
-
-
-\section{Exercises}
+\section*{Exercises}
 \begin{enumerate}
 \item Think about at least three mechanisms to realize a parallel jaw gripper. How does the minimum and maximum aperture of the gripper relate to the gripper width for each of these designs?
 \item Think about at least three mechanisms to actuate a four-bar linkage. Which of these will keep the payload inside the gripper during power failure?
