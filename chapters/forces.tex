@@ -145,13 +145,13 @@ which corresponds to a multidimensional ellipsoid in operatinal space $m$---othe
 \item In a singularity, the ellipsoid ``loses a dimension'' and one of its axis becomes 0. Concurrently, the manipulability measure $w(q)=0$---which is why $w(q)$ is used to understand how far a robot is from a singular configuration.
 \end{itemize}
 
-The properties above can easily be verified in \cref{fig:manipulability}, left. The closer the robot is to a singular configuration (for example, the arm fully stretched), the more the $2$-dimensional ellipsoid converges to a vertical line. At the singularity itself, the minor axis has zero length, signifying that the robot can only move on a vertical direction and not right or left.
+The properties above can easily be verified in \cref{fig:manipulability}, top. The closer the robot is to a singular configuration (for example, the arm fully stretched), the more the $2$-dimensional ellipsoid converges to a vertical line. At the singularity itself, the minor axis has zero length, signifying that the robot can only move on a vertical direction and not right or left.
 
-\begin{figure}
+\begin{figure}[!t]
     \centering
-     \def\svgwidth{0.9\textwidth}
+    \def\svgwidth{0.8\textwidth}
     \import{./figs/}{manipulability.pdf_tex}
-    \caption{Velocity (left) and force (right) manipulability ellipsoids for a 2 DoF planar arm ($n=m=2$). In this simple $2x2$ case, the ellipsoids collapse to simple ellipses. }\label{fig:manipulability}
+    \caption{Velocity (top) and force (bottom) manipulability ellipsoids for a 2 DoF planar arm ($n=m=2$). In this simple $2\times2$ case, the ellipsoids collapse to simple ellipses (whose major axes are drawn in a dotted line). \td{add figure, finish captions} }\label{fig:manipulability}
 \end{figure}
 
 \subsection{Manipulability Ellipsoid in Force space}
@@ -166,7 +166,7 @@ F^T \left[ J(q) \cdot J(q)^T \right] F = 1 \quad ,
 \label{eq:forces:manipulability:forcemanipulability}
 \end{equation}
 This ellipsoid characterizes the forces at the end-effector that can be exerted by the robot on the environment in the given joint configuration $q$. It behaves similarly to the velocity manipulability ellipsoid, with one important difference: while the principal axes of both ellipsoids are in the same orientation, their magnitude is in inverse proportions.
-As depicted in \cref{fig:manipulability} (right), the major axis in force space becomes the minor axis in velocity space and vice versa.
+As depicted in \cref{fig:manipulability} (bottom), the major axis in force space becomes the minor axis in velocity space and vice versa.
 Therefore, a direction of high velocity manipulability corresponds to a direction of low force manipulability.
 
 \subsection{Manipulability Considerations}
@@ -181,7 +181,7 @@ The velocity and force manipulability ellipsoids are useful for a variety of tas
 \section*{Take-home lessons}
 \begin{enumerate}
 \item Looking at forces in mechanical equilibrium, that is when end-effector forces and joint torques cancel each other, allows us to extend control of the robot from poses and velocities to the force domain.
-\item The torques required by a robotic arm are related to end-effector forces using the same Jacobian that also defines the robot’s kinematics, which is known as the Kineto-Statics Duality.  
+\item The torques required by a robotic arm are related to end-effector forces using the same Jacobian that also defines the robot’s kinematics, which is known as the Kineto-Statics Duality.
 \item Although a robotic arm might reach a desired pose using multiple different configurations, some configurations are better suited than others, which is known as manipulability.
 \end{enumerate}
 

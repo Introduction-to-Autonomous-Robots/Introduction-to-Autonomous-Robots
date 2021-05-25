@@ -5,6 +5,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+<<<<<<< HEAD
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="manipulability.svg"
@@ -33,14 +34,163 @@
      inkscape:cy="585.92985"
      inkscape:cx="563.90677"
      inkscape:zoom="0.75736392"
+=======
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 508.45554 581.64209"
+   inkscape:export-ydpi="150.06332"
+   inkscape:export-xdpi="150.06332"
+   inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+   sodipodi:docname="manipulability.svg"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
+   version="1.1"
+   id="svg3012"
+   height="620.41821"
+   width="542.3526">
+  <defs
+     id="defs3014">
+    <marker
+       id="ExperimentalArrow"
+       refX="5"
+       refY="3"
+       orient="auto-start-reverse"
+       inkscape:stockid="ExperimentalArrow"
+       inkscape:isstock="true">
+      <path
+         style="fill:context-stroke;stroke:#000000;stroke-opacity:1"
+         d="M 10,3 0,6 V 0 Z"
+         id="path1367" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker5410"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path5157" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lstart">
+      <path
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         id="path4220" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lend">
+      <path
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         id="path4223" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3815" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lend-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3815-4" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker939"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path937" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lend-8-0"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3815-4-4" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     inkscape:document-rotation="0"
+     inkscape:window-maximized="1"
+     inkscape:window-y="-7"
+     inkscape:window-x="4313"
+     inkscape:window-height="1595"
+     inkscape:window-width="2811"
+     showgrid="false"
+     inkscape:current-layer="layer3"
+     inkscape:document-units="px"
+     inkscape:cy="476.76232"
+     inkscape:cx="703.00351"
+     inkscape:zoom="0.97821907"
+>>>>>>> Added manipulability picture
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
      bordercolor="#666666"
      pagecolor="#ffffff"
+<<<<<<< HEAD
      id="base" />
   <metadata
      id="metadata4867">
+=======
+     id="base"
+     inkscape:object-paths="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true"
+     inkscape:bbox-paths="true"
+     inkscape:snap-bbox-edge-midpoints="false"
+     inkscape:snap-bbox-midpoints="true" />
+  <metadata
+     id="metadata3017">
+>>>>>>> Added manipulability picture
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -52,6 +202,7 @@
     </rdf:RDF>
   </metadata>
   <g
+<<<<<<< HEAD
      transform="translate(31.128746,43.19469)"
      id="layer1"
      inkscape:groupmode="layer"
@@ -114,5 +265,982 @@
          x="148.83044"
          id="tspan5655-5-2"
          sodipodi:role="line">[m]</tspan></text>
+=======
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     style="display:none"
+     transform="translate(0,-77.989693)">
+    <image
+       width="503.92191"
+       height="446.392"
+       preserveAspectRatio="none"
+       xlink:href="data:image/jpeg;base64,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 /eREW/w4/l//2Q== "
+       id="image843"
+       x="-10.634076"
+       y="317.98969" />
+  </g>
+  <g
+     transform="translate(-42.857143,-162.69623)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Layer 3"
+     transform="translate(0,-77.989693)">
+    <g
+       id="g2274">
+      <text
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         id="text4435"
+         y="306.04156"
+         x="478.78906"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           style="font-size:16px;line-height:1.25;font-family:sans-serif"
+           y="306.04156"
+           x="478.78906"
+           id="tspan4437"
+           sodipodi:role="line">$x$</tspan></text>
+      <text
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         id="text4439"
+         y="90.302193"
+         x="-0.13869818"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           style="font-size:16px;line-height:1.25;font-family:sans-serif"
+           y="90.302193"
+           x="-0.13869818"
+           id="tspan4441"
+           sodipodi:role="line">$y$</tspan></text>
+      <text
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         id="text5140"
+         y="308.14996"
+         x="3.8306355"
+         style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:12.5px;line-height:1.25"
+           y="308.14996"
+           x="3.8306355"
+           id="tspan5142"
+           sodipodi:role="line">\small$0$</tspan></text>
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path3037-7"
+         d="M 20,313.53008 V 80.607057"
+         style="fill:none;stroke:#000000;stroke-width:0.864823px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend-8)" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path3039-9"
+         d="M 0,290.5128 H 485.7112"
+         style="fill:none;stroke:#000000;stroke-width:0.95893;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend-8)" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.9375;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 20,115.55532 h 3.75"
+         id="path1494"
+         sodipodi:nodetypes="cc" />
+      <text
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         id="text5140-1"
+         y="123.9604"
+         x="0.30319634"
+         style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:12.5px;line-height:1.25"
+           y="123.9604"
+           x="0.30319634"
+           id="tspan5142-5"
+           sodipodi:role="line">\small$1$</tspan></text>
+      <text
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         id="text5140-1-9"
+         y="308.14996"
+         x="229.90561"
+         style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:12.5px;line-height:1.25"
+           y="308.14996"
+           x="229.90561"
+           id="tspan5142-5-3"
+           sodipodi:role="line">\small$1$</tspan></text>
+      <text
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         id="text5140-1-9-3"
+         y="308.14996"
+         x="444.45825"
+         style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:12.5px;line-height:1.25"
+           y="308.14996"
+           x="444.45825"
+           id="tspan5142-5-3-2"
+           sodipodi:role="line">\small$2$</tspan></text>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.9375;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 445.07812,286.7628 v 3.75"
+         id="path1494-1"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.9375;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 235.71094,286.7628 v 3.75"
+         id="path1494-1-6"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path5108"
+         d="m 195.95662,193.16631 179.53087,97.34648"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path5108-3"
+         d="M 223.76747,232.35183 426.6407,290.5128"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path5108-8"
+         d="M 19.940625,290.5125 223.76747,232.35183"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path5108-2"
+         d="M 161.7478,162.33852 303.97958,290.5128"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path5108-25"
+         d="M 19.940625,290.5125 161.7478,162.33852"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path5108-7"
+         d="m 82.913914,127.6075 62.846596,162.905"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path5108-7-0"
+         d="M 19.940625,290.5125 82.913914,127.6075"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path5108-7-5"
+         d="M 37.98411,120.71643 57.003475,290.5128"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path5108-7-8"
+         d="M 19.940625,290.5125 37.98411,120.71643"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path1715"
+         d="M 19.940625,290.5125 195.95662,193.16631"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path1717"
+         d="m 187.13768,331.79821 71.21854,-82.39958"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path1719"
+         d="M 3.6921408,295.23691 111.5799,286.26692"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path1721"
+         d="m 95.09559,309.69558 99.51386,-36.29216"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path1723"
+         d="M 280.48621,355.63308 326.79695,226.05967"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path1725"
+         d="M 359.93934,369.22683 390.34538,209.65895"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path1727"
+         d="m 418.06434,385.16433 17.01385,-186.7609"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path1729"
+         d="M 161.7478,162.33852 303.97958,290.5128"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path1731"
+         d="M 19.940625,290.5125 161.7478,162.33852"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path1733"
+         d="m 121.07168,140.64459 101.94306,149.8682"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path1735"
+         d="M 19.940625,290.5125 121.07168,140.64459"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <ellipse
+         style="fill:none;stroke:#666666;stroke-width:1.81698;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+         id="path1737"
+         ry="71.280296"
+         rx="13.857576"
+         cy="250.66647"
+         cx="451.29883"
+         transform="rotate(5.2100251)" />
+      <ellipse
+         style="fill:none;stroke:#666666;stroke-width:1.81698;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+         id="path1737-1"
+         ry="63.880573"
+         rx="21.572573"
+         cy="215.15918"
+         cx="422.78482"
+         transform="rotate(10.825904)" />
+      <ellipse
+         style="fill:none;stroke:#666666;stroke-width:1.81698;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+         id="path1737-1-0"
+         ry="42.613239"
+         rx="18.552341"
+         cy="-40.485371"
+         cx="322.95084"
+         transform="rotate(70.425024)" />
+      <ellipse
+         style="fill:none;stroke:#666666;stroke-width:1.81698;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+         id="path1737-1-7"
+         ry="44.237762"
+         rx="27.197964"
+         cy="77.237305"
+         cx="358.25989"
+         transform="rotate(40.324542)" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2210"
+         d="m 269.74213,281.96111 68.09685,16.01527"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <ellipse
+         style="fill:none;stroke:#666666;stroke-width:1.81698;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+         id="path1737-1-5"
+         ry="53.542484"
+         rx="27.05769"
+         cy="171.38599"
+         cx="383.83475"
+         transform="rotate(19.677997)" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle1875"
+         cx="37.888474"
+         cy="120.61066"
+         r="2.8125" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle1877"
+         cx="83.066254"
+         cy="127.43438"
+         r="2.8125" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle1879"
+         cx="195.47949"
+         cy="192.47343"
+         r="2.8125" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle1881"
+         cx="162.04407"
+         cy="162.0647"
+         r="2.8125" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle1883"
+         cx="121.33875"
+         cy="140.46001"
+         r="2.8125" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2200"
+         d="m 56.324062,280.26442 2.049344,20.0458"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle1885"
+         cx="57.453297"
+         cy="290.53125"
+         r="2.8125" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2202"
+         d="m 136.67844,266.97082 20.50814,49.07616"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle1887"
+         cx="146.34695"
+         cy="290.53125"
+         r="2.8125" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2204"
+         d="m 191.93319,270.25407 63.22824,40.31437"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle1889"
+         cx="223.15266"
+         cy="290.53125"
+         r="2.8125" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle1891"
+         cx="304.64969"
+         cy="290.53125"
+         r="2.8125" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2208"
+         d="m 347.19347,286.57756 55.24621,7.6555"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle1893"
+         cx="374.84793"
+         cy="290.53125"
+         r="2.8125" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2206"
+         d="m 447.08233,293.06719 -41.06289,-5.74218"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle1895"
+         cx="426.67206"
+         cy="290.53125"
+         r="2.8125" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle1897"
+         cx="223.49161"
+         cy="232.42125"
+         r="2.8125" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="path1019"
+         cx="19.940624"
+         cy="290.53125"
+         r="2.8125" />
+      <ellipse
+         style="fill:none;stroke:#666666;stroke-width:1.81698;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+         id="path1737-1-5-3"
+         ry="43.469471"
+         rx="6.4319038"
+         cy="-35.635544"
+         cx="293.94119"
+         transform="rotate(85.723923)" />
+    </g>
+    <g
+       id="g2400"
+       transform="translate(0,243.75)">
+      <text
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         id="text2278"
+         y="306.04156"
+         x="478.78906"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           style="font-size:16px;line-height:1.25;font-family:sans-serif"
+           y="306.04156"
+           x="478.78906"
+           id="tspan2276"
+           sodipodi:role="line">$x$</tspan></text>
+      <text
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         id="text2282"
+         y="90.302193"
+         x="-0.13869818"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           style="font-size:16px;line-height:1.25;font-family:sans-serif"
+           y="90.302193"
+           x="-0.13869818"
+           id="tspan2280"
+           sodipodi:role="line">$y$</tspan></text>
+      <text
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         id="text2286"
+         y="308.14996"
+         x="3.8306355"
+         style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:12.5px;line-height:1.25"
+           y="308.14996"
+           x="3.8306355"
+           id="tspan2284"
+           sodipodi:role="line">\small$0$</tspan></text>
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2288"
+         d="M 20,313.53008 V 80.607057"
+         style="fill:none;stroke:#000000;stroke-width:0.864823px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend-8)" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2290"
+         d="M 0,290.5128 H 485.7112"
+         style="fill:none;stroke:#000000;stroke-width:0.95893;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend-8)" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.9375;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 20,115.55532 h 3.75"
+         id="path2292"
+         sodipodi:nodetypes="cc" />
+      <text
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         id="text2296"
+         y="123.9604"
+         x="0.30319634"
+         style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:12.5px;line-height:1.25"
+           y="123.9604"
+           x="0.30319634"
+           id="tspan2294"
+           sodipodi:role="line">\small$1$</tspan></text>
+      <text
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         id="text2300"
+         y="308.14996"
+         x="229.90561"
+         style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:12.5px;line-height:1.25"
+           y="308.14996"
+           x="229.90561"
+           id="tspan2298"
+           sodipodi:role="line">\small$1$</tspan></text>
+      <text
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         id="text2304"
+         y="308.14996"
+         x="444.45825"
+         style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:12.5px;line-height:1.25"
+           y="308.14996"
+           x="444.45825"
+           id="tspan2302"
+           sodipodi:role="line">\small$2$</tspan></text>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.9375;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 445.07812,286.7628 v 3.75"
+         id="path2306"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.9375;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 235.71094,286.7628 v 3.75"
+         id="path2308"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2310"
+         d="m 195.95662,193.16631 179.53087,97.34648"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2312"
+         d="M 223.76747,232.35183 426.6407,290.5128"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2314"
+         d="M 19.940625,290.5125 223.76747,232.35183"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2316"
+         d="M 161.7478,162.33852 303.97958,290.5128"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2318"
+         d="M 19.940625,290.5125 161.7478,162.33852"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2320"
+         d="m 82.913914,127.6075 62.846596,162.905"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2322"
+         d="M 19.940625,290.5125 82.913914,127.6075"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2324"
+         d="M 37.98411,120.71643 57.003475,290.5128"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2326"
+         d="M 19.940625,290.5125 37.98411,120.71643"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2328"
+         d="M 19.940625,290.5125 195.95662,193.16631"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2330"
+         d="m 205.06269,310.71375 36.916,-43.19667"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2332"
+         d="M 35.008296,292.92588 79.420337,288.45"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2334"
+         d="m 115.57172,301.26423 58.32071,-21.23618"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2336"
+         d="m 292.37317,320.62353 21.0713,-56.94894"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2338"
+         d="m 368.80546,324.02414 11.68323,-65.68916"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2340"
+         d="m 424.16888,313.50862 4.51407,-44.46691"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2342"
+         d="M 161.7478,162.33852 303.97958,290.5128"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2344"
+         d="M 19.940625,290.5125 161.7478,162.33852"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2346"
+         d="m 121.07168,140.64459 101.94306,149.8682"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2348"
+         d="M 19.940625,290.5125 121.07168,140.64459"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.00196;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <ellipse
+         style="fill:none;stroke:#666666;stroke-width:1.81698;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+         id="ellipse2350"
+         ry="11.66971"
+         rx="72.619095"
+         cy="250.66647"
+         cx="451.29883"
+         transform="rotate(5.2100251)" />
+      <ellipse
+         style="fill:none;stroke:#666666;stroke-width:1.81698;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+         id="ellipse2352"
+         ry="25.697218"
+         rx="47.355686"
+         cy="215.15918"
+         cx="422.78482"
+         transform="rotate(10.825904)" />
+      <ellipse
+         style="fill:none;stroke:#666666;stroke-width:1.81698;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+         id="ellipse2354"
+         ry="23.756681"
+         rx="90.739746"
+         cy="-40.485371"
+         cx="322.95084"
+         transform="rotate(70.425024)" />
+      <ellipse
+         style="fill:none;stroke:#666666;stroke-width:1.81698;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+         id="ellipse2356"
+         ry="21.482189"
+         rx="65.97374"
+         cy="77.237305"
+         cx="358.25989"
+         transform="rotate(40.324542)" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2358"
+         d="M 251.66743,273.81935 354.611,307.58365"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <ellipse
+         style="fill:none;stroke:#666666;stroke-width:1.81698;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+         id="ellipse2360"
+         ry="22.734982"
+         rx="49.308544"
+         cy="171.38599"
+         cx="383.83475"
+         transform="rotate(19.677997)" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle2362"
+         cx="37.888474"
+         cy="120.61066"
+         r="2.8125" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle2364"
+         cx="83.066254"
+         cy="127.43438"
+         r="2.8125" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle2366"
+         cx="195.47949"
+         cy="192.47343"
+         r="2.8125" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle2368"
+         cx="162.04407"
+         cy="162.0647"
+         r="2.8125" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle2370"
+         cx="121.33875"
+         cy="140.46001"
+         r="2.8125" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2372"
+         d="M 47.683732,160.65514 67.013736,415.85346"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle2374"
+         cx="57.453297"
+         cy="290.53125"
+         r="2.8125" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2376"
+         d="m 113.55246,198.43602 64.95338,181.2074"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle2378"
+         cx="146.34695"
+         cy="290.53125"
+         r="2.8125" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2380"
+         d="m 166.21865,243.71885 113.1222,92.83441"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle2382"
+         cx="223.15266"
+         cy="290.53125"
+         r="2.8125" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2386"
+         d="m 322.19391,280.32767 108.13556,22.31089"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle2388"
+         cx="374.84793"
+         cy="290.53125"
+         r="2.8125" />
+      <path
+         inkscape:export-ydpi="150.06332"
+         inkscape:export-xdpi="150.06332"
+         inkscape:export-filename="C:\Users\correll\Desktop\work\books\Computational Robotics\figs\trajectorygen.png"
+         inkscape:connector-curvature="0"
+         id="path2390"
+         d="M 508.41845,298.88104 347.00886,282.81928"
+         style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.5, 0.75;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:nodetypes="cc" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle2392"
+         cx="426.67206"
+         cy="290.53125"
+         r="2.8125" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle2394"
+         cx="223.49161"
+         cy="232.42125"
+         r="2.8125" />
+      <circle
+         style="fill:#000000;stroke-width:1.3113;stop-color:#000000"
+         id="circle2396"
+         cx="19.940624"
+         cy="290.53125"
+         r="2.8125" />
+      <ellipse
+         style="fill:none;stroke:#666666;stroke-width:1.81698;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+         id="ellipse2398"
+         ry="11.275052"
+         rx="121.49262"
+         cy="-35.635544"
+         cx="293.94119"
+         transform="rotate(85.723923)" />
+    </g>
+>>>>>>> Added manipulability picture
   </g>
 </svg>

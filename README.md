@@ -5,14 +5,14 @@ An open textbook focusing on computational principles of autonomous robots. The 
 
 This book can be cited as follows:
 
-Nikolaus Correll, Bradley Hayes, Christoffer Heckman and Alessandro Roncone. Introduction to Autonomous Robots: Mechanisms,
-Sensors, Actuators, and Algorithms, MIT Press, 2022 (forthcoming). 
+ > Nikolaus Correll, Bradley Hayes, Christoffer Heckman and Alessandro Roncone. Introduction to Autonomous Robots: Mechanisms, Sensors, Actuators, and Algorithms, MIT Press, 2022 (forthcoming). 
 
-@book{correll2022introduction,<br>
-  title={ Introduction to Autonomous Robots: Mechanisms,
-Sensors, Actuators, and Algorithms},<br>
-  author={Correll, Nikolaus and Hayes, Bradley, and Heckman, Christoffer, and Roncone, Alessandro},<br>
-  year={2022},<br>
-  edition={1st},<br>
-  publisher={MIT Press, Cambridge, MA}<br>
-}<br>
+```
+@book{correll2022introduction,
+  title={ Introduction to Autonomous Robots: Mechanisms, Sensors, Actuators, and Algorithms},
+  author={Correll, Nikolaus and Hayes, Bradley, and Heckman, Christoffer, and Roncone, Alessandro},
+  year={2022},
+  edition={1st},
+  publisher={MIT Press, Cambridge, MA}
+}
+```
