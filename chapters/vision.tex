@@ -157,6 +157,18 @@ Important morphological operators are \emph{erosion} and \emph{dilation}\index{E
 \end{figure}
 
 
+\section{Computer Vision and Machine Learning}
+The algorithms described here still form the basis of most image understanding pipelines and make feature detection (Chapter \ref{chap:feature_extraction}) tractable. With the advent of so-called ``convolutional neural networks'' (Chapter \ref{chap:ann}), basic signal processing such as described here is now often wrapped into the image understanding problem. While this makes it less important to implement such algorithms oneself, understanding what convolution, morphological operations and thresholds do to visual information remains still relevant to meaningfully compose neural networks and make them less of a black box. 
+
+
+\section*{Take-home lessons}
+\begin{enumerate}
+\item Unlike the sensors from Chapter \ref{chap:sensors}, our brains can directly process the 2D information that is captured by a vision sensor. It is difficult to unthink the amount of processing that we perform automatically, augmenting the signal with knowledge and other information that the computer does not necessarily have.
+\item  Algorithms described in this chapter aim at reducing information to a lower-dimensional space by removing noise and other spurious information, making the related challenge of understanding the data more tractable. 
+\item There is a trade-off between making the data stream more tractable and preserving actual information. As computers and algorithms, in particular machine learning, become more powerful, modern vision systems often blend pre-processing and actual image understanding into a single pipeline. 
+\end{enumerate}
+
+
 \section*{Exercises}\small
 \begin{enumerate}
 \item Below are shown multiple ``Kernels'' that can be used for convolution-based image filtering.
