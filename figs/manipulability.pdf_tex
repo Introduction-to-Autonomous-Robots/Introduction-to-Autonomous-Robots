@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 %% Creator: Inkscape 1.0 (4035a4f, 2020-05-01), www.inkscape.org
+=======
+%% Creator: Inkscape 1.0.2 (e86c870879, 2021-01-15, custom), www.inkscape.org
+>>>>>>> Added manipulability picture
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'manipulability.pdf' (pdf, eps, ps)
 %%
@@ -38,7 +42,11 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
+<<<<<<< HEAD
     \setlength{\unitlength}{666.71718357bp}%
+=======
+    \setlength{\unitlength}{406.76445007bp}%
+>>>>>>> Added manipulability picture
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,6 +58,7 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
+<<<<<<< HEAD
   \begin{picture}(1,0.48904072)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
@@ -58,5 +67,26 @@
     \put(0.54065907,0.29108888){\color[rgb]{0,0,0}\rotatebox{90.090535}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}[m]\end{tabular}}}}}%
     \put(0.2604189,0.00687252){\color[rgb]{0,0,0}\rotatebox{0.23897304}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}[m]\end{tabular}}}}}%
     \put(0.76636122,0.00979951){\color[rgb]{0,0,0}\rotatebox{0.23897306}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}[m]\end{tabular}}}}}%
+=======
+  \begin{picture}(1,1.14393886)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0.94165371,0.69542006){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(-0.00027278,1.11972337){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
+    \put(0.00753387,0.69127339){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\small$0$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{manipulability.pdf}}%
+    \put(0.00059631,1.05352641){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\small$1$\end{tabular}}}}%
+    \put(0.45216461,0.69127339){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\small$1$\end{tabular}}}}%
+    \put(0.87413392,0.69127339){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\small$2$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{manipulability.pdf}}%
+    \put(0.94165371,0.21602713){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(-0.00027278,0.64033044){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
+    \put(0.00753387,0.21188046){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\small$0$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{manipulability.pdf}}%
+    \put(0.00059631,0.57413348){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\small$1$\end{tabular}}}}%
+    \put(0.45216461,0.21188046){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\small$1$\end{tabular}}}}%
+    \put(0.87413392,0.21188046){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}\small$2$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{manipulability.pdf}}%
+>>>>>>> Added manipulability picture
   \end{picture}%
 \endgroup%
