@@ -235,7 +235,7 @@ So far, we have considered the so-called \emph{Mean-squared Error} (MSE)
 E=\frac{1}{2N}\sum_{i=1}^{N}(\hat{y_i}(w)-y_i)^2
 \end{equation}
 
-which is the average error over a set of $N$ pairs of predictions $\hat{y}$ that are dependent on the network parameters $w$ and known values $y$, see also Section \ref{sec:linefitting}. This function is particularly convenient, as the square makes it convex, allowing to find its minimum by following its gradient (``gradient descent''), which we have seen for the backpropagation algorithm in Section \ref{sec:backpropagation}.
+which is the average error over a set of $N$ pairs of predictions $\hat{y}$ that are dependent on the network parameters $w$ and known values $y$, see also Section \ref{sec:linefitting}. This function is particularly convenient, as the square makes it convex, allowing to find its minimum by following its gradient (``gradient descent'').
 
 MSE is most suited for \emph{regression} tasks\index{Regression} in which data points are fitted to a model such as a line. Using a sigmoid or other continuous activation function, the error for each class can also be interpreted as a distance from the seperating hyperplane, which makes MSE also suitable (but not optimal for these kind of tasks). The two possible interpretations are illustrated below:
 
