@@ -10,14 +10,14 @@ The goals of this chapter are:
 \end{itemize}
 
 % \section{Robotic Sensors}
-Interestingly, the development of robotic sensors is driven by industries other than robotics. These include submarines, automatically opening doors, safety devices for industry, servos for remote-controlled toys, and more recently cellphones, automobiles and gaming consoles. These industries are mostly responsible for making ``exotic'' sensors available at low cost by identifying mass-market applications, e.g., accelerometers and gyroscopes now being used in mass-market smartphones or the 3D depth sensor ``Kinect'' as part of the XBox gaming console.
+Historically, the development of robotic sensors is driven by industries other than robotics. These include submarines, automatically opening doors, safety devices for industry, servos for remote-controlled toys, and more recently cellphones, automobiles and gaming consoles. These industries are mostly responsible for making ``exotic'' sensors available at low cost by identifying mass-market applications, e.g., accelerometers and gyroscopes now being used in mass-market smartphones or the 3D depth sensor ``Kinect'' as part of the XBox gaming console.
 
 \begin{mdframed}
 Recap the sensors that you are interacting with daily. What sensors do you have in your phone, in your kitchen, or in your car?
 \end{mdframed}
 
 As we will see later on, sensors are hard to classify by their application. In fact, most problems benefit from every possible source of information they can obtain. For example, localization can be achieved by measuring how many degrees a wheel has turned with a sensor known as ``encoder''; however, estimation becomes more precise with the addition of accelerometers or even vision sensors. All of these approaches differ drastically in their precision and the kind of data they provide, but none of them is able to completely solve the localization problem on its own.
-Consequently, this chapter is therefore organized according to the physical quantities a sensor is measuring, rather than the higher-level state estimates it can contribute to measure.
+Consequently, this chapter is organized according to the physical quantities a sensor is measuring, rather than the higher-level state estimates it can contribute to measure.
 
 \begin{mdframed}
 Think about the kind of data that you could obtain from an encoder, an accelerometer, or a vision sensor on a non-holonomic robot. What are the fundamental differences? What physical principles do they leverage?
@@ -27,7 +27,10 @@ Although an encoder is able to measure position, it is used in this function onl
 In those robots, encoders are therefore mainly utilized to measure speed. An accelerometer instead, by definition, measures the derivative of speed. Vision, finally, allows to calculate the absolute position (or the integral of speed) if the environment is equipped with unique features. An additional fundamental difference between those three sensors is the amount and kind of data they provide. An accelerometer samples real-valued quantities that are digitized with some precision. An odometer instead delivers discrete values that correspond to encoder increments. Finally, a vision sensor delivers an array of digitized real-valued quantities (namely colors). Although the information content of this sensor exceeds that of the other sensors by far, cherry-picking the information that are really useful remains a hard, and largely unsolved, problem.
 
 
-\section{Proprioception of the internal state of the robot}\label{sec:sensors:proprioception}
+%\section{Proprioception of the internal state of the robot}\label{sec:sensors:proprioception}
+
+\section{Proprioception vs. Exteroception}
+\label{sec:sensors:proprioception}
 
 \textsl{Proprioception} \index{Proprioception} refers to the perception of internal states of a robot.
 Proprioception includes awareness of the robot's joint angles, its speeds, as well as internal torques and forces.
@@ -54,7 +57,8 @@ Another method to estimate the actual force or torque acting on a joint is to me
 
 % Finally, there are other means of proprioception, such as simple sensors that can detect when a robot gets picked up, e.g.
 
-\section{Exteroception of the physical interaction with the environment}\label{sec:sensors:interaction}
+%\section{Exteroception of the physical interaction with the environment}
+\label{sec:sensors:interaction}
 
 \textsl{Exteroception}\index{Exteroception} refers to sensing anything outside of the physical embodiment the robot. Exteroception is important because it is crucial for the robot to correctly perceive the state of the world, estimate the uncertainties related to it, and properly act based upon these uncertainties.
 Importantly, while the majority of sensor development focuses on \textsl{distal} sensors capable of measure quantities in the far space (e.g. cameras, see \cref{chap:vision}, or sound-based sensors, see \cref{sec:sensors:sound}), in recent years more attention has been given to \textsl{proximal} sensors, that are concerned with measuring the environment that is immediately surrounding the body or even directly on the robot body.
