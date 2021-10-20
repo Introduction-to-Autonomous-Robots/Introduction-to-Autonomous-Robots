@@ -10,11 +10,11 @@ With reference to \cref{eq:kinematics:forward}, inverse kinematics aims to solve
 q = f^{-1} (r)\ , \qquad f^{-1} : \mathbb{R}^m \rightarrow \mathbb{R}^n \ ,
 \end{equation}
 with a notation similar to \cref{eq:kinematics:forward}.
-For a mobile robot, we can do this only for velocities in the local coordinate system, and need more sophisticated methods to calculate appropriate trajectories for the robot.
+For a mobile robot, we can do this only for velocities in the local coordinate system, and need more sophisticated methods to calculate appropriate trajectories. We will discuss this in depth in \cref{sec:kinematics:diff}.
 
 \subsection{Solvability}
 
-\cref{eq:kinematics:inverse} is the inverted version of \cref{eq:kinematics:forward}, and as such is heavily non-linear.
+\cref{eq:kinematics:inverse} is the inverted version of \cref{eq:kinematics:forward}, and as such it is heavily non-linear.
 Therefore, it makes sense to briefly think about whether we can solve it at all for specific parameters before trying.
 Here, the workspace of a robot becomes important. The workspace is the sub-space that can be reached by the robot in any orientation.
 Clearly, there will be no solutions for the inverse kinematic problem outside of the workspace of the robot.
@@ -64,27 +64,27 @@ A solution can now be found by simply equating the individual entries of the tra
 \begin{eqnarray}
 cos\theta &=& cos(\alpha+\beta)\\
 \nonumber
-x &=& \cos_{\alpha\beta}l_2+\cos\alpha l_1\\
+x &=& c_{\alpha\beta}l_2+c_\alpha l_1\\
 \nonumber
-y &=& \sin_{\alpha\beta}l_2+\sin\alpha l_1
+y &=& s_{\alpha\beta}l_2+s_\alpha l_1
 \end{eqnarray}
 These can be reduced to
 \begin{eqnarray}
 \theta &=& \alpha + \beta \nonumber \\
-\cos\alpha &=& \frac{\cos_{\alpha\beta}l_2-x}{l_1}=\frac{\cos\theta l_2-x}{l_1} \\
-\sin\alpha &=& \frac{\sin_{\alpha\beta}l_2-y}{l_1}=\frac{\sin\theta l_2-y}{l_1} \nonumber
+c_\alpha &=& \frac{c_{\alpha\beta}l_2-x}{l_1}=\frac{c_\theta l_2-x}{l_1} \\
+s_\alpha &=& \frac{s_{\alpha\beta}l_2-y}{l_1}=\frac{s_\theta l_2-y}{l_1} \nonumber
 \end{eqnarray}
 Providing the orientation of the robot in addition to the desired position therefore allows solving for $\alpha$ and $\beta$ just as a function of $x$, $y$ and $\theta$.
 
 The main issue with the geometric approach detailed above is that it does not scale easily with an increase of DoF at the joints, and and it quickly becomes unhandy with more dimensions.
 For higher-DoF platforms, we can calculate a \textsl{numerical solution} using an approach that we will later see is very similar to path planning in mobile robotics.
 To this end, we will first calculate a measure of error between the current solution and the desired one, and then optimize the joint configuration so as to minimize such error.
-In our example, the measure of error is the Euclidian distance between the current end-effector pose as given by the forward kinematics equations in \cref{eq:fwk2dofarm} and the desired solution $[x,y]$ in configuration space, i.e.:
+In our example, the measure of error is the Euclidean distance between the current end-effector pose as given by the forward kinematics equations in \cref{eq:fwk2dofarm} and the desired solution $[x,y]$ in configuration space, i.e. (assuming $l_1=l_2=1$ for simplicity):
 % To do this, you need to solve the forward kinematics for every point in configuration space and use the Euclidean distance to the desired target as height.
 \begin{equation}\label{eq:kinematics:inverse:numerical}
-f_{x,y}(\alpha,\beta)=\sqrt{\left(\sin_{\alpha\beta} + \sin_\alpha - y\right)^2 + \left(\cos_{\alpha\beta}+\cos_\alpha - x\right)^2}
+f_{x,y}(\alpha,\beta)=\sqrt{\left(s_{\alpha\beta} + s_\alpha - y\right)^2 + \left(c_{\alpha\beta}+c_\alpha - x\right)^2}
 \end{equation}
-Here, the first two terms in the parentheses are given by the forward kinematics of the robot, whereas the third terms in the parentheses are the desired positions. For improved readability, we assume $l_1=l_2=1$.
+Here, the first two terms in the parentheses are given by the forward kinematics of the robot, whereas the third terms in the parentheses are the desired positions.
 \cref{eq:kinematics:inverse:numerical} is a 3D functional and can be plotted as a function of $\alpha$ and $\beta$, our joint-space variables.
 % This is plotted for $\alpha=[-\pi/2,\pi/2]$ and $\beta=[-\pi,\pi]$ and $x=1$, $y=1$ in Figure~\ref{fig:inversekinematics}.
 As shown in \cref{fig:inversekinematics}, this function has a minima, in this case zero, for values of $\alpha$ and $\beta$ that bring the manipulator to $(1,1)$. These values are $(\alpha \rightarrow 0, b \rightarrow -\frac{\pi}{2})$ and $(\alpha \rightarrow -\frac{\pi}{2}, b \rightarrow \frac{\pi}{2})$.
@@ -96,6 +96,6 @@ As shown in \cref{fig:inversekinematics}, this function has a minima, in this ca
     \label{fig:inversekinematics}
 \end{figure}
 
-You can now think about inverse kinematics as a path finding problem from anywhere in the configuration space to the nearest minima. A formal approach to doing this will be discussed in \cref{sec:kinematics:inverse:feedbackcontrol}. How to find shortest paths in space, that is finding the shortest route for a robot to get from A to B will be a subject of chapter~\ref{chap:pathplanning}.
+You can now think about inverse kinematics as a path finding problem from anywhere in the configuration space to the nearest minima. A formal approach to doing this will be discussed in \cref{sec:kinematics:inverse:feedbackcontrol}. How to find the shortest path in space, that is finding the shortest route for a robot to get from A to B, will be a subject of \cref{chap:pathplanning}.
 
 
