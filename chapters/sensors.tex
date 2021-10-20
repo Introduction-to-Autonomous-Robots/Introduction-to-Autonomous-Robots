@@ -34,6 +34,24 @@ In those robots, encoders are therefore mainly utilized to measure speed. An acc
 
 \textsl{Proprioception} \index{Proprioception} refers to the perception of internal states of a robot.
 Proprioception includes awareness of the robot's joint angles, its speeds, as well as internal torques and forces.
+%
+% Finally, there are other means of proprioception, such as simple sensors that can detect when a robot gets picked up, e.g.
+%
+%\section{Exteroception of the physical interaction with the environment}
+\label{sec:sensors:interaction}
+%
+Conversely, \textsl{exteroception}\index{Exteroception} refers to sensing anything outside of the physical embodiment the robot. Exteroception is important because it is crucial for the robot to correctly perceive the state of the world, estimate the uncertainties related to it, and properly act based upon these uncertainties.
+Importantly, while the majority of sensor development focuses on \textsl{distal} sensors capable of measure quantities in the far space (e.g. cameras, see \cref{chap:vision}, or sound-based sensors, see \cref{sec:sensors:sound}), in recent years more attention has been given to \textsl{proximal} sensors, that are concerned with measuring the environment that is immediately surrounding the body or even directly on the robot body.
+Applications of this technology are varied, from tasks that require measuring and controlling the interaction of the end-effector with the environment (e.g. sanding a table with a fixed vertical force), to manipulating in clutter---where contact with obstacles is inevitable.
+
+\begin{mdframed}
+In robotics, it often helps to make comparisons with human performance.
+How many daily tasks \textsl{do not} require physical interaction with the environment?
+If they do, would you be able to successfully complete them without contact, and how would your performance decrease if you were to ``avoid collisions at all costs''?
+\end{mdframed}
+
+\subsection{Measuring the robot's joint configuration}
+
 The most important proprioceptive sensor is the \textsl{encoder}\index{Encoder}. Encoders can be used for sensing joint position and speed, as well as force---if used in conjunction with a spring. Encoders can be divided in incremental (relative, used primarily in mobile robotics) and absolute encoders (mainly used in robot manipulators).
 %The latter are mostly used in industrial applications, but are not common in mobile robotics.
 In general, they rely on either a magnetic or optical beacon turning together with the motor and being sensed by an appropriate sensor that counts every pass-through. The most common encoder in robotics is the \textsl{quadrature encoder}\index{Quadrature encoder}, which is an optical encoder. It relies on a pattern rotating with the motor and an optical sensor that can register black/white transitions, as shown in Figure~\ref{fig:encoders}.
@@ -55,21 +73,6 @@ This can be used when operating a robot under a static (\cref{sec:forces:statics
 % Whereas the series elastic actuator is the most illustrative examples, most load cells operate on the premise of measuring displacements within materials of known properties. Here, measuring changes in resistance or capacitance might be easier choices.
 Another method to estimate the actual force or torque acting on a joint is to measure the current consumed at each joint. Knowing a mechanism's pose allows to calculate the resulting forces and torques across the mechanism as well as the currents required for empty loading conditions. Derivations of these then correspond to additional forces that can hence be calculated.
 
-% Finally, there are other means of proprioception, such as simple sensors that can detect when a robot gets picked up, e.g.
-
-%\section{Exteroception of the physical interaction with the environment}
-\label{sec:sensors:interaction}
-
-\textsl{Exteroception}\index{Exteroception} refers to sensing anything outside of the physical embodiment the robot. Exteroception is important because it is crucial for the robot to correctly perceive the state of the world, estimate the uncertainties related to it, and properly act based upon these uncertainties.
-Importantly, while the majority of sensor development focuses on \textsl{distal} sensors capable of measure quantities in the far space (e.g. cameras, see \cref{chap:vision}, or sound-based sensors, see \cref{sec:sensors:sound}), in recent years more attention has been given to \textsl{proximal} sensors, that are concerned with measuring the environment that is immediately surrounding the body or even directly on the robot body.
-Applications of this technology are varied, from tasks that require measuring and controlling the interaction of the end-effector with the environment (e.g. sanding a table with a fixed vertical force), to manipulating in clutter---where contact with obstacles is inevitable.
-
-\begin{mdframed}
-In robotics, it often helps to make comparisons with human performance.
-How many daily tasks \textsl{do not} require physical interaction with the environment?
-If they do, would you be able to successfully complete them without contact, and how would your performance decrease if you were to ``avoid collisions at all costs''?
-\end{mdframed}
-
 \subsection{Measuring force}
 
 The measurement of physical interaction forces is of paramount importance for robotics.
@@ -86,7 +89,7 @@ In general, the vertical pressure applied to the sensor is proportional to the 1
 Additionally, pressure sensors are mostly based on measuring pressure through a change in \textsl{capacitance} rather than resistance (no different from the functioning of a touchscreen on a modern smartphone): when pressure is applied to a capacitor-like device (i.e. two conductive plates separated by an insulating material), the distance between the two plates reduces and this causes a change in capacitance which can be readily measured.
 If compared to F/T sensors, pressure sensors provide limited amount of information ($1$-dimensional vs $6$-dimensional), but they allow for: 1) high responsiveness; 2) high density of sensing (up to tens of sensors per $cm^2$); 3) low cost; 4) ease of miniaturization.
 
-\subsection{Artificial Skins for Robotics}
+\subsection{Artificial skins for robotics}
 
 The human sense of touch is the oldest, the largest, and the most important of our senses.
 To humans, contact and physical interaction are a resource rather than an impediment, and we are surprisingly proficient at leveraging touch in a variety of situations.
