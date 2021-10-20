@@ -12,9 +12,11 @@ $q$ generally corresponds to the number of actuators/joint that you can control 
 Conversely, $r$ depends on the task and its dimensionality is $m$, where $m$ is the number of DoFs in task space.
 % (e.g. a sequence of joint angles in case of a manipulator with revolute joints \td{we have not talked about revolute joints yet, remember to fix this}).
 
-In the following, we will compute the forward kinematics mapping $f$ for a number of selected but diverse mechanisms.
-We will first consider simple mechanisms where we can determine the relationship between actuators and the pose of various frames on the robot both in the position and speed domain.
-We will then consider the special class of non-holonomous mechanisms using a series of wheeled robots, for which the forward kinematics can only be calculated in the speed domain.
+In the following, we will focus on the problem of computing the forward kinematics mapping $f$ for a variety of robot arms.
+While it is always possible to compute the forward kinematics \textsl{analytically} (i.e. by inspecting the arm mechanism and the relationship between joint and task configuration, see \cref{sec:kinematics:fwk:arm}), in \cref{sec:kinematics:fwk:dh} we will introduce a scalable, \textsl{geometric} technique to compute forward kinematics with more complex arms composed of many Degrees of Freedom.
+% number of selected but diverse mechanisms.
+% We will first consider simple mechanisms where we can determine the relationship between actuators and the pose of various frames on the robot both in the position and speed domain.
+% We will then consider the special class of non-holonomous mechanisms using a series of wheeled robots, for which the forward kinematics can only be calculated in the speed domain.
 
 \subsection{Forward Kinematics of a simple robot arm}\label{sec:kinematics:fwk:arm}
 
@@ -64,12 +66,12 @@ This terminology will be identical for mobile robots. An example of configuratio
 We can now write down  a transformation that includes a rotation around the z-axis:
 \begin{equation}
 \label{eq:2armtrans}
-f(q) = \left[\begin{array}{cccc}cos_{\alpha\beta} & -sin_{\alpha\beta} &  0 & \cos_{\alpha\beta}l_2+\cos\alpha l_1\\
-                        sin_{\alpha\beta} & cos_{\alpha\beta} & 0 & \sin_{\alpha\beta}l_2+\sin\alpha l_1\\
-                                                0 & 0 & 1 & 0\\
-                                                0 & 0 & 0 & 1\end{array}\right]
+f(q) = \left[\begin{array}{cccc}c_{\alpha\beta} & \ -s_{\alpha\beta} & \  0 & \ c_{\alpha\beta}l_2+c_\alpha l_1\\
+                        s_{\alpha\beta} & \ c_{\alpha\beta} & \ 0 & \ s_{\alpha\beta}l_2+s_\alpha l_1\\
+                                                0 & \ 0 & \ 1 & \ 0\\
+                                                0 & \ 0 & \ 0 & \ 1\end{array}\right]
 \end{equation}
-The notation $sin_{\alpha\beta}$ and $cos_{\alpha\beta}$ are shorthand for $sin(\alpha+\beta)$ and $cos(\alpha+\beta)$, respectively.
+The notation $s_{\alpha\beta}$ and $c_{\alpha\beta}$ are shorthand for $sin(\alpha+\beta)$ and $cos(\alpha+\beta)$, respectively.
 %
 This transformation now allows us to transform from the robot's base to the robot's end-effector configuration $r = [x, y, \theta]^T$ as a function of the joint configuration $q = [\alpha, \beta]^T$.
 This transformation will be helpful if we want to calculate suitable joint angles in order to reach a certain pose (i.e., inverse kinematics) or if we want to convert measurements taken relative to the end-effector back into the base's coordinate system (e.g., when we have sensors mounted on the end effector whose output needs to be mapped back to the world reference frame).
@@ -77,8 +79,8 @@ This transformation will be helpful if we want to calculate suitable joint angle
 
 \subsection{The Denavit-Hartenberg notation}\label{sec:kinematics:fwk:dh}
 
-So far, we have considered the forward kinematics of wheeled mechanisms and simple arms and derived relationships between actuator parameters and velocities using basic trigonometry.
-In the case of multi-link arms (which is the vast majority of robot manipulators in existence), the approach detailed in \cref{sec:kinematics:fwkarm} is difficult to scale, and alternative solutions are needed.
+So far, we have considered the forward kinematics of a simple arm and derived relationships between actuator parameters and end-effector positions using basic trigonometry.
+In the case of multi-link arms (which is the vast majority of robot manipulators in existence), the approach detailed in \cref{sec:kinematics:fwk:arm} is difficult to scale, and alternative solutions are needed.
 Interestingly, we can think of the forward kinematics as a chain of homogeneous transformations with respect to a coordinate system mounted at the base of a manipulator or a fixed position in the room.
 Deriving these transformations can be confusing and can be facilitated by following a ``recipe'' such as the one conceived by Denavit and Hartenberg in $1955$ (see \cite{hartenberg1955kinematic} and \cite{craig2009introduction}).
 The so-called Denavit-Hartenberg (DH)\index{Denavit-Hartenberg parameters} representation has since evolved as a \textsl{de-facto} standard.
@@ -100,7 +102,7 @@ Knowing the robot's kinematic properties (e.g. the length of all rigid links, si
     \label{fig:denavit}
 \end{figure}
 
-In order to use the DH-convention, we first need to define a coordinate system at each joint. With reference to \cref{fig:denavit}, we choose the $z-$axis to be the axis of rotation for a revolute joint and the axis of translation for a prismatic joint.
+In order to use the DH convention, we first need to define a coordinate system at each joint. With reference to \cref{fig:denavit}, we choose the $z-$axis to be the axis of rotation for a revolute joint and the axis of translation for a prismatic joint.
 We can now find the common normal between the $z-$axes of two subsequent joints, i.e. a line that is orthogonal to each $z-$axis and intersects both.
 With the direction of the $x-$axis at the base arbitrary, subsequent $x-$axes are chosen such that they lie on the common normal shared between two joints.
 Whereas the direction of the $z-$axis is given by the positive direction of rotation (right-hand rule), the $x-$axis points away from the previous joint.
