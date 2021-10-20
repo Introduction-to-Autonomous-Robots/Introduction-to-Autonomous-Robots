@@ -1,7 +1,7 @@
 %!TEX root = ../book.tex
 \chapter{Sensors}\label{chap:sensors}
-Robots are systems that sense, actuate, and compute. So far, we have studied the basic physical principles of motion, i.e., locomotion and manipulation. We now need to understand the basic principles of robotic sensors that provide the data-basis for a robot to make decisions and control its body.
-
+Robots are systems that sense, actuate, and compute. So far, we have studied the basic physical principles of motion, i.e., locomotion and manipulation. We now need to understand the basic principles of robotic sensors that provide the necessary data for a robot to make decisions and control its body.
+%
 The goals of this chapter are:
 \begin{itemize}
 \item provide an overview of sensors commonly used on robotic systems,
@@ -10,30 +10,62 @@ The goals of this chapter are:
 \end{itemize}
 
 % \section{Robotic Sensors}
-Historically, the development of robotic sensors is driven by industries other than robotics. These include submarines, automatically opening doors, safety devices for industry, servos for remote-controlled toys, and more recently cellphones, automobiles and gaming consoles. These industries are mostly responsible for making ``exotic'' sensors available at low cost by identifying mass-market applications, e.g., accelerometers and gyroscopes now being used in mass-market smartphones or the 3D depth sensor ``Kinect'' as part of the XBox gaming console.
+Historically, the development of robotic sensors is driven by industries other than robotics. These include submarines, automatically opening doors, safety devices for industry, servos for remote-controlled toys, and more recently cellphones, automobiles and gaming consoles. These industries are mostly responsible for making ``exotic'' sensors available at low cost by identifying mass-market applications.
+For example, accelerometers and gyroscopes are now widely used in smartphones and cost less than a dollar; the XBox gaming console made 3D depth sensing (through the Kinect) accessible for a greatly lower cost than before.
 
 \begin{mdframed}
-Recap the sensors that you are interacting with daily. What sensors do you have in your phone, in your kitchen, or in your car?
+Think about the sensors that you are interacting with daily. What sensors do you have in your phone, in your kitchen, or in your car?
 \end{mdframed}
 
-As we will see later on, sensors are hard to classify by their application. In fact, most problems benefit from every possible source of information they can obtain. For example, localization can be achieved by measuring how many degrees a wheel has turned with a sensor known as ``encoder''; however, estimation becomes more precise with the addition of accelerometers or even vision sensors. All of these approaches differ drastically in their precision and the kind of data they provide, but none of them is able to completely solve the localization problem on its own.
-Consequently, this chapter is organized according to the physical quantities a sensor is measuring, rather than the higher-level state estimates it can contribute to measure.
+As we will see later on, sensors are hard to classify by their application domain and target use case. In fact, most problems benefit from every possible source of information they can obtain. For example, localization can be achieved by measuring how many degrees a wheel has turned with a sensor known as ``encoder'' (cf. \cref{sec:sensors:encoders}); however, estimation becomes more precise with the addition of accelerometers (\cref{sec:sensors:inertia}) or even vision sensors (\cref{chap:vision}). All of these approaches differ drastically in their precision and the kind of data they provide, but none of them is able to completely solve the localization problem on its own.
+Consequently, this chapter is organized according to the physical quantities a sensor is measuring, rather than the higher-level estimates it can contribute to measure.
 
 \begin{mdframed}
-Think about the kind of data that you could obtain from an encoder, an accelerometer, or a vision sensor on a non-holonomic robot. What are the fundamental differences? What physical principles do they leverage?
+Think about the kind of data that you can obtain from an encoder, an accelerometer, or a vision sensor on a non-holonomic robot. What are the fundamental differences? What physical principles do they leverage?
 \end{mdframed}
 
 Although an encoder is able to measure position, it is used in this function only on robotic arms. If the robot is non-holonomic, closed paths in its configuration space (i.e., robot motions that return the encoder values to their initial position), do not necessarily drive the robot back to its starting point (as exemplified in \cref{fig:holonomy}).
-In those robots, encoders are therefore mainly utilized to measure speed. An accelerometer instead, by definition, measures the derivative of speed. Vision, finally, allows to calculate the absolute position (or the integral of speed) if the environment is equipped with unique features. An additional fundamental difference between those three sensors is the amount and kind of data they provide. An accelerometer samples real-valued quantities that are digitized with some precision. An odometer instead delivers discrete values that correspond to encoder increments. Finally, a vision sensor delivers an array of digitized real-valued quantities (namely colors). Although the information content of this sensor exceeds that of the other sensors by far, cherry-picking the information that are really useful remains a hard, and largely unsolved, problem.
+In those robots, encoders are therefore mainly utilized to measure speed. An accelerometer instead, by definition, measures the derivative of speed. Vision, finally, allows to calculate the absolute position (or the integral of speed) if the environment is equipped with unique features. An additional fundamental difference between those three sensors is the amount and kind of data they provide. An accelerometer samples real-valued quantities that are digitized with some precision. An odometer instead delivers discrete values that correspond to encoder increments. Finally, a vision sensor delivers an array of digitized real-valued quantities (namely colors). Although the information content of this sensor exceeds that of the other sensors by far, cherry-picking the information that is really useful to complete the task remains a hard, and largely unsolved, problem.
 
 
-%\section{Proprioception of the internal state of the robot}\label{sec:sensors:proprioception}
+\section{Terminology}\label{sec:sensors:terminology}
+
+When dealing with sensors, it is important to provide precise definitions of terms such as ``speed'' and ``resolution'', as well as additional taxonomy that is specific to robotics.
+%
+Roboticists differentiate between \textsl{active} and \textsl{passive} sensors. Active sensors \index{Active sensor} emit energy of some sort and measure the reaction of the environment. Passive sensors \index{Passive sensor} instead measure energy from the environment. For example, most distance sensors (\cref{sec:sensors:light}) are active sensors, because they sense the reflection of a signal they emit; conversely, an accelerometer, a compass, or a push-button are passive sensors.
+
+Another important term to characterize sensors is its \textsl{range}\index{Range (sensor)}, i.e. the \textsl{difference} between the upper and the lower limit of the quantity a sensor can measure.
+This differs from its \textsl{dynamic range}\index{Dynamic Range (sensor)}, which is the \textsl{ratio} between the highest and lowest value a sensor can measure. It is usually expressed on a logarithmic scale (to the basis 10), also known as ``decibel''\index{Decibel}. The minimal distance between two values a sensor can measure is known as its \index{Resolution (sensor)} \textsl{resolution}. The resolution of a sensor is primarily limited by the physical principle it leverages (e.g., a light detector can only count multiples of a quant), however it is usually limited by the analog-digital conversion process.
+The resolution of a sensor should not be confused with its accuracy or its precision (which are two different concepts). For example, even though an infrared distance sensor might produce $4096$ different values to encode distances from $0$ to $10cm$ (which suggests a resolution of around $24$ micrometers), its precision is much lower than its resolution (usually in the order of millimeters) due to noise in the acquisition process.
+
+A sensor's \textsl{accuracy}\index{Accuracy (sensor)} is the difference between its (average) output $m$ and the true value $v$ to be measured:
+\begin{equation}
+accuracy=1-\frac{|m-v|}{v}
+\end{equation}
+This measure provides a quantity that approaches $1$ for very accurate values and $0$ if the measurements group far away from the actual value. In practice, however, this measure is rarely used and accuracy is provided with absolute values or a percentage at which a value might exceed the true measurement.
+
+A sensor's \textsl{precision}\index{Precision (sensor)} instead is given by the ratio of range and statistical variance of the signal.
+As detailed in \cref{fig:precision}, precision is therefore a measure of \textsl{repeatability} of a signal, whereas accuracy describes a \textsl{systematic error} that is introduced by the sensor's physics.
+\begin{figure}
+	\centering
+	% \includegraphics[width=0.9\textwidth]{figs/precisionvsaccuracy.png}
+	\def\svgwidth{0.9\textwidth}
+    \import{./figs/}{precisionvsaccuracy.pdf_tex}
+	\caption{The cross corresponds to the true value of the signal. From left to right: neither precise nor accurate, precise but not accurate, accurate but not precise, accurate and precise.
+	\label{fig:precision}}
+\end{figure}
+%
+For example, a GPS sensor is usually precise within a few meters, but only accurate to tens of meters. This becomes most obvious when satellite configurations change, resulting in the precise region jumping by a couple of meters. In practice, this can be avoided by fusing this data with other sensors, e.g.\ from an IMU.
+
+The speed at which a sensor can provide measurements is known as its \index{Bandwidth (sensor)} \textsl{bandwidth}. For example, if a sensor has a bandwidth of 10 Hz, it will provide a signal ten times a second. This is important to know, as querying the sensor more often is a waste of computational time and potentially misleading.
+
 
 \section{Proprioception vs. Exteroception}
 \label{sec:sensors:proprioception}
 
-\textsl{Proprioception} \index{Proprioception} refers to the perception of internal states of a robot.
-Proprioception includes awareness of the robot's joint angles, its speeds, as well as internal torques and forces.
+Anotehr important taxonomy is the difference between proprioception and exteroception.
+\textsl{Proprioception}\index{Proprioception} refers to the perception of the internal state of a robot.
+Proprioception includes estimation of the robot's joint angles, its speeds, as well as internal torques and forces.
 %
 % Finally, there are other means of proprioception, such as simple sensors that can detect when a robot gets picked up, e.g.
 %
@@ -41,7 +73,7 @@ Proprioception includes awareness of the robot's joint angles, its speeds, as we
 \label{sec:sensors:interaction}
 %
 Conversely, \textsl{exteroception}\index{Exteroception} refers to sensing anything outside of the physical embodiment the robot. Exteroception is important because it is crucial for the robot to correctly perceive the state of the world, estimate the uncertainties related to it, and properly act based upon these uncertainties.
-Importantly, while the majority of sensor development focuses on \textsl{distal} sensors capable of measure quantities in the far space (e.g. cameras, see \cref{chap:vision}, or sound-based sensors, see \cref{sec:sensors:sound}), in recent years more attention has been given to \textsl{proximal} sensors, that are concerned with measuring the environment that is immediately surrounding the body or even directly on the robot body.
+Importantly, while the majority of sensor development focuses on \textsl{distal} sensors capable of measuring quantities in the far space (e.g. cameras, see \cref{chap:vision}, or sound-based sensors, see \cref{sec:sensors:sound}), in recent years more attention has been given to \textsl{proximal} sensors, that are concerned with measuring the environment that is immediately surrounding the body or even directly on the robot body.
 Applications of this technology are varied, from tasks that require measuring and controlling the interaction of the end-effector with the environment (e.g. sanding a table with a fixed vertical force), to manipulating in clutter---where contact with obstacles is inevitable.
 
 \begin{mdframed}
@@ -50,7 +82,9 @@ How many daily tasks \textsl{do not} require physical interaction with the envir
 If they do, would you be able to successfully complete them without contact, and how would your performance decrease if you were to ``avoid collisions at all costs''?
 \end{mdframed}
 
-\subsection{Measuring the robot's joint configuration}
+%\section{Proprioception of the internal state of the robot}\label{sec:sensors:proprioception}
+
+\section{Sensors that measure the robot's joint configuration}\label{sec:sensors:encoders}
 
 The most important proprioceptive sensor is the \textsl{encoder}\index{Encoder}. Encoders can be used for sensing joint position and speed, as well as force---if used in conjunction with a spring. Encoders can be divided in incremental (relative, used primarily in mobile robotics) and absolute encoders (mainly used in robot manipulators).
 %The latter are mostly used in industrial applications, but are not common in mobile robotics.
@@ -73,7 +107,7 @@ This can be used when operating a robot under a static (\cref{sec:forces:statics
 % Whereas the series elastic actuator is the most illustrative examples, most load cells operate on the premise of measuring displacements within materials of known properties. Here, measuring changes in resistance or capacitance might be easier choices.
 Another method to estimate the actual force or torque acting on a joint is to measure the current consumed at each joint. Knowing a mechanism's pose allows to calculate the resulting forces and torques across the mechanism as well as the currents required for empty loading conditions. Derivations of these then correspond to additional forces that can hence be calculated.
 
-\subsection{Measuring force}
+\section{Measuring force}
 
 The measurement of physical interaction forces is of paramount importance for robotics.
 It enables a variety of capabilities that humans take from granted, from gently picking a strawberry to safely engaging in touch-based interactions with humans.
@@ -81,7 +115,7 @@ While the development of robust, scalable, and miniaturizable force sensors is s
 To date, most commercially available F/T sensors use \textsl{strain gauges}---and in particular, at least one strain gauge per axis of detection. Simply put, a strain gauge is a metal (i.e. conductive) foil that changes its shape when a wrench is applied to it, and while doing so it changes its electrical resistance (which can then be measured with appropriate circuitry).
 While precise, F/T sensors are plagued by a number of limitations: 1) high costs; 2) size (a standard F/T sensor is usually the size of a human wrist); 3) low signal-to-noise ratio; 4) low bandwidth/responsivity; 5) a single data point that is sparse in space and time.
 
-\subsection{Measuring pressure or touch}
+\section{Measuring pressure or touch}
 
 In order to partially mitigate the above issues with force sensing, roboticists have worked on a complementary capability, that is measuring the pressure applied on the robot's surface.
 A pressure sensor is a device that is capable of detecting either a contact/collision as a binary data (in which case is generally referred to as touch sensor), or a gradient of pressure applied to it.
@@ -89,7 +123,7 @@ In general, the vertical pressure applied to the sensor is proportional to the 1
 Additionally, pressure sensors are mostly based on measuring pressure through a change in \textsl{capacitance} rather than resistance (no different from the functioning of a touchscreen on a modern smartphone): when pressure is applied to a capacitor-like device (i.e. two conductive plates separated by an insulating material), the distance between the two plates reduces and this causes a change in capacitance which can be readily measured.
 If compared to F/T sensors, pressure sensors provide limited amount of information ($1$-dimensional vs $6$-dimensional), but they allow for: 1) high responsiveness; 2) high density of sensing (up to tens of sensors per $cm^2$); 3) low cost; 4) ease of miniaturization.
 
-\subsection{Artificial skins for robotics}
+\section{Artificial skins for robotics}
 
 The human sense of touch is the oldest, the largest, and the most important of our senses.
 To humans, contact and physical interaction are a resource rather than an impediment, and we are surprisingly proficient at leveraging touch in a variety of situations.
@@ -186,34 +220,6 @@ Gyroscopes can measure the rotational speed around three axes, which can be inte
 Localizing an object by triangulation goes back to ancient civilizations, where sailors oriented themselves using the stars. As stars are only visible during unclouded nights, seafarers have invented systems of artificial beacons emitting light, sound, and eventually radio waves. The most sophisticated of such systems is the Global Positioning System (GPS). GPS consists of a number of satellites in orbit that are equipped with knowledge about their precise location and have synchronized clocks. These satellites broadcast a radio signal that travels at the speed of light and is coded with its time of emission. GPS receivers can therefore calculate the distance to each satellite by comparing time of emission and time of arrival. As not only the position (x,y,z), but also the time difference between the GPS receiver's clock and the synchronized clocks of the satellites is unknown, four satellites are needed to obtain a ``fix''. Due to the way information from the satellites is coded, getting an initial fix can take in the order of minutes, but afterwards it becomes available multiple times per second. GPS measurements are neither precise nor accurate enough for robotics applications, and require to be combined with other sensors, such as IMUs and compasses. Please note that the bearing shown on some GPS receivers you may have access to is calculated from subsequent positions and is therefore meaningless if the robot is not moving.
 
 There exist also a variety of indoor GPS solutions, which consists of either active or passive beacons that are mounted in the environment at known locations. Passive beacons, for example infrared reflecting stickers arranged in a certain pattern or 2D barcodes, can be detected using cameras and their pose can be calculated from their known dimensions. Active beacons instead usually emit radio, ultrasound or a combination thereof, which can then be used to estimate the robot's range to this beacon.
-
-\section{Terminology}\cref{sec:sensors:terminology}
-It is now time to introduce a more precise definition of terms such as ``speed'' and ``resolution'', as well as additional taxonomy that is used in a robotic context.
-%
-Roboticists differentiate between \textsl{active} and \textsl{passive} sensors. Active sensors \index{Active sensor} emit energy of some sort and measure the reaction of the environment. Passive sensors \index{Passive sensor} instead measure energy from the environment. For example, most distance sensors are active sensors (as they sense the reflection of a signal they emit), whereas an accelerometer, compass, or a push-button are passive sensors.
-
-The difference between the upper and the lower limit of the quantity a sensor can measure is known as its \textsl{range}.\index{Range (sensor)} This should not be confused with the \index{Dynamic Range (sensor)} \textsl{dynamic range}, which is the ratio between the highest and lowest value a sensor can measure. It is usually expressed on a logarithmic scale (to the basis 10), also known as ``decibel''\index{Decibel}. The minimal distance between two values a sensor can measure is known as its \index{Resolution (sensor)} \textsl{resolution}. The resolution of a sensor is given by the device physics (e.g., a light detector can only count multiples of a quant), but usually limited by the analog-digital conversion process. The resolution of a sensor should not be confused with its accuracy or its precision (which are two different concepts). For example, even though an infrared distance sensor might produce $4096$ different values to encode distances from $0$ to $10cm$ (which suggests a resolution of around $24$ micrometers), its precision is much lower than its resolution (usually in the order of millimeters) due to noise in the acquisition process.
-
-Technically, a sensor's accuracy \index{Accuracy (sensor)} is given by the difference between a its (average) output $m$ and the true value $v$:
-\begin{equation}
-accuracy=1-\frac{|m-v|}{v}
-\end{equation}
-This measure provides a quantity that approaches $1$ for very accurate values and $0$ if the measurements group far away from the actual mean. In practice, however, this measure is only rarely used and accuracy is provided with absolute values or a percentage at which a value might exceed the true measurement.
-
-A sensor's precision \index{Precision (sensor)} instead is given by the ratio of range and statistical variance of the signal. Precision is therefore a measure of repeatability of a signal, whereas accuracy describes a systematic error that is introduced by the sensor's physics. This is illustrated in Figure~\ref{fig:precision}.
-\begin{figure}
-	\centering
-	% \includegraphics[width=0.9\textwidth]{figs/precisionvsaccuracy.png}
-	\def\svgwidth{0.9\textwidth}
-    \import{./figs/}{precisionvsaccuracy.pdf_tex}
-	\caption{The cross corresponds to the true value of the signal. From left to right: neither precise nor accurate, precise but not accurate, accurate but not precise, accurate and precise.
-	\label{fig:precision}}
-\end{figure}
-
-A GPS sensor is usually precise within a few meters, but only accurate to tens of meters. This becomes most obvious when satellite configurations change, resulting in the precise region jumping by a couple of meters. In practice, this can be avoided by fusing this data with other sensors, e.g.\ from an IMU.
-
-The speed at which a sensor can provide measurements is known as its \index{Bandwidth (sensor)} \textsl{bandwidth}. For example, if a sensor has a bandwidth of 10 Hz, it will provide a signal ten times a second. This is important to know, as querying the sensor more often is a waste of computational time and potentially misleading.
-
 
 \section*{Take-home lessons}
 \begin{itemize}
