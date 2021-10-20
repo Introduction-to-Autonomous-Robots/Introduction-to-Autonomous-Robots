@@ -151,8 +151,8 @@ As an example, light travels $15m$ in $50ns$. Therefore, it will take a pulse of
 \subsection{Ultra-sound distance sensors}
 
 An ultra-sound distance sensor operates by emitting an ultra-sound pulse and measures its reflection. Unlike a light-based sensor that measures the amplitude of the reflected signal, a sound-based sensor measures the time it took for the pulse to travel back and forth.
-This is possible because sound travels at much lower speed ($3\cdot10^2m/s$) than light ($3\cdot10^8m/s$). The fact that the sensor actually has to wait for the signal to return leads to a trade-off between range and bandwidth: allowing a longer range requires waiting longer for the signal to come back, which in turn limits how often the sensor can provide a measurement.
-(Look these definitions up above before you read on.)\td{fix--up above where?}
+This is possible because sound travels at much lower speed ($3\cdot10^2m/s$) than light ($3\cdot10^8m/s$). The fact that the sensor actually has to wait for the signal to return leads to a trade-off between range and bandwidth (see \cref{sec:sensors:terminology}: allowing a longer range requires waiting longer for the signal to come back, which in turn limits how often the sensor can provide a measurement.
+% (Look these definitions up above before you read on.)\td{fix--up above where?}
 Although ultrasound distance sensors have become progressively less common in robotics, they have an advantage over light-based sensors: instead of sending out a ray, the ultra-sound pulse results in a cone with an opening angle of $20$ to $40$ degrees. Because of this, such sensors are able to detect small obstacles without the requirement of directly hitting them with a ray. This property makes them the sensor of choice in specific applications, such as the automated parking assist technologies in modern cars.
 
 \subsection{Texture recognition}
@@ -187,7 +187,7 @@ Localizing an object by triangulation goes back to ancient civilizations, where 
 
 There exist also a variety of indoor GPS solutions, which consists of either active or passive beacons that are mounted in the environment at known locations. Passive beacons, for example infrared reflecting stickers arranged in a certain pattern or 2D barcodes, can be detected using cameras and their pose can be calculated from their known dimensions. Active beacons instead usually emit radio, ultrasound or a combination thereof, which can then be used to estimate the robot's range to this beacon.
 
-\section{Terminology}
+\section{Terminology}\cref{sec:sensors:terminology}
 It is now time to introduce a more precise definition of terms such as ``speed'' and ``resolution'', as well as additional taxonomy that is used in a robotic context.
 %
 Roboticists differentiate between \textsl{active} and \textsl{passive} sensors. Active sensors \index{Active sensor} emit energy of some sort and measure the reaction of the environment. Passive sensors \index{Passive sensor} instead measure energy from the environment. For example, most distance sensors are active sensors (as they sense the reflection of a signal they emit), whereas an accelerometer, compass, or a push-button are passive sensors.
