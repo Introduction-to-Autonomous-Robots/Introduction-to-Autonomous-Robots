@@ -1,3 +1,4 @@
+%!TEX root = ../book.tex
 \chapter{Sensors}\label{chap:sensors}
 Robots are systems that sense, actuate, and compute. So far, we have studied the basic physical principles of motion, i.e., locomotion and manipulation. We now need to understand the basic principles of robotic sensors that provide the data-basis for a robot to make decisions and control its body.
 
@@ -26,7 +27,8 @@ Although an encoder is able to measure position, it is used in this function onl
 In those robots, encoders are therefore mainly utilized to measure speed. An accelerometer instead, by definition, measures the derivative of speed. Vision, finally, allows to calculate the absolute position (or the integral of speed) if the environment is equipped with unique features. An additional fundamental difference between those three sensors is the amount and kind of data they provide. An accelerometer samples real-valued quantities that are digitized with some precision. An odometer instead delivers discrete values that correspond to encoder increments. Finally, a vision sensor delivers an array of digitized real-valued quantities (namely colors). Although the information content of this sensor exceeds that of the other sensors by far, cherry-picking the information that are really useful remains a hard, and largely unsolved, problem.
 
 
-\section{Proprioception of the internal state of the robot}\label{sec:sensors:encoders}
+\section{Proprioception of the internal state of the robot}\label{sec:sensors:proprioception}
+
 \textsl{Proprioception} \index{Proprioception} refers to the perception of internal states of a robot.
 Proprioception includes awareness of the robot's joint angles, its speeds, as well as internal torques and forces.
 The most important proprioceptive sensor is the \textsl{encoder}\index{Encoder}. Encoders can be used for sensing joint position and speed, as well as force---if used in conjunction with a spring. Encoders can be divided in incremental (relative, used primarily in mobile robotics) and absolute encoders (mainly used in robot manipulators).
@@ -52,21 +54,44 @@ Another method to estimate the actual force or torque acting on a joint is to me
 
 % Finally, there are other means of proprioception, such as simple sensors that can detect when a robot gets picked up, e.g.
 
-\section{Exteroception of physical interaction with the environment}
+\section{Exteroception of the physical interaction with the environment}\label{sec:sensors:interaction}
 
-\textsl{Exteroception}\index{Exteroception} refers to sensing anything outside of the physical embodiment the robot. This is crucial for the robot to correctly perceive the state of the world, estimate the uncertainties related to it, and properly act based upon these uncertainties.
-Importantly, while the majority of sensor development focuses on \textsl{distal} sensors capable of measure quantities in the far space, in recent years more attention has been given to \textsl{proximal} sensors, that are concerned with measuring the environment that is immediately surrounding the body or even on the robot body.
-Applications of this technology are varied, from tasks that require measuring and controlling the interaction of the end-effector with the environment (e.g. sanding a table with a fixed vertical force), to manipulating in cluttered environments where contact with obstacles is inevitable.
+\textsl{Exteroception}\index{Exteroception} refers to sensing anything outside of the physical embodiment the robot. Exteroception is important because it is crucial for the robot to correctly perceive the state of the world, estimate the uncertainties related to it, and properly act based upon these uncertainties.
+Importantly, while the majority of sensor development focuses on \textsl{distal} sensors capable of measure quantities in the far space (e.g. cameras, see \cref{chap:vision}, or sound-based sensors, see \cref{sec:sensors:sound}), in recent years more attention has been given to \textsl{proximal} sensors, that are concerned with measuring the environment that is immediately surrounding the body or even directly on the robot body.
+Applications of this technology are varied, from tasks that require measuring and controlling the interaction of the end-effector with the environment (e.g. sanding a table with a fixed vertical force), to manipulating in clutter---where contact with obstacles is inevitable.
 
-\subsection{Force/Torque sensors}
+\begin{mdframed}
+In robotics, it often helps to make comparisons with human performance.
+How many daily tasks \textsl{do not} require physical interaction with the environment?
+If they do, would you be able to successfully complete them without contact, and how would your performance decrease if you were to ``avoid collisions at all costs''?
+\end{mdframed}
 
-\subsection{Pressure sensors}
+\subsection{Measuring force}
+
+The measurement of physical interaction forces is of paramount importance for robotics.
+It enables a variety of capabilities that humans take from granted, from gently picking a strawberry to safely engaging in touch-based interactions with humans.
+While the development of robust, scalable, and miniaturizable force sensors is still matter of active research, the most widespread device to date is the \textsl{Force/Torque (or F/T) sensor}\index{Force/Torque sensor}. It is a mechanical device that is capable of detecting one or more components of a six-dimensional wrench applied to it (i.e. a 3D force and a 3D torque, see \cref{sec:forces:statics}).
+To date, most commercially available F/T sensors use \textsl{strain gauges}---and in particular, at least one strain gauge per axis of detection. Simply put, a strain gauge is a metal (i.e. conductive) foil that changes its shape when a wrench is applied to it, and while doing so it changes its electrical resistance (which can then be measured with appropriate circuitry).
+While precise, F/T sensors are plagued by a number of limitations: 1) high costs; 2) size (a standard F/T sensor is usually the size of a human wrist); 3) low signal-to-noise ratio; 4) low bandwidth/responsivity; 5) a single data point that is sparse in space and time.
+
+\subsection{Measuring pressure or touch}
+
+In order to partially mitigate the above issues with force sensing, roboticists have worked on a complementary capability, that is measuring the pressure applied on the robot's surface.
+A pressure sensor is a device that is capable of detecting either a contact/collision as a binary data (in which case is generally referred to as touch sensor), or a gradient of pressure applied to it.
+In general, the vertical pressure applied to the sensor is proportional to the 1D vertical force that is applied to the direction normal to the sensor, and this makes a pressure sensor a good substitute to F/T sensors in specific applications (e.g. grasping).
+Additionally, pressure sensors are mostly based on measuring pressure through a change in \textsl{capacitance} rather than resistance (no different from the functioning of a touchscreen on a modern smartphone): when pressure is applied to a capacitor-like device (i.e. two conductive plates separated by an insulating material), the distance between the two plates reduces and this causes a change in capacitance which can be readily measured.
+If compared to F/T sensors, pressure sensors provide limited amount of information ($1$-dimensional vs $6$-dimensional), but they allow for: 1) high responsiveness; 2) high density of sensing (up to tens of sensors per $cm^2$); 3) low cost; 4) ease of miniaturization.
 
 \subsection{Artificial Skins for Robotics}
 
-Touch is one of the most important senses in humans.
+The human sense of touch is the oldest, the largest, and the most important of our senses.
+To humans, contact and physical interaction are a resource rather than an impediment, and we are surprisingly proficient at leveraging touch in a variety of situations.
+Therefore, it is natural for roboticists to equip robots with similar capabilities in order to achieve performance levels comparable to humans'.
+To date, there are no commercially available whole-body artificial skins for robots; however, a number of efforts (from both established robot manufacturers and startups) are showing promising prototypes.
+Interestingly, researchers are taking full advantage of the recent developments in a variety of different technologies, and are creating dense arrays of artificial sensors that combine one or more of the following sensing modalities: interaction forces (\cref{sec:sensors:interaction}), sound (\cref{sec:sensors:sound}), light (\cref{sec:sensors:light}), cameras (\cref{chap:vision}), inertia-based sensors (\cref{sec:sensors:inertia}), and more.
 
-\section{Sensors using light}
+\section{Sensors using light}\label{sec:sensors:light}
+
 The small form factor and low price of light-sensitive semi-conductors have led to a proliferation of light-based sensors relying on a multitude of physical effects. These include reflection, phase shift, and time of flight.
 
 \subsection{Reflection}
@@ -101,14 +126,15 @@ As the laser distance measurement process is fast, such lasers can be combined w
 \subsection{Time-of-flight}
 The most precise distance measurements light can provide is by measuring its time of flight. This can be done by counting the time a signal from the emitter becomes visible in the receiver. As light travels very fast (3,000,000,000m/s), this requires high-speed electronics that can measure time periods smaller than nano-seconds in order to achieve centimeter accuracy. In practice this is done by combining the receiver with a very fast (electronic) shutter that operates at the same frequency with which light is emitted. As this timing is known, one can infer the time light must have been traveling by measuring the quantity of photons that have made it back from the reflective surface within one shutter period. Considering a concrete example, light travels 15m in 50ns. Therefore, it will take a pulse 50ns to return from an object at a distance of 7.5m. If the camera sends out a pulse of 50ns length and then closes the receiver with a shutter, the receiver will receive more photons the closer the object is, but no photons if the object is farther away than 7.5m. Given a fast enough and precise circuit that acts as a shutter, it is sufficient to measure the actual amount of light that returns from the emitter.
 
-\section{Sensors using sound}
+\section{Sensors using sound}\label{sec:sensors:sound}
+
 \subsection{Ultra-sound distance sensors}
 An ultra-sound distance sensor operates by emitting an ultra-sound pulse and measures its reflection. Unlike a light-based sensor that measures the amplitude of the reflected signal, a sound-based sensor measures the time it took the sound to travel. This is possible, because sound travels at much lower speed (300m/s) than light (300,000km/s). The fact that the sensor actually has to wait for the signal to return leads to a trade-off between range and bandwidth. (Look these definitions up above before you read on.) In other words, allowing a longer range requires waiting longer, which in turn limits how often the sensor can provide a measurement. Although US distance sensors have become less and less common in robotics, they have an advantage over light-based sensors: instead of sending out a ray, the ultra-sound pulse results in a cone with an opening angle of 20 to 40 degrees. By this, US sensors are able to detect small obstacles without the requirement of directly hitting them with a ray. This property makes them the sensor of choice in automated parking helpers in cars.
 
 \subsection{Texture recognition}
 Audible sound consists of high frequency vibrations in the range between 20 Hz and roughly 15 kHz. Microphones are therefore ideally suited to measure vibrations in this range. This allows them to double as the Pascinian corpuscle in human skin cells, which is known to have a resonance frequency of 250 Hz and is mostly responsible for texture recognition. Indeed, rubbing a texture against a microphone can indeed be used for differentiating between tens and hundreds of different textures \cite{hughes14}, with a number of commercial sensors available. These sensors usually calculate the frequency spectrum of the recorded signal, which can then be classified using machine learning techniques. Being able to recognize a texture by touch is important in applications like grasping and navigation through cluttered terrain.
 
-\section{Inertia-based sensors}
+\section{Inertia-based sensors}\label{sec:sensors:inertia}
 A moving mass does not loose its kinetic energy, but for friction. Likewise, a resting mass will resist acceleration. Both effects are due to ``inertia'' \index{Inertia} and can be exploited to measure acceleration and speed.
 
 \subsection{Accelerometer}
