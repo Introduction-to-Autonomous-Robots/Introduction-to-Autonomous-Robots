@@ -59,7 +59,7 @@
     \put(0.49579069,0.30192044){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}vx\end{tabular}}}}%
     \put(0.33491624,0.15205066){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}vy\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{swedishwheel.pdf}}%
-    \put(0.54112012,0.16879102){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}⍵z\end{tabular}}}}%
+    \put(0.54112012,0.16879102){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\omega$z\end{tabular}}}}%
     \put(0.35436185,0.28850785){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
     \put(0.63655576,0.28732505){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
     \put(0.64035205,0.01061273){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%

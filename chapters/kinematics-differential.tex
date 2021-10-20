@@ -323,7 +323,7 @@ Omnidirectional robots using ``Swedish wheels'' \index{Swedish Wheel} or ``Mecca
 
 Like the caster wheel, the Swedish wheel has full three degrees of freedom in the plane, but can enable omnidirectional motion of a robotic platform without the need to rotate. A typical four-wheel configuration is shown in Figure \ref{fig:swedishwheel}. Notice the arrangment of the wheels, and in particular the orientation of the rollers, which is critical for the operation as shown.
 
-When actuated by itself, the wheel will perform a sideways motion that is perpendicular to the main axis of its rollers. When used in pairs, opposite directions of motions cancel out, resulting for example into forward motion as shown in Figure \ref{fig:swedishwheel}, top, center, or sideways motion, bottom, right. 
+When actuated by itself, the wheel will perform a sideways motion that is perpendicular to the main axis of its rollers. When used in pairs, opposite directions of motions cancel out, resulting for example into forward motion as shown in Figure \ref{fig:swedishwheel}, top, center, or sideways motion, bottom, right.
 
 
  \begin{figure}[htb!]
@@ -341,17 +341,17 @@ The velocity at each wheel has two components, the velocity of the $i$-th wheel 
 \begin{equation}\label{eq:swedish1}
 v_{i,m}+v_{i,r}\cos(\gamma_i) = v_x - h_i*\omega_z
 \end{equation}
-That is, the velocity components perpendicular to the wheel axis are equivalent to the forward velocity of the robot plus the velocity component at the wheel resulting from the robot's angular velocity. (Positive angular velocity will result into backward motion per definition of the robot coordinate system.) Similarly, we can write 
+That is, the velocity components perpendicular to the wheel axis are equivalent to the forward velocity of the robot plus the velocity component at the wheel resulting from the robot's angular velocity. (Positive angular velocity will result into backward motion per definition of the robot coordinate system.) Similarly, we can write
 \begin{equation}\label{eq:swedish2}
 v_{i,r}\sin(\gamma_i) = v_y+r_i*\omega_z
 \end{equation}
-Note that there is no lateral component to the main wheel's motion, as lateral motion can only be achieved via the rollers. 
+Note that there is no lateral component to the main wheel's motion, as lateral motion can only be achieved via the rollers.
 
 Dividing (\ref{eq:swedish2}) by (\ref{eq:swedish1}) and solving for $v_i$ results into
 \begin{equation}
 v_i=v_x-h_i\omega_z-\frac{v_y+r_i\omega_z}{\tan{\gamma_i}}
 \end{equation}
-With $h_i \in h =\{h,-h,h,-h\}$, $r_i \in r=\{r,r,-r,-r\}$ and 
+With $h_i \in h =\{h,-h,h,-h\}$, $r_i \in r=\{r,r,-r,-r\}$ and
 $\gamma_i \in \gamma=\{-45\deg,+45\deg,+45\deg,-45\deg\}$ to reflect the different configuration of each wheel, we can derive an expression for the controllable wheel velocities $v_{i,m}$
 
 \begin{eqnarray}
@@ -361,7 +361,7 @@ v_{3,m} &=& v_x-v_y+r\omega_z-h\omega_z \nonumber\\
 v_{4,m} &=& v_x+v_y-r\omega_z+h\omega_z \nonumber
 \end{eqnarray}
 
-With $v_{i,m}=R\omega_i$ and $R$ the radius of each Swedish wheel, we can now compute the required wheel velocity for any desired robot velocity $v_x$, $v_y$, and $\omega_z$. 
+With $v_{i,m}=R\omega_i$ and $R$ the radius of each Swedish wheel, we can now compute the required wheel velocity for any desired robot velocity $v_x$, $v_y$, and $\omega_z$.
 
 \subsubsection{Feedback control for mobile robots}\label{sec:fbmobile}
 
