@@ -4,12 +4,12 @@
 The two-link arm in Figure~\ref{fig:fwk2dofarm} involved only two free parameters, but was already pretty complex to solve analytically if the end-effector pose was not specified.
 One can imagine that things become very hard with more degrees of freedom or more complex geometries (mechanisms in which some axes intersect are simpler to solve than others, for example).
 It is worth noting that, so far, we have analyzed the geometry of motion of a robot at its simplest level of abstraction, i.e. in the space of positions. Despite its potential, this abstraction becomes quickly ineffective at modeling complex behaviors, because it does not incorporate any notion of time.
-In order to include a notion of temporal evolution of the robot configuration, it is convenient to shift toward a slightly more complex abstraction, that is the space of generalized velocities. This modeling is called \textsl{differential kinematics}\index{Differential Kinematics}, as velocities are the derivative (i.e. the differential) of positions.
+In order to include a notion of temporal evolution of the robot configuration, it is convenient to shift toward a slightly more complex abstraction, that is the space of generalized velocities. This modeling is called \textsl{differential kinematics}\index{Differential Kinematics}, as velocities are the time derivative (i.e. the differential) of positions.
 Similarly to before, with ``generalized velocities'' we mean ``any velocity-equivalent quantity needed to describe the element'', as we will detail below.
 
 \subsection{Forward Differential Kinematics}\label{sec:kinematics:diff:fwd}
 
-Forward differential kinematics deals with the problem of computing an expression that relates the generalized velocities at the joints (i.e. the ``speed'' of our motors) to the generalized velocity of the robot's end-effector. In all, it is the corresponding differential version of \cref{sec:kinematics:fwd}.
+Forward differential kinematics deals with the problem of computing an expression that relates the generalized velocities at the joints (i.e. the ``speed'' of our motors) to the generalized velocity of the robot's end-effector. In all, it is the corresponding differential version of \cref{eq:kinematics:forward}.
 % This is known as \textsl{Differential Kinematics}\index{Differential Kinematics}, as we are operating in the space of velocities, which are the derivative of positions.
 Let the translational speed of a robot be given by:
 \begin{equation}
@@ -20,7 +20,7 @@ v=\left[\begin{array}{c}
 \end{array}
 \right].
 \end{equation}
-As the robot can potentially not only translate, but also rotate, we also need to specify its angular velocity. Let these velocities be given as a vector
+As the robot can potentially not only translate, but also rotate, we also need to specify its angular velocity. Let these velocities be given as a vector $\omega$:
 \begin{equation}
 \omega=\left[\begin{array}{c}
 \omega_x\\
@@ -33,11 +33,11 @@ We can now write translational and rotational velocities in a $6\times1$ general
 This notation is also called a \textsl{velocity twist}.\index{Twist (velocity)}\index{Velocity Twist} %By convention, the speed of rotation is given by the magnitude (or length) of this vector.
 Let the generalized configuration in joint space (i.e. joint angles/positions) be $q=[q_1, \ldots, q_n]^T$; therefore, we can define the set of joint speeds as $\dot{q}=[\dot{q}_1, \ldots, \dot{q}_n]^T$.
 %
-We now want to compute the differential kinematics version of \cref{eq:kinematics:forward}, and in this case relate joint velocities $\dot{q}$ with end-effector velocities $[v \ \omega]^T$. A simple derivation with respect to time of \cref{eq:kinematics:forward} gives:
+We now want to compute the differential kinematics version of \cref{eq:kinematics:forward}, and in this case relate joint velocities $\dot{q}$ with end-effector velocities $[v \ \omega]^T$. A simple derivation of \cref{eq:kinematics:forward} with respect to time gives:
 \begin{equation}\label{eq:kinematics:diff:fwd:short}
 \nu = [v \quad \omega]^T=J(q)\cdot [\dot{q}_1,\ldots,\dot{q}_n]^T = J(q) \cdot \dot{q} \ ,
 \end{equation}
-which is our forward kinematics equation. $J(q)$ is known as the \textsl{Jacobian matrix}\index{Jacobian Matrix}, is function of the joint configuration $q$, and contains all the partial derivatives of $f$ that relate every joint angle to every velocity. In practice, $J$ looks like the following:
+which is our forward differential kinematics equation. $J(q)$ is known as the \textsl{Jacobian matrix}\index{Jacobian Matrix}; it is function of the joint configuration $q$, and contains all the partial derivatives of $f$ that relate every joint angle to every velocity. In practice, $J$ looks like the following:
 
 \begin{equation}\label{eq:kinematics:diff:fwd}
 \nu = \left[\begin{array}{c}v\\\omega\end{array}\right]=
@@ -50,12 +50,13 @@ which is our forward kinematics equation. $J(q)$ is known as the \textsl{Jacobia
 \left[\begin{array}{cccc}\frac{\partial{x}}{\partial{q_1}} & \frac{\partial{x}}{\partial{q_2}} & \ldots & \frac{\partial{x}}{\partial{q_n}}\\\frac{\partial{y}}{\partial{q_1}} & \frac{\partial{y}}{\partial{q_2}} & \ldots & \frac{\partial{y}}{\partial{q_n}}\\\vdots & \vdots & \vdots & \vdots\\\frac{\partial{\omega_z}}{\partial{q_1}} & \frac{\partial{\omega_z}}{\partial{q_2}} & \ldots & \frac{\partial{\omega_z}}{\partial{q_n}}\end{array}\right]\left[\begin{array}{c}\dot{q}_1\\\vdots\\\dot{q}_n\end{array}\right] = J (q) \cdot \dot{q}
 \end{equation}
 
-This notation is important as it tells us how small changes in joint space will affect the end-effector's position in Cartesian space. Better yet, the forward kinematics of a mechanism can always be calculated, as well as their analytical derivatives, allowing us to calculate numerical values for the entries of matrix $J$ for every possible joint angle/position.
+This notation is important as it tells us how small changes in joint space will affect the end-effector's position in Cartesian space. Better yet, the forward kinematics of a mechanism and its analytical derivative can always be calculated, which allows us to calculate numerical values for the entries of matrix $J$ for every possible joint angle/position.
 
 \subsection{Forward Kinematics of a Differential Wheels Robot}\label{sec:kinematics:fwk:mobile}
 
-Whereas the pose of a robotic manipulator is uniquely defined by its joint angles---which can be made available using encoders in almost real-time, see \cref{sec:sensors:encoders}---this is not the case for a mobile robot.
-Here, the encoder values simply refer to wheel orientation and need to be integrated over time in order to assess the robot's position with respect to the worlds frame of reference; as we will later see, this is a great source of uncertainty.
+As detailed in \cref{sec:kinematics:fwk:arm}, the pose of a robotic manipulator is uniquely defined by its joint angles, which can be estimated using encoders in almost real-time, see \cref{sec:sensors:encoders}.
+However, this is not the case for a mobile robot.
+Here, the encoder values simply refer to wheel orientation and need to be integrated over time in order to assess the robot's position with respect to the world's frame of reference; as we will later see, this is a great source of uncertainty.
 What complicates matters is that for so-called \textsl{non-holonomic} systems, it is not sufficient to simply measure the distance that each wheel traveled, but also when each movement was executed.
 
 \begin{figure}[!t]
@@ -68,11 +69,12 @@ What complicates matters is that for so-called \textsl{non-holonomic} systems, i
     \label{fig:holonomy}
 \end{figure}
 
-A system is non-holonomic\index{Non-holonomic}\index{Holonomic} when closed trajectories in its configuration space may not have it return to its original state (reminder: the configuration or joint space space of a two-link robotic arm is spanned by the possible values of each angle).
-A simple arm is holonomic because each joint position corresponds to a unique position in space:
-going through whatever trajectory that comes back to the starting point in configuration space, will put the robot's end-effector at the exact same position in operational space.
-A train on a track is holonomic: moving its wheels backwards by the same amount they have been moving forward brings the train to the exact same position in space.
-A car and a differential-wheel robot are non-holonomic vehicles: performing a straight line and then a right-turn leads to the same amount of wheel rotation than doing a right turn first and then going in a straight line; however getting the robot to its initial position requires not only to rewind both wheels by the same amount, but also getting their relative speeds right.
+A system is non-holonomic\index{Non-holonomic}\index{Holonomic} when closed trajectories in its configuration space may not have it return to its original state.
+ % (reminder: the configuration or joint space space of a two-link robotic arm is spanned by the possible values of each angle).
+A robot arm is holonomic because each joint position corresponds to a unique position in space (\cref{fig:holonomy}, bottom):
+a generic joint-space trajectory that comes back to the starting point will position the robot's end-effector at the exact same position in operational space.
+A train on a track is holonomic too: moving its wheels backwards by the same amount they have been moving forward brings the train to the exact same position in space.
+Conversely, a car and a differential-wheel robot are non-holonomic vehicles (\cref{fig:holonomy}, top): performing a straight line and then a right-turn leads to the same amount of wheel rotation than doing a right turn first and then going in a straight line; however, getting the robot to its initial position requires not only to rewind both wheels by the same amount, but also getting their relative speeds right.
 The configuration and corresponding workspace trajectories for a non-holonomic and a holonomic robot are shown in \cref{fig:holonomy}.
 Here, a robot first moves on a straight line, i.e. both wheels turn an equal amount.
 Then, the left wheel remains fixed and only the right wheel turns forward.
@@ -81,7 +83,7 @@ Finally, the right wheel turns backward, arriving at the initial encoder values 
 Yet, the robot does not return to its origin. Performing a similar trajectory in the configuration space of a two-link manipulator instead, lets the robot return to its initial position.
 
 It should be clear by now that for a mobile robot, not only traveled distance per wheel matters, but also the \textsl{speed} of each wheel as a function of time.
-Interestingly however, this information was not required to uniquely determine the pose of a manipulating arm.
+Interestingly, this information was not required to uniquely determine the pose of a manipulating arm.
 Let's introduce the following conventions.
 We will establish a world coordinate system $\{I\}$---which is known as the inertial frame by convention (see \cref{fig:mobilerobot}).
 We establish a coordinate system $\{R\}$ on the robot and express the robot's speed $^R\dot{\xi}$ as a vector $ ^R\dot{\xi}=[^R\dot{x}, ^R\dot{y}, ^R\dot{\theta}]^T$. Here $^R\dot{x}$ and $^R\dot{y}$ correspond to the speed along the $x$ and $y$ directions in $\{R\}$, whereas $^R\dot{\theta}$ corresponds to the rotation velocity around the $z-$axis, that you can imagine to be sticking out of the ground.
@@ -253,7 +255,7 @@ using (\ref{eq:ackermann}) to calculate the circle radius $R$.
 %As we can easily calculate the resulting pose for every possible joint angle combination using the forward kinematic equations (\cref{sec:kinematics:fwd}), we can calculate the error between desired and actual pose.
 %This error actually provides us with a \textsl{direction of motion} that the end-effector needs to move toward so as to minimize such error.
 %As we only need to move tiny bits at a time and can then re-calculate the error, this is an attractive method to generate a trajectory that moves the arm to where we want it go and thereby solves the inverse kinematics problem. This approach is also known as \emph{gradient descent}\index{Gradient Descent}.
-T%his is even more effective for non-holonomic mobile robots, where solving the inverse kinematic problem requires us to find a sequence of actuation commands.
+%This is even more effective for non-holonomic mobile robots, where solving the inverse kinematic problem requires us to find a sequence of actuation commands.
 %A more formal way of doing this is to employ \textsl{feedback control}\index{Feedback Control}.
 %In a nutshell, feedback control uses the error between actual and desired position to calculate a trajectory that drives the robot a little closer to its desired pose. The process is then repeated until the error is marginally small.
 %This approach can not only be used for mobile robots, but also for manipulator arms with kinematics that are too complicated to solve analytically.
@@ -262,8 +264,8 @@ T%his is even more effective for non-holonomic mobile robots, where solving the 
 % Fortunately, there are simple numerical techniques that work reasonably well in such situations.
 % One of them is known as the \textsl{inverse Jacobian}\index{Inverse Jacobian} technique.
 
-It would now be desirable to just invert $J$ in \cref{eq:kinematics:diff:fwd} in order to calculate the necessary joint speeds for every desired end-effector speeds---a problem known as \textsl{Inverse Differential Kinematics}\index{Inverse Differential Kinematics}. Unfortunately, as any matrix $J$ is only invertible if the number of degrees of freedom in joint space $n$ equals the number of degrees of freedom in task space $m$, so that $ J$ is quadratic and has full rank.
-In the case above, the velocity wrench $[v \ \omega]^T$ is $6-$dimensional, and this means that $n$ should be equal to $6$: therefore, inversion of $J$ is only possible if the robot under consideration is equipped with exactly $6$ actuators/joints.
+It would now be desirable to just invert $J$ in \cref{eq:kinematics:diff:fwd} in order to calculate the necessary joint speeds for every desired end-effector speeds---a problem known as \textsl{Inverse Differential Kinematics}\index{Inverse Differential Kinematics}. Unfortunately, $J$ is only invertible if the matrix is quadratic (i.e. the number of degrees of freedom in joint space $n$ equals the number of degrees of freedom in task space $m$) and full rank.
+In the example detailed in \cref{sec:kinematics:inverse:arm}, the velocity wrench $[v \ \omega]^T$ is $6-$dimensional, and this means that $n$ should be equal to $6$: therefore, inversion of $J$ is only possible if the robot under consideration is equipped with exactly $6$ actuators/joints.
 If this is not the case, we can use the pseudo-inverse computation:
 \begin{equation}
 J^+=\frac{J^T}{JJ^T}=J^T(JJ^T)^{-1}\label{eq:kinematics:diff:pseudoinverse}
@@ -276,7 +278,7 @@ We can now write a simple feedback controller\index{Feedback control} that drive
 That is, we move each joint a tiny bit into the direction that minimizes our error $e$.
 It can be easily seen that the joint speeds are only zero if $e$ has become zero.
 
-This solution might or might not be numerically stable, depending on the current joint values. If the inverse of $J$ is mathematically not feasible, we speak of a \textsl{singularity}\index{Singularity} of the mechanism. This happens for example when two joint axes line up, therefore effectively removing a degree of freedom from the mechanism, or at the boundary of the workspace. As it happens very often in robotics, the concept of singularity has both a strong mathematical justification (the joint configuration is such that the Jacobian is not full rank any more), and a direct physical consequence: singularity configurations are to be avoided as no solution for the inverse differential kinematics problem exist and the robot might become unsafe to operate.
+This solution might or might not be numerically stable, depending on the current joint values. If the inverse of $J$ is mathematically not feasible, we speak of a \textsl{singularity}\index{Singularity} of the mechanism. This happens for example when two joint axes line up, therefore effectively removing a degree of freedom from the mechanism, or at the boundary of the workspace. As it happens very often in robotics, the concept of singularity has both a strong mathematical justification (the joint configuration is such that the Jacobian is not full rank any more), and a direct physical consequence: singularity configurations are to be avoided as no solution for the inverse differential kinematics problem exists and the robot might become unsafe to operate.
 In a singularity, the solution to $ J^+$ ``explodes'' and joint speeds go to infinity. In order to work around this, we can introduce damping to the controller.
 
 In this case, we do not only minimize the error, but also the joint velocities. The minimization problem then becomes:
@@ -319,14 +321,15 @@ allowing us to calculate the robot's wheel speed as a function of a desired $\do
 Note that this approach does not allow us to deal with $\dot{y}_R \neq 0$, which might result from a desired speed in the inertial frame. Non-zero values for translation in y-direction are simply ignored by the inverse kinematic solution, and driving toward a specific point either requires feedback control (Section~\ref{sec:kinematics:ik:invjac}) or path planning (Chapter~\ref{chap:pathplanning}).
 
 \subsubsection{Inverse kinematics of an omnidirectional robot}
-Omnidirectional robots using ``Swedish wheels'' \index{Swedish Wheel} or ``Meccano wheels'' \index{Meccano Wheel} are common in factories and educational settings. A drawing of a swedish wheel is shown in Table \ref{tab:wheels}. It consists of an actuated wheels with non-actuated rollers around its circumference that are attached in a 45 degree angle.
 
-Like the caster wheel, the Swedish wheel has full three degrees of freedom in the plane, but can enable omnidirectional motion of a robotic platform without the need to rotate. A typical four-wheel configuration is shown in Figure \ref{fig:swedishwheel}. Notice the arrangment of the wheels, and in particular the orientation of the rollers, which is critical for the operation as shown.
+Omnidirectional robots using ``Swedish wheels'' \index{Swedish Wheel} or ``Meccano wheels'' \index{Meccano Wheel} are common in factories and educational settings. A drawing of a swedish wheel is shown in Table \ref{tab:wheels}. It consists of an actuated wheel with non-actuated rollers around its circumference that are attached in a 45 degree angle.
+%
+Similarly to the caster wheel, the Swedish wheel has full three degrees of freedom in the plane, but can enable omnidirectional motion of a robotic platform without the need to rotate. A typical four-wheel configuration is shown in Figure \ref{fig:swedishwheel}. Notice the arrangment of the wheels, and in particular the orientation of the rollers, which is critical for the operation as shown.
 
 When actuated by itself, the wheel will perform a sideways motion that is perpendicular to the main axis of its rollers. When used in pairs, opposite directions of motions cancel out, resulting for example into forward motion as shown in Figure \ref{fig:swedishwheel}, top, center, or sideways motion, bottom, right.
 
 
- \begin{figure}[htb!]
+ \begin{figure}
     \centering
     % \includegraphics[width=0.9\textwidth]{figs/ackermann.png}
     \def\svgwidth{0.9\textwidth}
@@ -335,7 +338,7 @@ When actuated by itself, the wheel will perform a sideways motion that is perpen
     \label{fig:swedishwheel}
 \end{figure}
 
-Similar to a differential wheel platform, each wheel also exerts a rotation on the robot body. As the wheels are mounted off the center axle, each wheel contributes two moments. One around the horizontal axis with distance $h_i$ to the robot's center, the other around the vertical axis with distance $r_i$ to the robot's center (Figure \ref{fig:swedishwheel}, bottom, center). All combined, the rotation of each wheel will add up to the robot moving with velocities $v_x$, $v_y$ and $\omega_z$.
+Similar to a differential wheel platform, each wheel also imparts a rotation on the robot body. As the wheels are mounted off the center axle, each wheel contributes to two angular moments. One around the horizontal axis with distance $h_i$ to the robot's center, the other around the vertical axis with distance $r_i$ to the robot's center (Figure \ref{fig:swedishwheel}, bottom, center). All combined, the rotation of each wheel will add up to the robot moving with velocities $v_x$, $v_y$ and $\omega_z$.
 
 The velocity at each wheel has two components, the velocity of the $i$-th wheel perpendicular to its main axis $v_{i,m}$, and the velocity of the rollers $v_{i,r}$ that is either $+45\deg$ or $-45\deg$ to the wheel axis. Note that for the system to work, diagonally opposite wheels need to have the same angle. Let the angle of the roller of wheel $i$ be $\gamma_i$. We can now derive the following equations following \cite{maulana2015inverse}:
 \begin{equation}\label{eq:swedish1}
@@ -363,7 +366,7 @@ v_{4,m} &=& v_x+v_y-r\omega_z+h\omega_z \nonumber
 
 With $v_{i,m}=R\omega_i$ and $R$ the radius of each Swedish wheel, we can now compute the required wheel velocity for any desired robot velocity $v_x$, $v_y$, and $\omega_z$.
 
-\subsubsection{Feedback control for mobile robots}\label{sec:fbmobile}
+\subsection{Feedback control for mobile robots}\label{sec:fbmobile}
 
 Assume the robot's position given by $x_r, y_r$ and $\theta_r$ and the desired pose as $x_g, y_g$ and $\theta_g$---with the subscript $g$ indicating ``goal''.
 We can now calculate the error in the desired pose by:
