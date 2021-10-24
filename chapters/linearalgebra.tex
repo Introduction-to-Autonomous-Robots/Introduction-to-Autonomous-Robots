@@ -100,6 +100,9 @@ PCA breaks n-dimensional data into $n$ vectors so that each data point can be re
 This approach has a strong geometrical interpretation: given data such as two-dimensional points, say in the shape of a rectangle, the points along the long axis of the rectangle have higher variance than those along the the short axis. Every point in this point cloud can then be reconstructed by a linear combination of the principal component along the long axis and the principal component along the short axis. Finding these vectors is therefore akin finding the principal axes of the rectangle regardless of its orientation.
 
 
-
+%%%% Random stuff on rotations
+%Why any rotation can be expressed by a single vector can be seen when considering the properties of orthonomal rotation matrices. They have three eigenvalues $\lambda=1$ and a complex pair $\lambda_{1,2}=\cos \theta \pm i \sin \theta$.
+%Eigenvalues and eigenvectors are defined as $Rv=\lambda v$. For the case of $\lambda=1$, the corresponding Eigenvector $v$ is unchanged by rotation. This is only possible if $v$ is the actual axis of rotation.
+%The angle of rotation is now given by $\theta$, which can be inferred from the complex pair.
 
 
