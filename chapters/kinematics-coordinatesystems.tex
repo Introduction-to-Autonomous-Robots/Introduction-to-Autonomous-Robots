@@ -152,6 +152,7 @@ where $ ^AP_B$ and $ ^BP_C$ are the translations from $\{A\}$ to $\{B\}$ and fro
 
 So far, we have represented orientation by a $3\times3$ matrix whose column vectors are orthogononal unit vectors describing the orientation of a coordinate system. Orientation is therefore represented with nine different values. We chose this representation mainly because it is the most intuitive to explain and is derived from simple geometry.
 
+\subsubsection{Euler Angles}
 In fact, three values are sufficient to describe orientation.
 This becomes clear when considering that orthogonality (dot product of all columns is zero) and vector length (each vector must have length $1$) impose six constraints on the nine values in the rotation matrix.
 Indeed, an orientation can be represented as a rotation by certain angles around the $x-$, the $y-$, and the $z$-axis of the reference coordinate system. This is known as the X-Y-Z fixed-angle notation.\index{Fixed angle notation} Mathematically, this can be represented by a rotation matrix of the form:
@@ -166,14 +167,32 @@ The reason for which there are only twelve is that sub-sequent rotations around 
 It is important to know about the subtle differences between the available transformations as there is neither ``right'' nor ``wrong'' convention, however different manufacturers and fields use different ones.
 There is only one caveat: each of the rotation matrices can look like subsequent rotations around the same axis for certain values of angles. For example, this happens for the XYZ rotation matrix if the angle of rotation around the Y-axis is $90^\circ$. These cases are known as a \textsl{singularities} of the specific notation.\index{Singularity}
 
+\subsubsection{Quaternions}
 Among the many conventions, the preferred representation for computational and stability reasons are \textsl{quaternions}\index{Quaternion}.
-A quaternion is a 4-tuple that extends the complex numbers with very general applications in mathematics and representing orientation and rotation in particular. The basic idea is that each rotation can be represented as a rotation around a single axis (a vector in space) by a specific angle. Given such an axis $ \hat{K}=[k_x k_y k_z]^T$ and an angle $ \theta$, one can calculate the so-called Euler parameters\index{Euler parameters} or unit quaternion\index{unit quaternion}:
+A quaternion is a 4-tuple that extends the complex numbers with very general applications in mathematics and representing orientation and rotation in particular. Quaternions are generally represented in the form
+
+\begin{equation}
+q=a+b\mathbf{i}+c\mathbf{j}+d\mathbf{k}
+\end{equation}
+Here, $a$ is referred to the \emph{scalar} part of the Quaternion and the elements $b$, $c$ and $d$ as the \emph{vector} part. 
+
+A Quaternion's \emph{conjugate}\index{Conjugate (Quaternion)} is given by
+\begin{equation}
+q^*=a-b\mathbf{i}-c\mathbf{j}-d\mathbf{k}
+\end{equation}
+
+
+It can be shown that that each rotation can be represented as a rotation around a single axis (a vector in space) by a specific angle, also known as Euler axis\index{Euler axis}. Given such an axis $ \hat{K}=[k_x k_y k_z]^T$ and an angle $\theta$, one can calculate the so-called Euler parameters\index{Euler parameters} or unit quaternion\index{unit quaternion} $\textbf{q}=(\epsilon_1,\epsilon_2,\epsilon_3,\epsilon_4)$ with
 
 \begin{eqnarray}
-\epsilon_1=k_x sin \frac{\theta}{2}\\
-\epsilon_2=k_y sin \frac{\theta}{2}\\
-\epsilon_3=k_z sin \frac{\theta}{2}\\
-\epsilon_4=cos\frac{\theta}{2}
+%\epsilon_1=k_x sin \frac{\theta}{2}\\
+%\epsilon_2=k_y sin \frac{\theta}{2}\\
+%\epsilon_3=k_z sin \frac{\theta}{2}\\
+%\epsilon_4=cos\frac{\theta}{2}
+\epsilon_1=\cos \frac{\theta}{2}\\
+\epsilon_2=k_x sin \frac{\theta}{2}\\
+\epsilon_3=k_y sin \frac{\theta}{2}\\
+\epsilon_4=k_z sin\frac{\theta}{2}
 \end{eqnarray}
 
 These four quantities are constrained by the relationship
@@ -181,7 +200,17 @@ These four quantities are constrained by the relationship
 \epsilon_1^2+\epsilon_2^2+\epsilon_3^2+\epsilon_4^2=1,
 \end{equation}
 which might be visualized by a point on a unit hyper-sphere. %Transformations are represented by \textsl{dual quaternions}\index{Dual quaternion}, one for the translation and one for the rotation. Dual quaternions can again easily be converted into homogenous transformation matrices.
-Analogous to rotation matrices, two quaternions $\epsilon$ and $\epsilon'$ can be multiplied using the following equation
+
+Given a vector $\mathbf{p} \in \mathbb{R}^3$ that should be rotated by a unit a Quaternion $\mathbf{q}$, we can compute the new vector $\mathbf{p'}$ as
+
+\begin{equation}
+\mathbf{p'}=\mathbf{q}\mathbf{p}\mathbf{q^*}
+\end{equation}
+
+with $\mathbf{q^*}$ the conjugate of $\mathbf{q}$ as defined above.
+
+
+Computing the equivalent rotation to two subsequent rotations, requires multiplying the Quaternions. Given two quaternions $\epsilon$ and $\epsilon'$, multiplication is defined as follows
 \begin{equation}
 \left[
 \begin{array}{cccc}
@@ -197,6 +226,4 @@ Analogous to rotation matrices, two quaternions $\epsilon$ and $\epsilon'$ can b
 Unlike multiplying two rotation matrices, which requires 27 multiplications and 18 additions, multiplying two quaternions only requires 16 multiplications and 12 additions, making the operation computationally more efficient.
 Importantly, this representation does not suffer from singularities for specific joint angles, making the approach computationally more robust. This is particularly relevant for robotics, as mathematical singularities have pretty significant real-world impact on physical robots (see e.g. \cref{sec:invjac}).
 
-Why any rotation can be expressed by a single vector can be seen when considering the properties of orthonomal rotation matrices. They have three eigenvalues $\lambda=1$ and a complex pair $\lambda_{1,2}=\cos \theta \pm i \sin \theta$.
-Eigenvalues and eigenvectors are defined as $Rv=\lambda v$. For the case of $\lambda=1$, the corresponding Eigenvector $v$ is unchanged by rotation. This is only possible if $v$ is the actual axis of rotation.
-The angle of rotation is now given by $\theta$, which can be inferred from the complex pair.
+
