@@ -95,9 +95,21 @@ and is often used in finding an inverse kinematic solution.
 
 \section{Principal Component Analysis}\label{sec:appendix_PCA}
 \index{Principal Component Analysis}\index{PCA}
-PCA breaks n-dimensional data into $n$ vectors so that each data point can be represented by a linear combination of the $n$ vectors. These $n$ vectors have two interesting properties: first, they are ordered by their variance so that the first vector is representative of the data with the highest variation in the data, and second, they are orthogonal. These vectors are therefore called \emph{principal components}.
+Principal Component Analysis (PCA) breaks n-dimensional data into $n$ vectors so that each data point can be represented by a linear combination of the $n$ vectors. These $n$ vectors have two interesting properties: first, they are ordered by their variance so that the first vector is representative of the data with the highest variation in the data, and second, they are orthogonal. These vectors are therefore called \emph{principal components}. Figure \ref{fig:PCA} shows an example of two-dimensional data and the two principal components. 
 
-This approach has a strong geometrical interpretation: given data such as two-dimensional points, say in the shape of a rectangle, the points along the long axis of the rectangle have higher variance than those along the the short axis. Every point in this point cloud can then be reconstructed by a linear combination of the principal component along the long axis and the principal component along the short axis. Finding these vectors is therefore akin finding the principal axes of the rectangle regardless of its orientation.
+
+\begin{figure}[htb]
+    \centering
+    \def\svgwidth{0.8\textwidth}
+    \import{./figs/}{GaussianScatterPCA.pdf_tex}
+    \caption{PCA of a multivariate Gaussian distribution centered at (1,3) with a standard deviation of 3 in roughly the (0.866, 0.5) direction and of 1 in the orthogonal direction. The vectors shown are the eigenvectors of the covariance matrix scaled by the square root of the corresponding eigenvalue, and shifted so their tails are at the mean. \copyright Nicoguaro CC BY 4.0.\label{fig:PCA}}
+\end{figure}
+
+This approach has a strong geometrical interpretation: the points along the long axis of the rectangle have higher variance than those along the the short axis. Every point in this point cloud can then be reconstructed by a linear combination of the principal component along the long axis and the principal component along the short axis. Finding these vectors is therefore akin finding the principal axes of the rectangle regardless of its orientation.
+
+Computing the PCA goes beyond the scope of this book, but is available in many numerical packages. In a nutshell,the principal components are eigenvectors of the data's covariance matrix. For this, we need to compute the mean and variance of data such as shown in Figure \ref{fig:PCA} across each dimension, shift the data so that it has zero mean, and then calculate the data's covariance matrix.
+
+While a typical use of PCA is dimensionality reduction of data (by representing the data only using the $n$ first principal components), PCA is highly relevant in point cloud analysis in robotics, for example when finding good grasp locations.  
 
 
 %%%% Random stuff on rotations
