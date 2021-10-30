@@ -49,6 +49,8 @@ In order to deal with the physical embodiment of the robot, which complicates th
 \end{figure}
 
 \subsection{Dijkstra's algorithm}\index{Dijkstra's Shortest Path Algorithm}
+\screencast{https://youtu.be/_lHSawdgXpI}{dijkstra}
+
 One of the earliest and simplest algorithms for path planning is Dijkstra's algorithm \cite{dijkstra1959note}. Starting from the initial vertex where the path should start, the algorithm marks all direct neighbors of the initial vertex with the cost to get there. It then proceeds from the vertex with the lowest cost to all of its adjacent vertices and marks them with the cost to get to them via itself if this cost is lower. Once all neighbors of a vertex have been checked, the algorithm proceeds to the vertex with the next lowest cost. Once the algorithm reaches the goal vertex, it terminates and the robot can follow the edges pointing towards the lowest edge cost.
 
 In \cref{fig:pathproblem}, Dijkstra would first mark nodes II, III and IV with cost 3, 5 and 7 respectively. It would then continue to explore all edges of node II, which so far has the lowest cost. This would lead to the discovery that node III can actually be reached in $3+1<5$ steps, and node III would be relabeled with cost 4. In order to completely evaluate node II, Dijkstra needs to evaluate the remaining edge before moving on and label node VI with $3+12=15$.
@@ -70,6 +72,8 @@ As Dijkstra will always explore nodes with the least overall cost first, the env
 
 \subsection{A*}\label{sec:astar}\index{A* Shortest Path Algorithm}
 Instead of exploring in all directions, knowledge of an approximate direction of the goal could help avoiding exploring nodes that are obviously wrong to a human observer. Such special knowledge that such an observer has can be encoded using a \textsl{heuristic function}\index{Heuristic function}, an informed guess or estimate of sorts. For example, we could give priority to nodes that have a lower estimated distance to the goal than others. For this, we would mark every node not only with the actual distance that it took us to get there (as in Dijkstra's algorithm), but also with the estimated cost ``as the crow flies'', for example by calculating the Euclidean distance or the \textsl{Manhattan distance}\index{Manhattan distance} between the vertex we are looking at and the goal vertex. This algorithm is known as A* \cite{hart1968formal}. Depending on the environment, A* might accomplish search much faster than Dijkstra's algorithm, and performs the same in the worst case. This is illustrated in \cref{fig:astargrid} using the Manhattan distance metric, which does not allow for diagonal movements.
+
+\screencast{https://commons.wikimedia.org/wiki/File:Astar_progress_animation.gif}{astar}
 
 \begin{figure}[htb]
     \centering
