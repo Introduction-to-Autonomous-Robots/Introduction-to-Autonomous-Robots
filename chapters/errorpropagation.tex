@@ -195,6 +195,7 @@ We have now derived an expression for fusing two observations with different err
 Interestingly, the resulting variance is smaller than both $\sigma_1$ and $\sigma_2$, that is, adding additional observation always helps  reducing accuracy instead of introducing more uncertainty.
 
 \subsection{Integrating prediction and update: The Kalman Filter}
+ \screencast{https://youtu.be/IFeCIbljreY}{kalmanfilter}
 Although we have introduced the problem above as fusing two observations of the same quantity and weighting them by their variance, we can also interpret the equation above as an update step that calculates a new estimate of an observation based on its old estimate and a measurement. Remember step (4) from above: $ \hat{q_2}-\hat{q_1}$ is nothing else then the difference between what the robot actually sees and what it thinks it should see. This term is known as innovation in Kalman lingo. We can now
 rewrite (\ref{eq:optimalfusion}) from above into
 \begin{equation}
