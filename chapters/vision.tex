@@ -156,8 +156,60 @@ Important morphological operators are \emph{erosion} and \emph{dilation}\index{E
     \label{fig:morphology}}
 \end{figure}
 
+\section{Extracting Structure from Vision}
+A remarkable property of vision is the ability to provide both semantic (\emph{qualities} of the scene, such as what is in it) and metric (\emph{quantities} of the scene, such as sizes and distances) information. Extracting semantic information is generally heavily reliant on machine learning, which is explained at a high level in Section \ref{sec:cvml} below. The extraction of metric information however can be accomplished through leveraging geometric relationships, which we will describe here.
+
+Figure \ref{fig:stereovision} shows a high-level schematic of the relationships between a single frame and another. We do not draw a distinction between stereo vision, where two cameras are rigidly attached to one another and viewing the same scene, and structure from motion, where a single camera is moved through a scene and a pair of images from the single camera are related to one another by some translation and rotation. In either case, we can identify the ``projection center'' of the camera frames as $C_L$ and $C_R$, related to one another through $T_{LR}$, which is a \emph{transform} from the left to the right frame. In stereo vision this transform is known as the \emph{sensor extrinsics}, a 6-dof quantity that must be estimated through calibration. In structure from motion, this transform quantifies the motion applied to the camera, which can be estimated through localization (see Chapter \ref{chap:slam}).
+
+Note that since the camera pair takes two images of the same scene, two projections into the corresponding image planes of the same point in the world can be correlated with one another to determine the point's 3D position. This may be accomplished naively through identifying the point $p_{P_L}$ in $C_L$ and searching for that point $p_{P_R}$ in $C_R$. Crucially the nature of projections of 3D points into the camera frame is a known operation, and in fact a very simple one. In particular, a 3D point in the world can be projected into the camera frame using:
+
+\begin{equation}
+\begin{pmatrix}
+u\\
+v\\
+1
+\end{pmatrix}
+= K T \begin{pmatrix}
+x\\
+y\\
+z\\
+1 
+\end{pmatrix}
+\label{eq:stereovision}
+\end{equation}
+
+\noindent where $K$ is known as the \emph{camera intrinsic matrix} and $T$ is the matrix form of the transform between the camera and some global coordinates in which the point $(x, y, z)$ is expressed. Note that the \emph{camera intrinsic matrix} is a quantity that is another $\emph{calibrated}$ quantity, instantiated by two optical center parameters and two scaling parameters.
+
+Note that it is possible for two projected points (representing a single point in 3D space) to be calculated directly through triangulation on these 2D point pairs in images alone. Using the same math as in Eq.\ \eqref{eq:stereovision} but expressing $C_L$ as the global coordinate system, we can relate the 3D coordinate of the point to the two 2D measurements, camera intrinsic matrix, and $T_{LR}$:
+
+\begin{equation}
+\begin{pmatrix}
+u_R\\
+v_R\\
+1
+\end{pmatrix}
+= K T_{LR} \begin{pmatrix} x \\ y \\ z \\ 1\end{pmatrix}
+= K T_{LR} K^{-1} \begin{pmatrix} u_L \\ v_L \\ 1 \end{pmatrix}
+\end{equation}
+
+Note that frequently this expression is given in terms of what is known as the ``essential matrix,'' which is nominally a technique to solve this problem for uncalibrated cameras. This expression, clearly induced through the geometry expressed in Figure \ref{fig:stereovision}, allows for alternatively the solving of the values making up the entries of the essential matrix and not those of the camera intrinsic and extrinsic parameters.
+
+Looking back at the geometry in Figure \ref{fig:stereovision}, it may be noted that $p_{P_L}$ lies on a line that extends from the center of camera $C_L$ to the point $p$. However, there is ambiguity of the depth along ray that is cast from $C_L$ to $p_c$ $\overrightarrow{C_L p_c}$. In order to disambiguate this depth, the line between $p_{P_L}$ and the center of projection of $P_L$, which is known as the ``epipolar line,'' may be projected into $P_R$, which creates the so-called ``epipolar line of $p_L$ in $C_R$.'' It is along this line that the point $p_c$ projected into $P_R$ may be found. \emph{Most notably from this} is that therefore the search for the point $p_{P_R}$ may be reduced to a line search along the projected epipolar line. This line search is much more efficient than finding the projection of point $p_c$ in the whole image plane of $P_R$, and therefore allows for rapidly sped-up geometry calculations across image pairs.
+
+There is no single way to approach the problem of metric information extraction from images, but these techniques should provide some insight into the general manipulations executed in order to extract these data. With a little geometry, there is clearly much more than meets the eye in images than objects and classes.
+
+%We will begin by explaining the motivation behind image coordinates. We note in Figure \ref{fig:imagecoordinates} that in a perfect ``linear'' camera, a particular pixel in an image is given coordinates $(u,v)$ from the center point of the image. That is, the center point is denoted the origin $(0,0)$; this differs from standard image encodings, where the ``top left'' of the image is the origin. Frequently this requires $(c_x, c_y)$. 
+
+\begin{figure}
+\centering
+    \def\svgwidth{1.0\textwidth} 
+    \import{./figs/}{stereovision.pdf_tex}
+\caption{Schematic of correlating features across images in order to extract three-dimensional information from two-dimensional views.}
+\label{fig:stereovision}
+\end{figure}
 
 \section{Computer Vision and Machine Learning}
+\label{sec:cvml}
 The algorithms described here still form the basis of most image understanding pipelines and make feature detection (Chapter \ref{chap:feature_extraction}) tractable. With the advent of so-called ``convolutional neural networks'' (Chapter \ref{chap:ann}), basic signal processing such as described here is now often wrapped into the image understanding problem. While this makes it less important to implement such algorithms oneself, understanding what convolution, morphological operations and thresholds do to visual information remains still relevant to meaningfully compose neural networks and make them less of a black box. 
 
 
