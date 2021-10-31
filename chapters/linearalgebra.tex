@@ -107,7 +107,18 @@ Principal Component Analysis (PCA) breaks n-dimensional data into $n$ vectors so
 
 This approach has a strong geometrical interpretation: the points along the long axis of the rectangle have higher variance than those along the the short axis. Every point in this point cloud can then be reconstructed by a linear combination of the principal component along the long axis and the principal component along the short axis. Finding these vectors is therefore akin finding the principal axes of the rectangle regardless of its orientation.
 
-Computing the PCA goes beyond the scope of this book, but is available in many numerical packages. In a nutshell,the principal components are eigenvectors of the data's covariance matrix. For this, we need to compute the mean and variance of data such as shown in Figure \ref{fig:PCA} across each dimension, shift the data so that it has zero mean, and then calculate the data's covariance matrix.
+One can show that the principal components are eigenvectors of the data's covariance matrix. For this, we need to compute the mean and variance of data such as shown in Figure \ref{fig:PCA} across each dimension, shift the data so that it has zero mean, and then calculate the data's covariance matrix. One can also show that the values of the corresponding Eigenvalues are proportional to the importance of each Eigenvector.
+
+More formally, given $N$ data samples $\mathbf{x}_i \in \mathrm{R}^n$, we can compute the entries of the $n \times n$ covariance matrix $\mathbf{C}$ as
+\begin{equation}
+C_{jk}=\frac{1}{N}\sum{i=1}^N(x_j^i-\mu_j)(x_k^i-\mu_k)
+\end{equation}
+with $\mu_j$ the mean across the $j-th$ dimension of the data. The Eigenvalues $\lambda$ and Eigenvectors $\mathbf{u}$ are given by
+
+\begin{equation}
+\mathbf{C}\mathbf{u}=\lambda \mathbf{u}$
+\end{equation}
+and are equivalent to the principal components of the data. 
 
 While a typical use of PCA is dimensionality reduction of data (by representing the data only using the $n$ first principal components), PCA is highly relevant in point cloud analysis in robotics, for example when finding good grasp locations.  
 
