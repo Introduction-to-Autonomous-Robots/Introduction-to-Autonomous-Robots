@@ -104,7 +104,14 @@ Once a subselection of sensors has been determined, these sensors can be integra
 
 
 \section{Graph-based SLAM}
-Usually, a robot obtains an initial estimate of where it is using some onboard sensors (odometry, optical flow, etc.) and uses this estimate to localize features (walls, corners, graphical patterns) in the environment. As soon as a robot revisits the same feature twice, it can update the estimate on its location. This is because the variance of an estimate based on two independent measurements will always be smaller than any of the variances of the individual measurements. As consecutive observations are not independent, but rather closely correlated, the refined estimate can then be propagated along the robot's path. This is formalized in EKF-based SLAM. A more intuitive understanding is provided by a spring-mass analogy: each possible pose (mass) is constrained to its neighboring pose by a spring. The higher the uncertainty of the relative transformation between two poses (e.g., obtained using odometry), the weaker the spring. Every time a robot gains confidence on a relative pose, the spring is stiffened instead. Eventually, all poses will be pulled in place. This approach is known as \emph{Graph-based SLAM}\index{Graph-based SLAM}, see also \cite{grisetti2010tutorial}. 
+Usually, a robot obtains an initial estimate of where it is using some onboard sensors (odometry, optical flow, etc.) and uses this estimate to localize features (walls, corners, graphical patterns) in the environment. As soon as a robot revisits the same feature twice, it can update the estimate on its location. This is because the variance of an estimate based on two independent measurements will always be smaller than any of the variances of the individual measurements. As consecutive observations are not independent, but rather closely correlated, the refined estimate can then be propagated along the robot's path. This is formalized in EKF-based SLAM. A more intuitive understanding is provided by a spring-mass analogy: each possible pose (mass) is constrained to its neighboring pose by a spring. The higher the uncertainty of the relative transformation between two poses (e.g., obtained using odometry), the weaker the spring. Every time a robot gains confidence on a relative pose, the spring is stiffened instead. Eventually, all poses will be pulled in place. This approach is known as \emph{Graph-based SLAM}\index{Graph-based SLAM}, see also \cite{grisetti2010tutorial}. An example pose graph is shown in Figure \ref{fig:graphslam}.
+
+\begin{figure}
+\centering
+    \def\svgwidth{\textwidth}
+    \import{./figs/}{graphslam.pdf_tex}
+    \caption{Robot poses (triangles) and unique features (stars) form a pose graph on a 2D map. Edges between robot poses indicate odometry measurements. Edges between robot poses and features indicate range and bearing measurements. Upon a loop closure, here the re-discovery of feature three, all poses inbetween the events can be adjusted. }\label{fig:graphslam}
+\end{figure}
 
 \subsection{SLAM as a Maximum-Likelihood Estimation Problem}
 The classical formulation of SLAM describes the problem as maximizing the posterior probability of all points on the robot's trajectory given the odometry input and the observations. Formally,
@@ -125,7 +132,7 @@ Lets revisit the normal distribution:
 \frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}
 \end{equation}
 
-It provides the probability for a measurement to have value $ x$ given that this measurement is normal distributed with mean $ \mu$ and variance $ \sigma^2$.  We can now associate such a distribution with every node-to-node transformation, aka constraint. This can be pairs of distance and angle, e.g. In the literature the measurement of a transformation between node i and a node j is denoted $ z_{ij}$. Its expected value is denoted $ \hat{z}_{ij}$. This value is expected for example based on a map of the environment that consists of previous observations.
+It provides the probability for a measurement to have value $ x$ given that this measurement is normal distributed with mean $ \mu$ and variance $ \sigma^2$.  We can now associate such a distribution with every node-to-node transformation, also known as a constraint. This can be pairs of distance and angle, e.g. We denote the measurement of a transformation between node $i$ and a node $j$ as $ z_{ij}$. Its expected value is denoted $ \hat{z}_{ij}$. This value is expected for example based on a map of the environment that consists of previous observations.
 
 Formulating a normal distribution of measurements $ z_{ij}$ with mean $ \hat{z}_{ij}$ and a covariance matrix $ \Sigma_{ij}$ (containing all variances of the components of $ z_{ij}$ in its diagonal) is now straightforward. As graph-based SLAM is most often formulated as  information filter, usually the inverse of the covariance matrix (aka information matrix) is used, which we denote by $ \Omega_{ij}=\Sigma_{ij}^{-1}$.
 
@@ -150,11 +157,11 @@ Solving the MLE problem is non-trivial, especially if the number of constraints 
 
 Recently, more powerful numerical methods have been developed. Instead of solving the MLE, one can employ a stochastic gradient descent algorithm. A gradient descent algorithm is an iterative approach to find the optimum of a function by moving along its gradient. Whereas a gradient descent algorithm would calculate the gradient on a fitness landscape from all available constraints, a stochastic gradient descent picks only a (non-necessarily random) subset. Intuitive examples are fitting a line to a set of $n$ points, but taking only a subset of these points when calculating the next best guess. As gradient descent works iteratively, the hope is that the algorithm takes a large part of the constraints into account. For solving Graph-based SLAM, a stochastic gradient descent algorithm would not take into account all constraints available to the robot, but  iteratively work on one constraint after the other. Here, constraints are observations on the mutual pose of nodes $i$ and $j$. Optimizing these constraints now requires moving both nodes $i$ and $j$ so that the error between where the robot thinks the nodes should be and what it actually sees gets reduced.  As this is a trade-off between multiple, maybe conflicting observations, the result will approximate a Maximum Likelihood estimate.
 
-More specifically, with $ e_{ij}$ the error between an observation and what the robot expects to see, based on its previous observation and sensor model, one can distribute the error along the entire trajectory between both features that are involved in the constraint. That is, if the constraint involves features $i$ and $j$, not only $i$ and $j$'s pose will be updated but all points inbetween will be moved a tiny bit.
+More specifically, with $ e_{ij}$ the error between an observation and what the robot expects to see, based on its previous observation and sensor model, one can distribute the error along the entire trajectory between both features that are involved in the constraint. That is, if the constraint involves features $i$ and $j$, not only $i$ and $j$'s pose will be updated but all points in-between will be moved a tiny bit.
 
 %This approach is cumbersome and quickly gets out of control if a robot is mapping an environment over multiple hours --- leading to millions of nodes in the graph and constraints. To overcome this problem, [Gris07] propose to (1) merge nodes of a graph as it is build up by relying on accurate localization of the robot within the existing map and (2) to chose a different graph representation.
 
-In Graph-based SLAM, edges encode the relative translation and rotation from one node to the other. Thus, altering a relationship between two nodes will automatically propagate to all nodes in the network. This is because the graph is essentially a chain of nodes whose edges consist of odometry measurements. This chain then becomes a graph whenever observations (using any sensor) introduce additional constraints. Whenever such a ``loop-closure'' occurs, the resulting error will be distributed over the entire trajectory that connects the two nodes. This is not always necessary, for example when considering the robot driving a figure-8 pattern. If a loop-closure occurs in one half of the 8, the nodes in the other half of the 8 are probably not involved.
+In Graph-based SLAM, edges encode the relative translation and rotation from one node to the other. Thus, altering a relationship between two nodes will require to propagate to all nodes in the network. This is because the graph is essentially a chain of nodes whose edges consist of odometry measurements. This chain then becomes a graph whenever observations (using any sensor) introduce additional constraints. Whenever such a ``loop-closure'' occurs, the resulting error will be distributed over the entire trajectory that connects the two nodes. This is not always necessary, for example when considering the robot driving a figure-8 pattern. If a loop-closure occurs in one half of the 8, the nodes in the other half of the 8 are probably not involved.
 
 This can be addressed by constructing a  minimum spanning-tree  (MST) of the constraint graph. The MST is constructed by doing a Depth-First Search (DFS) on the constraint graph following odometry constraints. At a loop-closure, i.e., an edge in the graph that imposes a constraint to a previously seen pose, the DFS backtracks to this node and continues from there to construct the spanning tree. Updating all poses affected by this new constraint still requires modifying all nodes along the path between the two features that are involved, but inserting additional constraints is greatly simplified. Whenever a robot observes new relationships between any two nodes, only the nodes on the shortest path between  the two features on the MST need to be updated. %Example graphs illustrating this are shown in Figures 2a and 2b in [Gris07].
 %\subsection*{Further reading}
@@ -163,3 +170,32 @@ This can be addressed by constructing a  minimum spanning-tree  (MST) of the con
 
 %\item G. Grisetti, C. Stachniss, S. Grzonka and W. Burgard. A Tree Parameterization for Efficiently Computing Maximum Likelihood Maps using Gradient Descent. Robotics: Science and Systems (RSS), Atlanta, GA, USA, 2007.
 %\end{itemize}
+
+
+\section*{Take-home lessons}
+\begin{itemize}
+\item Simultaneous Localization and Mapping (SLAM) is a key capability for mobile robots to operate autonomously in the world. 
+\item There exist robust implementations for environments with strong features, that is features that can be reliably localized and identified, that use   different forms of optimization to find a collection of poses that are most likely given the available measurements. 
+\item SLAM strongly benefits from additional sensors, that can provide additional evidence, in particular beacon-based sensors such as GPS.
+\item How to deal with environments with dynamical objects, that is changing maps, remains an open problem. 
+\end{itemize}  
+
+\section*{Exercises}\small
+\begin{enumerate}
+\item In the following, you will develop a basic EKF-based SLAM system with known features:
+\begin{enumerate}
+\item Implement a single-feature SLAM system. Implement
+basic odometry in a simulator of your choice as well as a detector to measure the angle and distance to a single feature. Initialize your first measurement with the mean and variance from your odometry measurement and show how additional measurements can provide a bound on the odometry error using an Kalman filter. 
+\item Introduce an additional feature and let the robot  return to the first feature after visiting the second feature. What can you say about the variance of the second feature after correcting your variance when reaching the first feature for the second time?
+\item Implement a simulation environment that consists of multiple distinct features. The \emph{Ratslife} world is a good example (see Figure \ref{fig:ratslife}). Experimentally determine the average variance when localizing against your features. How you do this will depend on the tools already at your disposal. It is `OK' to cheat, for example by providing the robot with a list of features close by and simulating a range and bearing measurement. Alternatively, download an open-source SLAM dataset such as the UTIAS Mr.CLAM dataset.
+\item Use the tools that you developed above to implement EKF-based SLAM.
+\end{enumerate}
+\item EKF-based SLAM requires features to be uniquely identifiable. Think about a possible implementation using only corner and wall detectors. How could you make these features appear to be unique and what is the limitation of this approach? 
+\item In the following, you will develop a basic Graph-based SLAM system:
+\begin{enumerate}
+\item Implement a graph data structure that allows you to maintain pose of the robot and features in the environment. Store translation and rotation from node to node or to the feature, respectively, on each edge.
+\item Implement a Depth-First Search algorithm that allows you to compute the shortest path between two nodes on the graph.
+\item Use your own simulator or a canned dataset to implement basic graph-based SLAM. Upon loop closure, update your pose estimate based on the landmark position by averaging between. Use your new estimate to update previous poses along the shortest path back to the previous pose at which the landmark has been observed. Experiment with different policies to update your pose and document your findings. 
+\end{enumerate}
+\end{enumerate}
+
