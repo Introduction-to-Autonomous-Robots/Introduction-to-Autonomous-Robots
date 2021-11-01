@@ -318,7 +318,7 @@ for $ \phi_l$, $ \phi_r$:
 \end{eqnarray}
 allowing us to calculate the robot's wheel speed as a function of a desired $\dot{x}_R$ and $\dot{\theta}$, which can be calculated using (\ref{eq:mbik}).
 
-Note that this approach does not allow us to deal with $\dot{y}_R \neq 0$, which might result from a desired speed in the inertial frame. Non-zero values for translation in y-direction are simply ignored by the inverse kinematic solution, and driving toward a specific point either requires feedback control (Section~\ref{sec:kinematics:ik:invjac}) or path planning (Chapter~\ref{chap:pathplanning}).
+Note that this approach does not allow us to deal with $\dot{y}_R \neq 0$, which might result from a desired speed in the inertial frame. Non-zero values for translation in y-direction are simply ignored by the inverse kinematic solution, and driving toward a specific point either requires feedback control (Section~\ref{sec:kinematics:inverse:feedbackcontrol}) or path planning (Chapter~\ref{chap:pathplanning}).
 
 \subsubsection{Inverse kinematics of an omnidirectional robot}
 
@@ -367,6 +367,7 @@ v_{4,m} &=& v_x+v_y-r\omega_z+h\omega_z \nonumber
 With $v_{i,m}=R\omega_i$ and $R$ the radius of each Swedish wheel, we can now compute the required wheel velocity for any desired robot velocity $v_x$, $v_y$, and $\omega_z$.
 
 \subsection{Feedback control for mobile robots}\label{sec:fbmobile}
+\label{sec:kinematics:inverse:feedbackcontrol}
 
 Assume the robot's position given by $x_r, y_r$ and $\theta_r$ and the desired pose as $x_g, y_g$ and $\theta_g$---with the subscript $g$ indicating ``goal''.
 We can now calculate the error in the desired pose by:

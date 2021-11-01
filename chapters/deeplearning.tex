@@ -412,7 +412,7 @@ h_t = \tanh(Wh_{t-1}+Ux_t)
 y_t = softmax(Vh_t)
 \end{equation}
 
-This relationship is shown in Figure \ref{fig:RNN}. As a RNN cell is reusing its internal state $h_t$ in the next iteration, a network that looks back $N$ time-steps is modeled as $N$ cells that are laterally connected. As this is how an RNN is actually implemented, the data from all time steps is presented at the same time.  
+This relationship is shown in Figure \ref{fig:rnn}. As a RNN cell is reusing its internal state $h_t$ in the next iteration, a network that looks back $N$ time-steps is modeled as $N$ cells that are laterally connected. As this is how an RNN is actually implemented, the data from all time steps is presented at the same time.  
 
 \begin{figure}[htb]
 \tiny
