@@ -20,7 +20,7 @@ Consider now a map that has two features. Visiting one after the other, the robo
 \section{The Covariance Matrix}
 When estimating quantities with multiple variables, such as the position of a robot that consists of its x-position, its y-position and its orientation, matrix notation has been a convenient way of writing down equations. For error propagation, we have written the variances of each input variable into the diagonal of a covariance matrix. For example, when using a differential wheel robot, uncertainty in position expressed by $ \sigma_x, \sigma_y$ and $ \sigma_{\theta}$ were grounded in the uncertainty of its left and right wheel. We have entered the variances of the left and right wheel into a 2x2 matrix and obtained a 3x3 matrix that had $ \sigma_x, \sigma_y$ and $ \sigma_{\theta}$ in its diagonal. Here, we set all other entries of the matrix to zero and ignored entries in the resulting matrix that were not in its diagonal. The reason we could actually do this is because uncertainty in the left and right wheel are independent random processes: there is no reason that the left wheel slips, just because the right wheel slips.  Thus the covariance --- the measure on how much two random variables are changing together --- of these is zero. This is not the case for the robot's position: uncertainty in one wheel will affect all output random variables ($ \sigma_x, \sigma_y$ and $ \sigma_{\theta}$) at the same time, which is expressed by their non-zero covariances --- the non-zero entries off the diagonal of the output covariance matrix.
 
-\section{EKF SLAM}\label{sec:ekfslam}\label{sec:ekf}
+\section{EKF SLAM}\label{sec:ekfslam}\label{sec:ekfslam}
 The key idea in EKF SLAM is to extend the state vector from the robot's position (and potentially pose) to contain the position of all features. Thus, the state
 \begin{equation}
 \hat{\boldsymbol{x}}_{k'|k-1}=(x,y,\theta)^T
@@ -52,7 +52,7 @@ and set its covariance to a small number $\epsilon$:
 \subsubsection{Update}
 If the robot is under motion and sensors are providing information on features of the map, then the state vector will be augmented in time while the pose of the robot will also be updated for each time-step. Crucially, in EKF SLAM, both the sensor model and the process model may be non-linear, so we will need to calculate the Jacobian of these functions with respect to the state and covariance matrices.
 
-This update is a two-step process: first the prediction update, followed by the perception update.a
+This update is a two-step process: first the prediction update, followed by the perception update.
 
 \paragraph{The prediction update.} If $f$ is the nonlinear transition model for the system and $\boldsymbol{u}$ are hypothetical control inputs, then the state prediction update is given as:
 
@@ -104,7 +104,7 @@ Once a subselection of sensors has been determined, these sensors can be integra
 
 
 \section{Graph-based SLAM}
-Usually, a robot obtains an initial estimate of where it is using some onboard sensors (odometry, optical flow, etc.) and uses this estimate to localize features (walls, corners, graphical patterns) in the environment. As soon as a robot revisits the same feature twice, it can update the estimate on its location. This is because the variance of an estimate based on two independent measurements will always be smaller than any of the variances of the individual measurements. As consecutive observations are not independent, but rather closely correlated, the refined estimate can then be propagated along the robot's path. This is formalized in EKF-based SLAM. A more intuitive understanding is provided by a spring-mass analogy: each possible pose (mass) is constrained to its neighboring pose by a spring. The higher the uncertainty of the relative transformation between two poses (e.g., obtained using odometry), the weaker the spring. Every time a robot gains confidence on a relative pose, the spring is stiffened instead. Eventually, all poses will be pulled in place. This approach is known as \emph{Graph-based SLAM}\index{Graph-based SLAM}, see also \cite{grisetti2010tutorial}. An example pose graph is shown in Figure \ref{fig:graphslam}.
+Usually, a robot obtains an initial estimate of where it is using some onboard sensors (odometry, optical flow, etc.), uses this estimate to localize features (walls, corners, graphical patterns) in the environment, and finally refines its pose estimate by matching sensor information in consecutive fields using for example the ICP algorithm (Section \ref{sec:ICP}). As soon as a robot revisits the same feature twice, it can update the estimate on its location. As consecutive observations are not independent, but rather closely correlated, the refined estimate can then be propagated along the robot's path. This is formalized in EKF-based SLAM. A more intuitive understanding is provided by a spring-mass analogy: each possible pose (mass) is constrained to its neighboring pose by a spring. The higher the uncertainty of the relative transformation between two poses (e.g., obtained using odometry), the weaker the spring. Every time a robot gains confidence on a relative pose, the spring is stiffened instead. Eventually, all poses will be pulled in place. This can be achieved by numerically reducing the overall error based on all available observations using gradiant descent and is known as \emph{Graph-based SLAM}\index{Graph-based SLAM}, see also \cite{grisetti2010tutorial}. An example pose graph with feature-based landmarks is shown in Figure \ref{fig:graphslam}.
 
 \begin{figure}
 \centering
@@ -144,7 +144,7 @@ l_{ij} \propto (z_{ij}-\hat{z}_{ij}(x_i,x_j))^T\Omega_{ij}(z_{ij}-\hat{z}_{ij}(x
 Again, the log-likelihood for observation $ z_{ij}$ is directly derived from the definition of the normal distribution, but using the information matrix instead of the covariance matrix and is ridden of the exponential function by taking the logarithm on both sides.
 
 The optimization problem can now be formulated as
-\begin{equation}
+\begin{equation}\label{eq:slamEM}
 x^* = \arg \min_{x}\sum_{<i,j>\in \mathcal{C}}e_{ij}^T\Omega_{ij}e_{ij}
 \end{equation}
 with $ e_{ij}(x_i,x_j)=z_{ij}-\hat{z}_{ij}(x_i,xj)$ the error between measurement and expected value. Note that the sum actually needs to be minimized as the individual terms are technically the negative log-likelihood.
