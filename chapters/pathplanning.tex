@@ -122,7 +122,7 @@ This process can be repeated on the resulting tree as long as time allows, and c
 There are four key points in this algorithm:
 
 \begin{enumerate}
-    \item Finding the next point to add to the tree (or discard) (SampleRandomGoal/SampleRandomState, and Extend).
+    \item Finding the next point to add to the tree (SampleRandomGoal, SampleRandomState, and Extend).
     \item Finding out where and how to connect this point to the tree taking into account the robot kinematics (NearestVertex, CreatePath).
     \item Testing whether this path is suitable, i.e., collision-free. (IsAllowablePath)
 \end{enumerate}
