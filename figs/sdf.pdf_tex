@@ -1,0 +1,86 @@
+%% Creator: Inkscape 1.0 (4035a4f, 2020-05-01), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'sdf.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{502.40841843bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.63628397)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{sdf.pdf}}%
+    \put(0.726567,0.58301806){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Truncation distance\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{sdf.pdf}}%
+    \put(0.42885013,0.49549387){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}17\end{tabular}}}}%
+    \put(0.50922443,0.42485755){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}36\end{tabular}}}}%
+    \put(0.1800035,0.5792158){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-22\end{tabular}}}}%
+    \put(0.42861979,0.4247308){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}11\end{tabular}}}}%
+    \put(0.42952987,0.34424676){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}17\end{tabular}}}}%
+    \put(0.50763513,0.34585913){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}31\end{tabular}}}}%
+    \put(0.43069671,0.27206431){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}24\end{tabular}}}}%
+    \put(0.35009216,0.27193754){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10\end{tabular}}}}%
+    \put(0.50907075,0.27247088){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}38\end{tabular}}}}%
+    \put(0.50770456,0.19512426){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}19\end{tabular}}}}%
+    \put(0.58580983,0.19673663){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}33\end{tabular}}}}%
+    \put(0.43038545,0.03641995){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}24\end{tabular}}}}%
+    \put(0.5074793,0.10960244){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}42\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{sdf.pdf}}%
+    \put(0.17887148,0.50416815){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-34\end{tabular}}}}%
+    \put(0.26053113,0.50546157){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-18\end{tabular}}}}%
+    \put(0.25951912,0.42472207){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-18\end{tabular}}}}%
+    \put(0.26105026,0.35522228){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-13\end{tabular}}}}%
+    \put(0.18201271,0.42403525){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-31\end{tabular}}}}%
+    \put(0.09863975,0.42438661){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-43\end{tabular}}}}%
+    \put(0.1821892,0.27390775){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-21\end{tabular}}}}%
+    \put(0.10098644,0.27416323){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-42\end{tabular}}}}%
+    \put(0.25820312,0.18995922){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-24\end{tabular}}}}%
+    \put(0.17232247,0.11394547){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-41\end{tabular}}}}%
+    \put(0.33811265,0.11394547){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-16\end{tabular}}}}%
+    \put(0.25521754,0.11705881){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-29\end{tabular}}}}%
+  \end{picture}%
+\endgroup%
