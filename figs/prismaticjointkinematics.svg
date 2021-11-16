@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 503.83156 115.48123"
+   sodipodi:docname="prismaticjointkinematics.svg"
+   inkscape:version="1.0 (4035a4f, 2020-05-01)"
+   version="1.1"
+   id="svg3862"
+   height="123.17998"
+   width="537.42035">
+  <defs
+     id="defs3864">
+    <marker
+       style="overflow:visible"
+       id="Arrow1Sstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Sstart">
+      <path
+         transform="matrix(0.2,0,0,0.2,1.2,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path4385" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lstart">
+      <path
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         id="path4391" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path4373" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3928" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     inkscape:document-rotation="0"
+     inkscape:window-maximized="1"
+     inkscape:window-y="23"
+     inkscape:window-x="0"
+     inkscape:window-height="1039"
+     inkscape:window-width="1792"
+     showgrid="false"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="87.592906"
+     inkscape:cx="383.54377"
+     inkscape:zoom="2.9443334"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata3867">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     style="opacity:0.99470833"
+     transform="translate(-175.04424,-212.78045)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect8592"
+       width="7.1428571"
+       height="62.857143"
+       x="316.50894"
+       y="239.5676"
+       transform="rotate(0.32973492)"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g9621"
+       transform="rotate(35.686726,314.41632,300.63581)"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <path
+         sodipodi:nodetypes="csssc"
+         inkscape:connector-curvature="0"
+         id="path9593"
+         d="m 286.72218,233.1036 c 1.50345,0.0552 3.50044,0.55192 4.94257,1.24651 5.59731,2.6959 7.94935,9.41888 5.25345,15.01618 -2.6959,5.5973 -9.41888,7.94935 -15.01618,5.25345 -5.58329,-2.68915 -7.94004,-9.45606 -5.27068,-15.04884"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1"
+         transform="translate(-8.1624549,0.06859206)" />
+      <path
+         sodipodi:nodetypes="csssc"
+         inkscape:connector-curvature="0"
+         id="path9593-3"
+         d="m 286.67106,233.23371 c 1.60397,0.0147 3.45284,0.37426 4.99369,1.1164 5.59731,2.6959 7.94935,9.41888 5.25345,15.01618 -2.6959,5.5973 -9.41888,7.94935 -15.01618,5.25345 -5.58329,-2.68915 -7.94004,-9.38747 -5.27068,-14.98025"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.59995;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1"
+         transform="matrix(0.61594178,0,0,0.63423051,102.11626,89.287944)" />
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path9615"
+         d="m 268.26354,239.95784 3.70397,1.71481"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path9617"
+         d="m 279.16968,237.21416 -0.13719,-4.11552"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.00106;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect8592-80-5"
+       width="7.3476491"
+       height="65.420311"
+       x="-525.09375"
+       y="-203.57916"
+       transform="matrix(-0.66614421,-0.74582296,-0.78753473,0.61627027,0,0)"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       d="m -459.46981,301.82168 a 1.9364735,1.9161509 0 0 1 2.58341,-0.89559 1.9364735,1.9161509 0 0 1 0.90738,2.5555 1.9364735,1.9161509 0 0 1 -2.5818,0.90013 1.9364735,1.9161509 0 0 1 -0.91196,-2.55391"
+       sodipodi:arc-type="arc"
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path8597-2-2"
+       sodipodi:cx="-457.72516"
+       sodipodi:cy="302.65317"
+       sodipodi:rx="1.9364735"
+       sodipodi:ry="1.9161509"
+       sodipodi:start="3.5904474"
+       sodipodi:end="3.586905"
+       sodipodi:open="true"
+       transform="scale(-1,1)"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.00105;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect8592-80-8-0"
+       width="7.3412843"
+       height="65.475624"
+       x="-98.108574"
+       y="494.91693"
+       transform="matrix(-0.65613531,0.75464327,0.79548552,0.60597259,0,0)"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       d="m -505.35168,264.64587 a 1.9364735,1.9161509 0 0 1 2.58341,-0.8956 1.9364735,1.9161509 0 0 1 0.90739,2.55551 1.9364735,1.9161509 0 0 1 -2.58181,0.90012 1.9364735,1.9161509 0 0 1 -0.91196,-2.55391"
+       sodipodi:arc-type="arc"
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path8597-2-3-1"
+       sodipodi:cx="-503.60703"
+       sodipodi:cy="265.47736"
+       sodipodi:rx="1.9364735"
+       sodipodi:ry="1.9161509"
+       sodipodi:start="3.5904474"
+       sodipodi:end="3.586905"
+       sodipodi:open="true"
+       transform="scale(-1,1)"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g9621-5-6"
+       transform="matrix(-0.07921269,0.99748577,1.0653837,0.07132274,216.23225,-67.533005)"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <path
+         sodipodi:nodetypes="csssc"
+         inkscape:connector-curvature="0"
+         id="path9593-0-4"
+         d="m 286.72218,233.1036 c 1.50345,0.0552 3.50044,0.55192 4.94257,1.24651 5.59731,2.6959 7.94935,9.41888 5.25345,15.01618 -2.6959,5.5973 -9.41888,7.94935 -15.01618,5.25345 -5.58329,-2.68915 -7.94004,-9.45606 -5.27068,-15.04884"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.967481;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1"
+         transform="translate(-8.1624549,0.06859206)" />
+      <path
+         sodipodi:nodetypes="csssc"
+         inkscape:connector-curvature="0"
+         id="path9593-3-9-0"
+         d="m 286.67106,233.23371 c 1.60397,0.0147 3.45284,0.37426 4.99369,1.1164 5.59731,2.6959 7.94935,9.41888 5.25345,15.01618 -2.6959,5.5973 -9.41888,7.94935 -15.01618,5.25345 -5.58329,-2.68915 -7.94004,-9.38747 -5.27068,-14.98025"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.54792;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1"
+         transform="matrix(0.61594178,0,0,0.63423051,102.11626,89.287944)" />
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path9615-4-6"
+         d="m 268.26354,239.95784 3.70397,1.71481"
+         style="fill:none;stroke:#000000;stroke-width:0.967481px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path9617-7-1"
+         d="m 279.16968,237.21416 -0.13719,-4.11552"
+         style="fill:none;stroke:#000000;stroke-width:0.967481px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <path
+       inkscape:connector-curvature="0"
+       id="path3027"
+       d="m 209.63604,292.26168 v -52"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path3031"
+       d="m 203.13604,287.76168 h 53.5"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+    <text
+       id="text4171"
+       y="293.26169"
+       x="259.63605"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:20px;line-height:1.25;font-family:sans-serif"
+         y="293.26169"
+         x="259.63605"
+         id="tspan4173"
+         sodipodi:role="line">x</tspan></text>
+    <text
+       id="text4175"
+       y="233.76167"
+       x="204.63603"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:20px;line-height:1.25;font-family:sans-serif"
+         y="233.76167"
+         x="204.63603"
+         id="tspan4177"
+         sodipodi:role="line">y</tspan></text>
+    <path
+       inkscape:connector-curvature="0"
+       id="path4179"
+       d="m 213.13604,283.76168 -27.5,32"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+    <text
+       id="text4363"
+       y="328.26169"
+       x="174.13603"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:20px;line-height:1.25;font-family:sans-serif"
+         y="328.26169"
+         x="174.13603"
+         id="tspan4365"
+         sodipodi:role="line">z</tspan></text>
+    <path
+       sodipodi:open="true"
+       d="m 208.80095,297.92882 a 7.7069902,7.9886365 0 0 1 -6.36977,7.45216 7.7069902,7.9886365 0 0 1 -8.43052,-4.77127 7.7069902,7.9886365 0 0 1 2.60377,-9.58354"
+       sodipodi:arc-type="arc"
+       style="fill:none;stroke:#000000;stroke-width:0.523125;stroke-miterlimit:4;stroke-dasharray:none;marker-start:url(#Arrow1Lstart);marker-end:none"
+       sodipodi:end="4.0888746"
+       sodipodi:start="0.052250907"
+       sodipodi:ry="7.9886365"
+       sodipodi:rx="7.7069902"
+       sodipodi:cy="297.5116"
+       sodipodi:cx="201.10448"
+       id="path4367"
+       sodipodi:type="arc" />
+    <rect
+       y="264.67569"
+       x="310.91721"
+       height="37.824093"
+       width="15.423417"
+       id="rect21185"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.99999999;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none" />
+    <rect
+       inkscape:export-ydpi="150"
+       inkscape:export-xdpi="150"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       transform="matrix(0.80674944,-0.59089368,0.6025841,0.79805539,0,0)"
+       y="430.69907"
+       x="135.05489"
+       height="51.446964"
+       width="5.8718963"
+       id="rect8592-5"
+       style="opacity:0.994708;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.820268;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <g
+       style="opacity:0.994708"
+       inkscape:export-ydpi="150"
+       inkscape:export-xdpi="150"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       transform="rotate(-1.279919,889.08243,-3683.4562)"
+       id="g9621-7">
+      <path
+         transform="translate(-8.1624549,0.06859206)"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 286.72218,233.1036 c 1.50345,0.0552 3.50044,0.55192 4.94257,1.24651 5.59731,2.6959 7.94935,9.41888 5.25345,15.01618 -2.6959,5.5973 -9.41888,7.94935 -15.01618,5.25345 -5.58329,-2.68915 -7.94004,-9.45606 -5.27068,-15.04884"
+         id="path9593-7"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="csssc" />
+      <path
+         transform="matrix(0.61594178,0,0,0.63423051,102.11626,89.287944)"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.59995;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 286.67106,233.23371 c 1.60397,0.0147 3.45284,0.37426 4.99369,1.1164 5.59731,2.6959 7.94935,9.41888 5.25345,15.01618 -2.6959,5.5973 -9.41888,7.94935 -15.01618,5.25345 -5.58329,-2.68915 -7.94004,-9.38747 -5.27068,-14.98025"
+         id="path9593-3-1"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="csssc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 268.26354,239.95784 3.70397,1.71481"
+         id="path9615-6"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 279.16968,237.21416 -0.13719,-4.11552"
+         id="path9617-5"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <rect
+       transform="rotate(-36.966645)"
+       style="opacity:0.994708;fill:#ffffff;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect21185-3"
+       width="15.423417"
+       height="37.824093"
+       x="130.66983"
+       y="444.38086" />
+    <path
+       inkscape:export-ydpi="150"
+       inkscape:export-xdpi="150"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       sodipodi:nodetypes="csc"
+       inkscape:connector-curvature="0"
+       id="path8594-10"
+       d="m 389.57487,307.11197 c -1.08125,-6.13977 9.63005,-11.63887 16.6897,-9.8347 5.1196,1.30837 9.15454,6.1616 8.63792,9.85968"
+       style="opacity:0.994708;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       style="opacity:0.994708;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 306.59616,306.98638 c -1.08125,-6.13978 9.63005,-11.63888 16.6897,-9.83471 5.1196,1.30837 9.15454,6.1616 8.63792,9.85968"
+       id="path8594-10-4"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csc"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       inkscape:export-ydpi="150"
+       inkscape:export-xdpi="150"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       transform="scale(-1,1)"
+       sodipodi:open="true"
+       sodipodi:end="3.586905"
+       sodipodi:start="3.5904474"
+       sodipodi:ry="1.9161509"
+       sodipodi:rx="1.9364735"
+       sodipodi:cy="302.33798"
+       sodipodi:cx="-402.48148"
+       id="path8597-2-2-7"
+       style="opacity:0.994708;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="arc"
+       sodipodi:arc-type="arc"
+       d="m -404.22613,301.5065 a 1.9364735,1.9161509 0 0 1 2.58341,-0.8956 1.9364735,1.9161509 0 0 1 0.90739,2.55551 1.9364735,1.9161509 0 0 1 -2.58181,0.90012 1.9364735,1.9161509 0 0 1 -0.91196,-2.55391" />
+    <rect
+       y="-213.45119"
+       x="510.15134"
+       height="37.824093"
+       width="15.423417"
+       id="rect21185-3-5"
+       style="opacity:0.994708;fill:#ffffff;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
+       transform="rotate(52.653749)" />
+    <path
+       style="opacity:0.994708;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 441.17479,307.40248 c -1.08125,-6.13978 9.63005,-11.63888 16.6897,-9.83471 5.1196,1.30837 9.15454,6.1616 8.63792,9.85968"
+       id="path8594-10-5"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csc"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       d="m -455.1203,301.73923 a 1.9364735,1.9161509 0 0 1 2.58342,-0.8956 1.9364735,1.9161509 0 0 1 0.90738,2.5555 1.9364735,1.9161509 0 0 1 -2.5818,0.90013 1.9364735,1.9161509 0 0 1 -0.91196,-2.55391"
+       sodipodi:arc-type="arc"
+       sodipodi:type="arc"
+       style="opacity:0.994708;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path8597-2-2-7-6"
+       sodipodi:cx="-453.37564"
+       sodipodi:cy="302.57071"
+       sodipodi:rx="1.9364735"
+       sodipodi:ry="1.9161509"
+       sodipodi:start="3.5904474"
+       sodipodi:end="3.586905"
+       sodipodi:open="true"
+       transform="scale(-1,1)"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       y="308.26245"
+       x="452.77838"
+       height="6.5048566"
+       width="12.080448"
+       id="rect21314"
+       style="fill:#ffffff;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none" />
+    <rect
+       inkscape:export-ydpi="150"
+       inkscape:export-xdpi="150"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       transform="matrix(-0.66614421,-0.74582296,-0.78753473,0.61627027,0,0)"
+       y="-279.634"
+       x="-587.97681"
+       height="65.420311"
+       width="7.3476491"
+       id="rect8592-80-5-0"
+       style="opacity:0.994708;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.00106;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="150"
+       inkscape:export-xdpi="150"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       transform="scale(-1,1)"
+       sodipodi:open="true"
+       sodipodi:end="3.586905"
+       sodipodi:start="3.5904474"
+       sodipodi:ry="1.9161509"
+       sodipodi:rx="1.9364735"
+       sodipodi:cy="302.68243"
+       sodipodi:cx="-559.51025"
+       id="path8597-2-2-5"
+       style="opacity:0.994708;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="arc"
+       sodipodi:arc-type="arc"
+       d="m -561.25491,301.85095 a 1.9364735,1.9161509 0 0 1 2.58341,-0.8956 1.9364735,1.9161509 0 0 1 0.90739,2.55551 1.9364735,1.9161509 0 0 1 -2.58181,0.90012 1.9364735,1.9161509 0 0 1 -0.91196,-2.55391" />
+    <rect
+       inkscape:export-ydpi="150"
+       inkscape:export-xdpi="150"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       transform="matrix(-0.81854365,0.57444433,0.78816368,0.61546568,0,0)"
+       y="532.39789"
+       x="-173.64455"
+       height="55.258835"
+       width="5.9110265"
+       id="rect8592-80-8-0-5"
+       style="opacity:0.994708;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.95856004;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       transform="matrix(0.6715041,-0.74100084,0.79290654,0.60934327,0,0)"
+       style="opacity:0.994708;fill:#ffffff;stroke:#000000;stroke-width:0.939041;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect21185-3-5-1"
+       width="12.826721"
+       height="32.239418"
+       x="152.89563"
+       y="603.6778" />
+    <path
+       inkscape:export-ydpi="150"
+       inkscape:export-xdpi="150"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       transform="scale(-1,1)"
+       sodipodi:open="true"
+       sodipodi:end="3.586905"
+       sodipodi:start="3.5904474"
+       sodipodi:ry="1.9161509"
+       sodipodi:rx="1.9364735"
+       sodipodi:cy="265.50662"
+       sodipodi:cx="-605.39209"
+       id="path8597-2-3-1-1"
+       style="opacity:0.994708;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="arc"
+       sodipodi:arc-type="arc"
+       d="m -607.13675,264.67514 a 1.9364735,1.9161509 0 0 1 2.58342,-0.8956 1.9364735,1.9161509 0 0 1 0.90738,2.55551 1.9364735,1.9161509 0 0 1 -2.5818,0.90012 1.9364735,1.9161509 0 0 1 -0.91196,-2.55391" />
+    <g
+       style="opacity:0.994708"
+       inkscape:export-ydpi="150"
+       inkscape:export-xdpi="150"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       transform="matrix(-0.05006229,0.99937298,1.0670116,0.04019376,305.74064,-62.285168)"
+       id="g9621-5-6-0">
+      <path
+         transform="translate(-8.1624549,0.06859206)"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.967481;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 286.72218,233.1036 c 1.50345,0.0552 3.50044,0.55192 4.94257,1.24651 5.59731,2.6959 7.94935,9.41888 5.25345,15.01618 -2.6959,5.5973 -9.41888,7.94935 -15.01618,5.25345 -5.58329,-2.68915 -7.94004,-9.45606 -5.27068,-15.04884"
+         id="path9593-0-4-7"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="csssc" />
+      <path
+         transform="matrix(0.61594178,0,0,0.63423051,102.11626,89.287944)"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.54792;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 286.67106,233.23371 c 1.60397,0.0147 3.45284,0.37426 4.99369,1.1164 5.59731,2.6959 7.94935,9.41888 5.25345,15.01618 -2.6959,5.5973 -9.41888,7.94935 -15.01618,5.25345 -5.58329,-2.68915 -7.94004,-9.38747 -5.27068,-14.98025"
+         id="path9593-3-9-0-7"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="csssc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.967481px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 268.26354,239.95784 3.70397,1.71481"
+         id="path9615-4-6-4"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.967481px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 279.16968,237.21416 -0.13719,-4.11552"
+         id="path9617-7-1-9"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <rect
+       transform="rotate(52.653749)"
+       style="opacity:0.994708;fill:#ffffff;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect21185-3-5-4"
+       width="15.423417"
+       height="37.824093"
+       x="571.92059"
+       y="-294.35098" />
+    <path
+       inkscape:export-ydpi="150"
+       inkscape:export-xdpi="150"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       sodipodi:nodetypes="csc"
+       inkscape:connector-curvature="0"
+       id="path8594-10-5-1"
+       d="m 542.95988,307.43174 c -1.08125,-6.13978 9.63005,-11.63888 16.6897,-9.83471 5.1196,1.30837 9.15454,6.1616 8.63792,9.85968"
+       style="opacity:0.994708;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="150"
+       inkscape:export-xdpi="150"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       transform="scale(-1,1)"
+       sodipodi:open="true"
+       sodipodi:end="3.586905"
+       sodipodi:start="3.5904474"
+       sodipodi:ry="1.9161509"
+       sodipodi:rx="1.9364735"
+       sodipodi:cy="302.59998"
+       sodipodi:cx="-555.16071"
+       id="path8597-2-2-7-6-1"
+       style="opacity:0.994708;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="arc"
+       sodipodi:arc-type="arc"
+       d="m -556.90536,301.76849 a 1.9364735,1.9161509 0 0 1 2.58341,-0.8956 1.9364735,1.9161509 0 0 1 0.90739,2.55551 1.9364735,1.9161509 0 0 1 -2.58181,0.90012 1.9364735,1.9161509 0 0 1 -0.91196,-2.55391" />
+    <rect
+       style="opacity:0.994708;fill:#ffffff;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect21314-4"
+       width="12.080448"
+       height="6.5048566"
+       x="554.56348"
+       y="308.29172" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 258.12412,307.71932 H 678.87584"
+       id="path8535"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Administrator\Desktop\papers\computational-robotics-book\figs\basickinematics.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+  </g>
+</svg>
