@@ -156,7 +156,7 @@ v2.0, \today\\
 \includegraphics[width=1in]{figs/by-nc}
 \end{figure}
 
-This book is copyright by MIT Press. Its source code is licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License. You are free to share, i.e., copy, distribute and transmit sources under the following conditions: You must attribute the work to its main author, and you may not use this work for commercial purposes. For more information, please consult \url{https://creativecommons.org/licenses/by-nc/3.0/us/}.
+This book is copyright by MIT Press. Its source code is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. You are free to share, i.e., copy, distribute and transmit sources under the following conditions: You must attribute the work to its main author, you may not use this work for commercial purposes, and you must distribute your contributions under the same license as the original. For more information, please consult \url{https://creativecommons.org/licenses/by-nc-sa/3.0/us/}.
 
 \cleardoublepage
 \thispagestyle{empty}
@@ -164,12 +164,12 @@ This book is copyright by MIT Press. Its source code is licensed under a Creativ
 \vspace*{\fill}
 \begin{center}
 For Arthur, Tatiana, Benedict and Silvester\\
-future robot users\\
 (Bradley Hayes)
 \\
 David
 \\
-Leonardo, Lilly
+Leonardo and Lily\\
+future robot users\\
 \end{center}
 \vspace*{\fill}
 
@@ -177,21 +177,21 @@ Leonardo, Lilly
 
 \chapter*{Preface}
 
-This book provides an algorithmic perspective to autonomous robotics to students with a sophomore-level of linear algebra and probability theory. Robotics is an emerging field at the intersection of mechanical and electrical engineering with computer science. With computers becoming more powerful, making robots smart is getting more and more into the focus of attention and robotics research most challenging frontier. While there are a large number of textbooks on the mechanics and dynamics of robots that address sophomore-level undergraduates available, books that provide a broad algorithmic perspective are mostly limited to the graduate level. This book has therefore been developed not to create ``yet another textbook, but better than the others'', but to allow us to teach robotics to the 3rd and 4th year undergraduates at the Department of Computer Science at the University of Colorado.
+This book provides an algorithmic perspective to autonomous robotics to students with a sophomore-level of linear algebra and probability theory. Robotics is an emerging field at the intersection of mechanical engineering, electrical engineering, and computer science. With computers becoming more powerful, making robots smart is getting more and more into the focus of attention and robotics research most challenging frontier. While there is a large number of textbooks on the mechanics and dynamics of robots available to sophomore-level undergraduates, books that provide a broad algorithmic perspective are mostly limited to the graduate level. This book has therefore been developed not to create ``yet another textbook, but better than the others'', but to allow us to teach robotics to the 3rd and 4th year undergraduates at the Department of Computer Science at the University of Colorado.
 
-Although falling under the umbrella of ``Artificial Intelligence'', standard AI techniques are not sufficient to tackle problems that involve uncertainty, such as a robot's interaction in the real world. This book uses simple trigonometry to develop the kinematic equations of simple manipulators and mobile robots, then introduces path planning, sensing, and hence uncertainty. The robot localization problem is introduced by formally introducing error propagation, which leads to Markov localization, the Particle filter and finally the Extended Kalman Filter, and Simultaneous Localization and Mapping.
+Although falling under the umbrella of ``Artificial Intelligence'', standard AI techniques are not sufficient to tackle problems that involve uncertainty, such as a robot's interaction in the real world. This book uses simple trigonometry to develop the kinematic equations of manipulators and mobile robots, then introduces path planning, sensing, and lastly uncertainty. The robot localization problem is introduced by formally defining error propagation, which leads to Markov localization, Particle filtering and finally the Extended Kalman Filter, and Simultaneous Localization and Mapping.
 
-Instead of focusing on the state-of-the-art solutions to a particular sub-problem, emphasis of the book is on a concise step-by-step development and recurrent examples that capture the essence of a problem, but might not necessarily be the best solution. For example, odometry and line-fitting are used to explain forward kinematics and least-squares solutions, respectively, and later serve as motivating examples for error propagation and the Kalman filter in a localization context.
+Instead of focusing on state-of-the-art solutions to a particular sub-problem, emphasis of the book is on a progressive step-by-step development concepts through recurrent examples that capture the essence of a problem. The described solutions might not necessarily be the best, however they are easy to comprehend and widely used in the community. For example, odometry and line-fitting are used to explain forward kinematics and least-squares solutions, respectively, and later serve as motivating examples for error propagation and the Kalman filter in a localization context.
 
-Also, the book is explicitly robot-agnostic, reflecting the timeliness of fundamental concepts. Instead, a series of possible project-based curricula are described in an Appendix and available online, ranging from a maze-solving competition that can be realized with most miniature differential-wheel robots that include a camera to manipulation experiments with a robotic arm, all of which can be entirely conducted in simulation to teach most of the core concepts.
+Notably, the book is explicitly robot-agnostic, reflecting the timeliness of fundamental concepts. Rather, a series of possible project-based curricula are described in an Appendix and available online, ranging from a maze-solving competition that can be realized with most camera-equipped differential-wheel robots to manipulation experiments with a robotic arm, all of which can be entirely conducted in simulation to teach most of the core concepts.
 
-After multiple years in development and distributed mainly via Github, this new edition of this book has been co-authored by my colleagues in the Computer Science department, Bradley Hayes, Christoffer Heckman, and Alessandro Roncone, each having thaught multiple iterations of our ``Introduction to Robotics'' and ``Advanced Robotics'' courses as well as special topics courses that pertain to their sub-fields of robotics research. They are adding not only tremendous technical depth, but also years of experience on how certain subjects should be taught to remain engaging and exciting.
+After multiple years of development and distribution mainly via Github, this new edition of the book has been co-authored by my colleagues in the Computer Science department, Bradley Hayes, Christoffer Heckman, and Alessandro Roncone, each having thaught multiple iterations of our ``Introduction to Robotics'' and ``Advanced Robotics'' courses as well as special topics courses that pertain to their sub-fields of robotics research. They are adding not only tremendous technical depth, but also years of experience on how certain subjects should be taught to remain engaging and exciting.
 
-This book is released under a Creative Commons license, which allows anyone to copy and share the source code for this book, not the compiled version, however, and not for commercial purposes or to create derivatives of these works. I have chosen this format as it seems to maintain the best trade-off between a freely available textbook resource that others hopefully contribute to and maintaining a consistent curriculum that others can refer to. We are incredibly grateful to MIT Press and our editor Elizabeth Swayne to support this forward looking model.
+This book is released under a Creative Commons CC-by-nc-sa license, which allows anyone to copy and share its source code. However, neither the compiled version nor the code shall be used to create derivatives for commercial purposes. We have chosen this format as it seems to maintain the best trade-off between a freely available textbook resource that others may contribute to and maintaining a consistent curriculum that others can refer to. We are incredibly grateful to MIT Press and our editor Elizabeth Swayne to support this forward-looking model.
 
-Writing this book would not have been possible without the excellent work of others before us, most notably ``Introduction to Robotics: Mechanics and Control'' by John Craig and ``Introduction to Autonomous Mobile Robots'' by Roland Siegwart, Illah Nourbakhsh and Davide Scaramuzza, and innumerable other books and websites from which I learned and borrowed examples and notation. We are also grateful to Aaron Becker, Bachir El-Kadir,  James Grime, Michael Sambol, Cyrill Stachniss, Subh83, Ethan Tiran-Thompson who make lecture video snippets available online, and which are referenced throughout the book using 2D barcodes. 
+Writing this book would not have been possible without the excellent work of others before us, most notably ``Introduction to Robotics: Mechanics and Control'' by John Craig and ``Introduction to Autonomous Mobile Robots'' by Roland Siegwart, Illah Nourbakhsh and Davide Scaramuzza, and innumerable other books and websites from which I learned and borrowed examples and notation. We are also grateful to Aaron Becker, Bachir El-Kadir,  James Grime, Michael Sambol, Cyrill Stachniss, Subh83, Ethan Tiran-Thompson who made lecture video snippets available online, and which are referenced throughout the book using QR codes.
 
- Finally, I would like to acknowledge Github users AlWiVo, beardicus, mguida22, aokeson, as1ndu, apnorton, JohnAllen, jmodares, countsoduku, choffmann, and chrstphrdlz for their pull requests and comments as well as Haluk Bayram. Your interest and motivation in this project has been one of our biggest rewards.
+Finally, I would like to acknowledge Github users AlWiVo, beardicus, mguida22, aokeson, as1ndu, apnorton, JohnAllen, jmodares, countsoduku, choffmann, and chrstphrdlz for their pull requests and comments as well as Haluk Bayram. Your interest and motivation in this project has been one of our biggest rewards.
 
 \begin{flushright}
 Nikolaus Correll\\
