@@ -1,5 +1,5 @@
 %!TEX root = ../book.tex
-\chapter{Locomotion and Manipulation}\label{chap:locomotion}
+\chapter{Locomotion, Manipulation and their representations}\label{chap:locomotion}
 
 Autonomous robots are systems that sense, compute, communicate, and actuate. Actuation, the focus of this chapter, is the ability of the robot to move and to manipulate the world. Specifically, we differentiate between locomotion\index{Locomotion} as the robot's ability to move and manipulation\index{Manipulation} as the robot's ability to move objects in the environment. Both activities are closely related: during locomotion the robot uses its motors to exert forces on its environment (ground, water or air) to move itself; during manipulation it uses motors to exert forces on objects to move them relative to the rest of the environment. This might not even require different motors. Insects are good examples for this: they can use their six legs not only for locomotion, but also for picking up and manipulating objects. In short, the goals of this chapter are to:
 \begin{itemize}
@@ -31,6 +31,8 @@ In contrast, evolution has not equipped any animal with wheel-like actuators bec
 \end{mdframed}
 
 Most mechanisms capable of locomotion can also be used for manipulation with only modifications. Most industrial manipulators consist of a chain of rotary (or revolute) actuators that are connected by rigid links. In general, they are equipped with six or more independently rotating axes---we will see why further down below. In addition, modern industrial manipulators have the ability to not only control the position of each of its joints, but to also control the torque at each individual joint; this capability allows to control the \textsl{compliance}\index{Compliance} of a robot, which in a mechanical sense is the inverse of stiffness. Finally, for dexterous manipulation a robot does not only need an arm, but also a gripper or hand. Grasping is a hard problem on its own and is therefore treated in its own chapter (\cref{chap:grasping}).
+
+Regardless of whether the robot is rolling or walking, the dominant actuator type is rotational. Another type of mechanism is the \emph{prismatic} or \emph{linear} joint (see Figure \ref{fig:prismaticjointkinematics} for example) that allows the robot to extend and contract a link. These type of joints are usually combined with rotating joints and allow, for example, a robot arm to move up and down, or a robotic walker to extend or retract its leg. 
 
 %This lecture focuses on the kinematics of simple mechanisms. Understanding the duality between locomotion and manipulation is important, however, to better introduce (and understand) concepts such as reference frames and forward kinematics.
 
