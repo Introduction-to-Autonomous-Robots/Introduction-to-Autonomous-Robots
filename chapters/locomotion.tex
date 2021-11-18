@@ -1,21 +1,22 @@
+%!TEX root = ../book.tex
 \chapter{Locomotion and Manipulation}\label{chap:locomotion}
-Autonomous robots are systems that sense, compute, communicate, and actuate. Actuation, the focus of this chapter, is the ability of the robot to move and to manipulate the world. Specifically, we differentiate between locomotion\index{Locomotion} as the robot's ability to move and manipulation\index{Manipulation} as the robot's ability to move objects in the environment. Both activities are closely related: during locomotion the robot uses its motors to exert forces on its environment (ground, water or air) to move itself; during manipulation it uses motors to exert forces on objects to move them relative to the rest of the environment. This might not even require different motors. Insects are good examples for this: both can use their 6 legs not only for locomotion, but also for picking up and manipulating objects. The goals of this chapter are to:
+
+Autonomous robots are systems that sense, compute, communicate, and actuate. Actuation, the focus of this chapter, is the ability of the robot to move and to manipulate the world. Specifically, we differentiate between locomotion\index{Locomotion} as the robot's ability to move and manipulation\index{Manipulation} as the robot's ability to move objects in the environment. Both activities are closely related: during locomotion the robot uses its motors to exert forces on its environment (ground, water or air) to move itself; during manipulation it uses motors to exert forces on objects to move them relative to the rest of the environment. This might not even require different motors. Insects are good examples for this: they can use their six legs not only for locomotion, but also for picking up and manipulating objects. In short, the goals of this chapter are to:
 \begin{itemize}
 \item Introduce the concepts of locomotion, manipulation and their duality
 \item Explain static vs.\ dynamic stability
-\item Introduce ``degrees-of-freedom''
-\item Introduce the forward kinematics of static manipulator arms
+\item Introduce the concept of ``Degree of Freedom'' (DoF)
 \end{itemize}
 
 \section{Locomotion and Manipulation Examples}
 
-Locomotion includes very different concepts of motion including rolling, walking, running, jumping, sliding (undulatory locomotion), crawling, climbing, swimming, and flying. They are drastically different in terms of energy consumption, kinematics, stability, and capabilities required by the robot that implements them. Yet, the above definitions are loose and ambiguous: for example, ``swimming'' can be done using many different forms of propulsion systems. Similarly, a sliding motion on the ground might result into swimming with only few modifications.
+Locomotion includes very different concepts of motion, including rolling, walking, running, jumping, sliding (undulatory locomotion), crawling, climbing, swimming, and flying. These mechanisms are drastically different in terms of energy consumption, kinematics, stability, and capabilities required by the robot that implements them. Yet, the above definitions are loose and ambiguous: for example, ``swimming'' can be done using many different forms of propulsion. Similarly, a sliding motion on the ground might work well for swimming too with only few modifications.
 
-The way in which the individual parts of a robot can move with respect to each other and the environment is called the \textsl{kinematics}\index{Kinematics} of the robot. Kinematics are only concerned with the position and speed (first derivative of position) of those parts, but not its \textsl{dynamics}, which include acceleration (second derivative of position) and jerk (third derivative of position).
+The way in which the individual parts of a robot can move with respect to each other and the environment is called the \textsl{kinematics}\index{Kinematics} of the robot. Kinematics (which will be discussed in detail in \cref{chap:kinematics}) are only concerned with the position and speed (first derivative of position) of those parts; depending on the application, one may want to use a more complex level of abstraction called \textsl{dynamics}\index{Dynamics}, which is concerned with quantities such as acceleration (second derivative of position) and jerk (third derivative of position).
 
-Commercially, the most dominant form of locomotion is rolling. This is due to the fact that rolling provides by far the most efficient energy-speed ratio (\cref{fig:todd}), making the invention of the wheel one of the greatest technological breakthroughs in history. Consequently, humans have modified their environment to have smooth surfaces of large extent such as the road network, but also warehouse and residential floors.
-
-In contrast, evolution has not evolved a single animal with wheel-like actuators, and wheeled robots do consequently poorly in natural environments such as an unmown meadow, a forest floor, the mountains or caves, where legged robots can shine.  
+Commercially, the most widespread form of locomotion is rolling. This is due to the fact that rolling provides by far the most efficient energy to speed ratio (see \cref{fig:todd}), making the invention of the wheel one of the greatest technological breakthroughs in history. Consequently, humans have modified their environment to have as many smooth surfaces as possible---e.g. roads, warehouses, and residential floors.
+%
+In contrast, evolution has not equipped any animal with wheel-like actuators because of their poor performance in natural environments such as an unmown meadow, a forest floor, a mountains or a cave; consequently, wheeled robots perform poorly in such environments, whereas legged robots can shine.
 
 \begin{figure}
     \centering
@@ -25,32 +26,33 @@ In contrast, evolution has not evolved a single animal with wheel-like actuators
 \end{figure}
 
 
-\begin{mdframed}Can you find examples of robots from the above categories? Identify the different types of actuators that are used in them.
+\begin{mdframed}Can you find examples of robots from the above categories (legged vs wheeled robots)? Identify the different types of actuators that are used in them.
 \end{mdframed}
 
-Most mechanisms capable of locomotion can also be used for manipulation with only minor modifications. Most industrial manipulators consist of a chain of rotary actuators that are connected by links. Most industrial robots have six or more independently rotating axes. We will see why further down below. Modern industrial manipulators have the ability to not only control the position of each of its joints, but precisely control the torque and force at each individual joint, making the arm arbitrary compliant, which is the inverse of stiffness in a mechanical sense. For dexterous manipulation a robot does not only need an arm, but also a gripper or hand. Grasping is a hard problem on its own and is therefore treated in its own chapter (Chapter \ref{chap:grasping}).
+Most mechanisms capable of locomotion can also be used for manipulation with only modifications. Most industrial manipulators consist of a chain of rotary (or revolute) actuators that are connected by rigid links. In general, they are equipped with six or more independently rotating axes---we will see why further down below. In addition, modern industrial manipulators have the ability to not only control the position of each of its joints, but to also control the torque at each individual joint; this capability allows to control the \textsl{compliance}\index{Compliance} of a robot, which in a mechanical sense is the inverse of stiffness. Finally, for dexterous manipulation a robot does not only need an arm, but also a gripper or hand. Grasping is a hard problem on its own and is therefore treated in its own chapter (\cref{chap:grasping}).
 
 %This lecture focuses on the kinematics of simple mechanisms. Understanding the duality between locomotion and manipulation is important, however, to better introduce (and understand) concepts such as reference frames and forward kinematics.
 
 \section{Static and Dynamic Stability}\label{sec:stability}
-A fundamental difference between locomotion mechanisms is whether they are statically or dynamically stable\index{Static stability}\index{Dynamic Stability}. A statically stable mechanism will not fall even when all of its joints freeze (\cref{fig:stability}, left). A dynamically stable robot instead requires constant motion to prevent it from falling. Technically, stability requires the robot to keep its center of mass to fall within the polygon spanned by its ground-contact points. For example a quadruped robot's feet span a rectangle. Once such a robot lifts one of its feet, this rectangle becomes a triangle. If the projection of the center of mass of the robot along the direction of gravity is outside of this triangle, the robot will fall. A dynamically stable robot can overcome this problem by changing its configuration so rapidly that a fall is prevented. An example of a purely dynamically stable robot is an inverted pendulum on a cart  (\cref{fig:stability}, middle). Such a robot has no statically stable configurations and needs to keep moving all the time to keep the pendulum upright. While dynamic stability is desirable for high-speed, agile motions, robots should be designed so that they can easily switch into a statically stable configuration (\cref{fig:stability}, right).
+
+A fundamental difference between locomotion mechanisms is whether they are statically or dynamically stable\index{Static stability}\index{Dynamic Stability}. A statically stable mechanism will not fall even when not actuated (\cref{fig:stability}, left). A dynamically stable robot instead requires constant actuation to prevent it from falling. Technically, stability requires the robot to keep its center of mass to fall within the polygon spanned by its ground-contact points. For example, a quadruped robot's feet span a rectangle. Once such a robot lifts one of its feet, this rectangle becomes a triangle. If the projection of the center of mass of the robot along the direction of gravity is outside of this triangle, the robot will fall. A dynamically stable robot can overcome this problem by changing its configuration so rapidly that a fall is prevented. An example of a purely dynamically stable robot is an inverted pendulum on a cart (\cref{fig:stability}, middle). Such a robot has no statically stable configurations and needs to keep moving all the time to keep the pendulum upright. While dynamic stability is desirable for high-speed, agile motions, robots should be designed so that they can easily switch into a statically stable configuration (\cref{fig:stability}, right).
 
 \begin{figure}
     \centering
     % \includegraphics[width=\textwidth]{figs/stability.png}
     \def\svgwidth{\textwidth}
     \import{./figs/}{stability.pdf_tex}
-    \caption{From left to right: statically stable robot. Dynamically stable inverted pendulum robot. Static and dynamically stable robot (depending on configuration).}
+    \caption{From left to right: statically stable robot; dynamically stable inverted pendulum robot; static and dynamically stable robot (depending on configuration).}
     \label{fig:stability}
 \end{figure}
 
-An example of a robot that has both statically and dynamically stable configurations is a quadruped (``four legs'') runner. Unlike walking, a running robot will always have two legs in the air and alternate between them faster than the robot could fall in either direction. Although statically stable walking is possible with only 4 legs, most animals (and robots) require 6 legs for statically stable walking and use dynamically stable gaits (such as galloping) when they have four legs. Six legs allow the animal to move three legs at a time while the three other legs maintain a stable pose.
+An example of a robot that has both statically and dynamically stable configurations is a quadruped running. Unlike walking, a running robot will always have two legs in the air and alternate between them faster than the robot may fall in either direction. Although statically stable walking is possible with only four legs, most animals (and robots) require six legs for statically stable walking and use dynamically stable gaits (such as galloping) when they have four legs. Six legs allow the animal to move three legs at a time while the three other legs maintain a stable pose.
 
 
 \section{Degrees of Freedom}\label{sec:dof}
 
-The concept of \textsl{degree of freedom}\index{Degree of Freedom}, often abbreviated as DoF, is important for defining the possible positions and orientations a robot can reach. An object in the physical world can have up to six \textsl{Cartesian}\index{Cartesian}\index{Cartesian Degree of Freedom} degrees of freedom, namely forward/backward, sideways, and up/down as well as rotations around those axes. These rotations are known as pitch, yaw and roll and are illustrated in \cref{fig:pitchyawandroll}. These Cartesian degrees of freedom are distinct from the robot's \textsl{mechanical} degrees of freedom, which correspond to the number of points of actuation for a robot (i.e., a robotic arm with five joint motors is referred to as having five mechanical degrees of freedom).
-As a rule of thumb, the number of mechanical DoFs available to the user depends on the robot platform and cannot easily be changed by the user unless mechanical modifications to the robot are made; conversely, the number of Cartesian DoFs depends on the task, can be modified by the user, and vary according to what the robot needs to do.
+The concept of \textsl{degree of freedom}\index{Degree of Freedom}, often abbreviated as DoF, is important for defining the possible positions and orientations a robot can reach. An object in the physical world can have up to six \textsl{Cartesian}\index{Cartesian}\index{Cartesian Degree of Freedom} degrees of freedom, namely forward/backward, sideways, and up/down as well as rotations around those axes. These rotations are known as pitch, yaw and roll and are illustrated in \cref{fig:pitchyawandroll}. These Cartesian degrees of freedom are distinct from the robot's \textsl{mechanical} degrees of freedom, which correspond to the number of points of actuation for a robot (i.e., a robotic arm with five joint motors is referred to as having five mechanical degrees of freedom \textsl{in joint space}, see \cref{chap:kinematics}).
+As a rule of thumb, the number of mechanical DoFs available to the user depends on the robot platform and cannot easily be changed by the user unless mechanical modifications to the robot are made; conversely, the number of Cartesian DoFs depends on the task, can be modified by the user, and varies according to what the robot needs to do.
 
 \begin{figure}
     \centering
@@ -63,7 +65,7 @@ As a rule of thumb, the number of mechanical DoFs available to the user depends 
 
 After specifying the mechanical and Cartesian DoFs for your kinematic problem, the number of Cartesian DoFs (i.e. directions) a robot can actually move in depends on the configuration of its actuators and the constraints the robot has with the environment. These relationships are not always intuitive and require more rigorous mathematical treatment (see \cref{chap:kinematics}). The goal of this section is to introduce the degrees of freedom of standard mechanisms that are recurrent in robot design such as wheels or simple arms. For wheeled platforms, the degrees-of-freedom are defined by the types of wheels used and their orientation. Common wheel types are listed in \cref{tab:wheels}.
 
-\begin{table}
+\begin{table}\centering
 \begin{tabular}{p{2.5cm}p{2.6cm}p{4.7cm}}
 \hline
 Wheel type & Example & Degrees of Freedom\\
@@ -110,24 +112,26 @@ Spherical wheel
 \caption{Different types of wheels and their degrees of freedom. Adopted from \protect\citeasnoun{siegwart2011introduction}.}\label{tab:wheels}
 \end{table}
 
-Only robots that use exclusively wheels with three degrees-of-freedom ($3-$DoF wheels) will be able to freely move on a plane. This is because the pose of a robot on a plane is fully given by its position (two values) and its orientation (one value). Robots that don't have wheels with three degrees of freedom will have \textsl{kinematic constraints}\index{Kinematic constraints} that prevent them from reaching every possible point at every possible orientation. For example, a bicycle wheel can only roll into one direction and turn on the spot. Moving the bicycle wheel orthogonally to its direction of rolling is not possible, unless it is forcefully dragged (``skidding''), which requires more involved treatment not covered in this book. On the other hand, not having three degrees of freedom does not imply that some poses in the plane are unreachable, it may just require additional movements to achieve them.
+Only robots that use exclusively wheels with three degrees-of-freedom ($3-$DoF wheels) will be able to freely move on a plane. This is because the pose of a robot on a plane is fully given by its position (two values, e.g. vertical and horizontal position) and its orientation (one value, e.g. an angle). Robots that don't have wheels with three degrees of freedom will have \textsl{kinematic constraints}\index{Kinematic constraints} that prevent them from reaching every possible point at every possible orientation. For example, a bicycle wheel can only roll into one direction and turn on the spot. Moving the bicycle wheel orthogonally to its direction of motion is not possible, unless it is forcefully dragged (``skidding''). Importantly, not having three degrees of freedom does not imply that some poses in the plane are unreachable---it may just require additional movements to achieve them!
 A good analogue are figures on a chess-board. For example, a knight can reach every cell on a chess-board but might require multiple moves to do so. This is similar to a car, which can parallel park using back-and-forth motions. Instead, a bishop can only reach either black or white fields on the board, based upon its starting position.
 
-Similar reasoning applies to aerial and underwater robots. Here, the position of the robot is affected by the position and orientation of thrusters, either in the form of jets or propellers, mounted on the robot. Things become complicated quickly, however, as the dynamics of the system are subject to fluid- and aerodynamic effects, which also change as a function of size of the robot. This book will not go into the details of flying and swimming robots, but the general principles of localization and planning will be applicable to them as well.
+Similar reasoning applies to aerial and underwater robots. Here, the position of the robot is affected by the position and orientation of its thrusters, either in the form of jets or propellers. Things become complicated quickly, however, as the dynamics of the system are subject to fluid-dynamic and aero-dynamic effects, which also change as a function of the size of the robot. This book will not go into the details of flying and swimming robots, but the general principles of localization and planning will be applicable to them as well.
 
-\begin{mdframed}Think about possible wheel, propeller and thruster configurations. Don't limit yourself to robots, but consider also street and aerial vehicles and be creative---if you can think about a setup that makes sense, i.e., allows for reasonable mobility---somebody will already have built it and analyzed it. What are the advantages and disadvantages of each?
+\begin{mdframed} Think about possible wheel, propeller and thruster configurations. Don't limit yourself to robots, but consider also street and aerial vehicles and be creative---if you can think about a setup that makes sense, i.e., allows for reasonable mobility---somebody has already built it and analyzed it. What are the advantages and disadvantages of each?
 \end{mdframed}
+
+For manipulating arms, Cartesian DoFs refer to the positions and orientations (rotations around the primary axes ($x$, $y$, and $z$) that the end-effector can reach. Each actuated joint will typically add a degree of freedom, unless it is redundant (moving in the same direction, with the same physical effect, as a different joint). \cref{fig:basickinematics,fig:prismaticjointkinematics} show a series of manipulators operating on a planar surface. In such a scenario, the degrees of freedom of the end-effector are limited to moving up and down, sideways, and rotating around their pivot point. As a plane only has those three degrees of freedom, adding additional joints will not increase the number of Cartesian DoFs unless they allow the robot to also move in and out of the plane (``vertical'' axis).
+%
+An exact definition of the number of degrees of freedom is tricky and requires deriving analytical expressions for the end-effector position and orientation, which will be the subject of \cref{chap:kinematics}.
 
 \begin{figure}[!htb]
     \centering
     % \includegraphics[width=\textwidth]{figs/basickinematics.png}
     \def\svgwidth{\textwidth}
     \import{./figs/}{basickinematics.pdf_tex}
-    \caption{From left to right: Manipulators with one, two, three and four DoFs. The degrees of freedom of moving in a plane are the position of the end-effector with respect to its height and displacement with respect to the base, as well as its orientation.}
+    \caption{From left to right: Manipulators with one, two, three and four mechanical DoFs. The Cartesian DoFs needed for the end-effector to move in a plane are: the vertical displacement of the end-effector with respect to the base, its horizontal displacement, and its orientation.}
     \label{fig:basickinematics}
 \end{figure}
-
-For manipulating arms, Cartesian degrees of freedom refer to the positions and orientations (rotations around the primary axes) that the end-effector can reach. Each actuated joint will typically add a degree of freedom, unless it is redundant (moving in the same direction, with the same physical effect, as a different joint). Figures \ref{fig:basickinematics} and \ref{fig:prismaticjointkinematics} show a series of manipulators operating in a plane. By this, the degrees of freedom of the end-effector are limited to moving up and down, sideways, and rotating around its pivot point. As a plane only has those three degrees of freedom, adding additional joints cannot increase the Cartesian degrees of freedom unless they allow the robot to also move in and out of the plane.
 
 \begin{figure}[!htb]
     \centering
@@ -138,29 +142,25 @@ For manipulating arms, Cartesian degrees of freedom refer to the positions and o
     \label{fig:prismaticjointkinematics}
 \end{figure}
 
-An exact definition of the number of degrees of freedom is tricky and requires deriving analytical expressions for the end-effector position and orientation, which will be subject to \cref{chap:kinematics}.
-
-
-Choosing the ``right'' kinematics is a trade-off between mechanical complexity, maneuverability, achievable precision, cost, and ease of control. The very popular differential-wheel drive consisting of two independently controlled wheels that share a common axis such as on a robotic vacuum cleaner is cheap, highly maneuverable and easy to control, but makes it hard to drive in a straight line. This requires both motors to turn at the exact same speed and both wheels to have the exact same diameter, which is hard to achieve in practice. This problem is solved well by car-like steering mechanisms, but they have poor maneuverability and are difficult to control (think parallel-parking).
-
+Choosing the ``right'' kinematics involves a very complex trade-off between mechanical complexity, maneuverability, achievable precision, cost, and ease of control. The very popular differential-wheel drive---consisting of two independently controlled wheels that share a common axis, such as those mounted on a robotic vacuum cleaner---is cheap, highly maneuverable and easy to control; however, it is hard to drive the robot in a perfectly straight line. This motion requires both motors to turn at the exact same speed and both wheels to have the exact same diameter, which is hard to achieve in practice. This problem is solved well by car-like steering mechanisms---which in turn have poor maneuverability and are difficult to control (as a reference, think about the complexity of parallel parking).
 
 \section*{Take-home lessons}
 
 \begin{itemize}
-\item In order to perform planning for a robot, it's necessary to understand how its control parameters map to actions in the physical world.
+\item In order to perform planning for a robot, it is necessary to understand how its control parameters map to actions in the physical world.
 \item The kinematics of a robot are fully defined by the position and orientation of its wheels, joints and links no matter whether it swims, flies, crawls or drives.
-\item Many robotic systems cannot be fully understood by considering kinematics alone, but require you to model their dynamics as well. This book will be limited to modeling kinematics, which is sufficient for low-speed, mobile robots and arms.
+\item Many robotic systems cannot be fully understood by considering kinematics alone, but require you to model their dynamics as well. This book will be limited to modeling kinematics, which is sufficient for low-speed mobile robots and arms.
 \end{itemize}
 
 
 \section*{Exercises}\small
 \begin{enumerate}
-\item What are the Cartesian degrees of freedom of a push lawnmower with four wheels? How is it still possible to mow an entire lawn with one, even though the wheels don't yaw?
+\item What are the Cartesian DoFs of a push lawnmower with four wheels? How is it still possible to mow an entire lawn with one, even though the wheels don't yaw?
 \item Is a car statically or dynamically stable? What about a motorcycle?
-\item What are the Cartesian degrees of freedom of an office chair with all caster-wheels?
-\item What are the maximum Cartesian degrees of freedom for orientable objects driving on the plane?
-\item What are the maximum Cartesian degrees of freedom for objects that can freely translate and rotate in the world?
-\item Calculate the Cartesian degrees of freedom of a differential drive robot with two powered rear wheels and a central, front-mounted caster wheel. What happens when you add a second caster wheel?
-\item Calculate the Cartesian degrees of freedom of a standard car. How is it possible to still reach every point on the plane?
-\item A steering wheel allows you to change the yaw of your car. Can you also change its pitch and its roll?
+\item What are the Cartesian DoFs of an office chair with all caster-wheels?
+\item What are the maximum Cartesian DoFs for orientable objects driving on the plane?
+\item What are the maximum Cartesian DoFs for objects that can freely translate and rotate in the world?
+\item Calculate the Cartesian DoFs of a differential drive robot with two powered rear wheels and a central, front-mounted caster wheel. What happens when you add a second caster wheel?
+\item Calculate the Cartesian DoFs of a standard car. How is it possible to still reach every point on the plane?
+\item A steering wheel allows you to change the yaw of your car. Can you also change its pitch and its roll? See \cref{fig:pitchyawandroll} for reference.
 \end{enumerate}\normalsize
