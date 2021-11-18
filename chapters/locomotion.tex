@@ -3,9 +3,10 @@
 
 Autonomous robots are systems that sense, compute, communicate, and actuate. Actuation, the focus of this chapter, is the ability of the robot to move and to manipulate the world. Specifically, we differentiate between locomotion\index{Locomotion} as the robot's ability to move and manipulation\index{Manipulation} as the robot's ability to move objects in the environment. Both activities are closely related: during locomotion the robot uses its motors to exert forces on its environment (ground, water or air) to move itself; during manipulation it uses motors to exert forces on objects to move them relative to the rest of the environment. This might not even require different motors. Insects are good examples for this: they can use their six legs not only for locomotion, but also for picking up and manipulating objects. In short, the goals of this chapter are to:
 \begin{itemize}
-\item Introduce the concepts of locomotion, manipulation and their duality
-\item Explain static vs.\ dynamic stability
-\item Introduce the concept of ``Degree of Freedom'' (DoF)
+\item Introduce the concepts of locomotion, manipulation and their duality,
+\item Explain static vs.\ dynamic stability,
+\item Introduce the concept of ``Degree of Freedom'' (DoF),
+\item introduce coordinate systems and their transformations.
 \end{itemize}
 
 \section{Locomotion and Manipulation Examples}
@@ -143,6 +144,9 @@ An exact definition of the number of degrees of freedom is tricky and requires d
 \end{figure}
 
 Choosing the ``right'' kinematics involves a very complex trade-off between mechanical complexity, maneuverability, achievable precision, cost, and ease of control. The very popular differential-wheel drive---consisting of two independently controlled wheels that share a common axis, such as those mounted on a robotic vacuum cleaner---is cheap, highly maneuverable and easy to control; however, it is hard to drive the robot in a perfectly straight line. This motion requires both motors to turn at the exact same speed and both wheels to have the exact same diameter, which is hard to achieve in practice. This problem is solved well by car-like steering mechanisms---which in turn have poor maneuverability and are difficult to control (as a reference, think about the complexity of parallel parking).
+
+\input{chapters/kinematics-coordinatesystems}
+
 
 \section*{Take-home lessons}
 
