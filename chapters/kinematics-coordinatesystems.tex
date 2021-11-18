@@ -48,20 +48,20 @@ More formally, $^AP$ is a linear combination of the three basis vectors that spa
 As we know, not only the position of the robot is important, but also its orientation.
 In order to describe the orientation of a point, we will attach a coordinate system to it. Let $ \hat{X}_B, \hat{Y}_B$ and $ \hat{Z}_B$ be unit vectors that correspond to the principal axes of a coordinate system $\{B\}$.
 When expressed in coordinate system $\{A\}$, they are denoted $^A\hat{X}_B, ^A\hat{Y}_B$ and $ ^A\hat{Z}_B$.
-In order to express a vector that is given in one coordinate system in another, we need to \textsl{project} each of its components to the unit vectors that span the target coordinate system. For example, if we consider only the axis $^A\hat{X}_B$, we have that:
+In order to express a vector that is given in one coordinate system in another, we need to \textsl{project} each of its components to the unit vectors that span the target coordinate system. For example, if we consider only the axis $^A\hat{X}_B$, which is given by
 
 \begin{equation}\label{eq:projection}
 ^A\hat{X}_B=(\hat{X}_B\cdot\hat{X}_A, \hat{X}_B\cdot\hat{Y}_A,\hat{X}_B\cdot\hat{Z}_A)^T
 \end{equation}
 
-consists of the projections of $\hat{X}_B$ onto $\hat{X}_A$, $\hat{Y}_A$ and $\hat{Z}_A$. Here, `$\cdot$' denotes the scalar product (also known as dot or inner product, see \cref{app:linalg:dotproduct}).
+that is, the projections of $\hat{X}_B$ onto $\hat{X}_A$, $\hat{Y}_A$ and $\hat{Z}_A$. Here, `$\cdot$' denotes the scalar product (also known as dot or inner product, see \cref{app:linalg:dotproduct}).
 Note that all vectors in (\ref{eq:projection}) are unit vectors, i.e.\ their length is one.
 By following the definition of the scalar product, we have that $A\cdot B=\|A\|\|B\|\cos \alpha=\cos \alpha$, indeed reduces the projection of $\hat{X}_B$ onto the unit vectors of $\{A\}$. This projection is illustrated in \cref{fig:projection}.
 
 \begin{figure}
     \centering
     % \includegraphics[width=0.8\textwidth]{figs/projection.png}
-    \def\svgwidth{0.8\textwidth}
+    \def\svgwidth{0.65\textwidth}
     \import{./figs/kinematics/}{projection.pdf_tex}
     \caption{Top: A coordinate system $\{B\}$ with position given by $^AP$ and orientation given by $\hat{X}_B$, $\hat{Y}_B$, and $\hat{Z}_B$. Bottom:
     The projection of the unit vector $\hat{X}_B$ onto the unit vectors that span coordinate system $\{A\}$ after moving $\{B\}$ into the origin of $\{A\}$. As all vectors are unit vectors, $A\cdot B=\|A\|\|B\|\cos \alpha=\cos \alpha$. }
@@ -79,13 +79,13 @@ It is important to note that all columns in $ ^A_BR$ are unit vectors, so that t
 This is important as it allows us to easily obtain the inverse of $ ^A_BR$ as $ ^A_BR^T$ or
 $ ^B_AR=^A_BR^T$.
 
-The reason for which the unit vectors of a coordinate system $\{B\}$ expressed in coordinate system $\{A\}$ actually make up a rotation matrix can be easily seen when re-arranging Equation~\ref{eq:basis} in matrix form:
+The reason why the unit vectors of a coordinate system $\{B\}$ expressed in coordinate system $\{A\}$ actually make up a rotation matrix can be easily seen when re-arranging Equation~\ref{eq:basis} in matrix form:
 \begin{equation}
 ^AP=\left[ \arraycolsep=2pt%\def\arraystretch{2.2}
 \begin{array}{ccc}1 & 0 & 0\\0 & 1 & 0\\0 & 0 & 1\end{array}\right]\left[\begin{array}{c}p_x\\p_y\\p_z\end{array}
 \right],
 \end{equation}
-where the rotation matrix is nothing but the identity as both points already are in the same coordinate system. In this case, an identity matrix would signify a lack of rotation around all axes.
+where the rotation matrix is the identity as both points already are in the same coordinate system, that is, no rotation is needed.
 
 We have now established how to express the orientation of a coordinate system using a rotation matrix. Usually, coordinate systems don't lie on top of each other, but are also displaced from each other.
 Together, position and orientation are known as a \textsl{frame},\index{Frame} which is a set of four vectors, one for the position and three for the orientation, and we can write
@@ -133,7 +133,7 @@ The inverse of an homogeneous transform can be constructed by inverting rotation
 \left[\arraycolsep=2pt\begin{array}{ccc|c} & ^A_BR^T & & -^A_B{R^T}{^AP} \\\hline 0 & 0 & 0 & 1\end{array}\right]
 \end{equation}
 
-We have now established a convenient notation to convert points from one coordinate system to another. There are many possible ways this can be done, in particular how rotation can be represented (see below), but all can be converted from one into the other.
+We have now established a convenient notation to convert points from one coordinate system to another. There are many possible ways this can be done, in particular how rotation can be represented (see below), but all can be converted from one form into the other.
 
 \subsection{Concatenation of Transformations}\label{sec:kinematics:coordsystems:concatenation}
 
@@ -155,22 +155,22 @@ So far, we have represented orientation by a $3\times3$ matrix whose column vect
 \subsubsection{Euler Angles}
 In fact, three values are sufficient to describe orientation.
 This becomes clear when considering that orthogonality (dot product of all columns is zero) and vector length (each vector must have length $1$) impose six constraints on the nine values in the rotation matrix.
-Indeed, an orientation can be represented as a rotation by certain angles around the $x-$, the $y-$, and the $z$-axis of the reference coordinate system. This is known as the X-Y-Z fixed-angle notation.\index{Fixed angle notation} Mathematically, this can be represented by a rotation matrix of the form:
+Indeed, an orientation can be represented as a rotation by certain angles around the $x$, the $y$, and the $z$-axis of the reference coordinate system. This is known as the X-Y-Z fixed-angle notation.\index{Fixed angle notation} Mathematically, this can be represented by a rotation matrix of the form:
 \begin{equation}
 ^A_BR_{XYZ}(\gamma,\beta,\alpha)=\begin{bsmallmatrix}cos\alpha & -sin\alpha & 0\\sin\alpha & \cos\alpha & 0\\0 & 0 & 1\end{bsmallmatrix}\begin{bsmallmatrix}cos\beta& 0 & sin\beta\\0 & 1 & 0\\-sin\beta & 0 & cos\beta\end{bsmallmatrix}\begin{bsmallmatrix}1 & 0 & 0 \\ 0 & cos\gamma & -sin\gamma\\0 & sin\gamma & cos\gamma\end{bsmallmatrix}
 \end{equation}
 
-While the $X-Y-Z$ fixed angles approach expresses a coordinate frame using rotations with respect to the original coordinate frame (say, $\{A\}$), another possible description is to start with a coordinate frame $\{B\}$ that is coincident with frame $\{A\}$, then rotate around the Z-axis with angle $ \alpha$, then the Y-axis with angle $ \beta$ and finally around the X-axis with angle $ \gamma$. This representation is called Z-Y-X Euler angles.\index{Euler angles}
+While the X-Y-Z fixed angles approach expresses a coordinate frame using rotations with respect to the original coordinate frame (say, $\{A\}$), another possible description is to start with a coordinate frame $\{B\}$ that is coincident with frame $\{A\}$, then rotate around the Z-axis with angle $ \alpha$, then the Y-axis with angle $ \beta$ and finally around the X-axis with angle $ \gamma$. This representation is called Z-Y-X Euler angles.\index{Euler angles}
 As the coordinate axis do not necessarily need to be different, there are twelve possible valid combinations of sub-sequent rotations: XYX, XZX, YXY, YZY, ZXZ, ZYZ, XYZ, XZY, YZX, YXZ, ZXY and ZYX.
 The reason for which there are only twelve is that sub-sequent rotations around the same axis are not valid. Such rotations would not add any information, but are equivalent to a rotation by the sum of both angles.
 
-It is important to know about the subtle differences between the available transformations as there is neither ``right'' nor ``wrong'' convention, however different manufacturers and fields use different ones.
-There is only one caveat: each of the rotation matrices can look like subsequent rotations around the same axis for certain values of angles. For example, this happens for the XYZ rotation matrix if the angle of rotation around the Y-axis is $90^\circ$. These cases are known as a \textsl{singularities} of the specific notation.\index{Singularity}
+It is important to understand the subtle differences between the available transformations as there is neither ``right'' nor ``wrong'' convention, however different manufacturers of hardware and software products might use different ones, often based on preferences in the various different fields, such as aviation or geology, that these algorithms and products originally catered to.
+There is a fundamental caveat with all of the above approaches: each of the rotation matrices can look like subsequent rotations around the same axis for certain values of angles. For example, this happens for the XYZ rotation matrix if the angle of rotation around the Y-axis is $90^\circ$. These cases are known as a \textsl{singularities} of the specific notation.\index{Singularity} We therefore need additional representations that work across the entire range of possible motions. 
 
 \subsubsection{Quaternions}
 \screencast{https://youtu.be/3BR8tK-LuB0}{quaternions}
 
-Among the many conventions, the preferred representation for computational and stability reasons are \textsl{quaternions}\index{Quaternion}.
+Among the many possible conventions, the preferred representation for computational and stability reasons are \textsl{quaternions}\index{Quaternion}.
 A quaternion is a 4-tuple that extends the complex numbers with very general applications in mathematics and representing orientation and rotation in particular. Quaternions are generally represented in the form
 
 \begin{equation}
@@ -203,7 +203,7 @@ These four quantities are constrained by the relationship
 \end{equation}
 which might be visualized by a point on a unit hyper-sphere. %Transformations are represented by \textsl{dual quaternions}\index{Dual quaternion}, one for the translation and one for the rotation. Dual quaternions can again easily be converted into homogenous transformation matrices.
 
-Given a vector $\mathbf{p} \in \mathbb{R}^3$ that should be rotated by a unit a Quaternion $\mathbf{q}$, we can compute the new vector $\mathbf{p'}$ as
+Given a vector $\mathbf{p} \in \mathbb{R}^3$ that should be rotated by a unit Quaternion $\mathbf{q}$, we can compute the new vector $\mathbf{p'}$ as
 
 \begin{equation}
 \mathbf{p'}=\mathbf{q}\mathbf{p}\mathbf{q^*}
@@ -212,7 +212,7 @@ Given a vector $\mathbf{p} \in \mathbb{R}^3$ that should be rotated by a unit a 
 with $\mathbf{q^*}$ the conjugate of $\mathbf{q}$ as defined above.
 
 
-Computing the equivalent rotation to two subsequent rotations, requires multiplying the Quaternions. Given two quaternions $\epsilon$ and $\epsilon'$, multiplication is defined as follows
+Computing the equivalent rotation to two subsequent rotations, requires multiplying the Quaternions. Given two quaternions $\epsilon$ and $\epsilon'$, multiplication is defined by the following matrix multiplication:
 \begin{equation}
 \left[
 \begin{array}{cccc}
@@ -226,6 +226,6 @@ Computing the equivalent rotation to two subsequent rotations, requires multiply
 \end{equation}
 
 Unlike multiplying two rotation matrices, which requires 27 multiplications and 18 additions, multiplying two quaternions only requires 16 multiplications and 12 additions, making the operation computationally more efficient.
-Importantly, this representation does not suffer from singularities for specific joint angles, making the approach computationally more robust. This is particularly relevant for robotics, as mathematical singularities have pretty significant real-world impact on physical robots (see e.g. \cref{sec:invjac}).
+Importantly, this representation does not suffer from singularities for specific joint angles, making the approach computationally more robust. This is particularly relevant for robotics, as mathematical singularities have pretty significant real-world impact on physical robots.
 
 

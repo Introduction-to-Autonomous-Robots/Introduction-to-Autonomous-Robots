@@ -29,8 +29,8 @@ While it is always possible to compute the forward kinematics \textsl{analytical
 \end{figure}
 
 Consider the robot arm in \cref{fig:fwk2dofarm}; it is mounted to a table, and is composed of two links and two joints. Let the length of the first link be $l_1$ and the length of the second link be $l_2$. You could specify the position of the link closer to the table by the angle $\alpha$ and the angle of the second link relative to the first link using the angle $\beta$.
-Therefore, in this case $q = [\alpha, \beta]^T$.
-Our goal is to calculate the position $[x, y]^T$ and orientation $\theta$ of the end-effector; consequently, $f$ will map to $r = [x, y, \theta]^T$.
+Therefore, $q = [\alpha, \beta]^T$ are the two degrees of freedom that we can control.
+Our goal is to calculate the position $[x, y]^T$ and orientation $\theta$ of the end-effector given the values of $q$; consequently, $f$ will map to $r = [x, y, \theta]^T$.
 
 Let's now calculate the position $P_1 = (x_1, y_1)$ of the joint between the first and the second link using simple trigonometry:
 %

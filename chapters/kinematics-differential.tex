@@ -3,7 +3,8 @@
 
 The two-link arm in Figure~\ref{fig:fwk2dofarm} involved only two free parameters, but was already pretty complex to solve analytically if the end-effector pose was not specified.
 One can imagine that things become very hard with more degrees of freedom or more complex geometries (mechanisms in which some axes intersect are simpler to solve than others, for example).
-It is worth noting that, so far, we have analyzed the geometry of motion of a robot at its simplest level of abstraction, i.e. in the space of positions. Despite its potential, this abstraction becomes quickly ineffective at modeling complex behaviors, because it does not incorporate any notion of time.
+It is worth noting that, so far, we have analyzed the geometry of motion of a robot at its simplest level of abstraction, i.e. in the space of positions. This abstraction becomes useless as soon as the order of motions matters. For example, in a differential wheel robot, turning the left wheel first and then the right wheel will lead to a very different position then turning the right wheel first and then the left wheel. This is not the case in a robotic arm with two links, which will arrive at the same position no matter which joint will be moved first. 
+
 In order to include a notion of temporal evolution of the robot configuration, it is convenient to shift toward a slightly more complex abstraction, that is the space of generalized velocities. This modeling is called \textsl{differential kinematics}\index{Differential Kinematics}, as velocities are the time derivative (i.e. the differential) of positions.
 Similarly to before, with ``generalized velocities'' we mean ``any velocity-equivalent quantity needed to describe the element'', as we will detail below.
 
@@ -324,7 +325,7 @@ Note that this approach does not allow us to deal with $\dot{y}_R \neq 0$, which
 
 Omnidirectional robots using ``Swedish wheels'' \index{Swedish Wheel} or ``Meccano wheels'' \index{Meccano Wheel} are common in factories and educational settings. A drawing of a swedish wheel is shown in Table \ref{tab:wheels}. It consists of an actuated wheel with non-actuated rollers around its circumference that are attached in a 45 degree angle.
 %
-Similarly to the caster wheel, the Swedish wheel has full three degrees of freedom in the plane, but can enable omnidirectional motion of a robotic platform without the need to rotate. A typical four-wheel configuration is shown in Figure \ref{fig:swedishwheel}. Notice the arrangment of the wheels, and in particular the orientation of the rollers, which is critical for the operation as shown.
+We recall that, similarly to the caster wheel, the Swedish wheel has full three degrees of freedom in the plane, but can enable omnidirectional motion of a robotic platform without the need to rotate. A typical four-wheel configuration is shown in Figure \ref{fig:swedishwheel}. Notice the arrangment of the wheels, and in particular the orientation of the rollers, which is critical for the operation as shown.
 
 When actuated by itself, the wheel will perform a sideways motion that is perpendicular to the main axis of its rollers. When used in pairs, opposite directions of motions cancel out, resulting for example into forward motion as shown in Figure \ref{fig:swedishwheel}, top, center, or sideways motion, bottom, right.
 
@@ -369,7 +370,7 @@ With $v_{i,m}=R\omega_i$ and $R$ the radius of each Swedish wheel, we can now co
 \subsection{Feedback control for mobile robots}\label{sec:fbmobile}
 \label{sec:kinematics:inverse:feedbackcontrol}
 
-Assume the robot's position given by $x_r, y_r$ and $\theta_r$ and the desired pose as $x_g, y_g$ and $\theta_g$---with the subscript $g$ indicating ``goal''.
+Assume the robot's position to be given by $x_r, y_r$ and $\theta_r$ and the desired pose as $x_g, y_g$ and $\theta_g$---with the subscript $g$ indicating ``goal''.
 We can now calculate the error in the desired pose by:
 \begin{eqnarray}
 \rho  &=& \sqrt{(x_r-x_g)^2+(y_r-y_g)^2} \nonumber \\
@@ -399,15 +400,15 @@ which will let the robot drive in a curve until it reaches the desired pose.
 As detailed at the beginning of this Chapter, kinematics is concerned with analyzing the mapping between our control variables (i.e. the robot's motors represented by the $n$ DoFs in joint space) and their effect on the motion of the robot (our $m$ DoFs in task/configuration space). These two spaces might have different dimensionality, and the relation between these two dimensions greatly affects how we can solve the kinematic problem. It is convenient to analyze these differences by looking at the Jacobian $J$, since the size of the matrix is $m \times n$; in all, we have three different conditions:
 
 \begin{itemize}
-\item $n   =  m \rightarrow$ The robot is \textsl{fully actuated}. The Jacobian $J$ is square and full rank, and the forward kinematics equation is directly invertible;
-\item $n \leq m \rightarrow$ The robot is \textsl{under actuated}, and the kinematics problem is \textsl{kinematically deficient}. The Jacobian $J$ is ``tall'', because there are more columns $m$ than rows $n$, and not invertible any more; the only way to solve the inverse kinematics problem is through the pseudo-inverse $J^+$ (and similar/more advanced approaches).
-\item $n \geq m \rightarrow$ The robot is \textsl{over actuated}, and the kinematics problem is \textsl{kinematically redundant}. The Jacobian $J$ is ``fat'', because there are more rows $n$ than columns $m$, and not invertible any more; the only way to solve the inverse kinematics problem is through the pseudo-inverse $J^+$ (and similar/more advanced approaches). In this scenario, it is useful to determine the redundancy coefficient $n-m$ which affects the space of solutions of the inverse kinematic problem.
+\item $n   =  m \rightarrow$ The robot is \textsl{fully actuated}.\index{Fully actuated} The Jacobian $J$ is square and full rank, and the forward kinematics equation is directly invertible;
+\item $n \leq m \rightarrow$ The robot is \textsl{under actuated},\index{Under actuated} and the kinematics problem is \textsl{kinematically deficient}. The Jacobian $J$ is ``tall'', because there are more columns $m$ than rows $n$, and not invertible any more; the only way to solve the inverse kinematics problem is through the pseudo-inverse $J^+$ (and similar/more advanced approaches).
+\item $n \geq m \rightarrow$ The robot is \textsl{over actuated},\index{Over actuation} and the kinematics problem is \textsl{kinematically redundant}. The Jacobian $J$ is ``fat'', because there are more rows $n$ than columns $m$, and not invertible any more; the only way to solve the inverse kinematics problem is through the pseudo-inverse $J^+$ (and similar/more advanced approaches). In this scenario, it is useful to determine the redundancy coefficient $n-m$ which affects the space of solutions of the inverse kinematic problem.
 \end{itemize}
 
 Over- and under-actuation are important design considerations to keep in mind when choosing a robot for a particular task.
-In a \textsl{kinematically deficient} scenario, the robot is not capable of full motion in task space, as it does not have sufficient degrees of freedom in joint space to ``cover'' every possible configuration in task space. This does not mean that the robot is useless! It can still perform tasks---just not \textsl{every} possible task you might ask it to perform.
-Conversely, if the problem is \textsl{kinematically redundant}, the robot has more joint DoFs available than it needs, and there exist an infinite number of inverse kinematics solutions in non-singular configurations.
+In a \textsl{kinematically deficient}\index{Kinematic deficiency} scenario, the robot is not capable of full motion in task space, as it does not have sufficient degrees of freedom in joint space to ``cover'' every possible configuration in task space. This does not mean that the robot is useless! It can still perform tasks---just not \textsl{every} possible task you might ask it to perform.
+Conversely, if the problem is \textsl{kinematically redundant},\index{Kinematic redundancy} the robot has more joint DoFs available than it needs, and there exist an infinite number of inverse kinematics solutions in non-singular configurations.
 Contrarily to what one may think, redundancy is actually a great feature to have in a robot system, in that it enables flexibility and versatility in solving the kinematic problem: that is, it is possible to choose \textsl{the best} solution among many, and one that satisfies additional constraints and requirements.
 % As a matter of fact, the number of inverse kinematics solutions is $\infty^{n-m}$,
-A human arm (without considering the hand) is a good example of a kinematically redundant manipulator, as it is equipped with $7$ DoFs in joint space ($3$ at the shoulder, $1$ at the elbow and $3$ at the wrist), whereas the task space is of dimension $6$ (i.e. the $3$ positions and $3$ orientations of the wrist).
+A human arm (without considering the hand) is a good example of a kinematically redundant manipulator, as it is equipped with seven DoFs in joint space (three at the shoulder, one at the elbow and three at the wrist), whereas the task space is of dimension six (i.e. the three positions and three orientations of the wrist).
 This additional degree of mobility allows humans to reach for objects in multiple configurations, choose motions that are energy efficient, avoid obstacles, and more!
