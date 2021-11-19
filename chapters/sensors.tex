@@ -148,6 +148,9 @@ Therefore, it is natural for roboticists to equip robots with similar capabiliti
 A pressure sensor is a device that is capable of detecting either a contact/collision as a binary data (in which case is generally referred to as touch sensor), or a gradient of pressure applied to it.
 In general, the vertical pressure applied to the sensor is proportional to the 1D vertical force that is applied to the direction normal to the sensor, and this makes a pressure sensor a good substitute to F/T sensors in specific applications (e.g. grasping).
 Additionally, pressure sensors are mostly based on measuring pressure through a change in \textsl{capacitance} rather than resistance (no different from the functioning of a touchscreen on a modern smartphone): when pressure is applied to a capacitor-like device (i.e. two conductive plates separated by an insulating material), the distance between the two plates reduces and this causes a change in capacitance which can be readily measured.
+
+As introduced in the context of series-elastic actuators, distance and force sensing are tightly related via Hooke's law. There exists a large variety of touch and force sensors that rely on light-based distance measurement (see the following section) in conjunction with a flexible material with known spring constant, such as using distance sensors to measure the deformation of an elastic dome from the inside \cite{youssefian2013contact} or measuring distance to objects through transparent rubber before touch and contact force after touch \cite{patel2018integrated}.
+
 If compared to F/T sensors, pressure sensors provide limited amount of information ($1$-dimensional vs $6$-dimensional), but they allow for: 1) high responsiveness; 2) high density of sensing (up to tens of sensors per $cm^2$); 3) low cost; 4) ease of miniaturization.
 
 Human touch is not limited to pressure alone, but also high-frequency information such as vibrations. These are important when discerning different surfaces. Robots can replicate this capability by measuring vibrations in the order of hundreds of Hertz by integrating accelerometers or microphones into a soft transducer and classifying spectral information \cite{hughes2015texture}.
@@ -224,8 +227,6 @@ This is possible because sound travels at much lower speed ($3\cdot10^2m/s$) tha
 % (Look these definitions up above before you read on.)\td{fix--up above where?}
 Although ultrasound distance sensors have become progressively less common in robotics, they have an advantage over light-based sensors: instead of sending out a ray, the ultra-sound pulse results in a cone with an opening angle of $20$ to $40$ degrees. Because of this, such sensors are able to detect small obstacles without the requirement of directly hitting them with a ray. This property makes them the sensor of choice in specific applications, such as the automated parking assist technologies in modern cars.
 
-\subsection{The relationship between distance and force}
-As introduced in the context of series-elastic actuators, distance and force sensing are tightly related via Hooke's law. There exists a large variety of touch and force sensors that rely on light-based distance measurement in conjunction with a flexible material with known spring constant, such as using distance sensors to measure the deformation of an elastic dome from the inside \cite{youssefian2013contact} or measuring distance to objects through transparent rubber before touch and contact force after touch \cite{patel2018integrated}.
 
 
 \section{Sensors to sense global pose}
