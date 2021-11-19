@@ -1,8 +1,9 @@
 %!TEX root = ../book.tex
 \chapter{Sensors}\label{chap:sensors}
+
 Robots are systems that sense, actuate, and compute. So far, we have studied the basic physical principles of motion, i.e., locomotion and manipulation. We now need to understand the basic principles of robotic sensors that provide the necessary data for a robot to make decisions and control its body.
 %
-The goals of this chapter are:
+The goals of this chapter are to:
 \begin{itemize}
 \item provide an overview of sensors commonly used on robotic systems,
 \item outline the physical principles behind the functioning of sensors,
@@ -26,7 +27,6 @@ Think about the kind of data that you can obtain from an encoder, an acceleromet
 
 Although an encoder is able to measure position, it is used in this function only on robotic arms. If the robot is non-holonomic, closed paths in its configuration space (i.e., robot motions that return the encoder values to their initial position), do not necessarily drive the robot back to its starting point (as exemplified in \cref{fig:holonomy}).
 In those robots, encoders are therefore mainly utilized to measure speed. An accelerometer instead, by definition, measures the derivative of speed. Vision, finally, allows to calculate the absolute position (or the integral of speed) if the environment is equipped with unique features. An additional fundamental difference between those three sensors is the amount and kind of data they provide. An accelerometer samples real-valued quantities that are digitized with some precision. An odometer instead delivers discrete values that correspond to encoder increments. Finally, a vision sensor delivers an array of digitized real-valued quantities (namely colors). Although the information content of this sensor exceeds that of the other sensors by far, cherry-picking the information that is really useful to complete the task remains a hard, and largely unsolved, problem.
-
 
 \section{Terminology}\label{sec:sensors:terminology}
 
@@ -88,7 +88,7 @@ If they do, would you be able to successfully complete them without contact, and
 
 The most important proprioceptive sensor is the \textsl{encoder}\index{Encoder}. Encoders can be used for sensing joint position and speed, as well as force---if used in conjunction with a spring. Encoders can be divided in incremental (relative, used primarily in mobile robotics) and absolute encoders (mainly used in robot manipulators).
 %The latter are mostly used in industrial applications, but are not common in mobile robotics.
-In general, they rely on either a magnetic or optical beacon turning together with the motor and being sensed by an appropriate sensor that counts every pass-through. The most common encoder in robotics is the \textsl{quadrature encoder}\index{Quadrature encoder}, which is an optical encoder. It relies on a pattern rotating with the motor and an optical sensor that can register black/white transitions, as shown in Figure~\ref{fig:encoders}.
+In general, they rely on either a magnetic or optical beacon turning together with the motor and being sensed by an appropriate sensor that counts every pass-through. The most common encoder in robotics is the \textsl{quadrature encoder}\index{Quadrature encoder}, which is an optical encoder. It relies on a pattern rotating with the motor and an optical sensor that can register black/white transitions, as shown in \cref{fig:encoders}.
 
 \begin{figure}
 	\centering
@@ -99,7 +99,7 @@ In general, they rely on either a magnetic or optical beacon turning together wi
 	\label{fig:encoders}
 \end{figure}
 
-While a single sensor would be sufficient to detect rotational position and speed, it does not allow to determine the direction of motion. Quadrature encoders therefore have two sensors, A and B, that register an interleaving pattern with distance of a quarter phase. If A leads B, the disk is rotating in a clockwise direction. If B leads A, then the disk is rotating in a counter-clockwise direction. It is also possible to create absolute encoders---an example of which is shown in Figure~\ref{fig:encoders}, right. This pattern is a 3-bit pattern that encodes 8 different segments on a disc. Notice that the pattern is arranged in such a way that there is only one bit changing from one segment to the other. This is known as ``Gray code''\index{Gray code}.
+While a single sensor would be sufficient to detect rotational position and speed, it does not allow to determine the direction of motion. Quadrature encoders therefore have two sensors, A and B, that register an interleaving pattern with distance of a quarter phase. If A leads B, the disk is rotating in a clockwise direction. If B leads A, then the disk is rotating in a counter-clockwise direction. It is also possible to create absolute encoders---an example of which is shown in \cref{fig:encoders}, right. This pattern is a 3-bit pattern that encodes 8 different segments on a disc. Notice that the pattern is arranged in such a way that there is only one bit changing from one segment to the other. This is known as ``Gray code''\index{Gray code}.
 % The function of linear encoders is analogous, both for incremental and absolute encoders.
 
 If combined with a spring, such as in a \textsl{Series Elastic Actuator}\index{Series Elastic Actuator}, rotary and linear encoders can be used as simple force or torque sensors using Hooke's law ($F=kx$, where $k$ is a spring constant).
@@ -137,16 +137,16 @@ The small form factor and low price of light-sensitive semi-conductors have led 
 
 \subsection{Reflection}
 Reflection is one of the easiest and most immediate principles to take advantage of: the closer an object is, the more it reflects light shined at it. This allows to easily measure distance to objects that reflect light well and that are not too far away. In order to make these sensors as independent from an object's color as possible (but unfortunately not totally independent), infrared is most commonly chosen wavelength.
-A reflection-based distance sensor is made from two components: an emitter (that emits an infrared signal) and a receiver (tasked with measuring the strength of the reflected signal). A typical response is shown in Figure~\ref{fig:epuckir}. The values obtained at an analog-digital converter correspond to the voltage at the infrared receiver and are saturated for low distances (flat line), and quadratically decrease afterwards.
+A reflection-based distance sensor is made from two components: an emitter (that emits an infrared signal) and a receiver (tasked with measuring the strength of the reflected signal). A typical response is shown in \cref{fig:epuckir}. The values obtained from an analog-digital converter correspond to the voltage at the infrared receiver; they are saturated for low distances (flat line), and quadratically decrease afterwards.
 
 \begin{figure}
 	\centering
 		\includegraphics[width=0.8\textwidth]{figs/epuckirsensor.png}
-	\caption{Typical response of an infrared distance sensor as a function of distance. Units are left dimensionless intentionally.}
+	\caption{Real-world response of an infrared distance sensor as a function of distance. Units are left dimensionless intentionally.}
 	\label{fig:epuckir}
 \end{figure}
 
-Using more than one infrared sensor/emitter pair---e.g., using a projector as emitter and a camera as receiver---not only allows to measure the distance of many points at once, but also to assess the structure of the environment by calculating its impact on the deformation of patterns. For example, a straight line becomes a curve when projected onto a round surface. This approach is known as \textsl{structured light}\index{Structured light} and is illustrated in Figure~\ref{fig:struclight}.
+Using more than one infrared sensor/emitter pair---e.g., using a projector as emitter and a camera as receiver---not only allows to measure the distance of many points at once, but also to assess the structure of the environment by calculating its impact on the deformation of patterns. For example, a straight line becomes a curve when projected onto a round surface. This approach is known as \textsl{structured light}\index{Structured light} and is illustrated in \cref{fig:struclight}.
 Thanks to the continuously increasing efficiency of computational systems, a light-weight version of such an approach has become feasible to be implemented at small scale and low cost around 2010, and emerged as a novel standard in robotic sensing.
 
 \begin{figure}
@@ -156,15 +156,15 @@ Thanks to the continuously increasing efficiency of computational systems, a lig
 	\label{fig:struclight}
 \end{figure}
 
-Instead of using line patterns, infrared-based depth image sensors use a speckle pattern (a collection of randomly distributed dots with varying distances), and two computer vision concepts: \textsl{depth from focus} and \textsl{depth from stereo}.\index{Depth from Focus}\index{Depth from Stereo} When using a lens with a narrow focal depth, objects that are closer or farther away appear blurred (you can easily observe this on professional portrait photos, which often use this effect for aesthetic purposes under the name of ``bokeh'').
+Instead of using line patterns, infrared-based depth image sensors use a speckle pattern (a collection of randomly distributed dots with varying distances), and two computer vision concepts: \textsl{depth from focus} and \textsl{depth from stereo}.\index{Depth from Focus}\index{Depth from Stereo} When using a lens with a narrow focal depth, objects that are closer or farther away appear blurred; you can easily observe this on professional portrait photos, which often use this effect for aesthetic purposes under the name of ``bokeh''.
 Measuring the ``blurriness'' of a scene (for known camera parameters) therefore allows an initial estimate of depth.
 Conversely, depth from stereo works by measuring the disparity of the same object appearing in two images taken by cameras that are a known distance apart. Being able to identify the same object in both frames allows to calculate this disparity, and from there the distance of the object: the farther the object is, the smaller the disparity will be.
 This is where the speckle pattern comes in handy: it simply requires to search for blobs with similar size that are close to each other.
 
 \subsection{Phase shift}\label{sec:phaseshiftsensors}
 
-As you detailed in Figure~\ref{fig:epuckir}, reflection can only be precise if distances are short. Instead of measuring the strength (aka amplitude) of the reflected signal, laser distance sensors measure the phase difference of the reflected wave. In order to do this, the emitted light is modulated with a wave-length that exceeds the maximum distance the scanner can measure.
-If you were to use visible light and to do so at much slower speeds, you would see a light that keeps getting brighter, then getting darker, briefly turns off and then starts getting brighter again.
+As detailed in \cref{fig:epuckir}, reflection can only be precise if distances are short. Rather than measuring the strength (aka amplitude) of the reflected signal, laser distance sensors measure the phase difference of the reflected wave. In order to do this, the emitted light is modulated with a wavelength that exceeds the maximum distance the scanner can measure.
+If you were to use visible light and to do so at much slower speeds, you would see a light that keeps getting brighter, then darker, than it would briefly turn off and then start getting brighter again.
 Thus, if you were to plot the amplitude of the emitted signal over time (i.e., its brightness), you would see a wave that crosses zero when the light is dark.
 As light travels, this wave propagates through space with a constant distance (the wavelength) between its zero crossings. When it gets reflected, the same wave travels back (or at least parts of it that get scattered right back). For example, modern laser scanners\index{Laser range finder} emit signals with a frequency of 5 MHz (turning off 5 million times in one second). Together with the speed of light of approximately $300,000km/s$, this leads to a wavelength of $60m$ and makes such a laser scanner useful up to $30m$.
 
