@@ -51,7 +51,7 @@ If such a condition is met, a robot with $n$ degrees of freedom and an end-effec
 In this case, \textsl{generalized force}\index{Generalized Force} means ``any force-equivalent quantity needed to describe the element''.
 In the case of joints, it depends on the actuation: generalized forces at the joints are either forces for prismatic joints (as they impart a translational motion on the joint) or torques for revolute joints (as they impart a rotational motion on the joint); the size of this vector depends on the number of mechanical degrees-of-freedom $n$.
 In the case of the end-effector, it depends on the number of DoFs in task space $m$; if we are operating with a $6-$DoF problem, the $m \times 1$ vector of generalized forces will be composed of a linear force component given by the forces on the three axes:
-\begin{equation}
+\begin{equation}\label{eq:wrench:force}
 f=\left[\begin{array}{c}
 f_x\\
 f_y\\
@@ -60,7 +60,7 @@ f_z
 \right],
 \end{equation}
 and an angular force component (or moment) $\mu$ around the three axes:
-\begin{equation}
+\begin{equation}\label{eq:wrench:moment}
 \mu=\left[\begin{array}{c}
 \mu_x\\
 \mu_y\\
