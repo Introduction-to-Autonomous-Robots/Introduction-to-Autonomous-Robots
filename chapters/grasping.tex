@@ -5,9 +5,9 @@
 Grasping has the interesting, and very confusing, property that it is relatively easy in practice but very complicated in theory. Consequently, this chapter describes a variety of strategies that will lead to successful grasps for a wide range of objects, but has difficulties to answer questions such as \textsl{What makes a good grasp?} or \textsl{How to find good grasps?} in any more depth than by providing simple heuristics.
 In this chapter, you will learn to:
 \begin{itemize}
-\item \td{todo Nikolaus}
-\item \td{todo Nikolaus}
-\item \td{todo Nikolaus}
+\item How to describe grasping mathematically and where simple models reach their limitations,
+\item what the properties of a gripper are that make for a good grasp in practice,
+\item understand the trade-offs in a variety of grasping mechanisms.
 \end{itemize}
 
 \section{The theory of grasping}
@@ -18,7 +18,6 @@ In its most simple form, grasping requires immobilizing an object, at least agai
 
 \subsection{Friction}\index{Friction}\label{sec:grasping_friction}
 
-While already very involved for anything but very simple mechanisms, such a model only captures a very small slice of realistic grasps \td{Nikolaus, I have no idea what you mean with this first sentence, please rephrase}.
 In any real application, contacts between a gripper and hand are not friction-less. This is the reason grasps such as those shown in \cref{fig:idealgrasp} practically work. If there were really no friction between the fingers and the object, the object would be ejected from the hand for every grasp that is not exactly aligned with a principal axis of the cylinder in \cref{fig:idealgrasp}, left. Furthermore, even the three-finger grasp shown in \cref{fig:idealgrasp}, right, would \textsl{always} fail as there is no force constraining the object from below. Interestingly, the existance of friction makes grasping much easier in practice, yet much harder to describe mathematically.
 
 \begin{figure}
@@ -26,7 +25,7 @@ In any real application, contacts between a gripper and hand are not friction-le
     \def\svgwidth{\textwidth}
     \import{./figs/}{idealgrasp.pdf_tex}
     \caption{Cross-section from above showing an idealized two-finger (left) and three finger (right) gripper holding a cylinder.\label{fig:idealgrasp}
-    \td{Nikolaus, it would be nice to show both normal forces and tangential forces due to friction in this fig, so that you can show $F_\mathrm{n}$ and $F_\mathrm{t}$. Again, fine if you don't want to do it. EDIT: upon further reading, I see you show it in \cref{fig:coulombfriction}}}
+   }
 \end{figure}
 
 The reason that the grasps shown in \cref{fig:idealgrasp} do work in practice is that the normal forces shown have a tangential component that is due to friction and covered by the \textsl{Coloumb's Friction law}\index{Coloumb Friction},
