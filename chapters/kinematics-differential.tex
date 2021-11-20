@@ -55,7 +55,7 @@ This notation is important as it tells us how small changes in joint space will 
 
 \subsection{Forward Kinematics of a Differential Wheels Robot}\label{sec:kinematics:fwk:mobile}
 
-As detailed in \cref{sec:kinematics:fwk:arm}, the pose of a robotic manipulator is uniquely defined by its joint angles, which can be estimated using encoders in almost real-time, see \cref{sec:sensors:encoders}.
+After abstractly considering differential kinematics in the previous section, we will now study a mechanism for which general non-differential kinematic models do not exist. We recall that the pose of a robotic manipulator is uniquely defined by its joint angles, which can be estimated using encoders.
 However, this is not the case for a mobile robot.
 Here, the encoder values simply refer to wheel orientation and need to be integrated over time in order to assess the robot's position with respect to the world's frame of reference; as we will later see, this is a great source of uncertainty.
 What complicates matters is that for so-called \textsl{non-holonomic} systems, it is not sufficient to simply measure the distance that each wheel traveled, but also when each movement was executed.
@@ -188,6 +188,25 @@ cos(\theta) & -sin(\theta) & 0 \\
 sin(\theta) & cos(\theta) & 0 \\
 0 & 0 & 1\end{array}\right]\left[\begin{array}{c}\frac{r\dot{\phi_l}}{2}+\frac{r\dot{\phi_r}}{2}\\0\\\frac{\dot{\phi_r} r}{d}-\frac{\dot{\phi_l} r}{d}\end{array}\right]
 \end{equation}
+
+The interested reader might want to compare this form with \cref{eq:kinematics:diff:fwd}, the general Jacobian form of differential kinematics. For this, we ignore the rotation matrix in \cref{eq:kinematics:forward:mobile} and rewrite its second term in matrix notation:
+
+\begin{equation}
+\left[\begin{array}{c} \dot{x_R}\\\dot{y_R}\\\dot{\theta}\end{array}\right]=\left[\begin{array}{cc}
+\frac{r}{2} & \frac{r}{2}\\
+0 & 0 \\
+\frac{r}{d} & -\frac{r}{d} \end{array}\right]
+\left[\begin{array}{c}\dot{\phi_l}\\\dot{\phi_r}\end{array}\right]
+=
+\left[\begin{array}{cc}
+\frac{\partial{x_R}}{\partial{\dot{\phi}_l}} & \frac{\partial{x_R}}{\partial{\dot{\phi}_r}}\\\frac{\partial{y_R}}{\partial{\dot{\phi}_l}} & \frac{\partial{y_R}}{\partial{\dot{\phi}_r}}\\\frac{\partial{\theta}}{\partial{\dot{\phi}_l}} & \frac{\partial{\theta}}{\partial{\dot{\phi}_l}} \end{array}\right]
+\left[\begin{array}{c}
+\dot{\phi_l}\\\dot{\phi_r}
+\end{array}\right]
+\end{equation}
+With $X_R=\left(\frac{r\dot{\phi}_l}{2}+\frac{r\dot{\phi}_r}{2})\right)t$ and similar expressions for $\theta$, we observe the validity of the Jacobian approach. 
+
+
 
 \subsubsection{From Forward Kinematics to Odometry}
 
