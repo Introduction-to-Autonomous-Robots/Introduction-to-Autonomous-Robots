@@ -54,7 +54,7 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{sdf.pdf}}%
-    \put(0.3506342,0.68071539){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Truncation distance\end{tabular}}}}%
+    \put(0.78432453,0.68071539){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Truncation distance\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{sdf.pdf}}%
     \put(0.20695892,0.63847706){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}17\end{tabular}}}}%
     \put(0.24574678,0.60438866){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}36\end{tabular}}}}%
@@ -121,7 +121,7 @@
     \put(0.35458662,0.23757345){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-31\end{tabular}}}}%
     \put(0.31435164,0.237743){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-43\end{tabular}}}}%
     \put(0.35179013,0.16512335){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-21\end{tabular}}}}%
-    \put(0.31548413,0.16524667){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-42\end{tabular}}}}%
+    \put(0.31548413,0.16524666){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-42\end{tabular}}}}%
     \put(0.39135538,0.12461063){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-24\end{tabular}}}}%
     \put(0.34991021,0.08792713){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-41\end{tabular}}}}%
     \put(0.42991899,0.08792713){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-16\end{tabular}}}}%
