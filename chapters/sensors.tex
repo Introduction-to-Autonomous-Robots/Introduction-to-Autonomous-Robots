@@ -128,17 +128,27 @@ Rate gyroscopes can measure the rotational speed around three axes, which can be
 The measurement of physical interaction forces is of paramount importance for robotics.
 It enables a variety of capabilities that humans take from granted, from gently picking a strawberry to safely engaging in touch-based interactions with humans.
 
-When combining a motor and an encoder with a spring, a mechanism known as  a \textsl{Series Elastic Actuator}\index{Series Elastic Actuator}, rotary and linear encoders can be used as simple force or torque sensors using Hooke's law ($F=kx$, where $k$ is a spring constant).
+When combining a motor and an encoder with a spring, a mechanism known as  a \textsl{Series Elastic Actuator}\cite{pratt1995series} \index{Series Elastic Actuator}, rotary and linear encoders can be used as simple force or torque sensors using Hooke's law ($F=kx$, where $k$ is a spring constant) and $x$ the displacement in the spring due to extension or compression.
 This can be used when operating a robot under a static (\cref{sec:forces:statics}) or dynamic level of abstraction.
 % Whereas the series elastic actuator is the most illustrative examples, most load cells operate on the premise of measuring displacements within materials of known properties. Here, measuring changes in resistance or capacitance might be easier choices.
 Another method to estimate the actual force or torque acting on a joint is to measure the current consumed at each joint. Knowing a mechanism's pose allows to calculate the resulting forces and torques across the mechanism as well as the currents required for empty loading conditions. Derivations of these then correspond to additional forces that can hence be calculated.
 
+
+\begin{figure}
+	\centering
+	\def\svgwidth{0.9\textwidth}
+    \import{./figs/}{ftsensor.pdf_tex}
+	\caption{A force/torque sensor translates force and torque between two links of a robot via three metal rods that connect an inner hub to an outer ring. Here, one link of the robot connects to the outer ring, the other to the inner hub.  Each metal rod is equipped with a strain gauge on each side, resulting in 12 sensors in total. 
+	\label{fig:ftsensor}}
+\end{figure}
+
+
 The most accurate and most widespread device to date is the \textsl{Force/Torque (or F/T) sensor}\index{Force/Torque sensor}. It is a mechanical device that is capable of detecting one or more components of a six-dimensional wrench applied to it (i.e. a 3D force and a 3D torque, see \cref{sec:forces:statics}).
-Most commercially available F/T sensors use \textsl{strain gauges}---and in particular, at least one strain gauge per axis of detection. Simply put, a strain gauge is a metal (i.e. conductive) foil that changes its shape when a wrench is applied to it, and while doing so it changes its electrical resistance (which can then be measured with appropriate circuitry).
+Most commercially available F/T sensors use  \textsl{strain gauges}. Simply put, a strain gauge is a metal (i.e. conductive) foil that changes its shape when a wrench is applied to it, and while doing so changes its electrical resistance. In a typical configuration (\cref{fig:ftsensor}), a F/T sensor consists of an inner hub of solid metal that is suspended in an outer ring via three symmetrical, rectangular solid metal rods. Each metal rod is equipped with a strain gauge on each side (four per rod). Typically, sensors are operated in pairs, one mounted orthogonal to the other, resulting in a total of six sensor signals, from which we can compute forces and torques in three dimensions. Such F/T sensors are available as stand-alone components that can be mounted between an end-effector and a robot arm or are integrated within the robot's joints. 
+
 While accurate and precise, F/T sensors are plagued by a number of limitations: 1) high costs due to the high precision that is required during manufacturing; 2) size (a standard F/T sensor is usually the size of a human wrist); 3) low signal-to-noise ratio; 4) low bandwidth/responsivity; and 5) a single data point that is sparse in space and time. This last point becomes particularly clear when considering a robotic arm having multiple points of contact with an object. Here, a single sensor that measures forces and torques at the joint provides only very little information. 
 
 \subsection{Measuring pressure or touch}
-
 In order to partially mitigate these limitations, roboticists have worked on a complementary capability, that is measuring the pressure applied on the robot's surface.
 
 The human sense of touch is the oldest, the largest, and the most important of our senses.
