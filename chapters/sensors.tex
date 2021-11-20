@@ -193,21 +193,6 @@ A reflection-based distance sensor is made from two components: an emitter (that
 	\label{fig:epuckir}
 \end{figure}
 
-Using more than one  sensor/emitter pair---e.g., using a pattern projector as emitter and a camera as receiver---not only allows to measure the distance of many points at once, but also to assess the structure of the environment by calculating its impact on the deformation of patterns. For example, a straight line becomes a curve when projected onto a round surface. This approach is known as \textsl{structured light}\index{Structured light} and is illustrated in Figure~\ref{fig:struclight}.
-
-Thanks to the continuously increasing efficiency of computational systems, a light-weight version of such an approach has become feasible to be implemented at small scale and low cost around 2010, and emerged as a novel standard in robotic sensing.
-
-\begin{figure}
-	\centering
-		\includegraphics[width=\textwidth]{figs/structuredlight.png}
-	\caption{From left to right: two complex physical objects, a pattern of colored straight lines and their deformation when hitting the surfaces, reconstructed 3D shape. From \protect\cite{zhang2002rapid}.}
-	\label{fig:struclight}
-\end{figure}
-
-Instead of using line patterns, infrared-based depth image sensors use a speckle pattern (a collection of randomly distributed dots with varying distances), and two computer vision concepts: \textsl{depth from focus} and \textsl{depth from stereo}.\index{Depth from Focus}\index{Depth from Stereo} When using a lens with a narrow focal depth, objects that are closer or farther away appear blurred; you can easily observe this on professional portrait photos, which often use this effect for aesthetic purposes under the name of ``bokeh''.
-Measuring the ``blurriness'' of a scene (for known camera parameters) therefore allows an initial estimate of depth.
-Conversely, depth from stereo works by measuring the disparity of the same object appearing in two images taken by cameras that are a known distance apart. Being able to identify the same object in both frames allows to calculate this disparity, and from there the distance of the object: the farther the object is, the smaller the disparity will be.
-This is where the speckle pattern comes in handy: it simply requires to search for blobs with similar size that are close to each other.
 
 \subsection{Phase shift}\label{sec:phaseshiftsensors}
 
