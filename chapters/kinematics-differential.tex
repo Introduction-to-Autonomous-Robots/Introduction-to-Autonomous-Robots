@@ -124,7 +124,8 @@ and
 \begin{equation}
 \dot{\theta_I}=\dot{\theta_R}
 \end{equation}
-which is the case because both robot's and world coordinate system share the same z-axis in this example. We can now conveniently write
+which is the case because both robot's and world coordinate system share the same z-axis in this example. 
+We can now conveniently write
 \begin{equation}
 \dot{\xi_I}=^I_RT(\theta)\dot{\xi_R}
 \end{equation}
@@ -135,6 +136,8 @@ cos(\theta) & -sin(\theta) & 0 \\
 sin(\theta) & cos(\theta) & 0 \\
 0 & 0 & 1\end{array}\right]
 \end{equation}
+a rotation around the z-axis. Maybe unsurprisingly, this is simply the well-known rotation around the z-axis, which applies equally to velocities as to poses.
+
 
 We are now left with the problem of how to calculate the speed $ \dot{\xi_R}$ in robot coordinates. For this, we make use of the \textsl{kinematic constraints}\index{Kinematic constraints} of the robotic wheels.
 For a standard wheel in an ideal case scenario, the kinematic constraints are that every rotation of the wheel leads to strictly forward or backward motion and does not allow side-way motion or sliding. We can therefore calculate the forward speed of a wheel $ \dot{x}$ using its rotational speed $ \dot{\phi}$ (assuming the encoder value/angle is expressed as $ \phi$) and radius $ r$ by
