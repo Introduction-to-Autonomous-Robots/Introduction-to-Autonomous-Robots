@@ -3,9 +3,9 @@
 
 \screencast{http://youtu.be/klBJi-MEeNQ}{coordinatesystem}
 
-Every robot assumes a \textsl{pose}\index{Pose} in the real world that can be described by its position ($x$, $y$ and $z$) and orientation (pitch, yaw and roll) along the three major axes of a Cartesian Coordinate system. 
+Every robot assumes a \textsl{pose}\index{Pose} in the real world that can be described by its position ($x$, $y$, and $z$) and orientation (pitch, yaw, and roll) along the three major axes of a Cartesian Coordinate system. 
 Such a coordinate system is shown in \cref{fig:coordinatesystem}. Note that the directions and orientations of the coordinate axes are arbitrary. This book uses the ``right hand rule'', which is illustrated in \cref{fig:coordinatesystem} to determine axes labels and directions throughout.
-Pitch, yaw, and roll, are also known as bank, attitude, and heading in other communities\index{Pitch}\index{Yaw}\index{Roll}\index{Bank}\index{Attitude}\index{Heading}. This makes sense, considering the colloquial use of the word ``heading'', which corresponds to a rotation around the $z-$axis of a vehicle driving on the $x-y-$plane.
+Pitch, yaw, and roll, are also known as bank, attitude, and heading in other communities\index{Pitch}\index{Yaw}\index{Roll}\index{Bank}\index{Attitude}\index{Heading}. This makes sense, considering the colloquial use of the word ``heading'', which corresponds to a rotation around the $z$-axis of a vehicle driving on the $x$-$y$-plane.
 
 \begin{figure}
     \centering
@@ -157,7 +157,7 @@ In fact, three values are sufficient to describe orientation.
 This becomes clear when considering that orthogonality (dot product of all columns is zero) and vector length (each vector must have length $1$) impose six constraints on the nine values in the rotation matrix.
 Indeed, an orientation can be represented as a rotation by certain angles around the $x$, the $y$, and the $z$-axis of the reference coordinate system. This is known as the X-Y-Z fixed-angle notation.\index{Fixed angle notation} Mathematically, this can be represented by a rotation matrix of the form:
 \begin{equation}
-^A_BR_{XYZ}(\gamma,\beta,\alpha)=\begin{bsmallmatrix}cos\alpha & -sin\alpha & 0\\sin\alpha & \cos\alpha & 0\\0 & 0 & 1\end{bsmallmatrix}\begin{bsmallmatrix}cos\beta& 0 & sin\beta\\0 & 1 & 0\\-sin\beta & 0 & cos\beta\end{bsmallmatrix}\begin{bsmallmatrix}1 & 0 & 0 \\ 0 & cos\gamma & -sin\gamma\\0 & sin\gamma & cos\gamma\end{bsmallmatrix}
+^A_BR_{XYZ}(\gamma,\beta,\alpha)=\begin{bsmallmatrix}\cos\alpha & -\sin\alpha & 0\\ \sin\alpha & \cos\alpha & 0\\0 & 0 & 1\end{bsmallmatrix}\begin{bsmallmatrix}cos\beta& 0 & \sin\beta\\0 & 1 & 0\\-\sin\beta & 0 & \cos\beta\end{bsmallmatrix}\begin{bsmallmatrix}1 & 0 & 0 \\ 0 & \cos\gamma & -\sin\gamma\\0 & \sin\gamma & \cos\gamma\end{bsmallmatrix}
 \end{equation}
 
 While the X-Y-Z fixed angles approach expresses a coordinate frame using rotations with respect to the original coordinate frame (say, $\{A\}$), another possible description is to start with a coordinate frame $\{B\}$ that is coincident with frame $\{A\}$, then rotate around the Z-axis with angle $ \alpha$, then the Y-axis with angle $ \beta$ and finally around the X-axis with angle $ \gamma$. This representation is called Z-Y-X Euler angles.\index{Euler angles}
