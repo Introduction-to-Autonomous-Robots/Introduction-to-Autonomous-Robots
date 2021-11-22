@@ -122,22 +122,21 @@ Similar reasoning leads to:
 \end{equation}
 and
 \begin{equation}
-\dot{\theta_I}=\dot{\theta_R}
+\dot{\theta_I}=\dot{\theta_R}\quad,
 \end{equation}
-which is the case because both robot's and world coordinate system share the same z-axis in this example. 
-We can now conveniently write
+which is the case because both the robot's and the world coordinate system share the same $z-$axis in this example.
+We can now conveniently write:
 \begin{equation}
 \dot{\xi_I}=^I_RT(\theta)\dot{\xi_R}
 \end{equation}
-with
+with $^I_RT(\theta)$ being a rotation around the $z-$axis:
 \begin{equation}
 ^I_RT(\theta)=\left[\begin{array}{ccc}
 cos(\theta) & -sin(\theta) & 0 \\
 sin(\theta) & cos(\theta) & 0 \\
-0 & 0 & 1\end{array}\right]
+0 & 0 & 1\end{array}\right]\quad .
 \end{equation}
-a rotation around the z-axis. Maybe unsurprisingly, this is simply the well-known rotation around the z-axis, which applies equally to velocities as to poses.
-
+Maybe unsurprisingly, this is simply the well-known equation for a generic rotation of $\theta$ around the $z-$axis, which applies to both velocity vectors as well as poses.
 
 We are now left with the problem of how to calculate the speed $ \dot{\xi_R}$ in robot coordinates. For this, we make use of the \textsl{kinematic constraints}\index{Kinematic constraints} of the robotic wheels.
 For a standard wheel in an ideal case scenario, the kinematic constraints are that every rotation of the wheel leads to strictly forward or backward motion and does not allow side-way motion or sliding. We can therefore calculate the forward speed of a wheel $ \dot{x}$ using its rotational speed $ \dot{\phi}$ (assuming the encoder value/angle is expressed as $ \phi$) and radius $ r$ by
@@ -192,7 +191,7 @@ sin(\theta) & cos(\theta) & 0 \\
 0 & 0 & 1\end{array}\right]\left[\begin{array}{c}\frac{r\dot{\phi_l}}{2}+\frac{r\dot{\phi_r}}{2}\\0\\\frac{\dot{\phi_r} r}{d}-\frac{\dot{\phi_l} r}{d}\end{array}\right]
 \end{equation}
 
-The interested reader might want to compare this form with \cref{eq:kinematics:diff:fwd}, the general Jacobian form of differential kinematics. For this, we ignore the rotation matrix in \cref{eq:kinematics:forward:mobile} and rewrite its second term in matrix notation:
+The interested reader might want to compare this form with \cref{eq:kinematics:diff:fwd}, i.e. the general Jacobian form of differential kinematics. For this, we ignore the rotation matrix in \cref{eq:kinematics:forward:mobile} and rewrite its second term in matrix notation:
 
 \begin{equation}
 \left[\begin{array}{c} \dot{x_R}\\\dot{y_R}\\\dot{\theta}\end{array}\right]=\left[\begin{array}{cc}
@@ -205,11 +204,9 @@ The interested reader might want to compare this form with \cref{eq:kinematics:d
 \frac{\partial{x_R}}{\partial{\dot{\phi}_l}} & \frac{\partial{x_R}}{\partial{\dot{\phi}_r}}\\\frac{\partial{y_R}}{\partial{\dot{\phi}_l}} & \frac{\partial{y_R}}{\partial{\dot{\phi}_r}}\\\frac{\partial{\theta}}{\partial{\dot{\phi}_l}} & \frac{\partial{\theta}}{\partial{\dot{\phi}_l}} \end{array}\right]
 \left[\begin{array}{c}
 \dot{\phi_l}\\\dot{\phi_r}
-\end{array}\right]
+\end{array}\right]\quad,
 \end{equation}
-With $X_R=\left(\frac{r\dot{\phi}_l}{2}+\frac{r\dot{\phi}_r}{2})\right)t$ and similar expressions for $\theta$, we observe the validity of the Jacobian approach. 
-
-
+with $X_R=\left(\frac{r\dot{\phi}_l}{2}+\frac{r\dot{\phi}_r}{2})\right)t$ and similar expressions for $\theta$, we observe the validity of the Jacobian approach.
 
 \subsubsection{From Forward Kinematics to Odometry}
 
