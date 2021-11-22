@@ -28,12 +28,12 @@ Unfortunately, many phenomena that often have very different or even opposite me
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{figs/iss_edges}
-    \caption{Inside of the international space station (left), highlighted areas in which pixel values change drastically (right). Underlying effects that produce similar responses: change in surface properties (1), depth discontinuities (2), specular highlights (3), changing lighting conditions such as shadows (4), or surface orientation changes (5).
+    \caption{Inside of the international space station (left), circled areas in which pixel values change drastically (right). Underlying effects that produce similar responses: change in surface properties (1), depth discontinuities (2), specular highlights (3), changing lighting conditions such as shadows (4), or surface orientation changes (5).
     \label{fig:iss_edges}}
 \end{figure}
 
 This example illustrates that signals and data alone are not sufficient to understand a phenomenon, but require context. Here, the context does not only refer to surrounding signals, but also high-level conceptional knowledge such as the fact that light sources create shadows and specular highlights, that objects in the front appear larger, and so on. The importance of such conceptional knowledge is illustrated in \cref{fig:craters}:
-both images show an identical landscape that once appears to be speckled with craters, once with bubble-like hills. At first glance, both scenes are illuminated from the left, suggesting a change in the landscape. However, once information that the sun is illuminating one picture from the left and the other from the right is available, it becomes clear that the craters are simply differently illuminated and what we perceive as bumps eventually turns back into craters.
+both images show an identical landscape that once appears to be speckled with craters, once with bubble-like hills. At first glance, both scenes are illuminated from the left, suggesting a change in the landscape. However, once information that the sun is illuminating one picture from the left and the other from the right is available, the paradox becomes clear: the variable illumination makes the craters look like bumps under come conditions.
 
 \begin{figure}[!htb]
     \centering
@@ -42,7 +42,7 @@ both images show an identical landscape that once appears to be speckled with cr
     \label{fig:craters}}
 \end{figure}
 
-More surprisingly, conceptual knowledge is often sufficient to make up for the lack of low-level cues in an image. An example is shown in \cref{fig:dalmatian}. Here, a Dalmatian dog can be clearly recognized despite the absence of cues for its outline, i.e. by simply extrapolating its appearance and pose from conceptual knowledge.
+More surprisingly, conceptual knowledge is often sufficient to make up for the lack of low-level cues in an image. An example is shown in \cref{fig:dalmatian}. Here, a Dalmatian dog can be clearly recognized despite the absence of cues for its outline, i.e.\ by simply extrapolating its appearance and pose from conceptual knowledge.
 
 These examples illustrate both the advantages and drawbacks of a signal processing approach to computer vision. While an algorithm will detect interesting signals even there where we don't see or expect them (due to conceptional bias), image understanding not only requires low-level processing, but also intelligent combination of the spatial relationship between low-level cues and conceptual knowledge about the world. As we will later see (\cref{chap:ann}), this can be accomplished through convolutional neural networks that provide a single pipeline to process information at different scales---ranging from extracting local features to examining their spatial relationships with each other.
 
@@ -55,10 +55,10 @@ These examples illustrate both the advantages and drawbacks of a signal processi
 
 \section{Basic image operations}
 
-Basic image operations can be thought of as a filter that operates in the frequency or in the space (color) domain. Although most filters directly operate in the color domain, knowing how they affect the frequency domain is helpful in understanding the filter's function. For example, a filter that is supposed to highlight edges such as the one shown in \cref{fig:iss_edges} should suppress low frequencies---i.e., areas in which the color values do not change much, and amplify high-frequency information---i.e., areas in which the color values change quickly. The goal of this section is to provide a basic understanding of how basic image processing operation works. It is important to note that the methods presented here, while still valid, have been superseded by more sophisticated implementations that are widely available as software packages or within desktop graphic software.
+Basic image operations can be thought of as a filter that operates in the frequency or in the space (intensity/color) domain. Although most filters directly operate in the intensity domain, knowing how they affect the frequency domain is helpful in understanding the filter's function. For example, a filter that is supposed to highlight edges such as the one shown in \cref{fig:iss_edges} should suppress low frequencies---i.e., areas in which the color values do not change much, and amplify high-frequency information---i.e., areas in which the color values change quickly. The goal of this section is to provide a basic understanding of how basic image processing operation works. It is important to note that the methods presented here, while still valid, have been superseded by more sophisticated implementations that are widely available as software packages or within desktop graphic software.
 
 \subsection{Threshold-based operations}
-In order to find objects with a certain color or edge intensity, thresholding an image will lead to a binary image that contains ``true-false'' regions that fit the desired criteria. Thresholds make use of operators like $>,<,\leq,\geq$ and combinations thereof. There also exist adaptive versions that adapt/update the thresholds locally, e.g., to make up for changing lighting conditions.
+In order to find objects with a certain color or edge amplitude, thresholding an image will lead to a binary image that contains ``true-false'' regions that fit the desired criteria. Thresholds make use of operators like $>,<,\leq,\geq$ and combinations thereof. There also exist adaptive versions that adapt/update the thresholds locally, e.g., to make up for changing lighting conditions.
 Albeit thresholding is simple if compared to other techniques shown below, finding correct threshold values is a hard problem. In particular, actual pixel values change drastically with change in the lighting conditions and there is no such thing as ``red'' or ``green'' when inspecting the actual values under different conditions.
 
 \subsection{Convolution-based filters}
