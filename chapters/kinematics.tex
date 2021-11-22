@@ -2,7 +2,7 @@
 \chapter{Kinematics}\label{chap:kinematics}
 
 In order to plan a robot's movements, we have to understand the relationship between our control variables (i.e. the input to the motors that we can control at any given time) and the effect of these control variables on the motion of the robot.
-The simplest model of such relationship is to look at the geometry of our robot, a field known as \textsl{kinematics}\index{Kinematics}.
+The simplest models of such relationships can be built by looking at the geometry of our robot, known as the field of \textsl{kinematics}\index{Kinematics}.
 For simple arms in static configurations, a kinematic model is rather straightforward: if we know the generalized position / configuration angle of each joint, we can calculate the generalized position of its end-effectors using trigonometry---a process known as \textsl{forward kinematics}\index{Forward Kinematics}.
 A more interesting, useful, and complex problem is trying to compute the inverse relationship, i.e. the position each joint needs to be at in order for the end-effector to be in a desired position or pose. This inverse process is known as \textsl{inverse kinematics}\index{Inverse Kinematics}.
 For mobile robots, this process is usually more involved, as the pose of the wheels itself at any given time is not conclusive speeds need to be integrated, which we refer to as \textsl{odometry}\index{Odometry}.
