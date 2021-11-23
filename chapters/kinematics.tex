@@ -4,28 +4,28 @@
 In order to plan a robot's movements, we have to understand the relationship between our control variables (i.e. the input to the motors that we can control at any given time) and the effect of these control variables on the motion of the robot.
 The simplest models of such relationships can be built by looking at the geometry of our robot, known as the field of \textsl{kinematics}\index{Kinematics}.
 For simple arms in static configurations, a kinematic model is rather straightforward: if we know the generalized position / configuration angle of each joint, we can calculate the generalized position of its end-effectors using trigonometry---a process known as \textsl{forward kinematics}\index{Forward Kinematics}.
-A more interesting, useful, and complex problem is trying to compute the inverse relationship, i.e. the position each joint needs to be at in order for the end-effector to be in a desired position or pose. This inverse process is known as \textsl{inverse kinematics}\index{Inverse Kinematics}.
-For mobile robots, this process is usually more involved, as the pose of the wheels itself at any given time is not conclusive speeds need to be integrated, which we refer to as \textsl{odometry}\index{Odometry}.
+This process is usually more involved for mobile robots, as the speeds of the wheels need to be integrated to determine changes in robot pose, which we refer to as \textsl{odometry}\index{Odometry}.
+Roboticists are often concerned with trying to compute the inverse relationship: the position each joint must be at for the end-effector to be in a desired position or pose. This is generally a far more complex, underdetermined problem, known as \textsl{inverse kinematics}\index{Inverse Kinematics}.
 
 As we will see below, kinematics is the simplest and most fundamental level of abstraction that a roboticist can use to model the motion of a robot and its geometry: it deals exclusively with positional quantities, and considers the robot as if it was frozen in time. Although this simplification is far from being realistic, we will see that a lot can be done through kinematics alone! However, a more expressive tool at our disposal is to do a similar modeling in a second level of abstraction that operates in velocity space; this domain is called \textsl{differential kinematics}\index{Differential Kinematics} and is introduced in \cref{sec:kinematics:diff}.
 In all, the goals of this chapter are to:
 
 \begin{itemize}
-\item introduce the forward kinematics of simple arms and mobile robots, and understand the concept of holonomy,
-\item provide an intuition on the relationship between inverse kinematics and path-planning,
-\item become familiar with differential kinematics and the Jacobian technique.
+\item Introduce the forward kinematics of simple arms and mobile robots, and understand the concept of holonomy
+\item Provide an intuition on the relationship between inverse kinematics and path-planning
+\item Become familiar with differential kinematics and the Jacobian technique
 \end{itemize}
 
 Within the scope of a kinematic analysis, the term \textsl{generalized position} or \textsl{generalized configuration}\index{Generalized Position}\index{Generalized Configuration} means ``any position-equivalent quantity needed to describe the element''.
 For what concerns joint space, it depends on the type of actuation: a revolute joint imparts a rotational motion around its axis and its configuration is fully described by an angle; a prismatic joint commands a translational motion along its axis and its configuration is represented by a distance.
-Conversely, generalized position in task space depends on the specific task; in its most general case, a generalized position equates to the end-effector pose, which is composed of a $3D$ position and a $3D$ orientation---as we will see below.
+Conversely, generalized position in task space depends on the specific task; in its most general case, a generalized position equates to the end-effector pose, which is comprised of a $3D$ position and a $3D$ orientation---as we will see below.
 
 \begin{mdframed}
 \noindent Remember:
 configuration space $\equiv$ joint space;
 cartesian space $\equiv$ task space.
 Forward kinematics maps from joint space to task space, and inverse kinematics does the opposite.
-The number of mechanical degrees-of-freedom $n$ (i.e. DoFs in task space) depends on the robot, the number of Cartesian degrees-of-freedom $m$ (i.e. DoFs in task space) depends on the task. In general, $n \neq m$!
+The number of mechanical degrees-of-freedom $n$ (i.e. DoFs in task space) depends on the robot, while the number of Cartesian degrees-of-freedom $m$ (i.e. DoFs in task space) depends on the task. In general, $n \neq m$!
 \end{mdframed}
 
 %%%%%%%%%%%%%%%%%%%%

@@ -8,12 +8,12 @@ r=f(q)\ , \qquad f : \mathbb{R}^n \rightarrow \mathbb{R}^m \ ,
 \end{equation}
 where $r$ is the task-space (end-effector) configuration and $q$ is the joint-space configuration.
 It is important to remember that the choice of $q$ and $r$ (and, consequently, the complexity of $f$) depends on your specific robot platform and the specific task you are investigating.
-$q$ generally corresponds to the number of actuators/joint that you can control on your robot; it is of size $n$, where $n$ is the number of degrees of freedom in joint space (see also \cref{sec:dof}).
+$q$ generally refers to the actuators/joints that you can control on your robot; it is of size $n$, where $n$ is the number of degrees of freedom in joint space (see also \cref{sec:dof}).
 Conversely, $r$ depends on the task and its dimensionality is $m$, where $m$ is the number of DoFs in task space.
 % (e.g. a sequence of joint angles in case of a manipulator with revolute joints \td{we have not talked about revolute joints yet, remember to fix this}).
 
-In the following, we will focus on the problem of computing the forward kinematics mapping $f$ for a variety of robot arms.
-While it is always possible to compute the forward kinematics \textsl{analytically} (i.e. by inspecting the arm mechanism and the relationship between joint and task configuration, see \cref{sec:kinematics:fwk:arm}), in \cref{sec:kinematics:fwk:dh} we will introduce a scalable, \textsl{geometric} technique to compute forward kinematics with more complex arms composed of many Degrees of Freedom.
+We will focus on the problem of computing the forward kinematics mapping $f$ for a variety of robot arms to build intuition.
+While it is always possible to compute the forward kinematics \textsl{analytically} (i.e. by inspecting the arm mechanism and the relationship between joint and task configuration, see \cref{sec:kinematics:fwk:arm}), in \cref{sec:kinematics:fwk:dh} we will introduce a scalable, \textsl{geometric} technique to compute forward kinematics with more complex arms composed of many mechanical Degrees of Freedom.
 % number of selected but diverse mechanisms.
 % We will first consider simple mechanisms where we can determine the relationship between actuators and the pose of various frames on the robot both in the position and speed domain.
 % We will then consider the special class of non-holonomous mechanisms using a series of wheeled robots, for which the forward kinematics can only be calculated in the speed domain.
@@ -29,7 +29,7 @@ While it is always possible to compute the forward kinematics \textsl{analytical
 \end{figure}
 
 Consider the robot arm in \cref{fig:fwk2dofarm}; it is mounted to a table, and is composed of two links and two joints. Let the length of the first link be $l_1$ and the length of the second link be $l_2$. You could specify the position of the link closer to the table by the angle $\alpha$ and the angle of the second link relative to the first link using the angle $\beta$.
-Therefore, $q = [\alpha, \beta]^T$ are the two degrees of freedom that we can control.
+Therefore, $q = [\alpha, \beta]^T$ specifies the two degrees of freedom that we can control.
 Our goal is to calculate the position $[x, y]^T$ and orientation $\theta$ of the end-effector given the values of $q$; consequently, $f$ will map to $r = [x, y, \theta]^T$.
 
 Let's now calculate the position $P_1 = (x_1, y_1)$ of the joint between the first and the second link using simple trigonometry:
@@ -59,7 +59,7 @@ The above equations represent \textsl{the forward kinematic equations} of the ro
 Note that both $\alpha$ and $\beta$ shown in the figure are positive: both links rotate around the $z-$axis. Using the right-hand rule, the direction of positive angles is defined to be counter-clockwise.
 
 The \textsl{configuration space}\index{Configuration space}\index{C-Space (Configuration space)} of the robot---i.e. the set of angles each actuator can be set to---is given by $ 0 < \alpha < \pi $ as it is not supposed to run into the table, and $ -\pi < \beta < \pi$.
-The configuration space is given with respect to the robot's joints and allows us to use the forward kinematics equations to calculate the \textsl{workspace}\index{Workspace} of the robot, i.e. the physical space it can move to.
+The configuration space is defined with respect to the robot's joints and allows us to use the forward kinematics equations to calculate the \textsl{workspace}\index{Workspace} of the robot, i.e. the physical space it can move to.
 This terminology will be identical for mobile robots. An example of configuration and workspace for both a manipulator and a mobile robot is shown in \cref{fig:holonomy}.
 
 % As shown in \cref{fig:fwk2dofarm}, the orientation of the arm's end-effector is given by $\alpha+\beta$.
@@ -80,8 +80,8 @@ This transformation will be helpful if we want to calculate suitable joint angle
 \subsection{The Denavit-Hartenberg notation}\label{sec:kinematics:fwk:dh}
 
 So far, we have considered the forward kinematics of a simple arm and derived relationships between actuator parameters and end-effector positions using basic trigonometry.
-In the case of multi-link arms (which is the vast majority of robot manipulators in existence), the approach detailed in \cref{sec:kinematics:fwk:arm} is difficult to scale, and alternative solutions are needed.
-Interestingly, we can think of the forward kinematics as a chain of homogeneous transformations with respect to a coordinate system mounted at the base of a manipulator or a fixed position in the room.
+In the case of multi-link arms (the vast majority of robot manipulators in existence), the approach detailed in \cref{sec:kinematics:fwk:arm} is difficult to scale, and alternative solutions are needed.
+Interestingly, we can think of the forward kinematics as a chain of homogeneous transformations with respect to a coordinate system mounted at the base of a manipulator (or a fixed position in the room).
 Deriving these transformations can be confusing and can be facilitated by following a ``recipe'' such as the one conceived by Denavit and Hartenberg in $1955$ (see \cite{hartenberg1955kinematic} and \cite{craig2009introduction}).
 The so-called Denavit-Hartenberg (DH)\index{Denavit-Hartenberg parameters} representation has since evolved as a \textsl{de-facto} standard.
 
@@ -104,10 +104,10 @@ Knowing the robot's kinematic properties (e.g. the length of all rigid links, si
 
 In order to use the DH convention, we first need to define a coordinate system at each joint. With reference to \cref{fig:denavit}, we choose the $z-$axis to be the axis of rotation for a revolute joint and the axis of translation for a prismatic joint.
 We can now find the common normal between the $z-$axes of two subsequent joints, i.e. a line that is orthogonal to each $z-$axis and intersects both.
-With the direction of the $x-$axis at the base arbitrary, subsequent $x-$axes are chosen such that they lie on the common normal shared between two joints.
+While the direction of the $x-$axis at the base can be chosen arbitrarily, subsequent $x-$axes are chosen such that they lie on the common normal shared between two joints.
 Whereas the direction of the $z-$axis is given by the positive direction of rotation (right-hand rule), the $x-$axis points away from the previous joint.
 This allows defining the $y-$axis using the right-hand rule.
-Note that these rules, in particular the requirement that $x$-axes lie along the commom normal, might result in coordinate systems with their origins outside the joint: this is not relevant as the kinematics of a manipulator is a mathematical representation that needs to represent the geometric and kinematic properties of the robot, and does not need to bear any physical correspondence.
+Note that these rules, in particular the requirement that $x$-axes lie along the common normal, might result in coordinate systems with their origins outside the joint. This is not problematic as the kinematics of a manipulator is a mathematical representation that need only represent the geometric and kinematic properties of the robot, and does not need to bear any physical correspondence to the system.
 %
 The transformation between two joints is then fully described by the following four parameters:
 \begin{enumerate}

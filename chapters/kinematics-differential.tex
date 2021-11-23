@@ -3,7 +3,7 @@
 
 The two-link arm in Figure~\ref{fig:fwk2dofarm} involved only two free parameters, but was already pretty complex to solve analytically if the end-effector pose was not specified.
 One can imagine that things become very hard with more degrees of freedom or more complex geometries (mechanisms in which some axes intersect are simpler to solve than others, for example).
-It is worth noting that, so far, we have analyzed the geometry of motion of a robot at its simplest level of abstraction, i.e. in the space of positions. This abstraction becomes useless as soon as the order of motions matters. For example, in a differential wheel robot, turning the left wheel first and then the right wheel will lead to a very different position then turning the right wheel first and then the left wheel. This is not the case in a robotic arm with two links, which will arrive at the same position no matter which joint will be moved first. 
+It is worth noting that, so far, we have analyzed the geometry of motion of a robot at its simplest level of abstraction, i.e. in the space of positions. This abstraction becomes useless as soon as the order of motions matters. For example, in a differential wheel robot, turning the left wheel first and then the right wheel will lead to a very different position than turning the right wheel first and then the left wheel. This is not the case in a robotic arm with two links, which will arrive at the same position no matter which joint will be moved first. 
 
 In order to include a notion of temporal evolution of the robot configuration, it is convenient to shift toward a slightly more complex abstraction, that is the space of generalized velocities. This modeling is called \textsl{differential kinematics}\index{Differential Kinematics}, as velocities are the time derivative (i.e. the differential) of positions.
 Similarly to before, with ``generalized velocities'' we mean ``any velocity-equivalent quantity needed to describe the element'', as we will detail below.
@@ -31,14 +31,14 @@ As the robot can potentially not only translate, but also rotate, we also need t
 \right].
 \end{equation}
 We can now write translational and rotational velocities in a $6\times1$ generalized velocity vector as $\nu = [v \ \omega]^T$.
-This notation is also called a \textsl{velocity twist}.\index{Twist (velocity)}\index{Velocity Twist} %By convention, the speed of rotation is given by the magnitude (or length) of this vector.
+This notation is also called \textsl{velocity twist}.\index{Twist (velocity)}\index{Velocity Twist} %By convention, the speed of rotation is given by the magnitude (or length) of this vector.
 Let the generalized configuration in joint space (i.e. joint angles/positions) be $q=[q_1, \ldots, q_n]^T$; therefore, we can define the set of joint speeds as $\dot{q}=[\dot{q}_1, \ldots, \dot{q}_n]^T$.
 %
 We now want to compute the differential kinematics version of \cref{eq:kinematics:forward}, and in this case relate joint velocities $\dot{q}$ with end-effector velocities $[v \ \omega]^T$. A simple derivation of \cref{eq:kinematics:forward} with respect to time gives:
 \begin{equation}\label{eq:kinematics:diff:fwd:short}
 \nu = [v \quad \omega]^T=J(q)\cdot [\dot{q}_1,\ldots,\dot{q}_n]^T = J(q) \cdot \dot{q} \ ,
 \end{equation}
-which is our forward differential kinematics equation. $J(q)$ is known as the \textsl{Jacobian matrix}\index{Jacobian Matrix}; it is function of the joint configuration $q$, and contains all the partial derivatives of $f$ that relate every joint angle to every velocity. In practice, $J$ looks like the following:
+which is our forward differential kinematics equation. $J(q)$ is known as the \textsl{Jacobian matrix}\index{Jacobian Matrix}; it is a function of the joint configuration $q$, and contains all of the partial derivatives of $f$, relating every joint angle to every velocity. In practice, $J$ looks like the following:
 
 \begin{equation}\label{eq:kinematics:diff:fwd}
 \nu = \left[\begin{array}{c}v\\\omega\end{array}\right]=
@@ -51,14 +51,14 @@ which is our forward differential kinematics equation. $J(q)$ is known as the \t
 \left[\begin{array}{cccc}\frac{\partial{x}}{\partial{q_1}} & \frac{\partial{x}}{\partial{q_2}} & \ldots & \frac{\partial{x}}{\partial{q_n}}\\\frac{\partial{y}}{\partial{q_1}} & \frac{\partial{y}}{\partial{q_2}} & \ldots & \frac{\partial{y}}{\partial{q_n}}\\\vdots & \vdots & \vdots & \vdots\\\frac{\partial{\omega_z}}{\partial{q_1}} & \frac{\partial{\omega_z}}{\partial{q_2}} & \ldots & \frac{\partial{\omega_z}}{\partial{q_n}}\end{array}\right]\left[\begin{array}{c}\dot{q}_1\\\vdots\\\dot{q}_n\end{array}\right] = J (q) \cdot \dot{q}
 \end{equation}
 
-This notation is important as it tells us how small changes in joint space will affect the end-effector's position in Cartesian space. Better yet, the forward kinematics of a mechanism and its analytical derivative can always be calculated, which allows us to calculate numerical values for the entries of matrix $J$ for every possible joint angle/position.
+This notation is important as it tells us how small changes in joint space will affect the end-effector's position in Cartesian space. It may be helpful to think of each column of this matrix as telling us something about how each component of velocity changes when the configuration of a particular joint changes, or each row of the matrix as showing how movement in each joint can affect a particular component of velocity. Better yet, the forward kinematics of a mechanism and its analytical derivative can always be calculated, which allows us to calculate numerical values for the entries of matrix $J$ for every possible joint angle/position.
 
 \subsection{Forward Kinematics of a Differential Wheels Robot}\label{sec:kinematics:fwk:mobile}
 
 After abstractly considering differential kinematics in the previous section, we will now study a mechanism for which general non-differential kinematic models do not exist. We recall that the pose of a robotic manipulator is uniquely defined by its joint angles, which can be estimated using encoders.
 However, this is not the case for a mobile robot.
-Here, the encoder values simply refer to wheel orientation and need to be integrated over time in order to assess the robot's position with respect to the world's frame of reference; as we will later see, this is a great source of uncertainty.
-What complicates matters is that for so-called \textsl{non-holonomic} systems, it is not sufficient to simply measure the distance that each wheel traveled, but also when each movement was executed.
+Here, the encoder values simply refer to wheel orientation and need to be integrated over time in order to assess the robot's position with respect to the world's frame of reference; as we will later see, this is a source of great uncertainty.
+What complicates matters is that for so-called \textsl{non-holonomic} systems, it is not sufficient to simply measure the distance that each wheel traveled, as we must also measure \textsl{when} each movement was executed.
 
 \begin{figure}[!t]
     \small
@@ -75,15 +75,15 @@ A system is non-holonomic\index{Non-holonomic}\index{Holonomic} when closed traj
 A robot arm is holonomic because each joint position corresponds to a unique position in space (\cref{fig:holonomy}, bottom):
 a generic joint-space trajectory that comes back to the starting point will position the robot's end-effector at the exact same position in operational space.
 A train on a track is holonomic too: moving its wheels backwards by the same amount they have been moving forward brings the train to the exact same position in space.
-Conversely, a car and a differential-wheel robot are non-holonomic vehicles (\cref{fig:holonomy}, top): performing a straight line and then a right-turn leads to the same amount of wheel rotation than doing a right turn first and then going in a straight line; however, getting the robot to its initial position requires not only to rewind both wheels by the same amount, but also getting their relative speeds right.
+Conversely, a car and a differential-wheel robot are non-holonomic vehicles (\cref{fig:holonomy}, top): performing a straight line and then a right-turn leads to the same amount of wheel rotation as doing a right turn first and then going in a straight line; however, getting the robot to its initial position requires not only to rewind both wheels by the same amount, but also getting their relative speeds right.
 The configuration and corresponding workspace trajectories for a non-holonomic and a holonomic robot are shown in \cref{fig:holonomy}.
 Here, a robot first moves on a straight line, i.e. both wheels turn an equal amount.
 Then, the left wheel remains fixed and only the right wheel turns forward.
 Then, the right wheel remain fixed and the left wheel turns backward.
-Finally, the right wheel turns backward, arriving at the initial encoder values (zero).
+Finally, the right wheel turns backwards, arriving at the initial encoder values (zero).
 Yet, the robot does not return to its origin. Performing a similar trajectory in the configuration space of a two-link manipulator instead, lets the robot return to its initial position.
 
-It should be clear by now that for a mobile robot, not only traveled distance per wheel matters, but also the \textsl{speed} of each wheel as a function of time.
+It should be clear by now that for a mobile robot, not only does traveled distance per wheel matters, but also the \textsl{speed} of each wheel as a function of time.
 Interestingly, this information was not required to uniquely determine the pose of a manipulating arm.
 Let's introduce the following conventions.
 We will establish a world coordinate system $\{I\}$---which is known as the inertial frame by convention (see \cref{fig:mobilerobot}).
@@ -101,7 +101,7 @@ Therefore, velocities are the only interesting quantities in this coordinate sys
     \label{fig:mobilerobot}
 \end{figure}
 
-Notice that the positioning of the coordinate frames and their orientation are arbitrary. Here, we choose to place the coordinate system in the center of the robot's axle and align $^Rx$ with its default driving direction.
+Notice that the positioning of the coordinate frames and their orientations are arbitrary, meaning it is a choice that we can make. Here, we choose to place the coordinate system in the center of the robot's axle and align $^Rx$ with its default driving direction.
 In order to calculate the robot's position in the inertial frame, we need to first find out how speed in the robot coordinate frame maps to speed in the inertial frame.
 This can be done again by employing trigonometry. There is only one complication: a movement into the robot's $x-$axis might lead to movement along both the $x-$axis and the $y-$axis of the world coordinate frame ${I}$. By looking at \cref{fig:mobilerobot}, we can derive the following components to $\dot{x}_I$. First,
 \begin{equation}

@@ -1,9 +1,9 @@
 %!TEX root = ../book.tex
 \section{Inverse Kinematics}\label{sec:kinematics:ik}
 
-The forward kinematics of a system are computed by means of a transformation matrix from the base of a manipulator (or a corner of the room) to the end-effector of a manipulator (or a mobile robot).
+The forward kinematics of a system are computed by means of a transformation matrix from the base of a manipulator (or fixed location, such as the corner of a room) to the end-effector of a manipulator (or a mobile robot).
 As such, they are an exact description of the pose of the robot and they fully characterize its kinematic state.
-Inverse Kinematics deal with the opposite problem, that is how to find a joint configuration that leads to a desired pose at the end effector.
+Inverse Kinematics deal with the opposite problem: finding a joint configuration that results in a desired pose at the end effector.
 To achieve this goal, we will need to solve the forward kinematics equations for joint angles as a function of the desired pose.
 With reference to \cref{eq:kinematics:forward}, inverse kinematics aims to solve the following:
 \begin{equation}\label{eq:kinematics:inverse}
@@ -16,21 +16,21 @@ For a mobile robot, we can do this only for velocities in the local coordinate s
 
 \cref{eq:kinematics:inverse} is the inverted version of \cref{eq:kinematics:forward}, and is heavily non-linear except for trivial mechanisms.
 Therefore, it makes sense to briefly think about whether we can solve it at all for specific parameters before trying.
-Here, the workspace of a robot becomes important. The workspace is the sub-space that can be reached by the robot in any orientation.
+Here, the workspace of a robot becomes important. The workspace is the sub-space that can be reached by the robot in any configuration.
 Clearly, there will be no solutions for the inverse kinematic problem outside of the workspace of the robot.
 
-A second question to ask is how many solutions we actually expect and what it means to have multiple solutions \textsl{geometrically}.
-Multiple solutions to achieve a desired pose correspond to multiple ways in which a robot can reach a target.
-For example a three-link arm that wants to reach a point that can be reached without fully extending all links (leading to a single solution), can do this by folding its links in a concave and a convex fashion.
-How many solutions there are for a given mechanism and pose quickly becomes non-intuitive.
+A second question to ask is how many solutions we actually expect to exist and what it means to have multiple solutions \textsl{geometrically}.
+Multiple solutions to achieve a desired pose correspond to multiple ways in which a robot can reach a target (i.e., joint configurations).
+For example a three-link arm that wants to reach a point that can be reached without fully extending all links (which would have only a single solution) can do this by either folding its links in a concave or a convex fashion.
+Reasoning about how many solutions will exist for a given mechanism and desired pose quickly becomes non-intuitive.
 For example, a 6-DOF arm can reach certain points with up to $16$ different configurations!
 
 \subsection{Inverse Kinematics of a Simple Manipulator Arm}\label{sec:kinematics:inverse:arm}
 
 We will now look at the inverse kinematics of the $2-$link arm that we introduced in \cref{fig:fwk2dofarm}. We need to solve the equations determining the robot's forward kinematics by solving for $\alpha$ and $ \beta$.
-This is tricky, however, as we have to deal with complicated trigonometric expressions.
+This is tricky, however, as we have to deal with more complicated trigonometric expressions than the forward kinematics case.
 
-To get an intuition, assume there to be only one link, $l_1$.  Solving (\ref{eq:cosxl1}) for $\alpha$ yields to two distinct solutions:
+To build an intuition, assume there to be only one link, $l_1$.  Solving (\ref{eq:cosxl1}) for $\alpha$ yields to two distinct solutions:
 
 \begin{equation}
 \alpha = \pm \cos^{-1}\frac{x_1}{l_1},
@@ -76,18 +76,18 @@ s_\alpha &=& \frac{s_{\alpha\beta}l_2-y}{l_1}=\frac{s_\theta l_2-y}{l_1} \nonumb
 \end{eqnarray}
 Providing the orientation of the robot in addition to the desired position therefore allows solving for $\alpha$ and $\beta$ just as a function of $x$, $y$ and $\theta$.
 
-The main issue with the geometric approach detailed above is that it does not scale easily with an increase of DoF at the joints, and and it quickly becomes unhandy with more dimensions.
+The main issue with the geometric approach detailed above is that it does not scale easily with an increase of DoF at the joints, and it quickly becomes unwieldy with more dimensions.
 For higher-DoF platforms, we can calculate a \textsl{numerical solution} using an approach that we will later see is very similar to path planning in mobile robotics.
-To this end, we will first calculate a measure of error between the current solution and the desired one, and then optimize the joint configuration so as to minimize such error.
-In our example, the measure of error is the Euclidean distance between the current end-effector pose as given by the forward kinematics equations in \cref{eq:fwk2dofarm} and the desired solution $[x,y]$ in configuration space, i.e. (assuming $l_1=l_2=1$ for simplicity):
+To this end, we will take an optimization-based approach: first we calculate a measure of error between the current solution and the desired one, and then change the joint configuration in a way that minimizes this error.
+In our example, the measure of error is the Euclidean distance between the current end-effector pose (given by the forward kinematics equations in \cref{eq:fwk2dofarm}) and the desired solution $[x,y]$ in configuration space, i.e. (assuming $l_1=l_2=1$ for simplicity):
 % To do this, you need to solve the forward kinematics for every point in configuration space and use the Euclidean distance to the desired target as height.
 \begin{equation}\label{eq:kinematics:inverse:numerical}
 f_{x,y}(\alpha,\beta)=\sqrt{\left(s_{\alpha\beta} + s_\alpha - y\right)^2 + \left(c_{\alpha\beta}+c_\alpha - x\right)^2}
 \end{equation}
-Here, the first two terms in the parentheses are given by the forward kinematics of the robot, whereas the third terms in the parentheses are the desired positions.
-\cref{eq:kinematics:inverse:numerical} is a 3D functional and can be plotted as a function of $\alpha$ and $\beta$, our joint-space variables.
+Here, the first two terms in parentheses are given by the forward kinematics of the robot, whereas the third term in the parentheses is the desired $y$ and $x$ position, respectively.
+\cref{eq:kinematics:inverse:numerical} can be plotted as a 3D function of $\alpha$ and $\beta$, our joint-space variables.
 % This is plotted for $\alpha=[-\pi/2,\pi/2]$ and $\beta=[-\pi,\pi]$ and $x=1$, $y=1$ in Figure~\ref{fig:inversekinematics}.
-As shown in \cref{fig:inversekinematics}, this function has a minima, in this case zero, for values of $\alpha$ and $\beta$ that bring the manipulator to $(1,1)$. These values are $(\alpha \rightarrow 0, b \rightarrow -\frac{\pi}{2})$ and $(\alpha \rightarrow -\frac{\pi}{2}, b \rightarrow \frac{\pi}{2})$.
+As shown in \cref{fig:inversekinematics} this function has a minima, in this case zero, for values of $\alpha$ and $\beta$ that bring the manipulator to $(1,1)$. These values are $(\alpha \rightarrow 0, b \rightarrow -\frac{\pi}{2})$ and $(\alpha \rightarrow -\frac{\pi}{2}, b \rightarrow \frac{\pi}{2})$.
 
 \begin{figure}
     \centering
@@ -96,6 +96,6 @@ As shown in \cref{fig:inversekinematics}, this function has a minima, in this ca
     \label{fig:inversekinematics}
 \end{figure}
 
-You can now think about inverse kinematics as a path finding problem from anywhere in the configuration space to the nearest minima. A formal approach to doing this will be discussed in \cref{sec:kinematics:inverse:feedbackcontrol}. How to find the shortest path in space, that is finding the shortest route for a robot to get from A to B, will be a subject of \cref{chap:pathplanning}.
+You can now think about inverse kinematics as a path finding problem from anywhere in the configuration space to the nearest minima. A more formalized approach to this will be discussed in \cref{sec:kinematics:inverse:feedbackcontrol}. How to find the shortest path in space, that is finding the shortest route for a robot to get from A to B, is one of the subjects covered within \cref{chap:pathplanning}.
 
 
