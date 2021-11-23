@@ -6,7 +6,7 @@ Yet, many manipulation problems can be cast into a sequence of grasping and plac
 
 \section{How to find good grasps?}
 
-Finding a good grasp that fully constrains an object against all possible external forces and torques, that is a grasp that lies in the ``grasping wrench space'' (\cref{sec:grasping_friction} is often too restrictive. For example, it might be sufficient to find a grasp that constrains an object simply against gravity. Other applications instead might require the grasp to constrain an object's movement also again lateral forces that happen due to acceleration. In practice, these considerations usually lead to simple application-specific heuristics. For example, in a warehouse picking tasks \cite{correll2016analysis}, the problem can be constrained to have the robot grasp only objects that are suitable to be retrieved with a simple suction cup. Finding a good grasp is then reduced to finding a flat surface close to the object's perceived center of gravity. When considering household tasks, such has handling and placing dishes, using silver ware to scoop food, or holding a pitcher, we are often interested in very specific grasps that support the intended manipulation that follows.
+Finding a good grasp that fully constrains an object against all possible external forces and torques, that is a grasp that lies in the ``grasping wrench space'' (\cref{sec:grasping_friction}) is often too restrictive. For example, it might be sufficient to find a grasp that constrains an object simply against gravity. Other applications instead might require the grasp to constrain an object's movement also again lateral forces that happen due to acceleration. In practice, these considerations usually lead to simple application-specific heuristics. For example, in a warehouse picking tasks \cite{correll2016analysis}, the problem can be constrained to have the robot grasp only objects that are suitable to be retrieved with a simple suction cup. Finding a good grasp is then reduced to finding a flat surface close to the object's perceived center of gravity. When considering household tasks, such has handling and placing dishes, using silver ware to scoop food, or holding a pitcher, we are often interested in very specific grasps that support the intended manipulation that follows.
 
 Theoretically speaking, grasps such as picking up an object or opening a door by turning its knob are task-specific wrench spaces. We can then say that the grasp is ``good'', when the task wrench space is a subset of the grasping wrench space, and will fail otherwise. We can also look at the ratio of forces actually applied to the object and the minimum needed to perform a desired wrench. If this ratio is high, for example, when the robot grasps an object far from its center of gravity or has to squeeze an object heavily to prevent it from slipping, this grasp is not as good as one, where the ratio is low and all of the force the robot is exerting is actually going into the desired wrench. It is usually not possible to find close-form expressions for the grasping wrench space. Instead, one can sample the space of suitable force vectors, e.g., by picking a couple of forces that are on the boundary of the cone's base, and calculate the convex hull over the resulting wrenches.
 
@@ -33,13 +33,13 @@ A typical algorithm proceeds as follows:
 \item Execution: Physically test a grasp by monitoring jaw distances, as well as forces and torques at the wrist ((\cref{fig:graspalgorithm}, h).
 \end{enumerate}
 
-Some of these steps might not be necessary for all grasps, and some of them might have arbitrary complexity. For example, pre-processing is often used to remove known quantities such as a table surface, from the data, but might be non-trivial when removing the edges of a bin, e.g.
+Some of these steps might not be necessary for all grasps, and some of them might become very complicated for some task. For example, pre-processing is often used to remove known quantities such as a table surface, from the data, but might be non-trivial when removing the edges of a bin, e.g., or even an arbitrary container that is not known to the robot. 
 
-Segmentation is the most critical step and requires some previous knowledge about the objects to grasp such as their size or the geometry of features thereon. In \cref{fig:graspalgorithm}, clustering points based on their distance is sufficient, e.g. using the DBSCAN algorithm \cite{ester1996density}, but requires an assumption about object size in order to select a suitable threshold. Other segmentation algorithms might use surface normals, or a combination of point cloud and image data such as color or patterns.
+Segmentation is the most critical step and requires some previous knowledge about the objects to grasp such as their size or the geometry of features thereon. In \cref{fig:graspalgorithm}, clustering points based on their distance is sufficient, e.g. using the DBSCAN algorithm \cite{ester1996density}, but requires an assumption about object size in order to select a suitable threshold. Other segmentation algorithms might use surface normals, a combination of point cloud and image data such as color or patterns, or employ deep learning.
 
-Filtering the resulting clusters to identify objects of interest can be as simple as rejecting those that are too small (as shown in \cref{fig:graspalgorithm}, e), but might also involve matching the points to a 3D model of a desired object or involving image data.
+Filtering the resulting clusters to identify objects of interest can be as simple as rejecting those that are too small (as shown in \cref{fig:graspalgorithm}, \emph{e}), but might also involve matching the points to a 3D model of a desired object or involving image data, using ICP and RANSAC from \cref{chap:mapping}. 
 
-A simple approach to plan for possible grasps is to calculate the center-of-mass as well as the principal axes of an object using principal component analysis (Appendix \ref{sec:appendix_PCA}). Other approaches might require matching the existing points to a 3D model of the object to identify specific grasp points (such as the handle of a cup) or again rely on image features to do so.
+A simple approach to plan for possible grasps is to calculate the center-of-mass as well as the principal axes of an object using principal component analysis (Appendix \ref{sec:appendix_PCA}). Other approaches might again require matching the existing points to a 3D model of the object to identify specific grasp points (such as the handle of a cup) or again rely on image features to do so.
 
 After planning all, or some, possible grasps, grasps need to be checked for feasibility. While a collision with a point in the point-cloud might rule out a grasp, local search is sometimes being used to find a collision-free variant, for example by moving the gripper up and down as well as along the principal axes. In other applications, for example bin picking, some collisions might be ignored with the expectation that the gripper will push other objects out of its way.
 
@@ -49,22 +49,49 @@ With the ability to train neural networks to approximate complex functions, it i
 
 \subsection{Finding good grasps for multi-fingered hands}
 
-The simple grasping pipeline described above is computationally expensive as there exist usually many possible grasp candidates, and each of them need to be checked for collisions. This problem explodes when considering grippers with articulated fingers. This can be overcome by considering only a predefined set of grasps such as two and three finger pinches for small objects and full-hand encompassing grasps for larger objects, e.g.
+The simple grasping pipeline described above is computationally expensive as there usually exist many possible grasp candidates, and each of them need to be checked for collisions. This problem explodes when considering grippers with articulated fingers. This can be overcome by considering only a predefined set of grasps such as two and three finger pinches for small objects and full-hand encompassing grasps for larger objects, e.g.
 
 A suitable method to search the full space of possible grasps with an articulated hand is to use random sampling, that is bringing the end-effector to random positions, close its fingers around the object, and see what happens when generating wrenches that fulfill the task's requirements.
-To ``see what happens'', requires collision checking and dynamic simulation. Dynamic simulation applies Newtonian mechanics to an object (i.e., forces lead to acceleration of a body) and moves the object at very small time-steps. While this can be done using the connected components identified in the point cloud alone and assuming reasonable parameters for friction and contact points, point cloud data can also be augmented by object models to simulate whether a grasp has a high likelihood to be successful.
+To ``see what happens'' in simulation, requires collision checking and dynamic simulation. Dynamic simulation applies Newtonian mechanics to an object (i.e., forces lead to acceleration of a body) and moves the object at very small time-steps. While this can be done using the connected components identified in the point cloud alone and assuming reasonable parameters for friction and contact points, point cloud data can also be augmented by object models to simulate whether a grasp has a high likelihood to be successful. Here, there is a trade-off in exploring the space of possible grasps in simulation and actually trying grasps with the real hardware.
 
 
+\section{Pick and place}
+One of the most basic manipulation problems is known as ``pick and place''. It involves grasping an object, transporting it, and placing it. What looks like a simple action is actually a sequence of individual tasks that can fail for multiple reasons. Pick and place consists of the following sub-tasks:
 
-%\subsection{Peg-in-hole problems}
-%A canonical manipulation problem are \textsl{peg-in-hole}\index{Peg-in-hole} and variations thereof including hole-on-peg problems, which generalize insertions and assembly operations.
-%\subsection{Non-prehensile Manipulation}
+\begin{enumerate}
+\item Grasping an object
+\item Lifting the object
+\item Moving the object to an intermediate pose
+\item Placing the object
+\item Releasing the object
+\end{enumerate}
+
+Each of these actions might not work as intended, requiring the robot to abort and restart the process. For example, what seemed like a reliable grasp turned out not to be suitable for actually lifting the object. Or, a suitable path (\cref{chap:pathplanning}) to the desired approach pose could not be found and requires to find another suitable approach pose first. This problem is known as \emph{Task and Motion Planning} or TAMP\index{Task and motion planning}\index{TAMP}. Once a suitable approach pose has been found, placing the object will require to monitor forces and torques to ensure a gentle placement. Finally, releasing the object might require to verify the intended pose. 
+
+As failure can occur anywhere in the above pipeline and manually encoding all possible state transitions will quickly get out of hand,  Behavior Trees (\cref{sec:behaviortrees}) have emerged as a powerful tool to encode complex sensor-based action sequences. A sample behavior tree for a picking task is shown in \cref{fig:BTpick}.
+
+\section{Peg-in-hole problems}\label{sec:peginhole}
+A canonical manipulation problem and a special case of pick-and-place are \textsl{peg-in-hole}\index{Peg-in-hole} and variations thereof including hole-on-peg problems, which generalize insertions and assembly operations. Peg-in-hole requires grasping of an object in a repeatable fashion and then usually involves force-torque based search motions to find the hole, before the assembly is completed. 
+
+Typically insertion patterns consist of tilting motions and spiral-shaped search motions \cite{watson2020autonomous}. Both approaches have advantages and drawbacks, with tilt insertion to work better for larger objects (excess of 1cm diameter) for peg-in-hole tasks. 
+
+Tilt insertion proceeds as follows: Given a hole pose, the part is held vertically above the hole by a preset distance. The gripper is then tilted about its local Y-axis and translated horizontally in the global frame in the direction corresponding to the hands local X-axis.  This offset places the lowest part of the bottom edge of the part directly above the estimated center of the hole.  Then the hand is translated downwards in the global frame until the part makes contact with the hole.  Naturally, the shaft cannot sink deeply into the hole when tilted this way.  Rather, the curvature of the hole meets the circumferential surface of the shaft and gathers it towards the center of the hole, exploiting flexibility in the gripper.  After being centered, the shaft is tilted back up a few degrees beyond vertical. Finally, the shaft is returned to true vertical and pushed down into the hole until a preset reaction force (commensurate with the hole fit) is met.  If the Z-component of the hand's final pose is near to the expected value, the insertion is considered successful.
+
+
+Spiral insertion is best suited for hole-on-peg operations, and peg-in-hole operations with a peg diameter less than 1cm. It is described for hole-on-peg assemblies here. The algorithm proceeds as follows: Given a shaft end pose, the grasped part, for example a gear with a center hole, is held vertically above the shaft by a preset distance.  The hand then moves down along the axis of insertion until a reaction force threshold is reached.  The robot then performs a spiraling motion defined in polar coordinates with its origin at the point of contact.
+
+The algorithm also probes the contact surface when the reaction force against the wrist in Z-direction falls below a threshold.  The algorithm continues in this fashion until any of several conditions are met: the gripper pose exceeds a threshold below which the intended hole pose cannot lie, or lateral torques about the wrist exceed a threshold indicating the gear has slid onto the shaft and cannot translate laterally.  The vertical probing steps also serve to sink the held part into place before attempting a lateral move that might sabotage what would otherwise be a successful insertion.  Once the torque treshold is met, the hand pushes down into until a preset reaction force (commensurate with the hole fit) is met.  If the Z-component of the hand's final pose is near to the expected value, the assembly is considered a success.
+
+Implementing peg-in-hole and hole-on-peg insertion also has a large number of possible many failure modes, making a behavior tree (BT) architecture most suitable. Implementing force and torque-based controls requires operating at a higher bandwidth (in the order of hundred Hertz onwards) than a typical BT architecture  would support. How to implement these closed-loop control loops is strongly dependent on the actual hardware. For example, some robot arms do not make raw F/T values available at a rate that is required for real-time control, but provide built-in functions to move until certain force limits are met. This allows the robot manufacturer to run real-time controllers that ensure safety, which would be more difficult to accomplish when providing the user that kind of low-level control. 
+
+
 
 \section*{Take-home lessons}
 \begin{itemize}
 \item Performing simple pick and place tasks is now possible thanks to high-resolution in-hand sensing and fast enough computation that can sift through large amounts of point cloud data in real-time. 
 \item Planning and executing a grasp is a complex problem that encompasses topics from a majority of previous chapters ranging from identifying an object, localizing it and computing the inverse kinematics to reach it.
 \item Manipulation extends these techniques from the robot itself to the objects the robot deals with and how they relate to each other, and remains an open field of research. 
+\item Seemingly simple manipulation tasks such as pick-and-place or peg-in-hole assembly require both high-level planning and force-torque real-time control, posing a combined task and motion planning problem. 
 \end{itemize}
 
 \section*{Exercises}
@@ -77,4 +104,6 @@ To ``see what happens'', requires collision checking and dynamic simulation. Dyn
 \item Apply principal component analysis to compute the principal axes of the rectangle and compare with ground truth. How does the number of samples affect the accuracy of your estimate?
 \end{enumerate}
 \item Use a function of the kind $u(x-i)+rand(j)$ with $u(x)$ the unit step function, $rand()$ uniformly distributed random noise, and $i,j$ suitable parameters to simulate a noisy depth-image of a cube with width $i$. Use the nearest neighbor of each point to compute its normals and a suitable clustering algorithm to identify the cube. How do $i$ and $j$ affect the accuracy of your estimate?
+\item Think about simulating peg-in-hole assembly in a robotic simulator. What are the problems with using a simulation environment when simulating tight assembly problems?
+\item Perform an internet search for ``open source'' robotic assembly problems and re-create them in your laboratory. Implement a spiral and tilt-based assembly controller. 
 \end{enumerate}
