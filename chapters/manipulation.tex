@@ -56,15 +56,22 @@ To ``see what happens'' in simulation, requires collision checking and dynamic s
 
 
 \section{Pick and place}
-One of the most basic manipulation problems is known as ``pick and place''. It involves grasping an object, transporting it, and placing it. What looks like a simple action is actually a sequence of individual tasks that can fail for multiple reasons. Pick and place consists of the following sub-tasks:
+One of the most basic manipulation problems is known as ``pick and place''. It involves grasping an object, transporting it, and placing it. What looks like a simple action is actually a sequence of individual tasks that can fail for multiple reasons. Pick and place consists of the following sub-tasks (\cref{fig:pick-and-place}):
 
 \begin{enumerate}
+\item Approaching the object
 \item Grasping an object
 \item Lifting the object
 \item Moving the object to an intermediate pose
 \item Placing the object
 \item Releasing the object
 \end{enumerate}
+
+\begin{figure}
+    \def\svgwidth{\textwidth}
+    \import{./figs/}{pick-and-place.pdf_tex}
+    \caption{Various stages of grasping from approach to place. Problems during one step, such as during placing shown here, can lead to failure later on.\label{fig:pick-and-place}}
+\end{figure}
 
 Each of these actions might not work as intended, requiring the robot to abort and restart the process. For example, what seemed like a reliable grasp turned out not to be suitable for actually lifting the object. Or, a suitable path (\cref{chap:pathplanning}) to the desired approach pose could not be found and requires to find another suitable approach pose first. This problem is known as \emph{Task and Motion Planning} or TAMP\index{Task and motion planning}\index{TAMP}. Once a suitable approach pose has been found, placing the object will require to monitor forces and torques to ensure a gentle placement. Finally, releasing the object might require to verify the intended pose. 
 
