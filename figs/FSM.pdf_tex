@@ -1,4 +1,4 @@
-%% Creator: Inkscape 1.0 (4035a4f, 2020-05-01), www.inkscape.org
+%% Creator: Inkscape 1.1 (c68e22c387, 2021-05-23), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'FSM.pdf' (pdf, eps, ps)
 %%
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{590.50612754bp}%
+    \setlength{\unitlength}{590.50614004bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,21 +50,20 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.40912373)%
+  \begin{picture}(1,0.31770233)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0.33800649,0.25952874){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.55000001}\smash{\begin{tabular}[t]{l}Follow\\light\end{tabular}}}}%
+    \put(0.30244374,0.16810735){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.55000001}\smash{\begin{tabular}[t]{l}Follow\\light\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{FSM.pdf}}%
-    \put(0.61507056,0.25828613){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.55000001}\smash{\begin{tabular}[t]{l}Avoid\\obstacle\end{tabular}}}}%
+    \put(0.57188729,0.16686474){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.55000001}\smash{\begin{tabular}[t]{l}Avoid\\obstacle\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{FSM.pdf}}%
-    \put(0.9316087,0.25910229){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.55000001}\smash{\begin{tabular}[t]{l}Follow\\wall\end{tabular}}}}%
+    \put(0.89604645,0.1676809){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.55000001}\smash{\begin{tabular}[t]{l}Follow\\wall\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{FSM.pdf}}%
-    \put(0.06166409,0.24060674){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.55000001}\smash{\begin{tabular}[t]{l}Stop\end{tabular}}}}%
+    \put(0.03626215,0.14918535){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.55000001}\smash{\begin{tabular}[t]{l}Stop\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{FSM.pdf}}%
-    \put(0.47688036,0.39368412){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.55000001}\smash{\begin{tabular}[t]{l}Obstacle\\detected\end{tabular}}}}%
-    \put(0.47644863,0.11999728){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.55000001}\smash{\begin{tabular}[t]{l}Obstacle\\free\end{tabular}}}}%
-    \put(0.78600955,0.39036094){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.55000001}\smash{\begin{tabular}[t]{l}Light \\decreases\end{tabular}}}}%
-    \put(0.63763908,0.0286255){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.55000001}\smash{\begin{tabular}[t]{l}Light \\increases\end{tabular}}}}%
-    \put(0.20374852,0.122096){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.55000001}\smash{\begin{tabular}[t]{l}Bright enough\end{tabular}}}}%
+    \put(0.43369701,0.30226273){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.55000001}\smash{\begin{tabular}[t]{l}Obstacle\\detected\end{tabular}}}}%
+    \put(0.43326529,0.0285759){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.55000001}\smash{\begin{tabular}[t]{l}Obstacle\\free\end{tabular}}}}%
+    \put(0.74282683,0.29893955){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.55000001}\smash{\begin{tabular}[t]{l}Light \\decreases\end{tabular}}}}%
+    \put(0.74041383,0.03213583){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.55000001}\smash{\begin{tabular}[t]{l}Light \\increases\end{tabular}}}}%
   \end{picture}%
 \endgroup%
