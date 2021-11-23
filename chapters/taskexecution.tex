@@ -4,6 +4,13 @@
 In its most basic implementation, sensors and actuators can be directly tied to each other, removing the need for computation. Such robots are purely reactive, thereby missing the ability to ``think'' or plan. In order to achieve more complex behavior, memory and state are needed to switch between different controllers and algorithms.
 
 This chapter introduces these basic principles as well as their implementation, starting with basic reactive controllers (\cref{sec:braitenberg}), then introduces more advanced concepts that let the robot make basic ``if'' \ldots ``then'' decisions using Finite State Machines (FSM) in \cref{sec:fsm,sec:stateflow}, and finally introduce advanced concepts such as behavior trees and semantic planning in \cref{sec:behaviortrees,sec:strips}.
+The goals of this chapter are:
+
+\begin{itemize}
+    \item \td{Nikolaus, fill it up}
+    \item \td{Nikolaus, fill it up}
+    \item \td{Nikolaus, fill it up}
+\end{itemize}
 
 \section{Reactive control}\label{sec:braitenberg}
 
@@ -91,16 +98,15 @@ A simple yet powerful tool to facilitate switching between different behaviors i
 \caption{A simple Finite State Machine (FSM) with four states. The final state is colored in gray; the initial state is set apart with a double circle.\label{fig:fsm}}
 \end{figure}
 
-To specify an FSM, one also needs to specify the \textsl{state transitions}\index{state transition}\index{transition (state)}, i.e. the conditions that determine when to switch which state the FSM is in. For example, if multiple sensors detect an obstacle (implying that it may be a large one), then it may be desirable to have the FSM transition from its first state (phototaxis with simple obstacle avoidance) to its second (avoid obstacles). Should the light measurement decrease, such as when the robot needs to make a u-turn in order to avoid the obstacle, the behavior should transition to wall following. Once the light increases again, such as when the robot has gone around the obstacle, it resumes light following. Once the light sensor exceeds a threshold (``bright enough''), the robot stops.
+To specify an FSM, one also needs to specify the \textsl{state transitions}\index{state transition}\index{transition (state)}, i.e. the conditions that determine when to switch states. For example, if multiple sensors detect an obstacle (implying that it may be a large one), then it may be desirable to have the FSM transition from its first state (phototaxis with simple obstacle avoidance) to its second (avoid obstacles). Should the light measurement decrease, such as when the robot needs to make a u-turn in order to avoid the obstacle, the behavior should transition to wall following. Once the light increases again, such as when the robot has gone around the obstacle, it resumes light following. Once the light sensor exceeds a threshold (``bright enough''), the robot stops.
 
-Finally, it is necessary to specify an initial state (the state the system starts in) and any final states (terminal states that signify program termination). In \cref{fig:fsm}, the final state is filled in gray, and the initial state is indicated by a double hull. That is, the program will always start in light following mode and terminate once the state labeled ``stop'' is reached.
-
+Finally, it is necessary to specify an initial state (the state the system starts in) and any number of final states (terminal states that signify program termination). In the example in \cref{fig:fsm}, the program will always start in light following mode and terminate once the state labeled ``stop'' is reached.
 
 Formally, a FSM is defined by a Tuple $(\Sigma, S, s_0, \delta, F)$ where:
 \begin{itemize}
-\item $\Sigma$ is the input \textsl{Alphabet}, a set of symbols that represent events that can trigger state transitions,
+\item $\Sigma$ is the input \textsl{Alphabet}, i.e. a set of symbols that represent events that can trigger state transitions,
 \item $S$ is a finite set of states,
-\item $s_0$ is an initial state, an element of $S$, that is $s_i \in S$,
+\item $s_0$ is an initial state and an element of $S$, i.e. $s_0 \in S$,
 \item $\delta$ is the state-transition function $\delta: S \times \Sigma \rightarrow S$ that maps combinations of states in $S$ and symbols $x$ in $\Sigma$ to a new state in $S$, and
 \item $F$ is the set of final states, a subset of $S$.
 \end{itemize}
@@ -110,9 +116,10 @@ Historically, this definition stems from FSMs formally defining the working of a
 In conjunction with a controller for each state, an FSM is called a \textsl{Hybrid System}\cite{van2000introduction} as it combines both discrete (the state) and continuous (the controller outputs) variables.
 
 \subsection{Implementation}
-A low-level robot controller is usually implemented as a loop with fixed loop time, for example 100ms for slow moving differential-wheel robots and 1ms for dynamical systems such as drones. At each start of the loop, the controller reads all sensors, then branches into the part of the code that corresponds to its current state, processes sensor information and computes actuator output, and finally sends the control commands to the actuators.
 
-Unlike a computer program that can process information as fast as possible, the robot controller needs to wait until sensor information are actually available and actuator commands are executed (i.e. that the robot has physically moved). As the robot keeps moving while computation is ongoing, it is important to run the main loop at a constant rate. As computation is usually much faster than the loop time, it might be necessary to use an internal clock to wait until the loop time is expired.
+A low-level robot controller is usually implemented as a loop with fixed loop time, for example $100ms$ for slow moving differential-wheel robots or $1ms$ for dynamical systems such as drones or humanoid robots. At each start of the loop, the controller reads all sensors, then branches into the part of the code that corresponds to its current state, processes sensor information and computes actuator output, and finally sends the control commands to the actuators.
+
+Unlike a computer program that can process information as fast as possible, a robot controller needs to wait until sensor information are actually available and actuator commands are executed (i.e. that the robot has physically moved). As the robot keeps moving while computation is ongoing, it is important to run the main loop at a constant rate. As computation is usually much faster than the loop time, it might be necessary to use an internal clock to wait until the loop time is completed.
 
 
 %@book{van2000introduction,
@@ -123,46 +130,51 @@ Unlike a computer program that can process information as fast as possible, the 
 %  publisher={Springer London}
 %}
 
-It is helpful to capture all the FSM's state transitions in a drawing as shown in \cref{fig:fsm}. In practice, FSMs are difficult to develop and maintain. As the controller is being developed and experimented with, edge cases require the addition of transitions and states. With $N$ states, there are possibly $NxN$ state transitions, and it is typical to discover necessary additional state transitions as the FSM is specified. FSMs with many transitions become difficult to depict graphically, making it difficult to visualize what the program will actually do.
+It is helpful to capture all the FSM's state transitions in a drawing as shown in \cref{fig:fsm}. In practice, FSMs are difficult to develop, debug, and maintain. As the controller is being developed and experimented with, edge cases require the addition of transitions and states. With $N$ states, there are possibly $NxN$ state transitions, and it is typical to discover necessary additional state transitions as the FSM is specified. FSMs with many transitions become difficult to depict graphically, making it difficult to visualize what the program will actually do.
 
 Whenever a state is added or removed, the programmer has to identify transitions required for the new one or modify all other states that have transitions to the one being removed, further contributing to FSM maintenance difficulty. Although behaviors such as obstacle avoidance are generic, each state also contains transitions that are specific to an application, potentially making it difficult to reuse states in other FSMs (modularity). 
-
-FSMs also have difficulties with state transition conditions that cannot be evaluated in a single time step, for example when averaging the gradient of the light sensor to robustly detect an increase or decrease. In this case, these computations need to be carefully woven into the state execution code, adding complexity and making maintenance difficult. 
-
+%
+FSMs also have difficulties with state transition conditions that cannot be evaluated in a single time step, e.g. when averaging the gradient of the light sensor to robustly detect an increase or decrease. In this case, these computations need to be carefully woven into the state execution code, adding complexity and making maintenance difficult.
 
 \section{Hierarchical Finite State Machines}\label{sec:stateflow}
-In order to make FSMs more manageable and to deal with information that needs to be processed at different time-scales, states can be grouped into clusters each with their own associated FSM, thereby creating ``super states''. This construct is also known as ``Statecharts'' \cite{harel1987statecharts}. Considering the example in \cref{fig:fsm}, each state might as well be a super-state. For example, the ``follow wall'' state might again consist of a FSM that deals with an edge case such as rounding sharp corners. An example HFSM is depicted in \cref{fig:hfsm}. State transitions between super states can be tied to states in the included FSM or be implicitly connected to all states of the included FSM, which allows leaving the super state from every state therein.
+
+In order to make FSMs more manageable and to deal with information that needs to be processed at different time-scales, states can be grouped into clusters---each with their own associated FSM, thereby creating ``super-states'' organized in hierarchical fashion. This construct is usually referred to as Hierarchical FSM (FSM) but also known as ``Statechart'' \cite{harel1987statecharts}.
+Considering the example in \cref{fig:fsm}, each state might as well be a super-state: e.g., the ``follow wall'' state may consist of an FSM that deals with an edge case such as rounding sharp corners. An example HFSM is depicted in \cref{fig:hfsm}. State transitions between super states can be tied to states in the included FSM or be implicitly connected to all states of the included FSM, which allows leaving the super state from every state therein.
 
 Super states can also be executed in parallel, providing events that lead to state transitions in other FSMs. For example, detecting whether a robot still makes progress toward a light while avoiding an obstacle might require computing a running average and dropping outliers. This is illustrated by two super-states, one for the actual light-following behavior and the other for computing a running average of the light measurement, rejecting outliers, and generating symbols that can be consumed by the light following behavior. In \cref{fig:hfsm}, we are using the character ``/" to delineate state transition conditions such as ``Light decreases'' and the symbol that is generated during the state transition (here ``LD''). These symbols can then drive state transitions in other clusters.
 
 \begin{figure}
 \centering
-    % \includegraphics[width=0.8\columnwidth]{figs/uobstacle.png}
-    \tiny
-    \def\svgwidth{1.0\textwidth}
-    \import{./figs/}{HFSM.pdf_tex}
+    \includegraphics[width=1.0\textwidth]{figs/HFSM.pdf}
+    % \tiny
+    % \def\svgwidth{1.0\textwidth}
+    % \import{./figs/}{HFSM.pdf_tex}
 \caption{A hierarchical FSM with the states from \cref{fig:fsm} as super states, a more sophisticated wall-following behavior, and signal processing for averaging the light measurement being performed in parallel. \label{fig:hfsm}}
 \end{figure}
 
 \subsection{Implementation}
-In practice, parallel HFSMs are implemented in distinct processes that run independently and asynchronously. They can communicate using an inter-process communication (IPC) framework \index{Inter-process communication}\index{IPC} such as XMLRPC or REST, which are socket-based networking protocols that allow to exchange eXtended Markup Language (XML) or JavaScript Object Notation (JSON) data structures between two processes on the same or different computers using a networking interface.
 
+In practice, HFSMs are implemented in distinct processes that run independently and asynchronously. They can communicate using an inter-process communication (IPC) framework \index{Inter-process communication}\index{IPC} such as XMLRPC or REST, which are socket-based networking protocols that allow to exchange eXtended Markup Language (XML) or JavaScript Object Notation (JSON) data structures between two processes on the same or different computers using a networking interface.
+%
 There exist many IPC frameworks that are particularly targeted at robotics and introduce abstractions for robot-specific data structures such as coordinate frames or video streams, the associated tools to manage them, and bindings for different languages to publish and subscribe to them. A prominent example is the Robot Operating System (ROS)\index{Robot Operating System}\index{ROS}.
 
-
-HFSM solve some of the problems of FSMs by increasing modularity and simplifying programmability, but still have the problem that $N$ states can lead to $N^2$ state transitions, each of which needs to be manually coded.
+HFSMs solve some of the problems of FSMs by increasing modularity and simplifying programmability, but still have the problem that $N$ states can lead to $N^2$ state transitions, each of which needs to be manually coded.
 
 \section{Behavior Trees}\label{sec:behaviortrees}
-A Behavior Tree \cite{colledanchise2018behavior} provides structure for hierarchically organizing the decision-making flow of a system that makes many of the considerations that need to be explicitly coded in an FSM implicit instead. The leaves of a Behavior Tree are ``Action Nodes'' that can represent actual discrete behaviors, such as ``Close Gripper'' or ``Find Block''. The root and internal nodes of the Behavior Tree are made up of ``Utility Nodes'' that guide the path of traversal through the tree. That which requires manual addition and removal of state transitions in an FSM can often be accomplished in a Behavior Tree by simply changing the type of an utility node from one to another. Another powerful aspect of this abstraction is that Behavior Trees specifying complex behaviors, such as ``Navigate to Kitchen", can be encapsulated within a single node of another tree.
+
+A Behavior Tree \cite{colledanchise2018behavior} provides structure for hierarchically organizing the decision-making flow of a system that makes many of the considerations that need to be explicitly coded in an FSM implicit instead. The leaves of a Behavior Tree are ``Action Nodes'' that can represent actual discrete behaviors, such as ``Close Gripper'' or ``Find Block''. The root and internal nodes of the Behavior Tree are made up of ``Utility Nodes'' that guide the path of traversal through the tree.
+What equates to manual addition and removal of state transitions in an FSM can often be accomplished in a Behavior Tree by simply changing the type of an utility node from one to another. Another powerful aspect of this abstraction is that Behavior Trees specifying complex behaviors, such as ``Navigate to Kitchen", can be encapsulated within a single node of another tree.
 
 \subsection{Node Definition and Status}
+
 In a traditional implementation, the nodes within a Behavior Tree can return any of three statuses when queried: ``Success'', ``Failure'', or ``Running''. The incorporation of a ``Running'' status allows the Behavior Tree to use behaviors that operate over longer time periods, such as a block picking behavior that persists over multiple control cycles of a robot's main processing loop, including time required to plan the end-effector's path, the time required to physically move the robot to the destination, and the time required to close the gripper. In this example, the node might return ``Failure'' if any of the individual behaviors didn't work or if the end-effector didn't successfully grasp the block by the end of the behavior, and ``Success'' otherwise. Thus, each node in the Behavior Tree needs a rigidly defined notion of ``Success'' or ``Failure'' that can be propagated throughout the Behavior Tree, informing which sequence of behaviors is executed to achieve the desired result.
 
-Unlike the Finite State Machine formalism that didn't incorporate an explicit notion of time, the ``Running'' status enables nodes to operate using the information that their child nodes may take variable amounts of time, with each discrete unit of time defined as a \textsl{tick}. This design choice simplifies the specification of control flow, and dramatically reduces the number of explicit transitions that are needed to model a system. Suffice to say, for a robot with a 100ms control loop, many of the discrete behaviors that a programmer would be interested in (such as turning 180 degrees or moving forward one meter) are likely to require more than a single program cycle and will have action nodes that run for multiple ticks.
+Unlike the Finite State Machine formalism that didn't incorporate an explicit notion of time, the ``Running'' status enables nodes to operate using the information that their child nodes may take variable amounts of time, with each discrete unit of time defined as a \textsl{tick}. This design choice simplifies the specification of control flow, and dramatically reduces the number of explicit transitions that are needed to model a system. Suffice to say, for a robot with a $100ms$ control loop, many of the discrete behaviors that a programmer would be interested in (such as turning $180$ degrees or moving forward one meter) are likely to require more than a single program cycle and will have action nodes that run for multiple ticks.
 
-Nodes may also be parameterized, allowing for information computed from one node to be passed on and used in a subsequent node. Consider building a Behavior Tree for sorting blocks on a table into bins by color: one way to organize this Behavior Tree is repeating the sequence of behaviors ``Find Block'', ``Pick Block'', ``Get Block Color'', ``Place Block in Bin'' until no blocks remain. In this case, the behaviors ``Get Block Color'' and ``Place Block in Bin'' are connected, since the color of the block will determine which bin it should be placed in. This potential for interaction between nodes enables the powerful expressivity of this tool.
+Nodes may also be parameterized, allowing for information computed from one node to be passed on and used in a subsequent node. Consider building a Behavior Tree for sorting blocks on a table into bins by color: one way to organize this Behavior Tree is repeating the sequence of behaviors ``Find Block'', ``Pick Block'', ``Get Block Color'', ``Place Block in Bin'' until no blocks remain. In this case, the behaviors ``Get Block Color'' and ``Place Block in Bin'' are connected, since the color of the block will determine which bin it should be placed in. This potential for interaction between nodes allows for powerful expressiveness of complex behaviors.
 
 \subsection{Node Types}
+
 Within a Behavior Tree, nodes can generally be classified based on their connectivity (do they have children, and if so, how many?) and function (is this a utility node that determines control flow, or is it an action node executing the action itself?). The three primary node types are \textsl{composite}, \textsl{decorator}, and \textsl{action}.
 
 \textsl{Composite nodes} have one or more children and are responsible for regulating the control flow. Three important examples of composite nodes are the \textsl{sequence node}, \textsl{selector/fallback node}, and \textsl{parallel node}. A sequence node executes each of its child nodes in order, returning ``Failure'' if a single one fails and ``Success'' after all have finished successfully. A selector (or fallback) node executes each of its child nodes in order, but returns ``Success'' once a single child node succeeds, only returning ``Failure'' if all child nodes have failed. Sequence nodes can be thought of as analogous to an \textsl{AND} conditional statement, while selector nodes are similar to an \textsl{OR} conditional statement. A parallel node has $N>1$ children and attempts to execute its child nodes in parallel, returning ``Success" if $M$ or more children succeed and failure if more than $(N-M)$ children fail, for any choice of $M\leq N$.
@@ -173,8 +185,7 @@ Within a Behavior Tree, nodes can generally be classified based on their connect
 
 \begin{table}[h!]
 	\centering
-	\begin{tabular}{ ||c c c|| }
-		\hline
+	\begin{tabular}{ |c c c| }
 		\hline
 		Node Class & Node Type & Symbol \\
 		\hline
@@ -184,15 +195,38 @@ Within a Behavior Tree, nodes can generally be classified based on their connect
 		Decorator & Decorator & $\Diamond$ \\
 		Action & Action & \fbox{Text} \\
 		\hline
-		\hline
 	\end{tabular}
 	\caption{Common Behavior Tree nodes and their symbols.}
 \end{table}
 
 \subsection{Behavior Tree Execution}
+
 For each unit of time (e.g., control cycle) that passes, a preorder tree traversal occurs where nodes are recursively visited and evaluated left-to-right, commonly described as \textsl{propagating a tick} signal through the tree. In doing so, each parent node calls on its child nodes in order to retrieve their status. If a child node returns ``Success'', the parent node will move on to its next child node. If a child node returns a status of ``Running'' then the parent node will return ``Running'' without moving on to the next child node unless it permits running multiple child nodes in parallel. If a child node returns a status of ``Failure'', its behavior will depend on the type of node of the parent, for example returning ``Failure'' if the parent is a sequence node or moving on to the next child node if it is a selector node.
 
 Consider the example of a robotic manipulator inserting a peg into a hole in \cref{BTpeg}: the first tick through the tree will trigger the \textsl{Move Peg to Surface} action. Subsequent ticks will be absorbed into this action until it returns a status other than ``Running'', at which point the next action will be triggered and the same absorption of ticks will occur in the new action being executed. If any single action node returns a status of ``Failure'', the entire behavior will result in a ``Failure'' status. A slightly more complex behavior tree is demonstrated via the \textsl{Pick Square Peg} behavior shown in \cref{fig:BTpick}, which allows the robot to check whether or not it is holding a peg already, only moving its gripper for the pick action if this check fails.
+
+\begin{figure}
+    \centering
+    \begin{forest}
+        {for tree={%
+                minimum height = 4ex,
+                minimum width = 4ex,
+                draw,
+                parent anchor=south,
+                child anchor=north,
+                align=center
+            }
+        }
+        [{\scriptsize Insert Square Peg}\\ $\longrightarrow$
+        [{\scriptsize Move Peg \\ \scriptsize to Surface}]
+        [{\scriptsize Move Peg\\ \scriptsize over hole}]
+        [{\scriptsize Rotate Peg\\ \scriptsize until aligned}]
+        [{\scriptsize Move Peg \\ \scriptsize down until \\ \scriptsize new contact}]
+        ]
+    \end{forest}
+    \caption{Behavior Tree for a peg insertion task. A sequence node triggers the execution of movement actions that align a peg over a hole and lower it until the gripper makes contact with the surface.}
+    \label{BTpeg}
+\end{figure}
 
 \begin{figure}
 	\centering
@@ -220,40 +254,20 @@ Consider the example of a robotic manipulator inserting a peg into a hole in \cr
 	\label{fig:BTpick}
 \end{figure}
 
-\begin{figure}
-	\centering
-	\begin{forest}
-		{for tree={%
-				minimum height = 4ex,
-				minimum width = 4ex,
-				draw,
-				parent anchor=south,
-				child anchor=north,
-				align=center
-			}
-		}
-		[{\scriptsize Insert Square Peg}\\ $\longrightarrow$
-		[{\scriptsize Move Peg \\ \scriptsize to Surface}]
-		[{\scriptsize Move Peg\\ \scriptsize over hole}]
-		[{\scriptsize Rotate Peg\\ \scriptsize until aligned}]
-		[{\scriptsize Move Peg \\ \scriptsize down until \\ \scriptsize new contact.}]
-		]
-	\end{forest}
-	\caption{Behavior Tree for a peg insertion task. A sequence node triggers the execution of movement actions that align a peg over a hole and lower it until the gripper makes contact with the surface.}
-	\label{BTpeg}
-\end{figure}
-
 \subsection{Implementation}
-As executing a Behavior Tree is fundamental tree traversal, a tree is the typical datastructure to store composite, decorator, and action nodes. As a large part of the mechanics of these nodes remain the same, nodes are usually implemented as classes (in an object-oriented programming sense), which need to be inherited, modified, and instantiated by the programmer. Programming a complex robotic system therefore starts with defining and implementing the basic action nodes and then recombining them with appropriate composition nodes and decorators until the robot performs as expected.  
+
+As the execution of a Behavior Tree is fundamentally a tree traversal, a tree is the ideal data structure to store composite, decorator, and action nodes. As a large part of the mechanics of these nodes remain the same, nodes are usually implemented as classes (in an object-oriented programming sense), which need to be inherited, modified, and instantiated by the programmer. Programming a complex robotic system therefore starts with defining and implementing the basic action nodes and then recombining them with appropriate composition nodes and decorators until the robot performs as expected.
 
 \section{Mission Planning}\label{sec:strips}
-So far, we have seen how reactive behaviors can be composed into more complex programs using Finite State Machines and Behavior Trees. Although Behavior Trees facilitate dealing with the exploding number of possible state transitions by making them implicit, the programmer still needs to define the entire program flow. Consider again a pick-and-place task. This time, we will not simply grasp a new item in case the object falls out of the hand, but try to find it on the table and try to pick it up from there. In a further advanced version, we might also go on and search for the object on the floor if it cannot be find on the table. But why not have the robot replace an object from a warehouse if it cannot be found, or even mail order a new version? Obviously, it is very cumbersome to foresee all these eventualities when programming a robot. We therefore need a framework to make it easier to compose behaviors in real-time. This is where \textsl{mission planning} excels.
 
-An example of mission planning is described in \cite{saito2011semantic} where a robot is tasked to deliver a sandwich. The robot initially moves to a fridge, opens it and looks for a sandwich there, and then decides to take the elevator to the sandwich store in the basement of the University of Tokyo's engineering tower. Here, the robot is not only piecing together behaviors as it goes, but also using what is known as ``semantic planning'' to select the right actions, exploiting databases of common sense knowledge in textual form. How to represent such knowledge in an efficient and general manner is an active research topic in robotics and artificial intelligence and goes beyond the scope of this introductory book. Yet, we describe the basic algorithms that will allow you to compose complex behaviors during run-time, thereby generating much more complex robot responses than could ever be accomplished using hand-coding.
+So far, we have seen how reactive behaviors can be composed into more complex programs using Finite State Machines and Behavior Trees. Although Behavior Trees facilitate dealing with the exploding number of possible state transitions by making them implicit, the programmer still needs to define the entire program flow. Consider again a pick-and-place task. This time, we will not simply grasp a new item in case the object falls out of the hand, but try to find it on the table and try to pick it up from there. In a more elaborate version, we might also go on and search for the object on the floor if it cannot be found on the table. But why not have the robot replace an object from a warehouse if it cannot be found, or even mail order a new version? Obviously, it is very cumbersome to foresee all these eventualities when programming a robot. We therefore need a framework to make it easier to compose behaviors in real-time. This is where \textsl{mission planning} excels.
+
+An example of mission planning is described in \cite{saito2011semantic}, where a robot is tasked to deliver a sandwich. The robot initially moves to a fridge, opens it and looks for a sandwich there, and then decides to take the elevator to the sandwich store in the basement of the University of Tokyo's engineering tower. Here, the robot is not only piecing together behaviors as it goes, but also using what is known as ``semantic planning'' to select the right actions, exploiting databases of common sense knowledge in textual form. How to represent such knowledge in an efficient and general manner is an active research topic in robotics and artificial intelligence and goes beyond the scope of this introductory book. However, we describe here the basic algorithms that will allow you to compose complex behaviors at run-time, thereby generating much more complex robot responses than could ever be accomplished using hand-coding.
 
 \subsection{The General Problem Solver and STRIPS}
-One of the first planning frameworks was introduced in 1959 as the ``General Problem Solver'' (GPS) \cite{newell1959report}, an idea that was popularized, refined and actually demonstrated on real robots later on as the ``STanford Research Institute Problem Solver'' (STRIPS) \cite{fikes1971strips}.
 
+One of the first planning frameworks was introduced in 1959 as the ``General Problem Solver'' (GPS) \cite{newell1959report}, an idea that was popularized, refined and actually demonstrated on real robots later on as the ``STanford Research Institute Problem Solver'' (STRIPS) \cite{fikes1971strips}.
+%
 In STRIPS, a robotic problem is composed of:
 
 \begin{enumerate}
@@ -264,10 +278,7 @@ In STRIPS, a robotic problem is composed of:
 
 An action's preconditions are a set of symbols that need to be part of the current state for the action to execute. An action's postconditions are the set of symbols the action creates or deletes, thereby affecting the state. In a nutshell, a STRIPS planner will work backwards from a desired goal state, find actions that have equivalent post-conditions, and then recursively try to satisfy these actions preconditions.
 
-For a robot to be able to get you a sandwich, a suitable goal state could be \textsc{robot has sandwich}=\textsl{true}, possible actions \textsc{pick sandwich from fridge} and \textsc{open fridge door}, and initial states \textsc{sandwich in fridge}=\textsl{true} and \textsc{fridge door closed}=\textsl{true}.  An action \textsc{open fridge door} would then require \textsc{fridge door closed}=\textsl{true} as a precondition and lead to \textsc{fridge door closed}=\textsl{false} as a postcondition. The action \textsc{pick sandwich from fridge} would require \textsc{sandwich in fridge}=\textsl{true} and \textsc{fridge door closed}=\textsl{false} as preconditions and result in \textsc{robot has sandwich}=\textsl{true}. A planner can now work backwards from the desired state to identify appropriate actions and then satisfy their preconditions recursively. In this case, the planner will discover the action \textsc{pick sandwich from fridge} and then identify \textsc{open fridge door} to satisfy the precondition \textsc{fridge door closed}=\textsl{false}.
-
-
-
+For a robot to be able to get you a sandwich, a suitable goal state could be \textsc{robot has sandwich}=\textsl{true}, some possible actions \textsc{pick sandwich from fridge} and \textsc{open fridge door}, and initial states \textsc{sandwich in fridge}=\textsl{true} and \textsc{fridge door closed}=\textsl{true}.  An action \textsc{open fridge door} would then require \textsc{fridge door closed}=\textsl{true} as a precondition and lead to \textsc{fridge door closed}=\textsl{false} as a postcondition. The action \textsc{pick sandwich from fridge} would require \textsc{sandwich in fridge}=\textsl{true} and \textsc{fridge door closed}=\textsl{false} as preconditions and result in \textsc{robot has sandwich}=\textsl{true}. A planner can now work backwards from the desired state to identify appropriate actions and then satisfy their preconditions recursively. In this case, the planner will discover the action \textsc{pick sandwich from fridge} and then identify \textsc{open fridge door} to satisfy the precondition \textsc{fridge door closed}=\textsl{false}.
 
 Formally, an instance of a STRIPS problem is a quadruple $\langle P, O, I, G \rangle$:
 \begin{itemize}
@@ -277,12 +288,11 @@ Formally, an instance of a STRIPS problem is a quadruple $\langle P, O, I, G \ra
 \item $G$ is a tuple $\langle N, M\rangle$ in which $N$ is a set of conditions that need to be true and $M$ is a set of conditions that need to be false.
 \end{itemize}
 
-Formalizing the sandwich example from above using this framework is left to the reader as an exercise. It becomes quickly clear that the devil is in the details here. For example, we have assumed that the positions of the robot are resolved by the action themselves. In practice, the STRIPS plan would also require additional preconditions on the robot's location, e.g., \textsc{robot at fridge}=\textsl{true} which would then be resolved by the planner. The observing reader might have also noticed that great care needs to be taken in determining which variables an action actually affects and specifying the precisely desired goal state. For example, the plan as described above will lead to a scenario in which the fridge door remains open.
+Formalizing the sandwich example from above using this framework is left to the reader as an exercise. It becomes quickly clear that the devil is in the details here. For example, we have assumed that the positions of the robot are resolved by the action themselves. In practice, the STRIPS plan would also require additional preconditions on the robot's location, e.g., \textsc{robot at fridge}=\textsl{true} which would then be resolved by the planner. An observant reader might have also noticed that great care needs to be taken in determining which variables an action actually affects and specifying the precisely desired goal state. For example, the plan as described above will lead to a scenario in which the fridge door remains open.
 
-A common extension in a STRIPS instance is to parametrize locations and objects. In this case, \textsc{robot at fridge} would become \textsc{robot at X}. Values for ``X'' can then be substituted at run-time, for example when evaluating the preconditions of \textsc{open fridge}. Similarly, a STRIPS plan might be formulated to satisfy hunger, substituting the sandwich with other victuals. Managing these different categories, their contexts, and tradeoffs between qualities of different outcomes becomes very challenging quickly and is an ongoing subject of research. 
+A common extension in a STRIPS instance is to parametrize locations and objects. In this case, \textsc{robot at fridge} would become \textsc{robot at X}. Values for ``X'' can then be substituted at run-time, for example when evaluating the preconditions of \textsc{open fridge}. Similarly, a STRIPS plan might be formulated to satisfy hunger, substituting the sandwich with other victuals. Managing these different categories, their contexts, and trade-offs between qualities of different outcomes becomes quickly challenging and is an ongoing subject of research.
 
-Other challenges with STRIPS planning are exogenous events that change the environment state, such as a draft that closes the fridge door after the robot has opened it or probabilistic operators that might lead to different outcomes for an operator depending on chance. These are situations that are well covered by the BT framework, making the combination of BT and STRIPS planning particularly compelling (see also \cite{colledanchise2018behavior}, Chapter 7). 
-
+Other challenges with STRIPS planning are exogenous events that change the environment state, such as a draft that closes the fridge door after the robot has opened it or probabilistic operators that might lead to different outcomes for an operator depending on chance. These are situations that are well covered by the Behavior Tree framework, making the combination of BT and STRIPS planning particularly compelling (see also \cite{colledanchise2018behavior}, Chapter 7).
 
 \section*{Take-home lessons}
 \begin{enumerate}
