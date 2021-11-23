@@ -4,18 +4,18 @@
 In its most basic implementation, sensors and actuators can be directly tied to each other, removing the need for computation. Such robots are purely reactive, thereby missing the ability to ``think'' or plan. In order to achieve more complex behavior, memory and state are needed to switch between different controllers and algorithms.
 
 This chapter introduces these basic principles as well as their implementation, starting with basic reactive controllers (\cref{sec:braitenberg}), then introduces more advanced concepts that let the robot make basic ``if'' \ldots ``then'' decisions using Finite State Machines (FSM) in \cref{sec:fsm,sec:stateflow}, and finally introduce advanced concepts such as behavior trees and semantic planning in \cref{sec:behaviortrees,sec:strips}.
-The goals of this chapter are:
+The goals of this chapter are to introduce:
 
 \begin{itemize}
-    \item \td{Nikolaus, fill it up}
-    \item \td{Nikolaus, fill it up}
-    \item \td{Nikolaus, fill it up}
+    \item the basic control loop that allows robots to react to their environment, 
+    \item ways to introduce state that allow robots to switch their behavior, 
+    \item basic concepts that allow the robot to reason about its discrete states and pick the next action. 
 \end{itemize}
 
 \section{Reactive control}\label{sec:braitenberg}
 
 A wide variety of robotic behaviors can be accomplished by directly connecting sensor input to actuator output. These behaviors can even be accomplished without a computer, that is, using analog electronics that provide appropriate conditioning.
-Simple autonomous robots that use these concepts have been demonstrated as early as $1953$ \cite{walter1953living} and have become known as ``tortoises''. For example, by tying the output of a light sensor to a motor controller, the motor turns faster when the light is brighter. Using an inverse relationship between sensor and motor, the motor will turn slower when the light is brighter. When used in a differential wheel configuration with two motors and two light sensors, such a robot can be built to either drive toward or away from the light.
+Simple autonomous robots that use these concepts have been demonstrated as early as 1953 \cite{walter1953living} and have become known as ``tortoises''. For example, by tying the output of a light sensor to a motor controller, the motor turns faster when the light is brighter. Using an inverse relationship between sensor and motor, the motor will turn slower when the light is brighter. When used in a differential wheel configuration with two motors and two light sensors, such a robot can be built to either drive toward or away from the light.
 
 Formally, we can express the light following behavior---also known as \textsl{phototaxis}\index{Phototaxis}---via the following relationship between
 the left and right wheel speeds $\dot{\phi_l}$ and $\dot{\phi_r}$ and the measurements of the right and left light sensors $\lambda_r$ and $\lambda_l$:
@@ -82,7 +82,7 @@ The limitations of a reactive control scheme are evident when considering that a
 
 In order to avoid this situation, the robot needs to memorize its previous state and switch behaviors accordingly. For example, in addition to the basic combined avoidance and following behavior (``avoid and follow''), we can introduce an additional term (``wall following') in which the robot uses its proximity sensors to maintain a constant distance to a wall. In order to switch from one to the other behavior, we need to change the constant gains into dynamic ones that change their value based on other observations the robot makes. For example, the robot could estimate its progress by monitoring whether its light sensor is constantly increasing, and if it is not, inhibiting phototaxis behavior and emphasizing wall following.
 
-Designing reactive systems with time-dependent behavior and state is potentially realizable with very simple electronics; for this reason, we've seen real-world implementations of such mechanisms, e.g. in modern robot vacuums.
+Designing reactive systems with time-dependent behavior and state is potentially realizable with very simple electronics; for this reason, we've seen real-world implementations of such mechanisms, e.g. in robot vacuum cleaners.
 However, it very quickly becomes difficult to manage. It is therefore desirable to establish discrete abstractions for various behaviors, which can be more easily managed and understood by a programmer.
 
 \section{Finite State Machines}\label{sec:fsm}
