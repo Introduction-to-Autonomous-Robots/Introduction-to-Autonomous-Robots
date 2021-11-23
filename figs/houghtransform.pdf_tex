@@ -57,8 +57,8 @@
     \put(0.76036472,0.00053217){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\theta$\end{tabular}}}}%
     \put(0.51827051,0.20022572){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\rho$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{houghtransform.pdf}}%
-    \put(0.47313423,0.00189993){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}x\end{tabular}}}}%
-    \put(0.00946224,0.34794424){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}y\end{tabular}}}}%
+    \put(0.47313423,0.00189993){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(0.00946224,0.34794424){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{houghtransform.pdf}}%
     \put(0.11658366,0.05762108){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\rho$\end{tabular}}}}%
     \put(0.21031265,0.03581184){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\theta$\end{tabular}}}}%
