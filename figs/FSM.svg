@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="FSM.svg"
-   inkscape:version="1.0 (4035a4f, 2020-05-01)"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
    id="svg2104"
    version="1.1"
    viewBox="0 0 208.31744 66.182938"
    height="66.182938mm"
-   width="208.31744mm">
+   width="208.31744mm"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2098">
     <marker
@@ -121,8 +121,8 @@
      inkscape:window-maximized="0"
      inkscape:window-y="0"
      inkscape:window-x="0"
-     inkscape:window-height="1120"
-     inkscape:window-width="1792"
+     inkscape:window-height="1045"
+     inkscape:window-width="1715"
      fit-margin-bottom="0"
      fit-margin-right="0"
      fit-margin-left="0"
@@ -133,15 +133,16 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="394.42475"
-     inkscape:cx="329.51538"
+     inkscape:cy="141.54583"
+     inkscape:cx="329.80646"
      inkscape:zoom="1.0703247"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
      bordercolor="#666666"
      pagecolor="#ffffff"
-     id="base">
+     id="base"
+     inkscape:pagecheckerboard="0">
     <sodipodi:guide
        id="guide2759"
        orientation="0,-1"
@@ -155,7 +156,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -167,18 +167,18 @@
     <text
        id="text2672"
        y="24.437944"
-       x="67.584282"
+       x="60.175941"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:0.55;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        xml:space="preserve"><tspan
          style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
          y="24.437944"
-         x="67.584282"
+         x="60.175941"
          id="tspan2670"
          sodipodi:role="line">Follow</tspan><tspan
          id="tspan2705"
          style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
          y="30.337057"
-         x="67.584282"
+         x="60.175941"
          sodipodi:role="line">light</tspan></text>
     <circle
        r="13.472353"
@@ -189,16 +189,16 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:0.55;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="125.30156"
+       x="116.30573"
        y="24.696802"
        id="text2672-0"><tspan
          sodipodi:role="line"
          id="tspan2670-9"
-         x="125.30156"
+         x="116.30573"
          y="24.696802"
          style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583">Avoid</tspan><tspan
          sodipodi:role="line"
-         x="125.30156"
+         x="116.30573"
          y="30.595915"
          style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
          id="tspan2705-3">obstacle</tspan></text>
@@ -211,18 +211,18 @@
     <text
        id="text2672-0-5"
        y="24.526781"
-       x="191.24197"
+       x="183.83374"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:0.55;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        xml:space="preserve"><tspan
          id="tspan2705-3-2"
          style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
          y="24.526781"
-         x="191.24197"
+         x="183.83374"
          sodipodi:role="line">Follow</tspan><tspan
          id="tspan2757"
          style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
          y="30.425894"
-         x="191.24197"
+         x="183.83374"
          sodipodi:role="line">wall</tspan></text>
     <circle
        r="13.472353"
@@ -264,11 +264,11 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:0.55;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="10.01734"
+       x="4.7256742"
        y="28.379726"
        id="text2672-5"><tspan
          sodipodi:role="line"
-         x="10.01734"
+         x="4.7256742"
          y="28.379726"
          style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
          id="tspan2705-0">Stop</tspan></text>
@@ -281,65 +281,65 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:0.55;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="96.51413"
+       x="87.518288"
        y="-3.5089619"
        id="text2672-05"><tspan
          sodipodi:role="line"
-         x="96.51413"
+         x="87.518288"
          y="-3.5089619"
          style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
          id="tspan2705-7">Obstacle</tspan><tspan
          id="tspan3299"
          sodipodi:role="line"
-         x="96.51413"
+         x="87.518288"
          y="2.3901501"
          style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583">detected</tspan></text>
     <text
        id="text2672-05-7"
        y="53.50478"
-       x="96.424194"
+       x="87.428352"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:0.55;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        xml:space="preserve"><tspan
          style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
          y="53.50478"
-         x="96.424194"
+         x="87.428352"
          sodipodi:role="line"
          id="tspan3299-1">Obstacle</tspan><tspan
          id="tspan3324"
          style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
          y="59.403893"
-         x="96.424194"
+         x="87.428352"
          sodipodi:role="line">free</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:0.55;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="160.91113"
+       x="151.91542"
        y="-2.8166854"
        id="text2672-05-7-9"><tspan
          sodipodi:role="line"
-         x="160.91113"
+         x="151.91542"
          y="-2.8166854"
          style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
          id="tspan3324-4">Light </tspan><tspan
          id="tspan3349"
          sodipodi:role="line"
-         x="160.91113"
+         x="151.91542"
          y="3.0824265"
          style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583">decreases</tspan></text>
     <text
        id="text2672-05-7-9-6"
        y="52.763184"
-       x="160.40846"
+       x="151.41275"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:0.55;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        xml:space="preserve"><tspan
          id="tspan3324-4-4"
          style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
          y="52.763184"
-         x="160.40846"
+         x="151.41275"
          sodipodi:role="line">Light </tspan><tspan
          style="font-size:4.23333px;text-align:center;text-anchor:middle;stroke-width:0.264583"
          y="58.662296"
-         x="160.40846"
+         x="151.41275"
          sodipodi:role="line"
          id="tspan3349-8">increases</tspan></text>
   </g>
