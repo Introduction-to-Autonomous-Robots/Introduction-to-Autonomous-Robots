@@ -111,7 +111,7 @@ In all, there is no `silver bullet' algorithm or heuristic and even the choice o
 \subsection{Rapidly Exploring Random Trees}
 \screencast{https://youtu.be/Ob3BIJkQJEw}{rrt}
 
-Let $ \mathcal{X}$ be a $d$-dimensional state space. It can be helpful to think of this as either the robot's state given in terms of translation and rotations ($6$ dimensions), a subset thereof, or the joint space with one dimension per joint---there exist path planning algorithms for either joint-space or task-space abstractions. Let $ \mathcal{G} \subset \mathcal{X}$ be a $d-$dimensional sphere in the state space that is considered to be the goal, \texttt{max\_dist} the longest permissible edge length, \texttt{t} the allowed time, \texttt{k} the maximum number of vertices to allow in the tree, and \texttt{goal\_bias} the percentage of the time the algorithm should try to connect to a goal state. An RRT planner would follow the below pseudo-code:
+Let $ \mathcal{X}$ be a $d$-dimensional state space. It can be helpful to think of this as either the robot's state given in terms of translation and rotations ($6$ dimensions or a subset thereof), or the joint space with one dimension per joint---there exist path planning algorithms for either joint-space or task-space abstractions. Let $ \mathcal{G} \subset \mathcal{X}$ be a $d-$dimensional sphere in the state space that is considered to be the goal, \texttt{max\_dist} the longest permissible edge length, \texttt{t} the allowed time, \texttt{k} the maximum number of vertices to allow in the tree, and \texttt{goal\_bias} the percentage of the time the algorithm should try to connect to a goal state. An RRT planner would follow the below pseudo-code:
 
 \begin{center}
 \begin{minipage}{0.8\linewidth}
@@ -119,7 +119,7 @@ Let $ \mathcal{X}$ be a $d$-dimensional state space. It can be helpful to think 
 Tree=Init(X, G, start, max_dist, t, k, goal_bias);
 iteration = 0
 WHILE (ElapsedTime() < t AND iteration < k 
-AND NoGoalFound(Tree,G)) DO
+AND NoGoalFound(Tree,G)) DO:
  iteration = iteration + 1
  IF RandomPercentage() < goal_bias THEN
   q_rand = SampleRandomGoal(G);
@@ -139,39 +139,46 @@ return Tree
 \end{minipage}
 \end{center}
 
-This process can be iterated as long as time allows, and can be implemented with a subset of the input parameters provided above (e.g., without a maximum number of vertices, a maximum timeout duration, or a \texttt{goal\_bias}). RRT is known as an \textsl{Anytime algorithm}\index{Anytime algorithm}, i.e., any interruption would still provide some kind of solution---in this case, a partial graph discretization of the state space. Given a suitable distance metric, the path cost can be stored at each node of the tree, allowing to track the shortest path to goal in case there are multiple vertices in the goal region.
+This process can be iterated as long as time allows, and can be implemented with a just subset of the input parameters provided above (e.g., without a maximum number of vertices, a maximum timeout duration, or a \texttt{goal\_bias}). RRT is known as an \textsl{Anytime algorithm}\index{Anytime algorithm}, i.e., any user interruption of its execution would still provide some kind of solution---in this case, a partial graph discretization of the state space. Given a suitable distance metric, the path cost can be stored at each node of the tree, allowing to track the shortest path to goal in case there are multiple vertices in the goal region.
 %the cost-to-goal can be stored at each node of the tree (much easier if growing the tree from the goal to start), which allows retrieving the shortest path easily. 
-There are three key points in this algorithm:
+There are four key points in this algorithm, which will be discussed below:
 
 \begin{enumerate}
     \item determining the next point \texttt{q\_rand} to add to the tree (\texttt{SampleRandomGoal}, \texttt{SampleRandomState}, and \texttt{Extend});
     \item finding out where and how to connect this point to the tree taking into account the robot kinematics (\texttt{NearestVertex}, \texttt{CreatePath});
     \item testing whether this path is suitable (\texttt{IsAllowablePath})---i.e., collision-free;
-    \item smoothing the path.
+    \item smoothing the path (not shown in the algorithm).
 \end{enumerate}
 
 \paragraph{Selecting the next best point.}
 
-As shown in the above pseudo-code, a simple solution for step $\#1$ is to randomly select a point in the state space and connect it to the closest existing point in the tree. This requires iterating over all nodes in the tree and calculating their distance to the candidate point.
-The selection of the right data structure for storing the graph in memory may reduce the the computational costs to be on average sub-linear in the number of vertices. Other solutions assign preference to nodes with fewer out-degrees (i.e. those without many connections), and choose points in their vicinity.
-Importantly, both approaches allow to quickly explore the entire state space; once a new point is sampled, the \texttt{Extend} function uses the \texttt{max\_dist} parameter to limit the maximum edge length, replacing \texttt{q\_rand} with a point on the line connecting \texttt{q\_nearest} and \texttt{q\_rand} that is \texttt{max\_dist} away from \texttt{q\_nearest}.
-%
-If there are constraints imposed on the robot's path---e.g., if the robot needs to hold a cup and therefore is not supposed to rotate its wrist---this dimension can simply be taken out of the state space.
-
-Once a possible path is found, the space to be sampled from can be reduced to the ellipsoid that bounds the maximal path-length. This ellipsoid can be constructed by mounting a wire of the maximum path length between start and goal and pushing it outward with a pen. Intuitively, only points that are contained by this ellipsoidal area can provide a shorter path than the one currently known, so it is unproductive to attempt to grow the tree elsewhere. This approach is particularly effective when running multiple copies of the same planner in parallel and exchanging the shortest paths once they are found \cite{otte2012}.
+As shown in the above pseudo-code, a simple approach is to randomly select a point in the state space and connect it to the closest existing point in the tree.
+Other solutions may assign preference to nodes with few out-degrees (i.e. those without many connections), and choose points in their vicinity in order to facilitate expansion in under-explored regions of the state space.
+Importantly, both approaches allow to quickly explore the entire state space; if there are constraints imposed on the robot's path---e.g., if the robot needs to hold a cup and therefore is not supposed to rotate its wrist---this dimension can simply be taken out of the state space and fixed at runtime.
 
 \paragraph{Connecting points to the tree.}
 
-Typically, the new point \texttt{q\_rand} should be connected to the closest point already in the tree or to the goal. This can be done by calculating the distance to all points already in the tree. However, following this method does not guarantees that the shortest path will be found.
-As an alternative, RRT*\index{RRT*} grows the tree in a way that always minimizes the overall path length from the root to every vertex. This is done in two steps: first by connecting new vertices in an optimal way and second by rewiring the tree to make use of this new vertex. By considering all points in the tree within a $d-$dimensional sphere (on a 2D map, $d=2$, i.e. a circle) from a fixed radius from each added vertex and finding the point that minimizes the overall path length to the start (instead of simply the nearest vertex), we can guarantee that the new vertex is connected on the shortest reachable path from the root of the tree. In the rewiring step, vertices near the newly added vertex are checked to see if an edge from the new vertex to them would result in a shorter path than from their current parent vertex. If this is true, and the edge is allowable (i.e., not in collision or within the physical abilities of the robot), the graph is rewired so the existing vertex is connected with the new vertex as its parent, and its previous parent edge is removed.
+Intuitively, the new point \texttt{q\_rand} should be connected to the closest point already in the tree or to the goal.
+This requires iterating over all nodes in the tree and calculating their distance to the candidate point \texttt{q\_rand}, which is a computationally expensive process; the resulting point \texttt{q\_nearest} is the one with the shortest distance.
+The selection of the right data structure for storing the graph in memory may reduce the computational cost to be on average sub-linear in the number of vertices.
 
-This step is also Adding a point to the tree is also a good time to take into account the specific kinematics of a robot, for example a car. Here, a local planner can be used to generate a suitable trajectory that takes into account the orientation of the vehicle at each point in the tree.
+Importantly, following this method does not guarantee that the shortest path will be found.
+As an alternative, RRT*\index{RRT*} grows the tree in a way that always minimizes the overall path length from the root to every vertex.
+This is done in two steps.
+First, only points in the tree within a $d-$dimensional sphere (on a 2D map, $d=2$, i.e. a circle) of fixed radius from \texttt{q\_rand} are considered, and the point that minimizes the overall path length from the start configuration (rather than simply the shortest distance from \texttt{q\_rand}) is found. With this step, we can guarantee that the new vertex \texttt{q\_rand} is connected to the shortest reachable path from the root of the tree.
+Second, a \textsl{rewiring} step occurs where vertices near \texttt{q\_rand} are evaluated to inspect if an edge between them and \texttt{q\_rand} would be shorter than the current edge. If this is true and the edge is allowable (i.e., not in collision nor outside of the physical abilities of the robot), the graph is rewired so that the newfound vertex becomes the new parent of \texttt{q\_rand}.
+
+Once the nearest vertex is found, the \texttt{Extend} function uses the \texttt{max\_dist} parameter to limit the maximum edge length, replacing \texttt{q\_rand} with a point \texttt{q\_new} on the line connecting \texttt{q\_nearest} and \texttt{q\_rand} that is \texttt{max\_dist} away from \texttt{q\_nearest}.
+%
+During this step, it is also a good time to take into account the specific kinematics of a robot and its motion capabilities. In the example of a car, a local planner can be used to generate a suitable trajectory that takes into account the orientation of the vehicle at each point in the tree.
 
 \paragraph{Collision checking.}
 
-Efficient algorithms for testing collisions deserve a dedicated section. While the problem is intuitive in configuration-space 2D planning and can be solved using a simple point-in-polygon test (since the robot reduces to a point), this issue becomes more involved for manipulators that are essentially multiple rigid bodies connected together and that may be subject to self-collision.
+Efficient algorithms for testing collisions deserve a dedicated section. While the problem is intuitive in configuration-space 2D planning and can be solved using a simple point-in-polygon test (since the robot reduces to a point), this issue becomes more involved for manipulators that are essentially multiple rigid bodies connected together and that may be subject to self-collisions.
 
-Typically, collision checking takes up to 90\% of the execution time a the path planning problem; therefore, methods that aim at reducing computational cost are desirable. For example, the ``lazy collision evaluation''\index{Lazy collision avoidance} algorithm differs from standard collision checking in that, rather than checking every point for a possible collision, it first finds a suitable path. Only after a path is found does it check every segment of this path for collisions. Segments in collision are deleted and the algorithm continues, but only collision-free segments are maintained.
+Typically, collision checking takes up to $90\%$ of the execution time of a path planning problem; therefore, methods that aim at reducing computational cost are desirable. For example, the ``lazy collision evaluation''\index{Lazy collision avoidance} algorithm differs from standard collision checking in that it does not evaluate every point for a possible collisions. Rather, it first finds a suitable path, and only after a path is found it evaluates every edge for collisions. Segments in collision are deleted and the algorithm continues, but only collision-free segments are maintained.
+
+Once a possible path is found, the sampling space can be reduced to an ellipsoid that bounds the maximal path length. This ellipsoid can be constructed by mounting a wire of the maximum path length between start and goal and pushing it outward with a pen. Intuitively, only points that are contained by this ellipsoidal area can provide a shorter path than the one currently known, so it becomes a waste of time to grow the tree in areas of the state space that are outside of this ellipsoid. This approach is particularly effective when running multiple copies of the same planner in parallel and exchanging the shortest paths once they are found \cite{otte2012}.
 
 \paragraph{Path smoothing.}
 
@@ -179,7 +186,13 @@ As path planning randomly samples from discrete and arbitrarily coarse maps, the
 When combined with dynamics, this approach is known as \textsl{model-predictive control}\index{Model-predictive control}. Remember to always to check if the resulting paths are still collision-free!
 
 \section{Planning at different length scales}
-In practice, no one map representation and planning algorithm might be sufficient. Planning a route for a car, for example, might involve a coarse search over the street network (like one performed by your preferred mapping and navigation app), but not involve planning which lane to actually choose. Planning lanes and how to navigate round-abouts and intersections will necessitate another layer of discrete planning. It may even be preferable to use a sampling-based algorithm to determine how to actually move the robot within a lane and avoid local obstacles. Finally, trajectories need to be turned into wheel speeds and steering angles, possibly using some form of feedback control. This hierarchy is depicted in \cref{fig:planninglayers}. Here, downward-pointing arrays indicate input that one planning layer provides to the one below. Upward-pointing arrows instead indicate exceptions that cannot be handled by the lower levels. For example, a feedback controller cannot handle obstacles well, requiring the sampling-based planning layer to come up with a new trajectory. Should the entire road be blocked, this planner would need to hand-off control the lane-based planner. A similar case can be made for manipulating robots, which also need to combine multiple different representations and controllers to plan and execute trajectories efficiently.
+
+The reality of performing complex, autonomous behaviors in realistic scenarios is that, in practice, no one map representation and planning algorithm might be sufficient.
+Planning a route for a car, for example, is a multi-step process wherein robot autonomy interleaves with human intelligence: as detailed in \cref{fig:planninglayers}, a hierarchy of increasingly granular map representations and path planning algorithm is needed.
+First, a coarse search is performed over the street network (by e.g. your preferred mapping and navigation app), followed by a more precise planner that determines which lanes to choose and how to navigate roundabouts and intersections; in both these layers of abstraction, graph-based planning algorithms are ideal.
+Then, a sampling-based algorithm may be used to determine how to actually move the car between lanes and what trajectory to use to avoid obstacles.
+Finally, such trajectories need to be turned into wheel speeds and steering angles---possibly using some form of feedback control.
+In \cref{fig:planninglayers}, downward-pointing arrows indicate the input that one planning layer provides to the one below, whereas upward-pointing arrows instead indicate exceptions that cannot be handled at the lower levels. For example, a feedback controller cannot handle obstacles, requiring the sampling-based planning layer to come up with a new trajectory. Should the entire road be blocked, this planner would need to hand-off control the lane-based planner. A similar case can be made for manipulating robots, which also need to combine multiple different representations and controllers to plan and execute trajectories efficiently.
 
 \begin{figure}
     \centering
@@ -192,27 +205,25 @@ In practice, no one map representation and planning algorithm might be sufficien
 
 Note that this representation does not include a reasoning level that encodes traffic rules and common sense. While some of these might be encoded using cost-functions, such as maximizing distance from obstacles or insuring smooth riding, other more complex behaviors such as adapting driving in the presence of cyclists or properties of the ground need to be implemented in an additional vertical layer that has access to all planning layers.
 
-
 \section{Other path planning applications}
 
-Once the environment has been discretized into a graph, we can employ other algorithms to plan desirable robot trajectories. For example, floor coverage can be achieved by performing a depth-first search (DFS) or a breadth-first-search (BFS) on a graph where each vertex has the size of the coverage tool of the robot. ``Coverage'' is not only interesting for cleaning a floor: the same algorithms can be used to perform an exhaustive search of a configuration space, such as in the example shown in \cref{fig:inversekinematics}, where we plotted the error of a manipulator arm in reaching a desired position over its configuration space. Finding a minimum in this plot using an exhaustive search solves the inverse kinematics problem. Similarly, the same algorithm can be used to systematically follow all links on a website till a desired depth (or actually retrieving the entire world-wide web).
+Once the environment has been discretized into a graph, we can employ other algorithms to plan desirable robot trajectories. For example, floor coverage can be achieved by performing a depth-first search (DFS) or a breadth-first-search (BFS) on a graph where each vertex has the size of the coverage tool of the robot. ``Coverage'' is not only interesting for cleaning a floor: the same algorithms can be used to perform an exhaustive search of a configuration space, such as in the example shown in \cref{fig:inversekinematics}, where we plotted the error of a manipulator arm in reaching a desired position over its configuration space. Finding a minimum in this plot using an exhaustive search solves the inverse kinematics problem. Similarly, the same algorithm can be used to systematically follow all links on a website up to a desired depth (or actually retrieving the entire world-wide web).
 
 Doing a DFS or a BFS might generate efficient coverage paths, but they are far from optimal as many vertices might be visited twice. A path that connects all vertices in a graph but passes every vertex only once is known as a \textsl{Hamiltonian Path}.\index{Hamiltonian Path} A Hamiltonian path that returns to its starting vertex is known as a Hamiltonian Cycle. This problem is also known as the Traveling Salesman Problem (TSP), in which a route needs to be calculated that visits every city on his tour only once and is known to be NP Complete.\index{Traveling Salesman Problem}
 
 \section{Summary and Outlook}
-Path planning is an ongoing research problem. Finding collision free paths for mechanisms with high degrees of freedom such as multiple arms operating in a common space, multi-robot systems, or systems involving dynamics (and therefore adding the derivatives of the state variables to the planning problem) might take unacceptably long to solve.
 
-Although sampling-based path planners can drastically speed up the time to find some solution, they are not optimal and struggle with specific situations such as narrow passages. There is no ``silver bullet'' algorithm for solving all path planning problems and heuristics that lead to massive speed-up in one scenario might be detrimental in others. Also, algorithmic parameters are mostly ad-hoc and correctly tuning them to a specific environment might drastically increase performance.
-
+Path planning is an ongoing research problem. Finding collision-free paths for mechanisms with high degrees of freedom (such as multiple arms operating in a shared space, multi-robot systems, or systems involving dynamics) is still a computationally intensive problem.
+Although sampling-based path planners can drastically speed up the time to find some solution, they are not optimal and struggle with algorithm-specific concerns such as navigating in narrow passages. There is no ``silver bullet'' algorithm for solving all path planning problems and heuristics that lead to massive speed-up in one scenario might be detrimental in others. Also, algorithmic parameters are mostly ad-hoc and correctly tuning them to a specific environment may drastically increase performance.
 
 \section*{Take-home lessons}
 \begin{itemize}
-\item The first step in path planning is choosing a map representation that is appropriate to the application.
-\item The second step is to reduce the robot to a point-mass, which allows planning in the configuration space.
-\item This allows the application of generic shortest path finding algorithms, which have applications in a large variety of domains, not limited to robotics.
+\item The first step in path planning is choosing a map representation that is appropriate to the application (\cref{chap:mapping}).
+\item The second step is to reduce the robot to a point-mass, which allows planning in the configuration space (or C-space).
+\item This allows the application of general-purpose shortest path graph-based algorithms, which have applications in a large variety of domains and that are not limited to robotics.
 \item A sampling-based planning algorithm finds paths by sampling random points in the environment. Heuristics are used to maximize the exploration of space and bias the direction of search. This makes these algorithms fast, but neither optimal nor complete.
-\item As the resulting paths are random, multiple trials might lead to totally different results.
-\item There is no one-size-fits-all algorithm for a path planning algorithm and care must be taken to select the right paradigm (single-query vs.\ multi-query), heuristics, and parameters.
+\item As the resulting paths are random, multiple trials might lead to entirely different results.
+\item There is no one-size-fits-all algorithm for a path planning algorithm and care must be taken to select the right paradigm (e.g. single-query vs. multi-query), heuristics, and parameters.
 \end{itemize}
 
 \section*{Exercises}\small
@@ -225,7 +236,7 @@ Although sampling-based path planners can drastically speed up the time to find 
 
 \item What other practical runtime concerns must one consider besides computational complexity alone when doing sampling based motion planning? Can you suggest ways to deal with these other concerns?
 
-\item Write a program that can read in a simple map provided as a textfile where '1' indicate obstacles and '0' indicates free space.
+\item Write a program that can read in a simple map provided as a textfile where '\texttt{1}' indicate obstacles and '\texttt{0}' indicates free space.
 \begin{enumerate}
 \item Implement Dijkstra's algorithm to find the shortest path between any two given points in free space.
 \item Implement A* to find the shortest path between any two given points.
