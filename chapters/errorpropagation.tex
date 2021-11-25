@@ -179,47 +179,48 @@ $$
 P(z_t|x_{0:t}, z_{1:t-1}, u_{1:t}) = P(z_t|x_t)
 $$
 
-We will now derive a recursive definition for belief that makes iteratively computing state belief over a time history of actions and observations tractable. Beginning with our initial definition of belief, we will apply Bayes rule (B), the Markov property (M), the law of total probability (T), and recursion (R) to achieve our goal. We will use $c$ to denote the normalizing constant (from the denominator in applying Bayes rule), which is the same for $Bel(x_t)$ for all $x_t$.
-\begin{eqnarray}
-	Bel(x_t) = P(x_t|u_1,z_1,u_2,z_2,...,u_t,z_t)\\
-	\textrm{B: } Bel(x_t) = c * P(z_t|x_t,u_1,z_1,u_2,z_2,...,u_t,z_t)*P(x_t|u_1,z_1,u_2,z_2,...,u_t)\\
-	\textrm{M: } Bel(x_t) = c * P(z_t|x_t)*P(x_t|u_1,z_1,u_2,z_2,...,u_t)\\
-	\textrm{T:} Bel(x_t) = c * P(z_t|x_t)*  \int{P(x_t|u_1,z_1,u_2,z_2,...,u_t,x_{t-1})*P(x_{t-1}|u_1,z_1,u_2,z_2,...,z_{t-1},u_t)dx_{t-1}}\\
-	\textrm{M: } Bel(x_t) = c * P(z_t|x_t)*  \int{P(x_t|u_t,x_{t-1})*P(x_{t-1}|u_1,z_1,u_2,z_2,...,z_{t-1})dx_{t-1}}\\
-	\textrm{R: } Bel(x_t) = c * P(z_t|x_t) * \int{P(x_t|u_t,x_{t-1})*Bel(x_{t-1})dx_{t-1}}
-\end{eqnarray}
+We will now derive a recursive definition for belief that makes iteratively computing state belief over a time history of actions and observations tractable. Beginning with our initial definition of belief, we will apply Bayes rule, the Markov property, the law of total probability, and recursion to achieve our goal. We will use $c$ to denote the normalizing constant (from the denominator of Bayes rule), which is the same for all $x_t$.
+\begin{align}
+	Bel(x_t) = {}&  P(x_t|u_1,z_1,...,u_t,z_t)\\
+	Bel(x_t) = {}& c * P(z_t|x_t,u_1,z_1,...,u_t,z_t)*P(x_t|u_1,z_1,...,u_t)\\
+	Bel(x_t) = {}& c * P(z_t|x_t)*P(x_t|u_1,z_1,...,u_t)\\
+	\begin{split}
+	Bel(x_t) = {}& c * P(z_t|x_t) *\\&  \int{}P(x_t|u_1,z_1,...,u_t,x_{t-1})*P(x_{t-1}|u_1,z_1,...,z_{t-1},u_t)dx_{t-1}
+	\end{split}\\
+	Bel(x_t) = {}& c * P(z_t|x_t)*  \int{P(x_t|u_t,x_{t-1})*P(x_{t-1}|u_1,z_1,...,z_{t-1})dx_{t-1}}\\
+	Bel(x_t) = {}& c * P(z_t|x_t) * \int{P(x_t|u_t,x_{t-1})*Bel(x_{t-1})dx_{t-1}}
+\end{align}
 
 This final equation is remarkable because it allows us to perform a belief update for a given state by incorporating a sensor measurement and/or a motion prediction based on an action we took. With this formulation, we can define an algorithm for belief updates that takes our current belief and an array of action and observation data as inputs, returning an updated belief that incorporates this information.
 
-\begin{verbatim}
-BayesFilter(Belief Bel, Data d):
-c = 0
-while d is not empty:
-  if (d[0] is a sensor measurement):
-    z = d[0]
-    for all $x \in X$:
-      Bel'(x) = P(z|x)Bel(x)
-      c += Bel'(x)
-    for all $x \in X$:
-      Bel'(x) = $c^{-1}$Bel'(x)
-  elif (d[0] is an action):
-    u = d[0]
-    for all $x \in X$:
-      Bel'(x) = $\int{P(x|u,x_{t-1})*Bel(x_{t-1})dx_{t-1}}$
-  Bel = Bel'
-  d.pop(0)
-return Bel
-\end{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}, codes={\catcode`$=3\catcode`^=7\catcode`_=8}]
+BayesFilter(Belief Bel, Data d, Set of States X):
+  while d is not empty:
+    c = 0
+    if (d[0] is a sensor measurement):
+      z = d.pop(0)
+      for all $x \in X$:
+        Bel'(x) = P(z|x)Bel(x)
+        c += Bel'(x)
+      for all $x \in X$:
+        Bel'(x) = $c^{-1}$*Bel'(x)
+    elif (d[0] is an action):
+      u = d.pop(0)
+      for all $x \in X$:
+        Bel'(x) = $\int{}P(x|u,x_{t-1})*$Bel$(x_{t-1})dx_{t-1}$
+    Bel = Bel'
+  return Bel
+\end{Verbatim}
 
-This powerful idea of iteratively incorporating sensor measurements and motion predictions underpins a family of state estimation methods. In the sections that follow, we will extend this concept to be applicable in contexts that we often find robots: infinitely large, continuous state spaces that we cannot exhaustively iterate over.
+This powerful idea of iteratively incorporating sensor measurements and motion predictions underpins an entire family of state estimation methods. In the sections that follow, we will extend this concept to be applicable in contexts that we often find robots: infinitely large, continuous state spaces that we cannot exhaustively iterate over.
 
 \section{The Kalman Filter}
-To overcome the limitations of the Bayes filter, we will consider modeling our belief distribution using a family of probability distributions that can be parameterized, as opposed to defining our belief distribution in a discrete point-wise manner. To motivate our choice of distribution family, we turn to the Central Limit Theorem\index{Central Limit Theorem}, which stipulates that random variables that are determined by the sum of lots of small effects are normally distributed. In other words, given an infinite sequence of independent random variables $X_1, X_2, ...$, with mean $E[X_i]=\mu$ and variance $E[X_i-\mu]=\sigma^2$. Let the value $Z_n$ be defined for $n$ random variables as follows:
+To overcome the limitations of the Bayes filter, we will consider modeling our belief distribution using a family of probability distributions that can be parameterized, as opposed to defining our belief distribution in a discrete point-wise manner. To motivate our choice of distribution family, we turn to the Central Limit Theorem\index{Central Limit Theorem}, which stipulates that random variables that are determined by the sum of lots of small effects are normally distributed. In other words, given an infinite sequence of independent random variables $X_1, X_2, ...$, with $E[X_i]=\mu$ (mean) and $E[X_i-\mu]=\sigma^2$ (variance). Let the value $Z_n$ be defined for $n$ random variables as follows:
 $$
 Z_n = \frac{(X_1+...+X_n)-n\mu}{\sigma\sqrt{n}}
 $$
 As $n\rightarrow \infty$, $Z_n$ is distributed according to the zero-mean, unit-variance Gaussian 
-$$\mathcal{N}(0,1)$$.
+$\mathcal{N}(0,1)$.\\
 
 The goals of this section are:
 
