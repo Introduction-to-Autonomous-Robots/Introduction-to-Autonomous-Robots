@@ -1,6 +1,6 @@
 %% Creator: Inkscape 1.0 (4035a4f, 2020-05-01), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'pick-and-place.pdf' (pdf, eps, ps)
+%% Accompanies image file 'peg-in-hole.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{659.44478673bp}%
+    \setlength{\unitlength}{387.27299728bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,16 +50,15 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.47124873)%
+  \begin{picture}(1,0.82446317)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{pick-and-place.pdf}}%
-    \put(0.0796218,0.4574232){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Approach\end{tabular}}}}%
-    \put(0.46282151,0.4546112){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Grasp\end{tabular}}}}%
-    \put(0.84671597,0.45591827){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Lift\end{tabular}}}}%
-    \put(0.1212014,0.20951893){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Move\end{tabular}}}}%
-    \put(0.46449328,0.20757106){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Place\end{tabular}}}}%
-    \put(0.82784384,0.21075866){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Release\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{pick-and-place.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{peg-in-hole.pdf}}%
+    \put(0.0225385,0.80092117){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}a)\end{tabular}}}}%
+    \put(0.38610066,0.80028913){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}b)\end{tabular}}}}%
+    \put(0.73546378,0.800239){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}c)\end{tabular}}}}%
+    \put(0.03599304,0.00623349){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}d)\end{tabular}}}}%
+    \put(0.38216518,0.00630871){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}e)\end{tabular}}}}%
+    \put(0.74245983,0.0074411){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}f)\end{tabular}}}}%
   \end{picture}%
 \endgroup%
