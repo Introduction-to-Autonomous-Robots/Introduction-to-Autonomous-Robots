@@ -156,12 +156,71 @@ Here $ k_r$ and $ k_l$ are constants that need to be found experimentally and $ 
 
 We now have all ingredients for Equation~\ref{eq:errorpropodom}, allowing us to calculate the covariance matrix of the robot's pose just as in \cref{fig:errorprop_odometry}.
 
-\section{The Kalman Filter}
+\subsection{The Bayes Filter}\index{Bayes Filter}
 The location of a robot is subject to uncertainty due to wheel-slip and (to a much lesser extent) encoder noise. We learned in the past how the variance in position can be derived from the variance of the robot's drivetrain using the error propagation law and the forward kinematics of the robot. One can see that this error is continuously increasing unless the robot has additional observations (e.g. some external measurement of motion).
-%This update can be formally done using Bayes' rule, which relates the likelihood to be at a certain position given that the robot sees a certain feature to the likelihood to see this feature at the hypothetical location. For example, a robot that drives towards a wall will become less and less certain of its position (action update) until it encounters the wall (perception update).
-With these measurements, the robot could then use its sensor model to relate its observation with possible positions.
-Its real location would therefore be somewhere between its original belief (based on error propagation) and where the sensor tells it to be.
-%Bayes' rule allows us to perform this location for discrete locations and discrete sensor error distributions. This is inconvenient as we are used to represent our robot's position with a 2D Gaussian distribution. Also, it seems much easier to just change the mean and variances of this Gaussian instead of updating hundreds of variables.
+
+This incorporation of sensor measurement can be formally done using Bayes' rule, which relates the likelihood of being at a certain position given that the robot sees a certain feature to the likelihood of the robot seeing this feature if it were really at the hypothetical location. For example, a robot with a bump sensor on the front that drives towards a wall will become less and less certain of its position as it drives forward (action update) until it bumps into the wall (perception update).
+With sensor measurements, the robot could use its sensor model to relate its observation with possible positions. Consider the case of this same robot but with an ultrasonic sensor instead of a bump sensor: the robot could iteratively use its motion model to make predictions about where it is after each `drive forward' action, then use its sensor to get a noisy estimate of how far away the wall is. If the robot thinks it is five meters away from the wall and the sensor gives a reading of two meters, it seems pretty unlikely that the robot's initial guess of five meters is accurate.
+Its real location is likely to be somewhere between its original belief (based on error propagation) and where the sensor tells it that it is.
+
+To formalize our terms and notation, we will describe our robot's motion model as the distribution given by $P(x'|x,u)$, that is, the probability of being in a particular state $x'$ given that we started in state $x$ and executed action $u$. We can describe our sensor model as being characterized by the distribution given by $P(z|x)$, namely the probability that we would see sensor observation $z$ if we were in state $x$. To build intuition for this, consider the example of the robot with the ultrasonic sensor nearing the wall: the probability that we would see an observation of $z=1$ meter away if the robot's position given by its state $x$ was actually $10$ meters away should be pretty low! Finally, we will define the probability of being in a particular state $x$ as $P(x)$. 
+
+Our goal with the Bayes filter will be to estimate our robot's state over time ($x_t$, where $t$ indicates timestep) given a history of actions and observations (sensor measurements). To do so, we will compute the posterior probability of our state estimate, also known as \textsl{belief}\index{Belief}, using this history. We define the belief that our robot is in state $x$ at time $t$ as:
+$$
+Bel(x_t) = P(x_t|u_1,z_1,u_2,z_2,...,u_t,z_t)
+$$
+
+By leveraging the Markov assumption, that our current state only depends on our previous state $x_{t-1}$ and action $u_t$, we can greatly simplify the computation required. 
+$$
+P(x_t|x_{0:t-1}, z_{1:t-1}, u_{1:t}) = P(x_t|x_{t-1},u_t)
+$$
+For example, if we wanted to calculate the probability of an observation $z_t$, we know that the only term that actually matters is the robot's current state (since the other terms don't affect what sensor readings we'd expect to get).
+$$
+P(z_t|x_{0:t}, z_{1:t-1}, u_{1:t}) = P(z_t|x_t)
+$$
+
+We will now derive a recursive definition for belief that makes iteratively computing state belief over a time history of actions and observations tractable. Beginning with our initial definition of belief, we will apply Bayes rule (B), the Markov property (M), the law of total probability (T), and recursion (R) to achieve our goal. We will use $c$ to denote the normalizing constant (from the denominator in applying Bayes rule), which is the same for $Bel(x_t)$ for all $x_t$.
+\begin{eqnarray}
+	Bel(x_t) = P(x_t|u_1,z_1,u_2,z_2,...,u_t,z_t)\\
+	\textrm{B: } Bel(x_t) = c * P(z_t|x_t,u_1,z_1,u_2,z_2,...,u_t,z_t)*P(x_t|u_1,z_1,u_2,z_2,...,u_t)\\
+	\textrm{M: } Bel(x_t) = c * P(z_t|x_t)*P(x_t|u_1,z_1,u_2,z_2,...,u_t)\\
+	\textrm{T:} Bel(x_t) = c * P(z_t|x_t)*  \int{P(x_t|u_1,z_1,u_2,z_2,...,u_t,x_{t-1})*P(x_{t-1}|u_1,z_1,u_2,z_2,...,z_{t-1},u_t)dx_{t-1}}\\
+	\textrm{M: } Bel(x_t) = c * P(z_t|x_t)*  \int{P(x_t|u_t,x_{t-1})*P(x_{t-1}|u_1,z_1,u_2,z_2,...,z_{t-1})dx_{t-1}}\\
+	\textrm{R: } Bel(x_t) = c * P(z_t|x_t) * \int{P(x_t|u_t,x_{t-1})*Bel(x_{t-1})dx_{t-1}}
+\end{eqnarray}
+
+This final equation is remarkable because it allows us to perform a belief update for a given state by incorporating a sensor measurement and/or a motion prediction based on an action we took. With this formulation, we can define an algorithm for belief updates that takes our current belief and an array of action and observation data as inputs, returning an updated belief that incorporates this information.
+
+\begin{verbatim}
+BayesFilter(Belief Bel, Data d):
+c = 0
+while d is not empty:
+  if (d[0] is a sensor measurement):
+    z = d[0]
+    for all $x \in X$:
+      Bel'(x) = P(z|x)Bel(x)
+      c += Bel'(x)
+    for all $x \in X$:
+      Bel'(x) = $c^{-1}$Bel'(x)
+  elif (d[0] is an action):
+    u = d[0]
+    for all $x \in X$:
+      Bel'(x) = $\int{P(x|u,x_{t-1})*Bel(x_{t-1})dx_{t-1}}$
+  Bel = Bel'
+  d.pop(0)
+return Bel
+\end{verbatim}
+
+This powerful idea of iteratively incorporating sensor measurements and motion predictions underpins a family of state estimation methods. In the sections that follow, we will extend this concept to be applicable in contexts that we often find robots: infinitely large, continuous state spaces that we cannot exhaustively iterate over.
+
+\section{The Kalman Filter}
+To overcome the limitations of the Bayes filter, we will consider modeling our belief distribution using a family of probability distributions that can be parameterized, as opposed to defining our belief distribution in a discrete point-wise manner. To motivate our choice of distribution family, we turn to the Central Limit Theorem\index{Central Limit Theorem}, which stipulates that random variables that are determined by the sum of lots of small effects are normally distributed. In other words, given an infinite sequence of independent random variables $X_1, X_2, ...$, with mean $E[X_i]=\mu$ and variance $E[X_i-\mu]=\sigma^2$. Let the value $Z_n$ be defined for $n$ random variables as follows:
+$$
+Z_n = \frac{(X_1+...+X_n)-n\mu}{\sigma\sqrt{n}}
+$$
+As $n\rightarrow \infty$, $Z_n$ is distributed according to the zero-mean, unit-variance Gaussian 
+$$\mathcal{N}(0,1)$$.
+
 The goals of this section are:
 
 \begin{itemize}
@@ -171,7 +230,7 @@ The goals of this section are:
 \end{itemize}
 
 \subsection{Optimal Sensor Fusion}
-The Kalman filter is an optimal way to fuse observations that follow a Gaussian distribution. The Kalman filter has a prediction step and an update step. The prediction step uses a dynamical model of the system (such as the forward kinematics of your robot) and the update step uses a sensor model (such as the error distribution calibrated from its sensors). The Kalman filter does not only update the state of the system (the robot's position) but also its variance (representing uncertainty). For this, it requires knowledge of all of the variances involved in the system (e.g., wheel-slip and sensor error) and uses them to weigh each measurement accordingly. Before providing the equations for the Kalman filter, we will make use of a simple example that explains what ``optimal'' means in this context.
+The Kalman filter is an optimal way to fuse observations that follow a Gaussian distribution. Just like the Bayes filter, the Kalman filter has a prediction step and an update step. The prediction step uses a dynamical model of the system (such as the forward kinematics of your robot, sometimes called a motion model) and the update step uses a sensor model (such as the error distribution calibrated from its sensors). The Kalman filter does not only update the state of the system (the robot's position) but also its variance (representing uncertainty). For this, it requires knowledge of all of the variances involved in the system (e.g., wheel-slip and sensor error) and uses them to weigh each measurement accordingly. Before providing the equations for the Kalman filter, we will make use of a simple example that explains what ``optimal'' means in this context.
 
  Let $ \hat{q_1}$ and $ \hat{q_2}$ be two different estimates of a random variable and $ \sigma^2_1$ and $ \sigma^2_2$ their variances, respectively. Let $ q$ be the true value. This could represent the robot's position, with observations having different variances when they are obtained by different means, say using odometry for $ \hat{q_1}$ and by using the location of a known observed landmark for $ \hat{q_2}$. We can now define the weighted mean-square error
  \begin{equation}
