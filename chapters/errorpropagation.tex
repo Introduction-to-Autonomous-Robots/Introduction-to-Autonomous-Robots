@@ -222,16 +222,16 @@ $$
 As $n\rightarrow \infty$, $Z_n$ is distributed according to the zero-mean, unit-variance Gaussian 
 $\mathcal{N}(0,1)$.\\
 
-The goals of this section are:
+%The goals of this section are:
 
-\begin{itemize}
-\item to introduce a technique known as the Kalman filter to perform action and perception updates exclusively using Gaussian distributions.
-\item to formally introduce the notion of a feature map.
-\item to develop an example that puts everything we learned so far together: forward kinematics, error propagation, and sensor noise.
-\end{itemize}
+%\begin{itemize}
+%\item to introduce a technique known as the Kalman filter to %perform action and perception updates exclusively using Gaussian %distributions.
+%\item to formally introduce the notion of a feature map.
+%\item to develop an example that puts everything we learned so far together: forward kinematics, error propagation, and sensor noise.
+%\end{itemize}
 
 \subsection{Optimal Sensor Fusion}
-The Kalman filter is an optimal way to fuse observations that follow a Gaussian distribution. Just like the Bayes filter, the Kalman filter has a prediction step and an update step. The prediction step uses a dynamical model of the system (such as the forward kinematics of your robot, sometimes called a motion model) and the update step uses a sensor model (such as the error distribution calibrated from its sensors). The Kalman filter does not only update the state of the system (the robot's position) but also its variance (representing uncertainty). For this, it requires knowledge of all of the variances involved in the system (e.g., wheel-slip and sensor error) and uses them to weigh each measurement accordingly. Before providing the equations for the Kalman filter, we will make use of a simple example that explains what ``optimal'' means in this context.
+The Kalman filter is an optimal way to fuse observations that follow a Gaussian distribution. Just like the Bayes filter, the Kalman filter has a prediction step and an update step. The prediction step uses a  model of the system (such as the forward kinematics of your robot, sometimes called a motion model) and the update step uses a sensor model (such as the error distribution calibrated from its sensors). The Kalman filter does not only update the state of the system (the robot's position) but also its variance (representing uncertainty). For this, it requires knowledge of all of the variances involved in the system (e.g., wheel-slip and sensor error) and uses them to weigh each measurement accordingly. Before providing the equations for the Kalman filter, we will make use of a simple example that explains what ``optimal'' means in this context.
 
  Let $ \hat{q_1}$ and $ \hat{q_2}$ be two different estimates of a random variable and $ \sigma^2_1$ and $ \sigma^2_2$ their variances, respectively. Let $ q$ be the true value. This could represent the robot's position, with observations having different variances when they are obtained by different means, say using odometry for $ \hat{q_1}$ and by using the location of a known observed landmark for $ \hat{q_2}$. We can now define the weighted mean-square error
  \begin{equation}
