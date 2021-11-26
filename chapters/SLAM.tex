@@ -39,7 +39,7 @@ The key idea in EKF SLAM is to extend the state vector from the robot's position
 \begin{equation}
 \hat{\boldsymbol{x}}_{k}=(x,y,\theta,\alpha_1,r_1,\ldots,\alpha_N,r_N)^T,
 \end{equation}
-\noindent assuming $ N$ landmarks, which is a $(3+2N)\times 1$ vector. The action update (or ``prediction update'') is identical to that as though the landmarks are already known; the robot simply updates its position using odometry and updates the variance of its position using error propagation. The covariance matrix is now a $(3+2N) \times (3+2N)$ matrix that initially holds the variances on position and those of each landmark on its diagonal.
+\noindent assuming $ N$ landmarks, which is a $(3+2N)\times 1$ vector. The action update (or ``prediction update'') is identical to as if the landmarks are already known; the robot simply updates its position using odometry and updates the variance of its position using error propagation. The covariance matrix is now a $(3+2N) \times (3+2N)$ matrix that initially holds the variances on position and those of each landmark on its diagonal.
 
 What about the perception update? Here it is worth noting that only one landmark is observed at a time; even if they are observed at nearly identical times, the algorithm requires only observing one landmark first, and then the next. Thus, if the robot observes multiple landmarks at once, one needs to do multiple, consecutive perception updates. In practice this implies that only those values of the observation vector (a $(3+2N) \times 1$ vector) that correspond to the landmark that you observe will be nonzero. Similar considerations apply to the observation function and its Jacobian.
 
