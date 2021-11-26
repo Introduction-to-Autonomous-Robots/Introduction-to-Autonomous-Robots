@@ -1,13 +1,15 @@
 \chapter{Localization}\label{chap:localization}
-Robots employ sensors and actuators that are subject to uncertainty. Chapter~\ref{chap:uncertainty} describes how to quantify this uncertainty using probability density functions that associate a probability with each possible outcome of a random process, such as the reading of a sensor or the actual physical change of an actuator.
-%One of the most common probability density functions is the Gaussian distribution. It has the shape of a bell and can entirely be described by its mean --- the center of the bell curve --- and its variance, the width of the bell curve.
-A possible way to localize a robot in its environment is to extract high-level features (Chapter~\ref{chap:feature_extraction}), such as the distance to a wall from a number of different sensors. As the underlying measurements are uncertain, these measurements will be subject to uncertainty. How to calculate the uncertainty of a feature from the uncertainty of the sensors that detect this feature, is covered by the error propagation law. The key insight is that the variance of a feature is the weighted sum of all contributing sensors' variances, weighed by their impact on the feature of interest. This impact can be approximated by the derivative of the function that maps a sensor's input to the measurement of the feature.
+Robots employ sensors and actuators that are subject to uncertainty. Chapter~\ref{chap:uncertainty} describes how to quantify this uncertainty using probability density functions that associate a probability with each possible outcome of a random process, such as the reading of a sensor or the actual physical change of an actuator. Here, the robot's pose is a compound metric that is of central importance to mobile robotics, and the focus of this chapter.
 
- Unfortunately, uncertainty keeps propagating without the ability to correct measurements. The goals of this chapter are to present mathematical tools and algorithms that will enable you to actually shrink the uncertainty of a measurement by combining it with additional observations.  In particular, this chapter will cover
+
+%One of the most common probability density functions is the Gaussian distribution. It has the shape of a bell and can entirely be described by its mean --- the center of the bell curve --- and its variance, the width of the bell curve.
+There are many ways to localize a robot in its environment, and odometry is just one of them. A different possible way to localize a robot in its environment is to extract high-level features (Chapter~\ref{chap:feature_extraction}), such as the distance to a wall from a number of different sensors. %As the underlying measurements are uncertain, these measurements will be subject to uncertainty. How to calculate the uncertainty of a feature from the uncertainty of the sensors that detect this feature, is covered by the error propagation law. The key insight is that the variance of a feature is the weighted sum of all contributing sensors' variances, weighed by their impact on the feature of interest. This impact can be approximated by the derivative of the function that maps a sensor's input to the measurement of the feature.
+
+As we have seen in \cref{chap:uncertainty}, uncertainty keeps propagating without the ability to correct measurements. The goals of this chapter are to present mathematical tools and algorithms that will enable you to actually shrink the uncertainty of a measurement by combining it with additional observations.  In particular, this chapter will cover
 \begin{itemize}
-    \item Using landmarks to improve the accuracy of a discrete position estimate (Markov Localization)
-    \item Approximating continuous position estimates (Particle Filter)
-    \item Optimal sensor fusion to estimate a continuous position estimate (Extended Kalman Filter)
+    \item using landmarks to improve the accuracy of a discrete position estimate (Markov Localization and Bayes Filter),
+    \item approximating continuous position estimates (Particle Filter),
+    \item Using the Extended Kalman Filter to estimate a continuous position estimate.
 \end{itemize}
 
 \section{Motivating Example}
