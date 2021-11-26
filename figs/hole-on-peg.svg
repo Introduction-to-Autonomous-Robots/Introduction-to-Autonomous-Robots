@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="hole-on-peg.svg"
+   inkscape:version="1.0 (4035a4f, 2020-05-01)"
+   id="svg13230"
+   version="1.1"
+   viewBox="0 0 136.62131 112.63924"
+   height="112.63924mm"
+   width="136.62131mm">
+  <defs
+     id="defs13224">
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker16913"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path16911"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:collect="always"
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker15162"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path15160" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="Arrow1Lstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13984" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-0"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path13984-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker15162-2"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path15160-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker15162-4"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path15160-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker15162-28"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path15160-22"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:collect="always"
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker15162-4-3"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path15160-1-4" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker15162-4-3-5"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path15160-1-4-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     fit-margin-bottom="0"
+     fit-margin-right="0"
+     fit-margin-left="0"
+     fit-margin-top="0"
+     inkscape:window-maximized="0"
+     inkscape:window-y="23"
+     inkscape:window-x="0"
+     inkscape:window-height="943"
+     inkscape:window-width="1792"
+     inkscape:guide-bbox="true"
+     showguides="true"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="316.56453"
+     inkscape:cx="386.66138"
+     inkscape:zoom="3.3040263"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata13227">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-9.0436437,-5.2332036)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <g
+       id="g16726">
+      <rect
+         inkscape:export-ydpi="96"
+         inkscape:export-xdpi="96"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         ry="1.3831677"
+         y="-21.747904"
+         x="-43.079552"
+         height="9.3501225"
+         width="25.627138"
+         id="rect2294"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         transform="matrix(-0.99993441,-0.01145347,0.0083176,-0.99996541,0,0)" />
+      <path
+         inkscape:export-ydpi="96"
+         inkscape:export-xdpi="96"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         sodipodi:nodetypes="cssssc"
+         inkscape:connector-curvature="0"
+         d="m 38.116738,22.260974 -0.122443,14.720428 c -0.0064,0.766249 -0.537182,1.3771 -1.190154,1.36962 l -0.872805,-0.01 c -0.652972,-0.0075 -1.173514,-0.630373 -1.16714,-1.396621 l 0.122443,-14.720428"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         id="rect2296" />
+      <path
+         inkscape:export-ydpi="96"
+         inkscape:export-xdpi="96"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         id="path2299"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         d="m 25.556352,22.069375 -0.122443,14.720428 c -0.0064,0.766249 -0.537182,1.3771 -1.190153,1.36962 l -0.872806,-0.01 c -0.652971,-0.0075 -1.173518,-0.630373 -1.167144,-1.396621 l 0.122442,-14.720429"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cssssc" />
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.282222;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 18.337429,59.019954 h 6.088133"
+       id="path12623" />
+    <g
+       id="g16734">
+      <path
+         id="rect12625"
+         style="fill:none;stroke:#000000;stroke-width:1.06667;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
+         d="M 96.713699,130.88672 96.884766,92.441406 H 62.396484 v 38.445314 l 8.457028,-0.34737 m 0,0 0.0059,-22.46904 16.726563,0.0605 -0.04688,22.51367 9.174604,0.24224"
+         transform="matrix(0.26458333,0,0,0.26458333,9.0436437,5.2332036)"
+         sodipodi:nodetypes="cccccccccc" />
+    </g>
+    <path
+       id="path12623-6"
+       d="m 28.840478,59.13816 h 6.088134"
+       style="fill:none;stroke:#000000;stroke-width:0.282222;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="cccc"
+       id="path13845"
+       d="m 24.425562,59.019954 0.0015,-5.854645 4.425838,0.01588 -0.01243,5.95697"
+       style="fill:none;stroke:#000000;stroke-width:0.282222;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+       inkscape:connector-curvature="0"
+       id="path924-9"
+       d="m 72.298678,33.755968 0.498049,-1.331375"
+       style="fill:none;stroke:#000000;stroke-width:0.0497676;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+       inkscape:connector-curvature="0"
+       id="path926-3"
+       d="m 72.215629,31.801335 0.581101,0.623259"
+       style="fill:none;stroke:#000000;stroke-width:0.0497676;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       id="text15655"
+       y="8.449542"
+       x="12.122883"
+       style="font-size:10.5833px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-size:4.23333px;stroke-width:0.264583"
+         y="8.449542"
+         x="12.122883"
+         id="tspan15653"
+         sodipodi:role="line">a)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       x="61.793221"
+       y="8.5358925"
+       id="text15655-8"><tspan
+         sodipodi:role="line"
+         id="tspan15653-0"
+         x="61.793221"
+         y="8.5358925"
+         style="font-size:4.23333px;stroke-width:0.264583">b)</tspan></text>
+    <text
+       id="text15655-8-7"
+       y="8.5427418"
+       x="109.52367"
+       style="font-size:10.5833px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-size:4.23333px;stroke-width:0.264583"
+         y="8.5427418"
+         x="109.52367"
+         id="tspan15653-0-0"
+         sodipodi:role="line">c)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       x="13.961061"
+       y="117.02081"
+       id="text15655-8-7-0"><tspan
+         sodipodi:role="line"
+         id="tspan15653-0-0-0"
+         x="13.961061"
+         y="117.02081"
+         style="font-size:4.23333px;stroke-width:0.264583">d)</tspan></text>
+    <text
+       id="text15655-8-7-0-8"
+       y="117.01054"
+       x="61.25555"
+       style="font-size:10.5833px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-size:4.23333px;stroke-width:0.264583"
+         y="117.01054"
+         x="61.25555"
+         id="tspan15653-0-0-0-6"
+         sodipodi:role="line">e)</tspan></text>
+    <text
+       id="text15655-8-7-0-5"
+       y="116.85583"
+       x="110.47948"
+       style="font-size:10.5833px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-size:4.23333px;stroke-width:0.264583"
+         y="116.85583"
+         x="110.47948"
+         id="tspan15653-0-0-0-9"
+         sodipodi:role="line">f)</tspan></text>
+    <g
+       transform="translate(57.003606,12.865749)"
+       id="g16726-0">
+      <rect
+         transform="matrix(-0.99993441,-0.01145347,0.0083176,-0.99996541,0,0)"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         id="rect2294-1"
+         width="25.627138"
+         height="9.3501225"
+         x="-43.079552"
+         y="-21.747904"
+         ry="1.3831677"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <path
+         id="rect2296-8"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         d="m 38.116738,22.260974 -0.122443,14.720428 c -0.0064,0.766249 -0.537182,1.3771 -1.190154,1.36962 l -0.872805,-0.01 c -0.652972,-0.0075 -1.173514,-0.630373 -1.16714,-1.396621 l 0.122443,-14.720428"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cssssc"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <path
+         sodipodi:nodetypes="cssssc"
+         inkscape:connector-curvature="0"
+         d="m 25.556352,22.069375 -0.122443,14.720428 c -0.0064,0.766249 -0.537182,1.3771 -1.190153,1.36962 l -0.872806,-0.01 c -0.652971,-0.0075 -1.173518,-0.630373 -1.167144,-1.396621 l 0.122442,-14.720429"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         id="path2299-9"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+    </g>
+    <path
+       id="path12623-66"
+       d="m 75.341036,58.656541 h 6.088133"
+       style="fill:none;stroke:#000000;stroke-width:0.282223;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       transform="translate(57.003606,12.865749)"
+       id="g16734-9">
+      <path
+         sodipodi:nodetypes="cccccccccc"
+         transform="matrix(0.26458333,0,0,0.26458333,9.0436437,5.2332036)"
+         d="M 96.713699,130.88672 96.884766,92.441406 H 62.396484 v 38.445314 l 8.457028,-0.34737 m 0,0 0.0059,-22.46904 16.726563,0.0605 -0.04688,22.51367 9.174604,0.24224"
+         style="fill:none;stroke:#000000;stroke-width:1.06667;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect12625-5" />
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.282223;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 85.844085,58.774747 h 6.088134"
+       id="path12623-6-6" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.282223;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 81.429169,58.656541 0.0015,-5.854647 4.425838,0.01588 -0.01243,5.95697"
+       id="path13845-9"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="path16785"
+       d="M 86.299177,12.70546 V 29.929644"
+       style="fill:none;stroke:#000000;stroke-width:0.26458300000000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker15162)" />
+    <path
+       transform="matrix(0.5786532,0,0,0.19907587,83.405793,13.8106)"
+       d="m 81.61319,76.536263 c 1.957689,-0.893107 2.198789,2.06668 1.433947,3.143212 -1.804324,2.539627 -5.585132,1.593339 -7.340187,-0.44876 -2.990402,-3.479491 -1.485992,-8.74749 2.009391,-11.236346 4.960313,-3.531944 11.839945,-1.423543 14.994942,3.478895 4.099436,6.369968 1.381749,14.868559 -4.895177,18.659792 -7.73878,4.674185 -17.844099,1.351311 -22.253522,-6.274438 -5.249765,-9.07905 -1.327864,-20.775142 7.625557,-25.790064 10.397309,-5.823661 23.668193,-1.309082 29.278869,8.954104 6.39485,11.697601 1.2936,26.528236 -10.263871,32.726776 C 79.220445,106.71235 62.843956,101.03 56.064196,88.191824 48.536428,73.937219 54.794791,56.027654 68.90158,48.672411 c 15.514876,-8.089416 34.94575,-1.259723 42.87143,14.104811 8.64795,16.764724 1.25123,37.706058 -15.361185,46.197648 -18.005137,9.2035 -40.446866,1.24373 -49.500301,-16.607557"
+       sodipodi:t0="0"
+       sodipodi:argument="-19.277557"
+       sodipodi:radius="38.142204"
+       sodipodi:revolution="3.5"
+       sodipodi:expansion="0.91000003"
+       sodipodi:cy="76.536263"
+       sodipodi:cx="81.61319"
+       id="path16793"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.559255;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#marker16913)"
+       sodipodi:type="spiral" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.0497676;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 116.21917,33.71286 0.49805,-1.331375"
+       id="path924-9-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.0497676;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 116.13612,31.758227 0.5811,0.623259"
+       id="path926-3-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <g
+       id="g16726-0-2"
+       transform="translate(100.92404,12.822631)">
+      <rect
+         inkscape:export-ydpi="96"
+         inkscape:export-xdpi="96"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         ry="1.3831677"
+         y="-21.747904"
+         x="-43.079552"
+         height="9.3501225"
+         width="25.627138"
+         id="rect2294-1-4"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         transform="matrix(-0.99993441,-0.01145347,0.0083176,-0.99996541,0,0)" />
+      <path
+         inkscape:export-ydpi="96"
+         inkscape:export-xdpi="96"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         sodipodi:nodetypes="cssssc"
+         inkscape:connector-curvature="0"
+         d="m 38.116738,22.260974 -0.122443,14.720428 c -0.0064,0.766249 -0.537182,1.3771 -1.190154,1.36962 l -0.872805,-0.01 c -0.652972,-0.0075 -1.173514,-0.630373 -1.16714,-1.396621 l 0.122443,-14.720428"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         id="rect2296-8-3" />
+      <path
+         inkscape:export-ydpi="96"
+         inkscape:export-xdpi="96"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         id="path2299-9-3"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         d="m 25.556352,22.069375 -0.122443,14.720428 c -0.0064,0.766249 -0.537182,1.3771 -1.190153,1.36962 l -0.872806,-0.01 c -0.652971,-0.0075 -1.173518,-0.630373 -1.167144,-1.396621 l 0.122442,-14.720429"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cssssc" />
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.282223;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 119.26153,58.613433 h 6.08813"
+       id="path12623-66-5" />
+    <g
+       id="g16734-9-2"
+       transform="translate(100.92404,12.822631)">
+      <path
+         id="rect12625-5-7"
+         style="fill:none;stroke:#000000;stroke-width:1.06667;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
+         d="M 96.713699,130.88672 96.884766,92.441406 H 62.396484 v 38.445314 l 8.457028,-0.34737 m 0,0 0.0059,-22.46904 16.726563,0.0605 -0.04688,22.51367 9.174604,0.24224"
+         transform="matrix(0.26458333,0,0,0.26458333,9.0436437,5.2332036)"
+         sodipodi:nodetypes="cccccccccc" />
+    </g>
+    <path
+       id="path12623-6-6-1"
+       d="m 129.76458,58.731639 h 6.08813"
+       style="fill:none;stroke:#000000;stroke-width:0.282223;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="cccc"
+       id="path13845-9-1"
+       d="m 125.34966,58.613433 0.001,-5.854647 4.42584,0.01587 -0.0124,5.95697"
+       style="fill:none;stroke:#000000;stroke-width:0.282223;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.0497676;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 18.021615,86.402279 0.498049,-1.331375"
+       id="path924-9-75"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.0497676;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 17.938566,84.447646 0.581101,0.623259"
+       id="path926-3-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <g
+       id="g16726-0-6"
+       transform="translate(6.9598711,66.570393)">
+      <rect
+         inkscape:export-ydpi="96"
+         inkscape:export-xdpi="96"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         ry="1.3831677"
+         y="-21.747904"
+         x="-43.079552"
+         height="9.3501225"
+         width="25.627138"
+         id="rect2294-1-3"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         transform="matrix(-0.99993441,-0.01145347,0.0083176,-0.99996541,0,0)" />
+      <path
+         inkscape:export-ydpi="96"
+         inkscape:export-xdpi="96"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         sodipodi:nodetypes="cssssc"
+         inkscape:connector-curvature="0"
+         d="m 38.116738,22.260974 -0.122443,14.720428 c -0.0064,0.766249 -0.537182,1.3771 -1.190154,1.36962 l -0.872805,-0.01 c -0.652972,-0.0075 -1.173514,-0.630373 -1.16714,-1.396621 l 0.122443,-14.720428"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         id="rect2296-8-0" />
+      <path
+         inkscape:export-ydpi="96"
+         inkscape:export-xdpi="96"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         id="path2299-9-8"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         d="m 25.556352,22.069375 -0.122443,14.720428 c -0.0064,0.766249 -0.537182,1.3771 -1.190153,1.36962 l -0.872806,-0.01 c -0.652971,-0.0075 -1.173518,-0.630373 -1.167144,-1.396621 l 0.122442,-14.720429"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cssssc" />
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.282223;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 21.063974,111.3029 h 6.088133"
+       id="path12623-66-53" />
+    <g
+       id="g16734-9-3"
+       transform="translate(6.9598711,66.570393)">
+      <path
+         id="rect12625-5-6"
+         style="fill:none;stroke:#000000;stroke-width:1.06667;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
+         d="M 96.713699,130.88672 96.884766,92.441406 H 62.396484 v 38.445314 l 8.457028,-0.34737 m 0,0 0.0059,-22.46904 16.726563,0.0605 -0.04688,22.51367 9.174604,0.24224"
+         transform="matrix(0.26458333,0,0,0.26458333,9.0436437,5.2332036)"
+         sodipodi:nodetypes="cccccccccc" />
+    </g>
+    <path
+       id="path12623-6-6-6"
+       d="m 31.567023,111.42111 h 6.088134"
+       style="fill:none;stroke:#000000;stroke-width:0.282223;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="cccc"
+       id="path13845-9-7"
+       d="m 27.152107,111.3029 0.0015,-5.85467 4.425838,0.0159 -0.01243,5.957"
+       style="fill:none;stroke:#000000;stroke-width:0.282223;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker15162-4)"
+       d="M 36.255451,66.410104 V 83.634289"
+       id="path16785-8" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker15162-28)"
+       d="M 130.91741,14.110938 V 31.335124"
+       id="path16785-3" />
+    <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+       inkscape:connector-curvature="0"
+       id="path924-9-75-0"
+       d="m 71.040695,86.126983 0.498049,-1.331375"
+       style="fill:none;stroke:#000000;stroke-width:0.0497676;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+       inkscape:connector-curvature="0"
+       id="path926-3-7-8"
+       d="m 70.957646,84.17235 0.581101,0.623259"
+       style="fill:none;stroke:#000000;stroke-width:0.0497676;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       transform="translate(52.570613,67.35343)"
+       id="g16726-0-6-9">
+      <rect
+         transform="matrix(-0.99993441,-0.01145347,0.0083176,-0.99996541,0,0)"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         id="rect2294-1-3-6"
+         width="25.627138"
+         height="9.3501225"
+         x="-43.079552"
+         y="-21.747904"
+         ry="1.3831677"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <path
+         id="rect2296-8-0-5"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         d="m 38.116738,22.260974 -0.122443,14.720428 c -0.0064,0.766249 -0.537182,1.3771 -1.190154,1.36962 l -0.872805,-0.01 c -0.652972,-0.0075 -1.173514,-0.630373 -1.16714,-1.396621 l 0.122443,-14.720428"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cssssc"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <path
+         sodipodi:nodetypes="cssssc"
+         inkscape:connector-curvature="0"
+         d="m 25.556352,22.069375 -0.122443,14.720428 c -0.0064,0.766249 -0.537182,1.3771 -1.190153,1.36962 l -0.872806,-0.01 c -0.652971,-0.0075 -1.173518,-0.630373 -1.167144,-1.396621 l 0.122442,-14.720429"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         id="path2299-9-8-4"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+    </g>
+    <path
+       id="path12623-66-53-7"
+       d="m 74.563528,111.02758 h 5.911823"
+       style="fill:none;stroke:#000000;stroke-width:0.278106;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       transform="translate(52.570613,67.35343)"
+       id="g16734-9-3-4">
+      <path
+         sodipodi:nodetypes="cccccccccc"
+         transform="matrix(0.26458333,0,0,0.26458333,9.0436437,5.2332036)"
+         d="M 96.713699,130.88672 96.884766,92.441406 H 62.396484 v 38.445314 l 8.457028,-0.34737 m 0,0 0.0059,-22.46904 16.726563,0.0605 -0.04688,22.51367 9.174604,0.24224"
+         style="fill:none;stroke:#000000;stroke-width:1.06667;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect12625-5-6-9" />
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.278106;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 84.762413,111.14579 h 5.911824"
+       id="path12623-6-6-6-4" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.278106;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 80.475351,111.02758 0.0015,-5.85467 4.297667,0.0159 -0.01207,5.957"
+       id="path13845-9-7-7"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="path16785-8-9"
+       d="M 81.866193,67.193141 V 84.417327"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker15162-4-3)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.0497676;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 115.72369,89.737368 0.49805,-1.331375"
+       id="path924-9-75-0-9"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.0497676;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 115.64064,87.782735 0.5811,0.623259"
+       id="path926-3-7-8-2"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <g
+       id="g16726-0-6-9-8"
+       transform="translate(97.253573,70.963814)">
+      <rect
+         inkscape:export-ydpi="96"
+         inkscape:export-xdpi="96"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         ry="1.3831677"
+         y="-21.747904"
+         x="-43.079552"
+         height="9.3501225"
+         width="25.627138"
+         id="rect2294-1-3-6-5"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         transform="matrix(-0.99993441,-0.01145347,0.0083176,-0.99996541,0,0)" />
+      <path
+         inkscape:export-ydpi="96"
+         inkscape:export-xdpi="96"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         sodipodi:nodetypes="cssssc"
+         inkscape:connector-curvature="0"
+         d="m 38.116738,22.260974 -0.122443,14.720428 c -0.0064,0.766249 -0.537182,1.3771 -1.190154,1.36962 l -0.872805,-0.01 c -0.652972,-0.0075 -1.173514,-0.630373 -1.16714,-1.396621 l 0.122443,-14.720428"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         id="rect2296-8-0-5-5" />
+      <path
+         inkscape:export-ydpi="96"
+         inkscape:export-xdpi="96"
+         inkscape:export-filename="/Users/correll/Desktop/book/Introduction-to-Autonomous-Robots/figs/gripper-2-dof.png"
+         id="path2299-9-8-4-0"
+         style="fill:none;stroke:#000000;stroke-width:0.166297"
+         d="m 25.556352,22.069375 -0.122443,14.720428 c -0.0064,0.766249 -0.537182,1.3771 -1.190153,1.36962 l -0.872806,-0.01 c -0.652971,-0.0075 -1.173518,-0.630373 -1.167144,-1.396621 l 0.122442,-14.720429"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cssssc" />
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.278106;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 119.24652,110.93382 h 5.91182"
+       id="path12623-66-53-7-3" />
+    <g
+       id="g16734-9-3-4-5"
+       transform="translate(97.253573,70.963814)">
+      <path
+         id="rect12625-5-6-9-4"
+         style="fill:none;stroke:#000000;stroke-width:1.06667;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
+         d="M 96.713699,130.88672 96.884766,92.441406 H 62.396484 v 38.445314 l 8.457028,-0.34737 m 0,0 0.0059,-22.46904 16.726563,0.0605 -0.04688,22.51367 9.174604,0.24224"
+         transform="matrix(0.26458333,0,0,0.26458333,9.0436437,5.2332036)"
+         sodipodi:nodetypes="cccccccccc" />
+    </g>
+    <path
+       id="path12623-6-6-6-4-1"
+       d="m 129.44541,111.05203 h 5.91182"
+       style="fill:none;stroke:#000000;stroke-width:0.278106;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="cccc"
+       id="path13845-9-7-7-5"
+       d="m 125.15834,110.93382 0.002,-5.85467 4.29767,0.0159 -0.0121,5.957"
+       style="fill:none;stroke:#000000;stroke-width:0.278106;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker15162-4-3-5)"
+       d="M 126.54919,70.803526 V 88.027712"
+       id="path16785-8-9-4" />
+  </g>
+</svg>
