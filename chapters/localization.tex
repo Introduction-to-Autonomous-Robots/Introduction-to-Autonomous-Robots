@@ -21,7 +21,7 @@ Imagine a floor with three doors, two of which are closer together, and the thir
 What happens if the robot arrives at another door? Given a map of the environment, we can now map the three Gaussian distributions to the location of the three doors. As all three Gaussians will have moved, but the doors are not equally spaced, only some of the peaks will coincide with the location of  a door. Assuming we trust our door detector much more than our odometry estimate, we can now remove all beliefs that do not coincide with a door. Again assuming our door detector can detect the center of a door with some accuracy, our location estimate's uncertainty is now only limited by that of the door detector.
 
 
-Things are just slightly more complicated if our door detector is also subject to uncertainty: there is a chance that we are in front of a door, but haven't noticed it. Then, it would be a mistake to remove this belief. Instead, we just weight all beliefs with the probability that there could be a door. Say our door detector detects false-positives with a 10\% chance. Then, there is a 10\% chance to be at any location that is not in front of door, even if our detector tells us we are in front of a door. Similarly, our detector might detect false-negatives with 20\% chance, i.e., tell us there is no door even though the robot is just in front of it. Thus, we would need to weigh all locations in front of a door with 20\% chance and all locations not in front of a door with 80\% likelihood if our robot tells us there is no door, even if we are indeed in front of one.
+Things are just slightly more complicated if our door detector is also subject to uncertainty: there is a chance that we are in front of a door, but haven't noticed it. Then, it would be a mistake to remove this belief. Instead, we just weigh all beliefs with the probability that there could be a door. Say our door detector detects false-positives with a 10\% chance. Then, there is a 10\% chance to be at any location that is not in front of a door, even if our detector tells us we are in front of a door. Similarly, our detector might detect false-negatives with 20\% chance, i.e., tell us there is no door even though the robot is just in front of it. Thus, we would need to weigh all locations in front of a door with 20\% chance and all locations not in front of a door with 80\% likelihood if our robot tells us there is no door, even if we are indeed in front of one.
 
 \begin{figure}
 	\centering
@@ -51,11 +51,11 @@ Rephrasing Bayes' rule in this way, we can calculate the probability to be at lo
 \item We need to know the probability to see the feature at this location $P(feat|loc)$
 \item We need the probability to encounter the feature feat $P(feat)$
 \end{enumerate}
-Let's start with (3), which might be the most confusing part of information we need to collect. The answer is simple, no matter what $P(feat)$ is, it will cancel out as the probability to be at any of the possible locations has to sum up to 1. (A simpler, although less accurate, explanation would be that the probability to sense a feature is constant and therefore does not matter.)
+Let's start with (3), which might be the most confusing part of information we need to collect. The answer is simple, it is safe to assume the probability to measure the feature to be simply one ($P(feat)=1$).
 
 The prior probability to be at location  $loc$, $P(loc)$, is called the \index{Belief Model} \textsl{belief model}. In the case of the 3-door example, it is the value of the Gaussian distribution underneath the door corresponding to $loc$.
 
-Finally, we need to know the probability to see the feature $feat$ at location $loc$ $P(feat|loc)$. If your sensor were perfect, this probability is simply 1 if the feature exists at this location, or 0 if the feature cannot be observed at this location. If your sensor is not perfect, $P(feat|loc)$ corresponds to the likelihood for the sensor to see the feature if it exists.
+Finally, we need to know the probability $P(feat|loc)$ to see the feature $feat$ given that we are at location $loc$. If your sensor were perfect, this probability is simply 1 if the feature exists at this location, or 0 if the feature cannot be observed at this location. If your sensor is not perfect, $P(feat|loc)$ corresponds to the likelihood for the sensor to see the feature if it exists.
 
 The final missing piece is how to best represent possible locations. In the graphical example in \cref{fig:three_door_example} we assumed Gaussian distributions for each possible location. Alternatively, we can also discretize the world into a grid and calculate the likelihood of the robot to be in any of its cells. In our 3-door world, it might make sense to choose grid cells that have just the width of a door.
 
@@ -148,6 +148,73 @@ Given this information, we can now calculate the posterior probability to be at 
 
 Instead of using a coarse topological map, we can also model the environment as a fine-grained grid. Each cell is marked with a probability corresponding to the likelihood of the robot being at this exact location (\cref{fig:markov_grid_example}). We assume that the robot is able to detect walls with some certainty. The images in the right column show the actual location of the robot. Initially, the robot does not see a wall and therefore could be almost anywhere. The robot now moves northwards. The action update now propagates the probability of the robot being somewhere upwards. As soon as the robot encounters the wall, the perception update bumps up the likelihood to be anywhere near a wall. As there is some uncertainty associated with the wall detector, the robot cannot only be directly at the wall, but anywhere --- with decreasing probability --- close by. As the action update involved continuous motion to the north, the likelihood to be close to the south wall is almost zero. The robot then performs a right turn and travels along the wall in clockwise direction. As soon as it hits the east wall, it is almost certain about its position, which then again decreases.
 
+\section{The Bayes Filter}\index{Bayes Filter}
+%The location of a robot is subject to uncertainty due to wheel-slip and (to a much lesser extent) encoder noise. We learned in the past how the variance in position can be derived from the variance of the robot's drivetrain using the error propagation law and the forward kinematics of the robot. One can see that this error is continuously increasing unless the robot has additional observations (e.g. some external measurement of motion).
+
+We have seen how sensor measurements can be formally incorporated into a position estimate  using Bayes' rule, which relates the likelihood of being at a certain position given that the robot sees a certain feature to the likelihood of the robot seeing this feature if it were really at the hypothetical location. For example, a robot with a bump sensor on the front that drives towards a wall will become less and less certain of its position as it drives forward (action update) until it bumps into the wall (perception update).
+We have also seen how the robot can use its sensor model to relate its observation with possible positions. Consider the case of this same robot but with an ultrasonic sensor instead of a bump sensor: the robot could iteratively use its motion model to make predictions about where it is after each `drive forward' action, then use its sensor to get a noisy estimate of how far away the wall is. If the robot thinks it is five meters away from the wall and the sensor gives a reading of two meters, it seems pretty unlikely that the robot's initial guess of five meters is accurate.
+Its real location is likely to be somewhere between its original belief (based on error propagation) and where the sensor tells it that it is.
+
+To formalize our terms and notation, we will describe our robot's motion model as the distribution given by $P(x'|x,u)$, that is, the probability of being in a particular state $x'$ given that we started in state $x$ and executed action $u$. We can describe our sensor model as being characterized by the distribution given by $P(z|x)$, namely the probability that we would see sensor observation $z$ if we were in state $x$. To build intuition for this, consider the example of the robot with the ultrasonic sensor nearing the wall: the probability that we would see an observation of $z=1$ meter away if the robot's position given by its state $x$ was actually $10$ meters away should be pretty low! Finally, we will define the probability of being in a particular state $x$ as $P(x)$. 
+
+Our goal with the Bayes filter will be to estimate our robot's state over time ($x_t$, where $t$ indicates timestep) given a history of actions and observations (sensor measurements). To do so, we will compute the posterior probability of our state estimate, also known as \textsl{belief}\index{Belief}, using this history. We define the belief that our robot is in state $x$ at time $t$ as:
+$$
+Bel(x_t) = P(x_t|u_1,z_1,u_2,z_2,...,u_t,z_t)
+$$
+
+By leveraging the Markov assumption, that our current state only depends on our previous state $x_{t-1}$ and action $u_t$, we can greatly simplify the computation required. 
+$$
+P(x_t|x_{0:t-1}, z_{1:t-1}, u_{1:t}) = P(x_t|x_{t-1},u_t)
+$$
+For example, if we wanted to calculate the probability of an observation $z_t$, we know that the only term that actually matters is the robot's current state (since the other terms don't affect what sensor readings we'd expect to get).
+$$
+P(z_t|x_{0:t}, z_{1:t-1}, u_{1:t}) = P(z_t|x_t)
+$$
+
+We will now derive a recursive definition for belief that makes iteratively computing state belief over a time history of actions and observations tractable. Beginning with our initial definition of belief, we will apply Bayes rule, the Markov property, the law of total probability, and recursion to achieve our goal. We will use $c$ to denote the normalizing constant (from the denominator of Bayes rule), which is the same for all $x_t$.
+\begin{align}
+	Bel(x_t) = {}&  P(x_t|u_1,z_1,...,u_t,z_t)\\
+	Bel(x_t) = {}& c * P(z_t|x_t,u_1,z_1,...,u_t,z_t)*P(x_t|u_1,z_1,...,u_t)\\
+	Bel(x_t) = {}& c * P(z_t|x_t)*P(x_t|u_1,z_1,...,u_t)\\
+	\begin{split}
+	Bel(x_t) = {}& c * P(z_t|x_t) *\\&  \int{}P(x_t|u_1,z_1,...,u_t,x_{t-1})*P(x_{t-1}|u_1,z_1,...,z_{t-1},u_t)dx_{t-1}
+	\end{split}\\
+	Bel(x_t) = {}& c * P(z_t|x_t)*  \int{P(x_t|u_t,x_{t-1})*P(x_{t-1}|u_1,z_1,...,z_{t-1})dx_{t-1}}\\
+	Bel(x_t) = {}& c * P(z_t|x_t) * \int{P(x_t|u_t,x_{t-1})*Bel(x_{t-1})dx_{t-1}}
+\end{align}
+
+This final equation is remarkable because it allows us to perform a belief update for a given state by incorporating a sensor measurement and/or a motion prediction based on an action we took. With this formulation, we can define an algorithm for belief updates that takes our current belief and an array of action and observation data as inputs, returning an updated belief that incorporates this information.
+
+\begin{Verbatim}[commandchars=\\\{\}, codes={\catcode`$=3\catcode`^=7\catcode`_=8}]
+BayesFilter(Belief Bel, Data d, Set of States X):
+  while d is not empty:
+    c = 0
+    if (d[0] is a sensor measurement):
+      z = d.pop(0)
+      for all $x \in X$:
+        Bel'(x) = P(z|x)Bel(x)
+        c += Bel'(x)
+      for all $x \in X$:
+        Bel'(x) = $c^{-1}$*Bel'(x)
+    elif (d[0] is an action):
+      u = d.pop(0)
+      for all $x \in X$:
+        Bel'(x) = $\sum{}P(x|u,x_{t-1})*$Bel$(x_{t-1})dx_{t-1}$
+    Bel = Bel'
+  return Bel
+\end{Verbatim}
+
+This powerful idea of iteratively incorporating sensor measurements and motion predictions underpins an entire family of state estimation methods. In the sections that follow, we will extend this concept to be applicable in contexts that we often find robots: infinitely large, continuous state spaces that we cannot exhaustively iterate over.
+
+%\section{The Kalman Filter}
+%To overcome the limitations of the Bayes filter, we will consider modeling our belief distribution using a family of probability distributions that can be parameterized, as opposed to defining our belief distribution in a discrete point-wise manner. To motivate our choice of distribution family, we turn to the Central Limit Theorem\index{Central Limit Theorem}, which stipulates that random variables that are determined by the sum of lots of small effects are normally distributed. In other words, given an infinite sequence of independent random variables $X_1, X_2, ...$, with $E[X_i]=\mu$ (mean) and $E[X_i-\mu]=\sigma^2$ (variance). Let the value $Z_n$ be defined for $n$ random variables as follows:
+%$$
+%Z_n = \frac{(X_1+...+X_n)-n\mu}{\sigma\sqrt{n}}
+%$$
+%As $n\rightarrow \infty$, $Z_n$ is distributed according to the zero-mean, unit-variance Gaussian 
+%$\mathcal{N}(0,1)$.\\
+
+
 \section{Particle Filter}
 Although grid-based Markov Localization can provide compelling results, it can be computationally very expensive, in particular when the environment is large and the resolution of the grid is small. This is in part due to the fact that we need to carry the probability to be at a certain location forward for every cell on the grid, regardless of how small this probability is. An elegant solution to this problem is the particle filter. It works as follows:
 \begin{enumerate}
@@ -193,20 +260,6 @@ We are now equipped with a measurement $ \boldsymbol{z}_k$ and a prediction $ h(
 which is simply the difference between each feature that we can see and those that we predict from the map. The innovation is again a 2x1 matrix.
 
 %\td{End TODO.}
-
-\section{Probabilistic Map based localization}\label{sec:pmbl}
-In order to localize a robot using a map, we need to perform the following steps
-\begin{enumerate}
-\item Calculate an estimate of our new position using the forward kinematics and knowledge of the wheel-speeds that we sent to the robot until the robot encounters some uniquely identifiable feature.
-\item Calculate the relative position of the feature (a wall, a landmark or beacon) to the robot.
-\item Use knowledge of where the feature is located in global coordinates to predict what the robot should see.
-\item Calculate the difference between what the robot actually sees and what it believes it should see (e.g.\ using a Kalman filter).
-\item Use the result from (4) to update its belief by weighing each observation with its variance.
-\end{enumerate}
-
-Steps 1-2 are based on the sections on ``Forward Kinematics'' and ``Line detection''. Step 3 uses again simple forward kinematics to calculate the position of a feature stored in global coordinates in a map in robot coordinates. Step 4 is a simple subtraction of what the sensor sees and what the map says. Step 5 may induce the Kalman filter, or an error minimization constraint, which we will describe here. Its derivation is involved, but its intuition is simple: why just averaging between where I think I am and what my sensors tell me, if my sensors are much more reliable and should carry much higher weight?
-
-
 
 
 \section{Extended Kalman Filter}\label{sec:EKF}
@@ -300,7 +353,17 @@ As the state vector is a 3$\times$1 vector and the innovation a 2$\times$1 matri
 
 
 
+\section{Summary: Probabilistic Map based localization}\label{sec:pmbl}
+In order to localize a robot using a map, we need to perform the following steps
+\begin{enumerate}
+\item Calculate an estimate of our new position using the forward kinematics and knowledge of the wheel-speeds that we sent to the robot until the robot encounters some uniquely identifiable feature.
+\item Calculate the relative position of the feature (a wall, a landmark or beacon) to the robot.
+\item Use knowledge of where the feature is located in global coordinates to predict what the robot should see.
+\item Calculate the difference between what the robot actually sees and what it believes it should see (e.g.\ using a Kalman filter).
+\item Use the result from (4) to update its belief by weighing each observation with its variance.
+\end{enumerate}
 
+Steps 1-2 are based on the sections on ``Forward Kinematics'' and ``Line detection''. Step 3 uses again simple forward kinematics to calculate the position of a feature stored in global coordinates in a map in robot coordinates. Step 4 is a simple subtraction of what the sensor sees and what the map says. Step 5 may induce the Kalman filter, or an error minimization constraint. %, which we will describe here. Its derivation is involved, but its intuition is simple: why just averaging between where I think I am and what my sensors tell me, if my sensors are much more reliable and should carry much higher weight?
 
 
 \section*{Take home lessons}
@@ -309,7 +372,7 @@ As the state vector is a 3$\times$1 vector and the innovation a 2$\times$1 matri
 \item Once the robot is able to sense features with known locations, Bayes' rule can be used to update the posterior probability of a possible position. The key insight is that the conditional probability to be at a certain position given a certain observation can be inferred from the likelihood to actually make this observation given a certain position.
 \item A complete solution that performs this process for discrete locations is known as Markov Localization.
 \item The Extended Kalman Filter is the optimal way to fuse observations of different random variables that are Gaussian distributed.
-It is derived by minimizing the least-square error between prediction and real value.
+%It is derived by minimizing the least-square error between prediction and real value.
 \item Possible random variables could be the estimate of your robot position from odometry and observations of static beacons with known location (but uncertain sensing) in the environment.
 \item In order to take advantage of the approach, you will need differentiable functions that relate measurements to state variables as well as an estimate of the covariance matrix of your sensors.
 \item An approximation that combines benefits of Markov Localization (multiple hypothesis) and the Kalman filter (continuous representation of position estimates) is the Particle filter.
