@@ -116,50 +116,60 @@ The use of sensors in robotics is riddled with multiple cost-benefit analyses. A
 Once a subselection of sensors has been determined, these sensors can be integrated into an EKF SLAM system through a simple augmentation. In this case, the Update step in Section \ref{sec:ekfslam_alg} may be augmented with an arbitrary number of sensors to be robust to failure modes in any one sensor. For instance, an IMU can provide orientation observations interleaved with a range sensor providing orientation and position observations based on landmarks. The overall algorithm for EKF SLAM is unchanged here, but merely introduces more update steps at different frequencies.
 
 \section{Graph-based SLAM}
-Usually, a robot obtains an initial estimate of where it is using some onboard sensors (odometry, optical flow, etc.), uses this estimate to localize landmarks (walls, corners, graphical patterns) in the environment, and finally refines its pose estimate by matching sensor information in consecutive fields using for example the ICP algorithm (Section \ref{sec:ICP}). As soon as a robot revisits the same landmark twice, it can update the estimate on its location. As consecutive observations are not independent, but rather closely correlated, the refined estimate can then be propagated along the robot's path. This is formalized in EKF-based SLAM. A more intuitive understanding is provided by a spring-mass analogy: each possible pose (mass) is constrained to its neighboring pose by a spring. The higher the uncertainty of the relative transformation between two poses (e.g., obtained using odometry), the weaker the spring. Every time a robot gains confidence on a relative pose, the spring is stiffened instead. Eventually, all poses will be pulled in place. This can be achieved by numerically reducing the overall error based on all available observations using gradiant descent and is known as \emph{Graph-based SLAM}\index{Graph-based SLAM}, see also \cite{grisetti2010tutorial}. An example pose graph with landmark-based landmarks is shown in Figure \ref{fig:graphslam}.
+Usually, a robot obtains an initial estimate of where it is using some onboard sensors (odometry, optical flow, etc.), leverages this estimate to localize landmarks (walls, corners, graphical patterns) in the environment, and finally refines its pose estimate by matching sensor information in consecutive fields-of-view using for example the ICP algorithm (Section \ref{sec:ICP}) or feature matching. As soon as a robot revisits the same landmark twice, it can update the estimate on its location. As consecutive observations are not independent, but rather closely correlated, the refined estimate can then be propagated along the robot's path. This is formalized in EKF-based SLAM, where new measurements which are reliable can correct for errors in prior measurements.
+
+A more intuitive way to look at this is to consider it as a ``graph'' made up of masses at nodes and springs on the edges. Consider this spring-mass analogy: each possible pose (mass) is constrained to its neighboring pose by a spring. The higher the uncertainty of the relative transformation between two poses (e.g., obtained using odometry), the weaker the spring. Every time a robot gains confidence on a relative pose, the spring is stiffened instead. Eventually, all poses will be pulled in place so as to minimize the overall tension across the graph. This can be achieved by numerically minimizing the overall error based on all available observations using gradiant descent. This formulation of the SLAM problem is known as \emph{Graph-based SLAM}\index{Graph-based SLAM}, see also \cite{grisetti2010tutorial}. An example pose graph with feature-based landmarks is shown in Figure \ref{fig:graphslam}.
 
 \begin{figure}
 \centering
     \def\svgwidth{0.6\textwidth}
     \import{./figs/}{graphslam.pdf_tex}
-    \caption{Robot poses (triangles) and unique landmarks (stars) form a pose graph on a 2D map. Edges between robot poses indicate odometry measurements. Edges between robot poses and landmarks indicate range and bearing measurements. Upon a loop closure, here the re-discovery of landmark three, all poses inbetween the events can be adjusted. }\label{fig:graphslam}
+    \caption{Robot poses (triangles) and unique landmarks (stars) form a pose graph on a 2D map. Edges between robot poses indicate odometry measurements. Edges between robot poses and landmarks indicate range and bearing measurements. Upon a loop closure, here the re-discovery of landmark 3, all poses between the events can be adjusted. }\label{fig:graphslam}
 \end{figure}
 
 \subsection{SLAM as a Maximum-Likelihood Estimation Problem}
 The classical formulation of SLAM describes the problem as maximizing the posterior probability of all points on the robot's trajectory given the odometry input and the observations. Formally,
 \begin{equation}
-p(x_{1:T},m|z_{1:T},u_{1:T})
+p(x_{1:T},m|z_{1:T},u_{1:T}),
 \end{equation}
-where $ x_{1:T}$ are all discrete positions from time 1 to time $ T$, $ z$ are the observations, and $ u$ are the odometry measurements. This formulation makes heavily use of the temporal structure of the problem. In practice, solving the SLAM problem requires
+
+\noindent where $ x_{1:T}$ are all discrete positions from time $t \in (1, T)$, $ z$ are the observations, and $ u$ are the odometry measurements. This formulation makes heavily use of the temporal structure of the problem. In practice, solving the SLAM problem requires:
+
 \begin{enumerate}
-\item A motion update model, i.e., the probability $ p(x_t|x_{t-1},u_t)$ to be at location $ x_t$ given an odometry measurement $ u_t$ and being at location $ x_{t-1}$.
-\item  A sensor model, i.e., the probability $ p(z_t|x_t,m_t)$ to make observation $ z_t$ given the robot is at location $ x_t$ and the map $ m_t$.
+\item a motion update model, i.e., the probability $ p(x_t|x_{t-1},u_t)$ to be at location $ x_t$ given an odometry measurement $ u_t$ and being at location $ x_{t-1}$, and
+\item a sensor model, i.e., the probability $ p(z_t|x_t,m_t)$ to make observation $ z_t$ given the robot is at location $ x_t$ and the map $ m_t$.
 \end{enumerate}
-A possible solution to this problem is provided by the Extended Kalman Filter, which maintains a probability density function for the robot pose as well as the positions of all landmarks on the map. Being able to uniquely identify landmarks in the environment is of outmost importance and is known as the data association problem. Like EKF-based SLAM, graph-based SLAM does not solve this problem and will fail if landmarks are confused.
 
-In graph-based SLAM, a robot's trajectory forms the nodes of a graph whose edges are transformations (translation and rotation) that have a variance associated with it. An alternative view is the spring-mass analogy mentioned above. Instead of having each spring wiggle a node into place, graph-based SLAM aims at finding those locations that maximize the joint likelihood of all observations. As such, graph-based SLAM is a \emph{maximum likelihood estimation}\index{Maximum Likelihood Estimation} problem.
+\noindent Note that these are reminiscent of the probabilities we invoked on action and perception updates in the EKF. Namely, in EKF-SLAM we maintained a probability density function for the robot pose as well as the positions of all landmarks on the map. Being able to address the data association problem, where features are corresponded with landmarks, is still of utmost importance. Like EKF-based SLAM, graph-based SLAM does not solve this problem and will fail if landmarks are confused.
 
-Lets revisit the normal distribution:
+In graph-based SLAM, a robot's trajectory forms the nodes of a graph whose edges are transformations (translation and rotation) that have a variance associated with it. An alternative view is the spring-mass analogy mentioned above. Instead of having each spring wiggle a node into place, graph-based SLAM aims at finding those locations that maximize the joint likelihood of all observations. Said differently: of all the possible values the state variables can take, graph-based SLAM finds the ``best'' values which are defined as the \emph{most likely ones} based on the evidence (observations from odometry and sensors). As such, graph-based SLAM is a \emph{maximum likelihood estimation}\index{Maximum Likelihood Estimation} problem.
+
+To ground this arithmetically, let's revisit the normal distribution:
 \begin{equation}
-\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}
+\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}.
+\label{eq:pdf_typical}
 \end{equation}
 
-It provides the probability for a measurement to have value $ x$ given that this measurement is normal distributed with mean $ \mu$ and variance $ \sigma^2$.  We can now associate such a distribution with every node-to-node transformation, also known as a constraint. This can be pairs of distance and angle, e.g. We denote the measurement of a transformation between node $i$ and a node $j$ as $ z_{ij}$. Its expected value is denoted $ \hat{z}_{ij}$. This value is expected for example based on a map of the environment that consists of previous observations.
+It provides the probability for a measurement to have value $ x$ given that this measurement is normal distributed with mean $ \mu$ and variance $ \sigma^2$. This is a univariate (single-variable) formulation of the normal distribution, however it can be extended to multivariate distributions by considering $x$ and $\mu$ as vectors and $\sigma$ as the covariance matrix. We can now associate such a distribution with every node-to-node transformation. We denote the measurement of a transformation between node $i$ and a node $j$ as $ z_{ij}$. Its expected value is denoted $ \hat{z}_{ij}$; this expected value is based on some model for the measurements that operate on the state variables and output an ``expected measurement'' based on the current value of the state variables.
 
-Formulating a normal distribution of measurements $ z_{ij}$ with mean $ \hat{z}_{ij}$ and a covariance matrix $ \Sigma_{ij}$ (containing all variances of the components of $ z_{ij}$ in its diagonal) is now straightforward. As graph-based SLAM is most often formulated as  information filter, usually the inverse of the covariance matrix (aka information matrix) is used, which we denote by $ \Omega_{ij}=\Sigma_{ij}^{-1}$.
+A quick aside regarding expected measurements: we've seen this before. Recall in \cref{sec:vision:structure} where we constructed a sensor model for a camera of 3D points based on 2D measurements. Those 3D points here represent landmarks we are tracking, and the 2D measurements are the $\hat{z}_{ij}$ of constraints between the position and the projection of the landmarks. Note that the projection of the landmarks as a sensor measurement are 2D in the camera case, so there is a correspondence between the real measurement taken of a landmark $z_{ij}$ and the predicted one $\hat{z}_{ij}$ based on the estimated position of the robot and the estimated position of the landmark.
 
-As we are interested in maximizing the joint probability of all measurements $ \prod{z_{ij}}$ over all edge pairings $ ij$ following the maximum likelihood estimation framework, it is customary to express the PDF using the log-likelihood. By taking the natural logarithm on both sides of the PDF expression, the exponential function vanishes and $ ln \prod{z_{ij}}$ becomes $ \sum{ ln z_{ij}}$ or $ \sum{l_{ij}}$, where $ l_{ij}$ is the log-likelihood distribution for $ z_{ij}$.
+Formulating a normal distribution of measurements $ z_{ij}$ with mean $ \hat{z}_{ij}$ and a covariance matrix $ \Sigma_{ij}$ (containing all variances of the components of $ z_{ij}$ in its diagonal) is now straightforward. Note that just as in Eq.\ \eqref{eq:pdf_typical} involves the distance between the observation and its expected value scaled inversely by the square of the standard deviation, in our case we utilize the inverse of the squared covariance matrix, also known as the information matrix (as it denotes the amount of ``information'' on a variable that is available), which we denote by $ \Omega_{ij}=\Sigma_{ij}^{-1}$.
+
+As we are interested in maximizing the joint probability of all measurements $ \prod{z_{ij}}$ over all edge pairings $ ij$ following the maximum likelihood estimation framework, it is customary to express the PDF using the log-likelihood. Note that this provides some algebraic convenience in two ways. First, the logarithm is a positive monotonic operation, so the logarithm of any function will not change the points at which it is maximized or minimized. Second, the logarithm of Eq.\ \eqref{eq:pdf_typical} will result in a linear function in $x$, which is easier to work with than the cumbersome exponential function. By taking the natural logarithm on both sides of the PDF expression in Eq.\ \eqref{eq:pdf_typical}, the exponential function vanishes and $\log \prod{z_{ij}}$ becomes $ \sum{\log z_{ij}}$ or $ \sum{l_{ij}}$, where $ l_{ij}$ is the log-likelihood distribution for $ z_{ij}$.
 \begin{equation}
 l_{ij} \propto (z_{ij}-\hat{z}_{ij}(x_i,x_j))^T\Omega_{ij}(z_{ij}-\hat{z}_{ij}(x_i,x_j))
 \end{equation}
 
 Again, the log-likelihood for observation $ z_{ij}$ is directly derived from the definition of the normal distribution, but using the information matrix instead of the covariance matrix and is ridden of the exponential function by taking the logarithm on both sides.
 
-The optimization problem can now be formulated as
+The optimization problem can now be formulated as:
+
 \begin{equation}\label{eq:slamEM}
-x^* = \arg \min_{x}\sum_{<i,j>\in \mathcal{C}}e_{ij}^T\Omega_{ij}e_{ij}
+x^* = \arg \min_{x}\sum_{<i,j>\in \mathcal{C}}e_{ij}^T\Omega_{ij}e_{ij},
 \end{equation}
-with $ e_{ij}(x_i,x_j)=z_{ij}-\hat{z}_{ij}(x_i,xj)$ the error between measurement and expected value. Note that the sum actually needs to be minimized as the individual terms are technically the negative log-likelihood.
+
+\noindent with $ e_{ij}(x_i,x_j)=z_{ij}-\hat{z}_{ij}(x_i,xj)$ the error between measurement and expected value. Note that the sum actually needs to be minimized as the individual terms are technically the negative log-likelihood.
 
 \subsection{Numerical Techniques for Graph-based SLAM}
 Solving the MLE problem is non-trivial, especially if the number of constraints provided, i.e., observations that relate one landmark to another, is large. A classical approach is to linearize the problem at the current configuration and reducing it to a problem of the form $ Ax=b$. The intuition here is to calculate the impact of small changes in the positions of all nodes on all $ e_{ij}$. After performing this motion, linearization and optimization can be  repeated until convergence. 
