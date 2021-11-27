@@ -106,7 +106,7 @@ A remarkable result is that only the robot's state (and \emph{not} the landmark 
     \boldsymbol{K}_{k'} = \hat{\boldsymbol{P}}_{k'|k-1} \boldsymbol{H}_{\hat{\boldsymbol{x}}_{k'}}^T \boldsymbol{Z}_{k'}
 \end{equation}
 
-\noindent respectively. Crucially this step requires the careful and error-free association of features with landmarks in a process known as data association \index{data association}. Data association can be accomplished through using description vectors over the features and matching if the similarity of the descriptors are above a certain threshold, or through a Hungarian algorithm for optimal assignment. This data association step can be avoided if the landmarks are uniquely labeled and do not rely on feature matching. It may also depend on the generation of new landmarks or the deletion of old ones to keep the state vector of bounded length.
+\noindent respectively. Crucially this step requires the careful and error-free association of features with landmarks in a process known as \emph{data association}. \index{data association} Data association can be accomplished through using description vectors over the features and matching if the similarity of the descriptors are above a certain threshold, or through a Hungarian algorithm for optimal assignment. This data association step can be avoided if the landmarks are uniquely labeled and do not rely on feature matching. It may also depend on the generation of new landmarks or the deletion of old ones to keep the state vector of bounded length.
 
 Note that there are some significant computational speedups associated with the matrix inversions and multiplications in the preceeding update equations due to their sparsity, which we do not cover explicitly here. In total, the total complexity for the updates is $\mathcal{O}(kn^2)$, where $k$ is the number of landmarks and $n$ is the number of states. There are ways to in fact make this algorithm constant-time through a process known as \emph{marginalization} \cite{sibley2010sliding}, wherein some variables are effectively no longer re-estimated (e.g.\ old poses which are no longer affecting the current pose significantly).
 
@@ -120,7 +120,7 @@ Usually, a robot obtains an initial estimate of where it is using some onboard s
 
 \begin{figure}
 \centering
-    \def\svgwidth{\textwidth}
+    \def\svgwidth{0.6\textwidth}
     \import{./figs/}{graphslam.pdf_tex}
     \caption{Robot poses (triangles) and unique landmarks (stars) form a pose graph on a 2D map. Edges between robot poses indicate odometry measurements. Edges between robot poses and landmarks indicate range and bearing measurements. Upon a loop closure, here the re-discovery of landmark three, all poses inbetween the events can be adjusted. }\label{fig:graphslam}
 \end{figure}
