@@ -72,7 +72,7 @@ which these variables may affect one another, one by one. A covariance matrix ho
 \begin{equation}
 \Sigma^Y= J \Sigma^X J^T
 \end{equation}
-where $\Sigma^X$ and $\Sigma^Y$ are the $m \times m$ and $n \times n$ covariance matrices holding the variances of the input and output variables respectively, and
+where $\Sigma^X$ and $\Sigma^Y$ are the $n \times n$ and $m \times m$ covariance matrices holding the variances of the input and output variables respectively, and
 $J$ is a $m \times n$ \textsl{Jacobian} matrix, which holds the partial derivatives $\frac{\partial f_i}{\partial x_j}$. As $J$ has $n$ columns, each row contains partial derivatives with respect to $x_1$ to $x_n$.
 
 \subsection{Example: Line Fitting}\label{sec:linefitting}
@@ -110,14 +110,11 @@ Whereas the line fitting example demonstrated a many-to-one mapping, odometry re
 
 As usual, we describe the robot's position by a tuple $ (x,y,\theta)$. These are the three output variables. We can measure the distance each wheel travels $ \Delta s_r$ and $ \Delta s_l$ based on the encoder ticks and the known wheel radius. These are the two input variables. We can now calculate the change in the robot's position by calculating
 \begin{eqnarray}
+\Delta s=\frac{\Delta s_r + \Delta s_l}{2}
 \Delta x  &=& \Delta s cos(\theta)\\
 \Delta y  &=& \Delta s sin(\theta)\\
 \Delta \theta &=& \frac{\Delta s_r-\Delta s_l}{b}
 \end{eqnarray}
-with
-\begin{equation}
-\Delta s=\frac{\Delta s_r + \Delta s_l}{2}
-\end{equation}
 
 The robot's new position is then given by
 \begin{equation}
@@ -213,7 +210,7 @@ Unfortunately, there are few systems that allow us to directly measure the infor
 \end{equation}
 In our example $ H_k$ was just the identity matrix; in a robot position estimation problem $ H_k$ is a function that would predict how a robot would observe a shift in position through a sensor. As you can see, all the weighting based on variances is done in the Kalman gain $ K$.
 
-The perception update step shown above is only half of what the Kalman filter does. The step is known as the \emph{prediction step}\index{Prediction step (Kalman filter)} and is exactly the same as we learned during error propagation. It is now time for a brief disclaimer: the Kalman filter only works for linear systems. Forward kinematics of even the simplest robots are mostly intrinsically non-linear, and so are observation models that relate sensor observations to the robot position. Non-linear systems can be dealt with by using the Extended Kalman Filter, which will be introduced in the context of robot localization. %which linearizes both the process model and sensor model around the current state by using a first-order Taylor expansion.
+The perception update step shown above is only half of what the Kalman filter does. The step is known as the \emph{prediction step}\index{Prediction step (Kalman filter)} and is exactly the same as we learned during error propagation. It is now time for a brief disclaimer: the Kalman filter only works for linear systems. Forward kinematics of even the simplest robots are mostly intrinsically non-linear, and so are observation models that relate sensor observations to the robot position. Non-linear systems can be dealt with by using the \textsl{Extended Kalman Filter}, which will be introduced a bit later on in the context of robot localization. %which linearizes both the process model and sensor model around the current state by using a first-order Taylor expansion.
 
 
 \section{Take-home lessons}
