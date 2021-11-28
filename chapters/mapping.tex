@@ -103,7 +103,7 @@ of different map types.
 Discrete and continuous representations are often matched together in clever ways. For example, roadmaps for GPS systems are stored as topological maps that store the GPS coordinates of every vertex, but might also contain overlays of aerial and street photography. These different maps are then used at different stages of the path planning stage.
 
 
-\section{Iterative Closest Point for Sparse Mapping}
+\section{Iterative Closest Point for Sparse Mapping}\label{sec:ICP}
 In its simplest form, a map can be created from slices of 2D range data such as obtained from a laser scanner. In the absence of a precise estimate of motion between two measurements, for example provided by odometry or IMU measurements, the challenge is to associate subsequent scans. 
 
 A standard solution to this problem is known as the \emph{Iterative Closest Point} (ICP)\index{Iterative Closest Point}\index{ICP} algorithm. It was presented in the early 1990s for registration of 3D range data to CAD models of objects. A more in-depth overview of what is described here is given in \cite{rusinkiewicz01}. The key problem can be reduced to finding the best transformation that minimizes the distance between two sets of measurements.
