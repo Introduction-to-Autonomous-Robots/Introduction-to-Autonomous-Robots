@@ -20,7 +20,7 @@ A desirable property of a feature is that its extraction is repeatable and robus
 
 This chapter focuses on two important classes of features: line features and scale-invariant features in images (SIFT). Both classes of features provide tangible examples for the least-squares and RANSAC algorithms, which may be used to harness feature information to solve problems, and are also introduced in this chapter. Together, these classes of features are fairly representative of all features used in robotics, and have been chosen for their simplicity, providing a basis for understanding the function of more complex feature detectors.
 
-These hand-coded feature detectors are in contrast to entirely self-learned feature detectors based on deep neural networks, which are treated in Chapter \cref{chap:ann}. Although neural network-based methods often outperform hand-coded features, hand-coded features remain relevant for environments in which learning is unfeasible, to preprocess data before subjecting it to a learning-based method, or to understand what kind of architecture is required to solve a specific goal. 
+These hand-coded feature detectors are in contrast to entirely self-learned feature detectors based on deep neural networks, which are treated in Chapter \cref{chap:ann}. Although neural network-based methods often outperform hand-coded features, hand-coded features remain relevant for environments in which learning is unfeasible, to preprocess data before subjecting it to a learning-based method, or to understand what kind of architecture is required to solve a specific goal.
 
 \section{Line recognition}
 \label{sec:line_recognition}
@@ -126,7 +126,7 @@ SIFT proceeds in multiple steps. Descriptions of the algorithm often include its
 \item Generate multiple scaled versions of the same image by re-sampling every 2nd, 4th, and so on (up to the desired scale), pixel.
 \item Filter each scaled picture with various Gaussian filters of different variance.
 \item Calculate the difference between pairs of filtered images. This is equivalent to a DoG filter.
-\end{enumeration}
+\end{enumerate}
 
 \item Detecting local minima and maxima in the DoG images across different scales (\cref{fig:siftrejection}, left) and reject those with low contrast (\cref{fig:siftrejection}, right).
 
