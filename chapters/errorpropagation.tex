@@ -55,7 +55,7 @@ Such a robot (when subject to slip) will actually increase the uncertainty in it
 
 If only there were a way to correct this unbounded error with some sort of sensor measurement! However, even these sensor measurements would be affected by uncertainty, so we will have to take this into account as well. We'll come up with a correction that is able to accommodate this shortly.
 
-Similarly, when estimating distance and angle to a wall from point cloud data, the uncertainty of the random variables describing distance and angle to the wall are related to the uncertainty of \textsl{each} point measured on the wall. These relationships are formally captured by the \textsl{error propagation law}\index{Error Propagation Law}.
+Similarly, when estimating distance and angle to a wall (a line feature in 2D) from point cloud data, the uncertainty of the random variables describing distance and angle to the wall are related to the uncertainty of \textsl{each} point measured on the wall. These relationships are formally captured by the \textsl{error propagation law}\index{Error Propagation Law}.
 
 The key intuition behind the error propagation law is that the variance of each component that contributes noise to a random variable has a weight associated with it. This weight is a function of how strongly that component influences the random variable. Measurements that have little effect on the
 aggregated random variable should also have little effect on its variance and vice versa. ``How strongly'' one variable affects another
