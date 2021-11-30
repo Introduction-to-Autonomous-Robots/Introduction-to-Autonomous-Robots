@@ -1,28 +1,35 @@
 %!TEX root = ../book.tex
-\chapter{Manipulation Planning}\label{chap:manipulation}
+\chapter{Manipulation}\label{chap:manipulation}
 
-While grasping is generally concerned with connecting an object to a robot's kinematic chain, there exist a number of potential interactions between an object and a robot that go beyond just `pick-and-place'.
+While grasping (\cref{chap:grasping}) is generally concerned with connecting an object to a robot's kinematic chain, the act of grasping itself is usually only a small part of a small part of the tasks involved in physically dealing with objects.
+
+
+\begin{mdframed}
+Think of all the possible ways in which you interact with objects on a daily basis. Identify which part of these can be classified as ``grasping'' and what is actually ``manipulation''? How many times do you need to plan for a complex sequence of actions (e.g., making coffee in the morning)?
+\end{mdframed}
+
 Oftentimes, the intention of the grasping action is to change the pose of this object in a precise, repeatable, and purposeful way.
 For example, cutlery and dishes need to be in well-specified areas and aligned with each other when setting a table, merchandise needs to be neatly stacked in a shelf, and machine parts need to be assembled with each other according to a specific order.
 These activities are more generally known as \textsl{manipulation}\index{Manipulation}.
-Manipulation can be thought of as a superset of grasping, that includes additional capabilities that are typically referred to as \textsl{non-prehensile}\index{Non-prehensile Manipulation}---i.e., anything but grasping.
-Indeed, objects can be pushed, poked, tossed, flipped, inserted, screwed-in, turned, twisted, and much more!
-However, discussing all the possible ways objects might be manipulated and the many different contexts such actions would be required---which might dramatically change the approach a robot would need to chose---is well beyond the scope of this book and still matter of active research.
 
-\begin{mdframed}
-Think of all the possible ways in which you interact with objects on a daily basis. How many of these interactions involve classic `grasping'/`pick-and-place'? How many times do you need to plan for a complex sequence of actions (e.g., making coffee in the morning)?
-\end{mdframed}
 
-Interestingly, many manipulation problems can be cast into a sequence of pick-and-place problems in which the possible grasp choices are appropriately constrained. For example, an object can be turned or flipped by planning a sequence of pick-and-place movements that each turn the object by a certain degree. Similarly, using two robotic arms, with one grasping an object out of the hand of the other, will allow a robot system to change an object's pose almost arbitrarily. (Which poses an object will be able to reach will depend on the object's exact geometry, the kinematics of the robotic arms, and constraints in the workspace.) So-called \textsl{in-hand manipulation}\index{In-hand manipulation} is still an active area of research as repeatedly picking and placing an object and hand-overs between different arms is considered to be too slow and otherwise impractical for many application areas.
-The goals of this chapter are to:
+The goals of this chapter are to introduce:
 
 \begin{itemize}
-\item \td{Nikolaus}
-\item \td{Nikolaus}
-\item \td{Nikolaus}
+\item the difference between grasping and manipulation,
+\item algorithms for choosing the right grasp, 
+\item canonical manipulation tasks such as pick-and-place and assembly. 
 \end{itemize}
 
-\section{How to find good grasps? \td{any better title for this section? I don't like the fact that this is literally the same thing we say in chapter 5}}
+\section{Non-Prehensile Manipulation}
+Manipulation can be thought of as a superset of grasping, that includes additional capabilities that are typically referred to as \textsl{non-prehensile}\index{Non-prehensile Manipulation}---i.e., anything but grasping. Indeed, objects can be pushed, poked, tossed, flipped, inserted, screwed-in, turned, twisted, and much more!
+However, discussing all the possible ways objects might be manipulated and the many different contexts such actions would be required---which might dramatically change the approach a robot would need to chose---is well beyond the scope of this book and still matter of active research.
+
+Many manipulation problems can be cast into a sequence of pick-and-place problems in which the possible grasp choices are appropriately constrained. For example, an object can be turned or flipped by planning a sequence of pick-and-place movements that each turn the object by a certain degree. Similarly, using two robotic arms, with one grasping an object out of the hand of the other, will allow a robot system to change an object's pose almost arbitrarily. (Which poses an object will be able to reach will depend on the object's exact geometry, the kinematics of the robotic arms, and constraints in the workspace.) So-called \textsl{in-hand manipulation}\index{In-hand manipulation} is still an active area of research as repeatedly picking and placing an object and hand-overs between different arms is considered to be too slow and otherwise impractical for many application areas.
+
+
+\section{Choosing the right grasp}
+While we have so far only considered the mechanics of grasping (Chapter \ref{chap:grasping}, choosing an appropriate pose for grasping an object in a specific way is an algorithmic problem. 
 
 Finding a good grasp that fully constrains an object against all possible external forces and torques, i.e. a grasp that lies within the ``grasping wrench space'' detailed in \cref{sec:grasping_friction} may be too restrictive and, oftentimes, unnecessarily so.
 For example, it might be sufficient to find a grasp that constrains an object simply against gravity.
@@ -53,7 +60,7 @@ In practice, an object might be perceived by a three-dimensional perception devi
 \item Execution: Physically test a grasp by monitoring jaw distances, as well as forces and torques at the wrist (\cref{fig:graspalgorithm}, h).
 \end{enumerate}
 
-Some of these steps might not be necessary for all grasps, and some of them might become very complicated for some task. For example, pre-processing is often used to remove known quantities such as a table surface from the data, but it might become non-trivial when e.g. removing the edges of a bin or operating with a contained with an arbitrary size.
+Some of these steps might not be necessary for all grasps, and some of them might become very complicated for some task. For example, pre-processing is often used to remove known quantities such as a table surface from the data, but it might become non-trivial when e.g. removing the edges of a bin or operating with a container with an arbitrary size.
 
 \textsl{Segmentation} is the most critical step and requires some previous knowledge about the objects to grasp such as their size or the geometry of features thereon. In \cref{fig:graspalgorithm}, clustering points based on their distance is sufficient, e.g. using the DBSCAN algorithm \cite{ester1996density}, but requires an assumption about object size in order to select a suitable threshold. Other segmentation algorithms might use surface normals, a combination of point cloud and image data such as color or patterns, or employ deep learning.
 
@@ -61,7 +68,7 @@ Some of these steps might not be necessary for all grasps, and some of them migh
 
 A simple approach to \textsl{plan} for possible grasps is to calculate the center-of-mass as well as the principal axes of an object using principal component analysis (\cref{sec:appendix_PCA}). Other approaches might again require matching the existing points to a 3D model of the object to identify specific grasp points (such as the handle of a cup), or rely on image features to do so.
 
-After planning all, or some, possible grasps, they need to be checked for \textsl{feasibility}. While a collision with a point in the point-cloud might rule out a grasp, local search is sometimes being used to find a collision-free variant, for example by moving the gripper up and down as well as along the principal axes. In other applications, for example bin picking, some collisions might be ignored with the expectation that the gripper will push other objects out of its way.
+After planning all, or some, possible grasps, they need to be checked for \textsl{feasibility}. While a collision with a point in the point-cloud might rule out a grasp, local search is sometimes being used to find a collision-free variant, for example by (virtually) moving the gripper up and down as well as along the principal axes. In other applications, for example bin picking, some collisions might be ignored with the expectation that the gripper will push other objects out of its way.
 
 Even though a grasp might look robust in a point cloud representation, it might not be effective when physically executing it. Possible failures are collisions with objects, insufficient friction with the object, or an object moving before the gripper is fully closed. For this reason, it is important to already close the gripper as much as possible before approaching the object, increasing the requirements for accurate perception.
 
