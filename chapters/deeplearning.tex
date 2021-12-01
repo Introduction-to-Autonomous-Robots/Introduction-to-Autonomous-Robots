@@ -1,28 +1,43 @@
+%!TEX root = ../book.tex
 \chapter{Artificial Neural Networks}\label{chap:ann}
-Artificial neural networks are a specific flavor of machine learning that are loosely inspired by neural operation in the human brain and are able to classify or regress data such as shown in Chapters \ref{chap:vision} and \ref{chap:feature_extraction}, or to serve as a controller as will be shown in Chapter \ref{chap:taskexecution}. 
 
-While artificial neural networks have long time been one out of many go-to methods from the vast field of machine learning to address these problems, recent advances in computing, in particular graphical processing units (GPU) and the availability of large datasets, \hjb{\sout{which in turn resulted into}have enabled} the ability to train very, very large neural networks, also known as ``deep learning''\hjb{. \sout{,} These massive networks} have led to revolutionary results in many fields including computer vision, natural language processing, video and speech processing, and robotics.
+\textsl{Artificial neural networks (ANNs)}\index{Artificial Neural Networks} are a specific flavor of machine learning that are loosely inspired by neural operation in the human brain; in robotics, they are used to classify or regress data for the dual purposes of perception (e.g. \cref{chap:vision,chap:feature_extraction}) and control (as will be shown in \cref{chap:taskexecution}).
+%
+While ANNs for the longest time have been just one of the many methods available to roboticists from the neighboring field of machine learning, recent advances in computing---in particular, graphical processing units (GPU)---and the availability of large datasets have enabled the ability to train very large neural networks, also known as \textsl{deep learning}\index{Deep Learning}. These massive networks have led to revolutionary results in many fields including computer vision, natural language processing, video and speech processing, and robotics.
+%
+Not too long ago, neural networks were considered ``deep'' if the had just more than two layers. Today, ``deep'' neural networks can have hundreds of layers and thousands of inputs and outputs---or more!
+This is still shy of the human brain, which contains $\sim 100^{11}$ neurons, each with thousands of synapses connecting a single neuron to thousands of others.
 
-Not too long ago, neural networks have been considered ``deep'' with more than two layers. Today, ``deep'' neural networks can have hundreds of layers and thousands of inputs and outputs, or more. This is still shy of the human brain, or even tiny areas thereof, which contains 100 billion neurons, each with thousands of synapses connecting a single neuron to thousands of others.
+\subsubsection{When to use machine learning?}
 
-\section{When to use machine learning?}
-Machine learning is a large field that shares many of the foundations in probability theory and statistics with robotics. The goal of this chapter is to provide a basic understanding of simple and recurrent neural networks that is sufficient to connect these tools to other topics in this book. In particular, deep learning can be used as a drop-in replacement for forward and inverse kinematics, sensor pre-processing and conditioning, computer vision and feature extraction, localization, and even replace controllers for locomotion and grasping. Here, it is important to understand when deep learning models might provide better solutions as well as when they do not. In a nutshell, deep learning models become first choice when not enough information exists to model a system using first principles. While a ``deep enough'' model with the right architecture might approximate any existing function in robotics, deep learning models lack ``explainability'' beyond statistical accuracy, that is, we do not know why the approach actually works and when it might fail, usually making it second choice over an approach based on first principles.
+Machine learning is a large field that shares many of its foundations with robotics, in particular for what concerns probability theory and statistics.
+The goal of this chapter is to provide an understanding of simple and recurrent neural networks that is sufficient to connect these tools to other topics in this book.
+In particular, deep learning may be used as a drop-in replacement for sensor pre-processing and conditioning, computer vision and feature extraction, localization, and even replace controllers for locomotion and grasping.
+For each of these applications, it is important to understand when deep learning may perform better than traditional approaches, and when it does not.
+In a nutshell, deep learning models become first choice when not enough information exists to model a system using first principles. While a ``deep enough'' model with the right architecture might approximate any existing function in robotics, deep learning models lack ``explainability'' beyond statistical accuracy, that is, we do not know why the approach actually works and when it might fail, usually making it second choice over an approach based on first principles.
+In summary, the goals of this chapter are:
 
+\begin{itemize}
+    \item \td{Nikolaus TODO}
+    \item \td{Nikolaus TODO}
+    \item \td{Nikolaus TODO}
+\end{itemize}
 
 \section{The simple Perceptron}
-Artificial neural networks are inspired by neurons and synapses in the human brain and have been studied since the fifties. One of the earliest models is the \index{Perceptron}\index{Simple Perceptron}\textsl{Perceptron}, which can classify an input vector $x$ of dimension $m$ into two classes. Such a problem is shown in \cref{fig:linearsep}. Variations of the simple perceptron remain the basic elements of deep neural networks till today.
 
-\begin{figure}[htb]
+\begin{figure}[!b]
     \centering
     % \includegraphics[width=0.5\columnwidth]{figs/linearlyseparable}
     \def\svgwidth{0.6\textwidth}
     \import{./figs/}{linearlyseparable.pdf_tex}
-    \caption{A 2-dimensional dataset (every element has two values $x_1$ and $x_2$) consisting of two classes, red and blue, that can be separated by a straight line.\label{fig:linearsep}}
+    \caption{A 2-dimensional dataset, where every element has two values ($x_1$ and $x_2$) and belongs to one of two classes (red and blue). In the simplest case of linear separation, it is possible to separate the two classes with just a straight line.\label{fig:linearsep}}
 \end{figure}
 
-Formally, a Perceptron has $m$ inputs, $x_1$ to $x_m$, each modulated by a weight $w_1$ to $w_m$, respectively, as well as a treshold $b$, and outputs either zero or one (\cref{fig:perceptron}). This is schematically illustrated in \cref{fig:perceptron}.
+Artificial neural networks are inspired by neurons and synapses in the human brain and have been studied since the Fifties. One of the earliest models is the \textsl{Perceptron}\index{Perceptron}, which can classify an input vector $x$ of dimension $m$ into two classes. Such a problem is shown in \cref{fig:linearsep}. Variations of the simple perceptron remain the basic elements of deep neural networks until today.
+%
+As detailed in \cref{fig:perceptron}, a perceptron has $m$ inputs $x_1$ to $x_m$)---each modulated by a weight $w_1$ to $w_m$, as well as a treshold $b$; it outputs either zero or one.
 
-\begin{figure}[htb]
+\begin{figure}
     \centering
     % \includegraphics[width=0.5\columnwidth]{figs/perceptron.png}
     \def\svgwidth{0.66\textwidth}
@@ -30,7 +45,7 @@ Formally, a Perceptron has $m$ inputs, $x_1$ to $x_m$, each modulated by a weigh
     \caption{The simple perceptron passes the dot product between the inputs $x$ and weights $w$ through a Heaviside function, returning 1 when $wx+b>0$ and 0 otherwise.}\label{fig:perceptron}
 \end{figure}
 
-The Perceptron classifies whether $x$ lies above or below a hyperplane defined by the weights $w=\{w_1, \ldots, w_m\}$ using the following equation:
+The perceptron classifies whether $x$ lies above or below a hyperplane defined by the weights $w=\{w_1, \ldots, w_m\}$ using the following equation:
 %
 \begin{equation} \label{eq:heaviside}
 f(x)=\begin{cases}
@@ -41,74 +56,76 @@ f(x)=\begin{cases}
 %
 Here, $wx=\sum_{i=1}^mw_ix_i$ is the dot product and the non-linear activation function $f(x)$ is also known as \index{Heaviside step function}\textsl{Heaviside step function}. In practice, we are appending the value of '1' to the vector $x$ so that $x_0=1$, which simplifies $wx+b$ (with $w=\{w_1, \ldots, w_m\})$ to $wx$ with $w=\{w_0, w_1, \ldots, w_m\}$ where $w_0$ takes the role of $b$. This is illustrated in \cref{fig:perceptron}, where the bias $b$ is alternatively labeled by $w_0$ and input $x_0=1$.
 
-
 \subsection{Geometric interpretation of the simple perceptron}
-If $w$ really defines a hyperplane, we should be able to easily visualize it when $m=2$. When $m=2$, that is every data point $x$ has only 2 dimensions, the separating hyperplane is a line such as shown in Figure \ref{fig:linearsep}. This can be seen as follows: writing the dot product out yields
+
+If $w$ really defines an hyperplane, we should be able to easily visualize it when $m=2$. When $m=2$, i.e. every data point $x$ has only two dimensions, the separating hyperplane is a line such as the one shown in \cref{fig:linearsep}.
+Indeed, we can easily demonstrate this. Writing the dot product out yields:
 \begin{equation}
 w_1x_1+w_2x_2+b=0
 \end{equation}
-As we plot $x_1$ along the x-axis and $x_2$ along the y-axis, we can write
+As we plot $x_1$ along the x-axis and $x_2$ along the y-axis, we can write:
 \begin{equation}
 w_1x+w_2y+b=0
 \end{equation}
-This can be rewritten into
+This can be rewritten into:
 \begin{equation}
-y=-\frac{w1}{w2}x-\frac{b}{w_2}
+y=-\frac{w_1}{w_2}x-\frac{b}{w_2}\quad ,
 \end{equation}
 and displayed within a scatter plot.
 
-\subsection{Training the simple Perceptron}
-Training the Perceptron, that is finding appropriate values for $w$ and $b$ that separate the data into two classes, is a simple iterative process:
+\subsection{Training the simple perceptron}
+
+Training the perceptron, equates to finding appropriate values for $w$ and $b$ that separate the data into two classes. This process can be performed iteratively:
 
 \begin{enumerate}
-\item Initialize the weights with zeros or a small random number
-\item Compute the prediction $y_j=f(wx_j+b)$ for each data point $x_j$. A suitable choice for $f()$ is the Heaviside step function , e.g.\hjb{ (Equation \ref{eq:heaviside})}
-\item Calculate the mismatch between prediction $y_j$ and the true class $d_j$ to update the weights
+\item initialize all the weights with zeros or a small random number;
+\item compute the prediction $y_j=f(wx_j+b)$ for each data point $x_j$. A suitable choice for $f()$ is the Heaviside step function , e.g. (\cref{eq:heaviside});
+\item calculate the mismatch between prediction $y_j$ and the true class $d_j$ to update the weights:
 \begin{equation}
 w(t+1)=w(t)+r(d_j-y_j)*x_j
 \end{equation}
+\item repeat steps $2$ and $3$ until a termination criteria, e.g. a decreasing error or maximum number of iterations, is reached.
 \end{enumerate}
 
-Repeat steps 2 and 3 until a termination criteria, such as a decreasing error or maximum number of iterations, is reached.
+Albeit very simple, this learning algorithm has still a lot in common with state-of-the-art algorithms. First, weights are updated in an iterative process using small increments governed by the parameter $r$, which is referred to as the \textsl{learning rate}\index{Learning Rate}. By changing $w$ in small increments, the algorithm is literally rotating and translating the separating line in a direction that minimizes the \textsl{loss}, given by $d_i-y_i$. One can easily see that if the learning rate is too low, the algorithm will never find a good solution. One can also see that if the learning rate is too large, the line might move too much, ``skipping'' the configuration that achieves optimal separation.
 
-Albeit very simple, this \hjb{\sout{simple}} learning algorithm has still a lot in common with state-of-the-art algorithms. First, weights are updated in an iterative process using small increments governed by a parameter $r$, standing for the \index{Learning Rate}\textsl{learning rate}. By changing $w$ in small increments, the algorithm is literally rotating and translating the separating line in a direction that minimizes the \textsl{loss}, given by $d_i-y_i$. One can easily see that if the learning rate is too low, the algorithm will never find a good solution. One can also see that if the learning rate is too large, the line might move too much, skipping the optimal pose.
+It is worth noting that this simple implementation is a \textsl{de facto} implementation of gradient descent\index{Gradient descent}---in this case with a loss function of the form $(d_i-y_i)^2$, that can be minimized by moving against the direction of its gradient, here $2(d_i-y_i)$. Other examples of gradient descent can be found in \cref{sec:kinematics:inverse:feedbackcontrol}.
 
-Notice that this simple implementation is \emph{de facto} implementing gradient descent \index{Gradient descent} on a loss function of the form $(d_i-y_i)^2$, that can be minimized by moving against the direction of its gradient, here $2(d_i-y_i)$. (Other examples of gradient descent can be found in Section \ref{sec:kinematics:inverse:feedbackcontrol}).
+Second, the learning algorithm requires multiple presentations of the data-set, as the error is computed for every point in the data set. The more the amount of data, the longer the training! In this case the increase in time is linear---which is also generally true for more complex and modern learning algorithms.
 
-Second, the learning algorithm requires multiple presentations of the data-set, as the error is computed for every point in the data set. The more data, the longer training takes, in this case the increase in time is linear, which is also a good approximation for modern learning algorithms.
-
-Third, the error between \hjb{the} prediction and true class is only calculated based on \hjb{the given} training data. Even if we train with unlimited amounts of data points, it is still difficult to answer how the algorithm generalizes for new data, and whether \hjb{\sout{also}} these new measurements will be distributed \hjb{in a representative fashion to \sout{ as}} the training data.
+Third, the error between the prediction and the true class is only calculated based on the given training data. Even if we were to train with unlimited amounts of data points, it would still be difficult to generalizes for new data, and whether these new measurements will be distributed in a way that is representative of the training data.
 
 \section{Activation Functions}\label{sec:activationfunctions}
-Using a on-off Heaviside step function makes training a neural network using gradient descent rather difficult as a function that switches from ``not working at all'' to ``working completely'' provides very little information in which direction to move. It is therefore more desirable to have a smooth activation function. One such function is the \index{Sigmoid function}\textsl{sigmoid function}:
+
+Using a on-off Heaviside step function makes training a neural network using gradient descent rather difficult, as a function that switches from ``not working at all'' to ``working completely'' provides very little information in which direction to move. It is therefore more desirable to have a smoother activation function. One such function is the \index{Sigmoid function}\textsl{sigmoid function}:
 \begin{equation}
 \sigma(x)=\frac{1}{1+e^{-x}}
 \end{equation}
-Its main characteristics are that it assymptotically stays between 0 and 1, and crosses the y-axis at 0.5. It is shown in \cref{fig:activationfunctions}, left.
+Its main characteristics are that it asymptotically stays between $0$ and $1$, and crosses the y-axis at $0.5$. It is shown in \cref{fig:activationfunctions}, left.
 
 \begin{figure}[htb]
     \centering
     % \includegraphics[width=0.9\columnwidth]{figs/activationfunctions}
     \def\svgwidth{0.9\textwidth}
     \import{./figs/}{activationfunctions.pdf_tex}
-    \caption{Typical activation functions used in neural networks, the Sigmoid activation function, left, and the rectified linear unit (ReLU). \hjb{The values on the x-axis should be removed from the sigmoid function}\label{fig:activationfunctions}}
+    \caption{Typical activation functions used in neural networks: the sigmoid activation function, left, and the rectified linear unit (ReLU), right.\label{fig:activationfunctions}}
 \end{figure}
 
+The sigmoid function is attractive for learning as the direction in which the weights should move to improve the error is very clear in the vicinity of $wx=0$, and computing its derivative is rather simple. While attractive in many cases, the sigmoid function has some drawbacks. For instance, when $wx$ is very large or very small, the neuron either saturates or never activates---a phenomenon known as the \textsl{vanishing gradient} problem. Another drawback is that computing the sigmoid function is computationally expensive. An alternative is the hyperbolic tangent $\tanh()$ which remains in the range of -1 to 1 and crosses the y-axis at 0.
 
-The sigmoid function is \hjb{\sout{very}} attractive for learning as the direction in which the weights should move to improve the error is very clear in the vicinity of $wx=0$, and computing its derivative is rather simple as we see below. \hjb{While attractive in many cases, the sigmoid function has some drawbacks. For instance, when \sout{In case of}} $wx$ \hjb{\sout{being very} is very} large, or very small, the neuron either saturates or never activates, also known as the \textsl{vanishing gradient} problem. Another drawback is that computing the sigmoid function is computationally expensive. A similar function is the hyperbolic tangent $\tanh()$ which remains in the range of -1 to 1 and crosses the y-axis at 0. \hjb{Should there also be a figure for tanh?}
-
-A popular solution to decrease computation time is the \index{Rectified Linear Unit (ReLU)}\textsl{Rectified Linear Unit} (ReLU), which is given by
+A popular solution to decrease computation time is the \textsl{Rectified Linear Unit (ReLU)}\index{Rectified Linear Unit (ReLU)}, which is given by:
 \begin{equation}
 R(x)=max(0,x)
 \end{equation}
-and is shown in \cref{fig:activationfunctions}, right.The dashed line indicates a refinement of the ReLU known as \textsl{leaky ReLU} with a slope of typical 0.1, and improves learning for negative $wx$ by providing a directional gradient.
+and is shown in \cref{fig:activationfunctions}, right.
+The dashed line indicates a refinement of the ReLU known as \textsl{leaky ReLU} with a typical slope of $0.1$; it improves learning for negative $wx$ by providing a directional gradient.
 
-Note that we only talk about ``Perceptrons'' when the Heaviside step function is used as activation function.
+Please note that we only talk about ``perceptrons'' when the Heaviside step function is used as activation function.
 
-\section{From the simple Perceptron to Multi-layer neural networks}
+\section{From the simple perceptron to Multi-layer neural networks}
 
-We have seen that the single Perceptron is able to linearly separate a dataset, spitting out ``0'' or ``1'' as a function of the data being below or above the separating hyperplane defined by the weight vector $w$. It is easy to see that some problems cannot be linearly separated. This is illustrated in \cref{fig:xorproblem}.
-
+We have seen that the single perceptron is able to linearly separate a dataset, returning ``$0$'' or ``$1$'' as a function of the data being below or above the separating hyperplane defined by the weight vector $w$. However, it is easy to see that some problems cannot be linearly separated.
+%
 \begin{figure}[htb]
     \centering
     % \includegraphics[width=0.9\columnwidth]{figs/xorproblem}
@@ -116,11 +133,12 @@ We have seen that the single Perceptron is able to linearly separate a dataset, 
     \import{./figs/}{xorproblem.pdf_tex}
     \caption{Data that cannot be separated using a single line (left) in canonical form (center). This problem is known as the ``XOR'' problem due to the truth table of the associated classification problem (right).\label{fig:xorproblem}}
 \end{figure}
+%
+In the example shown in \cref{fig:xorproblem}, the red and the blue data points are not separable by a single line, but require at least two lines. This problem is known as the ``XOR'' problem, which can be seen by looking at just four data points at $(0,0)$, $(0,1)$, $(1,0)$, and $(1,1)$. Tabulating this data together with its color, reveals a truth table with the characteristics of logical exclusive or (XOR), i.e. $x_1$ and $x_2$ have to be different for the output to be true (here ``blue''), whereas the output is false (here ``red'') when the inputs are the same.
 
-In the example \hjb{shown in \cref{fig:xorproblem} \sout{above}}, the red and the blue data points are not separable by a single line, but require at least two lines. This problem is known as the ``XOR'' problem, which can be seen by looking at just four data points at $(0,0)$, $(0,1)$, $(1,0)$, and $(1,1)$. Tabulating this data together with its color, reveals a truth table with the characteristics of logical exclusive or (XOR), that is $x_1$ and $x_2$ have to be different for the output to be true (here ``blue''), whereas the output is false (here ``red'') when the inputs are the same.
-
-We already know that a single Perceptron can create a single separating hyperplane, we will therefore need at least two Perceptrons to solve the XOR problem. Using two Perceptrons in parallel will yield us with tuples of the kind $(0,0)$, $(0,1)$ and so on. We therefore need one more Perceptron to recombine these tuples into a single output. \cref{fig:basicmultilayer}
-shows the simple-most multi-layer Perceptron that can be trained for the XOR problem, with one \index{Input Layer}\textsl{input layer}, a so-called\index{Hidden Layer} \textsl{hidden layer}, and an \index{Output Layer}\textsl{output layer}.
+We already know that a single perceptron can create a single separating hyperplane; we will therefore need at least two perceptrons to solve the XOR problem.
+Using two perceptrons in parallel will yield us with tuples of the kind $(0,0)$, $(0,1)$ and so on; hence, we then need another perceptron to recombine these tuples into a single output.
+\cref{fig:basicmultilayer} shows the simplest multi-layer perceptron that can be trained for the XOR problem, with one \index{Input Layer}\textsl{input layer}, a so-called\index{Hidden Layer} \textsl{hidden layer}, and an \index{Output Layer}\textsl{output layer}.
 
 \begin{figure}
     \centering
@@ -131,12 +149,14 @@ shows the simple-most multi-layer Perceptron that can be trained for the XOR pro
 \end{figure}
 
 \subsection{Formal description of Artificial Neural Networks}
-As with the simple Perceptron, we will use node i's bias as the 0-th weight vector, that is
+
+As with the simple perceptron, we will use node $i$'s bias as the $0-$th weight vector, that is:
 \begin{equation}
 w^k_{0,j}=b^k_j
 \end{equation}
-Here, we use the following notation. We will denote the layer with a superscript, and the index of the incoming node and the outgoing node with a subscript tuple. That is $w^k_{i,j}$ is connecting the i-th incoming weight to the $j-th$ node of the $k-th$ layer. (The i-th incoming weight is the j-th node in layer $k-1$.) This, as well as the simple example network from above, are illustrated in \cref{fig:backpropnotation}.
-
+Here, we use the following notation: we denote the layer with a superscript, and the index of the incoming node and the outgoing node with a subscript tuple.
+That is, $w^k_{i,j}$ is connecting the $i-$th incoming weight to the $j-$th node of the $k-$th layer (the $i-$th incoming weight is the $j-$th node in layer $k-1$). This, as well as the simple example network above, is illustrated in \cref{fig:backpropnotation}.
+Each layer, denoted by the index $k$, has exactly $r^k$ nodes.
 \begin{figure}[htb]
     \centering
     % \includegraphics[width=0.7\columnwidth]{figs/backpropnotation}
@@ -145,19 +165,17 @@ Here, we use the following notation. We will denote the layer with a superscript
     \caption{Notation used to index weights (left) with respect to layer $k$ and the multi-layer network from \cref{fig:basicmultilayer} (right).\label{fig:backpropnotation}}
 \end{figure}
 
-Each layer, denoted by the index $k$, has exactly $r^k$ nodes.
+\subsubsection{Inputs and outputs}
 
-\subsection{Inputs and outputs}
-
-The output $o_i$ of output node $i$ is given by
+The output $o_i$ of node $i$ is given by:
 \begin{equation}
-o_i=g(a_i^k)
+o_i=g(a_i^k)\quad,
 \end{equation}
-where $g()$ is a non-linear activation function such as --- but not limited to --- \hjb{the ones described in Section \ref{sec:activationfunctions}, or the Heaviside step function.} Here, $a_i^k$ is the weighted sum computed by node $i$ in layer $k$, also known as the \index{Activation (neural network)}\textsl{activation}:
+where $g()$ is a non-linear activation function such as---but not limited to---the ones described in \cref{sec:activationfunctions} or the Heaviside step function. Here, $a_i^k$ is known as the \textsl{activation}\index{Activation (neural network)}, i.e. the weighted sum computed by node $i$ in layer $k$:
 \begin{equation}
-a_i^k=\sum_{j=0}^{r_{k-1}}w_{j,i}^ko_j^{k-1}
+a_i^k=\sum_{j=0}^{r_{k-1}}w_{j,i}^ko_j^{k-1}\quad,
 \end{equation}
-with $o_j^{k-1}$ the j-th output of the previous layer. This is illustrated in \cref{fig:backpropnotation2}.
+with $o_j^{k-1}$ the $j-$th output of the previous layer. This is illustrated in \cref{fig:backpropnotation2}.
 
 \begin{figure}[htb]
     \centering
@@ -171,74 +189,87 @@ In case of $k$ being the output layer, $o_i^k$ should be equivalent to $y_i^k$. 
 
 \subsection{Training a multi-layer neural network}
 
-Finding a set of weights and bias values, that is 9 parameters for a simple two-dimensional problem, but potentially millions for a ``deep network'', is an NP-complete problem \cite{blum1992training}. \hjb{Reference is not working for me.} We therefore need a smart approximative algorithm. We consider a training dataset consisting of input-output pairs $x_i$ and ouput $y_i$ with $i=1..N$, and a feedforward neural network with parameters $w$.
+Finding a set of weights and bias values, that is few parameters for a simple two-dimensional problem but potentially billions for a ``deep network'', is an NP-complete problem \cite{blum1992training}.
+We therefore need an efficient approximation. To this end, we consider a training datasets consisting of input-output pairs $x_i$ and $y_i$ with $i=1..N$, and a feed-forward neural network with parameters $w$.
 
 \subsubsection{Loss function}\label{sec:lossfunction}
-The goal of training is to minimize an error function such as the mean squared error
+
+The goal of training is to minimize an error function such as the mean squared error:
 \begin{equation}
 E(x,y,w)=\frac{1}{2N}\sum_{i=1}^{N}(\hat{y_i}-y_i)^2
 \end{equation}
-between the output $\hat{y_i}$ that the neural network with parameters $w$ computes and the known value $y_i$ from what is known as the \index{Training set}\textsl{training set}.
-
-Similar to the Perceptron, we can reduce $E(x,y,w)$ by iteratively descending along its gradient, that is
+between the output $\hat{y_i}$ that the neural network with parameters $w$ computes and the known value $y_i$ from the \index{Training set}\textsl{training set} is minimized.
+%
+Similar to the perceptron, we can reduce $E(x,y,w)$ by iteratively descending along its gradient, i.e.:
 \begin{equation}
 w(t+1)=w(t)-\alpha \frac{\partial E(x,y,w(t))}{\partial w}
 \end{equation}
 
-This process is non-trivial as calculating the partial derivatives across the computation graph of the neural network requires the chain rule. An algorithm known as \emph{Backpropagation} is described in \hjb{Appendix \sout{Chapter}} \ref{ch:backpropagation}.
+This process is non-trivial, as calculating the partial derivatives across the computation graph of the neural network requires the chain rule. An algorithm known as \textsl{Backpropagation} is described in \cref{ch:backpropagation}.
 
 
-\section{From single outputs to representing higher dimensional data}
-Extending a neural network from one single output to multiple binary classifiers is straightforward, requiring only to increase the dimensionality of the output vector. \hjb{Much less straightforward is encoding more complex data which leads to the following questions. }How to represent numerical values, such as digits from 0-9 or characters from A-Z?
+\section{From single outputs to higher dimensional data}
 
+Extending a neural network from one single output to multiple binary classifiers is straightforward, requiring only to increase the dimensionality of the output vector.
+Much less straightforward is encoding more complex data which leads to the following question: how to represent numerical values, such as digits from $0$ to $9$ or characters from A to Z?
 
-\paragraph{One-Hot Encoding}  A very common approach is known as \textsl{One-Hot Encoding (OHE)}. In OHE, $n$ discrete labels such as numbers or characters will be encoded as a binary vector of length $n$. To encode the $i-th$ element of a set of lables, this vector is zero except at position $i$. For example, to encode the characters 0..9, OHE would result into
+\subsubsection{One-Hot Encoding}
+A very common approach is known as \textsl{One-Hot Encoding (OHE)}. In OHE, $n$ discrete labels such as numbers or characters are encoded as a binary vector of length $n$. To encode the $i-$th element of a set of labels, this vector is zero except at position $i$. For example, to encode the characters $0 \ldots 9$, OHE would represent them as:
 
 \begin{eqnarray}
 \nonumber
-0 = (1,0,0,0,0,0,0,0,0,0)\\
+0 &=& (1,0,0,0,0,0,0,0,0,0)\\
 \nonumber
-1 = (0,1,0,0,0,0,0,0,0,0)\\
+1 &=& (0,1,0,0,0,0,0,0,0,0)\\
 \nonumber
-2 = (0,0,1,0,0,0,0,0,0,0)\\
+2 &=& (0,0,1,0,0,0,0,0,0,0)\\
 \nonumber
-3 = (0,0,0,1,0,0,0,0,0,0)\\
+3 &=& (0,0,0,1,0,0,0,0,0,0)\\
 \nonumber
-4 = (0,0,0,0,1,0,0,0,0,0)\\
+4 &=& (0,0,0,0,1,0,0,0,0,0)\\
 \nonumber
-5 = (0,0,0,0,0,1,0,0,0,0)\\
+5 &=& (0,0,0,0,0,1,0,0,0,0)\\
 \nonumber
-6 = (0,0,0,0,0,0,1,0,0,0)\\
+6 &=& (0,0,0,0,0,0,1,0,0,0)\\
 \nonumber
-7 = (0,0,0,0,0,0,0,1,0,0)\\
+7 &=& (0,0,0,0,0,0,0,1,0,0)\\
 \nonumber
-8 = (0,0,0,0,0,0,0,0,1,0)\\
+8 &=& (0,0,0,0,0,0,0,0,1,0)\\
 \nonumber
-9 = (0,0,0,0,0,0,0,0,0,1).
+9 &=& (0,0,0,0,0,0,0,0,0,1)\quad .
 \end{eqnarray}
 
-\paragraph{Softmax output} Whereas One-Hot Encoding transforms the training input into a discrete probability distribution, nothing in the neural network will ensure that the data will also come out like that. A sigmoidal activation function would insure that each value remains between 0 and 1, but a ReLU does not. We therefore need a final layer that ensures each output to be limited to the range 0 to 1 \textsl{and} the sum of all elements to be adding up to one. This is usually achieved using a so-called \textsl{Softmax} layer. The softmax function is given by
+\subsubsection{Softmax output}
+
+Whereas OHE transforms the training input into a discrete probability distribution, nothing in the neural network will ensure that the data will also come out like that.
+A sigmoidal activation function would ensure that each value remains between $0$ and $1$, but a ReLU does not. We therefore need a final layer that ensures each output to be limited to the range $0$ to $1$ \textsl{and} that the sum of all elements to be adding up to one. This is usually achieved using a so-called \textsl{Softmax}\index{Softmax (neural network)} layer. The softmax function is given by:
+
 \begin{equation}
 {\sigma (\mathbf {z} )_{j}={\frac {e^{z_{j}}}{\sum _{k=1}^{K}e^{z_{k}}}}} \quad for \quad j=1,\ldots,K
 \end{equation}
 
-That is, a vector $z \in \mathbb{R}^K$ will be turned into a K-dimensional vector, which j-th element is given by the above formula.
+That is, a vector $z \in \mathbb{R}^K$ will be converted into a $K-$dimensional vector whose $j-$th element is given by the above formula.
 
-So, why not just normalize with the actual values, i.e. using $z_j$ instead of $e^{z_j}$, or even easier, just using $\arg \max_j$ function to set the highest value of $z$ to 1 and leave the rest at zero? The reason is that each layer needs to remain differentiable for backpropagation to work. Yet, a brutal cut-off like the $\arg \max$ function would introduce \hjb{is \sout{what we actually really} exactly} what we want for the network to optimally match the training input. This is why the exponential function is used. It - literally - exponentially emphasizes larger values over smaller values, making the class with the highest probability stand out.
+So, why not just normalize with the actual values, i.e. using $z_j$ instead of $e^{z_j}$, or, even easier, using $\arg \max_j$ to set the highest value of $z$ to $1$ and leave the rest to zero?
+The reason is that each layer needs to remain differentiable for backpropagation to work.
+Yet, the ``brutal'' cut-off introduced by the $\arg \max$ function is exactly what we want for the network to optimally match the training input. This is why the exponential function is used. It---literally---exponentially emphasizes larger values over smaller values, making the class with the highest probability stand out.
 
-\section{Objective Functions and Optimization}
-The key idea to train neural networks is to change the network's parameters so that a certain objective function, also called a loss function, is minimized. This is usually done by evaluating the gradient of this objective function with respect to the network's parameters. Actually being differentiable is therefore a key requirement for a useful objective function. \hjb{ \sout{ How errors are weighted depends on the kind of learning problem, however, and can dramatically impact neural network performance.}}  \hjb{The magnitude of the weights can dramatically impact neural network performance and finding this magnitude is entirely dependent on the type of learning problem.}
+\section{Objective functions and optimization}
+
+The key idea to train neural networks is to change the network's parameters so that a certain objective function (called loss function), is minimized.
+This is usually done by evaluating the gradient of this objective function with respect to the network's parameters. Being differentiable is therefore a key requirement for a useful objective function.
+However, The magnitude of the weights can dramatically impact neural network performance and finding this magnitude is entirely dependent on the type of learning problem.
 
 \subsection{Loss functions for regression tasks}
-So far, we have considered the so-called \emph{Mean-squared Error} (MSE)
+So far, we have considered the so-called \textsl{Mean-squared Error} (MSE):
 
 \begin{equation}
-E=\frac{1}{2N}\sum_{i=1}^{N}(\hat{y_i}(w)-y_i)^2
+E=\frac{1}{2N}\sum_{i=1}^{N}(\hat{y_i}(w)-y_i)^2\quad ,
 \end{equation}
 
-which is the average error over a set of $N$ pairs of predictions $\hat{y}$ that are dependent on the network parameters $w$ and known values $y$, see also Section \ref{sec:linefitting}. This function is particularly convenient, as the square makes it convex, allowing to find its minimum by following its gradient (``gradient descent'').
+which is the average error over a set of $N$ pairs of predictions $\hat{y}$ that are dependent on the network parameters $w$ and known values $y$---see also \cref{sec:linefitting}. This function is particularly convenient, as the square makes it convex, allowing to find its minimum by following its gradient (``gradient descent'').
 
-MSE is most suited for \emph{regression} tasks\index{Regression} in which data points are fitted to a model such as a line. Using a sigmoid or other continuous activation function, the error for each class can also be interpreted as a distance from the separating hyperplane, which makes MSE also suitable (but not optimal for these kind of tasks). The two possible interpretations are illustrated below \hjb{What is the second interpretation?}:
+MSE is most suited for \textsl{regression} tasks\index{Regression} in which data points are fitted to a model such as a line. Using a sigmoid or other continuous activation function, the error for each class can also be interpreted as a distance from the separating hyperplane, which makes MSE also suitable (but not optimal) for these kind of tasks. An example is illustrated below:
 
 \begin{figure}[htb]
     \centering
@@ -248,23 +279,21 @@ MSE is most suited for \emph{regression} tasks\index{Regression} in which data p
     \caption{A regression problem with an outlier.\label{fig:outliers}}
 \end{figure}
 
-\hjb{From Figure \ref{fig:outliers} it is clear that} MSE \hjb{\sout{therefore}} only poorly deals with outliers. If one value deviates largely from the prediction, the quadratic term in MSE will heavily punish this value. An alternative to MSE is the \emph{Mean Absolute Error} (MAE):
+From \cref{fig:outliers} it is clear that MSE poorly deals with outliers. If one value deviates largely from the prediction, the quadratic term in MSE will heavily ``punish'' this value. An alternative to MSE is the \textsl{Mean Absolute Error} (MAE):
 
 \begin{equation}
 E=\frac{1}{2N}\sum_{i=1}^N\|\hat{y_i}(w)-y_i\|)
 \end{equation}
 
-Here, the absolute value $\|\dot\|$ ensures that the error is always positive, no matter the direction, but large errors \hjb{\sout{have the same} are weighted on the same order of magnitude} as smaller ones. MAE is therefore better suited if your training set contains outliers.
+Here, the absolute value ensures that the error is always positive no matter the direction, but large errors are weighted on the same order of magnitude as smaller ones. MAE is therefore better suited if your training set contains outliers.
 
-In practice, a large variety of loss functions are used that combine features of both MSE and MAE, in the simplest form by using a piecewise combination, such as the \emph{Huber Loss} function. \hjb{Should the definition of the Huber loss be added here?}
-
-
+In practice, a large variety of loss functions have been developed to combine features of both MSE and MAE; in the simplest form of the \textsl{Huber loss}\index{Huber Loss (neural networks)} function, this is achieved via a simple piecewise combination.
 
 \subsection{Loss functions for classification tasks}
 
 Although a classification task can be cast into a regression problem, classifying is a lot more like throwing a dice. Indeed, the output of the Softmax layer is a discrete probability distribution in which each element $y_i=(p_0, \dots, p_c, \dots ,p_N)$ is the probability of an instance $x_i$ to be of class $c$ in $N$ classes total.
 
-We speak of the \emph{entropy} of a probability distribution as the amount of variety that we can expect. An uniform distribution therefore has the highest entropy --- with a lot of possible outcomes, whereas data with which we train the network, the one-hot encoded vectors are probability distributions with very low entropy. The entropy of the distribution of $y_i$ (the training vector that stores the true class $c$ for each instance $x_i$) is given by 
+We speak of the \textsl{entropy} of a probability distribution as the amount of variety that we can expect. An uniform distribution therefore has the highest entropy---with a lot of possible outcomes, whereas data with which we train the network, the one-hot encoded vectors are probability distributions with very low entropy. The entropy of the distribution of $y_i$ (the training vector that stores the true class $c$ for each instance $x_i$) is given by
 
 \begin{equation}
 H(y_i)=-\sum_{c=1}{N}p_c \log p_c
@@ -275,7 +304,7 @@ Here, the logarithm can be of basis ten or two. In any case, the entropy functio
 
 In every dataset, there will be a true distribution $P(C=i)$ that the data is distributed by. By classifying every element in the training set, the neural network also generates a distribution. Ideally, in the case of a 100\% fit, the neural network will generate the exact same distribution as that of the training set. In the worst case, the network will generate a distribution that is completely different. Evaluating a neural network's performance is therefore a matter of comparing two probability distributions.
 
-One way to compare two distributions is via their entropy, this is known as \emph{cross entropy}:
+One way to compare two distributions is via their entropy, this is known as \textsl{cross entropy}:
 \begin{equation}
 H(\hat{y},y)=-\sum_{i=1}{N}y_i\log \hat{y_i}
 \end{equation}
@@ -285,16 +314,16 @@ with $y_i=p_i$ the known probability for instance $x$ to be class $i$ and $\hat{
 H(y)-H(\hat{y},y) \leq 0
 \end{equation}
 
-This difference between the entropy of the true distribution and the cross-entropy between the true and the estimated distribution is known as \emph{Kullback-Leibler Divergence}\index{Kullback-Leibler Divergence}. It is a measure of dissimilarity between two distributions. 
+This difference between the entropy of the true distribution and the cross-entropy between the true and the estimated distribution is known as \textsl{Kullback-Leibler Divergence}\index{Kullback-Leibler Divergence}. It is a measure of dissimilarity between two distributions.
 
 \subsection{Binary and Categorical cross-entropy}
-In \hjb{the} case \hjb{where} there are only two classes, the \emph{binary cross-entropy} is calculated as follows:
+In \hjb{the} case \hjb{where} there are only two classes, the \textsl{binary cross-entropy} is calculated as follows:
 \begin{equation}
 H(\hat{y},y)=-\sum_{i=1}^Ny_i\log(\hat{y_i})=-y_1\log(\hat{y_1})-(1-y_1)\log(1-\hat{y_1})
 \end{equation}
 
 As there are only two classes, true or false, $\hat{y_2}$ directly follows from $1-\hat{y_1}$. 
-The more general case for $N>2$ is known as \emph{categorical cross-entropy}. 
+The more general case for $N>2$ is known as \textsl{categorical cross-entropy}.
 
 When using one-hot encoding, only class $c$ has probability 1 ($y_c=1$), reducing the cross-entropy to 
 \begin{equation}
@@ -310,9 +339,9 @@ H(\hat{y},y) = -\log\left(\frac{e^{\hat{y_c}}}{\sum_{j}^N e^{\hat{y_j}}}\right)
 
 \section{Convolutional Neural Networks}
 A drawback of the ANN architectures that we have considered so far is that they do not consider the spatial information that might be hidden in a dataset. 
-\hjb{In the context of vision, \sout{For example,}} how to interpret the value of a certain pixel usually depends on what can be seen nearby. For example, a blue pixel surrounded by white ones might be an eye, whereas a blue pixel surround by blue ones might be an ocean. In addition to color, neighboring pixels also encode structure. When looking at the MNIST \hjb{Add a reference here} data we might for example be looking for crosses (such as the center of an eight), T-shaped junctions (such as in the letter four) or half-circles (like in the letter three), whose number might then serve as features for our neural network. The SIFT features in Chapter \ref{chap:feature_extraction} have been a good example of a hand-coded approach to encode such spatial information. We will now see, how ANNs can find such features automatically. 
+\hjb{In the context of vision, \sout{For example,}} how to interpret the value of a certain pixel usually depends on what can be seen nearby. For example, a blue pixel surrounded by white ones might be an eye, whereas a blue pixel surround by blue ones might be an ocean. In addition to color, neighboring pixels also encode structure. When looking at the MNIST \hjb{Add a reference here} data we might for example be looking for crosses (such as the center of an eight), T-shaped junctions (such as in the letter four) or half-circles (like in the letter three), whose number might then serve as features for our neural network. The SIFT features in Chapter \ref{chap:feature_extraction} have been a good example of a hand-coded approach to encode such spatial information. We will now see, how ANNs can find such features automatically.
 
-One way to extract such features in image processing is by \emph{convolving} an image with a \emph{kernel}, see also Chapter \ref{chap:vision}. This is illustrated for a 3x3 and a 7x7 kernel in Figure \ref{fig:convolution}.
+One way to extract such features in image processing is by \textsl{convolving} an image with a \textsl{kernel}, see also Chapter \ref{chap:vision}. This is illustrated for a 3x3 and a 7x7 kernel in \cref{fig:convolution}.
 
 
 \begin{figure}[htb]
@@ -329,7 +358,7 @@ During a convolution, the kernel is swept across the input image, summing over a
 x(n_1,n_2)*h(n_1,n_2)=\sum_{k_1=-\infty}^{\infty} \sum_{k_2=-\infty}^{\infty} h(k_1,k_2)x(n_1-k_1,n_2-k_2)
 \end{equation}
 
-where bounds (here, infinity) need to be chosen so that the kernel starts at the upper left corner of the image and ends at the lower right corner. It is also possible to artificially grow the input image by adding pixels around it, which is known as \emph{padding}. Note that the resulting output is identical to examples shown in Chapter \ref{chap:vision}.
+where bounds (here, infinity) need to be chosen so that the kernel starts at the upper left corner of the image and ends at the lower right corner. It is also possible to artificially grow the input image by adding pixels around it, which is known as \textsl{padding}. Note that the resulting output is identical to examples shown in Chapter \ref{chap:vision}.
 
 \subsection{From convolutions to 2D neural networks}
 
@@ -345,13 +374,13 @@ o_{0,0}=&x_{0,0}w_{0,0}+x_{0,1}w_{0,1}+x_{0,2}w_{0,2}\\
 
 This pixel is therefore simply computing the dot-product of the value of 9 pixels with the kernel weights. Adding a bias value and an activation function such as Relu is therefore identical to adding a hidden layer with 9 neurons. 
 
-Performing the convolution by moving the convolution kernel with a width of (2r+1) across an entire XxY image is therefore akin to creating (X-2r)(Y-2r) ``convolutional'' neurons, and the resulting structure is called a \emph{feature map}. Note, that the ``weights'' in the feature map --- the entries of the kernel matrix --- are identical for each neuron in the feature map. We can now repeat this step with additional kernels, resulting in multiple feature maps, which then form a \emph{convolutional layer}.
+Performing the convolution by moving the convolution kernel with a width of (2r+1) across an entire XxY image is therefore akin to creating (X-2r)(Y-2r) ``convolutional'' neurons, and the resulting structure is called a \textsl{feature map}. Note, that the ``weights'' in the feature map---the entries of the kernel matrix---are identical for each neuron in the feature map. We can now repeat this step with additional kernels, resulting in multiple feature maps, which then form a \textsl{convolutional layer}.
 
 As this structure is very similar to the conventional neural network structure, except for a large number of weights being identical, the parameters of each kernel can also be trained using back-propagation. 
 
 \subsection{Padding and striding}
 
-A convolution of kernel width $2r+1$ needs to reduce the input by $r$ on each side. If this is not desired, \emph{padding} can be used to surround the input image with up to $r$ pixels, resulting in the output image having the same dimension \hjb{\sout{than} as} the input image. Instead of moving the convolution kernel pixel by pixel, skipping pixels will further reduce the size of the output image. The amount by which the convolution kernel is moved is known as \emph{stride}. This is illustrated in Figure \ref{fig:stride} for strides of one and three.
+A convolution of kernel width $2r+1$ needs to reduce the input by $r$ on each side. If this is not desired, \textsl{padding} can be used to surround the input image with up to $r$ pixels, resulting in the output image having the same dimension \hjb{\sout{than} as} the input image. Instead of moving the convolution kernel pixel by pixel, skipping pixels will further reduce the size of the output image. The amount by which the convolution kernel is moved is known as \textsl{stride}. This is illustrated in \cref{fig:stride} for strides of one and three.
 
 \begin{figure}[htb]
     \centering
@@ -363,9 +392,9 @@ A convolution of kernel width $2r+1$ needs to reduce the input by $r$ on each si
 
 \subsection{Pooling}
 
-The feature maps that result from convolution each identify specific features that are defined by their kernels. Training finds these kernels by itself and some might fire on edges, others on intersections of lines, and yet again others on very specific patterns in the dataset. Activation functions further amplify this effect, making a clear distinction between whether a feature is present or not. In most practical applications, such features are rather sparse, however, and whether they exist in a larger area or not, might the most salient information. This can be achieved by a \emph{pooling layer}.
+The feature maps that result from convolution each identify specific features that are defined by their kernels. Training finds these kernels by itself and some might fire on edges, others on intersections of lines, and yet again others on very specific patterns in the dataset. Activation functions further amplify this effect, making a clear distinction between whether a feature is present or not. In most practical applications, such features are rather sparse, however, and whether they exist in a larger area or not, might the most salient information. This can be achieved by a \textsl{pooling layer}.
 
-A pooling operation applies a window to select the maximum (\emph{MaxPooling}) or the average, among many other possible non-linear functions, from a window of a given size. Figure \ref{fig:pooling} shows the result of a MaxPooling layer with pool size of 3x3 and stride lengts of 1x1 and 3x3. Usually, the stride length is the same as the width of the window.
+A pooling operation applies a window to select the maximum (\textsl{MaxPooling}) or the average, among many other possible non-linear functions, from a window of a given size. \cref{fig:pooling} shows the result of a MaxPooling layer with pool size of 3x3 and stride lengts of 1x1 and 3x3. Usually, the stride length is the same as the width of the window.
 
 \begin{figure}[htb]
     \centering
@@ -375,15 +404,15 @@ A pooling operation applies a window to select the maximum (\emph{MaxPooling}) o
     \caption{Pooling using a pool size of 3x3 for different strides and corresponding output.\label{fig:pooling}}
 \end{figure}
 
-Although the $max()$ function is not differentiable, MaxPooling can still be used in backpropagation by selectively passing the gradient to only that neuron which has shown \hjb{to be} the maximum activation and set\hjb{ting} the gradient of all other neurons in a pool to zero. \hjb{When \sout{In case}} an average pooling function has been used, the gradient is divided among all neurons in the pool to equal parts. 
+Although the $max()$ function is not differentiable, MaxPooling can still be used in backpropagation by selectively passing the gradient to only that neuron which has shown \hjb{to be} the maximum activation and set\hjb{ting} the gradient of all other neurons in a pool to zero. \hjb{When \sout{In case}} an average pooling function has been used, the gradient is divided among all neurons in the pool to equal parts.
 
 \subsection{Flattening}
 
-The first step in previous neural network models has been to flatten a 2D input image into a one-dimensional vector. This has been the precondition to apply a dense layer and has been accomplished during preprocessing. Convolutional neural networks require multi-dimensional (2D images with multiple color channels) inputs, however. Turning a multi-dimensional tensor into a vector is known as \emph{flattening} and results into simple reordering. For example, an RGB image of dimensioniality (28x28x3) might be turned into 20 convolutional filters, or 2352 individual neurons. A flattening layer arranges them again in a single vector.
+The first step in previous neural network models has been to flatten a 2D input image into a one-dimensional vector. This has been the precondition to apply a dense layer and has been accomplished during preprocessing. Convolutional neural networks require multi-dimensional (2D images with multiple color channels) inputs, however. Turning a multi-dimensional tensor into a vector is known as \textsl{flattening} and results into simple reordering. For example, an RGB image of dimensioniality (28x28x3) might be turned into 20 convolutional filters, or 2352 individual neurons. A flattening layer arranges them again in a single vector.
 
 \subsection{A sample CNN}
 
-Figure \ref{fig:cnn} shows a typical CNN that combines multiple convolutional and pooling layers. The network takes a 28x28 image as an input and trains 20 different 5x5 convolution kernels to create 20 feature maps of 28x28 each. This layer is followed by a maxpooling layer that downsamples each feature map by a factor two. These feature maps are then convolved with 50 5x5 convolution kernels to create 50 14x14 feature maps. These will again be downsampled by a maxpooling operation. The resulting 50 feature maps are then flattened and fed into a hidden layer of 500 neurons, and finally into a SoftMax-activated output layer with 10 neurons.
+\cref{fig:cnn} shows a typical CNN that combines multiple convolutional and pooling layers. The network takes a 28x28 image as an input and trains 20 different 5x5 convolution kernels to create 20 feature maps of 28x28 each. This layer is followed by a maxpooling layer that downsamples each feature map by a factor two. These feature maps are then convolved with 50 5x5 convolution kernels to create 50 14x14 feature maps. These will again be downsampled by a maxpooling operation. The resulting 50 feature maps are then flattened and fed into a hidden layer of 500 neurons, and finally into a SoftMax-activated output layer with 10 neurons.
 
 \begin{figure}[htb]
 \tiny
@@ -402,11 +431,11 @@ Convolution kernels emphasize areas of similarity. This can be readily understoo
 Convolutional neural networks are not limited to 2D image data, but can also be applied to 1D time series. Here, the will find distinct patterns, for example peaks in an accelerometer or gyroscope reading, which can then be used in their plurality to classify complex signals. 
 
 \section{Recurrent Neural Networks}
-So far, we have only worked with static data. Even if data had a temporal nature, we have simply concatenated inputs and looked at a piece of history all at once. When using a dense network, all inputs are initially of equal importance and we leave it to the network to identify salient information. Albeit convolutional layers might help to impose some sense of order --- a 1D convolutional layer might as well be interpreted as detecting a pattern in a timeseries --- dense layers focus on the values of individual features, not on the order of information. 
+So far, we have only worked with static data. Even if data had a temporal nature, we have simply concatenated inputs and looked at a piece of history all at once. When using a dense network, all inputs are initially of equal importance and we leave it to the network to identify salient information. Albeit convolutional layers might help to impose some sense of order---a 1D convolutional layer might as well be interpreted as detecting a pattern in a timeseries---dense layers focus on the values of individual features, not on the order of information.
 
 For example, it is straightforward to train a neural network controller to transform input data from sensors into motor commands to perform tasks like light following, obstacle avoidance, and wall following such as will be described in Chapter \ref{chap:taskexecution}, but such a controller will be purely reactive and not be able to escape a U-shaped obstacle, e.g.
 
-This is different if a neural network could have state. In this case, detecting an event such as getting stuck could modify the network state in some way. This is accomplished using so-called \emph{recurrent neural networks}\index{Recurrent neural network}\index{RNN}. A recurrent neural network uses a special kind of neuron, which sums the input $x_t$ at time $t$ with the value of the hidden state $h_{t-1}$ at the previous time step $t-1$ to compute a hidden state $h_t$ at time $t$. Both terms of this sum are weighed by weights W and U. The output of the recurrent layer is the hidden state $h_t$ weighed by a third weight V and ran through a second activation function. The equation below shows the computation of a RNN layer in vector form, passing the hidden states through a softmax activation.
+This is different if a neural network could have state. In this case, detecting an event such as getting stuck could modify the network state in some way. This is accomplished using so-called \textsl{recurrent neural networks}\index{Recurrent neural network}\index{RNN}. A recurrent neural network uses a special kind of neuron, which sums the input $x_t$ at time $t$ with the value of the hidden state $h_{t-1}$ at the previous time step $t-1$ to compute a hidden state $h_t$ at time $t$. Both terms of this sum are weighed by weights W and U. The output of the recurrent layer is the hidden state $h_t$ weighed by a third weight V and ran through a second activation function. The equation below shows the computation of a RNN layer in vector form, passing the hidden states through a softmax activation.
 
 \begin{equation}
 h_t = \tanh(Wh_{t-1}+Ux_t)
@@ -415,7 +444,7 @@ h_t = \tanh(Wh_{t-1}+Ux_t)
 y_t = softmax(Vh_t)
 \end{equation}
 
-This relationship is shown in Figure \ref{fig:rnn}. As a RNN cell is reusing its internal state $h_t$ in the next iteration, a network that looks back $N$ time-steps is modeled as $N$ cells that are laterally connected. As this is how an RNN is actually implemented, the data from all time steps is presented at the same time.  
+This relationship is shown in \cref{fig:rnn}. As a RNN cell is reusing its internal state $h_t$ in the next iteration, a network that looks back $N$ time-steps is modeled as $N$ cells that are laterally connected. As this is how an RNN is actually implemented, the data from all time steps is presented at the same time.
 
 \begin{figure}[htb]
 \tiny
