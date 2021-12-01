@@ -317,7 +317,7 @@ H(y)-H(\hat{y},y) \leq 0
 This difference between the entropy of the true distribution and the cross-entropy between the true and the estimated distribution is known as \textsl{Kullback-Leibler Divergence}\index{Kullback-Leibler Divergence}. It is a measure of dissimilarity between two distributions.
 
 \subsection{Binary and Categorical cross-entropy}
-In \hjb{the} case \hjb{where} there are only two classes, the \textsl{binary cross-entropy} is calculated as follows:
+In the case where there are only two classes, the \textsl{binary cross-entropy} is calculated as follows:
 \begin{equation}
 H(\hat{y},y)=-\sum_{i=1}^Ny_i\log(\hat{y_i})=-y_1\log(\hat{y_1})-(1-y_1)\log(1-\hat{y_1})
 \end{equation}
@@ -339,7 +339,7 @@ H(\hat{y},y) = -\log\left(\frac{e^{\hat{y_c}}}{\sum_{j}^N e^{\hat{y_j}}}\right)
 
 \section{Convolutional Neural Networks}
 A drawback of the ANN architectures that we have considered so far is that they do not consider the spatial information that might be hidden in a dataset. 
-\hjb{In the context of vision, \sout{For example,}} how to interpret the value of a certain pixel usually depends on what can be seen nearby. For example, a blue pixel surrounded by white ones might be an eye, whereas a blue pixel surround by blue ones might be an ocean. In addition to color, neighboring pixels also encode structure. When looking at the MNIST \hjb{Add a reference here} data we might for example be looking for crosses (such as the center of an eight), T-shaped junctions (such as in the letter four) or half-circles (like in the letter three), whose number might then serve as features for our neural network. The SIFT features in Chapter \ref{chap:feature_extraction} have been a good example of a hand-coded approach to encode such spatial information. We will now see, how ANNs can find such features automatically.
+In the context of vision, how to interpret the value of a certain pixel usually depends on what can be seen nearby. For example, a blue pixel surrounded by white ones might be an eye, whereas a blue pixel surround by blue ones might be an ocean. In addition to color, neighboring pixels also encode structure. When looking at the MNIST dataset, a collection of hand-drawn numbers from zero to nine, we might for example be looking for crosses (such as the center of an eight), T-shaped junctions (such as in the letter four) or half-circles (like in the letter three), whose number might then serve as features for our neural network. The SIFT features in Chapter \ref{chap:feature_extraction} have been a good example of a hand-coded approach to encode such spatial information. We will now see, how ANNs can find such features automatically.
 
 One way to extract such features in image processing is by \textsl{convolving} an image with a \textsl{kernel}, see also Chapter \ref{chap:vision}. This is illustrated for a 3x3 and a 7x7 kernel in \cref{fig:convolution}.
 
@@ -362,7 +362,7 @@ where bounds (here, infinity) need to be chosen so that the kernel starts at the
 
 \subsection{From convolutions to 2D neural networks}
 
-To look at how one individual pixel in the output above gets computed, we assume that the input pixel is labeled $x_{i,j}$ with $i$ the row and $j$ the column of this pixel. We also assume the entries of the convolution kernel to be indexed in a similar way. \hjb{Using a 3x3 kernel, t\sout{T}}he first pixel of the output is then calculated by
+To look at how one individual pixel in the output above gets computed, we assume that the input pixel is labeled $x_{i,j}$ with $i$ the row and $j$ the column of this pixel. We also assume the entries of the convolution kernel to be indexed in a similar way. Using a 3x3 kernel, the first pixel of the output is then calculated by
 
 \begin{eqnarray}
 o_{0,0}=&x_{0,0}w_{0,0}+x_{0,1}w_{0,1}+x_{0,2}w_{0,2}\\
@@ -380,7 +380,7 @@ As this structure is very similar to the conventional neural network structure, 
 
 \subsection{Padding and striding}
 
-A convolution of kernel width $2r+1$ needs to reduce the input by $r$ on each side. If this is not desired, \textsl{padding} can be used to surround the input image with up to $r$ pixels, resulting in the output image having the same dimension \hjb{\sout{than} as} the input image. Instead of moving the convolution kernel pixel by pixel, skipping pixels will further reduce the size of the output image. The amount by which the convolution kernel is moved is known as \textsl{stride}. This is illustrated in \cref{fig:stride} for strides of one and three.
+A convolution of kernel width $2r+1$ needs to reduce the input by $r$ on each side. If this is not desired, \textsl{padding} can be used to surround the input image with up to $r$ pixels, resulting in the output image having the same dimension as the input image. Instead of moving the convolution kernel pixel by pixel, skipping pixels will further reduce the size of the output image. The amount by which the convolution kernel is moved is known as \textsl{stride}. This is illustrated in \cref{fig:stride} for strides of one and three.
 
 \begin{figure}[htb]
     \centering
@@ -404,7 +404,7 @@ A pooling operation applies a window to select the maximum (\textsl{MaxPooling})
     \caption{Pooling using a pool size of 3x3 for different strides and corresponding output.\label{fig:pooling}}
 \end{figure}
 
-Although the $max()$ function is not differentiable, MaxPooling can still be used in backpropagation by selectively passing the gradient to only that neuron which has shown \hjb{to be} the maximum activation and set\hjb{ting} the gradient of all other neurons in a pool to zero. \hjb{When \sout{In case}} an average pooling function has been used, the gradient is divided among all neurons in the pool to equal parts.
+Although the $max()$ function is not differentiable, MaxPooling can still be used in backpropagation by selectively passing the gradient to only that neuron which has shown to be the maximum activation and setting the gradient of all other neurons in a pool to zero. When an averaging pooling function has been used, the gradient is divided among all neurons in the pool to equal parts.
 
 \subsection{Flattening}
 
@@ -426,7 +426,7 @@ The first step in previous neural network models has been to flatten a 2D input 
 
 \subsection{Convolutional Networks beyond 2D image data}
 
-Convolution kernels emphasize areas of similarity. This can be readily understood when considering a simple kernel like [[0,9,0],[0,9,0],[0,9,0]] which emphasizes vertical lines, but ignores horizontal ones. Training a convolutional network therefore automatically finds regularities in the training set, as well as in the resulting feature map, often generating hierarchical representations by itself. A common example is a convolutional neural network for face detection in which early layers detect low-level \hjb{features}, which then get recombined into noses, ears, mouth and eyes in deeper layers.
+Convolution kernels emphasize areas of similarity. This can be readily understood when considering a simple kernel like [[0,9,0],[0,9,0],[0,9,0]] which emphasizes vertical lines, but ignores horizontal ones. Training a convolutional network therefore automatically finds regularities in the training set, as well as in the resulting feature map, often generating hierarchical representations by itself. A common example is a convolutional neural network for face detection in which early layers detect low-level features, which then get recombined into noses, ears, mouth and eyes in deeper layers.
 
 Convolutional neural networks are not limited to 2D image data, but can also be applied to 1D time series. Here, the will find distinct patterns, for example peaks in an accelerometer or gyroscope reading, which can then be used in their plurality to classify complex signals. 
 
@@ -458,7 +458,7 @@ This relationship is shown in \cref{fig:rnn}. As a RNN cell is reusing its inter
 \section*{Take-home lessons}
 \begin{itemize}
 \item Artificial Neural Networks and the tools associated with them have become a powerful tool to skip modeling a system using first principles, but simply learn its properties from data. As such, they are capable of replacing many of the models discussed in previous chapters, ranging from kinematics to vision, feature detection, and controls.
-\item Simple neural networks are capable of both classification and regression akin to techniques described in Chapter \ref{chap:feature_extraction}, whereas convolutional networks are capable of filtering and pre-processing \hjb{techniques} such as described in Chapter \ref{chap:vision}.
+\item Simple neural networks are capable of both classification and regression akin to techniques described in Chapter \ref{chap:feature_extraction}, whereas convolutional networks are capable of filtering and pre-processing techniques such as described in Chapter \ref{chap:vision}.
 \item Once a system is not purely reactive anymore, but requires state such as described in Chapter \ref{chap:taskexecution}, recurrent networks are needed to implement memory. 
 \end{itemize}
 \section*{Exercises}\small
