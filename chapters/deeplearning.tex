@@ -1,7 +1,7 @@
 %!TEX root = ../book.tex
 \chapter{Artificial Neural Networks}\label{chap:ann}
 
-\textsl{Artificial neural networks (ANNs)}\index{Artificial Neural Networks} are a specific flavor of machine learning that are loosely inspired by neural operation in the human brain; in robotics, they are used to classify or regress data for the dual purposes of perception (e.g. \cref{chap:vision,chap:feature_extraction}) and control (as will be shown in \cref{chap:taskexecution}).
+\textsl{Artificial neural networks (ANNs)}\index{Artificial Neural Networks} are a specific flavor of machine learning that are loosely inspired by neural operation in the human brain; in robotics, they are used to classify or regress data for the dual purposes of perception (e.g., \cref{chap:vision,chap:feature_extraction}) and control (as will be shown in \cref{chap:taskexecution}).
 %
 While ANNs for the longest time have been just one of the many methods available to roboticists from the neighboring field of machine learning, recent advances in computing---in particular, graphical processing units (GPU)---and the availability of large datasets have enabled the ability to train very large neural networks, also known as \textsl{deep learning}\index{Deep Learning}. These massive networks have led to revolutionary results in many fields including computer vision, natural language processing, video and speech processing, and robotics.
 %
@@ -9,7 +9,7 @@ Not too long ago, neural networks were considered ``deep'' if the had just more 
 This is still shy of the human brain, which contains $\sim 100^{11}$ neurons, each with thousands of synapses connecting a single neuron to thousands of others.
 
 \begin{mdframed}
-\td{add a description of difference between regression and classification as we don't say it anywhere}
+Remember: a \textsl{classification}\index{Classification (neural networks)} problem requires that input data be classified between two or more classes; a \textsl{regression}\index{Regression (neural networks)} problem requires a prediction of a (possibly continuous) quantity. While a regression problem can be converted into a classification one (and vice versa), the machine learning community generally considers them two separate applications, and different techniques are developed to perform in each of these domains.
 \end{mdframed}
 
 Machine learning is a large field that shares many of its foundations with robotics, in particular for what concerns probability theory and statistics. In particular, deep learning may be used as a drop-in replacement for sensor pre-processing and conditioning, computer vision and feature extraction, localization, and even replace controllers for locomotion and grasping.
