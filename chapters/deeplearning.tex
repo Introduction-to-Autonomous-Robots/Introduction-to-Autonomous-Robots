@@ -348,7 +348,7 @@ H(\hat{y},y) = -\log\left(\frac{e^{\hat{y_c}}}{\sum_{j}^N e^{\hat{y_j}}}\right)
 
 A drawback of the ANN architectures that we have covered so far is that they do not consider the spatial information that might be hidden in a dataset.
 For example, as detailed in \cref{chap:vision}, in the context of vision it is important to interpret the value of a certain pixel depending on what can be seen nearby: a blue pixel surrounded by white ones might be an eye, whereas a blue pixel surround by blue ones might be an ocean. In addition to color, neighboring pixels also encode structure. When looking at the MNIST dataset (a collection of hand-drawn numbers from zero to nine), we might for example be looking for crosses (such as the center of an eight), T-shaped junctions (such as in the letter four) or half-circles (like in the letter three), whose number might then serve as features for our neural network.
-The SIFT features in Chapter \ref{chap:feature_extraction} were a good example of a hand-coded approach to encode such spatial information. We will now see how ANNs can find such features automatically.
+The SIFT features in \cref{chap:feature_extraction} were a good example of a hand-coded approach to encode such spatial information. We will now see how ANNs can find such features automatically.
 
 If you recall, one way to extract features in image processing is by \textsl{convolving} an image with a \textsl{kernel}\index{Kernel (neural networks)}---see e.g. a convolution with a $3\times3$ and a $7\times7$ kernel in \cref{fig:convolution}.
 %
@@ -366,7 +366,7 @@ During a convolution, the kernel is swept across the input image, summing over a
 x(n_1,n_2)*h(n_1,n_2)=\sum_{k_1=-\infty}^{\infty} \sum_{k_2=-\infty}^{\infty} h(k_1,k_2)x(n_1-k_1,n_2-k_2)
 \end{equation}
 
-where bounds (here, infinity) need to be chosen so that the kernel starts at the upper left corner of the image and ends at the lower right corner. It is also possible to artificially grow the input image by adding pixels around it, which is known as \textsl{padding}. Note that the resulting output is identical to examples shown in Chapter \ref{chap:vision}.
+where bounds (here, infinity) need to be chosen so that the kernel starts at the upper left corner of the image and ends at the lower right corner. It is also possible to artificially grow the input image by adding pixels around it, which is known as \textsl{padding}. Note that the resulting output is identical to examples shown in \cref{chap:vision}.
 
 \subsection{From convolutions to 2D neural networks}
 
@@ -439,16 +439,18 @@ However, CNNs require multi-dimensional inputs (e.g., 2D images with multiple co
 
 \subsection{Convolutional Networks beyond 2D image data}
 
-Convolution kernels emphasize areas of similarity. This can be readily understood when considering a simple kernel like [[0,9,0],[0,9,0],[0,9,0]] which emphasizes vertical lines, but ignores horizontal ones. Training a convolutional network therefore automatically finds regularities in the training set, as well as in the resulting feature map, often generating hierarchical representations by itself. A common example is a convolutional neural network for face detection in which early layers detect low-level features, which then get recombined into noses, ears, mouth and eyes in deeper layers.
+Convolution kernels emphasize areas of similarity. This can be readily understood when considering a simple kernel like $[[0,9,0],[0,9,0],[0,9,0]]$ which emphasizes vertical lines but ignores horizontal ones. Training a convolutional network therefore automatically finds regularities in the training set, as well as in the resulting feature map---often generating hierarchical representations by itself. A common example is a convolutional neural network for face detection in which early layers detect low-level features, which then get recombined into noses, ears, mouth and eyes in deeper layers.
 
-Convolutional neural networks are not limited to 2D image data, but can also be applied to 1D time series. Here, the will find distinct patterns, for example peaks in an accelerometer or gyroscope reading, which can then be used in their plurality to classify complex signals. 
+Convolutional neural networks are not limited to 2D image data, but can also be applied to 1D time series. Here, the will find distinct patterns, for example peaks in an accelerometer or gyroscope reading, which can then be used collectively to classify complex signals.
 
 \section{Recurrent Neural Networks}
-So far, we have only worked with static data. Even if data had a temporal nature, we have simply concatenated inputs and looked at a piece of history all at once. When using a dense network, all inputs are initially of equal importance and we leave it to the network to identify salient information. Albeit convolutional layers might help to impose some sense of order---a 1D convolutional layer might as well be interpreted as detecting a pattern in a timeseries---dense layers focus on the values of individual features, not on the order of information.
 
-For example, it is straightforward to train a neural network controller to transform input data from sensors into motor commands to perform tasks like light following, obstacle avoidance, and wall following such as will be described in Chapter \ref{chap:taskexecution}, but such a controller will be purely reactive and not be able to escape a U-shaped obstacle, e.g.
+So far, we have only worked with static data. Even if data had a temporal nature, we have simply concatenated inputs and looked at a piece of history all at once. When using a dense network, all inputs are initially of equal importance and it is up to the network to identify salient information. Albeit convolutional layers might help to dictate some sense of order---a 1D convolutional layer might as well be interpreted as detecting a pattern in a timeseries---dense layers focus on the values of individual features, not on the order of information.
 
-This is different if a neural network could have state. In this case, detecting an event such as getting stuck could modify the network state in some way. This is accomplished using so-called \textsl{recurrent neural networks}\index{Recurrent neural network}\index{RNN}. A recurrent neural network uses a special kind of neuron, which sums the input $x_t$ at time $t$ with the value of the hidden state $h_{t-1}$ at the previous time step $t-1$ to compute a hidden state $h_t$ at time $t$. Both terms of this sum are weighed by weights W and U. The output of the recurrent layer is the hidden state $h_t$ weighed by a third weight V and ran through a second activation function. The equation below shows the computation of a RNN layer in vector form, passing the hidden states through a softmax activation.
+For example, it is straightforward to train a neural network controller to transform input data from sensors into motor commands to perform tasks like light following, obstacle avoidance, and wall following such as those described in \cref{chap:taskexecution}; however, such a controller will be purely reactive and not be able to, for example, escape a U-shaped obstacle.
+
+To overcome this limitation, it is useful to introduce a notion of state in a neural network. In this case, the detection of an event such as ``getting stuck'' may be used to modify the network state in some way. This is accomplished using so-called \textsl{recurrent neural networks}\index{Recurrent neural network}\index{RNN}.
+A recurrent neural network uses a special kind of neuron, which sums the input $x_t$ at time $t$ with the value of the hidden state $h_{t-1}$ at the previous time step $t-1$ to compute a hidden state $h_t$ at time $t$. Both terms of this sum are weighed by weights W and U. The output of the recurrent layer is the hidden state $h_t$ weighed by a third weight V and ran through a second activation function. The equation below shows the computation of a RNN layer in vector form, passing the hidden states through a softmax activation.
 
 \begin{equation}
 h_t = \tanh(Wh_{t-1}+Ux_t)
@@ -457,9 +459,9 @@ h_t = \tanh(Wh_{t-1}+Ux_t)
 y_t = softmax(Vh_t)
 \end{equation}
 
-This relationship is shown in \cref{fig:rnn}. As a RNN cell is reusing its internal state $h_t$ in the next iteration, a network that looks back $N$ time-steps is modeled as $N$ cells that are laterally connected. As this is how an RNN is actually implemented, the data from all time steps is presented at the same time.
+This relationship is shown in \cref{fig:rnn}. As an RNN cell is reusing its internal state $h_t$ in the next iteration, a network that looks back $N$ time-steps is modeled as $N$ cells that are laterally connected. As this is how an RNN is actually implemented, the data from all time steps is presented at the same time.
 
-\begin{figure}[htb]
+\begin{figure}
 \tiny
     \centering
     % \includegraphics[width=0.8\columnwidth]{figs/backpropnotation3}
@@ -471,8 +473,8 @@ This relationship is shown in \cref{fig:rnn}. As a RNN cell is reusing its inter
 \section*{Take-home lessons}
 \begin{itemize}
 \item Artificial Neural Networks and the tools associated with them have become a powerful tool to skip modeling a system using first principles, but simply learn its properties from data. As such, they are capable of replacing many of the models discussed in previous chapters, ranging from kinematics to vision, feature detection, and controls.
-\item Simple neural networks are capable of both classification and regression akin to techniques described in Chapter \ref{chap:feature_extraction}, whereas convolutional networks are capable of filtering and pre-processing techniques such as described in Chapter \ref{chap:vision}.
-\item Once a system is not purely reactive anymore, but requires state such as described in Chapter \ref{chap:taskexecution}, recurrent networks are needed to implement memory. 
+\item Simple neural networks are capable of both classification and regression akin to techniques described in \cref{chap:feature_extraction}, whereas convolutional networks are capable of filtering and pre-processing techniques such as described in \cref{chap:vision}.
+\item When a system is not purely reactive but requires state such as those described in \cref{chap:taskexecution}, recurrent neural networks are needed to implement a notion of memory.
 \end{itemize}
 \section*{Exercises}\small
 \begin{enumerate}
