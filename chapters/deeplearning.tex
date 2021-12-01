@@ -344,21 +344,22 @@ Combined with the softmax activation function the categorical cross entropy ther
 H(\hat{y},y) = -\log\left(\frac{e^{\hat{y_c}}}{\sum_{j}^N e^{\hat{y_j}}}\right)
 \end{equation}
 
-\section{Convolutional Neural Networks}
-A drawback of the ANN architectures that we have considered so far is that they do not consider the spatial information that might be hidden in a dataset. 
-In the context of vision, how to interpret the value of a certain pixel usually depends on what can be seen nearby. For example, a blue pixel surrounded by white ones might be an eye, whereas a blue pixel surround by blue ones might be an ocean. In addition to color, neighboring pixels also encode structure. When looking at the MNIST dataset, a collection of hand-drawn numbers from zero to nine, we might for example be looking for crosses (such as the center of an eight), T-shaped junctions (such as in the letter four) or half-circles (like in the letter three), whose number might then serve as features for our neural network. The SIFT features in Chapter \ref{chap:feature_extraction} have been a good example of a hand-coded approach to encode such spatial information. We will now see, how ANNs can find such features automatically.
+\section{Convolutional Neural Networks}\label{sec:ann:cnn}
 
-One way to extract such features in image processing is by \textsl{convolving} an image with a \textsl{kernel}, see also Chapter \ref{chap:vision}. This is illustrated for a 3x3 and a 7x7 kernel in \cref{fig:convolution}.
+A drawback of the ANN architectures that we have covered so far is that they do not consider the spatial information that might be hidden in a dataset.
+For example, as detailed in \cref{chap:vision}, in the context of vision it is important to interpret the value of a certain pixel depending on what can be seen nearby: a blue pixel surrounded by white ones might be an eye, whereas a blue pixel surround by blue ones might be an ocean. In addition to color, neighboring pixels also encode structure. When looking at the MNIST dataset (a collection of hand-drawn numbers from zero to nine), we might for example be looking for crosses (such as the center of an eight), T-shaped junctions (such as in the letter four) or half-circles (like in the letter three), whose number might then serve as features for our neural network.
+The SIFT features in Chapter \ref{chap:feature_extraction} were a good example of a hand-coded approach to encode such spatial information. We will now see how ANNs can find such features automatically.
 
-
+If you recall, one way to extract features in image processing is by \textsl{convolving} an image with a \textsl{kernel}\index{Kernel (neural networks)}---see e.g. a convolution with a $3\times3$ and a $7\times7$ kernel in \cref{fig:convolution}.
+%
 \begin{figure}[htb]
     \centering
     % \includegraphics[width=0.8\columnwidth]{figs/backpropnotation3}
     \def\svgwidth{0.8\textwidth}
     \import{./figs/}{convolution.pdf_tex}
-    \caption{Convolution with a 3x3 and a 7x7 kernel and resulting reduction in image size.\label{fig:convolution}}
+    \caption{Convolution with a $3\times3$ and a $7\times7$ kernel and resulting reduction in image size.\label{fig:convolution}}
 \end{figure}
-
+%
 During a convolution, the kernel is swept across the input image, summing over a piece-wise multiplication of each element of the kernel with the underlying image pixels (see also \cref{chap:vision}). As all multiplications are summed, such an operation yields only one pixel. As the kernel has to start somewhat inside the image (unless its borders are padded with appropriate values), we are loosing half the width of the kernel on each side. In the example above, a 3x3 kernel turns a 28x28 input image into a 26x26 output image and a 7x7 kernel turns it into a 22x22 pixel image. Mathematically, the convolution is defined as
 
 \begin{equation}
