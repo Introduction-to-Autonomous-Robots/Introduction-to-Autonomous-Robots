@@ -360,7 +360,7 @@ If you recall, one way to extract features in image processing is by \textsl{con
     \caption{Convolution with a $3\times3$ and a $7\times7$ kernel and resulting reduction in image size.\label{fig:convolution}}
 \end{figure}
 %
-During a convolution, the kernel is swept across the input image, summing over a piece-wise multiplication of each element of the kernel with the underlying image pixels (see also \cref{chap:vision}). As all multiplications are summed, such an operation yields only one pixel. As the kernel has to start somewhat inside the image (unless its borders are padded with appropriate values), we are loosing half the width of the kernel on each side. In the example above, a 3x3 kernel turns a 28x28 input image into a 26x26 output image and a 7x7 kernel turns it into a 22x22 pixel image. Mathematically, the convolution is defined as
+During a convolution, the kernel is swept across the input image, summing over a piece-wise multiplication of each element of the kernel with the underlying image pixels (see also \cref{chap:vision}). As all multiplications are summed, such an operation yields only one pixel. As the kernel has to start somewhat inside the image (unless its borders are padded with appropriate values), we are loosing half the width of the kernel on each side. In the example above, a $3\times3$ kernel turns a $28\times28$ input image into a $26\times26$ output image and a $7\times7$ kernel turns it into a $22\times22$ pixel image. Mathematically, the convolution is defined as
 
 \begin{equation}
 x(n_1,n_2)*h(n_1,n_2)=\sum_{k_1=-\infty}^{\infty} \sum_{k_2=-\infty}^{\infty} h(k_1,k_2)x(n_1-k_1,n_2-k_2)
@@ -370,7 +370,7 @@ where bounds (here, infinity) need to be chosen so that the kernel starts at the
 
 \subsection{From convolutions to 2D neural networks}
 
-To look at how one individual pixel in the output above gets computed, we assume that the input pixel is labeled $x_{i,j}$ with $i$ the row and $j$ the column of this pixel. We also assume the entries of the convolution kernel to be indexed in a similar way. Using a 3x3 kernel, the first pixel of the output is then calculated by
+When looking at how one individual pixel in the output above gets computed, we assume that the input pixel is labeled $x_{i,j}$ with $i$ the row and $j$ the column of this pixel. We also assume the entries of the convolution kernel to be indexed in a similar way. Using a $3\times3$ kernel, the first pixel of the output is then calculated by:
 
 \begin{eqnarray}
 o_{0,0}=&x_{0,0}w_{0,0}+x_{0,1}w_{0,1}+x_{0,2}w_{0,2}\\
@@ -380,47 +380,53 @@ o_{0,0}=&x_{0,0}w_{0,0}+x_{0,1}w_{0,1}+x_{0,2}w_{0,2}\\
 		&+x_{2,0}w_{2,0}+x_{2,1}w_{2,1}+x_{2,2}w_{2,2}
 \end{eqnarray}
 
-This pixel is therefore simply computing the dot-product of the value of 9 pixels with the kernel weights. Adding a bias value and an activation function such as Relu is therefore identical to adding a hidden layer with 9 neurons. 
+This operation is therefore simply computing the dot-product of the value of $9$ pixels with the kernel weights. Adding a bias value and an activation function such as ReLu is therefore identical to adding a hidden layer with nine neurons!
 
-Performing the convolution by moving the convolution kernel with a width of (2r+1) across an entire XxY image is therefore akin to creating (X-2r)(Y-2r) ``convolutional'' neurons, and the resulting structure is called a \textsl{feature map}. Note, that the ``weights'' in the feature map---the entries of the kernel matrix---are identical for each neuron in the feature map. We can now repeat this step with additional kernels, resulting in multiple feature maps, which then form a \textsl{convolutional layer}.
+Performing the convolution by moving the convolution kernel with a width of ($2r+1$) across an entire $X\times Y$ image is therefore akin to creating $(X-2r)(Y-2r)$ ``convolutional'' neurons; the resulting structure is called a \textsl{feature map}\index{Feature Map (neural networks)}.
+Note that the ``weights'' of the feature map---i.e., the entries of the kernel matrix---are identical for each neuron in the feature map. We can now repeat this step with additional kernels, resulting in multiple feature maps, which then form a \textsl{convolutional layer}\index{Convolutional Layer (neural networks)}.
 
-As this structure is very similar to the conventional neural network structure, except for a large number of weights being identical, the parameters of each kernel can also be trained using back-propagation. 
+Importantly, as this structure is very similar to the conventional neural network structure (except for the fact that a large number of weights are identical), the parameters of each kernel can also be trained using backpropagation! See \cref{sec:backpropagation}.
 
 \subsection{Padding and striding}
 
-A convolution of kernel width $2r+1$ needs to reduce the input by $r$ on each side. If this is not desired, \textsl{padding} can be used to surround the input image with up to $r$ pixels, resulting in the output image having the same dimension as the input image. Instead of moving the convolution kernel pixel by pixel, skipping pixels will further reduce the size of the output image. The amount by which the convolution kernel is moved is known as \textsl{stride}. This is illustrated in \cref{fig:stride} for strides of one and three.
+As mentioned earlier, a convolution of kernel width $2r+1$ reduces the input by $r$ on each side.
+If this is not desired (for example, when multiple convolutional layers are used in series), \textsl{padding} can be used to surround the input image with up to $r$ pixels, which results in the output image having the same dimension as the input image. Instead of moving the convolution kernel pixel by pixel, skipping pixels will further reduce the size of the output image. The amount by which the convolution kernel is moved is known as \textsl{stride}. This is illustrated in \cref{fig:stride} for strides of one and three.
 
 \begin{figure}[htb]
     \centering
     % \includegraphics[width=0.8\columnwidth]{figs/backpropnotation3}
     \def\svgwidth{0.8\textwidth}
     \import{./figs/}{stride.pdf_tex}
-    \caption{Convolution with 1x1 and 3x3 stride and resulting output.\label{fig:stride}}
+    \caption{Convolution with $1\times1$ and $3\times3$ stride and resulting output.\label{fig:stride}}
 \end{figure}
 
 \subsection{Pooling}
 
-The feature maps that result from convolution each identify specific features that are defined by their kernels. Training finds these kernels by itself and some might fire on edges, others on intersections of lines, and yet again others on very specific patterns in the dataset. Activation functions further amplify this effect, making a clear distinction between whether a feature is present or not. In most practical applications, such features are rather sparse, however, and whether they exist in a larger area or not, might the most salient information. This can be achieved by a \textsl{pooling layer}.
+The feature maps that result from convolution each identify specific features that are defined by their kernels.
+Though training, it is possible to identify these kernels and specialize them for specific characteristics that are of interest: some might ``fire'' on edges, others on intersections of lines, and others on very specific patterns in the dataset.
+Activation functions may be used to further amplify this effect, making a clear distinction between whether a feature is present or not.
+However, in most practical applications such features are rather sparse, and whether they exist in a larger area or not might the most salient information. This can be achieved by a \textsl{pooling layer}\index{Pooling (neural networks)}.
 
-A pooling operation applies a window to select the maximum (\textsl{MaxPooling}) or the average, among many other possible non-linear functions, from a window of a given size. \cref{fig:pooling} shows the result of a MaxPooling layer with pool size of 3x3 and stride lengts of 1x1 and 3x3. Usually, the stride length is the same as the width of the window.
+A pooling operation applies a window to select the maximum (in which case it is referred to as \textsl{MaxPooling}\index{Max Pooling (neural networks)}) or the average, among many other possible non-linear functions, from a window of a given size. \cref{fig:pooling} shows the result of a MaxPooling layer with pool size of $3\times3$ and stride lengths of $1\times1$ and $3\times3$. Usually, the stride length is the same as the width of the window.
 
 \begin{figure}[htb]
     \centering
     % \includegraphics[width=0.8\columnwidth]{figs/backpropnotation3}
     \def\svgwidth{0.8\textwidth}
     \import{./figs/}{pooling.pdf_tex}
-    \caption{Pooling using a pool size of 3x3 for different strides and corresponding output.\label{fig:pooling}}
+    \caption{Pooling using a pool size of $3\times3$ for different strides and corresponding output.\label{fig:pooling}}
 \end{figure}
 
-Although the $max()$ function is not differentiable, MaxPooling can still be used in backpropagation by selectively passing the gradient to only that neuron which has shown to be the maximum activation and setting the gradient of all other neurons in a pool to zero. When an averaging pooling function has been used, the gradient is divided among all neurons in the pool to equal parts.
+Although the $max()$ function is not differentiable, MaxPooling can still be used in backpropagation by selectively passing the gradient to only the neuron that has shown to have the maximum activation and setting the gradient of all other neurons to zero. When an averaging pooling function is used, the gradient is divided among all neurons in the pool in equal parts.
 
 \subsection{Flattening}
 
-The first step in previous neural network models has been to flatten a 2D input image into a one-dimensional vector. This has been the precondition to apply a dense layer and has been accomplished during preprocessing. Convolutional neural networks require multi-dimensional (2D images with multiple color channels) inputs, however. Turning a multi-dimensional tensor into a vector is known as \textsl{flattening} and results into simple reordering. For example, an RGB image of dimensioniality (28x28x3) might be turned into 20 convolutional filters, or 2352 individual neurons. A flattening layer arranges them again in a single vector.
+The first step in previous neural network models has been to flatten a 2D input image into a one-dimensional vector. This has been the precondition to apply a dense layer and has been accomplished during preprocessing.
+However, CNNs require multi-dimensional inputs (e.g., 2D images with multiple color channels). Turning a multi-dimensional tensor into a vector is known as \textsl{flattening} and results into simple reordering. For example, an RGB image of dimensioniality ($28\times28\times3$) might be turned into $20$ convolutional filters, or $2352$ individual neurons. A flattening layer arranges them again in a single vector.
 
 \subsection{A sample CNN}
 
-\cref{fig:cnn} shows a typical CNN that combines multiple convolutional and pooling layers. The network takes a 28x28 image as an input and trains 20 different 5x5 convolution kernels to create 20 feature maps of 28x28 each. This layer is followed by a maxpooling layer that downsamples each feature map by a factor two. These feature maps are then convolved with 50 5x5 convolution kernels to create 50 14x14 feature maps. These will again be downsampled by a maxpooling operation. The resulting 50 feature maps are then flattened and fed into a hidden layer of 500 neurons, and finally into a SoftMax-activated output layer with 10 neurons.
+\cref{fig:cnn} shows a typical CNN that combines multiple convolutional and pooling layers. The network takes a $28\times28$ image as an input and trains $20$ different $5\times5$ convolution kernels to create $20$ feature maps of $28\times28$ each. This layer is followed by a maxpooling layer that downsamples each feature map by a factor of two. These feature maps are then convolved with $50$ $5\times5$ convolution kernels to create $50$ $14\times14$ feature maps. These will again be downsampled by a maxpooling operation. The resulting $50$ feature maps are then flattened and fed into a hidden layer of 500 neurons, and finally into a SoftMax-activated output layer with $10$ neurons.
 
 \begin{figure}[htb]
 \tiny
@@ -428,9 +434,8 @@ The first step in previous neural network models has been to flatten a 2D input 
     % \includegraphics[width=0.8\columnwidth]{figs/backpropnotation3}
     \def\svgwidth{\textwidth}
     \import{./figs/}{cnn.pdf_tex}
-    \caption{A typical convolutional neural network taking a 28x28 input image and reducing it to 10 classes.\label{fig:cnn}}
+    \caption{A typical convolutional neural network taking a $28\times28$ input image and reducing it to $10$ classes.\label{fig:cnn}}
 \end{figure}
-
 
 \subsection{Convolutional Networks beyond 2D image data}
 

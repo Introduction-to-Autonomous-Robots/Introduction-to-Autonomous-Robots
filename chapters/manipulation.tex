@@ -3,7 +3,6 @@
 
 While grasping (\cref{chap:grasping}) is generally concerned with connecting an object to a robot's kinematic chain, the act of grasping itself is usually only a small part of a small part of the tasks involved in physically dealing with objects.
 
-
 \begin{mdframed}
 Think of all the possible ways in which you interact with objects on a daily basis. Identify which part of these can be classified as ``grasping'' and what is actually ``manipulation''? How many times do you need to plan for a complex sequence of actions (e.g., making coffee in the morning)?
 \end{mdframed}
@@ -17,8 +16,8 @@ The goals of this chapter are to introduce:
 
 \begin{itemize}
 \item the difference between grasping and manipulation,
-\item algorithms for choosing the right grasp, 
-\item canonical manipulation tasks such as pick-and-place and assembly. 
+\item algorithms for choosing the right grasp,
+\item canonical manipulation tasks such as pick-and-place and assembly.
 \end{itemize}
 
 \section{Non-Prehensile Manipulation}
@@ -29,7 +28,7 @@ Many manipulation problems can be cast into a sequence of pick-and-place problem
 
 
 \section{Choosing the right grasp}
-While we have so far only considered the mechanics of grasping (Chapter \ref{chap:grasping}, choosing an appropriate pose for grasping an object in a specific way is an algorithmic problem. 
+While we have so far only considered the mechanics of grasping (\cref{chap:grasping}), choosing an appropriate pose for grasping an object in a specific way is an algorithmic problem.
 
 Finding a good grasp that fully constrains an object against all possible external forces and torques, i.e. a grasp that lies within the ``grasping wrench space'' detailed in \cref{sec:grasping_friction} may be too restrictive and, oftentimes, unnecessarily so.
 For example, it might be sufficient to find a grasp that constrains an object simply against gravity.
