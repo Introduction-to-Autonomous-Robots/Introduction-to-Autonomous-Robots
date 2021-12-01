@@ -330,20 +330,19 @@ In the case where there are only two classes, the \textsl{binary cross-entropy} 
 H(\hat{y},y)=-\sum_{i=1}^Ny_i\log(\hat{y_i})=-y_1\log(\hat{y_1})-(1-y_1)\log(1-\hat{y_1})
 \end{equation}
 
-As there are only two classes, true or false, $\hat{y_2}$ directly follows from $1-\hat{y_1}$. 
+As there are only two classes (either true or false), $\hat{y_2}$ directly follows from $1-\hat{y_1}$.
 The more general case for $N>2$ is known as \textsl{categorical cross-entropy}.
-
-When using one-hot encoding, only class $c$ has probability 1 ($y_c=1$), reducing the cross-entropy to 
+%
+When using one-hot encoding, only class $c$ has probability 1 ($y_c=1$), reducing the cross-entropy to:
 \begin{equation}
 H(\hat{y},y)=-\log(\hat{y_c})
 \end{equation}
 
 with $c$ the true class (the other terms are zero). 
-combined with the softmax activation function the categorical cross entropy therefore computes as
+Combined with the softmax activation function the categorical cross entropy therefore computes as
 \begin{equation}
 H(\hat{y},y) = -\log\left(\frac{e^{\hat{y_c}}}{\sum_{j}^N e^{\hat{y_j}}}\right)
 \end{equation}
-
 
 \section{Convolutional Neural Networks}
 A drawback of the ANN architectures that we have considered so far is that they do not consider the spatial information that might be hidden in a dataset. 
