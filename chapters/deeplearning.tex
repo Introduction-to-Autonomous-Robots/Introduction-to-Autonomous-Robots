@@ -8,18 +8,21 @@ While ANNs for the longest time have been just one of the many methods available
 Not too long ago, neural networks were considered ``deep'' if the had just more than two layers. Today, ``deep'' neural networks can have hundreds of layers and thousands of inputs and outputs---or more!
 This is still shy of the human brain, which contains $\sim 100^{11}$ neurons, each with thousands of synapses connecting a single neuron to thousands of others.
 
+\begin{mdframed}
+\td{add a description of difference between regression and classification as we don't say it anywhere}
+\end{mdframed}
+
 Machine learning is a large field that shares many of its foundations with robotics, in particular for what concerns probability theory and statistics. In particular, deep learning may be used as a drop-in replacement for sensor pre-processing and conditioning, computer vision and feature extraction, localization, and even replace controllers for locomotion and grasping.
 For each of these applications, it is important to understand when deep learning may perform better than traditional approaches, and when it does not.
 In a nutshell, deep learning models become first choice when not enough information exists to model a system using first principles. While a ``deep enough'' model with the right architecture might approximate any existing function in robotics, deep learning models lack ``explainability'' beyond statistical accuracy, that is, we do not know why the approach actually works and when it might fail, usually making it second choice over an approach based on first principles.
 
 The goals of this chapter are to introduce:
 
-
 \begin{itemize}
     \item basic neural networks from the simple perceptron to multi-layer neural networks,
     \item different network architectures and encodings to tackle a variety of regression and classification tasks,
-   \item convolutional neural networks, including padding, striding, pooling and flattening and how they can be used to process spatial and temporal data,
-    \item recurrent neural networks that introduce memory for classifying temporal data and perform control. 
+    \item convolutional neural networks---including padding, striding, pooling and flattening, and how they can be used to process spatial and temporal data,
+    \item recurrent neural networks that introduce memory for classifying temporal data and perform control tasks.
 \end{itemize}
 
 
@@ -257,10 +260,11 @@ Yet, the ``brutal'' cut-off introduced by the $\arg \max$ function is exactly wh
 \section{Objective functions and optimization}
 
 The key idea to train neural networks is to change the network's parameters so that a certain objective function (called loss function), is minimized.
-This is usually done by evaluating the gradient of this objective function with respect to the network's parameters. Being differentiable is therefore a key requirement for a useful objective function.
-However, The magnitude of the weights can dramatically impact neural network performance and finding this magnitude is entirely dependent on the type of learning problem.
+This is usually done by evaluating the gradient of the objective function with respect to the network's parameters. Being differentiable is therefore a key requirement for a useful objective function.
+However, the magnitude of the weights can dramatically impact neural network performance and finding this magnitude is entirely dependent on the type of learning problem.
 
 \subsection{Loss functions for regression tasks}
+
 So far, we have considered the so-called \textsl{Mean-squared Error} (MSE):
 
 \begin{equation}
@@ -291,25 +295,29 @@ In practice, a large variety of loss functions have been developed to combine fe
 
 \subsection{Loss functions for classification tasks}
 
-Although a classification task can be cast into a regression problem, classifying is a lot more like throwing a dice. Indeed, the output of the Softmax layer is a discrete probability distribution in which each element $y_i=(p_0, \dots, p_c, \dots ,p_N)$ is the probability of an instance $x_i$ to be of class $c$ in $N$ classes total.
+Although a classification task can be cast into a regression problem, classifying is more akin to throwing a dice.
+Indeed, the output of the Softmax layer is a discrete probability distribution in which each element $y_i=(p_0, \dots, p_c, \dots ,p_N)$ is the probability of an instance $x_i$ to be of class $c$ in $N$ classes total.
 
-We speak of the \textsl{entropy} of a probability distribution as the amount of variety that we can expect. An uniform distribution therefore has the highest entropy---with a lot of possible outcomes, whereas data with which we train the network, the one-hot encoded vectors are probability distributions with very low entropy. The entropy of the distribution of $y_i$ (the training vector that stores the true class $c$ for each instance $x_i$) is given by
+We speak of the \textsl{entropy}\index{Entropy (neural networks)} of a probability distribution as the amount of ``variety'' that we expect.
+To make an example, a uniform distribution has the highest entropy because there exist a high number of possible outcomes, whereas the one-hot encoded vectors are probability distributions with very low entropy.
+The entropy of the distribution of $y_i$ (the training vector that stores the true class $c$ for each instance $x_i$) is given by:
 
 \begin{equation}
-H(y_i)=-\sum_{c=1}{N}p_c \log p_c
+H(y_i)=-\sum_{c=1}{N}p_c \log p_c\quad.
 \end{equation}
 
+Here, the logarithm can be of basis ten or two. In any case, the entropy function has a couple of interesting properties: first, the logarithm from $0$ (negative infinity) to $1$ is negative (this is why probabilities yield positive values). Second, the logarithm of $1$ is zero, i.e., a distribution with only one element ($p_c=1$) has the lowest possible entropy.
+Third, the lower the individual entries for $p_c$ are---for example, in a uniform distribution where $p_c=\frac{1}{N}$, the higher the entropy.
 
-Here, the logarithm can be of basis ten or two. In any case, the entropy function has a couple of interesting properties: first, the logarithm from 0 (negative infinity) to 1 is negative. This is why probabilities yield positive values. Second, the logarithm of 1 is zero, that is, a distribution with only one $p_c=1$ has the lowest possible entropy, zero. Third, the lower the individual entries for $p_c$ get, for example in an uniform distribution where $p_c=\frac{1}{N}$, the entropy is highest.
+In every dataset, there will always exist a true distribution $P(C=i)$ that the data is distributed according to. By classifying every element in the training set, the neural network also generates its own distribution or ``interpretation'' of the data.
+Ideally, in the case of a $100\%$ fit, the neural network will generate (or ``learn'') the exact same distribution as the one that describes the training set. In the worst case, the network will generate a distribution that is completely different. Evaluating a neural network's performance is therefore a matter of comparing two probability distributions.
 
-In every dataset, there will be a true distribution $P(C=i)$ that the data is distributed by. By classifying every element in the training set, the neural network also generates a distribution. Ideally, in the case of a 100\% fit, the neural network will generate the exact same distribution as that of the training set. In the worst case, the network will generate a distribution that is completely different. Evaluating a neural network's performance is therefore a matter of comparing two probability distributions.
-
-One way to compare two distributions is via their entropy, this is known as \textsl{cross entropy}:
+One way to compare two distributions is via their entropy---a process known as \textsl{cross entropy}:
 \begin{equation}
-H(\hat{y},y)=-\sum_{i=1}{N}y_i\log \hat{y_i}
+H(\hat{y},y)=-\sum_{i=1}{N}y_i\log \hat{y_i}\quad ,
 \end{equation}
 
-with $y_i=p_i$ the known probability for instance $x$ to be class $i$ and $\hat{y_i}$ the prediction. As the neural network will never perfectly represent the data, the cross entropy will allows be larger than the entropy of the true distribution, that is
+with $y_i=p_i$ being the known probability for instance $x$ to be class $i$ and $\hat{y_i}$ being the prediction. As the neural network will never perfectly represent the data, the cross entropy will always be larger than the entropy of the true distribution, that is:
 \begin{equation}
 H(y)-H(\hat{y},y) \leq 0
 \end{equation}
