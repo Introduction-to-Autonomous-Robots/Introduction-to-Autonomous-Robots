@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="activationfunctions.svg"
-   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
    width="151.49451mm"
    height="36.955864mm"
    viewBox="0 0 151.49451 36.955864"
    version="1.1"
-   id="svg3102">
+   id="svg3102"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs3096">
     <marker
@@ -91,15 +91,16 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="68.837851"
-     inkscape:cx="286.28882"
+     inkscape:cy="69.004594"
+     inkscape:cx="-65.795078"
      inkscape:zoom="1.5578673"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
      bordercolor="#666666"
      pagecolor="#ffffff"
-     id="base" />
+     id="base"
+     inkscape:pagecheckerboard="0" />
   <metadata
      id="metadata3099">
     <rdf:RDF>
@@ -108,7 +109,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -222,31 +222,5 @@
        d="m 46.874005,60.040351 v 3.167163"
        id="path5252-8"
        inkscape:connector-curvature="0" />
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="44.616119"
-       y="67.009117"
-       id="text5232-8"><tspan
-         sodipodi:role="line"
-         id="tspan5230-7"
-         x="44.616119"
-         y="67.009117"
-         style="font-size:4.23333px;stroke-width:0.264583">-6</tspan></text>
-    <text
-       inkscape:export-ydpi="300"
-       inkscape:export-xdpi="300"
-       id="text5232-8-1"
-       y="67.000847"
-       x="107.15256"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       xml:space="preserve"><tspan
-         style="font-size:4.23333px;stroke-width:0.264583"
-         y="67.000847"
-         x="107.15256"
-         id="tspan5230-7-1"
-         sodipodi:role="line">6</tspan></text>
   </g>
 </svg>
