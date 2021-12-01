@@ -1,20 +1,20 @@
 %!TEX root = ../book.tex
 \chapter{Artificial Neural Networks}\label{chap:ann}
 
-\textsl{Artificial neural networks (ANNs)}\index{Artificial Neural Networks} are a specific flavor of machine learning that are loosely inspired by neural operation in the human brain; in robotics, they are used to classify or regress data for the dual purposes of perception (e.g., \cref{chap:vision,chap:feature_extraction}) and control (as will be shown in \cref{chap:taskexecution}).
+\textsl{Artificial neural networks (ANNs)}\index{Artificial Neural Networks} are part of a class of machine learning techniques that are loosely inspired by neural operation in the human brain; in robotics, they are generally used to classify or regress data for the dual purposes of perception (e.g., \cref{chap:vision,chap:feature_extraction}) and control (as will be shown in \cref{chap:taskexecution}).
 %
-While ANNs for the longest time have been just one of the many methods available to roboticists from the neighboring field of machine learning, recent advances in computing---in particular, graphical processing units (GPU)---and the availability of large datasets have enabled the ability to train very large neural networks, also known as \textsl{deep learning}\index{Deep Learning}. These massive networks have led to revolutionary results in many fields including computer vision, natural language processing, video and speech processing, and robotics.
+While ANNs for the longest time have been just one of the many methods available to roboticists from the neighboring field of machine learning, recent advances in computing---in particular, graphical processing units (GPU)---and the availability of large datasets have enabled the training of neural networks with many layers, commonly referred to as \textsl{deep learning}\index{Deep Learning}. These (often massive) networks have led to revolutionary results in many fields including computer vision, natural language processing, video and speech processing, and robotics.
 %
 Not too long ago, neural networks were considered ``deep'' if the had just more than two layers. Today, ``deep'' neural networks can have hundreds of layers and thousands of inputs and outputs---or more!
 This is still shy of the human brain, which contains $\sim 100^{11}$ neurons, each with thousands of synapses connecting a single neuron to thousands of others.
 
 \begin{mdframed}
-Remember: a \textsl{classification}\index{Classification (neural networks)} problem requires that input data be classified between two or more classes; a \textsl{regression}\index{Regression (neural networks)} problem requires a prediction of a (possibly continuous) quantity. While a regression problem can be converted into a classification one (and vice versa), the machine learning community generally considers them two separate applications, and different techniques are developed to perform in each of these domains.
+Remember: a \textsl{classification}\index{Classification (neural networks)} problem requires that input data be classified between two or more classes; a \textsl{regression}\index{Regression (neural networks)} problem requires a prediction of a (possibly continuous or high-dimensional) quantity. While a regression problem can be converted into a classification one (and vice versa), the machine learning community generally considers them two separate applications, and different techniques are developed to perform in each of these domains.
 \end{mdframed}
 
-Machine learning is a large field that shares many of its foundations with robotics, in particular for what concerns probability theory and statistics. In particular, deep learning may be used as a drop-in replacement for sensor pre-processing and conditioning, computer vision and feature extraction, localization, and even replace controllers for locomotion and grasping.
+Machine learning is a large field that shares many of its foundations with robotics, in particular for what concerns probability theory and statistics. Deep learning may be used as a drop-in replacement for sensor pre-processing and conditioning, computer vision and feature extraction, localization, and even replace controllers for locomotion and grasping.
 For each of these applications, it is important to understand when deep learning may perform better than traditional approaches, and when it does not.
-In a nutshell, deep learning models become first choice when not enough information exists to model a system using first principles. While a ``deep enough'' model with the right architecture might approximate any existing function in robotics, deep learning models lack ``explainability'' beyond statistical accuracy, that is, we do not know why the approach actually works and when it might fail, usually making it second choice over an approach based on first principles.
+In a nutshell, deep learning models become first choice when not enough information exists to model a system using first principles. While a ``deep enough'' model with the right architecture might approximate any existing function in robotics, deep learning models lack ``explainability'' beyond statistical accuracy, that is, we may not easily be able to know how the approach actually works (in terms of which criteria it uses for its decisions) and when it might fail, usually making it a second choice behind an approach based on first principles with clear decision-making rationale.
 
 The goals of this chapter are to introduce:
 
@@ -38,7 +38,7 @@ The goals of this chapter are to introduce:
 
 Artificial neural networks are inspired by neurons and synapses in the human brain and have been studied since the Fifties. One of the earliest models is the \textsl{Perceptron}\index{Perceptron}, which can classify an input vector $x$ of dimension $m$ into two classes. Such a problem is shown in \cref{fig:linearsep}. Variations of the simple perceptron remain the basic elements of deep neural networks until today.
 %
-As detailed in \cref{fig:perceptron}, a perceptron has $m$ inputs $x_1$ to $x_m$)---each modulated by a weight $w_1$ to $w_m$, as well as a treshold $b$; it outputs either zero or one.
+As detailed in \cref{fig:perceptron}, a perceptron has $m$ inputs $x_1$ to $x_m$)---each modulated by a weight $w_1$ to $w_m$, as well as a threshold $b$; it outputs either zero or one.
 
 \begin{figure}
     \centering
@@ -214,7 +214,7 @@ This process is non-trivial, as calculating the partial derivatives across the c
 \section{From single outputs to higher dimensional data}
 
 Extending a neural network from one single output to multiple binary classifiers is straightforward, requiring only to increase the dimensionality of the output vector.
-Much less straightforward is encoding more complex data which leads to the following question: how to represent numerical values, such as digits from $0$ to $9$ or characters from A to Z?
+Much less straightforward is encoding more complex data which leads to the following question: how can we represent numerical values, such as digits from $0$ to $9$ or characters from A to Z?
 
 \subsubsection{One-Hot Encoding}
 A very common approach is known as \textsl{One-Hot Encoding (OHE)}. In OHE, $n$ discrete labels such as numbers or characters are encoded as a binary vector of length $n$. To encode the $i-$th element of a set of labels, this vector is zero except at position $i$. For example, to encode the characters $0 \ldots 9$, OHE would represent them as:
@@ -422,7 +422,7 @@ Although the $max()$ function is not differentiable, MaxPooling can still be use
 \subsection{Flattening}
 
 The first step in previous neural network models has been to flatten a 2D input image into a one-dimensional vector. This has been the precondition to apply a dense layer and has been accomplished during preprocessing.
-However, CNNs require multi-dimensional inputs (e.g., 2D images with multiple color channels). Turning a multi-dimensional tensor into a vector is known as \textsl{flattening} and results into simple reordering. For example, an RGB image of dimensioniality ($28\times28\times3$) might be turned into $20$ convolutional filters, or $2352$ individual neurons. A flattening layer arranges them again in a single vector.
+However, CNNs require multi-dimensional inputs (e.g., 2D images with multiple color channels). Turning a multi-dimensional tensor into a vector is known as \textsl{flattening} and results into simple reordering. For example, an RGB image of dimensionality ($28\times28\times3$) might be turned into $20$ convolutional filters, or $2352$ individual neurons. A flattening layer arranges them again in a single vector.
 
 \subsection{A sample CNN}
 
