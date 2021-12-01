@@ -8,20 +8,20 @@ While ANNs for the longest time have been just one of the many methods available
 Not too long ago, neural networks were considered ``deep'' if the had just more than two layers. Today, ``deep'' neural networks can have hundreds of layers and thousands of inputs and outputs---or more!
 This is still shy of the human brain, which contains $\sim 100^{11}$ neurons, each with thousands of synapses connecting a single neuron to thousands of others.
 
-\subsubsection{When to use machine learning?}
-
-Machine learning is a large field that shares many of its foundations with robotics, in particular for what concerns probability theory and statistics.
-The goal of this chapter is to provide an understanding of simple and recurrent neural networks that is sufficient to connect these tools to other topics in this book.
-In particular, deep learning may be used as a drop-in replacement for sensor pre-processing and conditioning, computer vision and feature extraction, localization, and even replace controllers for locomotion and grasping.
+Machine learning is a large field that shares many of its foundations with robotics, in particular for what concerns probability theory and statistics. In particular, deep learning may be used as a drop-in replacement for sensor pre-processing and conditioning, computer vision and feature extraction, localization, and even replace controllers for locomotion and grasping.
 For each of these applications, it is important to understand when deep learning may perform better than traditional approaches, and when it does not.
 In a nutshell, deep learning models become first choice when not enough information exists to model a system using first principles. While a ``deep enough'' model with the right architecture might approximate any existing function in robotics, deep learning models lack ``explainability'' beyond statistical accuracy, that is, we do not know why the approach actually works and when it might fail, usually making it second choice over an approach based on first principles.
-In summary, the goals of this chapter are:
+
+The goals of this chapter are to introduce:
+
 
 \begin{itemize}
-    \item \td{Nikolaus TODO}
-    \item \td{Nikolaus TODO}
-    \item \td{Nikolaus TODO}
+    \item basic neural networks from the simple perceptron to multi-layer neural networks,
+    \item different network architectures and encodings to tackle a variety of regression and classification tasks,
+   \item convolutional neural networks, including padding, striding, pooling and flattening and how they can be used to process spatial and temporal data,
+    \item recurrent neural networks that introduce memory for classifying temporal data and perform control. 
 \end{itemize}
+
 
 \section{The simple Perceptron}
 
