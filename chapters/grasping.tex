@@ -1,24 +1,24 @@
 %!TEX root = ../book.tex
 \chapter{Grasping}\label{chap:grasping}
 
-\textsl{Grasping}\index{Grasping} is the activity for which a robot moves or manipulates and object, i.e. change its shape or pose. This is typically done by attaching an end-effector (or gripper) that is suitable to perform the task at hand.
-Grasping has the interesting, and very confusing, property that it is relatively easy in practice but very complicated in theory. Consequently, this chapter describes a variety of strategies that will lead to successful grasps for a wide range of objects, but has difficulties to answer questions such as \textsl{What makes a good grasp?} or \textsl{How to find good grasps?} in any more depth than by providing simple heuristics.
-In this chapter, you will learn to:
+\textsl{Grasping}\index{Grasping} is the activity for which a robot moves or manipulates an object, i.e. change its shape or pose. This is typically done by attaching an end-effector (or gripper) that is suitable to perform the task at hand.
+Grasping has the interesting, and very confusing, property that it is relatively easy in practice but very complicated in theory. Consequently, this chapter describes a variety of strategies that will lead to successful grasps for a wide range of objects, but has difficulties to answer questions such as \textsl{What makes a good grasp?} or \textsl{How does one find good grasps?} in any more depth than by providing simple heuristics.
+In this chapter, you will learn:
 \begin{itemize}
 \item how to mathematically describe grasping and where simple models reach their limitations;
 \item what the properties of a gripper are that make for a good grasp in practice;
-\item understand the trade-offs in a variety of grasping mechanisms.
+\item how to understand the trade-offs in a variety of grasping mechanisms.
 \end{itemize}
 
 \section{The theory of grasping}
 
 Due to the importance of grasping in robotics, the theory behind grasping is widely investigated, with the state of the art comprehensively described in \cite{rimon2019mechanics}. However, robotics researchers still have difficulties in mathematically capturing the mechanics of grasps that are effective in practice. Therefore, rather than describing these recent developments---which are well beyond the scope of this book---we will briefly describe different approaches to model grasping and their limitations. Our goal is to provide the reader with a better understanding of the reasons for which some grasps work better than others, and what matters when designing a gripper.
 
-In its most simple form, grasping requires immobilizing an object, at least agains the forces of gravity, by providing appropriate forces in the opposite direction, also known as \textsl{constraints}. Specifically, contact points on a robotic finger, gripper or hand are assumed to exert localized forces, thereby constraining the object sufficiently. By this, fingers essentially act as miniature robotic arms, allowing us to apply the methods and tools described in Chapters \ref{chap:locomotion}--\ref{ch:forces}.
+In its most simple form, grasping requires immobilizing an object, at least against the forces of gravity, by providing appropriate forces in the opposite direction, also known as \textsl{constraints}. Specifically, contact points on a robotic finger, gripper or hand are assumed to exert localized forces, thereby constraining the object sufficiently. By this, fingers essentially act as miniature robotic arms, allowing us to apply the methods and tools described in Chapters \ref{chap:locomotion}--\ref{ch:forces}.
 
 \subsection{Friction}\index{Friction}\label{sec:grasping_friction}
 
-In any real application, contacts between a gripper and hand are not friction-less. This is the reason grasps such as those shown in \cref{fig:idealgrasp} practically work. If there were really no friction between the fingers and the object, the object would be ejected from the hand for every grasp that is not exactly aligned with a principal axis of the cylinder in \cref{fig:idealgrasp}, left. Furthermore, even the three-finger grasp shown in \cref{fig:idealgrasp}, right, would \textsl{always} fail as there is no force constraining the object from below. Interestingly, the existance of friction makes grasping much easier in practice, yet much harder to describe mathematically.
+In any real application, contacts between a gripper and hand are not friction-less. This is the reason grasps such as those shown in \cref{fig:idealgrasp} practically work. If there were really no friction between the fingers and the object, the object would be ejected from the hand for every grasp that is not exactly aligned with a principal axis of the cylinder in \cref{fig:idealgrasp}, left. Furthermore, even the three-finger grasp shown in \cref{fig:idealgrasp}, right, would \textsl{always} fail as there is no force constraining the object from below. Interestingly, the existence of friction makes grasping much easier in practice, yet much harder to describe mathematically.
 
 \begin{figure}
     % \includegraphics[width=\columnwidth]{figs/idealgrasp}
@@ -45,7 +45,7 @@ We are therefore interested in designing grippers with high friction coefficient
     \caption{Left: Coloumb friction relates normal to tangential reaction forces that are required to overcome friction, here shown for rightwards motion. Right: Friction cone for point forces. As long as the force is within the cone cone, the finger will not slip.}\label{fig:coulombfriction}
 \end{figure}
 
-When do objects slip? Let's analyze the problem via \cref{fig:coulombfriction}. Say we have a fingertip pressing down on a surface in any orientation. There will be a force normal to the surface $F_\mathrm{n}$, which defines the tangential force $F_\mathrm{t}$ in any direction. Sweeping the tangential force around the normal force creates a cone with an opening angle of:
+When do objects slip? Let's analyze the problem using \cref{fig:coulombfriction}. Say we have a fingertip pressing down on a surface in any orientation. There will be a force normal to the surface $F_\mathrm{n}$, which defines the tangential force $F_\mathrm{t}$ in any direction. Sweeping the tangential force around the normal force creates a cone with an opening angle of:
 \begin{equation}
 \alpha=2tan^{-1}\mu,
 \end{equation}
@@ -62,8 +62,8 @@ Knowing the relation between normal and tangential reaction forces can help in d
 
 In practice, no force will ever be applied at a single point only; rather, a force will be distributed over an area, either due to the size of the finger pad itself or due to the contact area deforming under pressure.
 Even the smallest contact area that is not a point in the mathematical sense will add constraints on torque, which will translate to constraints in additional dimensions and therefore further stabilization of the grasp. This is illustrated in \cref{fig:contactarea}.
-A single point of contact (\cref{fig:contactarea}, left) allows the object to easily pivot around it; however, by increasing the contact area we are able to costrain the rotational degree of freedom, thus reducing the available DoFs for the object to only its translational component.
-It is therefore desirable to grasp an object with a contact area that is as large as possible. Importantly, since as surfaces are not ideally flat, this extension of contact are is only possible in practice the contact area is deformable---see \cref{fig:contactarea}, right. Lastly, a large contact area will also increase friction, which as detailed in \cref{sec:grasping_friction} is a desirable property for grasping.
+A single point of contact (\cref{fig:contactarea}, left) allows the object to easily pivot around it; however, by increasing the contact area we are able to constrain the rotational degree of freedom, thus reducing the available DoFs for the object to only its translational component.
+It is therefore desirable to grasp an object with a contact area that is as large as possible. Importantly, since as surfaces are not perfectly flat, this extension of contact area is only possible in practice if the contact area is deformable---see \cref{fig:contactarea}, right. Lastly, a large contact area will also increase friction, which as detailed in \cref{sec:grasping_friction} is a desirable property for grasping.
 
 \begin{figure}
     % \includegraphics[width=\columnwidth]{figs/graspingcontacts}
@@ -100,7 +100,7 @@ One of the simplest grippers is a simple one degree-of-freedom claw, which is a 
 
 A simple design is shown in \cref{fig:gripper-1-dof} and consists of an active finger that presses an object against a passive finger, with both fingers often shaped as a hook. As should be clear by now, such a design can only work by relying on friction, which makes it not very common in traditional robotics.
 
-The key advantage of this mechanism is because it allows for very simple control strategies to operate it: use the passive finger to make contact with the object, then use the active finger to close the grasp.
+The key advantage of this mechanism is that it allows for very simple control strategies to operate it: use the passive finger to make contact with the object, then use the active finger to close the grasp.
 The event ``make contact" can either be detected by measuring the force acting at the wrist and looking for abrupt changes in such force or using a tactile sensor on the finger with which contact is made. This approach can therefore lead to robust grasps with a minimum of sensing required. A disadvantage of this mechanism is that its function relies exclusively on friction, possibly ejecting away objects from its grasp if friction is not sufficient or the object is in an otherwise sub-optimal conformation. Unlike most other mechanisms, it is also impossible to use the finger position to infer the width of an object, which is illustrated by the illustrations in \cref{fig:gripper-1-dof}, center.
 
 The mechanism shown in \cref{fig:gripper-1-dof} can be actuated in many different ways, for example by attaching a servo motor directly to the active finger, using a shape-memory alloy wire via a suitable lever arm, or a pneumatic piston or balloon.
