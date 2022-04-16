@@ -54,9 +54,9 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{stride.pdf}}%
-    \put(0.01396359,0.10107465){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\smash{\begin{tabular}[t]{l}9x9 input\\3x3 kernel\\1x1 stride\end{tabular}}}}%
-    \put(0.25659595,0.04763775){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}7x7 output\end{tabular}}}}%
-    \put(0.59454819,0.10974009){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\smash{\begin{tabular}[t]{l}9x9 input\\3x3 kernel\\3x3 stride\end{tabular}}}}%
-    \put(0.81626441,0.05326573){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3x3 output\end{tabular}}}}%
+    \put(0.01396359,0.10107465){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\smash{\begin{tabular}[t]{l}$9 \times 9$ input\\$3 \times 3$ kernel\\$1 \times 1$ stride\end{tabular}}}}%
+    \put(0.25659595,0.04763775){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$7 \times 7$ output\end{tabular}}}}%
+    \put(0.59454819,0.10974009){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\smash{\begin{tabular}[t]{l}$9 \times 9$ input\\$3 \times 3$ kernel\\$3 \times 3$ stride\end{tabular}}}}%
+    \put(0.81626441,0.05326573){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$3 \times 3$ output\end{tabular}}}}%
   \end{picture}%
 \endgroup%

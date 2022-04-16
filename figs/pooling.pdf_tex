@@ -140,8 +140,8 @@
     \put(0.33654534,0.1848359){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}9\end{tabular}}}}%
     \put(0.36614975,0.1848359){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}9\end{tabular}}}}%
     \put(0.39384423,0.18435839){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}9\end{tabular}}}}%
-    \put(0.00812382,0.06858593){\makebox(0,0)[lt]{\smash{\begin{tabular}[t]{l}7x7 Input\\3x3 Pool\\1x1 Stride\end{tabular}}}}%
-    \put(0.23491567,0.06509167){\makebox(0,0)[lt]{\smash{\begin{tabular}[t]{l}6x6 Ouput\\\end{tabular}}}}%
+    \put(0.00812382,0.06858593){\makebox(0,0)[lt]{\smash{\begin{tabular}[t]{l}$7 \times 7$ Input\\$3 \times 3$ Pool\\$1 \times 1$ Stride\end{tabular}}}}%
+    \put(0.23491567,0.06509167){\makebox(0,0)[lt]{\smash{\begin{tabular}[t]{l}$6 \times 6$ Output\\\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{pooling.pdf}}%
     \put(0.5022849,0.33988485){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5\end{tabular}}}}%
     \put(0.53053219,0.34045813){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
@@ -192,7 +192,7 @@
     \put(0.58881672,0.16592794){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
     \put(0.64563813,0.16688296){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
     \put(0.501436,0.19553238){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
-    \put(0.51852604,0.06554023){\makebox(0,0)[lt]{\smash{\begin{tabular}[t]{l}7x7 Input\\3x3 Pool\\3x3 Stride\end{tabular}}}}%
+    \put(0.51852604,0.06554023){\makebox(0,0)[lt]{\smash{\begin{tabular}[t]{l}$7 \times 7$ Input\\$3 \times 3$ Pool\\$3 \times 3$ Stride\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{pooling.pdf}}%
     \put(0.85606648,0.27433025){\color[rgb]{0,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}9\end{tabular}}}}%
     \put(0.88541449,0.27369641){\color[rgb]{1,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}8\end{tabular}}}}%
@@ -203,6 +203,6 @@
     \put(0.85589178,0.21593472){\color[rgb]{1,0,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}8\end{tabular}}}}%
     \put(0.88366377,0.21593472){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
     \put(0.91381891,0.21525323){\color[rgb]{0.50196078,0,0.50196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.81589339,0.06729261){\makebox(0,0)[lt]{\smash{\begin{tabular}[t]{l}3x3 Output\end{tabular}}}}%
+    \put(0.81589339,0.06729261){\makebox(0,0)[lt]{\smash{\begin{tabular}[t]{l}$3 \times 3$ Output\end{tabular}}}}%
   \end{picture}%
 \endgroup%

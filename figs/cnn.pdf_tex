@@ -54,14 +54,14 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{cnn.pdf}}%
-    \put(0.08879946,0.23585237){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}*\end{tabular}}}}%
-    \put(0.14381103,0.41429768){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Convolution\\28x28 (20)\end{tabular}}}}%
-    \put(0.28554338,0.41422036){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}MaxPool\\14x14 (20)\end{tabular}}}}%
-    \put(0.40541692,0.41489378){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Convolution\\14x14 (50)\end{tabular}}}}%
+    \put(0.08679946,0.23185237){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}*\end{tabular}}}}%
+    \put(0.08381103,0.42429768){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Convolution\\$28\times 28$ (20)\end{tabular}}}}%
+    \put(0.22554338,0.42422036){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}MaxPool\\$14\times14$ (20)\end{tabular}}}}%
+    \put(0.34841692,0.42489378){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Convolution\\$14\times14$ (50)\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{cnn.pdf}}%
-    \put(0.40699091,0.23590259){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}*\end{tabular}}}}%
-    \put(0.51934901,0.41497307){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}MaxPool\\7x7 (50)\end{tabular}}}}%
-    \put(0.62789452,0.4152962){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Hidden Layer\\500\end{tabular}}}}%
-    \put(0.76682179,0.41554997){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Output layer\\10\end{tabular}}}}%
+    \put(0.40399091,0.23190259){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}*\end{tabular}}}}%
+    \put(0.47534901,0.42497307){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}MaxPool\\$7\times7$ (50)\end{tabular}}}}%
+    \put(0.58789452,0.4252962){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Hidden layer\\500\end{tabular}}}}%
+    \put(0.76682179,0.42554997){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Output layer\\10\end{tabular}}}}%
   \end{picture}%
 \endgroup%
