@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="quadraturencoder.svg"
+   inkscape:version="1.0 (4035a4f, 2020-05-01)"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 74.314651 33.814453"
+   height="33.814453mm"
+   width="74.314651mm">
+  <defs
+     id="defs2">
+    <pattern
+       patternTransform="matrix(5.287766,0,0,10.035228,37.130049,-0.09185721)"
+       id="pattern11559"
+       xlink:href="#Strips1_1"
+       inkscape:collect="always" />
+    <pattern
+       inkscape:collect="always"
+       patternUnits="userSpaceOnUse"
+       width="2"
+       height="1"
+       patternTransform="translate(0,0) scale(10,10)"
+       id="Strips1_1"
+       inkscape:stockid="Stripes 1:1"
+       inkscape:isstock="true">
+      <rect
+         style="fill:black;stroke:none"
+         x="0"
+         y="-0.5"
+         width="1"
+         height="2"
+         id="rect10562" />
+    </pattern>
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#Strips1_1-1"
+       id="pattern11559-4"
+       patternTransform="matrix(5.2877661,0,0,10.035228,39.775883,3.723663)" />
+    <pattern
+       inkscape:isstock="true"
+       inkscape:stockid="Stripes 1:1"
+       id="Strips1_1-1"
+       patternTransform="translate(0,0) scale(10,10)"
+       height="1"
+       width="2"
+       patternUnits="userSpaceOnUse"
+       inkscape:collect="always">
+      <rect
+         id="rect10562-0"
+         height="2"
+         width="1"
+         y="-0.5"
+         x="0"
+         style="fill:black;stroke:none" />
+    </pattern>
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-maximized="0"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:window-height="1120"
+     inkscape:window-width="1792"
+     fit-margin-bottom="0"
+     fit-margin-right="0"
+     fit-margin-left="0"
+     fit-margin-top="0"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="50.091445"
+     inkscape:cx="425.68833"
+     inkscape:zoom="1.3345673"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-2.966339,-3.6606612)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <g
+       transform="translate(-75.791292,-15.527941)"
+       id="g11587">
+      <rect
+         style="fill:url(#pattern11559);fill-opacity:1;stroke:#000000;stroke-width:0.128491;stroke-linecap:round"
+         id="rect11530"
+         width="51.687366"
+         height="3.8155205"
+         x="78.821877"
+         y="19.252848"
+         ry="0.94255316" />
+      <rect
+         ry="0.94255316"
+         y="23.068369"
+         x="81.467712"
+         height="3.8155205"
+         width="51.687366"
+         id="rect11530-6"
+         style="fill:url(#pattern11559-4);fill-opacity:1;stroke:#000000;stroke-width:0.128491;stroke-linecap:round" />
+    </g>
+    <text
+       id="text11591"
+       y="14.507214"
+       x="19.469931"
+       style="font-size:10.5833px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-size:3.52778px;stroke-width:0.264583"
+         y="14.507214"
+         x="19.469931"
+         id="tspan11589"
+         sodipodi:role="line">Code pattern</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       x="60.796242"
+       y="6.4976554"
+       id="text11591-7"><tspan
+         sodipodi:role="line"
+         id="tspan11589-1"
+         x="60.796242"
+         y="6.4976554"
+         style="font-size:3.52777px;stroke-width:0.264583">Pattern A</tspan></text>
+    <text
+       id="text11591-7-7"
+       y="10.787071"
+       x="60.814079"
+       style="font-size:10.5833px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-size:3.52777px;stroke-width:0.264583"
+         y="10.787071"
+         x="60.814079"
+         id="tspan11589-1-0"
+         sodipodi:role="line">Pattern B</tspan></text>
+    <path
+       id="path11668"
+       d="m 3.3525881,23.274371 h 5.006318 l 0.05109,3.831366 h 5.4149919 l -0.05109,-3.98462 h 5.210663 v 4.086789 h 5.41499 v -4.240044 h 5.10849 v 4.342214 h 5.415 v -4.495468 h 5.15957 v 4.546553 l 5.415,0.05109 v -4.699813 h 5.15957 v 4.597638 h 3.52485"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 6.3586001,29.192878 h 5.0063179 l 0.05109,3.831366 h 5.414993 l -0.0511,-3.98462 h 5.21068 v 4.086789 h 5.41503 v -4.240044 h 5.10851 v 4.342214 h 5.41503 v -4.495468 h 5.15957 v 4.546553 l 5.415,0.05109 v -4.699813 h 5.15957 v 4.597638 h 3.52485"
+       id="path11668-7" />
+    <text
+       id="text11591-7-0"
+       y="25.821705"
+       x="60.941246"
+       style="font-size:10.5833px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-size:3.52777px;stroke-width:0.264583"
+         y="25.821705"
+         x="60.941246"
+         id="tspan11589-1-2"
+         sodipodi:role="line">Sensor A</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       x="60.959084"
+       y="30.111122"
+       id="text11591-7-7-4"><tspan
+         sodipodi:role="line"
+         id="tspan11589-1-0-3"
+         x="60.959084"
+         y="30.111122"
+         style="font-size:3.52777px;stroke-width:0.264583">Sensor B</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       x="19.316168"
+       y="36.765427"
+       id="text11591-8"><tspan
+         sodipodi:role="line"
+         id="tspan11589-9"
+         x="19.316168"
+         y="36.765427"
+         style="font-size:3.52777px;stroke-width:0.264583">Sensor pattern</tspan></text>
+  </g>
+</svg>
