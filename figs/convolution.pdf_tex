@@ -54,10 +54,10 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{convolution.pdf}}%
-    \put(0.13209706,0.56117176){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}28 x 28 pixels\end{tabular}}}}%
-    \put(0.65372428,0.56268853){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}26x26 pixels\end{tabular}}}}%
+    \put(0.13209706,0.56117176){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$28 \times 28$ pixels\end{tabular}}}}%
+    \put(0.65372428,0.56268853){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$26 \times 26$ pixels\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{convolution.pdf}}%
-    \put(0.64947319,0.46917391){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}22x22 pixels\end{tabular}}}}%
+    \put(0.64947319,0.46917391){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$22 \times 22$ pixels\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{convolution.pdf}}%
   \end{picture}%
 \endgroup%
