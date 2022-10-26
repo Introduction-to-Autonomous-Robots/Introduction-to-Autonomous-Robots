@@ -54,12 +54,12 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{quadraturencoder.pdf}}%
-    \put(0.22207723,0.30906289){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Code pattern\end{tabular}}}}%
-    \put(0.77817633,0.41684188){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Pattern A\end{tabular}}}}%
-    \put(0.77841636,0.35912223){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Pattern B\end{tabular}}}}%
+    \put(0.25768038,0.3161835){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Code pattern\end{tabular}}}}%
+    \put(0.75681444,0.40972125){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Pattern A\end{tabular}}}}%
+    \put(0.75705447,0.35200161){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Pattern B\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{quadraturencoder.pdf}}%
-    \put(0.78012755,0.15681174){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Sensor A\end{tabular}}}}%
-    \put(0.78036758,0.09909206){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Sensor B\end{tabular}}}}%
-    \put(0.22000815,0.00954977){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Sensor pattern\end{tabular}}}}%
+    \put(0.75876566,0.1496911){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Sensor A\end{tabular}}}}%
+    \put(0.75900569,0.09197143){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Sensor B\end{tabular}}}}%
+    \put(0.2556113,0.0166704){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Sensor pattern\end{tabular}}}}%
   \end{picture}%
 \endgroup%
