@@ -108,7 +108,7 @@ F=\left[\begin{array}{c} 0\\ 0\\ -5N\\ 0\\ 0\\ 0\\ \end{array} \right].
 
 \section{Kineto-Statics Duality}\label{sec:forces:kinetostatics}
 
-The analogy between \cref{eq:kinematics:diff:fwd,eq:forces:statics} by means of the Jacobian makes it interesting to analyze \cref{eq:forces:statics} similarly to what we did \cref{sec:kinematics:diff,sec:kinematics:diff:underover}.
+The analogy between \cref{eq:kinematics:diff:fwd,eq:forces:statics} by means of the Jacobian makes it interesting to analyze \cref{eq:forces:statics} similarly to what we did in \cref{sec:kinematics:diff,sec:kinematics:diff:underover}.
 This analogy is defined as \textsl{kineto-statics duality}\index{Kineto-Statics Duality}, and helps the novice roboticist to more intuitively correlate these two levels of abstraction.
 More specifically, singular configurations are as relevant to the statics problem as they are to the differential kinematics one, but they have different physical interpretation.
 In a singular configuration, both the Jacobian and its transpose lose rank---as transposing a matrix does not affect its rank. However, while loss of full rank affects the \textsl{inverse} kinematics problem (i.e. its solution ``explodes'' and joint speeds go to infinity), in this case it is the \textsl{direct} statics mapping that is affected by it: in a singular configuration, forces exerted by the robot on the environment go to infinity.
