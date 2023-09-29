@@ -1,4 +1,4 @@
-%% Creator: Inkscape 1.0 (4035a4fb49, 2020-05-01), www.inkscape.org
+%% Creator: Inkscape 1.0 (4035a4f, 2020-05-01), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'trajectorygen.pdf' (pdf, eps, ps)
 %%
@@ -66,8 +66,13 @@
     \put(0.25031017,0.19149682){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\alpha$\end{tabular}}}}%
     \put(0.40251952,0.29976936){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\rho$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{trajectorygen.pdf}}%
-    \put(0.85562379,0.1246192){\color[rgb]{0,0,0}\rotatebox{-1.5777023}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$x_r$\end{tabular}}}}}%
-    \put(0.77033979,0.27709008){\color[rgb]{0,0,0}\rotatebox{-1.4426235}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$x_r$\end{tabular}}}}}%
-    \put(0.82777054,0.20869296){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\eta$\end{tabular}}}}%
+    \put(0.87682974,0.11401634){\color[rgb]{0,0,0}\rotatebox{-1.5777023}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$x_r$\end{tabular}}}}}%
+    \put(0.76327104,0.29476164){\color[rgb]{0,0,0}\rotatebox{-1.4426235}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$x_r$\end{tabular}}}}}%
+    \put(0.88295408,0.22564634){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\eta$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{trajectorygen.pdf}}%
+    \put(0.84414696,0.17221592){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\theta_r$\end{tabular}}}}%
+    \put(0.80865889,0.21924407){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\theta_g$\end{tabular}}}}%
+    \put(0.05782097,0.24576667){\color[rgb]{0,0,0}\rotatebox{-1.4426234}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$(x_r,y_r)$\end{tabular}}}}}%
+    \put(0.72007059,0.47344211){\color[rgb]{0,0,0}\rotatebox{-1.4426234}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$(x_g,y_g)$\end{tabular}}}}}%
   \end{picture}%
 \endgroup%
