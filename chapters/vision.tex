@@ -103,7 +103,7 @@ f[x,y]\star g[x,y]=\sum_{i=-1}^{1}\sum_{j=-1}^{1}f[x-i,y-j]g[i,j]\quad,
 assuming that $g(0,0)$ is the center of the matrix. What now happens is that each pixel $f(x,y)$ becomes the average of that of its neighbors, with its previous value weighted twice than that of its neighbors (because $g(0,0)=0.2$). More concretely:
 \begin{equation}
 f(x,y)=
-\begin{smallmatrix*}[lll]
+\begin{smallmatrix*}[l]
 f(x+1,y+1)g(-1,-1) &+f(x+1,y)g(-1,0) &+f(x+1,y-1)g(-1,1)\\
 +f(x,y+1)g(0,-1) &+f(x,y)g(0,0) &+f(x,y-1)g(0,1)\\
 +f(x-1,y+1)g(1,-1) &+f(x-1,y)g(1,0) &+f(x-1,y-1)g(1,1)
