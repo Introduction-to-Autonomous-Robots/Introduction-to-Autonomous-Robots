@@ -313,7 +313,7 @@ This is known as the \textsl{Damped Least-Squares} method.\index{Damped Least-Sq
 
 \subsection{Inverse Kinematics of Mobile Robots}\label{sec:kinematics:ik:mobile}
 
-There is no unique relationship between the amount of rotation of a robot's individual wheels and its position in space; however, for simple holonomic platforms such as a robot on a track, we can treat the inverse kinematics problem as solving for the velocities within the local robot coordinate frame.
+There is no unique relationship between the amount of rotation of a robot's individual wheels and its position in space for non-holonomic robots. Instead, we can treat the inverse kinematics problem as solving for the velocities within the local robot coordinate frame.
 %
 Let's first establish how to calculate the necessary speed of the robot's center given a desired speed $ \dot{\xi_I}$ in world coordinates. We can transform the expression $ \dot{\xi_I}=T(\theta)\dot{\xi_R}$ by multiplying both sides with the inverse of $ T(\theta)$:
 
