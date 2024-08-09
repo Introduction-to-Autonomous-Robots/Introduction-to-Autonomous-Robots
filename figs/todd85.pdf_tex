@@ -1,0 +1,74 @@
+%% Creator: Inkscape 1.3.2 (091e20e, 2023-11-25, custom), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'todd85.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{2450.25bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,1.34557698)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{todd85.pdf}}%
+    \put(0.1473064,0.07242734){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\large 1\end{tabular}}}}%
+    \put(0.53661157,0.06988983){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\large 10\end{tabular}}}}%
+    \put(0.92216712,0.06989895){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\large 100\end{tabular}}}}%
+    \put(0.06472176,1.30352127){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\large 100\end{tabular}}}}%
+    \put(0.08829722,0.89987757){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\large 10\end{tabular}}}}%
+    \put(0.11187267,0.49941846){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\large 1\end{tabular}}}}%
+    \put(0.07648577,0.11231403){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\large 0.1\end{tabular}}}}%
+    \put(0.0417692,0.56918824){\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\large unit power (hp/ton)\end{tabular}}}}}%
+    \put(0.39217937,0.01662996){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\large speed (miles/hour)\end{tabular}}}}%
+    \put(0.20597406,0.83734013){\rotatebox{45}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\large crawling/sliding\end{tabular}}}}}%
+    \put(0.32621506,0.72320166){\rotatebox{45}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\large running\end{tabular}}}}}%
+    \put(0.71867761,1.07041312){\rotatebox{45}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\large tire on soft\end{tabular}}}}}%
+    \put(0.80253204,1.04363019){\rotatebox{45}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\large ground\end{tabular}}}}}%
+    \put(0.60421227,0.81757005){\rotatebox{45}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\large walking\end{tabular}}}}}%
+    \put(0.61985206,0.26947709){\rotatebox{45}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\large railway wheel\end{tabular}}}}}%
+    \put(0.865028,0.70406183){\rotatebox{72.00048}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\large flow\end{tabular}}}}}%
+  \end{picture}%
+\endgroup%
