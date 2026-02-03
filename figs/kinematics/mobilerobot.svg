@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    viewBox="0 0 418.56429 270.46744"
    sodipodi:docname="mobilerobot.svg"
-   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
    version="1.1"
    id="svg3023"
    height="288.4986"
-   width="446.4686">
+   width="446.4686"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs3025">
     <marker
@@ -74,22 +74,25 @@
   <sodipodi:namedview
      inkscape:document-rotation="0"
      inkscape:window-maximized="0"
-     inkscape:window-y="185"
-     inkscape:window-x="4539"
-     inkscape:window-height="1039"
-     inkscape:window-width="1792"
+     inkscape:window-y="30"
+     inkscape:window-x="0"
+     inkscape:window-height="1181"
+     inkscape:window-width="2576"
      showgrid="false"
      inkscape:current-layer="layer1"
      inkscape:document-units="px"
-     inkscape:cy="104.41876"
-     inkscape:cx="80.697957"
+     inkscape:cy="87.437024"
+     inkscape:cx="129.32119"
      inkscape:zoom="1.6354628"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
      bordercolor="#666666"
      pagecolor="#ffffff"
-     id="base" />
+     id="base"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
   <metadata
      id="metadata3028">
     <rdf:RDF>
@@ -98,7 +101,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -109,13 +111,16 @@
      inkscape:label="Layer 1">
     <text
        id="text4948"
-       y="115.17001"
-       x="235.79807"
+       y="210.52055"
+       x="39.312397"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       xml:space="preserve"><tspan
+       xml:space="preserve"
+       inkscape:transform-center-x="90.18009"
+       inkscape:transform-center-y="-108.16029"
+       transform="rotate(-35.891504)"><tspan
          style="font-size:24px;line-height:1.25;font-family:sans-serif"
-         y="115.17001"
-         x="235.79807"
+         y="210.52055"
+         x="39.312397"
          id="tspan4950"
          sodipodi:role="line"> </tspan></text>
     <path
@@ -175,18 +180,20 @@
        inkscape:export-xdpi="150"
        inkscape:export-filename="C:\Users\ncorrell\Documents\computational-robotics-book\figs\mobilerobot.png"
        id="text4952"
-       y="275.72366"
-       x="335.68921"
+       y="248.40463"
+       x="333.72379"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
-         y="275.72366"
-         x="335.68921"
+         y="248.40463"
+         x="333.72379"
          id="tspan4954"
          sodipodi:role="line"
-         style="font-size:20px;line-height:1.25;font-family:sans-serif">$-\theta_I$</tspan></text>
+         style="font-size:20px;line-height:1.25;font-family:sans-serif">$\theta_I$</tspan></text>
     <g
        id="g3780"
-       transform="rotate(109.05935,298.6738,328.12992)">
+       transform="rotate(73.167846,345.15285,327.45912)"
+       inkscape:transform-center-x="-3.1474305"
+       inkscape:transform-center-y="-1.027879">
       <circle
          style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          id="path2985"
@@ -225,7 +232,9 @@
     </g>
     <g
        id="g4818-4"
-       transform="matrix(0.27908329,0.09060878,-0.11310774,0.34838213,249.88635,126.53384)">
+       transform="matrix(0.27921295,-0.09020844,0.11260799,0.34854399,173.34164,148.44862)"
+       inkscape:transform-center-x="-31.894157"
+       inkscape:transform-center-y="-48.878685">
       <path
          style="fill:none;stroke:#000000;stroke-width:3.05031px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
          d="M 126,356.66987 V 43.28526"
@@ -238,38 +247,44 @@
          inkscape:connector-curvature="0" />
     </g>
     <text
-       transform="rotate(17.294538)"
+       transform="rotate(-18.596966)"
        id="text4860-4"
-       y="174.10344"
-       x="279.00632"
+       y="323.55511"
+       x="119.75011"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       xml:space="preserve"><tspan
+       xml:space="preserve"
+       inkscape:transform-center-x="-5.8457059"
+       inkscape:transform-center-y="-6.3474824"><tspan
          style="font-size:24px;line-height:1.25;font-family:sans-serif"
-         y="174.10344"
-         x="279.00632"
+         y="323.55511"
+         x="119.75011"
          id="tspan4862-8"
          sodipodi:role="line">${R}$</tspan></text>
     <text
-       transform="rotate(16.593287)"
+       transform="rotate(-19.298217)"
        id="text4885-4"
-       y="202.49704"
-       x="383.37637"
+       y="314.36053"
+       x="226.88278"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       xml:space="preserve"><tspan
-         y="202.49704"
-         x="383.37637"
+       xml:space="preserve"
+       inkscape:transform-center-x="-114.98524"
+       inkscape:transform-center-y="-18.589126"><tspan
+         y="314.36053"
+         x="226.88278"
          id="tspan4887-5"
          sodipodi:role="line"
          style="font-size:24px;line-height:1.25;font-family:sans-serif">$X_R$</tspan></text>
     <text
-       transform="rotate(20.537584)"
+       transform="rotate(-15.35392)"
        id="text4885-4-5"
-       y="40.638535"
-       x="290.49176"
+       y="198.86026"
+       x="139.94531"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       xml:space="preserve"><tspan
-         y="40.638535"
-         x="290.49176"
+       xml:space="preserve"
+       inkscape:transform-center-x="22.417935"
+       inkscape:transform-center-y="-118.06343"><tspan
+         y="198.86026"
+         x="139.94531"
          id="tspan4887-5-1"
          sodipodi:role="line"
          style="font-size:24px;line-height:1.25;font-family:sans-serif">$Y_R$</tspan></text>
@@ -289,13 +304,16 @@
        sodipodi:open="true"
        sodipodi:end="0.32175054"
        sodipodi:start="0"
-       d="m 328.22884,255.10904 a 81.830772,81.830772 0 0 1 -4.19928,25.87716"
+       d="m 237.95507,318.51672 a 81.830772,81.830772 0 0 1 -4.19928,25.87716"
        sodipodi:ry="81.830772"
        sodipodi:rx="81.830772"
-       sodipodi:cy="255.10904"
-       sodipodi:cx="246.39807"
+       sodipodi:cy="318.51672"
+       sodipodi:cx="156.1243"
        id="path5169"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;marker-start:url(#Arrow1Lstart)"
-       sodipodi:type="arc" />
+       sodipodi:type="arc"
+       inkscape:transform-center-x="-78.558516"
+       inkscape:transform-center-y="-12.868682"
+       transform="rotate(-17.816478)" />
   </g>
 </svg>
