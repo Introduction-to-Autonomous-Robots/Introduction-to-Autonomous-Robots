@@ -1,6 +1,6 @@
 %% Creator: Inkscape 1.3.2 (091e20e, 2023-11-25), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'mobilerobot2.pdf' (pdf, eps, ps)
+%% Accompanies image file 'mobilerobot.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -54,15 +54,15 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0.139546,0.53130145){\color[rgb]{0,0,0}\rotatebox{35.891504}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l} \end{tabular}}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{mobilerobot2.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{mobilerobot.pdf}}%
     \put(0.00530299,0.0178258){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}${I}$\end{tabular}}}}%
     \put(0.83120312,0.01010709){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$X_I$\end{tabular}}}}%
     \put(-0.00433961,0.60205488){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$Y_I$\end{tabular}}}}%
     \put(0.56590233,0.29023241){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$\theta_I$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{mobilerobot2.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{mobilerobot.pdf}}%
     \put(0.28627572,0.24229056){\color[rgb]{0,0,0}\rotatebox{18.596966}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}${R}$\end{tabular}}}}}%
     \put(0.52839837,0.35399558){\color[rgb]{0,0,0}\rotatebox{19.298217}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$X_R$\end{tabular}}}}}%
     \put(0.21680673,0.51408517){\color[rgb]{0,0,0}\rotatebox{15.35392}{\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$Y_R$\end{tabular}}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=3]{mobilerobot2.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{mobilerobot.pdf}}%
   \end{picture}%
 \endgroup%
